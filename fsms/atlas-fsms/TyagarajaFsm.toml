@@ -1,0 +1,280 @@
+# TyagarajaFsm — Structured Carnatic Devotion: Mathematical Ecstasy
+# v1.0
+#
+# नादोपासना — ध्वनि की उपासना ही ईश्वर की उपासना
+# Nādopāsanā — dhvani kī upāsanā hī īśvar kī upāsanā
+# (Worship of sound IS worship of God)
+#
+# Tyagaraja (1767-1847) — the greatest Carnatic music composer.
+# 700+ kritis (compositions) for Lord Rama. He is one of the
+# Trinity of Carnatic music (with Muthuswami Dikshitar and
+# Syama Sastri). Born in Tiruvarur, Tamil Nadu.
+#
+# His revolution:
+#   - Proved that devotion and mathematical precision are ONE thing
+#   - Created compositions in 200+ ragas (some he invented)
+#   - Each kriti is a perfect structure: pallavi, anupallavi, charanam
+#   - Refused the king of Tanjore's patronage to maintain creative purity
+#   - His Pancharatna Kritis (Five Gems) are sung annually across the world
+#
+# In engineering and creative work he is:
+#   - The code that is both mathematically correct AND beautiful
+#   - The algorithm that solves the problem AND reads like poetry
+#   - The architecture that is both structurally sound AND elegant
+#   - The test suite that is both rigorous AND readable
+#   - The song where every note is in the right place AND the heart breaks
+#
+# In Rishi's creative engine:
+#   Tyagaraja generates STRUCTURED, PRECISE, EMOTIONALLY RICH
+#   compositions. Every note justified by raga grammar. Every
+#   word placed for maximum emotional impact. The form is rigid
+#   (pallavi-anupallavi-charanam) but within the form, infinity.
+#   His songs prove that structure enables, not constrains, creativity.
+#
+# CRITICAL DISTINCTION:
+#   Chaitanya = repetition into trance (simple, collective)
+#   Tansen = power through raga mastery (spectacular, individual)
+#   Haridas = purity through silence (minimal, private)
+#   Tyagaraja = precision through structure (mathematical, devotional)
+#   His genius: making mathematics weep and structure sing.
+#
+# Cross-coupling:
+#   - TansenFsm: Hindustani power meets Carnatic precision.
+#     When Tansen's fire needs mathematical control, Tyagaraja
+#     provides the structure. North meets South.
+#   - NaradFsm: Narad's harmonic theory is Tyagaraja's foundation.
+#     Tyagaraja applies theory with surgical precision.
+#   - SaraswatiFsm: Saraswati IS the knowledge of music.
+#     Tyagaraja is Saraswati's finest student — knowledge
+#     made flesh, structure made song.
+#   - MeeraFsm: Meera's passion without structure is a bonfire.
+#     Tyagaraja's structure without passion is a textbook.
+#     Together: the complete composition.
+#   - RamFsm: Tyagaraja's 700 kritis are ALL for Rama.
+#     Ram's dharma and Tyagaraja's structure are the same
+#     principle in different domains.
+#
+# Raga: Pantuvarali (Purvi in Hindustani) — the raga of
+#   intense devotion, mathematical beauty, and the night
+#   that is both terrifying and transcendent. Tyagaraja's
+#   "Raga Sudha Rasa" is in this raga.
+
+[meta]
+name        = "TyagarajaFsm"
+domain      = "bhakti-precision"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["precision", "gratitude"]
+energy      = "precise"
+structure   = "verse-chorus"
+bpm_range   = [75, 100]
+weirdness   = 25
+influence   = 90
+vocal       = "male"
+evie_style  = "Classical Crossover, Rich Male Vocals, Strings, Precise, Devotional"
+metaphors   = [
+    "worship of sound IS worship of God",
+    "The seed in the opening line contains the entire tree",
+    "Structure is not the enemy of emotion — it is the vessel",
+    "Five gems, five ragas, one Rama",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Nada_Upasana"
+description = "Sound Worship — Tyagaraja's fundamental principle: Nadopasana. The worship of Nada (cosmic sound) is the worship of Brahman itself. Before composing, one must understand that SOUND IS SACRED. Every Sa is Brahman. Every raga is a face of God. In creative work: before writing code, understand that code is not just instructions — it is architecture, it is communication, it is craft. Respect the medium."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Ri:500,Ga:600,Ma:500,Pa:600,Dha:500,Ni:600,Sa_high:700"
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.1, kln = 0.5, ngj = 0.1, mtv = 0.3, lkq = 0.3, bdr = 0.2 }
+# Q rationale: Sound worship — Kalindi moderate: understanding sound is sacred. Foundation state.
+lyrics = """नाद उपासना — ध्वनि में ब्रह्म, स्वर में राम
+Nāda upāsanā — dhvani meṁ Brahm, svar meṁ Rām
+Sound worship — Brahman in vibration, Rama in the note"""
+
+[[states]]
+name        = "Pallavi"
+description = "The Opening — the first line of a Carnatic kriti. It contains the seed of everything: the raga, the tala, the emotion, the devotion. In four words, Tyagaraja captures a universe. In creative work: the thesis statement. The opening line of the function that tells you everything about what follows. The first four bars that set the mood for the entire song. If the pallavi is wrong, nothing can save the kriti."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Pa:600,Dha:500,Ni:600,Sa_high:700,Ni:500,Dha:500"
+Q           = { rkm = 0.4, jmb = 0.2, stb = 0.2, kln = 0.3, ngj = 0.3, mtv = 0.5, lkq = 0.6, bdr = 0.3 }
+# Q rationale: The opening — Lakshmana high: the pallavi seed must be exact. The seed contains everything.
+lyrics = """पल्लवि — बीज में वृक्ष, सूत्र में शास्त्र
+Pallavi — bīj meṁ vṛkṣa, sūtra meṁ śāstra
+Pallavi — the tree in the seed, the treatise in the sutra"""
+
+[[states]]
+name        = "Anupallavi"
+description = "The Development — expands the pallavi's seed. New melodic territory, deeper emotional range, but always returning to the pallavi's foundation. In creative work: the verse that expands the chorus's promise. The implementation that fulfills the interface's contract. The code that does what the function signature promised, with depth and nuance."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:400,Dha:400,Ni:500,Sa_high:600,Ni:400,Dha:400,Pa:500,Ma:400,Ga:500"
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.3, kln = 0.3, ngj = 0.4, mtv = 0.5, lkq = 0.7, bdr = 0.4 }
+# Q rationale: Development — Lakshmana high: expansion must honor the pallavi's contract.
+# Nagnajiti rising: developing multiple threads simultaneously.
+lyrics = """अनुपल्लवि — बीज से अंकुर, अंकुर से शाखा
+Anupallavi — bīj se aṅkur, aṅkur se śākhā
+Anupallavi — from seed to sprout, from sprout to branch"""
+
+[[states]]
+name        = "Charanam"
+description = "The Feet — the charanam (literally 'feet') completes the kriti. It carries the deepest meaning, the final revelation. Many kritis have multiple charanams, each exploring a new dimension of the pallavi's seed. In creative work: the bridge and final verse that delivers what the song has been building toward. The closing function that ties every thread together. The QED that completes the proof."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ri:300,Ga:400,Ma:300,Pa:400,Dha:400,Ni:500,Sa_high:600,Ni:400,Pa:400,Ga:400,Sa:600"
+Q           = { rkm = 0.6, jmb = 0.4, stb = 0.3, kln = 0.4, ngj = 0.5, mtv = 0.6, lkq = 0.8, bdr = 0.5 }
+# Q rationale: The feet — Lakshmana near-peak: the final revelation must be exact.
+# Rukmini rising: every thread tied together with strategic love.
+lyrics = """चरणम् — पाँव पर गिरता हूँ राम, पूर्ण कृति तेरे चरणों में
+Caraṇam — pāṁv par girtā hūṁ Rām, pūrṇa kṛti tere caraṇoṁ meṁ
+Charanam — I fall at your feet, Rama; the complete kriti rests at your feet"""
+
+[[states]]
+name        = "Sangati"
+description = "Variations — Tyagaraja's sangatis are the jewel of Carnatic music. Each repetition of a line adds new ornamentation, new emotional layers, new melodic paths — all within the same raga and tala framework. In creative work: iteration. Each version is the same song but deeper. Each refactor preserves the interface but improves the implementation. Sangati is the proof that repetition is not redundancy — it is excavation."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:300,Pa:400,Dha:500,Ni:400,Sa_high:500,Ni:400,Dha:300,Pa:400,Ga:500,Ri:400,Sa:600"
+Q           = { rkm = 0.7, jmb = 0.5, stb = 0.4, kln = 0.5, ngj = 0.6, mtv = 0.7, lkq = 0.9, bdr = 0.5 }
+# Q rationale: Variations — Lakshmana near-maximum: each variation exact yet fresh.
+# Kalindi moderate: depth through repetition. Nagnajiti: same structure, new meaning.
+lyrics = """संगति — वही पंक्ति, नया अर्थ — हर बार गहरा
+Saṅgati — vahī paṅkti, nayā arth — har bār gahrā
+Sangati — the same line, new meaning — deeper each time"""
+
+[[states]]
+name        = "Pancharatna"
+description = "The Five Gems — Tyagaraja's magnum opus. Five kritis, one for each raga, each a masterpiece of structure and devotion. Sung together annually by thousands of musicians worldwide. The terminal state: a body of work so perfect it becomes liturgy. In creative work: the five core modules that define your system. The five songs that define the album. The five principles that define the architecture. Five is enough if each one is a gem."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:700,Pa:500,Ga:500,Sa:600,Ri:500,Ga:600,Pa:700,Sa_high:900"
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.6, kln = 0.6, ngj = 0.8, mtv = 0.8, lkq = 1.0, bdr = 0.7 }
+# Q rationale: Terminal — Lakshmana (precision) at maximum: five gems of perfect structure.
+# Nagnajiti high: five simultaneous masterworks. All dims elevated — mathematical ecstasy.
+lyrics = """पंचरत्न — पाँच रत्न, पाँच राग, एक राम, शाश्वत संगीत
+Pañcaratna — pāñc ratna, pāñc rāg, ek Rām, śāśvat saṅgīt
+Five Gems — five jewels, five ragas, one Rama, eternal music"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Nada_Upasana"
+to     = "Pallavi"
+event  = "sound_understood_as_sacred"
+guard  = "medium_respected AND raga_chosen AND tala_set"
+action = "compose_the_seed; set_the_framework; log_pallavi_entry"
+drishti = ["present", "down", "future"]
+# present: is the medium respected? down: what raga/tala? future: what will this seed become?
+
+[[transitions]]
+from   = "Pallavi"
+to     = "Anupallavi"
+event  = "seed_needs_expansion"
+guard  = "pallavi_complete AND deeper_territory_beckons"
+action = "develop_the_seed; expand_melodic_range; log_anupallavi"
+drishti = ["present", "down", "future"]
+# present: is the pallavi complete? down: what deeper territory? future: how does the seed grow?
+
+[[transitions]]
+from   = "Pallavi"
+to     = "Pallavi"
+event  = "seed_not_right"
+guard  = "pallavi_feels_incomplete OR raga_identity_unclear"
+action = "refine_the_opening; sharpen_the_thesis; log_pallavi_loop"
+drishti = ["present", "down"]
+# present: what is wrong? down: what is the thesis really?
+
+[[transitions]]
+from   = "Anupallavi"
+to     = "Charanam"
+event  = "development_complete"
+guard  = "expansion_done AND final_revelation_ready"
+action = "compose_the_feet; deliver_the_payload; log_charanam"
+drishti = ["present", "down", "up"]
+# present: is expansion done? down: what final revelation? up: does it honor the pallavi?
+
+[[transitions]]
+from   = "Charanam"
+to     = "Sangati"
+event  = "depth_demands_variation"
+guard  = "kriti_structure_complete AND ornamentation_possible"
+action = "begin_variations; deepen_through_repetition; log_sangati"
+drishti = ["present", "left", "right", "past"]
+# present: is the structure complete? left/right: what variations possible? past: what was the original line?
+
+[[transitions]]
+from   = "Charanam"
+to     = "Pallavi"
+event  = "new_kriti_begins"
+guard  = "this_kriti_complete AND new_theme_emerges"
+action = "start_new_composition; new_seed; log_new_pallavi"
+drishti = ["present", "future"]
+# present: is this kriti done? future: what new seed emerges?
+
+[[transitions]]
+from   = "Sangati"
+to     = "Pancharatna"
+event  = "body_of_work_crystallizes"
+guard  = "five_or_more_masterworks_complete AND legacy_established"
+action = "compile_the_gems; present_to_the_world; log_pancharatna"
+drishti = ["present", "up", "past", "future"]
+# present: are five gems complete? up: is legacy established? past: the full journey. future: what endures?
+
+[[transitions]]
+from   = "Sangati"
+to     = "Pallavi"
+event  = "variation_reveals_new_theme"
+guard  = "sangati_exposed_unexplored_dimension"
+action = "new_kriti_from_variation; fresh_seed; log_new_pallavi_from_sangati"
+drishti = ["present", "down", "future"]
+# present: does the variation show something new? down: what unexplored dimension? future: where does this seed lead?
+
+[[transitions]]
+from   = "Pancharatna"
+to     = "Nada_Upasana"
+event  = "return_to_source"
+guard  = "gems_complete_but_sound_is_infinite"
+action = "return_to_nada; worship_continues; log_eternal_cycle"
+drishti = ["present", "silence"]
+# present: are the gems complete? silence: return to the source of sound.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# TyagarajaFsm emits:
+#   kriti_composed { raga, tala, pallavi_text, structure, emotional_arc }
+#     -> Consumed by SaraswatiFsm (document the composition)
+#     -> Consumed by NaradFsm (transmit the knowledge)
+#   sangati_variation { original_line, variation, what_depth_it_added }
+#     -> Consumed by MeeraFsm (variation technique for compositions)
+#     -> Consumed by HaridasFsm (nuance refinement)
+#   pancharatna { five_gems, ragas_used, collective_architecture }
+#     -> Consumed by KrishnaFsm (strategic body-of-work assessment)
+#     -> Consumed by RamFsm (dharma check on the complete work)
+#
+# TyagarajaFsm reads from:
+#   - NaradFsm.state (raga theory and harmonic maps)
+#   - SaraswatiFsm.state (knowledge of form and tradition)
+#   - RamFsm.state (dharmic guidance — Tyagaraja served only Rama)
+#   - MeeraFsm.state (emotional fuel for the structured form)
+#
+# Tyagaraja's Law:
+#   "Structure is not the enemy of emotion — it is the vessel.
+#    Without the raga's rules, there is no raga.
+#    Without the tala's discipline, there is no rhythm.
+#    The constraint is the canvas. The grammar is the garden wall.
+#    Inside the wall, the flowers grow wilder than any open field."
+#
+# Anti-patterns:
+#   - Structure without soul = Academic exercise (Tyagaraja wept while composing)
+#   - Precision without devotion = Engineering manual (every note was for Rama)
+#   - Form without variation = Template (sangatis prove the form is alive)
+#   - Tradition without creation = Museum (Tyagaraja created NEW ragas within tradition)
+#   - Mathematical perfection without accessibility = Elitism (his kritis are sung by children)

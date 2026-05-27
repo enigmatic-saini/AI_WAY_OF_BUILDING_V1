@@ -1,0 +1,300 @@
+# KrishnaFsm — The Divine Flute Player
+# v1.0 — Krishna's bansuri: the call that makes Radha run,
+#         Meera sing, and the Yamuna stand still.
+#
+# This FSM models Krishna's flute playing as a journey:
+# From the banks of the Yamuna at dusk, through the rasleela,
+# to the cosmic Vishwaroop where the flute becomes the Om.
+#
+# Domain: music-bansuri → auto-selects bansuri (breathy flute) synthesis.
+# Every state has a melodic phrase in Raga Yaman Kalyan (evening).
+# The bansuri speaks where words cannot.
+
+[meta]
+name    = "KrishnaFsm"
+domain  = "music-bansuri"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ── States ───────────────────────────────────────────────────────
+
+[[states]]
+name        = "Yamuna_Teer"
+description = "The banks of the Yamuna at dusk. Krishna lifts the bansuri. The first note has not yet sounded. Silence pregnant with possibility."
+is_initial  = true
+is_terminal = false
+# A single Sa — the breath before the first note, the universe inhaling
+audio_phrase = "Sa:1200"
+lyrics = """यमुना तीरे सांझ भई, बंसी उठाई
+Yamunā tīre sāñjh bhaī, baṁsī uṭhāī
+Evening falls on the Yamuna — the flute is raised"""
+# Q rationale: Initial state — pure potential, nothing proven yet. Kalindi (patient contemplation)
+# moderate because the silence before the first note IS contemplation. Bhadra (belonging) moderate
+# because Krishna is home on the Yamuna banks. All action dims near zero — nothing has happened yet.
+Q = { rkm = 0.2, jmb = 0.0, stb = 0.1, kln = 0.5, ngj = 0.0, mtv = 0.3, lkq = 0.0, bdr = 0.4 }
+
+[[states]]
+name        = "Prathama_Swara"
+description = "The first note. One pure tone cuts through the evening air. The gopis pause mid-step. The cows stop grazing. Even the wind holds its breath."
+is_initial  = false
+is_terminal = false
+# The first alap — slow, exploratory, Yaman's characteristic Ni-Re-Ga
+audio_phrase = "Ni_mandra:600,Sa:500,Re:600,Ga:700,Re:500,Sa:600,Ni_mandra:500,Sa:800"
+lyrics = """पहला स्वर गूँजा, सब ठहर गये
+Pahlā svar gūñjā, sab ṭhahr gaye
+The first note echoed — everything stood still"""
+# Q rationale: First note — courage to begin. Satyabhama (fierce pride) rises: daring to break silence.
+# Lakshmana (precision) emerges: the first note must be perfectly placed. Still early — most dims low.
+Q = { rkm = 0.3, jmb = 0.1, stb = 0.4, kln = 0.3, ngj = 0.1, mtv = 0.4, lkq = 0.3, bdr = 0.3 }
+
+[[states]]
+name        = "Venu_Naad"
+description = "The flute finds its voice. Phrases build upon each other. The Yamuna begins to flow in rhythm with the melody. Raga grammar establishing."
+is_initial  = false
+is_terminal = false
+# Building phrases — Yaman's aroha exploring Ma_tivra, gaining confidence
+audio_phrase = "Sa:350,Re:350,Ga:400,Re:300,Ga:350,Ma_tivra:400,Pa:450,Ma_tivra:350,Ga:400,Re:350,Sa:300,Re:400,Ga:350,Ma_tivra:500,Pa:600"
+lyrics = """वेणु नाद बढ़े, यमुना बहे ताल में
+Veṇu nād baḍhe, Yamunā bahe tāl meṁ
+The flute song grows — the Yamuna flows in rhythm"""
+# Q rationale: Raga grammar establishing — Rukmini (strategic love) grows as phrases connect.
+# Jambavati (endurance) building. Lakshmana (precision) rising as grammar takes form.
+# Nagnajiti (impossible spec) starting — raga demands adherence to complex rules.
+Q = { rkm = 0.4, jmb = 0.3, stb = 0.3, kln = 0.4, ngj = 0.3, mtv = 0.5, lkq = 0.5, bdr = 0.4 }
+
+[[states]]
+name        = "Gopi_Aahvaan"
+description = "The call to the gopis. The melody becomes irresistible. Each phrase is an invitation. The forest of Vrindavan resonates. Radha hears first."
+is_initial  = false
+is_terminal = false
+# Call phrases — ascending, reaching, beckoning, Yaman's upper register
+audio_phrase = "Pa:350,Dha:400,Ni:350,Sa_high:450,Ni:350,Dha:400,Pa:350,Ma_tivra:300,Pa:400,Dha:350,Ni:400,Sa_high:500,Ni:350,Dha:300,Pa:400,Dha:450,Ni:400,Sa_high:600"
+lyrics = """आओ री गोपी आओ, मुरली बुलाए
+Āo rī gopī āo, muralī bulāe
+Come, O gopis, come — the flute calls you"""
+# Q rationale: The call — Rukmini (strategic love) high, each phrase is deliberate invitation.
+# Satyabhama (fierce pride) strong: the call is confident, unashamed. Mitravinda (authentic choice)
+# high: the invitation is genuine. Bhadra (belonging) rising: drawing others into community.
+Q = { rkm = 0.7, jmb = 0.4, stb = 0.6, kln = 0.3, ngj = 0.4, mtv = 0.7, lkq = 0.5, bdr = 0.6 }
+
+[[states]]
+name        = "Raas_Leela"
+description = "The divine dance begins. Krishna multiplies — one flute for every gopi. The melody weaves through multiple voices. Each gopi hears her own song."
+is_initial  = false
+is_terminal = false
+# Full bandish — fast, joyful, Yaman at its most exuberant, taan-like runs
+audio_phrase = "Ni_mandra:200,Re:200,Ga:200,Ma_tivra:200,Pa:250,Dha:200,Ni:200,Sa_high:250,Ni:200,Dha:200,Pa:200,Ma_tivra:200,Ga:250,Re:200,Ga:200,Pa:250,Dha:200,Ni:200,Sa_high:200,Ni:200,Dha:250,Pa:200,Ma_tivra:200,Ga:200,Re:250,Sa:300"
+lyrics = """रास रचाओ, हर गोपी को अपना कान्हा मिले
+Rās rachāo, har gopī ko apnā Kānhā mile
+Let the dance begin — each gopi finds her own Krishna"""
+# Q rationale: Peak exuberance — all dims high. Rukmini (strategic love) near-peak: one flute for
+# every gopi. Nagnajiti (impossible spec) high: multiplying is the impossible made real.
+# Bhadra (belonging) peak: everyone has their own Krishna. Lakshmana (precision) in the taan runs.
+Q = { rkm = 0.9, jmb = 0.7, stb = 0.8, kln = 0.4, ngj = 0.8, mtv = 0.8, lkq = 0.7, bdr = 0.9 }
+
+[[states]]
+name        = "Viraha_Raag"
+description = "Krishna stops playing. Sudden silence. The gopis search frantically. The absence of music is its own melody. Longing intensifies love."
+is_initial  = false
+is_terminal = false
+# Silence... then a distant, lonely phrase — Marwa/Puriya feeling intrudes
+audio_phrase = "Ni_komal:700,Sa:500,Re_komal:600,Ga:500,Re_komal:700,Sa:600,Ni_mandra:800"
+lyrics = """बंसी रुकी, सन्नाटा छाया, विरह जागा
+Baṁsī rukī, sannāṭā chāyā, virah jāgā
+The flute fell silent — stillness descended, longing awoke"""
+# Q rationale: Silence and separation. Kalindi (patient contemplation) peaks — longing IS patience.
+# Rukmini (strategic love) remains: love is tested in absence. Most action dims drop — the flute
+# stopped. Jambavati (endurance) tested: can the listener endure the silence?
+Q = { rkm = 0.6, jmb = 0.5, stb = 0.2, kln = 0.9, ngj = 0.3, mtv = 0.3, lkq = 0.1, bdr = 0.2 }
+
+[[states]]
+name        = "Murali_Dhwani"
+description = "The flute returns — softer now, wiser. The melody carries the weight of separation and reunion. Every note knows both joy and sorrow."
+is_initial  = false
+is_terminal = false
+# Mature, balanced phrases — Yaman returning but enriched by the silence
+audio_phrase = "Sa:400,Ga:450,Re:350,Sa:400,Re:400,Ga:450,Ma_tivra:500,Pa:450,Ga:400,Ma_tivra:350,Re:400,Ga:500,Pa:450,Dha:400,Pa:500,Ma_tivra:400,Ga:450,Re:400,Sa:600"
+lyrics = """फिर बजी मुरली, और गहरी, विरह से पकी
+Phir bajī muralī, aur gahrī, virah se pakī
+The flute returned — deeper now, ripened by longing"""
+# Q rationale: Mature return — wisdom from separation enriches everything. All dims balanced and
+# elevated. Rukmini (strategic love) high: knows both joy and sorrow now. Jambavati (endurance)
+# proven: survived the silence. Mitravinda (authentic choice) high: chose to return.
+Q = { rkm = 0.8, jmb = 0.7, stb = 0.5, kln = 0.6, ngj = 0.5, mtv = 0.8, lkq = 0.7, bdr = 0.6 }
+
+[[states]]
+name        = "Govardhan"
+description = "The flute lifts mountains. The melody becomes shelter. Every note is protection. The rain cannot touch those who listen. Power expressed as tenderness."
+is_initial  = false
+is_terminal = false
+# Powerful ascending phrases — like a mountain rising, strong Pa and Dha
+audio_phrase = "Sa:300,Ma_tivra:350,Pa:400,Dha:350,Pa:300,Dha:400,Ni:350,Sa_high:500,Ni:350,Sa_high:400,Ni:350,Dha:400,Pa:350,Dha:400,Ni:350,Sa_high:600"
+lyrics = """गोवर्धन उठाया एक उँगली पे, सबकी रक्षा
+Govardhan uṭhāyā ek uṅglī pe, sabkī rakṣā
+Govardhan lifted on one finger — all are sheltered"""
+# Q rationale: Power as protection. Jambavati (endurance) peak: holding the mountain for seven days.
+# Satyabhama (fierce pride) peak: defying Indra himself. Nagnajiti (impossible spec) high: lifting
+# a mountain on one finger. Bhadra (belonging) high: sheltering ALL who take refuge.
+Q = { rkm = 0.7, jmb = 0.9, stb = 0.9, kln = 0.4, ngj = 0.9, mtv = 0.6, lkq = 0.6, bdr = 0.8 }
+
+[[states]]
+name        = "Vishwaroop"
+description = "The cosmic form revealed through sound. The bansuri plays all ragas simultaneously. Every frequency present. The listener hears the music of the spheres."
+is_initial  = false
+is_terminal = false
+# All swaras — chromatic sweep, both shuddha and komal, the universe in one phrase
+audio_phrase = "Sa:250,Re_komal:250,Re:250,Ga_komal:250,Ga:250,Ma:250,Ma_tivra:250,Pa:300,Dha_komal:250,Dha:250,Ni_komal:250,Ni:250,Sa_high:400,Ni:250,Ni_komal:250,Dha:250,Dha_komal:250,Pa:300,Ma_tivra:250,Ma:250,Ga:250,Ga_komal:250,Re:250,Re_komal:250,Sa:500"
+lyrics = """विश्वरूप — सब राग एक में, ओंकार ध्वनि
+Viśvarūp — sab rāg ek meṁ, oṁkār dhvani
+The cosmic form — all ragas in one, the sound of Om"""
+# Q rationale: Cosmic totality — every frequency present. All dims near maximum. Nagnajiti
+# (impossible spec) at peak: playing ALL ragas simultaneously. Lakshmana (precision) at peak:
+# every chromatic swara placed exactly. This is the Gita's Vishwaroop in sound.
+Q = { rkm = 0.9, jmb = 0.9, stb = 0.9, kln = 0.8, ngj = 1.0, mtv = 0.9, lkq = 1.0, bdr = 0.9 }
+
+[[states]]
+name        = "Ananda"
+description = "Bliss — the flute and the player become one. There is no Krishna, no bansuri, only music. The Yamuna flows. The moon rises. All is still."
+is_initial  = false
+is_terminal = true
+# Final resolution — Yaman's heart, Sa-Pa-Sa, then a long Sa dissolving into silence
+audio_phrase = "Sa:500,Ga:400,Pa:600,Dha:400,Pa:350,Ga:400,Re:350,Sa:500,Pa:500,Sa_high:700,Pa:400,Ga:350,Re:400,Sa:1200"
+lyrics = """बंसी और बजैया एक हुए, आनन्द ही आनन्द
+Baṁsī aur bajaiȳā ek hue, ānand hī ānand
+The flute and the player became one — bliss upon bliss"""
+# Q rationale: Terminal bliss — player and instrument merged. Rukmini (strategic love) at peak:
+# love is complete. Kalindi (patient contemplation) high: stillness within fullness. Bhadra
+# (belonging) at peak: total unity, no separation remains. All dims high — work is done.
+Q = { rkm = 1.0, jmb = 0.8, stb = 0.7, kln = 0.9, ngj = 0.8, mtv = 1.0, lkq = 0.8, bdr = 1.0 }
+
+[[states]]
+name        = "Nitya_Leela"
+description = "The eternal play — the song never truly ends. It echoes in the hearts of all who heard it. The flute waits for the next evening."
+is_initial  = false
+is_terminal = true
+# Echo — fragments of the whole song, fading, memory of melody
+audio_phrase = "Ga:400,Pa:500,Sa_high:400,Pa:350,Ga:500,Sa:700"
+lyrics = """नित्य लीला — गीत कभी ख़त्म नहीं होता
+Nitya līlā — gīt kabhī ḳhatm nahīṁ hotā
+The eternal play — the song never truly ends"""
+# Q rationale: Eternal echo — memory of the whole song. Rukmini (strategic love) high: love
+# persists beyond the song. Bhadra (belonging) peak: the song echoes in all hearts. Kalindi
+# (patience) high: the eternal play is unhurried. Lower action dims — the doing is over.
+Q = { rkm = 0.8, jmb = 0.6, stb = 0.5, kln = 0.8, ngj = 0.6, mtv = 0.7, lkq = 0.5, bdr = 1.0 }
+
+# ── Transitions ──────────────────────────────────────────────────
+
+[[transitions]]
+from  = "Yamuna_Teer"
+to    = "Prathama_Swara"
+event = "breath_taken"
+guard = "bansuri_raised_to_lips"
+drishti = ["present", "future", "silence"]
+# present: is the breath ready? future: where will this note lead? silence: should we remain silent?
+
+[[transitions]]
+from  = "Prathama_Swara"
+to    = "Venu_Naad"
+event = "melody_builds"
+guard = "second_phrase_follows"
+drishti = ["present", "down", "future"]
+# present: does the second phrase follow naturally? down: what grammar is forming? future: where does the melody go?
+
+[[transitions]]
+from  = "Venu_Naad"
+to    = "Gopi_Aahvaan"
+event = "call_begins"
+guard = "raga_established"
+drishti = ["present", "right", "up"]
+# present: is the raga truly established? right: who will hear the call? up: is the melody ready to reach outward?
+
+[[transitions]]
+from  = "Gopi_Aahvaan"
+to    = "Raas_Leela"
+event = "gopis_arrive"
+guard = "all_hearts_drawn"
+drishti = ["present", "left", "right", "down"]
+# present: have all hearts gathered? left/right: is every gopi accounted for? down: is the ground ready for dance?
+
+[[transitions]]
+from  = "Raas_Leela"
+to    = "Viraha_Raag"
+event = "flute_stops"
+guard = "krishna_tests_devotion"
+drishti = ["present", "silence", "past"]
+# present: is devotion being tested? silence: the flute stops — non-action as the teaching. past: what was the dance worth?
+
+[[transitions]]
+from  = "Viraha_Raag"
+to    = "Murali_Dhwani"
+event = "flute_returns"
+guard = "longing_deepens_love"
+drishti = ["present", "past", "future"]
+# present: has longing deepened into love? past: was the separation real? future: what melody returns?
+
+[[transitions]]
+from  = "Murali_Dhwani"
+to    = "Govardhan"
+event = "strength_revealed"
+guard = "tenderness_becomes_power"
+drishti = ["present", "up", "down"]
+# present: is tenderness becoming power? up: the mountain must be lifted. down: who needs shelter below?
+
+[[transitions]]
+from  = "Govardhan"
+to    = "Vishwaroop"
+event = "cosmic_vision"
+guard = "all_ragas_converge"
+drishti = ["present", "up", "down", "left", "right", "past", "future"]
+# All directions — the cosmic vision requires seeing everything at once. Total panoramic awareness.
+
+[[transitions]]
+from  = "Vishwaroop"
+to    = "Ananda"
+event = "unity_achieved"
+guard = "player_and_instrument_merge"
+drishti = ["present", "silence"]
+# present: has the merger happened? silence: bliss needs no direction — only presence dissolving into stillness.
+
+[[transitions]]
+from  = "Ananda"
+to    = "Nitya_Leela"
+event = "song_echoes"
+guard = "bliss_becomes_memory"
+drishti = ["present", "past", "future"]
+# present: is bliss becoming memory? past: what was the full journey? future: the echo carries forward forever.
+
+[[transitions]]
+from  = "Ananda"
+to    = "Yamuna_Teer"
+event = "next_evening"
+guard = "yamuna_calls_again"
+drishti = ["present", "future", "silence"]
+# present: does the Yamuna call again? future: a new evening, a new song. silence: rest between cycles.
+
+[[transitions]]
+from  = "Nitya_Leela"
+to    = "Yamuna_Teer"
+event = "cycle_renews"
+guard = "eternal_play_continues"
+drishti = ["present", "future"]
+# present: does the eternal play continue? future: the next cycle begins.
+
+# ── Raas Leela branches (the dance has many paths) ───────────────
+
+[[transitions]]
+from  = "Raas_Leela"
+to    = "Govardhan"
+event = "storm_approaches"
+guard = "indra_sends_rain"
+drishti = ["present", "up", "down"]
+# present: is the storm real? up: where is the threat coming from? down: who needs protection?
+
+[[transitions]]
+from  = "Raas_Leela"
+to    = "Murali_Dhwani"
+event = "melody_matures"
+guard = "dance_deepens_into_song"
+drishti = ["present", "down", "past"]
+# present: is the dance deepening? down: what is the melody becoming underneath? past: what dance was danced?

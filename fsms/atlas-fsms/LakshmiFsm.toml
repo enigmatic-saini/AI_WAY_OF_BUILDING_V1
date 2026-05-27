@@ -1,0 +1,102 @@
+[meta]
+name        = "LakshmiFsm"
+domain      = "trimurti-prosperity"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 0
+last_author = ""
+status      = "approved"
+
+[[states]]
+name        = "Dormant"
+description = "No value flowing. System is down, stale, or newly created. Lakshmi has not yet arrived or has fully withdrawn."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.1, kln = 0.1, ngj = 0.1, mtv = 0.1, lkq = 0.1, bdr = 0.1 }
+
+[[states]]
+name        = "Flowing"
+description = "Value is flowing. Systems healthy. Outputs trusted. Users receiving correct responses. Normal operation."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.2, kln = 0.2, ngj = 0.2, mtv = 0.2, lkq = 0.2, bdr = 0.2 }
+
+[[states]]
+name        = "Abundant"
+description = "Sustained health over time. Deep trust established. All FSMs healthy, all providers responding, knowledge base rich. Peak prosperity."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.2, kln = 0.3, ngj = 0.2, mtv = 0.3, lkq = 0.3, bdr = 0.3 }
+lyrics = "OM OM OM OM OM OM OM OM OM "
+
+[[states]]
+name        = "Withdrawing"
+description = "Something degraded. Trust diminishing. Outputs should be marked as potentially unreliable. Lakshmi pulling back."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.3, kln = 0.4, ngj = 0.3, mtv = 0.4, lkq = 0.4, bdr = 0.4 }
+
+[[transitions]]
+from   = "Dormant"
+to     = "Flowing"
+event  = "vishnu_sustaining"
+guard  = "vishnu_state_sustaining AND no_stale_fsms"
+action = "mark_outputs_trusted; log_lakshmi_arrives"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Flowing"
+to     = "Abundant"
+event  = "sustained_health"
+guard  = "health_sustained_above_threshold_duration"
+action = "mark_deep_trust; log_abundance"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Abundant"
+to     = "Flowing"
+event  = "minor_degradation"
+guard  = "vishnu_state_observing AND some_health_degraded_not_stale"
+action = "reduce_trust_level; log_abundance_reduced"
+drishti = ["present", "down", "past"]
+
+[[transitions]]
+from   = "Flowing"
+to     = "Withdrawing"
+event  = "vishnu_intervening"
+guard  = "vishnu_state_intervening OR any_health_stale"
+action = "mark_outputs_uncertain; log_lakshmi_withdrawing"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Abundant"
+to     = "Withdrawing"
+event  = "vishnu_intervening"
+guard  = "vishnu_state_intervening OR any_health_stale"
+action = "mark_outputs_uncertain; log_lakshmi_withdrawing"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Withdrawing"
+to     = "Dormant"
+event  = "full_withdrawal"
+guard  = "vishnu_state_escalating OR all_health_stale"
+action = "mark_outputs_untrusted; log_lakshmi_dormant"
+drishti = ["present", "past", "up"]
+
+[[transitions]]
+from   = "Withdrawing"
+to     = "Flowing"
+event  = "health_restored"
+guard  = "vishnu_state_sustaining OR vishnu_state_observing"
+action = "mark_outputs_trusted; log_lakshmi_returns"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Dormant"
+to     = "Dormant"
+event  = "tick"
+guard  = "vishnu_not_sustaining"
+action = ""
+drishti = ["present", "down"]

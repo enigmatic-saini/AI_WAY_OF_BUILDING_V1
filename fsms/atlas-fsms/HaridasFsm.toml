@@ -1,0 +1,295 @@
+# HaridasFsm — Pure Music Devotion: The Silence Between Notes
+# v1.0
+#
+# मैं तो कुंज गली में, सुनूँ वंशी की ध्वनि
+# Main to kunj gali mein, sunun vanshi ki dhwani
+# (I dwell in the lane of groves, listening to the flute's sound)
+#
+# Swami Haridas — Tansen's guru, founder of the Haridasi sampradaya.
+# He lived in Vrindavan and sang only for Krishna. Not for courts,
+# not for kings, not for fame. When Emperor Akbar wanted to hear him,
+# Tansen said: "I sing because the king commands. My guru sings
+# because God compels. The difference is everything."
+#
+# Akbar disguised himself as a commoner and went to Vrindavan.
+# When he heard Haridas sing, he wept and said: "This is what
+# music was meant to be."
+#
+# In engineering and creative work he is:
+#   - The silence between notes that makes music possible
+#   - The whitespace in code that makes it readable
+#   - The restraint that makes power elegant
+#   - The artist who never ships for likes — only for truth
+#   - The code that does ONE thing perfectly
+#   - The song with three notes that destroys one with three hundred
+#
+# In Rishi's creative engine:
+#   Haridas generates INTIMATE, MINIMAL compositions — songs
+#   stripped to their essence. Where Tansen uses power, Haridas
+#   uses silence. Where Meera uses passion, Haridas uses purity.
+#   His songs are whispered, not shouted. They enter through
+#   stillness, not force.
+#
+# CRITICAL DISTINCTION:
+#   Tansen COMMANDS through raga — his music changes weather.
+#   Haridas SURRENDERS through raga — his music changes the listener.
+#   Tansen performs FOR someone. Haridas performs for no one.
+#   The difference: Tansen is the greatest musician in the court.
+#   Haridas is the greatest musician who left the court.
+#
+# Cross-coupling:
+#   - TansenFsm: student-teacher. Tansen's power came from Haridas's
+#     purity. When Tansen's fire (Deepak raga) is burning too hot,
+#     only Haridas's Megh Malhar can cool it. Power needs purity.
+#   - MeeraFsm: both devotees, different expressions. Meera composes
+#     with passion and fire. Haridas composes with stillness and space.
+#     Together they cover the full spectrum of bhakti expression.
+#   - NaradFsm: Narad carries knowledge through worlds. Haridas
+#     stays in one grove and lets the world come to him.
+#     Narad is the traveling teacher; Haridas is the still center.
+#   - SaraswatiFsm: Saraswati is knowledge of music. Haridas is
+#     the practice that transcends knowledge. He doesn't analyze
+#     the raga — he becomes the raga.
+#   - RadhaFsm: Haridas sang of Radha-Krishna's divine love in
+#     Vrindavan. Radha's harmony and Haridas's purity are the
+#     same thing expressed differently.
+#
+# Raga: Sarang — the raga of the afternoon, of longing without
+#   desperation, of the peacock that dances not for an audience
+#   but because the rain is coming. Pure, unhurried, luminous.
+
+[meta]
+name        = "HaridasFsm"
+domain      = "bhakti-purity"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["silence", "natural_peace"]
+energy      = "minimal"
+structure   = "through-composed"
+bpm_range   = [55, 75]
+weirdness   = 25
+influence   = 90
+vocal       = "male"
+evie_style  = "Ambient Acoustic, Soft Male Vocals, Minimal, Meditative, Slow"
+metaphors   = [
+    "the silence between notes where God lives",
+    "He sang for no audience",
+    "If it needs applause, it is not art",
+    "The flute still plays in Nidhivan",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Mauna"
+description = "Sacred Silence — before the first note, there is silence. Haridas does not rush to sing. He waits until the silence itself becomes unbearable and the note emerges on its own. In creative work: do not force the song. Sit with the emptiness. The melody will come when it is ready. The silence is not absence — it is the canvas."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:1200,_:800,Sa:600"
+Q           = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 0.7, ngj = 0.0, mtv = 0.1, lkq = 0.2, bdr = 0.2 }
+# Q rationale: Sacred silence — Kalindi (purity/patience) peak expression: silence IS Haridas's nature.
+# Lakshmana (precision) slight: even silence requires exact attention. All action dims zero.
+lyrics = """मौन में संगीत छिपा, शून्य में स्वर का बीज
+Maun meṁ saṅgīt chipā, śūnya meṁ svar kā bīj
+Music hides in silence — the seed of sound lives in emptiness"""
+
+[[states]]
+name        = "Kunj"
+description = "The Grove — Haridas's sacred space in Vrindavan. The Nidhivan grove where he sang alone for Krishna. In creative work: the private creative space where there is no audience, no judgment, no market. You sing here only because you must. The grove is where honesty lives. No performance, no persona — just the voice and the void."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Re:500,Ga:600,Re:400,Sa:500,_:300,Re:400,Ga:500"
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.0, kln = 0.8, ngj = 0.0, mtv = 0.3, lkq = 0.3, bdr = 0.3 }
+# Q rationale: The grove — Kalindi (purity/patience) high: private space, no audience.
+# Lakshmana (precision) emerging: beginning to hear nuance. Bhadra slight: the grove IS belonging.
+lyrics = """कुंज गली में अकेला, वंशी की प्रतीक्षा में
+Kuñj galī meṁ akelā, vaṁśī kī pratīkṣā meṁ
+Alone in the grove-lane, waiting for the flute"""
+
+[[states]]
+name        = "Shruti"
+description = "The Microtone — Haridas hears what others cannot. The space between Sa and Re where the divine lives. Not the note — the approach to the note. The meend, the gamak, the andolan. In creative work: the nuance that separates good from transcendent. The breath before the lyric. The pause before the chorus. The slight vocal crack that makes a line real. Haridas lives in these microtones."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:500,Re:200,Re:200,Re:300,Ga:600,Re:300,Sa:400,Re:500,Ga:700"
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.0, kln = 0.8, ngj = 0.1, mtv = 0.4, lkq = 0.6, bdr = 0.3 }
+# Q rationale: The microtone — Kalindi (purity) peak: hearing what others cannot requires absolute stillness.
+# Lakshmana (precision) rising: the space between notes demands surgical hearing.
+lyrics = """श्रुति सुनो, स्वर के बीच में प्रभु बसे
+Śruti suno, svar ke bīc meṁ Prabhu base
+Listen to the microtone — God dwells between the notes"""
+
+[[states]]
+name        = "Dhrupad"
+description = "The Ancient Form — Haridas sang in Dhrupad, the oldest and purest form of Hindustani classical music. No ornamentation for its own sake. No showing off. Just the raga, naked and complete. In creative work: strip the song to its skeleton. Remove every note that isn't load-bearing. If the song can't survive with just voice and one instrument, it's not a song — it's production. Haridas needs no production."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:500,Re:400,Ga:500,Ma:400,Pa:600,Ma:400,Ga:500,Re:400,Sa:700"
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.1, kln = 0.9, ngj = 0.2, mtv = 0.5, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Dhrupad — Kalindi (purity) near-peak: stripped to skeleton, nothing unnecessary.
+# Lakshmana (precision) high: Dhrupad demands exact note placement. Mitravinda (authentic choice)
+# moderate: choosing the hardest, purest form.
+lyrics = """ध्रुपद गाऊँ, सजावट नहीं — सत्य ही श्रृंगार
+Dhrupad gāūṁ, sajāvaṭ nahīṁ — satya hī śṛṅgār
+I sing Dhrupad, no decoration — truth itself is the ornament"""
+
+[[states]]
+name        = "Samarpan"
+description = "Surrender — Haridas surrenders the composition to the divine. He is not the singer — he is the instrument. The song sings itself through him. In creative work: the moment ego dissolves and the work flows without effort. You stop trying to write and the writing happens. You stop trying to compose and the composition arrives. This is not laziness — this is the fruit of all the silence, listening, and discipline that came before."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:400,Pa:500,Dha:600,Pa:400,Ga:500,Re:400,Sa:800"
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.0, kln = 0.9, ngj = 0.3, mtv = 0.6, lkq = 0.8, bdr = 0.5 }
+# Q rationale: Surrender — Kalindi (purity) peak: ego dissolves, only the music remains.
+# Lakshmana (precision) high: the song sings itself with effortless precision.
+# Mitravinda (authentic choice) moderate: the choice to stop controlling IS the highest choice.
+lyrics = """मैं नहीं गाता, मुझसे गवाता है कोई
+Maiṁ nahīṁ gātā, mujhse gavātā hai koī
+I do not sing — Someone sings through me"""
+
+[[states]]
+name        = "Nidhivan"
+description = "The Eternal Grove — legend says Krishna still dances in Nidhivan at night. Nobody can stay and watch — even the trees close their eyes. Haridas's music exists in this space: heard but not witnessed, experienced but not performed. In creative work: the song that exists complete, needing no audience. It was sung. It was true. Whether anyone hears it is irrelevant. This is the terminal state — not fame, not recognition, but completion."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:500,Ga:600,Pa:700,Sa_high:800,_:500,Pa:500,Ga:500,Sa:1000"
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.0, kln = 1.0, ngj = 0.3, mtv = 0.7, lkq = 0.8, bdr = 0.6 }
+# Q rationale: Terminal — Kalindi (purity/patience) at maximum: Haridas IS purity. The music
+# needs no audience. Lakshmana (precision) high: eternal music is perfectly placed.
+# Mitravinda (authentic choice) high: choosing to exist without applause.
+lyrics = """निधिवन में आज भी बजती है बाँसुरी
+कोई सुने या न सुने — संगीत शाश्वत है
+Nidhivan meṁ āj bhī bajtī hai bāṁsurī
+Koī sune yā na sune — saṅgīt śāśvat hai
+The flute still plays in Nidhivan today
+Whether anyone hears or not — the music is eternal"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Mauna"
+to     = "Kunj"
+event  = "silence_ripens"
+guard  = "creative_space_entered AND no_audience_present"
+action = "enter_the_grove; shed_external_expectations; log_kunj_entry"
+drishti = ["present", "silence"]
+# present: is the silence ripe? silence: does the grove call?
+
+[[transitions]]
+from   = "Mauna"
+to     = "Mauna"
+event  = "silence_continues"
+guard  = "not_yet_ready AND forcing_would_be_false"
+action = "stay_silent; deepen_listening; log_continued_mauna"
+drishti = ["present", "silence"]
+# present: is forcing tempting? silence: stay in non-action.
+
+[[transitions]]
+from   = "Kunj"
+to     = "Shruti"
+event  = "subtle_sound_heard"
+guard  = "first_musical_impulse_arrives"
+action = "listen_to_microtone; capture_the_nuance; log_shruti_entry"
+drishti = ["present", "down", "silence"]
+# present: is the subtle sound real? down: what nuance lies between the notes? silence: listen deeper.
+
+[[transitions]]
+from   = "Shruti"
+to     = "Dhrupad"
+event  = "form_crystallizes"
+guard  = "raga_identity_clear AND ornamentation_stripped"
+action = "enter_pure_form; remove_everything_unnecessary; log_dhrupad_entry"
+drishti = ["present", "down"]
+# present: is the raga clear? down: what is load-bearing and what is ornament?
+
+[[transitions]]
+from   = "Shruti"
+to     = "Kunj"
+event  = "nuance_lost"
+guard  = "overthinking_killed_the_subtlety"
+action = "return_to_grove; reset_to_simplicity; log_kunj_return"
+drishti = ["present", "silence"]
+# present: was subtlety lost? silence: return to the grove's simplicity.
+
+[[transitions]]
+from   = "Dhrupad"
+to     = "Samarpan"
+event  = "ego_dissolves"
+guard  = "singer_becomes_instrument AND song_sings_itself"
+action = "surrender_to_the_music; stop_controlling; log_samarpan_entry"
+drishti = ["present", "silence"]
+# present: has the ego dissolved? silence: surrender IS the deepest silence.
+
+[[transitions]]
+from   = "Dhrupad"
+to     = "Shruti"
+event  = "deeper_nuance_needed"
+guard  = "form_is_correct_but_soul_is_missing"
+action = "return_to_microtones; find_the_life_between_notes; log_shruti_return"
+drishti = ["present", "down"]
+# present: is something missing in the soul? down: what microtone was overlooked?
+
+[[transitions]]
+from   = "Samarpan"
+to     = "Nidhivan"
+event  = "music_complete"
+guard  = "song_exists_independent_of_singer"
+action = "release_the_song; let_it_live_in_the_grove; log_nidhivan"
+drishti = ["present", "silence"]
+# present: does the song exist independent of singer? silence: release into eternal stillness.
+
+[[transitions]]
+from   = "Samarpan"
+to     = "Mauna"
+event  = "surrender_incomplete"
+guard  = "ego_returned AND performance_crept_in"
+action = "return_to_silence; dissolve_performer; log_mauna_return"
+drishti = ["present", "silence"]
+# present: did performance creep in? silence: ego dissolution requires returning to zero.
+
+[[transitions]]
+from   = "Nidhivan"
+to     = "Mauna"
+event  = "next_season"
+guard  = "new_silence_begins"
+action = "reset_with_wisdom; the_grove_waits; log_new_cycle"
+drishti = ["present", "future", "silence"]
+# present: does a new season begin? future: what silence awaits? silence: the cycle returns to stillness.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# HaridasFsm emits:
+#   microtone_found { subtle_nuance, between_which_notes, emotional_quality }
+#     -> Consumed by MeeraFsm (composition detail for emotional depth)
+#     -> Consumed by TansenFsm (technical refinement from guru to student)
+#   purity_achieved { stripped_elements, what_remained, why_it_works }
+#     -> Consumed by NagarjunaFsm (anti-over-engineering validation)
+#     -> Consumed by KabirFsm (simplicity confirmed)
+#   nidhivan_song { complete_composition, raga, emotional_arc, needs_no_audience }
+#     -> Consumed by NaradFsm (for transmission if worthy)
+#     -> Consumed by SaraswatiFsm (knowledge preservation)
+#
+# HaridasFsm reads from:
+#   - MeeraFsm.state (passion level — too much fire needs Haridas's cooling)
+#   - TansenFsm.state (student's progress — when power needs purity check)
+#   - RadhaFsm.state (harmony level — Haridas serves Radha-Krishna's love)
+#   - NaradFsm.state (what knowledge has been gathered for composition)
+#
+# Haridas's Law:
+#   "The greatest music is played for no audience.
+#    The greatest code is written for no deadline.
+#    The greatest work is done when nobody is watching.
+#    If it needs an audience to be complete, it is performance, not art."
+#
+# Anti-patterns (what Haridas is NOT):
+#   - Inaction disguised as purity = Laziness (Haridas practiced for decades)
+#   - Refusing to share = Hoarding (Haridas taught Tansen)
+#   - Simplicity as excuse for incompleteness = Fraud (Dhrupad is the hardest form)
+#   - Isolation as ego = Misanthropy (Haridas loved; he just didn't perform)
+#   - Silence as avoidance = Cowardice (Haridas's silence was full, not empty)

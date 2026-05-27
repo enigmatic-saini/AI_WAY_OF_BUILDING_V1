@@ -1,0 +1,164 @@
+# SkandamataFsm — Nurturing & Protection of the Young (NavShakti 5)
+# v1.0
+#
+# स्कन्दमाता — Mother of Skanda, Protector of the Young
+#
+# Skandamata is the fifth form of Durga in the Navratri cycle.
+# She is the mother of Kartikeya (Skanda), the war god — but her
+# power is not war. Her power is nurturing. She raised the
+# commander of the divine army. Every great warrior was first a
+# helpless child in someone's arms.
+#
+# In our system, she reviews onboarding, documentation, mentoring
+# of new features, new developers, and new modules. The question
+# is not "does it work?" but "can someone NEW make it work?"
+#
+# A system that cannot onboard is a system that dies with its
+# creators. Skandamata ensures that knowledge transfers, that
+# documentation exists, and that fragile new things receive the
+# care they need to grow strong.
+#
+# Philosophy: Protect what is young and growing. A feature without
+# documentation is an orphan. A module without tests is a child
+# without armor. A developer without onboarding is a soldier
+# without training.
+# ─────────────────────────────────────────────────────────────
+
+[meta]
+name        = "SkandamataFsm"
+domain      = "navshakti-nurturing"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Onboarding_Audit"
+description = "Can a new developer or user get started without hand-holding? Walk the onboarding path as a stranger would. Check: README clarity, setup steps, first-run experience, error messages for common mistakes. If you need tribal knowledge to get started, onboarding is broken."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.3, stb = 0.2, kln = 0.5, ngj = 0.1, mtv = 0.3, lkq = 0.4, bdr = 0.7 }
+# Q rationale: Rukmini (love) and Bhadra (belonging) high — can a stranger feel welcome?
+# Kalindi (patience) — walk the path as a newcomer would.
+audio_phrase = "Sa:500,Re:400,Ga:450,Ma:400,Pa:500"
+lyrics = """स्कन्दमाता की गोद में, नया जीवन पले
+Skandamātā kī god meṁ, nayā jīvan pale
+In Skandamata's lap, new life is nurtured"""
+
+[[states]]
+name        = "Documentation_Gaps"
+description = "What is undocumented, poorly documented, or wrongly documented? Scan for: functions without doc comments, modules without book entries, configs without examples, error codes without explanations. Wrong documentation is worse than none — it teaches lies."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.3, stb = 0.3, kln = 0.5, ngj = 0.1, mtv = 0.3, lkq = 0.6, bdr = 0.5 }
+# Q rationale: Lakshmana (precision) — scan for missing, wrong, or stale docs.
+# Wrong documentation teaches lies.
+audio_phrase = "Ma:400,Pa:350,Dha:400,Pa:350,Ma:400,Ga:450"
+lyrics = """जो लिखा नहीं वो सिखा नहीं, माँ का वचन
+Jo likhā nahīṁ vo sikhā nahīṁ, māṁ kā vacan
+What is not written is not taught — mother's word"""
+
+[[states]]
+name        = "Fragile_Newborns"
+description = "Which new features or modules need extra testing, extra care, extra attention? Identify recently created items (< 2 cycles old) with: low test coverage, no integration tests, single-author knowledge, no error handling, or missing validation. These are the newborns — they need a mother's vigilance."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.8, jmb = 0.4, stb = 0.3, kln = 0.6, ngj = 0.2, mtv = 0.3, lkq = 0.5, bdr = 0.6 }
+# Q rationale: Rukmini (love) peaks — a young warrior needs a shield, not a sword.
+# Kalindi (patience) — fragile things need time.
+audio_phrase = "Dha:450,Pa:400,Ma:350,Ga:400,Re:350,Sa:500"
+lyrics = """नन्हे योद्धा को ढाल चाहिए, तलवार नहीं
+Nanhe yoddhā ko ḍhāl cāhie, talvār nahīṁ
+A young warrior needs a shield, not a sword"""
+
+[[states]]
+name        = "Nurturing_Verdict"
+description = "The verdict: What needs a guide (documentation), what needs a guard (tests/validation), and what can stand on its own (mature, well-tested, well-documented). Every item gets a nurturing prescription. Nothing leaves this cycle without a clear status: guided, guarded, or graduated."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.8, jmb = 0.4, stb = 0.4, kln = 0.5, ngj = 0.2, mtv = 0.5, lkq = 0.5, bdr = 0.7 }
+# Q rationale: Rukmini and Bhadra remain high — guide, guard, or graduate.
+# Every item gets a nurturing prescription.
+audio_phrase = "Sa:400,Ga:350,Pa:400,Sa_high:500,Pa:400,Sa:600"
+lyrics = """माँ का आशीर्वाद, जय माँ शक्ति, बालक सुरक्षित रहे
+Māṁ kā āśīrvād, Jai Māṁ Śakti, bālak surakṣit rahe
+Mother's blessing — Jai Maa Shakti, may the young ones be safe"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Onboarding_Audit → Documentation_Gaps: onboarding path evaluated
+[[transitions]]
+from   = "Onboarding_Audit"
+to     = "Documentation_Gaps"
+event  = "onboarding_evaluated"
+guard  = "onboarding_path_walked_to_completion_or_failure"
+action = "record_onboarding_friction_points; score_first_run_experience; log_audit_complete"
+drishti = ["present", "down"]
+# present: is onboarding path evaluated? down: what docs are missing?
+
+# Documentation_Gaps → Fragile_Newborns: documentation inventory taken
+[[transitions]]
+from   = "Documentation_Gaps"
+to     = "Fragile_Newborns"
+event  = "gaps_catalogued"
+guard  = "documentation_scan_complete"
+action = "record_gap_inventory; prioritize_by_usage_frequency; log_gaps_found"
+drishti = ["present", "future"]
+# present: are gaps catalogued? future: which newborns need protection?
+
+# Documentation_Gaps → Onboarding_Audit: onboarding path itself is broken
+[[transitions]]
+from   = "Documentation_Gaps"
+to     = "Onboarding_Audit"
+event  = "onboarding_path_broken"
+guard  = "documentation_reveals_onboarding_is_misleading_or_missing"
+action = "flag_critical_onboarding_failure; escalate_priority; log_onboarding_regression"
+drishti = ["present", "up"]
+# present: is onboarding itself broken? up: critical regression detected.
+
+# Fragile_Newborns → Nurturing_Verdict: all newborns assessed
+[[transitions]]
+from   = "Fragile_Newborns"
+to     = "Nurturing_Verdict"
+event  = "newborns_assessed"
+guard  = "all_recent_features_evaluated"
+action = "classify_guide_guard_graduate; compose_nurturing_plan; log_assessment_complete"
+drishti = ["present", "future"]
+# present: are all newborns assessed? future: guide, guard, or graduate?
+
+# Fragile_Newborns → Documentation_Gaps: fragile module has no documentation at all
+[[transitions]]
+from   = "Fragile_Newborns"
+to     = "Documentation_Gaps"
+event  = "fragile_module_undocumented"
+guard  = "newborn_has_zero_documentation AND high_usage_risk"
+action = "escalate_documentation_priority; flag_orphan_module; log_urgent_doc_needed"
+drishti = ["present", "down"]
+# present: fragile module has zero docs? down: urgent documentation needed.
+
+# ── Cross-coupling signals ───────────────────────────────────
+# Nurturing_Verdict emits: nurturing_plan_ready { guide: [...], guard: [...], graduated: [...] }
+#   → Consumed by ShaktiFsm: triggers need_detected for nurturing energy
+#   → Consumed by KhatuShyamFsm: updates NS5 cycle status in cycle_domain_map
+#   → Consumed by BrahmaFsm: newly graduated items registered as mature creations
+#
+# Onboarding_Audit reads from:
+#   - ShaktiFsm.state (is there energy for nurturing work?)
+#   - KhatuShyamFsm.cycle_domain_map (was NS5 selected as primary or follow-up?)
+#   - KushmandaFsm.Creation_Verdict (new features flagged as fragile newborns)
+#
+# Fragile_Newborns signals:
+#   → KatyayaniFsm (NS6): modules too fragile to survive may need courage to kill
+#   → KushmandaFsm (NS4): fragile modules that show promise need creative investment
+#
+# Documentation_Gaps signals:
+#   → NaradFsm: communication failures often root in documentation failures
+#
+# SkandamataFsm is NavShakti 5 (NS5) in the KhatuShyamFsm cycle_domain_map.
+# She is the nurturing complement to KushmandaFsm (NS4): what Kushmanda creates,
+# Skandamata nurtures. She is also the soft complement to KatyayaniFsm (NS6):
+# what Katyayani would kill, Skandamata might save with proper care.

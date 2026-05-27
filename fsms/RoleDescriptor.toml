@@ -1,0 +1,95 @@
+# RoleDescriptor — The shape of every role
+# A role is NOT a separate persona. It is a drishti-intensifier attached to
+# named transitions of M_build. This is the honest replacement for V0's
+# "AgentFsm" — there is no per-state tool whitelist enforcement; what a role
+# really does is modify what the jiva scans and what Q-thresholds it must hit.
+
+[meta]
+name    = "RoleDescriptor"
+domain  = "drishti-intensifier"
+version = "1.0"
+parent  = "M_build"
+
+# ──────────────────────────────────────────────────────────────────
+# §1 — TYPE
+# ──────────────────────────────────────────────────────────────────
+
+# Each role declares:
+#   - which transitions it attaches to (subset of M_build's transitions)
+#   - which drishti directions it intensifies (set ⊆ 8 directions)
+#   - which Q-axes it raises to τ_high (subset of 8 capabilities)
+#   - its output template (the artifact it must produce)
+
+# A role does NOT declare:
+#   - a separate FSM (there is one M_build, period)
+#   - a tool whitelist (the Claude Code harness handles per-agent tools;
+#     the kit does not pretend to verify it)
+
+# ──────────────────────────────────────────────────────────────────
+# §2 — INSTANCES (the 6 roles)
+# ──────────────────────────────────────────────────────────────────
+
+[[instances]]
+name      = "analyst"
+file      = ".claude/agents/analyst.md"
+attaches  = ["pre_T0"]
+drishti   = ["present", "silence", "future", "left"]
+q_high    = ["mtv", "rkm"]
+artifact  = "CHARTER.md draft + FiveArrows classification + readiness verdict"
+when      = "A human arrives with a feeling/friction/wish — no CHARTER.md yet"
+
+[[instances]]
+name      = "architect"
+file      = ".claude/agents/architect.md"
+attaches  = ["T0", "T1"]
+drishti   = ["up", "future", "silence"]
+q_high    = ["mtv", "ngj"]
+artifact  = "DESIGN.md initial draft, or amendment for a major change"
+when      = "S0 Garbha (new project, charter already exists) or S1 Discovery → S2 Forge (new module)"
+
+[[instances]]
+name      = "engineer"
+file      = ".claude/agents/engineer.md"
+attaches  = ["T2", "T3", "T_loop"]
+drishti   = ["present", "down", "right"]
+q_high    = ["ngj", "lkq"]
+artifact  = "code, tests, MR description"
+when      = "S2 Forge and S3 Build — implementation work"
+
+[[instances]]
+name      = "qa"
+file      = ".claude/agents/qa.md"
+attaches  = ["T2", "T3"]
+drishti   = ["down", "past"]
+q_high    = ["lkq", "endurance"]
+artifact  = "test plan, NEG-cycle output, quality-gate verdict"
+when      = "T2 (8L gate) and T3 (pre-release RH3) — test strategy and quality vetos"
+
+[[instances]]
+name      = "security"
+file      = ".claude/agents/security.md"
+attaches  = ["T2", "T3", "T_prarabdha"]
+drishti   = ["up", "silence", "past"]
+q_high    = ["mtv", "lkq"]
+artifact  = "threat-model, security-review verdict, incident postmortem"
+when      = "sensitive transitions (auth/PII/payment/IaC) and incident command"
+
+[[instances]]
+name      = "reviewer"
+file      = ".claude/agents/reviewer.md"
+attaches  = ["T3"]
+drishti   = ["left", "right", "up"]
+q_high    = ["mtv", "endurance"]
+artifact  = "MR review with file:line evidence"
+when      = "second opinion on any MR per SDLC §5"
+
+# ──────────────────────────────────────────────────────────────────
+# §3 — INVARIANTS (the Kabir Gate)
+# ──────────────────────────────────────────────────────────────────
+
+[invariants]
+"every_role_attaches_to_at_least_one_transition" = true
+"every_role_declares_drishti_and_q_high"         = true
+"no_role_claims_to_be_a_separate_jiva"           = true
+"role_file_starts_with_drishti_intensifier_disclaimer" = true
+# That last one is verified by KABIR_GATE.md (manual quarterly check).

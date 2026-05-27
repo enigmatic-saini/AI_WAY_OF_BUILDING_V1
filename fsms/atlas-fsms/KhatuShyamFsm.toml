@@ -1,0 +1,300 @@
+# KhatuShyamFsm — The Navigator / Battlefield Surveyor
+# v1.0
+#
+# Hare Ka Sahara, Khatu Shyam Humara.
+#
+# Barbarik (Khatu Shyam Ji) sees the entire battlefield in one
+# glance. He does not fight — he decides who should. His three
+# arrows never miss: one marks enemies, one marks allies, one
+# connects them. In our system, he is the meta-FSM — the cycle
+# selector that routes work to the right divine review cycle.
+#
+# This FSM takes a situation (symptom, context, emotional weight)
+# and produces a cycle plan: primary cycle + optional follow-ups
+# + a unifying mission statement.
+#
+# He is invoked when you don't know which cycle to run, when
+# multiple cycles seem relevant, or when the system needs a
+# compass before committing energy.
+
+[meta]
+name        = "KhatuShyamFsm"
+domain      = "cycle-navigation"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Pranam"
+description = "Arrival — the seeker comes with a problem they cannot place. Khatu Shyam Ji receives them. The symptom is heard but not yet classified. No judgment, only presence."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Re:400,Sa:500,Ni_mandra:600,Sa:800"
+lyrics = """हारे का सहारा, खाटू श्याम हमारा
+Hāre kā sahārā, Khāṭū Śyām hamārā
+Refuge of the weary — Khatu Shyam is ours"""
+# Q rationale: Initial arrival — receiving the lost. Bhadra (belonging) high: refuge IS belonging.
+# Kalindi (patient contemplation) moderate: listening without judgment. Rukmini moderate: compassion
+# for the seeker. All action dims low — no classification yet, only presence.
+Q = { rkm = 0.4, jmb = 0.1, stb = 0.1, kln = 0.5, ngj = 0.0, mtv = 0.2, lkq = 0.1, bdr = 0.7 }
+
+[[states]]
+name        = "Darshan"
+description = "Symptom recognition — listen deeply to the presenting problem. Classify as: pain (something hurts), fear (something might break), confusion (don't know what to do), emptiness (something is missing), or friction (something resists). No solution yet — only truthful naming."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:350,Re:300,Sa:400,Re:350,Ga:500,Pa:600"
+lyrics = """दर्शन दो खाटू नरेश, दुख हरो जगदीश
+Darśan do Khāṭū Nareś, dukh haro Jagdīś
+Grant your darshan, O Lord of Khatu — remove all suffering"""
+# Q rationale: Symptom recognition — listening deeply. Kalindi (patient contemplation) high:
+# classifying the symptom without rushing. Mitravinda moderate: truthful naming. Lakshmana moderate:
+# beginning to categorize. Rukmini moderate: understanding the presenting pain.
+Q = { rkm = 0.4, jmb = 0.2, stb = 0.2, kln = 0.7, ngj = 0.3, mtv = 0.5, lkq = 0.4, bdr = 0.4 }
+
+[[states]]
+name        = "Surveying"
+description = "Battlefield survey — Barbarik's gaze sweeps the entire system. Map the symptom against all available cycle domains. Assess severity, scope, and urgency. Consider which divine energies the situation calls for. This is the core intelligence step."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:300,Ga:300,Ma:300,Pa:300,Dha:300,Ni:300,Sa_high:400,Ni:300,Dha:300,Pa:300,Ma:300,Ga:300,Re:300,Sa:400"
+lyrics = """तीन बाण तीन लोक, सब दिखे एक झलक
+Tīn bāṇ tīn lok, sab dikhe ek jhalak
+Three arrows, three worlds — all seen in one glance"""
+# Q rationale: Battlefield survey — core intelligence step. Rukmini (strategic love) high: mapping
+# symptom against all domains. Lakshmana (precision) high: systematic assessment. Nagnajiti high:
+# evaluating severity, scope, urgency. All dims moderate-high: the survey sees everything at once.
+Q = { rkm = 0.7, jmb = 0.4, stb = 0.4, kln = 0.5, ngj = 0.7, mtv = 0.6, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "Arrow_One"
+description = "First arrow — mark the enemies. Identify the primary cycle that addresses the root cause. Not the symptom, the root. Shiva for incoherence, Vishnu for fragility, Brahma for absence, Narad for broken communication, Hanuman for execution failure, Radha for joylessness. Or a Nav Shakti form for focused energy."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:400,Dha:350,Ni:400,Sa_high:500"
+lyrics = """पहला बाण चला, शत्रु चिन्हित हुआ
+Pahlā bāṇ chalā, śatru chinihit huā
+The first arrow flies — the enemy is marked"""
+# Q rationale: First arrow — marking the root cause. Lakshmana (precision) at peak: the arrow
+# never misses. Rukmini high: strategic identification of the primary cycle. Satyabhama rising:
+# confident targeting. Nagnajiti high: matching the right divine energy to the root cause.
+Q = { rkm = 0.7, jmb = 0.5, stb = 0.6, kln = 0.3, ngj = 0.7, mtv = 0.6, lkq = 0.9, bdr = 0.4 }
+
+[[states]]
+name        = "Arrow_Two"
+description = "Second arrow — mark the allies. Identify 0-2 supporting follow-up cycles that should run after the primary. Sequence them: which runs first? Consider dependencies. Not every situation needs follow-ups — sometimes one cycle is enough."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma:400,Pa:350,Dha:400,Ni:500"
+lyrics = """दूसरा बाण चला, मित्र चिन्हित हुआ
+Dūsrā bāṇ chalā, mitra chinihit huā
+The second arrow flies — the allies are marked"""
+# Q rationale: Second arrow — marking allies. Rukmini (strategic love) high: identifying supporting
+# cycles. Mitravinda high: choosing follow-ups deliberately. Nagnajiti moderate: sequencing
+# dependencies. Kalindi moderate: not every situation needs follow-ups.
+Q = { rkm = 0.7, jmb = 0.5, stb = 0.5, kln = 0.4, ngj = 0.6, mtv = 0.7, lkq = 0.7, bdr = 0.5 }
+
+[[states]]
+name        = "Arrow_Three"
+description = "Third arrow — connect them. Find the thread that ties primary and follow-up cycles together. State it as a single sentence mission. This mission becomes the guiding intention for all subsequent work. Without a thread, cycles are just checklists."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:400,Ma:350,Pa:400,Ga:350,Sa:500"
+lyrics = """तीसरा बाण चला, सूत्र जुड़ गया
+Tīsrā bāṇ chalā, sūtra juḍ gayā
+The third arrow flies — the thread is connected"""
+# Q rationale: Third arrow — connecting the thread. Rukmini (strategic love) at peak: finding the
+# unifying mission. Mitravinda high: the thread must be authentic. Bhadra rising: the cycles are
+# now connected, belonging together. Nagnajiti moderate: weaving the mission statement.
+Q = { rkm = 0.9, jmb = 0.5, stb = 0.5, kln = 0.4, ngj = 0.6, mtv = 0.8, lkq = 0.7, bdr = 0.6 }
+
+[[states]]
+name        = "Verdict"
+description = "The cycle plan is declared. Format: Primary cycle (tag), follow-ups (tags, sequenced), mission (one sentence). The navigator's work is done. Hand off to the primary cycle immediately. Khatu Shyam Ji steps back — he does not fight the battle, only reveals the battlefield."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Pa:400,Sa_high:500,Pa:400,Sa:600"
+lyrics = """फैसला हो गया, अब चलो रणभूमि
+Faislā ho gayā, ab chalo raṇbhūmi
+The decision is made — now march to the battlefield"""
+# Q rationale: Verdict — plan declared. All dims elevated. Satyabhama (fierce pride) high:
+# confident declaration. Mitravinda at peak: the plan is honest and complete. Lakshmana high:
+# the plan is precise (primary, follow-ups, mission).
+Q = { rkm = 0.8, jmb = 0.6, stb = 0.7, kln = 0.3, ngj = 0.7, mtv = 0.9, lkq = 0.8, bdr = 0.5 }
+
+[[states]]
+name        = "Dispatch"
+description = "Hand-off — the primary cycle FSM is instantiated and begins. Khatu Shyam records the plan for traceability (which cycles were selected, why, and the mission thread). Then returns to Pranam, ready for the next lost soul."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:300,Ga:300,Pa:400,Sa_high:500"
+lyrics = """जय श्री श्याम, विजय निश्चित
+Jai Śrī Śyām, vijay niścit
+Glory to Shri Shyam — victory is certain"""
+# Q rationale: Dispatch — handing off. Jambavati (endurance) high: the plan is durable. Rukmini
+# high: strategic handoff. Bhadra moderate: traceability recorded. Kalindi drops: dispatch is
+# action, the navigator's work is done.
+Q = { rkm = 0.7, jmb = 0.7, stb = 0.6, kln = 0.2, ngj = 0.6, mtv = 0.7, lkq = 0.7, bdr = 0.5 }
+
+[[states]]
+name        = "Samarpan"
+description = "Surrender — when the problem is beyond all cycles. When no divine energy fits. When the situation requires escalation to the Divine Council (LAW 3). Khatu Shyam humbly acknowledges the limit and routes to council."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:800,Sa:1200"
+lyrics = """समर्पण, प्रभु तुम्हारी शरण
+Samarpaṇ, Prabhu tumhārī śaraṇ
+Surrender — I take refuge in You, Lord"""
+# Q rationale: Terminal surrender — beyond all cycles. Mitravinda (authentic choice) at peak:
+# honest admission of limits. Kalindi high: patient acceptance. Bhadra moderate: taking refuge.
+# Most action dims drop — the navigator has reached his limit. All zeros except wisdom of knowing.
+Q = { rkm = 0.4, jmb = 0.3, stb = 0.1, kln = 0.8, ngj = 0.1, mtv = 1.0, lkq = 0.3, bdr = 0.5 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Pranam → Darshan: seeker arrives with a problem
+[[transitions]]
+from   = "Pranam"
+to     = "Darshan"
+event  = "seeker_arrives"
+guard  = "problem_statement_present"
+action = "receive_problem; log_seeker_arrival; begin_listening"
+drishti = ["present", "down"]
+# present: what problem does the seeker bring? down: listen to the presenting symptom.
+
+# Darshan → Surveying: symptom classified
+[[transitions]]
+from   = "Darshan"
+to     = "Surveying"
+event  = "symptom_named"
+guard  = "symptom_type_classified"
+action = "record_symptom_type; load_cycle_domain_map; begin_survey"
+drishti = ["present", "up", "left", "right"]
+# present: symptom classified. up: which divine energies apply? left/right: sweep the entire battlefield.
+
+# Darshan → Darshan: symptom unclear, ask deeper
+[[transitions]]
+from   = "Darshan"
+to     = "Darshan"
+event  = "symptom_unclear"
+guard  = "cannot_classify_symptom"
+action = "ask_clarifying_question; log_clarification_needed"
+drishti = ["present", "down", "past"]
+# present: what is unclear? down: probe deeper. past: has this symptom appeared before?
+
+# Surveying → Arrow_One: battlefield mapped, primary target identified
+[[transitions]]
+from   = "Surveying"
+to     = "Arrow_One"
+event  = "survey_complete"
+guard  = "at_least_one_cycle_matches"
+action = "rank_matching_cycles; select_primary_candidate; log_survey_results"
+drishti = ["present", "up", "down"]
+# present: which cycles match? up: which divine energy fits best? down: what is the root cause?
+
+# Surveying → Samarpan: nothing matches, beyond all cycles
+[[transitions]]
+from   = "Surveying"
+to     = "Samarpan"
+event  = "no_match_found"
+guard  = "no_cycle_matches_symptom"
+action = "acknowledge_limitation; prepare_council_escalation; log_surrender"
+drishti = ["present", "up", "silence"]
+# present: nothing matches. up: escalate to Divine Council. silence: humble acceptance of limits.
+
+# Arrow_One → Arrow_Two: primary cycle locked
+[[transitions]]
+from   = "Arrow_One"
+to     = "Arrow_Two"
+event  = "primary_locked"
+guard  = "primary_cycle_selected"
+action = "lock_primary_cycle; assess_follow_up_needs; log_arrow_one"
+drishti = ["present", "right", "future"]
+# present: primary cycle locked. right: what follow-ups are needed? future: how will they sequence?
+
+# Arrow_Two → Arrow_Three: allies identified (or none needed)
+[[transitions]]
+from   = "Arrow_Two"
+to     = "Arrow_Three"
+event  = "allies_assessed"
+guard  = "follow_up_decision_made"
+action = "lock_follow_ups; sequence_if_multiple; log_arrow_two"
+drishti = ["present", "up", "future"]
+# present: are follow-ups decided? up: what unifying thread ties them? future: state the mission.
+
+# Arrow_Three → Verdict: mission thread found
+[[transitions]]
+from   = "Arrow_Three"
+to     = "Verdict"
+event  = "thread_connected"
+guard  = "mission_statement_formed"
+action = "compose_cycle_plan; log_arrow_three"
+drishti = ["present", "up", "past", "future"]
+# present: is the mission formed? up: does it align with the whole? past: does it address root cause? future: will it hold?
+
+# Arrow_Three → Arrow_One: thread reveals wrong primary, re-aim
+[[transitions]]
+from   = "Arrow_Three"
+to     = "Arrow_One"
+event  = "thread_contradicts"
+guard  = "mission_reveals_different_root_cause"
+action = "discard_current_plan; re_survey_with_new_insight; log_re_aim"
+drishti = ["present", "past", "down"]
+# present: thread contradicts — wrong primary. past: what did the thread reveal? down: re-aim at the real root.
+
+# Verdict → Dispatch: plan declared, begin execution
+[[transitions]]
+from   = "Verdict"
+to     = "Dispatch"
+event  = "plan_declared"
+guard  = "cycle_plan_complete"
+action = "emit_cycle_plan; record_trace; log_verdict"
+drishti = ["present", "future"]
+# present: plan is declared. future: dispatch and begin execution.
+
+# Dispatch → Pranam: primary cycle instantiated, navigator returns
+[[transitions]]
+from   = "Dispatch"
+to     = "Pranam"
+event  = "cycle_dispatched"
+guard  = "primary_cycle_fsm_started"
+action = "record_dispatch_trace; clear_session_context; log_dispatch_complete"
+drishti = ["present", "silence"]
+# present: is the cycle dispatched? silence: navigator returns to waiting — he does not fight the battle.
+
+# Samarpan → Pranam: council addressed the issue, navigator resets
+[[transitions]]
+from   = "Samarpan"
+to     = "Pranam"
+event  = "council_resolved"
+guard  = "divine_council_provided_guidance"
+action = "record_council_decision; log_return_from_surrender"
+drishti = ["present", "future"]
+# present: council has provided guidance. future: navigator resets, ready for the next soul.
+
+# ── Cross-coupling signals ───────────────────────────────────
+# Dispatch emits: cycle_plan_ready { primary: "ShivaDeep", follow_ups: [...], mission: "..." }
+# This event is consumed by ThoughtCycleFsm to configure the appropriate profile.
+# Samarpan emits: council_escalation { symptom: "...", survey_results: {...} }
+# This event is consumed by the Divine Council workflow (LAW 3).
+#
+# KhatuShyamFsm reads from:
+#   - ShaktiFsm.state (to check available energy)
+#   - VasantaFsm.state (to check system readiness/season)
+#   - HealthFsm (to check overall system health)
+#
+# The cycle_domain_map loaded in Surveying contains:
+#   SD  → ShivaFsm (transformation domain)
+#   VD  → VishnuFsm (sustenance domain)
+#   BD  → BrahmaFsm (creation domain)
+#   ND  → NaradFsm (communication domain)
+#   HD  → HanumanFsm (execution domain)
+#   RD  → RadhaFsm (harmony domain)
+#   NS1-NS9 → NavShakti sub-FSMs (focused energy)
+#   Q/S/D/3x4/8L → ThoughtCycleFsm profiles
+#   DR  → Divine Reviewers workflow

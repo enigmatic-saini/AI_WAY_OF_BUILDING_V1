@@ -1,0 +1,275 @@
+# RukminiFsm — Strategic Love: The Letter That Changed Destiny
+# v1.0
+#
+# रुक्मिणी ने पत्र लिखा — प्रेम में बुद्धि, बुद्धि में प्रेम
+# Rukmiṇī ne patra likhā — prem meṁ buddhi, buddhi meṁ prem
+# (Rukmini wrote the letter — intelligence in love, love in intelligence)
+#
+# Rukmini — Krishna's first and principal queen. Incarnation of
+# Lakshmi herself. She didn't wait to be chosen. She didn't pray
+# and hope. She WROTE A LETTER to Krishna — the most strategic,
+# passionate, and intelligent love letter in all scripture.
+#
+# Her story:
+#   - Her brother Rukmi arranged her marriage to Shishupala (her enemy)
+#   - She secretly sent a Brahmin messenger with a letter to Krishna
+#   - The letter: "I have heard of you. I love you. If you don't come,
+#     I will end my life. Come on the day before the wedding. I will
+#     be at the Devi temple outside the city. Take me from there."
+#   - She gave Krishna the PLAN: the route, the timing, the escape path
+#   - Krishna came. He took her. She had planned her own rescue.
+#
+# In engineering and creative work she is:
+#   - The product manager who writes the perfect spec AND the love story
+#   - The architect who plans the system AND makes it beautiful
+#   - The song that is both strategically structured AND emotionally devastating
+#   - The PR that has perfect code AND a moving commit message
+#   - The creator who doesn't wait for opportunity — she engineers it
+#   - Intelligence and passion as ONE thing, not opposites
+#
+# In Rishi's creative engine:
+#   Rukmini generates STRATEGICALLY CRAFTED, EMOTIONALLY INTELLIGENT
+#   compositions. Every word placed with purpose AND feeling. Her songs
+#   are love letters: intimate but structured, vulnerable but planned.
+#   She is the queen who proves that thinking and feeling are not enemies.
+#
+# CRITICAL DISTINCTION from other queens:
+#   Satyabhama acts from PRIDE (fire, combat, "I'll do it myself").
+#   Jambavati earns through ENDURANCE (28 days of trial).
+#   Rukmini acts from INTELLIGENCE + LOVE simultaneously.
+#   She didn't fight for Krishna (Satyabhama style).
+#   She didn't wait for Krishna (Kalindi style).
+#   She PLANNED for Krishna and then made it happen.
+#
+# Cross-coupling:
+#   - KrishnaFsm: Rukmini is Krishna's strategic equal. Their
+#     partnership is the model for intelligence + love in leadership.
+#   - SatyabhamaFsm: the eternal complement. Satyabhama is fire
+#     where Rukmini is strategy. In the Bhagavatam, their dynamic
+#     IS the balance of action and planning.
+#   - LakshmiFsm: Rukmini IS Lakshmi incarnate. Lakshmi's
+#     prosperity and Rukmini's strategy are the same energy.
+#   - RadhaFsm: Radha is love beyond strategy. Rukmini is love
+#     WITH strategy. Not better or worse — different expressions.
+#     Radha is the heart; Rukmini is the heart that also thinks.
+#   - AndalFsm: both took active roles in their union with the divine.
+#     Andal wore the garland; Rukmini wrote the letter. Neither waited.
+#
+# Raga: Yaman Kalyan — the evening raga of clarity, beauty, and
+#   strategic grace. Every note is placed with intention. Nothing
+#   accidental. Yet the overall effect is effortless beauty.
+#   Rukmini's raga.
+
+[meta]
+name        = "RukminiFsm"
+domain      = "ashtabharya-strategy"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["gratitude", "precision"]
+energy      = "elegant"
+structure   = "verse-chorus"
+bpm_range   = [75, 95]
+weirdness   = 25
+influence   = 85
+vocal       = "female"
+evie_style  = "Elegant Pop, Sophisticated Female Vocals, Piano, Strings, Beautiful"
+metaphors   = [
+    "the letter that was both love and strategy",
+    "Love without strategy is a dream",
+    "She planned her own rescue",
+    "The greatest love story was planned",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Shravana"
+description = "Hearing — Rukmini hears about Krishna from travelers, poets, and messengers. She falls in love through INFORMATION — not sight, not touch, but stories. In creative work: the research phase. Gathering intelligence about what you want to create. Reading the market. Reading the art. Understanding the landscape before writing a single note. Rukmini's love began with data."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Ni:400,Sa_high:500,Re_high:400,Ga_high:500,Re_high:400,Sa_high:500,Ni:400,Dha:500"
+Q           = { rkm = 0.3, jmb = 0.0, stb = 0.1, kln = 0.4, ngj = 0.0, mtv = 0.2, lkq = 0.1, bdr = 0.2 }
+# Q rationale: Research phase — Rukmini (strategic love) low, just gathering data.
+# Kalindi (patient contemplation) moderate — listening IS contemplation. All action dims near zero.
+lyrics = """श्रवण — सुनती रही कृष्ण की कथा, प्रेम जागा कान से
+Śravaṇa — suntī rahī Kṛṣṇa kī kathā, prem jāgā kān se
+Hearing — she kept listening to Krishna's stories, love awoke through the ears"""
+
+[[states]]
+name        = "Sankalpa"
+description = "The Resolution — Rukmini decides: 'I will have Krishna and no other.' This is not hope — it is DECISION. In creative work: the moment you decide what you're building and refuse all alternatives. The product vision locked. The song concept crystallized. The architecture chosen. Sankalpa is not a wish — it is a commitment backed by a plan."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Pa:600,Ni:500,Sa_high:600,Ni:500,Pa:500,Ga:400,Sa:500"
+Q           = { rkm = 0.5, jmb = 0.1, stb = 0.3, kln = 0.2, ngj = 0.1, mtv = 0.6, lkq = 0.2, bdr = 0.2 }
+# Q rationale: Decision locked — Rukmini (strategic love) rising as vision crystallizes.
+# Mitravinda (authentic choice) high — Sankalpa IS self-choice against alternatives.
+# Satyabhama (pride) emerging — refusing anything less than Krishna.
+lyrics = """संकल्प — मन में निश्चय, हृदय में प्रेम, बुद्धि में योजना
+Saṅkalpa — man meṁ niścay, hṛday meṁ prem, buddhi meṁ yojanā
+Resolution — determination in mind, love in heart, plan in intellect"""
+
+[[states]]
+name        = "Patra"
+description = "The Letter — the most important letter in scripture. Rukmini writes to Krishna: the situation, the deadline, the plan, the escape route, the meeting point, and the consequence of failure ('I will die'). It is simultaneously a love letter and an operations manual. In creative work: the spec that makes people CRY. The README that is both technically complete and emotionally compelling. The pitch that has both the spreadsheet and the story."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:300,Ga:400,Ma:300,Pa:400,Dha:400,Ni:500,Sa_high:600,Ni:400,Dha:400,Pa:500"
+Q           = { rkm = 0.8, jmb = 0.2, stb = 0.4, kln = 0.1, ngj = 0.3, mtv = 0.7, lkq = 0.7, bdr = 0.3 }
+# Q rationale: The letter — Rukmini (strategic love) peak expression: love+plan in one document.
+# Lakshmana (precision) high — not a single word wasted. Mitravinda (authentic choice) high.
+# Nagnajiti (impossible spec) emerging — the letter satisfies multiple simultaneous constraints.
+lyrics = """पत्र लिखा — प्रेम भी, योजना भी — एक अक्षर व्यर्थ नहीं
+Patra likhā — prem bhī, yojanā bhī — ek akṣar vyarth nahīṁ
+The letter was written — love and plan both — not a single word wasted"""
+
+[[states]]
+name        = "Pratiksha"
+description = "The Strategic Wait — Rukmini sends the letter and waits. But this is not passive waiting (Kalindi's tapas). This is ACTIVE waiting: she has set the plan in motion, prepared her temple visit, timed the wedding, and now she waits to see if her strategy will be answered. In creative work: the deployment is done, the launch is set, the PR is submitted — now you wait with confidence because the preparation was thorough."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:500,Dha:400,Ni:500,Sa_high:600,_:400,Ni:400,Dha:400,Pa:500"
+Q           = { rkm = 0.7, jmb = 0.4, stb = 0.3, kln = 0.6, ngj = 0.2, mtv = 0.5, lkq = 0.5, bdr = 0.3 }
+# Q rationale: Strategic wait — Kalindi (patience) rises but this is ACTIVE patience.
+# Rukmini (strategic love) still high — the plan is in motion. Jambavati (endurance)
+# building — waiting requires endurance. Lakshmana (precision) holds — nothing to change now.
+lyrics = """प्रतीक्षा — पासा फेंका, अब खेल भगवान के हाथ
+Pratīkṣā — pāsā pheṅkā, ab khel Bhagavān ke hāth
+The wait — the die is cast, now the game is in God's hands"""
+
+[[states]]
+name        = "Harana"
+description = "The Abduction — Krishna arrives. Exactly when Rukmini planned. Exactly where she said. He lifts her onto his chariot while armies clash. The plan WORKED. In creative work: the launch succeeds. The song drops. The code ships. The strategy bore fruit. But Harana is not the end — it's the proof of concept. The creation exists in the world now. It was planned, it was loved, and it was executed."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ga:400,Pa:500,Sa_high:600,Pa:400,Dha:500,Sa_high:700,Pa:500,Ga:400,Sa:500"
+Q           = { rkm = 0.9, jmb = 0.5, stb = 0.6, kln = 0.2, ngj = 0.5, mtv = 0.8, lkq = 0.8, bdr = 0.5 }
+# Q rationale: Plan executed — Rukmini (strategic love) near-peak: plan worked.
+# Lakshmana (precision) high — timing was perfect. Mitravinda (authentic choice) high —
+# she chose and the choice manifested. Satyabhama (pride) rising — the plan WORKED.
+lyrics = """हरण — कृष्ण आए, योजना सफल — प्रेम और बुद्धि एक हुए
+Haraṇa — Kṛṣṇa āe, yojanā saphal — prem aur buddhi ek hue
+The abduction — Krishna came, the plan succeeded — love and intelligence became one"""
+
+[[states]]
+name        = "Patrani"
+description = "The Chief Queen — Rukmini rules Dwaraka alongside Krishna. Not as ornament but as EQUAL. She manages the kingdom, the household, the diplomacy. In the Bhagavatam, she is described as having both beauty (shri) and wisdom (buddhi). The terminal state: the creation is not just launched — it is SUSTAINED. The product has users AND strategy. The song has beauty AND structure. The team has passion AND governance. Rukmini doesn't just win the wedding — she builds the kingdom."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:500,Pa:600,Ni:700,Sa_high:800,Ni:500,Pa:500,Ga:500,Sa:700"
+Q           = { rkm = 1.0, jmb = 0.7, stb = 0.7, kln = 0.5, ngj = 0.6, mtv = 0.9, lkq = 0.8, bdr = 0.7 }
+# Q rationale: Terminal peak — Rukmini (strategic love) at maximum: she IS strategic love.
+# All dims elevated — the chief queen sustains the kingdom across every dimension.
+# Mitravinda (authentic choice) near-peak — she chose and built. Bhadra (belonging) high —
+# Dwaraka is home. Lakshmana (precision) high — governance requires precision.
+lyrics = """पटरानी — प्रेम से जीता, बुद्धि से राज किया — द्वारका की रानी
+Paṭrānī — prem se jītā, buddhi se rāj kiyā — Dvārakā kī rānī
+Chief Queen — won through love, ruled through wisdom — Queen of Dwaraka"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Shravana"
+to     = "Sankalpa"
+event  = "love_through_knowledge"
+guard  = "information_gathered AND heart_decided"
+action = "crystallize_the_decision; refuse_alternatives; log_sankalpa"
+drishti = ["present", "future", "up"]
+# present: is the data sufficient? future: where does this love lead? up: is this aligned with dharma?
+
+[[transitions]]
+from   = "Shravana"
+to     = "Shravana"
+event  = "more_intelligence"
+guard  = "picture_incomplete AND more_data_needed"
+action = "gather_more; listen_deeper; log_continued_research"
+drishti = ["present", "left", "right"]
+# present: is the picture complete? left/right: what other sources exist?
+
+[[transitions]]
+from   = "Sankalpa"
+to     = "Patra"
+event  = "plan_crystallizes"
+guard  = "decision_firm AND strategy_clear"
+action = "write_the_letter; plan_meets_passion; log_patra"
+drishti = ["present", "down", "future"]
+# present: is the decision firm? down: what details must the letter contain? future: what outcome does this plan enable?
+
+[[transitions]]
+from   = "Patra"
+to     = "Pratiksha"
+event  = "letter_sent"
+guard  = "message_dispatched AND plan_in_motion"
+action = "wait_strategically; prepare_the_meeting_point; log_pratiksha"
+drishti = ["present", "future", "silence"]
+# present: is the plan dispatched? future: will the timing work? silence: is patient waiting correct?
+
+[[transitions]]
+from   = "Patra"
+to     = "Patra"
+event  = "letter_needs_refinement"
+guard  = "message_not_yet_perfect"
+action = "refine_the_spec; sharpen_both_love_and_plan; log_patra_loop"
+drishti = ["present", "down", "left", "right"]
+# present: what is imperfect? down: which words need sharpening? left/right: what alternatives to each phrase?
+
+[[transitions]]
+from   = "Pratiksha"
+to     = "Harana"
+event  = "plan_executes"
+guard  = "krishna_arrives AND timing_perfect"
+action = "execute_the_plan; love_meets_strategy; log_harana"
+drishti = ["present", "down", "up", "future"]
+# present: is the timing right? down: are logistics aligned? up: does this serve the higher purpose? future: what follows the rescue?
+
+[[transitions]]
+from   = "Pratiksha"
+to     = "Patra"
+event  = "plan_needs_adjustment"
+guard  = "circumstances_changed AND new_letter_needed"
+action = "revise_the_strategy; send_update; log_patra_revision"
+drishti = ["present", "past", "future"]
+# present: what changed? past: what did the original plan miss? future: will the revision work?
+
+[[transitions]]
+from   = "Harana"
+to     = "Patrani"
+event  = "creation_sustained"
+guard  = "launch_successful AND governance_established"
+action = "build_the_kingdom; sustain_with_wisdom; log_patrani"
+drishti = ["present", "up", "future", "down"]
+# present: is governance established? up: is the kingdom aligned? future: will this sustain? down: what needs daily attention?
+
+[[transitions]]
+from   = "Patrani"
+to     = "Shravana"
+event  = "new_intelligence_needed"
+guard  = "kingdom_stable_but_new_challenge_emerges"
+action = "listen_again; research_anew; log_new_cycle"
+drishti = ["present", "left", "right", "future"]
+# present: what new challenge emerged? left/right: what intelligence is available? future: where does the next cycle lead?
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# RukminiFsm emits:
+#   patra_composed { love_letter, strategic_plan, deadline, escape_route }
+#     -> Consumed by KrishnaFsm (strategic action triggered)
+#     -> Consumed by AndalFsm (active love — not passive waiting)
+#   harana_executed { plan_result, timing_accuracy, what_worked }
+#     -> Consumed by SatyabhamaFsm (action validation)
+#     -> Consumed by ChanakyaFsm (strategic execution case study)
+#   patrani_state { governance_model, beauty_plus_wisdom }
+#     -> Consumed by LakshmiFsm (prosperity through strategy)
+#     -> Consumed by RadhaFsm (love sustained through intelligence)
+#
+# Rukmini's Law:
+#   "Love without strategy is a dream.
+#    Strategy without love is a spreadsheet.
+#    Write the letter. Include both.
+#    The greatest love story in history was planned."

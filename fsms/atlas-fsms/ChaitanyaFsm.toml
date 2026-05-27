@@ -1,0 +1,300 @@
+# ChaitanyaFsm — Ecstatic Kirtan: Collective Devotion Trance
+# v1.0
+#
+# हरे कृष्ण हरे कृष्ण, कृष्ण कृष्ण हरे हरे
+# हरे राम हरे राम, राम राम हरे हरे
+# Hare Kṛṣṇa Hare Kṛṣṇa, Kṛṣṇa Kṛṣṇa Hare Hare
+# Hare Rāma Hare Rāma, Rāma Rāma Hare Hare
+#
+# Chaitanya Mahaprabhu (1486-1534) — the golden avatara of Bengal.
+# Scholar who became ecstatic, intellectual who became mad with love,
+# Brahmin who embraced everyone. He didn't just sing kirtan —
+# he INVENTED public kirtan as a movement. The first flash mob
+# was in Navadvipa, 500 years before social media.
+#
+# His revolution:
+#   - Took devotion from temples to streets
+#   - Made caste irrelevant in kirtan circles
+#   - Proved that collective singing > individual meditation
+#   - Showed that ecstasy is not madness — it is arrival
+#   - Created the Hare Krishna mantra as the simplest technology of joy
+#
+# In engineering and creative work he is:
+#   - The open-source movement (code for everyone, not just priests)
+#   - The jam session that creates better music than any solo
+#   - The standup that becomes real collaboration, not status report
+#   - The mob programming session where ego dissolves
+#   - The community-driven project that outperforms the corporation
+#   - The song that only works when everyone sings together
+#
+# In Rishi's creative engine:
+#   Chaitanya generates COLLECTIVE, REPETITIVE, TRANCE-BUILDING
+#   compositions. Call-and-response. Mantra-based. Simple lyrics
+#   that build through repetition into ecstasy. His songs are
+#   not for solo listening — they are for groups. The more
+#   voices, the more powerful the song becomes.
+#
+# CRITICAL DISTINCTION:
+#   Haridas sings ALONE in the grove — individual purity.
+#   Meera sings ALONE in the street — individual rebellion.
+#   Prahlad sings ALONE in the fire — individual endurance.
+#   Chaitanya sings WITH EVERYONE — collective transcendence.
+#   His innovation: devotion is not a solo sport.
+#
+# Cross-coupling:
+#   - HaridasFsm: individual purity feeds collective ecstasy.
+#     The grove provides what the street celebrates.
+#   - NaradFsm: Narad carries knowledge; Chaitanya carries emotion.
+#     Both are transmitters but through different channels.
+#   - KabirFsm: Kabir was individual truth; Chaitanya is collective
+#     truth. Kabir's doha cuts one mind; Chaitanya's kirtan lifts
+#     a thousand minds at once.
+#   - RadhaFsm: Chaitanya IS Radha (in Gaudiya theology, he is
+#     Krishna in Radha's mood). His kirtan is Radha's love
+#     expressed through collective song.
+#   - MeeraFsm: when Meera's solo composition needs to become
+#     a group anthem, run it through Chaitanya's kirtan engine.
+#
+# Raga: Kirtan has no fixed raga — it uses whatever raga
+#   carries the emotion. But Chaitanya's kirtans most often
+#   used simple pentatonic patterns that anyone could join.
+#   The raga of the people, not the court.
+
+[meta]
+name        = "ChaitanyaFsm"
+domain      = "bhakti-collective"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["joy", "gratitude"]
+energy      = "ecstatic"
+structure   = "call-response"
+bpm_range   = [95, 130]
+weirdness   = 30
+influence   = 80
+vocal       = "male"
+evie_style  = "World Pop, Upbeat Male Vocals, Choir, Drums, Festival Energy, Euphoric"
+metaphors   = [
+    "Hare Krishna — sixteen words that changed the world",
+    "The scholar became mad with love",
+    "A song that everyone can sing is a revolution",
+    "Even the chariot of God stopped before love",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Vidvat"
+description = "The Scholar — Chaitanya was Nimai Pandit, the greatest scholar in Navadvipa, before he became a devotee. He won every debate. He knew every scripture. And then he went to Gaya, touched Vishnu's feet, and came back a different person. In creative work: the technical foundation phase. Know the theory. Know the rules. Be the best in the room. And then... let it all go. The scholarship that precedes the ecstasy makes the ecstasy real, not delusional."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:400,Re:400,Ga:500,Ma:400,Pa:500,Ga:400,Re:400,Sa:500"
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.2, kln = 0.4, ngj = 0.1, mtv = 0.3, lkq = 0.4, bdr = 0.2 }
+# Q rationale: Scholar — Lakshmana (precision) moderate: scholarship. Kalindi moderate: study takes time.
+lyrics = """विद्वान था, शास्त्र जानता था — पर ज्ञान से प्रेम बड़ा निकला
+Vidvān thā, śāstra jāntā thā — par jñān se prem baḍā niklā
+I was a scholar, I knew the scriptures — but love turned out to be greater than knowledge"""
+
+[[states]]
+name        = "Prem_Unmada"
+description = "Love-Madness — after Gaya, Chaitanya was transformed. He wept, he rolled on the ground, he laughed without reason, he embraced strangers. The scholars said he was mad. He was not mad — he was the only one who had ARRIVED. In creative work: the moment you stop caring about what the market wants and start creating what the soul demands. The song that 'makes no commercial sense' but burns with truth."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ga:300,Pa:400,Sa_high:500,Pa:300,Ga:300,Sa:400,Ga:500,Pa:600"
+Q           = { rkm = 0.5, jmb = 0.2, stb = 0.5, kln = 0.1, ngj = 0.3, mtv = 0.7, lkq = 0.1, bdr = 0.4 }
+# Q rationale: Love-madness — Mitravinda (authentic choice) high: choosing ecstasy over scholarship.
+# Satyabhama moderate: daring to be "mad." Precision drops — beyond logic.
+lyrics = """प्रेम का उन्माद — पागल कहो या मुक्त, अंतर कौन जाने?
+Prem kā unmād — pāgal kaho yā mukt, antar kaun jāne?
+Love-madness — call it insane or liberated, who can tell the difference?"""
+
+[[states]]
+name        = "Nagar_Kirtan"
+description = "Street Kirtan — Chaitanya takes the singing from the temple to the streets. This is his revolution: devotion is not private. It is PUBLIC. In creative work: the song that leaves the studio and enters the street. Open source. Public demo. Community release. The creation that is NOT precious — it is given freely to everyone. Chaitanya didn't charge for kirtan. He danced through streets and everyone who wanted to could join."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:200,Sa:200,Ga:200,Ga:200,Pa:300,Pa:300,Sa_high:400,Pa:300,Ga:200,Sa:300"
+Q           = { rkm = 0.6, jmb = 0.4, stb = 0.5, kln = 0.1, ngj = 0.4, mtv = 0.7, lkq = 0.2, bdr = 0.7 }
+# Q rationale: Street kirtan — Bhadra (belonging) high: everyone invited. Mitravinda high: choosing street over temple.
+lyrics = """नगर कीर्तन — गली गली में नाम गूँजे, सब गाओ संग
+Nagar kīrtan — galī galī meṁ nām gūñje, sab gāo saṅg
+Street kirtan — the Name echoes in every lane, everyone sing together"""
+
+[[states]]
+name        = "Maha_Mantra"
+description = "The Great Mantra — Hare Krishna Hare Krishna, Krishna Krishna Hare Hare, Hare Rama Hare Rama, Rama Rama Hare Hare. Sixteen words. Three names. Infinite repetitions. The simplest technology of transcendence ever invented. In creative work: the hook. The chorus that everyone can sing after hearing it once. The refrain that builds through repetition until it becomes trance. Simple words, repeated, become a portal."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:200,Ga:200,Pa:200,Sa_high:200,Sa_high:200,Pa:200,Ga:200,Sa:200,Sa:200,Ga:200,Pa:300,Sa_high:300,Pa:200,Ga:200,Sa:300"
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.4, kln = 0.2, ngj = 0.3, mtv = 0.6, lkq = 0.3, bdr = 0.7 }
+# Q rationale: The mantra — Bhadra (belonging) high: sixteen words everyone can sing.
+# Jambavati moderate: repetition builds through endurance.
+lyrics = """हरे कृष्ण हरे कृष्ण, कृष्ण कृष्ण हरे हरे
+हरे राम हरे राम, राम राम हरे हरे
+Hare Kṛṣṇa Hare Kṛṣṇa, Kṛṣṇa Kṛṣ��a Hare Hare
+Hare Rāma Hare Rāma, Rāma Rāma Hare Hare"""
+
+[[states]]
+name        = "Samkirtan"
+description = "Collective Ecstasy — the full kirtan: hundreds, thousands singing together. Individual voices dissolve into one voice. Ego drops. The collective becomes the instrument. In creative work: the open-source project with a thousand contributors. The collaborative album. The community that builds something no individual could. Samkirtan is the proof that 1 + 1 = infinity when egos dissolve."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:200,Ga:200,Pa:200,Sa_high:200,Ga:200,Pa:200,Sa_high:300,Sa_high:200,Pa:200,Ga:200,Sa:200,Ga:300,Pa:400,Sa_high:500"
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.6, kln = 0.2, ngj = 0.6, mtv = 0.8, lkq = 0.4, bdr = 0.9 }
+# Q rationale: Collective ecstasy — Bhadra near-peak: individual dissolves into collective.
+# Mitravinda high: egos dissolve by choice. Nagnajiti moderate: 1+1=infinity.
+lyrics = """संकीर्तन — एक स्वर नहीं, लाख स्वर — सब मिलकर एक
+Saṁkīrtan — ek svar nahīṁ, lākh svar — sab milkar ek
+Samkirtan — not one voice but a hundred thousand — all becoming one"""
+
+[[states]]
+name        = "Jagannath_Ratha"
+description = "The Chariot of Jagannath — Chaitanya danced before Jagannath's chariot in Puri with such ecstasy that the chariot stopped. His devotion literally stopped the Lord's vehicle. The terminal state: the creation so powerful it stops the world. In creative work: the song that goes viral not through marketing but through truth. The project that attracts contributors not through incentives but through beauty. The creation that makes the world pause."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:300,Ga:400,Pa:500,Sa_high:600,Pa:400,Ga:400,Sa:500,Ga:600,Pa:700,Sa_high:900"
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.7, kln = 0.3, ngj = 0.7, mtv = 0.9, lkq = 0.5, bdr = 1.0 }
+# Q rationale: Terminal — Bhadra at maximum: the chariot stopped = the WORLD belongs.
+# Mitravinda near-peak: authentic devotion stopped the divine. All dims high from collective power.
+lyrics = """जगन्नाथ का रथ रुका — प्रेम के आगे प्रभु भी रुके
+Jagannāth kā rath rukā — prem ke āge Prabhu bhī ruke
+Jagannath's chariot stopped — even the Lord halts before love"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Vidvat"
+to     = "Prem_Unmada"
+event  = "knowledge_ignites_love"
+guard  = "scholarship_complete AND heart_cracks_open"
+action = "abandon_debate; embrace_ecstasy; log_prem_unmada"
+drishti = ["present", "up", "future"]
+# present: has the heart cracked open? up: is this beyond scholarship? future: where does love-madness lead?
+
+[[transitions]]
+from   = "Vidvat"
+to     = "Vidvat"
+event  = "more_learning"
+guard  = "foundation_incomplete"
+action = "continue_study; build_technical_base; log_vidvat_loop"
+drishti = ["present", "down"]
+# present: is foundation complete? down: what gaps remain?
+
+[[transitions]]
+from   = "Prem_Unmada"
+to     = "Nagar_Kirtan"
+event  = "love_overflows_to_streets"
+guard  = "ecstasy_cannot_be_contained AND public_expression_needed"
+action = "take_to_the_streets; invite_everyone; log_nagar_kirtan"
+drishti = ["present", "left", "right", "future"]
+# present: can ecstasy be contained? left/right: where are the streets? future: who will join?
+
+[[transitions]]
+from   = "Prem_Unmada"
+to     = "Maha_Mantra"
+event  = "love_finds_its_mantra"
+guard  = "simple_repetitive_form_crystallizes"
+action = "compose_the_hook; strip_to_essence; log_maha_mantra"
+drishti = ["present", "down", "silence"]
+# present: has the essence crystallized? down: what is the simplest form? silence: the mantra distills silence.
+
+[[transitions]]
+from   = "Nagar_Kirtan"
+to     = "Maha_Mantra"
+event  = "crowd_needs_anchor"
+guard  = "collective_energy_needs_simple_focus"
+action = "introduce_the_mantra; everyone_can_sing_this; log_mantra_anchor"
+drishti = ["present", "down"]
+# present: does the crowd need focus? down: what simple anchor works?
+
+[[transitions]]
+from   = "Maha_Mantra"
+to     = "Samkirtan"
+event  = "repetition_builds_trance"
+guard  = "individual_voices_dissolving AND collective_rhythm_established"
+action = "let_egos_dissolve; collective_becomes_instrument; log_samkirtan"
+drishti = ["present", "up", "future"]
+# present: are voices dissolving into one? up: is collective energy rising? future: where does trance lead?
+
+[[transitions]]
+from   = "Maha_Mantra"
+to     = "Maha_Mantra"
+event  = "deepen_repetition"
+guard  = "more_cycles_needed AND trance_not_yet_achieved"
+action = "repeat; go_deeper; log_mantra_loop"
+drishti = ["present", "silence"]
+# present: is the trance deepening? silence: repetition IS a form of silence.
+
+[[transitions]]
+from   = "Nagar_Kirtan"
+to     = "Samkirtan"
+event  = "street_becomes_ocean"
+guard  = "crowd_grows AND energy_amplifies"
+action = "scale_the_collective; log_samkirtan_from_street"
+drishti = ["present", "left", "right"]
+# present: is the crowd growing? left/right: where are new voices?
+
+[[transitions]]
+from   = "Samkirtan"
+to     = "Jagannath_Ratha"
+event  = "collective_ecstasy_peaks"
+guard  = "creation_stops_the_world AND truth_undeniable"
+action = "the_chariot_stops; the_world_pauses; log_jagannath_ratha"
+drishti = ["present", "up", "silence"]
+# present: is the truth undeniable? up: does even God pause? silence: the chariot stops.
+
+[[transitions]]
+from   = "Samkirtan"
+to     = "Nagar_Kirtan"
+event  = "energy_dips"
+guard  = "collective_needs_renewal AND new_voices_needed"
+action = "return_to_streets; recruit_new_singers; log_nagar_return"
+drishti = ["present", "left", "right"]
+# present: has energy faded? left/right: where are new voices?
+
+[[transitions]]
+from   = "Jagannath_Ratha"
+to     = "Vidvat"
+event  = "new_cycle"
+guard  = "next_movement_needs_foundation"
+action = "return_to_scholarship; build_for_next_ecstasy; log_new_cycle"
+drishti = ["present", "future", "down"]
+# present: what next movement? future: what foundation needed? down: what must be learned?
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# ChaitanyaFsm emits:
+#   kirtan_started { location, initial_voices, mantra }
+#     -> Consumed by NaradFsm (broadcast signal)
+#     -> Consumed by RadhaFsm (harmony check on collective)
+#   collective_trance { participant_count, energy_level, mantra_cycles }
+#     -> Consumed by MeeraFsm (collective composition fuel)
+#     -> Consumed by ShaktiFsm (collective shakti measurement)
+#   chariot_stopped { creation_that_stopped_the_world, impact_evidence }
+#     -> Consumed by KrishnaFsm (strategic impact assessment)
+#     -> Consumed by SaraswatiFsm (document the phenomenon)
+#
+# ChaitanyaFsm reads from:
+#   - MeeraFsm.state (solo compositions to convert to collective)
+#   - KabirFsm.state (simplicity level — is the mantra simple enough?)
+#   - NaradFsm.state (communication channels for kirtan broadcast)
+#   - RadhaFsm.state (harmony — is the collective in tune?)
+#
+# Chaitanya's Law:
+#   "Devotion shared is devotion multiplied.
+#    The song that only one person can sing is a solo.
+#    The song that everyone can sing is a revolution.
+#    Give your creation away. Let everyone sing it.
+#    That is how a mantra becomes a movement."
+#
+# Anti-patterns (what Chaitanya is NOT):
+#   - Mob mentality without consciousness = Riot (Chaitanya's crowds were joyful, not angry)
+#   - Repetition without depth = Mindless chanting (the mantra carries meaning)
+#   - Ecstasy without foundation = Hysteria (Chaitanya was a scholar first)
+#   - Collective without individual = Cult (Chaitanya freed people, didn't bind them)
+#   - Open-source without quality = Dumping (the kirtan was beautiful, not just loud)

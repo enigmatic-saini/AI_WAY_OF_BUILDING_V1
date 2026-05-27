@@ -1,0 +1,280 @@
+# JanabaiFsm — Devotion in Daily Labour: The Servant-Saint
+# v1.0
+#
+# विठ्ठल विठ्ठल — ओवी गाते गाते काम करो
+# Viṭhṭhal Viṭhṭhal — ovī gāte gāte kām karo
+# (Vitthal, Vitthal — sing the ovi while you work)
+#
+# Janabai (1263-1350 CE) — the Marathi servant-saint, maid
+# in the household of Sant Namdev. She ground grain, swept floors,
+# washed clothes, and in every repetitive motion found God.
+#
+# Her poetry (abhangas and ovis) is unique in all bhakti literature:
+# it is written FROM the perspective of daily labor. Not despite
+# labor — THROUGH labor. While Meera defied the palace and Akka
+# abandoned the palace, Janabai never left the kitchen. She found
+# God in the grinding stone, the broom, the washing.
+#
+# Legend says Vitthal (Krishna) himself came and helped her
+# grind grain. God became the servant's servant.
+#
+# In engineering and creative work she is:
+#   - The devops person who finds beauty in the deployment pipeline
+#   - The maintainer whose daily work IS the product
+#   - The song written while doing dishes that changes the world
+#   - The commit message that is a prayer
+#   - The proof that there is no "mundane" work — only unconscious workers
+#   - The CI/CD pipeline that hums like a devotional song
+#
+# In Rishi's creative engine:
+#   Janabai generates GROUNDED, RHYTHMIC, LABOUR-BORN compositions.
+#   Her songs have the rhythm of grinding grain — repetitive,
+#   physical, trance-like. The thud of the pestle IS the beat.
+#   The swish of the broom IS the melody. When the user needs
+#   a song about finding meaning in the everyday, about dignity
+#   in invisible work — Janabai is the voice.
+#
+# CRITICAL DISTINCTION:
+#   Meera finds God by REBELLING against her role.
+#   Akka finds God by ABANDONING her role.
+#   Andal finds God by TRANSCENDING her role (garden to temple).
+#   Janabai finds God by INHABITING her role completely.
+#   She is the most radical of all: she proves that liberation
+#   does not require leaving. The kitchen IS the temple.
+#   The broom IS the puja instrument.
+#
+# Cross-coupling:
+#   - MiraFsm: Mira left the palace for the street. Janabai
+#     never left the kitchen. Together: the proof that God
+#     is found wherever you are, not where you go.
+#   - RavidasFsm: fellow "low-caste" saint. Ravidas the cobbler,
+#     Janabai the maid. Both proved that the lowest work
+#     can carry the highest devotion.
+#   - KabirFsm: Kabir the weaver, Janabai the servant. Both
+#     find truth in honest manual work. Kabir's loom and
+#     Janabai's grinding stone are the same temple.
+#   - ChaitanyaFsm: Janabai's ovis have the same repetitive,
+#     trance-building quality as Chaitanya's kirtans.
+#     The grinding rhythm IS the kirtan rhythm.
+#   - HanumanFsm: both are servants. Hanuman serves Rama
+#     through heroic action; Janabai serves Vitthal through
+#     daily labor. Both prove that service IS devotion.
+#   - MeeraFsm: when the composition engine needs a song
+#     about finding meaning in ordinary life, Janabai
+#     provides the content and the rhythm.
+#
+# Raga: Des — the simple, folk raga of the people. No
+#   virtuosity required. The raga of the kitchen, the field,
+#   the street. Everyone knows Des even if they don't know
+#   its name. Janabai's home raga.
+
+[meta]
+name        = "JanabaiFsm"
+domain      = "bhakti-labour"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["gratitude", "natural_peace"]
+energy      = "rhythmic"
+structure   = "call-response"
+bpm_range   = [85, 105]
+weirdness   = 25
+influence   = 80
+vocal       = "female"
+evie_style  = "Folk Pop, Rhythmic Female Vocals, Acoustic, Work Song Energy"
+metaphors   = [
+    "the grinding stone sings",
+    "God came and turned the mill",
+    "The temple is where the broom touches the floor",
+    "Unbroken song, unbroken work, unbroken love",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Jata"
+description = "The Grinding Stone — Janabai at the jata (hand-mill), grinding grain. The same circular motion, hour after hour. In creative work: the daily grind. The maintenance task. The CI pipeline. The standup meeting. The code review queue. The work that never ends and never gets applause. But Janabai doesn't endure the jata — she SINGS with the jata. The rhythm of grinding IS the rhythm of her prayer."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:400,Re:300,Sa:300,Re:400,Ga:300,Re:300,Ga:400,Ma:300,Ga:400"
+Q           = { rkm = 0.2, jmb = 0.4, stb = 0.0, kln = 0.4, ngj = 0.0, mtv = 0.2, lkq = 0.2, bdr = 0.3 }
+# Q rationale: The grinding stone — Jambavati (endurance) moderate: daily repetitive labor.
+# Kalindi (patience) moderate: the rhythm of grinding IS patience. No fire dims — just presence.
+lyrics = """जाते पर विठ्ठल गाऊँ — पीसते पीसते प्रभु मिले
+Jāte par Viṭhṭhal gāūṁ — pīste pīste Prabhu mile
+I sing Vitthal at the grinding stone — grinding, grinding, I find God"""
+
+[[states]]
+name        = "Jhadu"
+description = "The Broom — sweeping the floor. The most invisible of tasks. Nobody notices a clean floor — they only notice a dirty one. In creative work: the code cleanup that gets no PR comment. The documentation update that nobody reads until they need it. The monitoring that runs silently. Janabai sweeps as worship. Every stroke is a mantra. The invisible work IS the most sacred work."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Pa:300,Sa:300,Pa:400,Ma:300,Ga:300,Re:300,Sa:400"
+Q           = { rkm = 0.2, jmb = 0.4, stb = 0.0, kln = 0.4, ngj = 0.0, mtv = 0.2, lkq = 0.2, bdr = 0.4 }
+# Q rationale: The broom — same endurance, same patience. Bhadra rising slightly: a clean house IS belonging.
+# The invisible work IS the most sacred work.
+lyrics = """झाड़ू लगाऊँ, प्रभु पधारें — साफ़ घर में विठ्ठल आएँ
+Jhāḍū lagāūṁ, Prabhu padhāreṁ — sāf ghar meṁ Viṭhṭhal āeṁ
+I sweep, the Lord arrives — Vitthal comes to a clean house"""
+
+[[states]]
+name        = "Ovi"
+description = "The Song — Janabai's ovis are work-songs: short, rhythmic verses timed to the grinding, the sweeping, the washing. They are not composed in a studio — they are born from the body's labor. In creative work: the song that writes itself during the work. The insight that comes from doing, not thinking. The design pattern discovered while debugging, not while architecting. The ovi is the proof that theory follows practice."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ga:400,Ma:300,Pa:400,Ga:300,Ma:400,Pa:300,Sa_high:400,Pa:300,Ma:400,Ga:300,Sa:500"
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.1, kln = 0.5, ngj = 0.1, mtv = 0.5, lkq = 0.4, bdr = 0.5 }
+# Q rationale: The song — Mitravinda (authentic choice) moderate: the ovi is born from the body's labor.
+# Lakshmana (precision) moderate: the rhythm must match the work. Bhadra growing: the kitchen IS the temple.
+lyrics = """ओवी गाऊँ काम करते — काम ही कीर्तन, कीर्तन ही काम
+Ovī gāūṁ kām karte — kām hī kīrtan, kīrtan hī kām
+I sing ovis while working — work is kirtan, kirtan is work"""
+
+[[states]]
+name        = "Vitthal_Sahayya"
+description = "Vitthal Helps — legend says God himself came and helped Janabai grind grain. When the servant's devotion is total, the master serves the servant. In creative work: the moment the tool starts working FOR you instead of you working for the tool. The autocomplete that suggests exactly what you meant. The test that writes itself. The framework that disappears. When your devotion to the craft is total, the craft serves you back."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:500,Pa:400,Ga:400,Sa:500,Re:400,Ga:500"
+Q           = { rkm = 0.6, jmb = 0.6, stb = 0.1, kln = 0.6, ngj = 0.3, mtv = 0.6, lkq = 0.5, bdr = 0.7 }
+# Q rationale: Vitthal helps — Bhadra (belonging) high: God serves the servant. Grace arrives.
+# Rukmini moderate: love so total it attracts divine reciprocity. All dims elevated by grace.
+lyrics = """विठ्ठल आए जाते पर — दास की दासी को प्रभु ने जाता घुमाया
+Viṭhṭhal āe jāte par — dās kī dāsī ko Prabhu ne jātā ghumāyā
+Vitthal came to the grinding stone — God turned the mill for his servant's servant"""
+
+[[states]]
+name        = "Abhanga"
+description = "The Unbroken Song — Janabai's abhangas (literally 'unbroken') are songs without end, like the daily work itself. The song doesn't finish because the work doesn't finish. The devotion doesn't finish because life doesn't finish. In creative work: the terminal state that is not terminal. The project that is maintained forever. The song that has no last verse. The work that IS the worship, endlessly, beautifully, unbroken."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:300,Ga:400,Pa:500,Sa_high:600,Pa:400,Ga:400,Sa:400,Ga:400,Pa:500,Sa_high:700"
+Q           = { rkm = 0.7, jmb = 0.8, stb = 0.2, kln = 0.7, ngj = 0.3, mtv = 0.7, lkq = 0.6, bdr = 0.9 }
+# Q rationale: Terminal — Bhadra (belonging) near-peak: unbroken work IS unbroken belonging.
+# Jambavati (endurance) high: the song that never ends, the work that never stops.
+# Kalindi (patience) high: the unbroken is unhurried. No fire dims — Janabai's grace needs no drama.
+lyrics = """अभंग — अटूट गीत, अटूट काम, अटूट प्रेम
+Abhaṅga — aṭūṭ gīt, aṭūṭ kām, aṭūṭ prem
+Abhanga — unbroken song, unbroken work, unbroken love"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Jata"
+to     = "Jhadu"
+event  = "grinding_done_sweeping_begins"
+guard  = "one_task_complete AND next_task_calls"
+action = "pick_up_the_broom; continue_singing; log_jhadu"
+drishti = ["present", "silence"]
+# present: is one task done? silence: the song continues between tasks.
+
+[[transitions]]
+from   = "Jata"
+to     = "Ovi"
+event  = "rhythm_births_song"
+guard  = "grinding_rhythm_crystallizes_into_verse"
+action = "compose_from_labour; capture_the_rhythm; log_ovi"
+drishti = ["present", "down"]
+# present: has the rhythm crystallized into verse? down: what truth does the grinding reveal?
+
+[[transitions]]
+from   = "Jhadu"
+to     = "Ovi"
+event  = "sweeping_births_song"
+guard  = "broom_rhythm_becomes_melody"
+action = "compose_from_sweeping; log_ovi_from_jhadu"
+drishti = ["present", "down"]
+# present: has the broom rhythm become melody? down: what song from sweeping?
+
+[[transitions]]
+from   = "Jhadu"
+to     = "Jata"
+event  = "back_to_grinding"
+guard  = "floor_clean AND grain_waiting"
+action = "return_to_grindstone; log_jata_return"
+drishti = ["present", "silence"]
+# present: is the floor clean? silence: back to grinding — the song continues.
+
+[[transitions]]
+from   = "Ovi"
+to     = "Vitthal_Sahayya"
+event  = "devotion_so_total_god_arrives"
+guard  = "song_and_work_merged_completely AND grace_descends"
+action = "receive_vitthal; god_turns_the_mill; log_vitthal"
+drishti = ["present", "up", "silence"]
+# present: has devotion become total? up: does grace descend? silence: God arrives in silence.
+
+[[transitions]]
+from   = "Ovi"
+to     = "Jata"
+event  = "song_feeds_work"
+guard  = "verse_complete AND work_continues"
+action = "back_to_grinding_with_new_song; log_jata_with_ovi"
+drishti = ["present", "silence"]
+# present: is the verse complete? silence: back to work — the work IS the song.
+
+[[transitions]]
+from   = "Vitthal_Sahayya"
+to     = "Abhanga"
+event  = "work_becomes_worship_permanently"
+guard  = "no_separation_between_labour_and_devotion"
+action = "the_unbroken_song_begins; log_abhanga"
+drishti = ["present", "silence"]
+# present: is there no separation between work and worship? silence: the unbroken is beyond words.
+
+[[transitions]]
+from   = "Vitthal_Sahayya"
+to     = "Ovi"
+event  = "grace_inspires_more_songs"
+guard  = "vitthal_presence_sparks_new_verses"
+action = "compose_more_ovis; log_ovi_from_grace"
+drishti = ["present", "down"]
+# present: does grace inspire? down: what new verses from Vitthal's presence?
+
+[[transitions]]
+from   = "Abhanga"
+to     = "Jata"
+event  = "song_never_ends_but_grain_needs_grinding"
+guard  = "eternal_song_meets_daily_reality"
+action = "continue_the_unbroken; grind_and_sing; log_eternal_cycle"
+drishti = ["present", "silence"]
+# present: is there grain to grind? silence: the eternal song needs no announcement.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# JanabaiFsm emits:
+#   labour_song { ovi_text, work_type, rhythm, born_from_what_task }
+#     -> Consumed by MeeraFsm (work-song composition material)
+#     -> Consumed by ChaitanyaFsm (repetitive rhythm for kirtan)
+#   vitthal_appeared { when_work_became_worship, grace_details }
+#     -> Consumed by RadhaFsm (harmony — tool serving the craftsperson)
+#     -> Consumed by HanumanFsm (service so pure it attracts grace)
+#   abhanga { unbroken_song, unbroken_work, no_terminal_state }
+#     -> Consumed by VishwakarmaFsm (continuous build, never done)
+#     -> Consumed by SaraswatiFsm (document the living tradition)
+#
+# JanabaiFsm reads from:
+#   - HanumanFsm.state (service energy and execution discipline)
+#   - RavidasFsm.state (dignity of invisible work)
+#   - KabirFsm.state (honest labour as worship)
+#   - ChaitanyaFsm.state (collective rhythm for work-songs)
+#   - MeeraFsm.state (composition engine for labour-born songs)
+#
+# Janabai's Law:
+#   "The temple is where the broom touches the floor.
+#    The scripture is the rhythm of the grinding stone.
+#    The greatest prayer is the invisible work done well.
+#    If your architecture needs a special occasion to be beautiful,
+#    it is not beautiful. Beauty is in the daily sweep."
+#
+# Anti-patterns:
+#   - Glorifying drudgery = Oppression apologetics (Janabai CHOSE her devotion)
+#   - "Just do the work" without consciousness = Automation (Janabai was awake)
+#   - Invisible work as martyrdom = Self-pity (she celebrated, not suffered)
+#   - Daily routine as prison = Unconsciousness (her routine was freedom)
+#   - Humility as submission = Doormat (Janabai's ovis are STRONG, not meek)

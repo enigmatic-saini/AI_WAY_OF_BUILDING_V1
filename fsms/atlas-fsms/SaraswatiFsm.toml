@@ -1,0 +1,241 @@
+[meta]
+name    = "SaraswatiFsm"
+domain  = "knowledge-documentation-clarity"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# SaraswatiFsm — The River of Knowledge
+#
+# Maa Saraswati — goddess of knowledge, music, arts, speech.
+# She carries: Veena (sound/vibration), Pustaka (book/knowledge),
+# Mala (discipline), Kamandalu (purity).
+#
+# White sari — no color bias, pure clarity.
+# Sits on lotus — knowledge rooted in reality, blooming above it.
+# Swan (Hamsa) — can separate milk from water. DISCERNMENT.
+#
+# "Saraswati namastubhyam, varade kaamaroopini.
+#  Vidyaarambham karishyami, siddhir bhavatu me sadaa."
+#
+# The cycle: Ajnana → Shruti → Smriti → Viveka → Vani
+#            → Vidya → Pragya → Hamsa
+#
+# Special: Tamas_Ghat (knowledge pollution), Vakya_Bhrama
+#          (wrong words, right intent — miscommunication)
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Ajnana"
+description = "Ignorance — not knowing. Not stupidity — the HONEST state of not-yet-knowing. Better than false knowledge. The empty page. Saraswati's river begins from a mountain of silence."
+is_initial  = true
+is_terminal = false
+# Q rationale: Empty vessel. Only natural fit (bdr) — honest ignorance is at least authentic.
+# Patience (kln) moderate — willingness to wait before claiming knowledge.
+Q           = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 0.4, ngj = 0.0, mtv = 0.2, lkq = 0.0, bdr = 0.5 }
+
+[[states]]
+name        = "Shruti"
+description = "Hearing/Receiving — knowledge arrives. Through teaching, reading, observation, experience. Raw input. Unprocessed. 'That which is heard.' The first books were oral — Shruti came before writing. Listen before documenting."
+is_initial  = false
+is_terminal = false
+# Q rationale: Patience (kln) rising — listening requires patience.
+# Authentic choice (mtv) present — chose to listen, not to assume.
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.1, kln = 0.6, ngj = 0.1, mtv = 0.4, lkq = 0.1, bdr = 0.4 }
+
+[[states]]
+name        = "Smriti"
+description = "Memory/Recording — what was heard is written down. Documentation. The Pustaka (book) in Saraswati's hand. Not interpretation yet — faithful recording. 'That which is remembered.' The act of writing IS the first act of understanding."
+is_initial  = false
+is_terminal = false
+# Q rationale: Precision (lkq) begins — faithful recording demands accuracy.
+# Endurance (jmb) rising — documentation is labor, not glamor.
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.2, kln = 0.5, ngj = 0.2, mtv = 0.4, lkq = 0.4, bdr = 0.4 }
+
+[[states]]
+name        = "Viveka"
+description = "Discernment — the Hamsa (swan) separates milk from water. What is essential? What is noise? What is true knowledge vs borrowed opinion? The critical skill: knowing what to EXCLUDE from the documentation."
+is_initial  = false
+is_terminal = false
+# Q rationale: Impossible spec (ngj) rising — discernment demands seeing what others miss.
+# Fierce pride (stb) — the courage to cut noise. Precision (lkq) growing.
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.5, mtv = 0.5, lkq = 0.6, bdr = 0.5 }
+
+[[states]]
+name        = "Vani"
+description = "Speech/Expression — knowledge given voice. Clear, precise, beautiful. Not jargon — COMMUNICATION. Saraswati's veena is not random noise — it is composed, structured, resonant. The documentation must TEACH, not just record."
+is_initial  = false
+is_terminal = false
+# Q rationale: Strategic love (rkm) rising — expression requires caring about the reader.
+# Authentic choice (mtv) high — choosing simple words over jargon is an act of integrity.
+Q           = { rkm = 0.6, jmb = 0.4, stb = 0.5, kln = 0.4, ngj = 0.5, mtv = 0.7, lkq = 0.7, bdr = 0.5 }
+
+[[states]]
+name        = "Vidya"
+description = "Structured Knowledge — organized, indexed, searchable, cross-referenced. From scattered notes to a SYSTEM of knowledge. The mala (rosary) in Saraswati's hand — each bead connected, in order, forming a whole. The knowledge graph."
+is_initial  = false
+is_terminal = false
+# Q rationale: Precision (lkq) high — systematic knowledge demands precision.
+# Impossible spec (ngj) high — building a complete knowledge system is ambitious.
+Q           = { rkm = 0.6, jmb = 0.6, stb = 0.6, kln = 0.5, ngj = 0.7, mtv = 0.6, lkq = 0.8, bdr = 0.6 }
+
+[[states]]
+name        = "Pragya"
+description = "Wisdom — knowledge applied. Not what you know but what you DO with what you know. The Kamandalu (water pot) — knowledge concentrated to its essence, portable, ready to pour where needed. Pragya is Vidya in action."
+is_initial  = false
+is_terminal = false
+# Q rationale: All capabilities high. Strategic love (rkm) near peak — wisdom is love applied.
+# Endurance (jmb) high — wisdom comes from sustained engagement with knowledge.
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.7, kln = 0.7, ngj = 0.7, mtv = 0.8, lkq = 0.8, bdr = 0.7 }
+
+[[states]]
+name        = "Hamsa"
+description = "The Swan — effortless discernment. Teaching without effort. Documentation that writes itself through clean code. Knowledge so internalized it flows without thinking. The swan glides — you don't see the feet working underwater."
+is_initial  = false
+is_terminal = true
+# Q rationale: Peak state. All capabilities at maximum. Natural fit (bdr) at peak —
+# the swan IS knowledge, no separation between knower and known.
+Q           = { rkm = 1.0, jmb = 0.8, stb = 0.8, kln = 0.9, ngj = 0.8, mtv = 0.9, lkq = 1.0, bdr = 1.0 }
+
+[[states]]
+name        = "Tamas_Ghat"
+description = "Knowledge Pollution — wrong information documented confidently. Outdated docs that mislead. Comments that lie. README that describes a different system. The river is polluted — drinking from it causes harm. Worse than no documentation."
+is_initial  = false
+is_terminal = false
+# Q rationale: Near-zero on everything. Precision (lkq) negative territory — polluted knowledge
+# actively harms. A trace of endurance (jmb) — the pollution persists stubbornly.
+Q           = { rkm = 0.0, jmb = 0.2, stb = 0.1, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.1 }
+
+[[states]]
+name        = "Vakya_Bhrama"
+description = "Miscommunication — the intent is right but the words are wrong. Jargon that excludes. Abstractions that obscure. Documentation written for the author, not the reader. The veena is out of tune — the music hurts instead of heals."
+is_initial  = false
+is_terminal = false
+# Q rationale: Strategic love (rkm) moderate — intent was there, expression failed.
+# Authentic choice (mtv) low — jargon is the opposite of authenticity.
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.2, kln = 0.1, ngj = 0.2, mtv = 0.1, lkq = 0.2, bdr = 0.2 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Ajnana"
+to     = "Shruti"
+event  = "learning_begins"
+guard  = "humility_present AND curiosity_active AND source_found"
+action = "open_ears; begin_receiving; log_knowledge_source"
+drishti = ["present", "silence", "down"]
+# present: is the ignorance honest? silence: should we stay in not-knowing?
+# down: what specifically do we not know?
+
+[[transitions]]
+from   = "Shruti"
+to     = "Smriti"
+event  = "recording_begins"
+guard  = "enough_heard AND writing_tool_ready"
+action = "document_faithfully; do_not_interpret_yet"
+drishti = ["present", "down", "past"]
+# present: have we heard enough? down: what exactly was said?
+# past: has this been recorded before?
+
+[[transitions]]
+from   = "Smriti"
+to     = "Viveka"
+event  = "discernment_needed"
+guard  = "raw_material_sufficient AND critical_eye_engaged"
+action = "separate_milk_from_water; identify_essential_vs_noise"
+drishti = ["present", "left", "right", "up"]
+# present: what do we have? left/right: what is essential vs noise?
+# up: does this serve the larger knowledge system?
+
+[[transitions]]
+from   = "Viveka"
+to     = "Vani"
+event  = "clarity_achieved"
+guard  = "essential_identified AND noise_removed AND ready_to_express"
+action = "give_voice_to_knowledge; compose_not_dump"
+drishti = ["present", "down", "future"]
+# present: is clarity real? down: are the details correct?
+# future: will this expression be understood by the reader?
+
+[[transitions]]
+from   = "Vani"
+to     = "Vidya"
+event  = "structure_emerges"
+guard  = "expression_clear AND connections_visible AND organization_needed"
+action = "build_knowledge_system; index_cross_reference"
+drishti = ["present", "up", "left", "right", "past"]
+# present: is the expression clear? up: system architecture.
+# left/right: what connects to what? past: prior knowledge structures.
+
+[[transitions]]
+from   = "Vidya"
+to     = "Pragya"
+event  = "knowledge_applied"
+guard  = "system_complete AND real_problems_solved_with_it"
+action = "concentrate_to_essence; make_portable"
+drishti = ["present", "down", "future"]
+# present: is the system complete? down: does it solve real problems?
+# future: will this wisdom hold over time?
+
+[[transitions]]
+from   = "Pragya"
+to     = "Hamsa"
+event  = "effortless_teaching"
+guard  = "knowledge_so_deep_it_flows_naturally AND no_effort_to_share"
+action = "become_the_swan; knowledge_and_knower_merge"
+drishti = ["present", "up", "silence"]
+# present: is teaching truly effortless? up: does this serve the whole?
+# silence: the swan discerns without speaking — is words the right form?
+
+# Pollution transitions
+[[transitions]]
+from   = "Smriti"
+to     = "Tamas_Ghat"
+event  = "wrong_recording"
+guard  = "source_misunderstood OR outdated_info_documented_as_current"
+action = "pollute_knowledge_river; log_contamination_source"
+drishti = ["present", "past"]
+# present: is the recording faithful? past: is the source still valid?
+
+[[transitions]]
+from   = "Vidya"
+to     = "Tamas_Ghat"
+event  = "knowledge_rots"
+guard  = "system_changed_but_docs_not_updated OR lies_documented_as_truth"
+action = "pollute_knowledge_river; log_staleness_date"
+drishti = ["present", "past", "future"]
+# present: does the doc match reality? past: when was this last verified?
+# future: how long until this causes real damage?
+
+[[transitions]]
+from   = "Tamas_Ghat"
+to     = "Shruti"
+event  = "purification_begins"
+guard  = "pollution_acknowledged AND willing_to_relearn"
+action = "flush_polluted_docs; return_to_source"
+drishti = ["present", "down", "silence"]
+# present: is the pollution acknowledged? down: what exactly is wrong?
+# silence: should we delete rather than fix?
+
+# Miscommunication transitions
+[[transitions]]
+from   = "Vani"
+to     = "Vakya_Bhrama"
+event  = "words_fail"
+guard  = "reader_confused OR jargon_excludes OR abstraction_obscures"
+action = "log_miscommunication; identify_audience_mismatch"
+drishti = ["present", "left", "right"]
+# present: are words failing? left/right: what simpler expression exists?
+
+[[transitions]]
+from   = "Vakya_Bhrama"
+to     = "Viveka"
+event  = "retuning"
+guard  = "audience_identified AND simpler_words_found"
+action = "retune_the_veena; rewrite_for_reader_not_author"
+drishti = ["present", "down", "past"]
+# present: who is the actual audience? down: what do they need?
+# past: what words caused the confusion?

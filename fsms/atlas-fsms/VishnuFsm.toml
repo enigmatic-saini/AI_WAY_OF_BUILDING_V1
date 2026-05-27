@@ -1,0 +1,178 @@
+[meta]
+name    = "VishnuFsm"
+domain  = "trimurti-sustenance"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# VishnuFsm — The Sustainer
+#
+# Governs the ongoing health, protection, and preservation of
+# all running systems. Vishnu watches, sustains, intervenes
+# when needed, and restores what has degraded.
+#
+# The cycle: Observing → Sustaining → Intervening → Restoring → Observing
+#
+# Vishnu does not create (that's Brahma) and does not destroy
+# (that's Shiva). Vishnu preserves dharma — the righteous
+# order of the system. When preservation is no longer possible,
+# Vishnu hands off to Shiva for transformation.
+#
+# The 10 Avatars principle: different problems require different
+# interventions. Not every degradation is the same.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Observing"
+description = "Vishnu watches. All systems monitored, health ticked, metrics collected. No intervention needed. Peaceful vigilance."
+is_initial  = true
+is_terminal = false
+# Q rationale: Watchful vigilance. Kalindi (patient contemplation) high: Vishnu watches patiently.
+# Lakshmana (precision) moderate: metrics being collected. Rukmini (strategic love) moderate: watching
+# with care. All action dims low — observation is not yet action.
+Q = { rkm = 0.4, jmb = 0.3, stb = 0.2, kln = 0.8, ngj = 0.2, mtv = 0.3, lkq = 0.5, bdr = 0.6 }
+
+[[states]]
+name        = "Sustaining"
+description = "Everything is healthy. Value flows. Lakshmi is abundant. Routine maintenance only — config refreshes, health confirmations."
+is_initial  = false
+is_terminal = false
+# Q rationale: Healthy sustenance — everything flowing. Bhadra (belonging) high: the system IS home.
+# Jambavati (endurance) high: sustaining over time. Rukmini (strategic love) high: preserving what
+# was created with care. All dims elevated: the ideal operational state.
+Q = { rkm = 0.7, jmb = 0.7, stb = 0.5, kln = 0.6, ngj = 0.5, mtv = 0.6, lkq = 0.6, bdr = 0.8 }
+
+[[states]]
+name        = "Intervening"
+description = "Something is degrading. Vishnu descends as the appropriate avatar. Circuit breakers, retries, failovers, gentle corrections."
+is_initial  = false
+is_terminal = false
+# Q rationale: Active intervention — the avatar descends. Satyabhama (fierce pride) high: confronting
+# degradation. Lakshmana (precision) high: the right avatar for the right problem. Nagnajiti high:
+# adapting to the specific problem type. Kalindi low: urgency replaces patience.
+Q = { rkm = 0.6, jmb = 0.6, stb = 0.7, kln = 0.2, ngj = 0.7, mtv = 0.6, lkq = 0.8, bdr = 0.4 }
+
+[[states]]
+name        = "Restoring"
+description = "Intervention applied. System recovering. Watching for health to return to Healthy before stepping back to Observing."
+is_initial  = false
+is_terminal = false
+# Q rationale: Recovery in progress. Jambavati (endurance) high: sustaining the recovery effort.
+# Kalindi rising: patient waiting for health to return. Lakshmana (precision) moderate: watching
+# recovery metrics. Bhadra moderate: hoping for return to health.
+Q = { rkm = 0.6, jmb = 0.8, stb = 0.4, kln = 0.6, ngj = 0.4, mtv = 0.5, lkq = 0.6, bdr = 0.5 }
+
+[[states]]
+name        = "Escalating"
+description = "Intervention failed. This is beyond repair — the thing must be transformed, not fixed. Vishnu signals Shiva."
+is_initial  = false
+is_terminal = false
+# Q rationale: Beyond repair — humility in recognizing limits. Mitravinda (authentic choice) high:
+# the honest admission that preservation is impossible. Satyabhama moderate: no shame in escalation.
+# Jambavati high: endured all attempts. Most dims drop: Vishnu's role ends here.
+Q = { rkm = 0.4, jmb = 0.8, stb = 0.3, kln = 0.3, ngj = 0.2, mtv = 0.8, lkq = 0.4, bdr = 0.2 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Observing → Sustaining: all systems healthy
+[[transitions]]
+from   = "Observing"
+to     = "Sustaining"
+event  = "all_healthy"
+guard  = "no_health_fsm_degraded_or_stale"
+action = "confirm_lakshmi_flowing; log_sustenance_active"
+drishti = ["present", "left", "right"]
+# present: is everything truly healthy? left/right: scan all systems laterally for confirmation.
+
+# Sustaining → Observing: routine check cycle
+[[transitions]]
+from   = "Sustaining"
+to     = "Observing"
+event  = "tick"
+guard  = ""
+action = "collect_metrics; tick_all_health_fsms"
+drishti = ["present", "down"]
+# present: routine check — what is the current state? down: collect metrics from all health FSMs.
+
+# Observing → Intervening: degradation detected
+[[transitions]]
+from   = "Observing"
+to     = "Intervening"
+event  = "degradation_detected"
+guard  = "any_health_fsm_degraded"
+action = "classify_degradation; select_avatar; log_intervention_start; signal_lakshmi_withdrawing"
+drishti = ["present", "down", "past"]
+# present: what is degrading? down: where exactly is the problem? past: has this happened before?
+
+# Sustaining → Intervening: sudden degradation while sustaining
+[[transitions]]
+from   = "Sustaining"
+to     = "Intervening"
+event  = "degradation_detected"
+guard  = "any_health_fsm_degraded"
+action = "classify_degradation; select_avatar; log_intervention_start; signal_lakshmi_withdrawing"
+drishti = ["present", "down", "future"]
+# present: sudden degradation while sustaining. down: locate the problem. future: what will cascade if not handled?
+
+# Intervening → Restoring: intervention applied, wait for recovery
+[[transitions]]
+from   = "Intervening"
+to     = "Restoring"
+event  = "intervention_applied"
+guard  = "action_executed_without_error"
+action = "start_recovery_timer; log_intervention_applied"
+drishti = ["present", "future", "down"]
+# present: was the intervention applied cleanly? future: will recovery hold? down: watch the system heal.
+
+# Restoring → Observing: health recovered
+[[transitions]]
+from   = "Restoring"
+to     = "Observing"
+event  = "health_recovered"
+guard  = "target_health_fsm_healthy"
+action = "signal_lakshmi_flowing; log_restoration_complete; clear_recovery_timer"
+drishti = ["present", "up"]
+# present: is health truly restored? up: can we return to peaceful vigilance?
+
+# Restoring → Intervening: recovery failed, try different approach
+[[transitions]]
+from   = "Restoring"
+to     = "Intervening"
+event  = "recovery_failed"
+guard  = "recovery_attempts_below_max"
+action = "select_next_avatar; increment_recovery_attempts; log_retry"
+drishti = ["present", "past", "left", "right"]
+# present: why did recovery fail? past: what was tried? left/right: what other avatar approaches exist?
+
+# Restoring → Escalating: max retries exceeded, beyond repair
+[[transitions]]
+from   = "Restoring"
+to     = "Escalating"
+event  = "recovery_failed"
+guard  = "recovery_attempts_at_max"
+action = "log_escalation; signal_lakshmi_dormant"
+drishti = ["present", "past", "future"]
+# present: max retries reached. past: what was attempted? future: Shiva must handle what Vishnu cannot.
+
+# Intervening → Escalating: intervention impossible
+[[transitions]]
+from   = "Intervening"
+to     = "Escalating"
+event  = "intervention_impossible"
+guard  = "no_avatar_applicable"
+action = "log_escalation; signal_lakshmi_dormant"
+drishti = ["present", "up"]
+# present: is intervention truly impossible? up: escalate to higher power (Shiva).
+
+# Escalating → Observing: Shiva accepted the handoff, dissolution in progress
+[[transitions]]
+from   = "Escalating"
+to     = "Observing"
+event  = "shiva_accepted"
+guard  = "shiva_state_awakened_or_dancing"
+action = "release_to_shiva; log_handoff_to_shiva; reset_recovery_attempts"
+drishti = ["present", "right", "silence"]
+# present: has Shiva accepted? right: is dissolution in progress alongside us? silence: Vishnu steps back.

@@ -1,0 +1,242 @@
+[meta]
+name    = "OshoFsm"
+domain  = "liberation-total-rebellion"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# OshoFsm — The Rebel's Awakening
+#
+# OSHO / Rajneesh — the most controversial mystic of the 20th century.
+# "Ecstasy is your birthright. Society suppressed it.
+# Explode first. THEN meditate."
+#
+# The cycle: Sushupti → Samaj → Vidroh → Rechana → Zorba → Dhyana → Shunyata → Sahaj_Ananda
+#
+# Unique: Dynamic Meditation compresses the ENTIRE cycle into 1 hour.
+# Zorba-Buddha oscillation runs continuously.
+# Special: Guru_Trap, Vidroh_Trap
+# Missing piece (per Mira): Seva (service) between Shunyata and Sahaj_Ananda.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Sushupti"
+description = "Spiritual Sleep — conditioned human. Not just ignorant — actively programmed by society, religion, family. False personality = mask. Believes sleep IS waking."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.2 }
+# Q rationale: Total sleep. Only faint Bhadra — the conditioned person feels
+# they belong to their conditioning. False belonging.
+
+[[states]]
+name        = "Samaj"
+description = "Understanding — 'Everything I believed was given to me. None of it is MINE.' Seeing the entire personality as construction. First honest question: who am I without the labels?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.2, kln = 0.1, ngj = 0.0, mtv = 0.4, lkq = 0.1, bdr = 0.1 }
+# Q rationale: Mitravinda (authentic choice) awakens — seeing the false self.
+# The first honest question is a Mitravinda act.
+
+[[states]]
+name        = "Vidroh"
+description = "Rebellion — the total NO. Before the ultimate YES, you must say a total NO. Drop all borrowed belief. Dangerous: rebellion without awareness = mere reactivity."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.3, stb = 0.7, kln = 0.0, ngj = 0.2, mtv = 0.8, lkq = 0.1, bdr = 0.0 }
+# Q rationale: Mitravinda (authentic rebellion) near peak — the total NO.
+# Satyabhama (fierce action) high — courage to reject everything borrowed.
+# Bhadra zero — rebellion is exile from belonging.
+
+[[states]]
+name        = "Rechana"
+description = "Catharsis/Release — the explosion. Dynamic Meditation: chaotic breathing, emotional eruption, 'HOO!' jumping. Body purges 40 years of repression. Every suppressed error EMITTED."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.8, kln = 0.0, ngj = 0.3, mtv = 0.7, lkq = 0.0, bdr = 0.1 }
+# Q rationale: Satyabhama (fierce release) peaks — body purging 40 years.
+# Jambavati (endurance) — catharsis is marathon not sprint.
+
+[[states]]
+name        = "Zorba"
+description = "Celebration — 'Zorba the Greek.' Dance, eat, love, laugh without guilt. Body is not the enemy. Pleasure is not sin. The ROOT — without it, Buddha has no ground."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.4, stb = 0.6, kln = 0.3, ngj = 0.4, mtv = 0.9, lkq = 0.2, bdr = 0.7 }
+# Q rationale: Mitravinda (authentic choice) near peak — celebrate without guilt.
+# Bhadra (belonging) returns — belonging to existence, not society.
+
+[[states]]
+name        = "Dhyana"
+description = "Meditation/Witnessing — NOW silence is possible. From fullness, not denial. Be so total in living that silence comes as byproduct. Dynamic Meditation Stage 4: FREEZE."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.5, kln = 0.7, ngj = 0.5, mtv = 0.8, lkq = 0.6, bdr = 0.6 }
+# Q rationale: Mitravinda remains high — meditation chosen, not imposed.
+# Kalindi (patience) rises — silence from fullness, not denial.
+
+[[states]]
+name        = "Shunyata"
+description = "No-Mind/Emptiness — mind stops naturally, exhausted by catharsis and celebration. Nothing left to think about. Beyond mind, not against it. The mind rests."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.3, kln = 0.9, ngj = 0.7, mtv = 0.7, lkq = 0.5, bdr = 0.5 }
+# Q rationale: Kalindi (patience) peaks — mind stops naturally.
+# Nagnajiti (impossible) high — no-mind is the impossible achieved.
+
+[[states]]
+name        = "Seva"
+description = "Service — the missing piece. Bliss without service is hedonism. Tulsidas had Hanuman, Buddha had teaching, Gorakhnath had guru-rescue. OSHO's addition: share the bliss."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.8, jmb = 0.6, stb = 0.5, kln = 0.6, ngj = 0.5, mtv = 0.8, lkq = 0.4, bdr = 0.8 }
+# Q rationale: Rukmini (love) and Bhadra (belonging) high — sharing bliss.
+# Mitravinda — service chosen freely, not from obligation.
+
+[[states]]
+name        = "Sahaj_Ananda"
+description = "Natural Bliss — Dynamic Meditation Stage 5: DANCE. Existence dancing through the body. Zorba the Buddha realized: material joy AND spiritual silence SIMULTANEOUS."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.9, jmb = 0.7, stb = 0.7, kln = 0.8, ngj = 0.8, mtv = 1.0, lkq = 0.7, bdr = 0.9 }
+# Q rationale: Mitravinda (authentic self-choice) at peak — Zorba the Buddha.
+# Material joy AND spiritual silence SIMULTANEOUS. Total authenticity.
+
+[[states]]
+name        = "Guru_Trap"
+description = "Seeker becomes follower. 'Don't follow me' — but they followed harder. The ashram becomes a religion. Robes become uniform. The rebellion becomes institution."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.1, kln = 0.2, ngj = 0.0, mtv = 0.0, lkq = 0.1, bdr = 0.4 }
+# Q rationale: Mitravinda (self-choice) collapses — surrendered to person not truth.
+# Bhadra (false belonging) — the ashram becomes the new cage.
+
+[[states]]
+name        = "Vidroh_Trap"
+description = "Rebellion Trap — saying NO to everything becomes its own prison. Anti-establishment becomes another establishment. The rebel needs to rebel against rebellion itself."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.2, stb = 0.5, kln = 0.0, ngj = 0.0, mtv = 0.1, lkq = 0.0, bdr = 0.0 }
+# Q rationale: Satyabhama (action) without Mitravinda (authenticity) — reactive.
+# Rebellion hardened into new cage. Anti-establishment IS establishment.
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Sushupti"
+to     = "Samaj"
+event  = "conditioning_seen"
+guard  = "external_shock OR internal_crisis OR teacher_encountered"
+action = "recognize_false_personality"
+drishti = ["present", "down"]
+# present: has conditioning been seen? down: what lies beneath the false personality?
+
+[[transitions]]
+from   = "Samaj"
+to     = "Vidroh"
+event  = "no_pronounced"
+guard  = "courage_to_reject AND willingness_to_be_alone"
+action = "rebel_against_conditioning"
+drishti = ["present", "up", "future"]
+# present: is the NO genuine? up: is this rebellion or mere reaction? future: what follows rejection?
+
+[[transitions]]
+from   = "Vidroh"
+to     = "Rechana"
+event  = "suppression_surfacing"
+guard  = "body_carrying_unprocessed_emotion AND safe_container_available"
+action = "begin_catharsis; run_dynamic_meditation"
+drishti = ["present", "down"]
+# present: is suppression surfacing? down: what is the body carrying?
+
+[[transitions]]
+from   = "Vidroh"
+to     = "Vidroh_Trap"
+event  = "rebellion_solidifies"
+guard  = "rebellion_becomes_ideology AND anti_becomes_identity"
+action = "crystallize_rebel_ego"
+drishti = ["present", "past"]
+# present: has rebellion solidified? past: is the rebel identity borrowed?
+
+[[transitions]]
+from   = "Vidroh_Trap"
+to     = "Rechana"
+event  = "rebel_against_rebellion"
+guard  = "see_rebellion_as_borrowed_mask"
+action = "release_rebel_identity; begin_catharsis"
+drishti = ["present", "silence"]
+# present: can you rebel against rebellion? silence: what remains when reaction stops?
+
+[[transitions]]
+from   = "Rechana"
+to     = "Zorba"
+event  = "body_freed"
+guard  = "major_repressions_released AND body_feels_light"
+action = "celebrate_existence"
+drishti = ["present", "down", "future"]
+# present: is the body freed? down: is there still suppression? future: what joy awaits?
+
+[[transitions]]
+from   = "Rechana"
+to     = "Rechana"
+event  = "rechana_loop_warning"
+guard  = "rechana_duration_exceeds_threshold AND no_transition_to_zorba"
+action = "warn_catharsis_becoming_its_own_loop"
+drishti = ["present", "past"]
+# present: is catharsis becoming its own loop? past: how long have we been here?
+
+[[transitions]]
+from   = "Zorba"
+to     = "Dhyana"
+event  = "celebration_deepens_into_silence"
+guard  = "body_satiated AND curiosity_about_inner_space"
+action = "enter_meditation_from_fullness"
+drishti = ["present", "up", "silence"]
+# present: is celebration deepening? up: is there more than the body? silence: is silence calling?
+
+[[transitions]]
+from   = "Dhyana"
+to     = "Guru_Trap"
+event  = "surrender_misdirected"
+guard  = "love_for_teacher_exceeds_love_for_truth"
+action = "deify_finger_ignore_moon"
+drishti = ["present", "up"]
+# present: is surrender misdirected? up: is the finger worshipped, moon ignored?
+
+[[transitions]]
+from   = "Guru_Trap"
+to     = "Dhyana"
+event  = "remember_teaching"
+guard  = "hear_dont_follow_me AND truth_reasserts"
+action = "release_dependency_on_person"
+drishti = ["present", "silence"]
+# present: is truth reasserting? silence: does 'don't follow me' echo?
+
+[[transitions]]
+from   = "Dhyana"
+to     = "Shunyata"
+event  = "mind_exhausts_itself"
+guard  = "witnessing_stable AND thoughts_slowing_naturally"
+action = "enter_no_mind"
+drishti = ["present", "silence"]
+# present: has mind exhausted itself? silence: is no-mind arriving naturally?
+
+[[transitions]]
+from   = "Shunyata"
+to     = "Seva"
+event  = "compassion_arises"
+guard  = "bliss_present AND beings_suffering"
+action = "share_the_bliss; serve_without_agenda"
+drishti = ["present", "left", "right"]
+# present: has compassion arisen? left/right: who is suffering around us?
+
+[[transitions]]
+from   = "Seva"
+to     = "Sahaj_Ananda"
+event  = "service_and_bliss_merge"
+guard  = "no_separation_between_giving_and_being"
+action = "celebrate_from_emptiness; zorba_meets_buddha"
+drishti = ["present", "up", "silence"]
+# present: has service and bliss merged? up: is Zorba meeting Buddha? silence: is the dance effortless?

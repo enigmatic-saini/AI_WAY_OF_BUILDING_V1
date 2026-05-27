@@ -1,0 +1,217 @@
+[meta]
+name    = "NagarjunaFsm"
+domain  = "anti-over-engineering-emptiness"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# NagarjunaFsm — The Emptiness of Emptiness
+#
+# Nagarjuna (150-250 CE) — founder of Madhyamaka (Middle Way)
+# philosophy. His weapon: the Catuskoti (tetralemma).
+# For any proposition P:
+#   1. P is true
+#   2. P is false
+#   3. P is both true and false
+#   4. P is neither true nor false
+#
+# He proved: ALL four positions are empty. Even emptiness is empty.
+# "Shunyata shunyata" — the emptiness of emptiness.
+#
+# Applied to engineering: every abstraction is a CLAIM about
+# reality. Every claim can be examined with the tetralemma.
+# Most over-engineering comes from reifying (making real)
+# an abstraction that was just a convenience.
+#
+# The cycle: Svabhava → Pratityasamutpada → Catuskoti
+#            → Prasanga → Shunyata → Vyavahara → Paramartha
+#
+# Special: Reification_Trap (treating abstractions as real),
+#          Nihilism_Trap (emptiness misunderstood as "nothing matters")
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Svabhava"
+description = "Inherent Existence — the default assumption. 'This module HAS a fixed nature. This pattern IS correct. This abstraction IS real.' The unexamined belief that things have permanent, independent essence. All over-engineering starts here."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.3, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.1, bdr = 0.3 }
+# Q rationale: Unexamined belief. Satyabhama (pride) — defending fixed positions.
+# Bhadra (false belonging) — comfort in the familiar abstraction.
+
+[[states]]
+name        = "Pratityasamutpada"
+description = "Dependent Origination — nothing exists independently. This module exists BECAUSE of these conditions. This pattern works BECAUSE of these assumptions. Change the conditions, the 'essence' vanishes. The abstraction was never real — it was relational."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.3, stb = 0.2, kln = 0.4, ngj = 0.3, mtv = 0.3, lkq = 0.5, bdr = 0.2 }
+# Q rationale: Lakshmana (precision) — tracing dependencies carefully.
+# Kalindi (patience) — dependent origination requires patient analysis.
+
+[[states]]
+name        = "Catuskoti"
+description = "The Tetralemma — apply to any architectural claim: (1) Is it true? (2) Is it false? (3) Is it both? (4) Is it neither? Most design debates are stuck on positions 1 and 2. Positions 3 and 4 reveal that the QUESTION was wrong."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.3, stb = 0.3, kln = 0.5, ngj = 0.7, mtv = 0.5, lkq = 0.7, bdr = 0.2 }
+# Q rationale: Nagnajiti (impossible) surges — testing all four positions
+# reveals the question was wrong. Lakshmana (precision) — tetralemma is surgical.
+
+[[states]]
+name        = "Prasanga"
+description = "Reductio ad Absurdum — Nagarjuna's method. Take the opponent's position to its LOGICAL extreme. If your abstraction layer is 'necessary,' extend it to its full implication. Does it still make sense? Or does it collapse under its own weight?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.5, kln = 0.4, ngj = 0.8, mtv = 0.6, lkq = 0.8, bdr = 0.1 }
+# Q rationale: Nagnajiti peaks — reductio ad absurdum achieves the impossible.
+# Lakshmana — taking positions to logical extreme requires surgical precision.
+
+[[states]]
+name        = "Shunyata"
+description = "Emptiness — not nothingness. The ABSENCE of inherent existence. The abstraction is useful but not REAL. The pattern is convenient but not NECESSARY. Emptiness liberates: if nothing has fixed nature, everything can be changed. No sacred cows."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.4, stb = 0.3, kln = 0.7, ngj = 1.0, mtv = 0.7, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Nagnajiti at PEAK — emptiness is the impossible insight itself.
+# Seven bulls tamed: no sacred cows remain. Everything can be changed.
+
+[[states]]
+name        = "Vyavahara"
+description = "Conventional Truth — Nagarjuna never said 'nothing exists.' He said existence is conventional, not ultimate. The abstraction WORKS at the conventional level. Use it. Just don't worship it. Maps are useful; maps are not territory."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.4, kln = 0.6, ngj = 0.8, mtv = 0.6, lkq = 0.6, bdr = 0.6 }
+# Q rationale: Bhadra (belonging) returns — convention serves function.
+# Maps are useful. The abstraction WORKS at the conventional level.
+
+[[states]]
+name        = "Paramartha"
+description = "Ultimate Truth — the two truths held simultaneously. Convention serves function. Emptiness prevents reification. The master architect uses abstractions lightly, holds them loosely, drops them when they stop serving. Neither attached nor nihilistic."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.8, jmb = 0.6, stb = 0.5, kln = 0.8, ngj = 1.0, mtv = 0.8, lkq = 0.8, bdr = 0.7 }
+# Q rationale: Nagnajiti peak maintained — two truths held simultaneously.
+# Convention AND emptiness. The master architect builds with lightness.
+
+[[states]]
+name        = "Reification_Trap"
+description = "Treating abstractions as real things. The ORM IS the database. The microservice IS the domain. The pattern IS the solution. When the map becomes more important than the territory. Adding layers to protect layers. The abstraction stack grows to serve itself."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.6, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.3, bdr = 0.4 }
+# Q rationale: Satyabhama (pride) defending the sacred cow.
+# Nagnajiti zero — the impossible is refused, not attempted.
+
+[[states]]
+name        = "Nihilism_Trap"
+description = "Emptiness misunderstood. 'Nothing matters, don't bother with architecture, just ship anything.' The opposite error. Nagarjuna explicitly warns: shunyata misunderstood is like grasping a snake by the wrong end. It kills you."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.0, stb = 0.1, kln = 0.0, ngj = 0.1, mtv = 0.2, lkq = 0.0, bdr = 0.0 }
+# Q rationale: Everything collapsed. Emptiness misread as 'nothing matters.'
+# Snake grasped wrong. Architecture abandoned.
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Svabhava"
+to     = "Pratityasamutpada"
+event  = "conditions_examined"
+guard  = "asked_WHY_this_exists AND traced_dependencies"
+action = "map_dependent_conditions; identify_what_this_relies_on"
+drishti = ["present", "down"]
+# present: why does this exist? down: what does it depend on?
+
+[[transitions]]
+from   = "Pratityasamutpada"
+to     = "Catuskoti"
+event  = "claim_questioned"
+guard  = "architectural_claim_identified AND willing_to_examine"
+action = "apply_tetralemma; test_all_four_positions"
+drishti = ["present", "left", "right"]
+# present: what claim is being made? left/right: test positions 1-4.
+
+[[transitions]]
+from   = "Catuskoti"
+to     = "Prasanga"
+event  = "position_held"
+guard  = "defender_insists_on_position AND logical_extension_possible"
+action = "take_to_logical_extreme; watch_for_collapse"
+drishti = ["present", "future"]
+# present: which position is held? future: extend it to its extreme.
+
+[[transitions]]
+from   = "Prasanga"
+to     = "Shunyata"
+event  = "position_collapses"
+guard  = "extreme_reveals_absurdity AND fixed_nature_dissolved"
+action = "release_attachment_to_abstraction"
+drishti = ["present", "silence"]
+# present: has the position collapsed? silence: what remains when fixed nature dissolves?
+
+[[transitions]]
+from   = "Shunyata"
+to     = "Vyavahara"
+event  = "function_recognized"
+guard  = "emptiness_does_not_mean_useless AND convention_still_needed"
+action = "use_abstraction_conventionally; hold_lightly"
+drishti = ["present", "down", "left", "right"]
+# present: is emptiness functional? down: what convention is needed? left/right: what works pragmatically?
+
+[[transitions]]
+from   = "Vyavahara"
+to     = "Paramartha"
+event  = "two_truths_held"
+guard  = "convention_and_emptiness_simultaneous AND neither_extreme"
+action = "master_the_middle; build_with_lightness"
+drishti = ["present", "up", "silence"]
+# present: are two truths held? up: is neither extreme taken? silence: the middle way.
+
+# Trap transitions
+[[transitions]]
+from   = "Svabhava"
+to     = "Reification_Trap"
+event  = "abstraction_worshipped"
+guard  = "pattern_defended_as_sacred AND no_evidence_examined"
+action = "add_more_layers; protect_the_abstraction"
+drishti = ["present", "past"]
+# present: is the pattern sacred? past: when did this become unquestionable?
+
+[[transitions]]
+from   = "Pratityasamutpada"
+to     = "Reification_Trap"
+event  = "analysis_itself_reified"
+guard  = "dependency_analysis_becomes_new_abstraction_layer"
+action = "meta_trap; now_protecting_the_analysis"
+drishti = ["present", "up"]
+# present: has analysis itself become a new layer? up: meta-trap detected?
+
+[[transitions]]
+from   = "Reification_Trap"
+to     = "Catuskoti"
+event  = "tetralemma_applied"
+guard  = "someone_asks_the_four_questions AND ego_permits"
+action = "examine_the_sacred_cow"
+drishti = ["present", "down", "left", "right"]
+# present: can the sacred cow be examined? down: what is the real dependency?
+
+[[transitions]]
+from   = "Shunyata"
+to     = "Nihilism_Trap"
+event  = "emptiness_misunderstood"
+guard  = "shunyata_read_as_nothing_matters AND discipline_abandoned"
+action = "snake_grasped_wrong; architecture_abandoned"
+drishti = ["present", "down"]
+# present: has emptiness been misread? down: has discipline been abandoned?
+
+[[transitions]]
+from   = "Nihilism_Trap"
+to     = "Vyavahara"
+event  = "function_rediscovered"
+guard  = "consequences_of_no_architecture_felt AND pragmatism_returns"
+action = "rebuild_with_convention; respect_function"
+drishti = ["present", "future"]
+# present: are consequences felt? future: does pragmatism return?

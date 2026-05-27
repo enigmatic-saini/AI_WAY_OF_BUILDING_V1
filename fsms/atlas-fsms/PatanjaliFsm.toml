@@ -1,0 +1,329 @@
+[meta]
+name    = "PatanjaliFsm"
+domain  = "liberation-systematic-discipline"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# PatanjaliFsm — The Engineer of Consciousness
+#
+# Maharishi Patanjali — author of the Yoga Sutras.
+# Not a mystic rambling in ecstasy — a SCIENTIST of the mind.
+# 196 sutras. No wasted word. Each sutra is a compressed algorithm.
+#
+# "Yogash chitta vritti nirodhah" — Yoga is the cessation of
+# the fluctuations of the mind-stuff. That's the API contract.
+#
+# The cycle: Vyutthana → Yama → Niyama → Asana → Pranayama
+#            → Pratyahara → Dharana → Dhyana → Samadhi
+#
+# The 8 limbs are SEQUENTIAL. You cannot skip. Each is a
+# prerequisite for the next. Like compiler passes.
+#
+# Special: Antaraya (obstacles), Vikshepa (distraction/scatter),
+#          Kashaya (latent impressions resurface)
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Vyutthana"
+description = "Scattered Mind — default state. Chitta vrittis spinning: kshipta (restless), mudha (dull), vikshipta (occasionally focused). Five vrittis: pramana, viparyaya, vikalpa, nidra, smriti. The mind is a monkey, not evil — untrained."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.0, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.1 }
+# Q rationale: Scattered mind. Near zero on all. Faint Rukmini — even the
+# restless mind has some distant intent.
+
+[[states]]
+name        = "Yama"
+description = "Restraints — the 5 social contracts. Ahimsa (non-harm), Satya (truth), Asteya (non-stealing), Brahmacharya (right use of energy), Aparigraha (non-hoarding). Not morality — PREREQUISITES. A violent mind cannot concentrate."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.3, kln = 0.2, ngj = 0.0, mtv = 0.3, lkq = 0.4, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) begins — restraints are precise rules.
+# Mitravinda (self-choice) rising — choosing ahimsa, satya is a choice.
+
+[[states]]
+name        = "Niyama"
+description = "Observances — the 5 personal disciplines. Shaucha (purity), Santosha (contentment), Tapas (discipline), Svadhyaya (self-study), Ishvara Pranidhana (surrender to the process). The internal build environment."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.3, stb = 0.4, kln = 0.4, ngj = 0.0, mtv = 0.5, lkq = 0.5, bdr = 0.4 }
+# Q rationale: Discipline deepens. Lakshmana (precision) grows — tapas is precise effort.
+# Kalindi (patience) rising — svadhyaya is patient self-study.
+
+[[states]]
+name        = "Asana"
+description = "Posture — 'sthira sukham asanam' — steady AND comfortable. Not circus flexibility. The body settled so completely it stops sending interrupts. Hardware stable before running software."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.3, kln = 0.6, ngj = 0.0, mtv = 0.3, lkq = 0.6, bdr = 0.5 }
+# Q rationale: Kalindi (patience) high — sthira sukham requires patience.
+# Lakshmana (precision) high — exact posture, no wavering.
+
+[[states]]
+name        = "Pranayama"
+description = "Breath Control — regulating prana through inhalation, exhalation, retention. The bridge between voluntary and involuntary systems. 'The breath is the leash of the mind.' Clock discipline."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.3, kln = 0.7, ngj = 0.1, mtv = 0.3, lkq = 0.7, bdr = 0.4 }
+# Q rationale: Lakshmana (precision) high — breath ratios exact.
+# Kalindi (patience) high — breath control is clock discipline.
+
+[[states]]
+name        = "Pratyahara"
+description = "Sense Withdrawal — the turtle draws in its limbs. Not blocking senses — DECOUPLING attention from sense-input. You hear the sound but don't chase it. The firewall between external stimuli and internal processing."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.4, kln = 0.7, ngj = 0.2, mtv = 0.4, lkq = 0.8, bdr = 0.4 }
+# Q rationale: Lakshmana (precision) peaks — firewall between stimuli and processing
+# requires surgical discrimination.
+
+[[states]]
+name        = "Dharana"
+description = "Concentration — binding the mind to ONE object. Ekagrata (one-pointedness). The mind WILL wander. Bring it back. Again. Again. This is the practice. 'Desha bandha chittasya dharana.' Single-threaded focus."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.6, stb = 0.5, kln = 0.8, ngj = 0.3, mtv = 0.5, lkq = 0.9, bdr = 0.5 }
+# Q rationale: Lakshmana (precision) near peak — one-pointed focus is the arrow.
+# Kalindi (patience) high — bring it back, again, again.
+
+[[states]]
+name        = "Dhyana"
+description = "Meditation — unbroken flow of awareness toward the object. Dharana sustained without interruption becomes Dhyana. The difference: in Dharana you notice gaps. In Dhyana, the gaps close. Stream, not drops."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.6, kln = 0.9, ngj = 0.5, mtv = 0.6, lkq = 1.0, bdr = 0.7 }
+# Q rationale: Lakshmana (precision) at peak — unbroken flow, gaps closed.
+# Stream, not drops. The one arrow that never misses.
+
+[[states]]
+name        = "Samadhi"
+description = "Absorption — the meditator, meditation, and object merge. Subject-object duality dissolves. Two kinds: Samprajnata (with seed — object remains) and Asamprajnata (seedless — even the object dissolves). Kaivalya: pure awareness, alone."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.9, jmb = 0.8, stb = 0.7, kln = 1.0, ngj = 0.8, mtv = 0.7, lkq = 1.0, bdr = 0.9 }
+# Q rationale: Dual peak — Lakshmana (precision) and Kalindi (patience) both at 1.0.
+# Subject-object merged. The engineer of consciousness achieves total calibration.
+
+[[states]]
+name        = "Antaraya"
+description = "Obstacles — Patanjali lists 9: disease, dullness, doubt, carelessness, laziness, sensual craving, false perception, failure to reach ground, instability. Each is a SPECIFIC failure mode with a SPECIFIC remedy. Not vague — diagnostic."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.1, kln = 0.1, ngj = 0.0, mtv = 0.1, lkq = 0.3, bdr = 0.1 }
+# Q rationale: Capabilities dropping. Lakshmana (precision) retains some —
+# diagnosis is still precise even when the disease is active.
+
+[[states]]
+name        = "Vikshepa"
+description = "Scatter — the symptoms of obstacles: pain, despair, trembling, irregular breathing. The system under stress. Not the disease — the ERROR LOG telling you which Antaraya is active."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.0, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.1, bdr = 0.0 }
+# Q rationale: System under stress. The error log. Near total collapse.
+# Faint Lakshmana — can still read the error messages.
+
+[[states]]
+name        = "Kashaya"
+description = "Latent Impressions — samskaras resurface. Even in Dhyana, old patterns activate. Deep memory cache that wasn't flushed. 'The impressions from previous lives...' Not failure — the FINAL layer of cleanup."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.4, stb = 0.3, kln = 0.5, ngj = 0.4, mtv = 0.4, lkq = 0.6, bdr = 0.4 }
+# Q rationale: Deep cache flush. Capabilities moderate — the practitioner is advanced
+# enough to reach Dhyana. Lakshmana (precision) retains — witnessing is precise.
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Vyutthana"
+to     = "Yama"
+event  = "discipline_begins"
+guard  = "suffering_recognized AND method_sought AND teacher_or_text_found"
+action = "accept_social_contracts; log_starting_vritti_count"
+drishti = ["present", "down", "future"]
+# present: is suffering recognized? down: what needs discipline? future: where does method lead?
+
+[[transitions]]
+from   = "Yama"
+to     = "Niyama"
+event  = "external_conduct_stable"
+guard  = "ahimsa_practiced AND satya_maintained AND no_major_violations"
+action = "internalize_discipline; begin_personal_observances"
+drishti = ["present", "past"]
+# present: is external conduct stable? past: have violations been addressed?
+
+[[transitions]]
+from   = "Niyama"
+to     = "Asana"
+event  = "inner_environment_prepared"
+guard  = "shaucha_established AND tapas_consistent AND svadhyaya_active"
+action = "settle_the_body; find_sthira_sukha"
+drishti = ["present", "down"]
+# present: is inner environment prepared? down: is the body ready?
+
+[[transitions]]
+from   = "Asana"
+to     = "Pranayama"
+event  = "body_stable"
+guard  = "posture_steady AND comfortable AND body_not_sending_interrupts"
+action = "begin_breath_regulation; log_breath_ratio"
+drishti = ["present", "down"]
+# present: is posture steady? down: is body silent?
+
+[[transitions]]
+from   = "Pranayama"
+to     = "Pratyahara"
+event  = "breath_regulated"
+guard  = "inhale_exhale_retention_balanced AND mind_calmer"
+action = "decouple_senses; activate_internal_firewall"
+drishti = ["present", "down", "silence"]
+# present: is breath regulated? down: are senses decoupled? silence: has the mind calmed?
+
+[[transitions]]
+from   = "Pratyahara"
+to     = "Dharana"
+event  = "senses_withdrawn"
+guard  = "external_stimuli_not_chased AND attention_available"
+action = "bind_mind_to_object; start_concentration_timer"
+drishti = ["present", "up"]
+# present: are senses withdrawn? up: is the object of concentration chosen?
+
+[[transitions]]
+from   = "Dharana"
+to     = "Dhyana"
+event  = "flow_unbroken"
+guard  = "gaps_between_awareness_closing AND object_held_steadily"
+action = "sustain_unbroken_flow; log_duration"
+drishti = ["present", "silence"]
+# present: are gaps closing? silence: is the flow unbroken?
+
+[[transitions]]
+from   = "Dhyana"
+to     = "Samadhi"
+event  = "subject_object_merge"
+guard  = "meditator_and_object_indistinguishable AND vrittis_ceased"
+action = "dissolve_duality; log_samadhi_type(samprajnata_or_asamprajnata)"
+drishti = ["present", "up", "silence"]
+# present: has duality dissolved? up: is the ground itself recognized? silence: has vritti ceased?
+
+# Obstacle transitions — can hit from any limb after Yama
+[[transitions]]
+from   = "Yama"
+to     = "Antaraya"
+event  = "obstacle_arises"
+guard  = "disease OR dullness OR doubt OR laziness OR craving"
+action = "diagnose_specific_antaraya; log_which_of_nine"
+drishti = ["present", "down"]
+# present: which of nine obstacles? down: root cause of the block?
+
+[[transitions]]
+from   = "Niyama"
+to     = "Antaraya"
+event  = "obstacle_arises"
+guard  = "disease OR dullness OR doubt OR laziness OR craving"
+action = "diagnose_specific_antaraya; log_which_of_nine"
+drishti = ["present", "down"]
+# present: which of nine obstacles? down: root cause of the block?
+
+[[transitions]]
+from   = "Asana"
+to     = "Antaraya"
+event  = "obstacle_arises"
+guard  = "disease OR dullness OR doubt OR laziness OR craving"
+action = "diagnose_specific_antaraya; log_which_of_nine"
+drishti = ["present", "down"]
+# present: which of nine obstacles? down: root cause of the block?
+
+[[transitions]]
+from   = "Pranayama"
+to     = "Antaraya"
+event  = "obstacle_arises"
+guard  = "disease OR dullness OR doubt OR laziness OR craving"
+action = "diagnose_specific_antaraya; log_which_of_nine"
+drishti = ["present", "down"]
+# present: which of nine obstacles? down: root cause of the block?
+
+[[transitions]]
+from   = "Pratyahara"
+to     = "Antaraya"
+event  = "obstacle_arises"
+guard  = "disease OR dullness OR doubt OR laziness OR craving"
+action = "diagnose_specific_antaraya; log_which_of_nine"
+drishti = ["present", "down"]
+# present: which of nine obstacles? down: root cause of the block?
+
+[[transitions]]
+from   = "Dharana"
+to     = "Antaraya"
+event  = "obstacle_arises"
+guard  = "disease OR dullness OR doubt OR laziness OR craving"
+action = "diagnose_specific_antaraya; log_which_of_nine"
+drishti = ["present", "down"]
+# present: which of nine obstacles? down: root cause of the block?
+
+[[transitions]]
+from   = "Antaraya"
+to     = "Vikshepa"
+event  = "symptoms_manifest"
+guard  = "pain OR despair OR trembling OR irregular_breathing"
+action = "log_symptoms; correlate_with_antaraya"
+drishti = ["present", "down"]
+# present: are symptoms manifesting? down: which antaraya is active?
+
+[[transitions]]
+from   = "Vikshepa"
+to     = "Vyutthana"
+event  = "practice_abandoned"
+guard  = "will_broken AND method_rejected"
+action = "full_reset; preserve_samskara_residue"
+drishti = ["present", "past"]
+# present: is will broken? past: how far did we get before collapse?
+
+[[transitions]]
+from   = "Antaraya"
+to     = "Yama"
+event  = "remedy_applied"
+guard  = "specific_remedy_for_specific_obstacle AND practice_resumed"
+action = "return_to_last_stable_limb; log_recovery"
+drishti = ["present", "past", "future"]
+# present: is remedy applied? past: which obstacle was it? future: will practice resume?
+
+[[transitions]]
+from   = "Vikshepa"
+to     = "Yama"
+event  = "eka_tattva_abhyasa"
+guard  = "single_focus_chosen AND sustained_effort"
+action = "stabilize_through_one_pointed_practice"
+drishti = ["present", "up"]
+# present: is single focus chosen? up: is the method still valid?
+
+# Kashaya — deep impressions resurface during advanced practice
+[[transitions]]
+from   = "Dhyana"
+to     = "Kashaya"
+event  = "samskaras_surface"
+guard  = "deep_memory_activated AND old_patterns_arise"
+action = "witness_without_engaging; log_impression_type"
+drishti = ["present", "past", "down"]
+# present: are samskaras surfacing? past: what old pattern? down: how deep is the impression?
+
+[[transitions]]
+from   = "Kashaya"
+to     = "Dhyana"
+event  = "impression_witnessed"
+guard  = "samskara_seen_and_released AND equanimity_maintained"
+action = "continue_meditation; decrement_kashaya_strength"
+drishti = ["present", "silence"]
+# present: has the impression been witnessed? silence: has equanimity returned?
+
+[[transitions]]
+from   = "Kashaya"
+to     = "Antaraya"
+event  = "impression_overwhelms"
+guard  = "equanimity_lost AND old_pattern_reactivated"
+action = "fall_back_to_obstacle_handling"
+drishti = ["present", "down"]
+# present: has the impression overwhelmed? down: which obstacle is triggered?

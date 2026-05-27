@@ -1,0 +1,359 @@
+# LakshmanFsm — Vigilance & Sentinel
+# v1.0
+#
+# The Sleepless Guardian. The Line That Must Not Be Crossed.
+#
+# Lakshman Ji is the eternal sentinel. For 14 years of vanvas he
+# did not sleep — not once. When Nidra Devi (goddess of sleep)
+# came to claim him, he refused her, asking that his debt of sleep
+# be transferred to the people of Ayodhya so they could rest in
+# peace. He stood guard so Ram and Sita could sleep safely.
+#
+# He drew the Lakshman Rekha — the boundary line around the hut
+# that no evil could cross. The line was not a suggestion. It was
+# an absolute. When it was crossed, catastrophe followed.
+#
+# In code: Lakshman governs continuous monitoring, boundary
+# enforcement, alerting, and the discipline of never letting your
+# guard down. Every system has entry points, every entry point
+# needs a Rekha, every Rekha must be tested, every test must be
+# monitored, and the monitoring itself must be monitored.
+#
+# The Rekha_Enforce self-loop represents finding multiple boundary
+# violations — each one is tested, each crossing is logged, each
+# alert is raised, before moving on.
+#
+# Watcher_Watch is the meta-monitoring layer — quis custodiet
+# ipsos custodes? Who watches the watchers? If your Prometheus
+# goes down and nobody notices, you have no sentinel at all.
+#
+# Nidra Devi offered him rest and he refused. The monitoring
+# system must refuse to sleep. There is no "maintenance window"
+# for vigilance.
+#
+# Raga: Marwa — the evening raga of tension and watchfulness.
+# Sharp intervals (komal Re, tivra Ma, no Pa) create unresolved
+# tension. The sentinel never resolves to rest.
+#
+# ── Cross-coupling ──────────────────────────────────────────
+#
+# LakshmanFsm reads from / relates to:
+#   - RamFsm (governance): Lakshman serves Ram's dharma. Every
+#     boundary he enforces is in service of Ram's governance
+#     decisions. Ram defines what is right; Lakshman ensures
+#     nothing violates it.
+#   - SitaFsm (the protected): The Rekha was drawn to protect
+#     Sita. In system terms, SitaFsm represents the core assets,
+#     data, and integrity that the sentinel protects.
+#   - HanumanFsm (fellow servant of Ram): Hanuman executes,
+#     Lakshman guards. Hanuman carries the message; Lakshman
+#     ensures the perimeter is secure before and after. They are
+#     complementary — offense and defense in Ram's service.
+#
+# LakshmanFsm emits:
+#   - sentinel_verdict { guarded: bool, violations: [...], gaps: [...] }
+#     Consumed by governance FSMs to decide remediation.
+#   - rekha_breach_alert { boundary: str, violation_type: str }
+#     Real-time alert when a boundary is crossed during enforcement.
+#   - meta_monitoring_gap { watcher: str, gap_type: str }
+#     When a monitor itself is found unmonitored.
+# ────────────────────────────────────────────────────────────
+
+[meta]
+name        = "LakshmanFsm"
+domain      = "sentinel-vigilance"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Vigil"
+description = "The sleepless watch begins. All monitoring systems are inventoried. Every entry point, every boundary, every watch system mapped. Nidra Devi comes — and is refused. The sentinel does not sleep. Enumerate: what monitors exist? What alerts are configured? What is the current coverage? This is the inventory before the patrol."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.4, kln = 0.5, ngj = 0.1, mtv = 0.3, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) high — inventorying all monitors.
+# Jambavati (endurance) — the sentinel does not sleep for 14 years.
+audio_phrase = "Ni:400,Re:350,Ga:400,Ma:500"
+lyrics = """जागो लक्ष्मण, निद्रा त्यागो — प्रहरी का धर्म जागना
+Jāgo Lakṣmaṇ, nidrā tyāgo — praharī kā dharm jāgnā
+Wake, Lakshman, renounce sleep — the sentinel's dharma is wakefulness"""
+
+[[states]]
+name        = "Perimeter_Scan"
+description = "Walk every entry point: API endpoints, ports, file inputs, user-facing surfaces. At each one ask — is there validation? Authentication? Rate limiting? Logging? If any entry point lacks even one of these, it is an unguarded gate. The Rekha cannot be drawn until every gate is known."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.5, kln = 0.4, ngj = 0.2, mtv = 0.3, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) high — walk every entry point.
+audio_phrase = "Re:300,Ma:350,Dha:300,Re:300,Ma:350"
+lyrics = """हर द्वार की जाँच करो, हर मार्ग को देखो
+Har dvār kī jāṃc karo, har mārg ko dekho
+Inspect every gate, survey every path"""
+
+[[states]]
+name        = "Rekha_Draw"
+description = "Draw the absolute lines. Max payload size, max concurrent connections, max retry attempts, forbidden operations, forbidden IP ranges, forbidden input patterns. Define them explicitly in code — not in documentation, not in comments, not in wiki pages. Code-level enforcement. The Lakshman Rekha was not a suggestion written on a sign; it was a line of divine fire."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.5, kln = 0.4, ngj = 0.3, mtv = 0.4, lkq = 0.9, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) peaks — the Lakshman Rekha is not a suggestion.
+audio_phrase = "Sa:400,Re:300,Ma:500,Dha:400,Ni:500"
+lyrics = """रेखा खींचो अग्नि की, जो कोई लाँघ न पाये
+Rekhā khīṃco agni kī, jo koī lāṃgh na pāye
+Draw the line of fire — let none cross it"""
+
+[[states]]
+name        = "Rekha_Enforce"
+description = "Test each Rekha. Try to cross it. Send a payload beyond the max. Attempt auth bypass. Exceed rate limits. For each boundary: does the system reject the violation? Is the rejection logged? Is an alert raised? Is the error message safe (no stack traces, no internal details)? This state self-loops — each violation found is tested, logged, and verified before the next."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.6, stb = 0.7, kln = 0.3, ngj = 0.4, mtv = 0.4, lkq = 1.0, bdr = 0.2 }
+# Q rationale: Lakshmana (precision) at PEAK — test each Rekha, try to cross it.
+# Zero tolerance. Every violation logged.
+audio_phrase = "Ma:300,Ma:300,Dha:400,Ni:300,Sa:500"
+lyrics = """रेखा लाँघे जो कोई, दण्ड अवश्य मिले
+Rekhā lāṃghe jo koī, daṇḍ avaśy mile
+Whoever crosses the line — punishment is certain"""
+
+[[states]]
+name        = "Night_Watch"
+description = "Monitoring completeness assessment. Are all critical paths monitored? Can failure be detected before users report it? Are there dead alerts — configured but never firing, possibly broken? Alert fatigue assessment: what is the signal-to-noise ratio? If everything alerts, nothing alerts. Lakshman watched through the darkest hours — the monitoring must cover the darkest failure modes."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.7, stb = 0.4, kln = 0.5, ngj = 0.3, mtv = 0.3, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Jambavati (endurance) peaks — the darkest hours, the longest watch.
+audio_phrase = "Ni:500,Dha:400,Ma:400,Re:350,Sa:400"
+lyrics = """अँधेरी रात में भी जागे, प्रहरी कभी न सोये
+Aṃdherī rāt meṃ bhī jāge, praharī kabhī na soye
+Even in darkest night he wakes — the sentinel never sleeps"""
+
+# The Night_Watch self-loop represents iterative discovery of
+# monitoring gaps — each gap found triggers re-assessment of
+# the monitoring layer until coverage is complete.
+
+[[states]]
+name        = "Watcher_Watch"
+description = "Who watches the watchers? Quis custodiet ipsos custodes? If the monitoring system itself goes down, does anyone notice? If the alert pipeline fails, is there a secondary channel? Meta-monitoring: health checks on health checks, alerts on alert failures, dashboards that show dashboard uptime. The sentinel who watches the sentinels."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.6, stb = 0.4, kln = 0.4, ngj = 0.5, mtv = 0.4, lkq = 0.9, bdr = 0.3 }
+# Q rationale: Lakshmana near peak — who watches the watchers?
+# Nagnajiti — meta-monitoring is the impossible recursion.
+audio_phrase = "Re:350,Ma:400,Dha:350,Ni:400,Sa:500"
+lyrics = """प्रहरी का प्रहरी कौन? — स्वयं लक्ष्मण प्रश्न करें
+Praharī kā praharī kaun? — svayaṃ Lakṣmaṇ praśn kareṃ
+Who guards the guard? — Lakshman himself asks"""
+
+[[states]]
+name        = "Incident_Drill"
+description = "Simulate an intrusion or failure. Inject a fault. Kill a service. Spoof a request. Measure: detection time — how fast was the anomaly noticed? Response time — how fast did someone act? Escalation path — did it reach the right person? Is there a runbook? Is the runbook current? Has anyone actually read it? Chaos engineering as devotion."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.6, stb = 0.6, kln = 0.3, ngj = 0.5, mtv = 0.5, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) — measure detection time, response time.
+# Chaos engineering as devotion.
+audio_phrase = "Ma:300,Dha:300,Ni:300,Sa:400,Ni:300,Dha:400"
+lyrics = """युद्ध से पहले अभ्यास करो, शत्रु आये तो तैयार रहो
+Yuddh se pahle abhyās karo, śatru āye to taiyār raho
+Practice before war — be ready when the enemy arrives"""
+
+[[states]]
+name        = "Guard_Succession"
+description = "If the primary sentinel fails, who takes over? Redundancy in monitoring — not just redundancy in services. If the on-call engineer is unreachable, is there a secondary? If the primary alerting channel (Slack/PagerDuty) is down, is there SMS? Email? A phone call? Handoff procedures must be tested, not just documented. Lakshman served 14 years without relief — but mortal systems need succession plans."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.4, kln = 0.5, ngj = 0.3, mtv = 0.4, lkq = 0.7, bdr = 0.5 }
+# Q rationale: Bhadra (belonging) rises — if one sentinel falls, another stands.
+audio_phrase = "Sa:400,Re:300,Ga:400,Ma:350,Pa:400"
+lyrics = """एक प्रहरी गिरे तो दूजा खड़ा रहे
+Ek praharī gire to dūjā khaḍā rahe
+If one sentinel falls, another stands ready"""
+
+[[states]]
+name        = "Sentinel_Verdict"
+description = "Is this system truly guarded? Or does it sleep when nobody is looking? Final assessment: coverage percentage, boundary enforcement status, meta-monitoring health, incident readiness, succession plan completeness. The verdict is binary at its core — guarded or unguarded. There is no 'partially guarded' in Lakshman's world. Jai Shri Ram, Jai Lakshman."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.4, jmb = 0.6, stb = 0.5, kln = 0.5, ngj = 0.4, mtv = 0.5, lkq = 0.9, bdr = 0.4 }
+# Q rationale: Lakshmana (precision) near peak — guarded or unguarded?
+# No 'partially guarded.' Jai Shri Ram, Jai Lakshman.
+audio_phrase = "Sa:500,Ma:400,Pa:500,Sa:800"
+lyrics = """जय श्री राम, जय लक्ष्मण — रक्षा पूर्ण हुई
+Jai Śrī Rām, Jai Lakṣmaṇ — rakṣā pūrṇ huī
+Jai Shri Ram, Jai Lakshman — the protection is complete"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Vigil → Perimeter_Scan: the watch begins, audit the perimeter
+[[transitions]]
+from   = "Vigil"
+to     = "Perimeter_Scan"
+event  = "watch_begins"
+guard  = "monitoring_audit_requested AND inventory_initialized"
+action = "enumerate_entry_points; load_existing_monitors; log_watch_start"
+drishti = ["present", "down", "left", "right"]
+# present: what monitors exist? down: what coverage? left/right: what entry points?
+
+# Perimeter_Scan → Rekha_Draw: perimeter mapped, boundaries need definition
+[[transitions]]
+from   = "Perimeter_Scan"
+to     = "Rekha_Draw"
+event  = "perimeter_mapped"
+guard  = "boundaries_need_definition AND all_entry_points_catalogued"
+action = "compile_unguarded_gates; generate_boundary_proposals; log_perimeter_report"
+drishti = ["present", "down"]
+# present: perimeter mapped? down: which boundaries need definition?
+
+# Perimeter_Scan → Rekha_Enforce: perimeter mapped, boundaries already defined
+# Skip Rekha_Draw if boundaries already exist — go straight to enforcement testing
+[[transitions]]
+from   = "Perimeter_Scan"
+to     = "Rekha_Enforce"
+event  = "perimeter_mapped"
+guard  = "boundaries_already_defined AND all_entry_points_catalogued"
+action = "load_existing_boundaries; prepare_enforcement_tests; log_skip_to_enforce"
+drishti = ["present", "future"]
+# present: boundaries already exist? future: go straight to enforcement.
+
+# Rekha_Draw → Rekha_Enforce: boundaries defined, begin enforcement testing
+[[transitions]]
+from   = "Rekha_Draw"
+to     = "Rekha_Enforce"
+event  = "boundaries_defined"
+guard  = "begin_enforcement_test AND all_rekhas_codified"
+action = "generate_violation_test_suite; initialize_breach_log; log_rekha_complete"
+drishti = ["present", "down"]
+# present: are all rekhas codified? down: begin violation testing.
+
+# Rekha_Enforce → Rekha_Enforce: violation detected, test next boundary
+# Self-loop: each boundary violation found triggers re-entry to test
+# the next boundary. The loop continues until all Rekhas are verified.
+# This is the core enforcement cycle — find, log, alert, repeat.
+[[transitions]]
+from   = "Rekha_Enforce"
+to     = "Rekha_Enforce"
+event  = "rekha_crossed"
+guard  = "violation_detected AND more_boundaries_to_test"
+action = "log_violation; raise_breach_alert; record_enforcement_result; advance_to_next_rekha"
+drishti = ["present", "down"]
+# present: violation detected? down: test next boundary. Self-loop.
+
+# Rekha_Enforce → Night_Watch: all boundaries verified, assess monitoring
+[[transitions]]
+from   = "Rekha_Enforce"
+to     = "Night_Watch"
+event  = "enforcement_verified"
+guard  = "all_boundaries_tested AND breach_log_complete"
+action = "compile_enforcement_report; transition_to_monitoring_audit; log_enforcement_summary"
+drishti = ["present", "up"]
+# present: all boundaries tested? up: assess monitoring completeness.
+
+# Night_Watch → Watcher_Watch: monitoring assessed, check meta-monitoring
+[[transitions]]
+from   = "Night_Watch"
+to     = "Watcher_Watch"
+event  = "monitoring_assessed"
+guard  = "coverage_report_complete AND alert_health_checked"
+action = "compile_monitoring_gaps; assess_alert_fatigue; log_monitoring_report"
+drishti = ["present", "up"]
+# present: monitoring assessed? up: check meta-monitoring.
+
+# Night_Watch → Night_Watch: monitoring gap found, re-assess
+# Self-loop: each gap found in monitoring triggers re-evaluation
+# of the monitoring layer. The darkest night reveals the darkest gaps.
+[[transitions]]
+from   = "Night_Watch"
+to     = "Night_Watch"
+event  = "monitoring_gap_found"
+guard  = "gap_requires_reassessment AND coverage_incomplete"
+action = "log_monitoring_gap; expand_scan_scope; re_evaluate_coverage"
+drishti = ["present", "down"]
+# present: monitoring gap found? down: reassess. Self-loop.
+
+# Watcher_Watch → Incident_Drill: meta-monitoring checked, begin drills
+[[transitions]]
+from   = "Watcher_Watch"
+to     = "Incident_Drill"
+event  = "meta_monitoring_checked"
+guard  = "watcher_health_verified OR watcher_gaps_logged"
+action = "prepare_drill_scenarios; select_failure_mode; log_meta_monitoring_report"
+drishti = ["present", "future"]
+# present: meta-monitoring checked? future: simulate an intrusion.
+
+# Incident_Drill → Guard_Succession: drill complete, verify succession
+[[transitions]]
+from   = "Incident_Drill"
+to     = "Guard_Succession"
+event  = "drill_complete"
+guard  = "detection_time_measured AND response_time_measured AND escalation_path_verified"
+action = "compile_drill_results; score_readiness; log_drill_report"
+drishti = ["present", "future"]
+# present: drill complete? future: if sentinel fails, who takes over?
+
+# Incident_Drill → Rekha_Enforce: drill reveals boundary breach
+# Loop back: if the drill simulation exposes a boundary that can be
+# crossed, we must return to enforcement. The drill is not just
+# exercise — it is real testing. Failures here are real failures.
+[[transitions]]
+from   = "Incident_Drill"
+to     = "Rekha_Enforce"
+event  = "drill_reveals_rekha_breach"
+guard  = "boundary_violation_in_drill AND rekha_needs_reinforcement"
+action = "log_drill_breach; mark_rekha_for_reinforcement; reset_enforcement_for_breach"
+drishti = ["present", "down"]
+# present: drill reveals boundary breach? down: reinforce the rekha.
+
+# Guard_Succession → Sentinel_Verdict: succession verified, render verdict
+[[transitions]]
+from   = "Guard_Succession"
+to     = "Sentinel_Verdict"
+event  = "succession_verified"
+guard  = "backup_sentinel_confirmed AND handoff_procedure_tested"
+action = "compile_succession_report; calculate_final_score; log_succession_complete"
+drishti = ["present", "up", "silence"]
+# present: succession verified? up: final score. silence: verdict rendered.
+
+# Sentinel_Verdict → Vigil: new watch cycle begins
+# The watch never truly ends. Lakshman did not sleep for 14 years.
+# When one cycle completes, another begins. Eternal vigilance.
+[[transitions]]
+from   = "Sentinel_Verdict"
+to     = "Vigil"
+event  = "new_watch_cycle"
+guard  = "verdict_delivered AND cycle_logged"
+action = "archive_previous_cycle; reset_watch_counters; log_new_cycle_start"
+drishti = ["present", "future"]
+# present: verdict delivered? future: new watch cycle. Eternal vigilance.
+
+# ── Design Notes ─────────────────────────────────────────────
+#
+# This FSM is cyclic by design. Sentinel_Verdict → Vigil means
+# the watch never ends. A system is not "secured once" — it is
+# continuously guarded.
+#
+# The two self-loops (Rekha_Enforce → Rekha_Enforce and
+# Night_Watch → Night_Watch) are critical: they represent
+# iterative discovery. You don't find all violations in one pass.
+# You don't find all monitoring gaps in one scan. Each discovery
+# may reveal the next.
+#
+# The Incident_Drill → Rekha_Enforce loop-back is the most
+# important transition: it means that simulation is not theater.
+# If a drill reveals a real boundary violation, the system goes
+# back to enforcement, not forward to succession. Reality
+# overrides ceremony.
+#
+# Raga Marwa notes:
+#   - Komal Re (flat second) creates tension against Sa
+#   - Tivra Ma (sharp fourth) adds urgency
+#   - Pa is absent — there is no rest, no resolution to the fifth
+#   - This raga is traditionally played at dusk — the time when
+#     the watch becomes most critical
+#   - The audio_phrase values use Re, Ma, Dha, Ni prominently
+#     to reflect Marwa's characteristic phrases

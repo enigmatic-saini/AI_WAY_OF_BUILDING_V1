@@ -1,0 +1,214 @@
+# M_build — The Build Machine
+# The top-level FSM of the kit. Seven states, ten transitions.
+# See M_BUILD.md for prose; LINEAGE.md for the conceptual ancestry; this file is the formal 9-tuple.
+
+[meta]
+name    = "M_build"
+domain  = "ai-software-building"
+version = "1.0"
+lineage = "ArdhNarishwar dual-axis lifecycle (see LINEAGE.md)"
+
+# ──────────────────────────────────────────────────────────────────
+# §1 — STATES
+# ──────────────────────────────────────────────────────────────────
+
+[[states]]
+id        = "seed"
+index     = 0
+guardian  = "brahma"
+purpose   = "Charter, intent, audience. The womb of the project."
+drishti_entry = ["present", "silence"]
+q_min     = { mtv = 0.5 }
+
+[[states]]
+id        = "discovery"
+index     = 1
+guardian  = "saraswati"
+purpose   = "Learn the existing code / requirements. Receive."
+drishti_entry = ["present", "left", "right", "down"]
+q_min     = { craft = 0.3, bdr = 0.5 }
+
+[[states]]
+id        = "forge"
+index     = 2
+guardian  = "gorakhnath"
+purpose   = "Spike, prototype, prove the skill via TDD."
+drishti_entry = ["present", "future", "down", "right"]
+q_min     = { ngj = 0.6, lkq = 0.5 }
+
+[[states]]
+id        = "build"
+index     = 3
+guardian  = "krishna"
+purpose   = "Active feature work — max complexity, max drishti."
+drishti_entry = ["present", "past", "future", "left", "right", "up", "down"]
+q_min     = { craft = 0.6, endurance = 0.6, patience = 0.6, ngj = 0.6, lkq = 0.6, bdr = 0.6 }
+
+[[states]]
+id        = "service"
+index     = 4
+guardian  = "ram_sita"
+purpose   = "Refactor, mentor, on-call, maintain in production."
+drishti_entry = ["present", "past", "future", "up", "silence"]
+q_min     = { kln = 0.8, mtv = 0.8 }
+
+[[states]]
+id        = "sunset"
+index     = 5
+guardian  = "shiva"
+purpose   = "Deprecate, reduce surface, prepare to retire."
+drishti_entry = ["present", "silence", "up"]
+q_min     = { kln = 0.9 }
+q_max     = { stb = 0.3 }
+
+[[states]]
+id        = "decommission"
+index     = 6
+guardian  = "mahakaal"
+purpose   = "Archive, final tag, time stops."
+drishti_entry = ["silence"]
+terminal  = true
+
+# ──────────────────────────────────────────────────────────────────
+# §2 — EVENTS (Σ)
+# ──────────────────────────────────────────────────────────────────
+
+events = [
+  "charter_signed",
+  "context_understood",
+  "skill_proven",
+  "feature_shipped",
+  "next_feature",
+  "deprecated",
+  "archived",
+  "incident",
+  "violation",
+]
+
+# ──────────────────────────────────────────────────────────────────
+# §3 — TRANSITIONS (δ, γ, α, D)
+# ──────────────────────────────────────────────────────────────────
+
+[[transitions]]
+id      = "T0"
+from    = "seed"
+to      = "discovery"
+event   = "charter_signed"
+guard   = ["CHARTER.md exists", "audience_named", "mtv >= 0.5"]
+drishti = ["present", "silence"]
+action  = ["init_repo", "open_TODO"]
+
+[[transitions]]
+id      = "T1"
+from    = "discovery"
+to      = "forge"
+event   = "context_understood"
+guard   = ["dependency_map_complete", "gap_list != empty", "ngj >= 0.4"]
+drishti = ["present", "left", "right", "down"]
+action  = ["pick_first_spike", "open_feature_branch"]
+
+[[transitions]]
+id      = "T2"
+from    = "forge"
+to      = "build"
+event   = "skill_proven"
+guard   = ["/pre-commit-8l PASS", "ngj >= 0.6", "lkq >= 0.5"]
+drishti = ["present", "future", "down", "right"]
+action  = ["merge_spike_to_feature_branch"]
+
+[[transitions]]
+id      = "T3"
+from    = "build"
+to      = "service"
+event   = "feature_shipped"
+guard   = ["release_tag_created", "production_uptime >= 7days", "dwaraka_6_of_8"]
+drishti = ["left", "right", "up", "down", "past", "future", "present"]
+action  = ["move_to_rotation", "write_RUNBOOK"]
+
+[[transitions]]
+id      = "T_loop"
+from    = "build"
+to      = "build"
+event   = "next_feature"
+guard   = ["prior_MR_merged", "HANDOVER.md updated"]
+drishti = ["left", "right", "up", "down", "past", "future", "present"]
+action  = ["pick_next_ticket"]
+
+[[transitions]]
+id      = "T4"
+from    = "service"
+to      = "sunset"
+event   = "deprecated"
+guard   = ["usage_drop > 0.9 OR replacement_live", "mtv >= 0.7"]
+drishti = ["present", "silence", "up"]
+action  = ["publish_deprecation", "name_removal_date"]
+
+[[transitions]]
+id      = "T5"
+from    = "sunset"
+to      = "decommission"
+event   = "archived"
+guard   = ["final_tag_created", "no_live_deps"]
+drishti = ["silence"]
+action  = ["git_archive", "lock_repo"]
+
+[[transitions]]
+id      = "T_prarabdha"
+from    = "any"
+to      = "decommission"
+event   = "incident OR violation"
+guard   = ["hook_fires"]
+drishti = ["silence"]
+action  = ["kill", "page_oncall", "invoke_/incident"]
+note    = "MahaKaal's universal edge. Implemented by the 5 hooks. No LLM in the loop."
+
+# ──────────────────────────────────────────────────────────────────
+# §4 — CAPABILITY (Q) — dual axis per shastra 189 §1
+# ──────────────────────────────────────────────────────────────────
+
+# Q is the (Q_shiva, Q_shakti) dual vector per state.
+# Axes (per VOCABULARY.md):
+#   craft (rkm), endurance (jmb), standard (stb), patience (kln),
+#   constraint/ngj, authenticity (mtv), precision (lkq), fit (bdr)
+
+[capabilities.seed]
+q_shiva  = { craft = 0.10, endurance = 0.00, stb = 0.00, patience = 0.90, ngj = 0.00, mtv = 0.50, lkq = 0.00, bdr = 1.00 }
+q_shakti = { craft = 0.10, endurance = 0.80, stb = 0.00, patience = 0.00, ngj = 0.00, mtv = 0.50, lkq = 1.00, bdr = 1.00 }
+
+[capabilities.discovery]
+q_shiva  = { craft = 0.30, endurance = 0.30, stb = 0.20, patience = 0.20, ngj = 0.10, mtv = 0.30, lkq = 0.20, bdr = 0.90 }
+q_shakti = { craft = 0.30, endurance = 0.50, stb = 0.30, patience = 0.10, ngj = 0.20, mtv = 0.20, lkq = 0.30, bdr = 0.90 }
+
+[capabilities.forge]
+q_shiva  = { craft = 0.40, endurance = 0.70, stb = 0.60, patience = 0.40, ngj = 0.60, mtv = 0.50, lkq = 0.50, bdr = 0.50 }
+q_shakti = { craft = 0.50, endurance = 0.80, stb = 0.70, patience = 0.30, ngj = 0.60, mtv = 0.60, lkq = 0.50, bdr = 0.40 }
+
+[capabilities.build]
+q_shiva  = { craft = 0.70, endurance = 0.80, stb = 0.60, patience = 0.70, ngj = 0.80, mtv = 0.60, lkq = 0.80, bdr = 0.70 }
+q_shakti = { craft = 0.80, endurance = 0.70, stb = 0.50, patience = 0.60, ngj = 0.70, mtv = 0.50, lkq = 0.70, bdr = 0.80 }
+
+[capabilities.service]
+q_shiva  = { craft = 0.80, endurance = 0.60, stb = 0.40, patience = 0.90, ngj = 0.70, mtv = 0.80, lkq = 0.70, bdr = 0.60 }
+q_shakti = { craft = 0.70, endurance = 0.40, stb = 0.30, patience = 0.80, ngj = 0.50, mtv = 0.80, lkq = 0.60, bdr = 0.70 }
+
+[capabilities.sunset]
+q_shiva  = { craft = 0.90, endurance = 0.50, stb = 0.20, patience = 1.00, ngj = 0.50, mtv = 0.90, lkq = 0.50, bdr = 0.50 }
+q_shakti = { craft = 0.90, endurance = 0.30, stb = 0.10, patience = 0.90, ngj = 0.30, mtv = 0.90, lkq = 0.30, bdr = 0.80 }
+
+[capabilities.decommission]
+q_shiva  = { craft = 1.00, endurance = 1.00, stb = 0.00, patience = 1.00, ngj = 1.00, mtv = 1.00, lkq = 1.00, bdr = 1.00 }
+q_shakti = { craft = 1.00, endurance = 1.00, stb = 0.00, patience = 1.00, ngj = 1.00, mtv = 1.00, lkq = 1.00, bdr = 1.00 }
+# stb = 0 at terminal because there is no self left to be proud of.
+# All other axes = 1 (Dwaraka condition met). Mirrors shastra 190 §6.4.
+
+# ──────────────────────────────────────────────────────────────────
+# §5 — INVARIANTS (the Kabir Gate)
+# ──────────────────────────────────────────────────────────────────
+
+[invariants]
+"every_transition_has_guard"   = true
+"every_transition_has_drishti" = true
+"terminal_unreachable_without_T_prarabdha_or_canonical_path" = true
+"T_prarabdha_from_every_nonterminal_state" = true
+"every_hook_is_a_runtime_instance"  = true   # KABIR_GATE.md verifies this
+"every_role_attaches_to_transitions" = true  # not a free-floating persona

@@ -1,0 +1,266 @@
+# RavidasFsm — Devotion as Equality: The Cobbler Saint
+# v1.0
+#
+# मन चंगा तो कठौती में गंगा
+# Man caṅgā to kaṭhautī meṁ Gaṅgā
+# (If the heart is pure, the Ganga flows in your washbasin)
+#
+# Guru Ravidas (c. 1450-1520) — the cobbler-saint of Varanasi.
+# Born into the Chamar (untouchable) community. Made shoes.
+# Touched leather. Was considered "polluted" by every temple,
+# every Brahmin, every king. And yet his devotion was so pure
+# that Meera Bai called him Guru. A princess bowed to a cobbler.
+#
+# His revolution:
+#   - Proved that caste is a lie — God lives in the cobbler's hut
+#   - Coined "Begumpura" — the city without sorrow, the first
+#     Indian utopia, a classless society imagined 500 years ago
+#   - His verses are in the Guru Granth Sahib — a cobbler's words
+#     in the holiest Sikh scripture
+#   - Meera, a Rajput princess, took diksha from him — the ultimate
+#     proof that devotion destroys hierarchy
+#
+# In engineering and creative work he is:
+#   - The self-taught developer whose code outshines the CS graduates
+#   - The intern's idea that saves the project
+#   - The accessibility feature that becomes the killer feature
+#   - The song by an unknown that outperforms the industry veteran
+#   - The open-source contributor from a country nobody expects
+#   - The proof that ORIGIN IS IRRELEVANT — only truth matters
+#
+# In Rishi's creative engine:
+#   Ravidas generates JUSTICE ANTHEMS and EQUALITY SONGS.
+#   Songs about dignity. Songs about the invisible people.
+#   Songs about Begumpura — the city that should exist.
+#   When the user needs to sing about injustice, about being
+#   dismissed, about rising from nothing — Ravidas is the voice.
+#
+# CRITICAL DISTINCTION:
+#   Kabir MOCKS hierarchy — "Is God deaf?"
+#   Mira IGNORES hierarchy — she sings regardless.
+#   Prahlad ENDURES hierarchy — he outlasts persecution.
+#   Ravidas TRANSFORMS hierarchy — he makes the cobbler holy.
+#   His revolution is not rejection — it is proof by existence.
+#
+# Cross-coupling:
+#   - KabirFsm: fellow Bhakti rebel. Kabir was a weaver, Ravidas
+#     a cobbler. Both from "low" castes, both destroyed caste through
+#     devotion. Kabir mocks; Ravidas dignifies. Together: complete.
+#   - MiraFsm: Meera was Ravidas's disciple. The princess bowing
+#     to the cobbler IS the revolution. When Mira's rebellion needs
+#     a guru's grounding, Ravidas provides.
+#   - MeeraFsm: composition engine for justice-themed songs.
+#     Ravidas provides the emotional content; Meera provides
+#     the musical structure.
+#   - ChaitanyaFsm: both democratized devotion. Chaitanya through
+#     public kirtan, Ravidas through living example. Both proved
+#     that God doesn't check your ID at the door.
+#   - ThiruvalluvarFsm: both are non-Brahminical voices in the
+#     divine council. When the review feels too "insider,"
+#     Ravidas and Thiruvalluvar bring the outsider's truth.
+#
+# Raga: Gauri — the raga of dawn, of new beginnings, of light
+#   breaking through darkness. Ravidas's verses are the dawn
+#   for the forgotten. His Gauri is not the golden goddess
+#   but the light that reaches the lowest lane.
+
+[meta]
+name        = "RavidasFsm"
+domain      = "bhakti-equality"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["justice", "endurance"]
+energy      = "anthemic"
+structure   = "verse-chorus"
+bpm_range   = [85, 115]
+weirdness   = 30
+influence   = 80
+vocal       = "male"
+evie_style  = "Indie Rock, Powerful Male Vocals, Building Drums, Hopeful, Anthem"
+metaphors   = [
+    "if the heart is pure, the Ganga flows in your washbasin",
+    "The cobbler's verse entered the scripture",
+    "Begumpura — the city without sorrow",
+    "Truth has no caste, no credential",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Chamaar_Ghat"
+description = "The Cobbler's Lane — Ravidas at his workshop, making shoes, touching leather, 'polluted' by birth. The world says he is unworthy. In creative work: the starting point of zero credentials. No degree. No connections. No platform. No audience. Just skill and truth. The lane where nobody looks. The GitHub with zero stars. The song uploaded to nobody. But the work is happening."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Re:500,Ga:600,Re:400,Sa:700"
+Q           = { rkm = 0.1, jmb = 0.3, stb = 0.2, kln = 0.3, ngj = 0.0, mtv = 0.2, lkq = 0.3, bdr = 0.1 }
+# Q rationale: Cobbler's lane — Jambavati (endurance) moderate: honest daily labor.
+# Lakshmana (precision): making shoes well requires craft. Bhadra low: the world excludes him.
+lyrics = """चमार घाट पर बैठा हूँ, जूते सीता हूँ — प्रभु भी यहीं हैं
+Camār ghāṭ par baiṭhā hūṁ, jūte sītā hūṁ — Prabhu bhī yahīṁ haiṁ
+I sit at the cobbler's ghat, I stitch shoes — God too is here"""
+
+[[states]]
+name        = "Kathauthi"
+description = "The Washbasin — 'Man changa to kathauthi mein Ganga.' If the heart is pure, the Ganga flows in your washbasin. The Brahmins go to the river to purify. Ravidas finds purity at home. In creative work: you don't need the right tools, the right studio, the right degree. If the craft is true, the kitchen table is a concert hall. The purity is in the work, not the workspace."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Ma:400,Pa:500,Ga:400,Re:400,Sa:600"
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.3, kln = 0.5, ngj = 0.1, mtv = 0.5, lkq = 0.3, bdr = 0.3 }
+# Q rationale: Washbasin — Kalindi (purity) moderate: purity found at home, not the river.
+# Mitravinda (authentic choice) moderate: choosing to find God in the washbasin. Jambavati: daily labor continues.
+lyrics = """कठौती में गंगा बहे — मन चंगा तो सब चंगा
+Kaṭhautī meṁ Gaṅgā bahe — man caṅgā to sab caṅgā
+The Ganga flows in the washbasin — if the heart is pure, all is pure"""
+
+[[states]]
+name        = "Begumpura"
+description = "The City Without Sorrow — Ravidas's utopian vision. A city with no pain, no tax, no hierarchy, no 'first' or 'second' citizen. Everyone equal. In creative work: the product that serves ALL users equally. The song that speaks for everyone who was never spoken for. The architecture with no privileged class, no admin backdoor, no 'enterprise-only' feature. Begumpura is the design spec for justice."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Re:400,Ga:500,Ma:400,Pa:500,Dha:400,Ni:500,Sa_high:600"
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.5, kln = 0.4, ngj = 0.5, mtv = 0.7, lkq = 0.4, bdr = 0.7 }
+# Q rationale: Begumpura — Bhadra (belonging) high: the vision of a city where ALL belong.
+# Mitravinda (authentic choice) high: designing equality by choice. Nagnajiti moderate:
+# a classless society IS the impossible spec.
+lyrics = """बेगमपुरा शहर को नाउँ — दुख अन्दोह नहीं तहि ठाउँ
+Begampurā śahar ko nāuṁ — dukh andoh nahīṁ tahi ṭhāuṁ
+The city is named Begumpura — there is no sorrow or grief there"""
+
+[[states]]
+name        = "Prabhu_Juke"
+description = "Bowing to God — but GOD BOWS BACK. In the legend, when Ravidas offered flowers at Jagannath temple and was turned away, the deity himself accepted the offering over the Brahmins' heads. In creative work: the moment the world recognizes what it rejected. The contribution accepted. The song that breaks through. The proof that quality cannot be gatekept forever. God doesn't check your caste. Neither does truth."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:500,Dha:500,Ni:600,Sa_high:700,Ni:500,Dha:500,Pa:600,Ma:500,Ga:600"
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.6, kln = 0.5, ngj = 0.4, mtv = 0.7, lkq = 0.5, bdr = 0.7 }
+# Q rationale: God bows back — Rukmini (strategic love) high: quality overcomes gatekeeping.
+# Satyabhama (pride) moderate: pride in work that cannot be denied. Bhadra high: God includes the excluded.
+lyrics = """प्रभु झुके जहाँ भक्त झुका — जाति पूछे न प्रभु, प्रेम पूछे
+Prabhu jhuke jahāṁ bhakt jhukā — jāti pūche na Prabhu, prem pūche
+God bows where the devotee bows — God asks not caste, but love"""
+
+[[states]]
+name        = "Amritbani"
+description = "The Immortal Word — Ravidas's verses enter the Guru Granth Sahib. A cobbler's words sit alongside Guru Nanak's. The ultimate proof: truth has no caste, no credential, no gatekeep. In creative work: the terminal state where the work speaks for itself. The function that everyone imports. The song that outlives the artist. The poem that enters the canon. Nobody asks what caste the poet was. They only ask: is it true?"
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:700,Pa:500,Ga:500,Sa:600,Re:500,Ga:500,Pa:600,Sa_high:800"
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.7, kln = 0.6, ngj = 0.5, mtv = 0.8, lkq = 0.6, bdr = 0.9 }
+# Q rationale: Terminal — Bhadra (belonging) near-peak: the cobbler's word in scripture = universal belonging.
+# Mitravinda high: authentic voice that entered the canon. All dims elevated by the journey from exclusion to immortality.
+lyrics = """अमृतबानी — चमार का शब्द ग्रन्थ में, सत्य की कोई जाति नहीं
+Amṛtbānī — camār kā śabd granth meṁ, satya kī koī jāti nahīṁ
+Immortal Word — the cobbler's verse in the scripture, truth has no caste"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Chamaar_Ghat"
+to     = "Kathauthi"
+event  = "purity_found_in_limitation"
+guard  = "honest_work_done AND heart_pure_despite_world"
+action = "discover_ganga_at_home; log_kathauthi"
+drishti = ["present", "down", "silence"]
+# present: is honest work done? down: what purity exists right here? silence: the Ganga flows silently.
+
+[[transitions]]
+from   = "Kathauthi"
+to     = "Begumpura"
+event  = "vision_of_justice_crystallizes"
+guard  = "personal_purity_becomes_social_vision"
+action = "design_the_city; imagine_equality; log_begumpura"
+drishti = ["present", "up", "future"]
+# present: has personal purity become social vision? up: what does the just city look like? future: who will it serve?
+
+[[transitions]]
+from   = "Kathauthi"
+to     = "Prabhu_Juke"
+event  = "world_recognizes_truth"
+guard  = "gatekeepers_overruled AND quality_undeniable"
+action = "receive_recognition; stay_humble; log_prabhu_juke"
+drishti = ["present", "up", "past"]
+# present: has quality prevailed? up: did truth overrule the gatekeepers? past: what was the journey?
+
+[[transitions]]
+from   = "Begumpura"
+to     = "Prabhu_Juke"
+event  = "vision_inspires_action"
+guard  = "utopia_touches_reality AND others_join"
+action = "the_vision_spreads; log_recognition"
+drishti = ["present", "future", "left", "right"]
+# present: does the vision inspire? future: who joins? left/right: where does equality spread?
+
+[[transitions]]
+from   = "Begumpura"
+to     = "Chamaar_Ghat"
+event  = "reality_check"
+guard  = "utopia_meets_resistance AND grounding_needed"
+action = "return_to_the_workshop; keep_making_shoes; log_grounding"
+drishti = ["present", "down"]
+# present: does the vision need grounding? down: return to the workshop.
+
+[[transitions]]
+from   = "Prabhu_Juke"
+to     = "Amritbani"
+event  = "words_become_immortal"
+guard  = "body_of_work_transcends_origin AND truth_enters_canon"
+action = "release_to_the_world; truth_speaks; log_amritbani"
+drishti = ["present", "up", "future"]
+# present: has the work transcended origin? up: does truth enter the canon? future: the verse is immortal.
+
+[[transitions]]
+from   = "Prabhu_Juke"
+to     = "Begumpura"
+event  = "recognition_fuels_vision"
+guard  = "acceptance_deepens_the_dream"
+action = "expand_begumpura; more_justice; log_vision_expansion"
+drishti = ["present", "future"]
+# present: does recognition fuel the dream? future: a bigger Begumpura.
+
+[[transitions]]
+from   = "Amritbani"
+to     = "Chamaar_Ghat"
+event  = "new_shoes_to_make"
+guard  = "immortality_doesnt_end_the_work"
+action = "return_to_the_lane; humble_beginning; log_new_cycle"
+drishti = ["present", "down", "silence"]
+# present: is there more work? down: the workshop waits. silence: immortality doesn't end the labor.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# RavidasFsm emits:
+#   begumpura_vision { design_for_equality, who_is_excluded, how_to_include }
+#     -> Consumed by ThiruvalluvarFsm (ethics review of inclusivity)
+#     -> Consumed by KrishnaFsm (strategic assessment of accessibility)
+#   gatekeep_broken { what_was_gatekept, how_truth_prevailed }
+#     -> Consumed by KabirFsm (hypocrisy evidence)
+#     -> Consumed by MiraFsm (rebellion fuel)
+#   amritbani { immortal_verse, origin_story, justice_content }
+#     -> Consumed by SaraswatiFsm (document in knowledge base)
+#     -> Consumed by NaradFsm (transmit)
+#
+# RavidasFsm reads from:
+#   - KabirFsm.state (fellow anti-hierarchy voice)
+#   - ThiruvalluvarFsm.state (ethics framework for justice songs)
+#   - MeeraFsm.state (composition engine for justice anthems)
+#   - ChaitanyaFsm.state (collective expression for equality songs)
+#
+# Ravidas's Law:
+#   "The Ganga does not ask who steps into her.
+#    The truth does not ask who speaks it.
+#    The song does not ask who sings it.
+#    If your system has a VIP lane, it is not Begumpura.
+#    If your review has a credentials check, it is not truth."
+#
+# Anti-patterns:
+#   - Victimhood without creation = Self-pity (Ravidas made shoes AND poetry)
+#   - Equality as anger = Revenge (Ravidas wanted justice, not punishment)
+#   - Meritocracy that ignores privilege = Naivete (Ravidas knew the system was rigged)
+#   - Tokenism = Exploitation (one Ravidas verse in the Granth isn't equality)
+#   - Revolution without craft = Noise (Ravidas's verses are BEAUTIFUL, not just righteous)

@@ -1,0 +1,158 @@
+# KushmandaFsm — Cosmic Energy & Creation (NavShakti 4)
+# v1.0
+#
+# कूष्माण्डा — She Who Created the Universe with Her Smile
+#
+# Kushmanda is the fourth form of Durga in the Navratri cycle.
+# She created the cosmic egg (Brahmanda) with nothing but her
+# radiant smile. Before her smile, there was only void — no
+# light, no form, no possibility. She IS generative force.
+#
+# In our system, she reviews creative expansion: new features,
+# new integrations, new possibilities. She asks not "can we?"
+# but "should we?" and "what unlocks the most value?"
+#
+# Unlike Brahma who creates from a seed of desire, Kushmanda
+# creates from pure possibility. Brahma needs a request;
+# Kushmanda scans the horizon unsolicited.
+#
+# Philosophy: Review creative expansion — what could this system
+# become? What adjacent features unlock the most value? Where
+# should creative effort focus for maximum impact?
+# ─────────────────────────────────────────────────────────────
+
+[meta]
+name        = "KushmandaFsm"
+domain      = "navshakti-creation"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Possibility_Scan"
+description = "What could this system become? Scan the horizon for adjacent features, unexplored domains, untapped integrations. This is not idle dreaming — it is disciplined imagination. Kushmanda's smile illuminates what the system does NOT yet see about itself."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.2, stb = 0.3, kln = 0.3, ngj = 0.5, mtv = 0.6, lkq = 0.3, bdr = 0.4 }
+# Q rationale: Rukmini (strategic love) — scanning with heart.
+# Nagnajiti (impossible) — what could this system become? Imagine beyond limits.
+audio_phrase = "Sa:300,Re:250,Ga:300,Ma:250,Pa:350,Dha:300,Ni:300,Sa_high:500"
+lyrics = """कूष्माण्डा मुस्कान से, ब्रह्माण्ड रचा
+Kūṣmāṇḍā muskān se, Brahmāṇḍ rachā
+With her smile, Kushmanda created the universe"""
+
+[[states]]
+name        = "Integration_Map"
+description = "What external systems, APIs, datasets, or protocols could amplify this system? Map the ecosystem beyond our walls. Identify force multipliers — things that are small to integrate but massive in impact. Not everything needs building from scratch; sometimes the universe already has what you need."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.3, kln = 0.4, ngj = 0.4, mtv = 0.5, lkq = 0.5, bdr = 0.5 }
+# Q rationale: Bhadra (belonging) — connecting with external ecosystem.
+# Lakshmana (precision) — identify force multipliers accurately.
+audio_phrase = "Ga:350,Ma:300,Pa:350,Dha:400,Ni:350,Sa_high:450"
+lyrics = """प्रकाश फैला दसों दिशा, जोड़ो जो बिछड़ा
+Prakāś phailā dason diśā, joḍo jo bichhaḍā
+Light spread in ten directions — connect what was separated"""
+
+[[states]]
+name        = "Energy_Allocation"
+description = "Where should creative effort focus for maximum impact? Prioritize ruthlessly. Not all possibilities deserve energy now. Kushmanda's light is infinite but the team's time is not. Rank by: value unlocked, effort required, dependencies blocked, and alignment with the mission. This is where cosmic vision meets mortal constraints."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.5, mtv = 0.7, lkq = 0.6, bdr = 0.4 }
+# Q rationale: Mitravinda (self-choice) — prioritize ruthlessly, choose with courage.
+# Rukmini (strategic love) — align energy with mission.
+audio_phrase = "Pa:400,Dha:350,Ni:400,Sa_high:350,Ni:300,Dha:350,Pa:400"
+lyrics = """शक्ति अनन्त, समय ससीम, चुनो जो सार है
+Śakti anant, samay sasīm, chuno jo sār hai
+Energy is infinite, time is finite — choose what is essential"""
+
+[[states]]
+name        = "Creation_Verdict"
+description = "The verdict: Build what matters most. Defer what can wait. Dream what inspires. Every possibility is classified into one of three buckets — build now, defer with a trigger condition, or archive as inspiration for a future season. Nothing is discarded; Kushmanda wastes no light."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.7, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.6, mtv = 0.7, lkq = 0.6, bdr = 0.5 }
+# Q rationale: Kushmanda wastes no light. Build, defer, or dream —
+# nothing discarded, everything classified with love and precision.
+audio_phrase = "Sa:400,Ga:400,Pa:400,Sa_high:500,Pa:400,Ga:300,Sa:600"
+lyrics = """रचना का फैसला, जय माँ शक्ति, सृजन अमर रहे
+Rachnā kā faislā, Jai Māṁ Śakti, sṛjan amar rahe
+The creation verdict is declared — Jai Maa Shakti, may creation be eternal"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Possibility_Scan → Integration_Map: possibilities identified, check external amplifiers
+[[transitions]]
+from   = "Possibility_Scan"
+to     = "Integration_Map"
+event  = "possibilities_enumerated"
+guard  = "at_least_one_possibility_identified"
+action = "rank_possibilities_by_potential; catalog_adjacent_features; log_scan_complete"
+drishti = ["present", "left", "right", "future"]
+# present: what possibilities exist? left/right: what external amplifiers? future: what could this become?
+
+# Integration_Map → Energy_Allocation: external landscape mapped
+[[transitions]]
+from   = "Integration_Map"
+to     = "Energy_Allocation"
+event  = "integration_landscape_mapped"
+guard  = "integration_assessment_complete"
+action = "merge_internal_and_external_possibilities; compute_force_multipliers; log_map_complete"
+drishti = ["present", "up"]
+# present: is landscape mapped? up: what priorities emerge?
+
+# Integration_Map → Energy_Allocation: no external integrations needed (shortcut)
+[[transitions]]
+from   = "Integration_Map"
+to     = "Energy_Allocation"
+event  = "no_integrations_needed"
+guard  = "all_possibilities_are_internal"
+action = "mark_self_sufficient; log_no_external_deps; skip_integration_scoring"
+drishti = ["present", "silence"]
+# present: no integrations needed? silence: self-sufficient path.
+
+# Energy_Allocation → Creation_Verdict: priorities set
+[[transitions]]
+from   = "Energy_Allocation"
+to     = "Creation_Verdict"
+event  = "priorities_locked"
+guard  = "top_priorities_selected AND effort_estimates_present"
+action = "compose_creation_plan; classify_build_defer_dream; log_allocation_complete"
+drishti = ["present", "up", "future"]
+# present: are priorities locked? up: aligned with mission? future: what will this unlock?
+
+# Energy_Allocation → Possibility_Scan: new possibility discovered during prioritization
+[[transitions]]
+from   = "Energy_Allocation"
+to     = "Possibility_Scan"
+event  = "new_possibility_discovered"
+guard  = "high_value_possibility_emerged_during_analysis"
+action = "inject_new_possibility; reset_scan_with_new_context; log_rescan_triggered"
+drishti = ["present", "down"]
+# present: new possibility discovered? down: re-scan with new context.
+
+# ── Cross-coupling signals ───────────────────────────────────
+# Creation_Verdict emits: creation_plan_ready { build: [...], defer: [...], dream: [...] }
+#   → Consumed by ShaktiFsm: triggers need_detected if build list is non-empty
+#   → Consumed by BrahmaFsm: seeds Contemplation with build items
+#   → Consumed by KhatuShyamFsm: updates cycle_domain_map NS4 status
+#
+# Possibility_Scan reads from:
+#   - ShaktiFsm.state (is there energy available for creation?)
+#   - KhatuShyamFsm.cycle_domain_map (what cycles are active/pending?)
+#   - BrahmaFsm.creation_count (what was recently created?)
+#
+# Energy_Allocation signals:
+#   → SkandamataFsm (NS5): new features flagged as "fragile newborns" needing nurture
+#   → KatyayaniFsm (NS6): deferred items checked for cowardice vs. legitimate deferral
+#
+# KushmandaFsm is NavShakti 4 (NS4) in the KhatuShyamFsm cycle_domain_map.
+# She is the complement of KatyayaniFsm (NS6): Kushmanda creates possibility,
+# Katyayani destroys what blocks it. Together they are the creative-destructive
+# pair within NavShakti.

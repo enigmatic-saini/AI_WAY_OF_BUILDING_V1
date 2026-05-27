@@ -1,0 +1,186 @@
+[meta]
+name    = "AshtaRasaFsm"
+domain  = "work-culture-quality"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# AshtaRasaFsm — The Eight Queens Quality Accumulator
+#
+# The 8 queens of Krishna Ji are not governance roles —
+# they are 8 rasas (flavours) every piece of work must carry.
+# All 8 must be TASTED (not checked) before MahaKaalFsm
+# transitions from AshtaRasa → NoMind.
+#
+# This is a PARALLEL accumulator — all 8 rasas are tracked
+# independently. Each can be Absent, Tasted, or Deep.
+# Radha Ji is the meta-rasa: Bhakti (Rukmini) must be DEEP,
+# not merely Tasted, before the composite guard passes.
+#
+# Osho Ji: "A life without all rasas is not a life —
+# it is a corpse pretending to breathe."
+#
+# Shastra: 188_mahakaal_ardhnarishwar_fsm
+# ─────────────────────────────────────────────────────────────
+
+# ── States (composite — 8 parallel rasa tracks) ─────────────
+
+# Each rasa has three levels: Absent → Tasted → Deep
+# The FSM's overall state is the MINIMUM across all 8 rasas.
+
+[[states]]
+name        = "Incomplete"
+description = "One or more rasas are Absent. The work is bland — missing flavours. Cannot proceed to NoMind. Must taste what is missing."
+is_initial  = true
+is_terminal = false
+# Q: Prachi Shastra capability vector — 8 queens as quality dimensions.
+# rkm=Rukmini(strategic love), jmb=Jambavati(endurance), stb=Satyabhama(fierce pride),
+# kln=Kalindi(patient contemplation), ngj=Nagnajiti(impossible spec mastery),
+# mtv=Mitravinda(authentic choice), lkq=Lakshmana(surgical precision), bdr=Bhadra(natural belonging).
+# Incomplete: some rasas present, some absent — moderate partial presence across the board.
+Q = { rkm = 0.4, jmb = 0.3, stb = 0.3, kln = 0.4, ngj = 0.3, mtv = 0.5, lkq = 0.3, bdr = 0.4 }
+
+[[states]]
+name        = "All_Tasted"
+description = "All 8 rasas at least Tasted, but Bhakti (Rukmini) may not yet be Deep. Work has breadth but may lack devotional depth. Close to ready."
+is_initial  = false
+is_terminal = false
+# Q: All 8 rasas tasted — breadth achieved. Moderate-to-good across all dimensions.
+Q = { rkm = 0.6, jmb = 0.7, stb = 0.6, kln = 0.7, ngj = 0.6, mtv = 0.7, lkq = 0.6, bdr = 0.7 }
+
+[[states]]
+name        = "Radha_Blessed"
+description = "All 8 rasas Tasted AND Bhakti is Deep. Radha Ji has blessed the work. The composite guard for MahaKaal S1→S2 passes. Ready for NoMind."
+is_initial  = false
+is_terminal = false
+# Q: Peak quality gate — Bhakti (rkm) at 1.0, all others strong (0.7+). Radha's blessing.
+Q = { rkm = 1.0, jmb = 0.8, stb = 0.7, kln = 0.8, ngj = 0.7, mtv = 0.8, lkq = 0.8, bdr = 0.7 }
+
+[[states]]
+name        = "Rasa_Lost"
+description = "A previously Tasted rasa has faded — compromise made, feeling lost. Must re-taste before proceeding. Regression, not failure."
+is_initial  = false
+is_terminal = false
+# Q: Regression — capabilities dropping below Incomplete. The loss is felt across dimensions.
+Q = { rkm = 0.2, jmb = 0.2, stb = 0.1, kln = 0.2, ngj = 0.1, mtv = 0.2, lkq = 0.1, bdr = 0.2 }
+
+# ── Rasa Definitions (reference, not states) ─────────────────
+
+# Queen          Rasa                   Absent                Tasted                   Deep
+# ─────          ────                   ──────                ──────                   ────
+# Rukmini        Bhakti (Devotion)      No love for craft     Craft feels good         Serving the work itself
+# Satyabhama     Satya (Truth)          Hacks present         Code is honest           Zero compromises
+# Jambavati      Veerya (Courage)       Only safe choices     Attempting the hard      Mastering the scary
+# Kalindi        Pravaah (Flow)         Work is stuck         Work flows               River-like effortlessness
+# Mitravinda     Sangat (Companionship) Working alone          Collaborating            Team as one organism
+# Nagnajiti      Vijay (Mastery)        Fumbling              Competent                Domain conquered
+# Bhadra         Mangal (Auspicious)    Users harmed          Users helped             Users blessed
+# Lakshmana      Samriddhi (Abundance)  More consumed         Value created            Abundance overflows
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Incomplete → Incomplete: tasting a rasa but others still absent
+[[transitions]]
+from   = "Incomplete"
+to     = "Incomplete"
+event  = "rasa_experienced"
+guard  = "genuine_feeling AND some_rasas_still_absent"
+action = "record_taste; log_rasa_name_tasted"
+# drishti: Tasting a rasa — be present in the moment, look down to feel it genuinely.
+# Axiom 2.1: "present" always included.
+drishti = ["present", "down"]
+
+# Incomplete → All_Tasted: final absent rasa now tasted
+[[transitions]]
+from   = "Incomplete"
+to     = "All_Tasted"
+event  = "last_rasa_tasted"
+guard  = "all_eight_rasas_at_least_tasted"
+action = "record_taste; log_all_rasas_present"
+# drishti: Last rasa tasted — scan all 8 dimensions (left+right), feel it (down), stay present.
+# Axiom 2.1: "present" always included.
+drishti = ["present", "left", "right", "down"]
+
+# All_Tasted → Radha_Blessed: Bhakti deepens to Deep
+[[transitions]]
+from   = "All_Tasted"
+to     = "Radha_Blessed"
+event  = "bhakti_deepens"
+guard  = "bhakti_rasa_eq_Deep AND all_others_at_least_tasted"
+action = "radha_blesses; signal_mahakaal_ready_for_nomind"
+# drishti: Bhakti deepens — love elevates to devotion, gaze rises upward. Stay present.
+# Axiom 2.1: "present" always included.
+drishti = ["present", "up"]
+
+# Radha_Blessed → All_Tasted: Bhakti recedes from Deep to Tasted
+[[transitions]]
+from   = "Radha_Blessed"
+to     = "All_Tasted"
+event  = "bhakti_recedes"
+guard  = "bhakti_rasa_dropped_to_tasted"
+action = "radha_withdraws; log_bhakti_receded"
+# drishti: Bhakti recedes — look back (past) to understand the loss, look down to re-ground.
+# Axiom 2.1: "present" always included.
+drishti = ["present", "past", "down"]
+
+# All_Tasted → Rasa_Lost: a rasa fades back to Absent
+[[transitions]]
+from   = "All_Tasted"
+to     = "Rasa_Lost"
+event  = "rasa_lost"
+guard  = "any_rasa_dropped_to_absent"
+action = "flag_loss; log_which_rasa_lost"
+# drishti: Rasa lost — look to the past (what faded?), look down (why did it fade?). Stay present.
+# Axiom 2.1: "present" always included.
+drishti = ["present", "past", "down"]
+
+# Radha_Blessed → Rasa_Lost: a non-bhakti rasa fades
+[[transitions]]
+from   = "Radha_Blessed"
+to     = "Rasa_Lost"
+event  = "rasa_lost"
+guard  = "any_rasa_dropped_to_absent"
+action = "flag_loss; radha_withdraws; log_which_rasa_lost"
+# drishti: Rasa lost from blessed state — look to the past (what faded?), look down (why?). Stay present.
+# Axiom 2.1: "present" always included.
+drishti = ["present", "past", "down"]
+
+# Rasa_Lost → Incomplete: acknowledged, re-tasting begins
+[[transitions]]
+from   = "Rasa_Lost"
+to     = "Incomplete"
+event  = "acknowledge_loss"
+guard  = "always"
+action = "begin_retasting; log_regression_acknowledged"
+# drishti: Acknowledging loss and starting over — look to the past (learn from it), look down (humble restart). Stay present.
+# Axiom 2.1: "present" always included.
+drishti = ["present", "past", "down"]
+
+# ── Composite Guard (used by MahaKaalFsm) ───────────────────
+
+# MahaKaalFsm AshtaRasa → NoMind fires ONLY when:
+#   ashtarasa_state == Radha_Blessed
+#
+# Which means:
+#   bhakti >= Deep
+#   AND satya >= Tasted
+#   AND veerya >= Tasted
+#   AND pravaah >= Tasted
+#   AND sangat >= Tasted
+#   AND vijay >= Tasted
+#   AND mangal >= Tasted
+#   AND samriddhi >= Tasted
+
+# ── Cross-FSM Coupling ──────────────────────────────────────
+
+# MahaKaalFsm: AshtaRasa state is active only during MahaKaal S1.
+# Stale_Rasa in MahaKaal forces Tandava regardless of rasa state.
+
+# ArdhNarishwarFsm: All 8 rasas can only be fully tasted in Unified.
+# Divided → partial rasa (some flavours mechanically impossible):
+#   Leaning_Shiva:  Satya+Vijay present, Pravaah+Veerya absent
+#   Leaning_Shakti: Pravaah+Veerya present, Satya+Mangal absent
+
+# NaadFsm: Naad (Veena state) enhances rasa tasting.
+# Without Naad, rasas are harder to taste — the work is silent/dead.

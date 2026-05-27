@@ -1,0 +1,168 @@
+[meta]
+name    = "ShivaFsm"
+domain  = "trimurti-transformation"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# ShivaFsm — The Transformer / Destroyer
+#
+# Shiva is stillness by default. He does not seek to destroy.
+# Destruction happens only when Shakti (energy/need) awakens
+# him and the system genuinely requires transformation — not
+# repair (that's Vishnu), not creation (that's Brahma).
+#
+# Shiva dissolves what no longer serves: dead configs, deprecated
+# FSMs, stale connections, obsolete domains. He clears space
+# so Brahma can create anew.
+#
+# The Burning of Kama: Shiva's third eye (Shakti channeled as
+# fire) burns premature arrivals. This is protection, not malice.
+#
+# Tandava (cosmic dance) is not chaos — it is the precise,
+# rhythmic dissolution of form so that new form can emerge.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Still"
+description = "Deep meditation. Default state. Nothing moves unless it must. Shiva does not seek work — work must come to him through Shakti."
+is_initial  = true
+is_terminal = false
+# Q rationale: Pure stillness — Kalindi (patient contemplation) at peak: Shiva meditates.
+# Bhadra (belonging) high: at rest in his own nature. All action dims at zero: nothing moves.
+Q = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 1.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.8 }
+
+[[states]]
+name        = "Awakened"
+description = "Shakti has aroused Shiva. A genuine need for transformation (not repair) has been identified. Shiva opens his eyes."
+is_initial  = false
+is_terminal = false
+# Q rationale: Eyes open, assessing. Rukmini (strategic love) rising: understanding what must dissolve.
+# Lakshmana (precision) moderate: identifying dissolution targets. Mitravinda (authentic choice) high:
+# the awakening is genuine, not reactive. Kalindi drops: contemplation shifts to assessment.
+Q = { rkm = 0.5, jmb = 0.3, stb = 0.4, kln = 0.5, ngj = 0.4, mtv = 0.7, lkq = 0.5, bdr = 0.4 }
+
+[[states]]
+name        = "Dancing"
+description = "Tandava — the cosmic dance of dissolution. Active removal of dead configs, deprecated FSMs, stale connections, obsolete structures. Precise, not chaotic."
+is_initial  = false
+is_terminal = false
+# Q rationale: Tandava — precise dissolution. Lakshmana (precision) at peak: every target removed
+# exactly. Satyabhama (fierce pride) high: the dance is confident. Jambavati (endurance) high:
+# sustaining the dance through multiple targets. Kalindi low: action, not contemplation.
+Q = { rkm = 0.6, jmb = 0.8, stb = 0.9, kln = 0.2, ngj = 0.6, mtv = 0.7, lkq = 0.9, bdr = 0.3 }
+
+[[states]]
+name        = "Dissolving"
+description = "The old form is gone. Ashes remain. Space cleared. The system is simpler than before. Ready for Brahma's next creation."
+is_initial  = false
+is_terminal = false
+# Q rationale: Space cleared — completion. Jambavati (endurance) peak: survived the full dance.
+# Bhadra (belonging) rising: space is now available for new creation. Kalindi rising: returning
+# toward stillness. Most action dims moderate: the hard work is done.
+Q = { rkm = 0.5, jmb = 0.9, stb = 0.7, kln = 0.6, ngj = 0.5, mtv = 0.6, lkq = 0.7, bdr = 0.5 }
+
+[[states]]
+name        = "Burning"
+description = "Third eye open — Shakti channeled as protective fire. Premature arrivals, unauthorized changes, and violations of stillness are burned here."
+is_initial  = false
+is_terminal = false
+# Q rationale: Protective fire. Satyabhama (fierce pride) at peak: burning without hesitation.
+# Lakshmana (precision) high: the third eye targets exactly. Rukmini low: burning is not love,
+# it is protection. Kalindi zero: no patience for premature arrivals.
+Q = { rkm = 0.2, jmb = 0.5, stb = 1.0, kln = 0.0, ngj = 0.3, mtv = 0.5, lkq = 0.8, bdr = 0.1 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Still → Awakened: Shakti brings genuine need
+[[transitions]]
+from   = "Still"
+to     = "Awakened"
+event  = "shakti_aroused"
+guard  = "shakti_state_channeled AND transformation_needed_not_repair"
+action = "open_eyes; assess_what_must_dissolve; log_shiva_awakened"
+drishti = ["present", "down", "future"]
+# present: is transformation genuinely needed? down: what is dead that must dissolve? future: what space will this clearing create?
+
+# Still → Burning: premature arrival or violation while meditating
+[[transitions]]
+from   = "Still"
+to     = "Burning"
+event  = "premature_arrival"
+guard  = "vasanta_not_fertile AND unauthorized_change_attempted"
+action = "open_third_eye; burn_premature_intent; log_kama_burned"
+drishti = ["present", "up"]
+# present: is this a real violation? up: is the stillness being violated from above (unauthorized change)?
+
+# Burning → Still: violation handled, return to stillness
+[[transitions]]
+from   = "Burning"
+to     = "Still"
+event  = "burning_complete"
+guard  = ""
+action = "close_third_eye; preserve_learning_from_burn; log_return_to_stillness"
+drishti = ["present", "silence"]
+# present: is the burning complete? silence: return to non-action and stillness.
+
+# Awakened → Dancing: governance confirms dissolution warranted
+[[transitions]]
+from   = "Awakened"
+to     = "Dancing"
+event  = "begin_tandava"
+guard  = "sapta_rishi_three_confirm_dissolution AND shakti_state_channeled"
+action = "enumerate_targets_for_dissolution; begin_dissolution_sequence; log_tandava_begins"
+drishti = ["present", "down", "left", "right"]
+# present: is governance confirmed? down: enumerate what must dissolve. left/right: scan for all dissolution targets.
+
+# Awakened → Still: false alarm, nothing needs transformation
+[[transitions]]
+from   = "Awakened"
+to     = "Still"
+event  = "false_alarm"
+guard  = "assessment_shows_no_dissolution_needed"
+action = "close_eyes; log_false_alarm"
+drishti = ["present", "silence"]
+# present: confirmed nothing needs dissolving. silence: return to meditation.
+
+# Dancing → Dissolving: targets dissolved
+[[transitions]]
+from   = "Dancing"
+to     = "Dissolving"
+event  = "dissolution_complete"
+guard  = "all_targets_dissolved"
+action = "archive_dissolved_artifacts; emit_space_cleared_event; log_dissolution"
+drishti = ["present", "down", "future"]
+# present: are all targets dissolved? down: verify nothing remains. future: what new creation can fill this space?
+
+# Dancing → Dancing: dissolving one target at a time
+[[transitions]]
+from   = "Dancing"
+to     = "Dancing"
+event  = "dissolve_next"
+guard  = "remaining_targets_exist"
+action = "dissolve_next_target; log_target_dissolved; trace_dissolution"
+drishti = ["present", "down"]
+# present: which target is next? down: dissolve precisely, not broadly.
+
+# Dissolving → Still: space cleared, Shiva returns to meditation
+[[transitions]]
+from   = "Dissolving"
+to     = "Still"
+event  = "return_to_stillness"
+guard  = ""
+action = "signal_brahma_space_available; signal_shakti_spent; close_eyes; log_cycle_complete"
+drishti = ["present", "up", "silence"]
+# present: is dissolution truly complete? up: signal Brahma that space is available. silence: return to meditation.
+
+# Escalation from Vishnu: Vishnu could not repair, needs transformation
+[[transitions]]
+from   = "Still"
+to     = "Awakened"
+event  = "vishnu_escalated"
+guard  = "vishnu_state_escalating"
+action = "accept_from_vishnu; assess_what_must_dissolve; log_vishnu_handoff_received"
+drishti = ["present", "past", "down"]
+# present: what did Vishnu hand off? past: what repair attempts failed? down: what must now be transformed?

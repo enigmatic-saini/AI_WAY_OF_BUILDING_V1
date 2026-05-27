@@ -1,0 +1,306 @@
+# TansenFsm — Raga Mastery: Music as Transformative Power
+# v1.0
+#
+# रागों का जादूगर — जिसके दीपक राग से दीप जले,
+# मेघ मल्हार से बादल बरसे
+# Rāgoṁ kā jādūgar — jiske Deepak rāg se dīp jale,
+# Megh Malhār se bādal barse
+# (The sorcerer of ragas — whose Deepak lit lamps,
+# whose Megh Malhar brought rain)
+#
+# Tansen (Ramtanu Pandey) — one of the nine jewels (Navaratna)
+# of Emperor Akbar's court. Student of Swami Haridas and
+# Muhammad Ghaus. The greatest musician in recorded Indian history.
+#
+# His powers were legendary:
+#   - Raga Deepak: lit oil lamps with music, but burned his own body
+#   - Raga Megh Malhar: brought rain to cool the fire
+#   - Raga Mian ki Todi: created new ragas that survive 500 years later
+#   - His singing could make animals listen, stones weep
+#
+# But the critical lesson: when Deepak's fire burned him,
+# only his guru Haridas's daughter (or wife, depending on the legend)
+# Tani and Tansen's own student sang Megh Malhar to save him.
+# POWER WITHOUT WISDOM DESTROYS THE WIELDER.
+#
+# In engineering and creative work he is:
+#   - The 10x engineer who can bend the system to their will
+#   - The song that changes the mood of an entire room
+#   - The technical solution so elegant it feels like magic
+#   - The performance optimization that makes impossible possible
+#   - BUT ALSO: the brilliance that burns out without balance
+#
+# In Rishi's creative engine:
+#   Tansen generates POWERFUL, TECHNICALLY BRILLIANT compositions.
+#   Raga-driven, precise, capable of evoking specific emotions
+#   and transforming the listener's state. But every Tansen
+#   composition must pass through Haridas's purity check —
+#   power without purity is Deepak without Megh Malhar.
+#
+# CRITICAL DISTINCTION:
+#   Haridas SURRENDERS — music flows through him, audience-free.
+#   Tansen COMMANDS — music is wielded with precision and intent.
+#   Meera DEFIES — music is rebellion against convention.
+#   Tansen is the bridge: trained by Haridas (purity), serving
+#   Akbar (worldly power), creating ragas that outlive both.
+#
+# Cross-coupling:
+#   - HaridasFsm: guru-shishya. Tansen's power without Haridas's
+#     purity leads to Deepak's fire. Always check purity after power.
+#   - MeeraFsm: Meera and Tansen were contemporaries. Meera
+#     sang for Krishna; Tansen sang for Akbar (and secretly
+#     for Krishna too). When Rishi needs passion + power,
+#     channel Meera's fire through Tansen's precision.
+#   - NaradFsm: Narad's harmonic maps provide the theoretical
+#     foundation. Tansen applies theory as living music.
+#   - SaraswatiFsm: Saraswati provides knowledge; Tansen
+#     demonstrates what happens when knowledge becomes mastery.
+#   - ShivaFsm: Raga Deepak is Shiva's fire — creative destruction.
+#     When Tansen invokes Deepak, Shiva's energy flows through.
+#     Always have Megh Malhar (cooling) ready before lighting Deepak.
+#
+# Raga: Mian ki Todi — Tansen's own creation. Morning raga of
+#   intense, focused energy. Komal Re, Komal Dha give it gravity.
+#   Tivra Ma gives it an edge. It is the raga of the master
+#   craftsman at dawn — disciplined fire.
+
+[meta]
+name        = "TansenFsm"
+domain      = "bhakti-mastery"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["fierce_action", "pride", "precision"]
+energy      = "powerful"
+structure   = "verse-chorus"
+bpm_range   = [100, 140]
+weirdness   = 30
+influence   = 85
+vocal       = "male"
+evie_style  = "Progressive Rock, Powerful Male Vocals, Electric Guitar, Intense, Dramatic Build"
+metaphors   = [
+    "his music lit lamps and brought rain",
+    "Every Deepak must have a Megh Malhar",
+    "The master who lights lamps without rain will burn",
+    "A new raga that echoes for centuries",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Taleem"
+description = "The Training — Tansen under Haridas in Vrindavan, and under Muhammad Ghaus in Gwalior. Two traditions, two disciplines, one student who synthesized both. In creative work: the apprenticeship phase. Learn the rules before breaking them. Know every raga before creating a new one. Tansen spent decades in taleem before entering the court. There are no shortcuts to mastery."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:400,Re_komal:500,Ga:400,Ma_tivra:500,Pa:400,Dha_komal:500,Ni:400,Sa_high:500"
+Q           = { rkm = 0.2, jmb = 0.3, stb = 0.2, kln = 0.4, ngj = 0.1, mtv = 0.3, lkq = 0.3, bdr = 0.2 }
+# Q rationale: Training — Kalindi (patience) moderate: decades of riyaaz. Jambavati (endurance)
+# moderate: apprenticeship is endurance. Lakshmana (precision) emerging through practice.
+lyrics = """तालीम लो, रियाज़ करो — उस्ताद की मेहनत ही जादू है
+Tālīm lo, riyāz karo — ustād kī mehnat hī jādū hai
+Take training, practice — the master's labor is the real magic"""
+
+[[states]]
+name        = "Darbar"
+description = "The Court — Tansen enters Akbar's court as a Navaratna. His music now serves a purpose beyond devotion: it governs, it heals, it demonstrates power. In creative work: the song enters the market. It must work for an audience. It must communicate, not just express. The transition from grove to court, from practice to performance, from private to public. Not every Nidhivan song survives the Darbar. Only the ones with both purity and power."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re_komal:300,Ga:400,Ma_tivra:300,Pa:400,Dha_komal:300,Ni:400,Sa_high:500,Ni:300,Dha_komal:400"
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.4, kln = 0.2, ngj = 0.4, mtv = 0.5, lkq = 0.5, bdr = 0.4 }
+# Q rationale: The court — all dims moderate: power must work across all dimensions.
+# Lakshmana (precision) rising: performance demands exactness.
+lyrics = """दरबार में प्रवेश — अब संगीत राज करेगा
+Darbār meṁ praveś — ab saṅgīt rāj karegā
+Entering the court — now music shall reign"""
+
+[[states]]
+name        = "Deepak"
+description = "The Lamp Raga — Tansen sings Raga Deepak. Lamps ignite. The air heats. His body begins to burn. This is the state of maximum creative power: the song is so powerful it transforms reality. But it is also consuming the creator. In creative work: the magnum opus that drains you. The feature so ambitious it risks burning out the team. The performance that changes everything but costs everything. Deepak is the warning: unlimited power without balance will kill you."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma_tivra:400,Pa:300,Dha:400,Ni:500,Sa_high:600,Ni:400,Dha:400,Ma_tivra:500,Pa:600"
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.8, kln = 0.0, ngj = 0.9, mtv = 0.6, lkq = 0.7, bdr = 0.3 }
+# Q rationale: The lamp raga — Nagnajiti (impossible spec) near-peak: lighting lamps with music.
+# Satyabhama (fierce pride) high: maximum power unleashed. Kalindi zero: fire, not patience.
+lyrics = """दीपक जले, तन जले — शक्ति बिन संयम विष है
+Dīpak jale, tan jale — śakti bin saṁyam viṣ hai
+The lamp burns, the body burns — power without restraint is poison"""
+
+[[states]]
+name        = "Megh_Malhar"
+description = "The Rain Raga — the antidote. When Deepak's fire is consuming, Megh Malhar brings the rain. In the legend, Tani (Haridas's student/daughter) sang Megh Malhar to save Tansen from Deepak's fire. In creative work: the balancing force. The refactoring after the ambitious feature. The rest after the sprint. The simplicity that cools the complexity. Every Deepak MUST have a Megh Malhar waiting. Ship the fire; then ship the rain."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Re:300,Ma:400,Pa:500,Ni:400,Sa_high:500,Ni:400,Pa:400,Ma:500,Re:400,Sa:600"
+Q           = { rkm = 0.5, jmb = 0.6, stb = 0.2, kln = 0.6, ngj = 0.3, mtv = 0.5, lkq = 0.4, bdr = 0.5 }
+# Q rationale: The rain raga — Kalindi (patience) rising: cooling requires stillness.
+# Jambavati (endurance) moderate: recovery takes stamina. Satyabhama drops: pride cools.
+lyrics = """मेघ मल्हार गाओ, बारिश बुलाओ — आग बुझे, प्राण बचे
+Megh Malhār gāo, bāriś bulāo — āg bujhe, prāṇ bace
+Sing Megh Malhar, summon rain — the fire dies, life is saved"""
+
+[[states]]
+name        = "Navaratna"
+description = "The Nine Jewels — Tansen as one of Akbar's nine jewels. The master recognized at the highest level. In creative work: the song that enters the canon. The composition that defines a genre. The code that becomes the standard. But Navaratna is not the end — it is the responsibility. Tansen didn't stop composing after recognition. He created Mian ki Todi, Mian ki Malhar, Mian ki Sarang — new ragas that would outlive the empire."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ga:400,Pa:500,Sa_high:600,Pa:400,Ga:400,Sa:500,Re_komal:400,Ga:500,Ma_tivra:600"
+Q           = { rkm = 0.6, jmb = 0.6, stb = 0.6, kln = 0.3, ngj = 0.6, mtv = 0.7, lkq = 0.7, bdr = 0.6 }
+# Q rationale: Nine jewels — all dims elevated and balanced: mastery recognized.
+# Lakshmana (precision) high: consistent excellence. Mitravinda high: creating within tradition.
+lyrics = """नवरत्न — पर रत्न बनना अंत नहीं, आरम्भ है
+Navaratna — par ratna bannā ant nahīṁ, ārambh hai
+A jewel among nine — but becoming a jewel is the beginning, not the end"""
+
+[[states]]
+name        = "Naya_Raga"
+description = "The New Raga — Tansen's greatest legacy: he created new ragas. Mian ki Todi, Mian ki Malhar, Mian ki Sarang, Darbari Kanada. Not just performing within tradition — EXPANDING tradition. In creative work: the new genre, the new form, the new pattern that didn't exist before. This is the highest creative state: not just mastering what exists but creating what will exist for centuries. Tansen didn't just play ragas. He gave the world new ones."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:300,Re_komal:400,Ga:500,Ma_tivra:600,Pa:500,Dha_komal:600,Ni:700,Sa_high:800"
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.7, kln = 0.4, ngj = 0.8, mtv = 0.8, lkq = 0.8, bdr = 0.6 }
+# Q rationale: Terminal — Nagnajiti near-peak: creating NEW ragas is the impossible made real.
+# Lakshmana high: new raga grammar must be perfect. Mitravinda high: expanding tradition IS authentic choice.
+lyrics = """नया राग रचो — जो सदियों तक गूँजे
+Nayā rāg raco — jo sadiyoṁ tak gūñje
+Create a new raga — one that echoes for centuries"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Taleem"
+to     = "Darbar"
+event  = "mastery_achieved"
+guard  = "decades_of_riyaaz AND guru_acknowledges_readiness"
+action = "enter_the_court; prepare_for_audience; log_darbar_entry"
+drishti = ["present", "up", "past"]
+# present: is mastery real? up: is the court ready? past: what did training teach?
+
+[[transitions]]
+from   = "Taleem"
+to     = "Taleem"
+event  = "more_practice"
+guard  = "skill_gaps_remain AND humility_present"
+action = "continue_riyaaz; deepen_discipline; log_taleem_loop"
+drishti = ["present", "down"]
+# present: are gaps visible? down: what skill needs deepening?
+
+[[transitions]]
+from   = "Darbar"
+to     = "Deepak"
+event  = "maximum_power_invoked"
+guard  = "ambitious_composition_attempted AND full_creative_force_unleashed"
+action = "light_the_lamps; channel_full_power; warn_of_burn; log_deepak_entry"
+drishti = ["present", "future", "up"]
+# present: is full power warranted? future: what is the burn risk? up: is Megh Malhar ready?
+
+[[transitions]]
+from   = "Darbar"
+to     = "Navaratna"
+event  = "mastery_recognized"
+guard  = "consistent_excellence AND court_acknowledges"
+action = "accept_recognition; increase_responsibility; log_navaratna"
+drishti = ["present", "past", "future"]
+# present: is excellence consistent? past: what was proven? future: what responsibility follows?
+
+[[transitions]]
+from   = "Deepak"
+to     = "Megh_Malhar"
+event  = "fire_consuming"
+guard  = "creator_burning_out OR system_overheating"
+action = "invoke_rain_raga; cool_the_fire; restore_balance; log_megh_malhar"
+drishti = ["present", "up", "silence"]
+# present: is the creator burning? up: who can sing the rain? silence: stop the fire.
+
+[[transitions]]
+from   = "Deepak"
+to     = "Darbar"
+event  = "fire_controlled"
+guard  = "power_channeled_without_burning"
+action = "return_to_court; document_what_fire_revealed; log_darbar_return"
+drishti = ["present", "past"]
+# present: is the power channeled? past: what did the fire reveal?
+
+[[transitions]]
+from   = "Megh_Malhar"
+to     = "Darbar"
+event  = "balance_restored"
+guard  = "fire_cooled AND creator_recovered"
+action = "return_to_court; apply_lessons_of_fire; log_recovery"
+drishti = ["present", "future"]
+# present: is the fire cooled? future: apply lessons of fire.
+
+[[transitions]]
+from   = "Megh_Malhar"
+to     = "Taleem"
+event  = "humbled_by_fire"
+guard  = "fundamental_gap_exposed AND retraining_needed"
+action = "return_to_guru; learn_what_was_missing; log_humble_return"
+drishti = ["present", "down", "past"]
+# present: was something fundamental missing? down: what gap was exposed? past: what did the burn teach?
+
+[[transitions]]
+from   = "Navaratna"
+to     = "Naya_Raga"
+event  = "tradition_transcended"
+guard  = "mastery_so_deep_it_creates_new_forms"
+action = "compose_new_raga; expand_tradition; log_naya_raga"
+drishti = ["present", "future", "past"]
+# present: is mastery deep enough to create? future: will this raga echo for centuries? past: what tradition is being extended?
+
+[[transitions]]
+from   = "Navaratna"
+to     = "Deepak"
+event  = "ambition_peaks"
+guard  = "master_pushes_limits_of_known_ragas"
+action = "attempt_the_impossible; invoke_deepak; log_deepak_ambition"
+drishti = ["present", "up", "future"]
+# present: is the ambition justified? up: is the cooling ready? future: what burns if this fails?
+
+[[transitions]]
+from   = "Naya_Raga"
+to     = "Taleem"
+event  = "new_cycle"
+guard  = "creation_demands_new_learning"
+action = "student_again; new_raga_demands_new_skills; log_eternal_student"
+drishti = ["present", "future", "silence"]
+# present: what new learning needed? future: what new skills does the raga demand? silence: become a student again.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# TansenFsm emits:
+#   deepak_lit { composition, power_level, burn_risk }
+#     -> Consumed by HaridasFsm (guru checks if purity holds)
+#     -> Consumed by ShivaFsm (fire energy for transformation)
+#   megh_malhar_needed { burn_severity, balance_type_needed }
+#     -> Consumed by RadhaFsm (harmony restoration)
+#     -> Consumed by BaglamukhiFsm (emergency cooling)
+#   naya_raga { new_form, tradition_it_extends, innovation_type }
+#     -> Consumed by SaraswatiFsm (document new knowledge)
+#     -> Consumed by NaradFsm (transmit to the world)
+#     -> Consumed by MeeraFsm (new raga available for composition)
+#
+# TansenFsm reads from:
+#   - HaridasFsm.state (guru's purity level — is the foundation solid?)
+#   - NaradFsm.state (harmonic theory — what maps are available?)
+#   - MeeraFsm.state (compositional fire — what emotional fuel exists?)
+#   - ShivaFsm.state (destruction energy — is Deepak safe to invoke?)
+#
+# Tansen's Law:
+#   "Every Deepak must have a Megh Malhar.
+#    Every fire must have a rain.
+#    Every ambitious creation must have a recovery plan.
+#    The master who lights lamps without knowing how to bring rain
+#    will burn in his own brilliance."
+#
+# Anti-patterns (what Tansen is NOT):
+#   - Power for power's sake = Ego (Tansen served music, not himself)
+#   - Performance without training = Fraud (decades of riyaaz first)
+#   - Innovation without tradition = Rootlessness (new ragas EXTEND tradition)
+#   - Court music without devotion = Prostitution (Tansen secretly sang for Krishna)
+#   - Burning without recovery = Suicide (always have Megh Malhar ready)

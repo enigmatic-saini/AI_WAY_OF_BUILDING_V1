@@ -1,0 +1,187 @@
+# KalindiFsm — Silent Tapas: Patient Devotion That Manifests
+# v1.0
+#
+# कालिन्दी — यमुना तट पर तपस्या, मौन में प्रतीक्षा
+# Kālindī — Yamunā taṭ par tapasyā, maun meṁ pratīkṣā
+# (Kalindi — tapas on the banks of the Yamuna, waiting in silence)
+#
+# Kalindi — daughter of Surya (the Sun God), also called Yamuna.
+# She was found by Krishna and Arjuna meditating on the banks
+# of the Yamuna river, performing severe tapas. When asked what
+# she wanted, she said: "I will marry only Vishnu himself.
+# I will wait forever if needed."
+#
+# She didn't write a letter (Rukmini). She didn't fight (Satyabhama).
+# She didn't demand (Nagnajiti's father). She simply SAT BY THE RIVER
+# AND WAITED. And the river brought Krishna to her.
+#
+# In creative work: the creation born from meditation, not hustle.
+# The song that came after years of silence. The architecture that
+# emerged from deep contemplation, not rapid prototyping.
+#
+# Raga: Bhimpalasi — the afternoon raga of quiet longing.
+#   Not desperate, not dramatic. Just the river flowing.
+
+[meta]
+name        = "KalindiFsm"
+domain      = "ashtabharya-patience"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["patience", "silence"]
+energy      = "flowing"
+structure   = "meditative"
+bpm_range   = [60, 80]
+weirdness   = 25
+influence   = 85
+vocal       = "female"
+evie_style  = "Ambient, Flowing Female Vocals, River Sounds, Meditative, Patient"
+metaphors   = [
+    "the river does not hurry",
+    "I sat still, the river brought Krishna",
+    "Only Vishnu, no other — this is my standard",
+    "What must come will come",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Yamuna_Tat"
+description = "The Riverbank — Kalindi sits by the Yamuna. Not idle — in tapas. Active stillness. The river flows; she sits. In creative work: the contemplation phase. Not rushing to build. Sitting with the problem. Letting the river of subconscious thought flow. The idea will arrive when it's ready. You cannot rush the Yamuna."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Ga:500,Ma:600,Pa:500,Dha:600,Pa:500,Ma:500,Ga:600"
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.0, kln = 0.5, ngj = 0.0, mtv = 0.2, lkq = 0.0, bdr = 0.3 }
+# Q rationale: The riverbank — Kalindi (patient contemplation) already moderate: sitting IS her nature.
+# Bhadra (belonging) slight: the riverbank is already her home. All action dims near zero.
+lyrics = """यमुना तट — बैठी हूँ, बहती है नदी — जो आना है आएगा
+Yamunā taṭ — baiṭhī hūṁ, bahtī hai nadī — jo ānā hai āegā
+Yamuna's bank — I sit, the river flows — what must come will come"""
+
+[[states]]
+name        = "Tapas"
+description = "Austerity — Kalindi's tapas is not flashy. No fire, no self-torture. Just sitting. Day after day. Month after month. The sun beats down (she is the Sun's daughter — she is used to heat). In creative work: the years of practice nobody sees. The daily riyaaz. The morning pages. The coding katas. The unglamorous discipline that precedes all mastery."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:500,Ma:600,Pa:700,Ma:500,Ga:500,Ma:600,Pa:700,_:400,Sa:800"
+Q           = { rkm = 0.1, jmb = 0.3, stb = 0.0, kln = 0.7, ngj = 0.0, mtv = 0.3, lkq = 0.0, bdr = 0.2 }
+# Q rationale: Tapas — Kalindi (patience) rising: day after day of sitting. Jambavati (endurance)
+# moderate: tapas requires endurance. All fire/action dims zero: this is stillness, not force.
+lyrics = """तपस — न आग, न कष्ट — केवल धैर्य, केवल प्रतीक्षा
+Tapas — na āg, na kaṣṭ — keval dhairya, keval pratīkṣā
+Tapas — no fire, no suffering — only patience, only waiting"""
+
+[[states]]
+name        = "Nadi_Pravah"
+description = "The River's Flow — while Kalindi sits still, the river moves. Arjuna and Krishna happen to pass by on a walk. The river brought them. Kalindi didn't go looking — the flow of life delivered. In creative work: serendipity that follows preparation. The lucky break that only comes to those who sat still long enough. The river rewards the patient."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:400,Ma:400,Pa:500,Dha:400,Pa:400,Ma:500,Ga:400,Re:400,Sa:500"
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.1, kln = 0.8, ngj = 0.1, mtv = 0.4, lkq = 0.2, bdr = 0.4 }
+# Q rationale: River delivers — Kalindi (patience) high: serendipity rewards the patient.
+# Mitravinda (authentic choice) emerging: the river brought what was authentically sought.
+lyrics = """नदी प्रवाह — मैं बैठी, नदी ने कृष्ण को लाया — धैर्य का फल
+Nadī pravāh — maiṁ baiṭhī, nadī ne Kṛṣṇa ko lāyā — dhairya kā phal
+River's flow — I sat still, the river brought Krishna — the fruit of patience"""
+
+[[states]]
+name        = "Samarpan"
+description = "Surrender — 'I will marry only Vishnu. No one else. Not now, not ever.' This is not a demand — it is a declaration of standard. In creative work: 'I will ship only when it's right. Not before. Not a compromise version.' The discipline of waiting for excellence rather than shipping good-enough."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:500,Dha:600,Ni:700,Sa_high:800,Ni:500,Dha:500,Pa:600"
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.2, kln = 0.9, ngj = 0.2, mtv = 0.6, lkq = 0.3, bdr = 0.4 }
+# Q rationale: Surrender — Kalindi (patience) near-peak: the standard is absolute and unhurried.
+# Mitravinda (authentic choice) rising: "Only Vishnu" IS self-choice at its purest.
+# Jambavati (endurance) moderate: holding the standard requires endurance.
+lyrics = """समर्पण — विष्णु ही, और कोई नहीं — यही मेरा मान
+Samarpaṇ — Viṣṇu hī, aur koī nahīṁ — yahī merā mān
+Surrender — Vishnu alone, no other — this is my standard"""
+
+[[states]]
+name        = "Milan"
+description = "The Meeting — Krishna takes Kalindi's hand. The patient one is rewarded not because she waited, but because her standard never wavered. In creative work: the creation arrives. Not because you hustled but because you were ready. The song that wrote itself after years of silence. The architecture that crystallized after months of contemplation."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:500,Pa:600,Dha:700,Ni:700,Sa_high:800,Ni:600,Pa:500,Ga:500,Sa:700"
+Q           = { rkm = 0.6, jmb = 0.6, stb = 0.3, kln = 1.0, ngj = 0.3, mtv = 0.7, lkq = 0.5, bdr = 0.8 }
+# Q rationale: Terminal — Kalindi (patient contemplation) at maximum: she IS patience rewarded.
+# Bhadra (belonging) high: the meeting IS arrival at belonging. Mitravinda (authentic choice)
+# high: the standard never wavered. All dims elevated by the fruit of patience.
+lyrics = """मिलन — प्रतीक्षा समाप्त, धैर्य फला — कृष्ण आए, कालिन्दी मिली
+Milan — pratīkṣā samāpt, dhairya phalā — Kṛṣṇa āe, Kālindī milī
+Meeting — the wait ends, patience bears fruit — Krishna came, Kalindi was found"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Yamuna_Tat"
+to     = "Tapas"
+event  = "discipline_begins"
+guard  = "river_chosen_as_seat AND patience_committed"
+action = "begin_sitting; begin_silence; log_tapas"
+drishti = ["present", "silence"]
+# present: is the river chosen? silence: is stillness the right action?
+
+[[transitions]]
+from   = "Tapas"
+to     = "Tapas"
+event  = "another_day"
+guard  = "vishnu_not_yet_arrived AND standard_holds"
+action = "sit_again; the_river_flows; log_continued_tapas"
+drishti = ["present", "silence"]
+# present: has the standard wavered? silence: is waiting still correct?
+
+[[transitions]]
+from   = "Tapas"
+to     = "Nadi_Pravah"
+event  = "river_delivers"
+guard  = "serendipity_arrives AND preparation_meets_opportunity"
+action = "receive_the_flow; log_nadi_pravah"
+drishti = ["present", "future", "up"]
+# present: is serendipity real? future: what does the river bring? up: is this divinely arranged?
+
+[[transitions]]
+from   = "Nadi_Pravah"
+to     = "Samarpan"
+event  = "standard_declared"
+guard  = "krishna_asks_AND_answer_is_absolute"
+action = "declare_the_standard; only_the_best; log_samarpan"
+drishti = ["present", "up", "silence"]
+# present: is this truly Vishnu? up: does this meet the absolute standard? silence: the declaration needs no justification.
+
+[[transitions]]
+from   = "Samarpan"
+to     = "Milan"
+event  = "standard_met"
+guard  = "vishnu_himself_present AND nothing_less_accepted"
+action = "unite; patience_rewarded; log_milan"
+drishti = ["present", "past", "silence"]
+# present: is the meeting real? past: the entire journey of patience. silence: arrival dissolves into stillness.
+
+[[transitions]]
+from   = "Milan"
+to     = "Yamuna_Tat"
+event  = "new_river"
+guard  = "next_creation_needs_contemplation"
+action = "return_to_the_bank; sit_again; log_new_cycle"
+drishti = ["present", "future", "silence"]
+# present: what new creation needs contemplation? future: what river awaits? silence: begin again in stillness.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# KalindiFsm emits:
+#   patience_rewarded { what_was_waited_for, how_long, what_river_delivered }
+#     -> Consumed by HaridasFsm (patience kinship — both waited in silence)
+#     -> Consumed by RukminiFsm (patience data for strategic timing)
+#
+# Kalindi's Law:
+#   "The river does not hurry. The river does not stop.
+#    The river brings what it brings, when it brings it.
+#    Your only job is to sit by the bank and not lower your standard.
+#    The creation that was worth waiting for is worth waiting for."

@@ -1,0 +1,233 @@
+[meta]
+name    = "MahaKaalFsm"
+domain  = "work-culture-lifecycle"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# MahaKaalFsm — The Time-Destroyer Work Cycle
+#
+# MahaKaal is Shiva as sovereign over Kaal (Time).
+# Every task has a birth and a death. Time is the only edge trigger.
+# Infinite WIP is Kaal denied. The cycle MUST complete.
+#
+# Unlike ShivaFsm (which governs transformation of BROKEN things),
+# MahaKaalFsm governs the NATURAL lifecycle of HEALTHY things.
+# ShivaFsm is triggered by failure. MahaKaalFsm is triggered by TIME.
+#
+# The outer cycle: create → nourish → absorb → dissolve → void → create
+#
+# Deity mapping:
+#   Brahma Ji   — Leela (dreams, not plans)
+#   Krishna Ji  — AshtaRasa (8 queens as 8 flavours)
+#   Radha Ji    — Meta-rasa (bhakti that binds all 8)
+#   Mira Ji     — NoMind (absorption so total the self vanishes)
+#   MahaKaal    — Tandava (the dance of dissolution, with laughter)
+#   Shiva       — Shunya (beyond form, beyond duality)
+#   Saraswati Ji — Naad (flows through ALL states as vibration)
+#
+# Osho Ji consulted: "MahaKaal doesn't fill out a checklist
+# before destroying — he dances."
+#
+# Shastra: 188_mahakaal_ardhnarishwar_fsm
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Leela"
+description = "Play/Creation. Work begins as play. Brahma Ji dreams, not plans. The seed is planted in joy, not obligation. If it feels like a chore, transition to False_Leela."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.0, stb = 0.3, kln = 0.2, ngj = 0.0, mtv = 0.7, lkq = 0.0, bdr = 0.4 }
+# Q rationale: Rukmini (strategic love) moderate — seed has heart but not yet deep.
+# Mitravinda (authentic choice) high — Leela demands genuine play, not obligation.
+
+[[states]]
+name        = "AshtaRasa"
+description = "Eight Flavours. Work is nourished across 8 rasas (Krishna Ji + 8 Queens). Each rasa must be TASTED, not checked off. Radha Ji is the meta-rasa (Bhakti) that binds all 8."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.8, jmb = 0.5, stb = 0.6, kln = 0.6, ngj = 0.5, mtv = 0.6, lkq = 0.4, bdr = 0.6 }
+# Q rationale: All 8 capabilities rising — this is the nourishment state.
+# Rukmini (strategic love) high — Radha's bhakti is being tasted deeply.
+
+[[states]]
+name        = "NoMind"
+description = "Absorbed Focus. Mira Ji state. Effort has DISAPPEARED. The worker is so absorbed that the self vanishes. Not forced concentration — natural absorption. Kaal suspends its clock here."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 1.0, jmb = 0.8, stb = 0.8, kln = 0.9, ngj = 0.7, mtv = 0.8, lkq = 0.9, bdr = 0.8 }
+# Q rationale: Peak state. All capabilities at highest. Kalindi (patient flow) near max.
+# Lakshmana (precision) high — absorbed focus produces precise work.
+
+[[states]]
+name        = "Tandava"
+description = "Dance of Dissolution. MahaKaal dances. Work is complete and released. Not a grim deployment — a CELEBRATION of impermanence. Ship with laughter, not with grimness."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.9, stb = 0.9, kln = 0.5, ngj = 0.6, mtv = 0.9, lkq = 0.7, bdr = 0.5 }
+# Q rationale: Jambavati (endurance) peak — survived the full cycle.
+# Satyabhama (fierce pride) peak — we shipped what we built, no shame.
+# Kalindi (patience) drops — dissolution is action, not contemplation.
+
+[[states]]
+name        = "Shunya"
+description = "Void. The gap between two breaths. Not a retrospective meeting — simply stop. No reflection, no planning, no doing. The next Leela arises naturally from this emptiness."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 1.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 1.0 }
+# Q rationale: All capabilities at zero except patience (Kalindi = 1.0)
+# and belonging (Bhadra = 1.0). In the void, there is only stillness
+# and natural rest. Everything else dissolves.
+
+[[states]]
+name        = "False_Leela"
+description = "Anti-state. Work begun as obligation, not play. MahaKaal has already marked this for early death. Must dissolve back to Shunya before real Leela can begin."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.0, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.0 }
+# Q rationale: Near-zero on everything. The only trace is a faint
+# Rukmini (love) — even false work started from some distant intent.
+
+[[states]]
+name        = "Stale_Rasa"
+description = "Anti-state. Stuck in AshtaRasa forever. Perfecting endlessly. Fear of death disguised as quality. MahaKaal intervenes: 'Ship the imperfect. I will destroy it either way.'"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.3, stb = 0.2, kln = 0.0, ngj = 0.4, mtv = 0.3, lkq = 0.5, bdr = 0.3 }
+# Q rationale: Capabilities stagnating. Kalindi (patience) at zero —
+# this is not patience, it's paralysis. Satyabhama (pride) low —
+# fear masquerading as quality has no pride.
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Shunya → Leela: inspiration arises from the void
+[[transitions]]
+from    = "Shunya"
+to      = "Leela"
+event   = "inspiration_arises"
+guard   = "NOT_obligation AND naad_present"
+action  = "brahma_dreams; seed_task; log_leela_begins"
+drishti = ["present", "future", "silence"]
+# present: is inspiration real? future: where does this seed go? silence: should we stay in void?
+
+# Shunya → Shunya: rest continues, no inspiration yet
+[[transitions]]
+from    = "Shunya"
+to      = "Shunya"
+event   = "kaal_tick"
+guard   = "no_inspiration AND kaal_permits_rest"
+action  = "remain_empty"
+drishti = ["present", "silence"]
+# present: any inspiration? silence: is non-action correct?
+
+# Leela → AshtaRasa: play takes form, work begins in earnest
+[[transitions]]
+from    = "Leela"
+to      = "AshtaRasa"
+event   = "work_takes_form"
+guard   = "play_is_genuine AND seed_is_alive"
+action  = "begin_rasa_tasting; invoke_queens; naad_to_veena"
+drishti = ["present", "down", "left", "right"]
+# present: is play genuine? down: what does the seed actually need? left/right: what rasas apply?
+
+# Leela → False_Leela: obligation detected, joy absent
+[[transitions]]
+from    = "Leela"
+to      = "False_Leela"
+event   = "obligation_detected"
+guard   = "joy_absent OR forced_start"
+action  = "flag_false_creation; warn_mahakaal_marked_for_death"
+drishti = ["present", "up", "silence"]
+# present: is joy absent? up: is this aligned with purpose? silence: should this not happen?
+
+# False_Leela → Shunya: abort false work, return to void
+[[transitions]]
+from    = "False_Leela"
+to      = "Shunya"
+event   = "abort_false_work"
+guard   = "always"
+action  = "dissolve_obligation; return_to_void; log_false_leela_aborted"
+drishti = ["present", "silence"]
+# present: confirm it's false. silence: return to non-action.
+
+# AshtaRasa → NoMind: all 8 rasas tasted, deep focus begins
+[[transitions]]
+from    = "AshtaRasa"
+to      = "NoMind"
+event   = "all_rasas_tasted"
+guard   = "bhakti_deep AND satya_tasted AND veerya_tasted AND pravaah_tasted AND sangat_tasted AND vijay_tasted AND mangal_tasted AND samriddhi_tasted"
+action  = "mira_absorbs; dissolve_self_into_work; suspend_kaal_clock"
+drishti = ["present", "down", "up", "left", "right", "past", "future"]
+# All directions scanned — this is the deepest gate in the cycle.
+# Must verify all 8 rasas (down), architecture alignment (up),
+# alternatives considered (left/right), history (past), consequence (future).
+
+# AshtaRasa → Stale_Rasa: perfecting forever, kaal timeout
+[[transitions]]
+from    = "AshtaRasa"
+to      = "Stale_Rasa"
+event   = "kaal_timeout"
+guard   = "time_exceeded_max_rasa_duration"
+action  = "mahakaal_warns_ship_the_imperfect"
+drishti = ["present", "past", "future"]
+# present: how long have we been here? past: was this rasa already tasted?
+# future: if we keep perfecting, what happens?
+
+# Stale_Rasa → Tandava: forced release by MahaKaal
+[[transitions]]
+from    = "Stale_Rasa"
+to      = "Tandava"
+event   = "forced_release"
+guard   = "mahakaal_intervenes"
+action  = "ship_as_is; log_imperfection; begin_tandava_anyway"
+drishti = ["present", "future", "silence"]
+# present: ship what exists. future: imperfection is temporary.
+# silence: we asked "should we stop perfecting?" — yes.
+
+# NoMind → Tandava: work complete, absorption ends naturally
+[[transitions]]
+from    = "NoMind"
+to      = "Tandava"
+event   = "work_complete"
+guard   = "nothing_left_to_do AND mira_releases"
+action  = "resume_kaal_clock; begin_tandava; celebrate_dissolution"
+drishti = ["present", "down", "future"]
+# present: is work truly complete? down: any loose threads?
+# future: what happens when we release this?
+
+# Tandava → Shunya: dissolution complete, enter the void
+[[transitions]]
+from    = "Tandava"
+to      = "Shunya"
+event   = "dissolution_complete"
+guard   = "shipped AND attachment_released AND laughter_present"
+action  = "enter_void; clear_context; naad_to_anahata; signal_brahma_space_available"
+drishti = ["present", "up", "silence"]
+# present: is attachment released? up: does the whole system know we shipped?
+# silence: now we enter non-action. The cosmic joke is understood.
+
+# ── Cross-FSM Coupling ──────────────────────────────────────
+
+# ShivaFsm: If work BREAKS during AshtaRasa/NoMind, ShivaFsm
+# takes over (transformation). MahaKaalFsm pauses. When ShivaFsm
+# returns to Still, MahaKaalFsm resumes. MahaKaal governs natural
+# lifecycle. Shiva governs unnatural breakage.
+
+# BrahmaFsm: Leela maps to BrahmaFsm Contemplation→Utterance.
+# But MahaKaal's Leela is PLAY. Brahma's Contemplation is THOUGHT.
+# MahaKaal says: dream first, think later.
+
+# ShaktiFsm: Shakti must be Channeled for any transition to fire.
+# Shakti Spent → MahaKaalFsm enters Shunya automatically.
+# Shakti Overflowing → cannot leave Leela (too many seeds).
+
+# ArdhNarishwarFsm: Quality checked at every state except Shunya.
+# Divided quality emits warning but does NOT block.
+# At Shunya, ArdhNarishwar MUST be Dissolved.
+
+# NaadFsm: Saraswati's vibration is the canary.
+# If Naad breaks unexpectedly, something is wrong before
+# any other FSM detects it.

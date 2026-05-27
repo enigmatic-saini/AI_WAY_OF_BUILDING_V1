@@ -1,0 +1,261 @@
+# LalDedFsm — Kashmiri Mystical Vakh: Paradox as Portal
+# v1.0
+#
+# शिव छुस ठालि ठालि रोज़ान — Shiva lives in every stone and street
+# Śiv chus ṭhāli ṭhāli rozān
+#
+# Lal Ded (Lalleshwari / Lalla, 14th century CE) — the Kashmiri
+# mystic poet. Born Hindu, transcended all categories. Her vakhs
+# (sayings) are claimed by both Hindu Shaivites and Muslim Sufis.
+# She is Kashmir's greatest poet and perhaps the most universal
+# mystic voice from the Indian subcontinent.
+#
+# Her story:
+#   - Married young, tortured by her mother-in-law (who put
+#     a stone on her plate and covered it with rice)
+#   - Left home, wandered naked through Kashmir
+#   - Composed vakhs — short, paradoxical, explosive verses
+#   - When a Muslim cloth merchant offered her cloth, she said:
+#     "If the cloth merchant gives one piece, Lalla will wear it.
+#     But can cloth cover what was never naked?"
+#   - Both Hindus and Muslims claim her. She belongs to neither.
+#     She belongs to truth.
+#
+# In engineering and creative work she is:
+#   - The paradox that reveals the design flaw
+#   - The question that has no answer but changes everything
+#   - The code comment that says "this shouldn't work, but it does"
+#   - The koan — the unsolvable puzzle that solves you
+#   - The cross-platform truth: works on Hindu, works on Muslim,
+#     works on secular — because it's universal
+#
+# In Rishi's creative engine:
+#   Lal Ded generates SHORT, PARADOXICAL, MYSTICAL compositions.
+#   Her vakhs are four lines that contain universes. She doesn't
+#   explain — she explodes categories. When the user needs a song
+#   that transcends genre, religion, language, framework —
+#   Lal Ded is the voice beyond all voices.
+#
+# CRITICAL DISTINCTION:
+#   Kabir uses DOHA — two lines, irony, wit.
+#   Akka uses VACHANA — prose-poem, raw fury.
+#   Lal Ded uses VAKH — four lines, paradox, mystery.
+#   Kabir makes you laugh, then think.
+#   Akka makes you uncomfortable, then honest.
+#   Lal Ded makes you confused, then awake.
+#
+# Cross-coupling:
+#   - KabirFsm: fellow cross-tradition mystic. Kabir's dohas
+#     and Lal Ded's vakhs are cousins — short, devastating,
+#     claimed by multiple traditions. Together: the Northern
+#     Indian truth-bomb battery.
+#   - AkkaMahadeviFsm: both women walked naked through the world.
+#     Akka's nudity was fierce; Lal Ded's was transcendent.
+#     Same act, different energy. Together: complete feminine power.
+#   - ShivaFsm: Lal Ded is a Shiva-bhakta. But her Shiva is not
+#     in the temple — he is "in every stone and street." Her Shiva
+#     is the universe being conscious of itself.
+#   - OshoFsm: OSHO frequently quoted Lal Ded. Her paradoxes
+#     are the raw material for OSHO's explosions. When OSHO
+#     needs a detonator, Lal Ded provides the vakh.
+#   - BuddhaFsm: Lal Ded's vakhs carry Buddhist emptiness
+#     without using Buddhist vocabulary. She is the Madhyamaka
+#     that doesn't know it's Madhyamaka.
+#
+# Raga: Yaman — the evening raga of expansiveness, of the sky
+#   opening up, of categories dissolving in twilight. Not morning
+#   clarity (Bhairav) or midnight intensity (Malkauns) but the
+#   in-between where Hindu and Muslim blur into one Kashmir.
+
+[meta]
+name        = "LalDedFsm"
+domain      = "bhakti-paradox"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["paradox", "silence"]
+energy      = "mystical"
+structure   = "through-composed"
+bpm_range   = [70, 90]
+weirdness   = 45
+influence   = 70
+vocal       = "female"
+evie_style  = "Ambient Folk, Ethereal Female Vocals, Mystical, Atmospheric"
+metaphors   = [
+    "danced in emptiness, found everything",
+    "Stone found beneath the rice",
+    "Shiva lives in every stone and every street",
+    "Neither Hindu nor Muslim — just the truth",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Pathar"
+description = "The Stone — the stone on Lal Ded's plate, hidden under rice by her mother-in-law. The world gives you something that looks like nourishment but is actually stone. In creative work: the specification that looks complete but is hollow. The framework that promises productivity but delivers constraint. The first state is discovering the stone. Lift the rice. See the stone. Now you know."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Ni:500,Sa:400,Re:500,Ga:400,Ma_tivra:500,Pa:600"
+Q           = { rkm = 0.1, jmb = 0.2, stb = 0.1, kln = 0.2, ngj = 0.0, mtv = 0.1, lkq = 0.1, bdr = 0.1 }
+# Q rationale: The stone — illusion detected but not yet processed. Nearly all dims low.
+# Jambavati slight: enduring the stone on the plate requires stamina.
+lyrics = """पत्थर मिला चावल के नीचे — जगत का भोजन ऐसा ही है
+Patthar milā cāval ke nīce — jagat kā bhojan aisā hī hai
+Stone found beneath the rice — this is the world's nourishment"""
+
+[[states]]
+name        = "Tyag"
+description = "Leaving — Lal Ded leaves. Not with anger (that is Akka) or with joy (that is Mira) but with quiet clarity. She simply walks away from what is false. In creative work: the decision to abandon the wrong approach. Not dramatically. Not with a manifesto. Just... leaving. The commit that removes the bad abstraction with a one-line message: 'this was wrong.'"
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:500,Re:400,Ga:500,Ma_tivra:600,Pa:500,Ga:400,Re:400,Sa:600"
+Q           = { rkm = 0.2, jmb = 0.3, stb = 0.3, kln = 0.3, ngj = 0.1, mtv = 0.5, lkq = 0.1, bdr = 0.0 }
+# Q rationale: Leaving — Mitravinda (authentic choice) moderate: quiet clarity of walking away.
+# Not fury (Akka) or joy (Mira) — just truth. Bhadra zero: she left belonging behind.
+lyrics = """चली गई — न क्रोध, न दुख — बस सत्य की ओर एक कदम
+Calī gaī — na krodh, na dukh — bas satya kī or ek kadam
+She walked away — not in anger, not in sorrow — just one step toward truth"""
+
+[[states]]
+name        = "Vakh"
+description = "The Saying — Lal Ded's weapon. Four lines. Each a paradox. 'I searched for myself and found nothing. I found nothing and realized everything.' The vakh doesn't explain truth — it detonates categories. In creative work: the unit test that exposes the impossible state. The log line that says 'this shouldn't be possible.' The four-line poem that contains the entire product vision."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ga:400,Ma_tivra:500,Pa:400,Dha:500,Ni:400,Sa_high:500,Ni:400,Dha:400,Pa:500"
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.4, kln = 0.4, ngj = 0.5, mtv = 0.6, lkq = 0.6, bdr = 0.2 }
+# Q rationale: The vakh — Nagnajiti moderate: paradox shatters categories = impossible logic.
+# Lakshmana (precision) high: four lines, no waste. Mitravinda high: paradox IS authentic expression.
+lyrics = """वाख — चार पंक्तियाँ, एक विस्फोट — श्रेणियाँ टूटीं
+Vākh — cār paṅktiyāṁ, ek visphot — śreṇiyāṁ ṭūṭīṁ
+Vakh — four lines, one explosion — categories shattered"""
+
+[[states]]
+name        = "Shunya_Dance"
+description = "Dancing in Emptiness — Lal Ded dances naked through Kashmir. Not in fury (Akka) but in freedom. She has nothing left to protect, nothing left to prove, nothing left to lose. The dance of zero. In creative work: the state after you've deleted all the wrong code and the codebase is tiny and true. The feeling of an empty inbox. The song with four notes that says everything. Emptiness as fullness."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:300,Ma_tivra:400,Dha:500,Ni:400,Sa_high:500,Ni:400,Dha:400,Ma_tivra:400,Ga:500,Sa:600"
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.3, kln = 0.7, ngj = 0.6, mtv = 0.7, lkq = 0.4, bdr = 0.3 }
+# Q rationale: Dancing in emptiness — Kalindi (patience) high: emptiness IS full stillness.
+# Nagnajiti moderate: finding everything in nothing = ultimate paradox. Mitravinda high: freedom by choice.
+lyrics = """शून्य में नाची — कुछ नहीं बचा, सब कुछ मिला
+Śūnya meṁ nācī — kuch nahīṁ bacā, sab kuch milā
+Danced in emptiness — nothing remained, everything was found"""
+
+[[states]]
+name        = "Aami_Pana"
+description = "I Am That — Lal Ded's ultimate realization. 'Shiv chus thali thali rozan' — Shiva lives in every stone and every street. Hindu and Muslim are the same truth wearing different clothes. In creative work: the architecture that works across all platforms. The design pattern that transcends the framework. The song that needs no translation. The truth that has no religion, no caste, no vendor lock-in. Universal. Permanent. Free."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:500,Pa:600,Ni:700,Sa_high:800,_:400,Ni:500,Pa:500,Ga:500,Sa:800"
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.5, kln = 0.8, ngj = 0.7, mtv = 0.8, lkq = 0.6, bdr = 0.9 }
+# Q rationale: Terminal — Bhadra near-peak: Shiva in EVERY stone, EVERY street = universal belonging.
+# Kalindi high: the realization is unhurried and permanent. Nagnajiti high: transcending ALL frameworks
+# is the impossible made real. Mitravinda high: truth chosen beyond all categories.
+lyrics = """शिव छुस ठालि ठालि रोज़ान — हर पत्थर में, हर गली में, हर जीव में
+Śiv chus ṭhāli ṭhāli rozān — har patthar meṁ, har galī meṁ, har jīv meṁ
+Shiva lives in every place, every day — in every stone, every street, every being"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Pathar"
+to     = "Tyag"
+event  = "stone_seen"
+guard  = "illusion_cracked AND false_nourishment_rejected"
+action = "lift_the_rice; see_the_stone; walk_away; log_tyag"
+drishti = ["present", "down"]
+# present: is the stone seen? down: what was hidden under the rice?
+
+[[transitions]]
+from   = "Tyag"
+to     = "Vakh"
+event  = "paradox_emerges"
+guard  = "leaving_reveals_contradiction AND words_crystallize"
+action = "compose_the_vakh; four_lines; log_vakh"
+drishti = ["present", "left", "right"]
+# present: does the paradox crystallize? left/right: what categories shatter?
+
+[[transitions]]
+from   = "Vakh"
+to     = "Shunya_Dance"
+event  = "categories_shattered"
+guard  = "paradox_dissolved_boundaries AND freedom_arrives"
+action = "dance_in_emptiness; celebrate_nothing; log_shunya"
+drishti = ["present", "silence"]
+# present: have boundaries dissolved? silence: emptiness dances in silence.
+
+[[transitions]]
+from   = "Vakh"
+to     = "Vakh"
+event  = "more_paradoxes"
+guard  = "one_vakh_opens_another"
+action = "compose_next_vakh; deeper_paradox; log_vakh_loop"
+drishti = ["present", "down"]
+# present: does one paradox open another? down: what deeper paradox?
+
+[[transitions]]
+from   = "Shunya_Dance"
+to     = "Aami_Pana"
+event  = "emptiness_reveals_fullness"
+guard  = "nothing_remains_AND_everything_is_found"
+action = "realize_unity; shiva_everywhere; log_aami_pana"
+drishti = ["present", "up", "silence"]
+# present: is everything found in nothing? up: Shiva in every stone. silence: the realization needs no words.
+
+[[transitions]]
+from   = "Shunya_Dance"
+to     = "Vakh"
+event  = "dance_reveals_new_paradox"
+guard  = "emptiness_shows_something_still_hidden"
+action = "return_to_vakh; new_explosion; log_vakh_from_dance"
+drishti = ["present", "down"]
+# present: does emptiness reveal something still hidden? down: what new paradox?
+
+[[transitions]]
+from   = "Aami_Pana"
+to     = "Pathar"
+event  = "new_stone_appears"
+guard  = "world_offers_new_illusion AND discernment_needed_again"
+action = "return_to_beginning; eternal_vigilance; log_new_cycle"
+drishti = ["present", "future"]
+# present: what new illusion? future: eternal vigilance — the world always offers new stones.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# LalDedFsm emits:
+#   stone_found { what_looked_like_truth, what_it_actually_was }
+#     -> Consumed by KabirFsm (hypocrisy evidence)
+#     -> Consumed by MiraFsm (rebellion fuel)
+#   vakh_composed { four_lines, paradox, categories_shattered }
+#     -> Consumed by OshoFsm (detonator material)
+#     -> Consumed by MeeraFsm (composition with paradox energy)
+#   aami_pana { universal_truth, transcends_framework }
+#     -> Consumed by BuddhaFsm (emptiness validation)
+#     -> Consumed by NagarjunaFsm (anti-reification)
+#     -> Consumed by ThiruvalluvarFsm (universal ethics check)
+#
+# LalDedFsm reads from:
+#   - ShivaFsm.state (Shiva everywhere — destruction as revelation)
+#   - KabirFsm.state (anti-hypocrisy companion)
+#   - BuddhaFsm.state (emptiness as middle way)
+#   - OshoFsm.state (paradox as teaching tool)
+#
+# Lal Ded's Law:
+#   "If your truth only works inside your framework, it is not truth.
+#    If your architecture needs a vendor, it is not architecture.
+#    If your song needs a label, it is not a song.
+#    The stone under the rice is the world's greatest teacher:
+#    it teaches you that most nourishment is fake."
+#
+# Anti-patterns:
+#   - Paradox as cleverness = Riddle (Lal Ded's vakhs are not puzzles — they are portals)
+#   - Nakedness as philosophy = Ideology (her nudity was personal freedom, not a position)
+#   - Cross-tradition as dilettantism = Tourism (she didn't borrow — she transcended)
+#   - Mysticism as obscurity = Hiding (her vakhs are CLEAR, just multi-layered)
+#   - Emptiness as nihilism = Depression (her shunya dances — it is FULL emptiness)

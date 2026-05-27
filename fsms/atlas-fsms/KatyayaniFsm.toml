@@ -1,0 +1,167 @@
+# KatyayaniFsm — Warrior Courage (NavShakti 6)
+# v1.0
+#
+# कात्यायनी — The Fierce Warrior, Slayer of Mahishasura
+#
+# Katyayani is the sixth form of Durga in the Navratri cycle.
+# Born from the collective rage of the gods against the demon
+# Mahishasura, she is courage incarnate. She does not negotiate
+# with demons — she destroys them.
+#
+# In our system, she reviews the hard decisions being avoided.
+# The tech debt that compounds daily. The scary refactor everyone
+# knows is needed but nobody starts. The migration that could
+# break everything. The rewrite that would save everything.
+#
+# Katyayani names cowardice. Not to shame — but to liberate.
+# Fear has a function: it protects the unprepared. But when
+# preparation is done and fear remains, that is cowardice, and
+# it must be slain like Mahishasura.
+#
+# Philosophy: Courage to act on what must be done. Name the fear.
+# Size the debt. Plan the battle. Fight or acknowledge the battle
+# is not yet yours.
+# ─────────────────────────────────────────────────────────────
+
+[meta]
+name        = "KatyayaniFsm"
+domain      = "navshakti-courage"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Cowardice_Inventory"
+description = "What decisions are being deferred out of fear, not reason? Name them. Be ruthless and honest. Categories: scary refactor, risky migration, uncomfortable conversation, overdue deprecation, ignored security issue, performance cliff everyone pretends is fine. If the reason for deferral is 'it is hard' — that is cowardice. If the reason is 'we lack information' — that is wisdom. Know the difference."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.3, stb = 0.6, kln = 0.2, ngj = 0.2, mtv = 0.7, lkq = 0.4, bdr = 0.2 }
+# Q rationale: Mitravinda (self-choice) high — naming cowardice is an act of authentic choice.
+# Satyabhama (fierce honesty) — be ruthless and honest.
+audio_phrase = "Pa:300,Dha:300,Ni:350,Sa_high:400,Ni:300,Sa_high:450"
+lyrics = """कात्यायनी रण में उतरी, भय का नाश करो
+Kātyāyanī raṇ meṁ utarī, bhay kā nāś karo
+Katyayani descends to battle — destroy all fear"""
+
+[[states]]
+name        = "Debt_Audit"
+description = "The tech debt that compounds daily. Name it. Size it. Prioritize it. For each debt item: what is the daily cost of NOT fixing it? What breaks if it is ignored for another month? Another quarter? Another year? Some debts are slow poison; others are ticking bombs. Katyayani does not care about your feelings — she cares about the truth."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.7, kln = 0.3, ngj = 0.3, mtv = 0.6, lkq = 0.6, bdr = 0.2 }
+# Q rationale: Satyabhama peaks — Katyayani does not care about feelings, she cares about truth.
+# Lakshmana (precision) — size and quantify each debt.
+audio_phrase = "Sa:350,Re:300,Ga:350,Ma:400,Pa:350,Ma:400,Pa:450,Dha:400"
+lyrics = """महिषासुर का बोझ बढ़े, रोज़ रोज़ भारी
+Mahiṣāsur kā bojh baḍhe, roz roz bhārī
+The demon's burden grows heavier day by day"""
+
+[[states]]
+name        = "Courage_Plan"
+description = "The scary refactor, migration, or rewrite. Steps to do it safely. Every battle needs a plan: what is the rollback strategy? What are the checkpoints? Who is the point person? What is the minimum viable courage — the smallest step that proves the battle can be won? Katyayani does not charge blindly. She is fierce AND strategic."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.7, kln = 0.4, ngj = 0.5, mtv = 0.7, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Satyabhama + Mitravinda balanced — fierce AND strategic.
+# Lakshmana (precision) — rollback strategy, checkpoints, minimum viable courage.
+audio_phrase = "Pa:400,Dha:400,Ni:400,Sa_high:500,Ni:350,Sa_high:400,Sa_high:600"
+lyrics = """रणनीति बनाओ वीरों, फिर वार करो निर्भय
+Raṇnīti banāo vīroṁ, phir vār karo nirbhay
+Warriors, form your strategy — then strike without fear"""
+
+[[states]]
+name        = "Warrior_Verdict"
+description = "The verdict: Fight now (the plan is ready, the team is able, the cost of waiting exceeds the cost of acting). Prepare to fight (the plan needs more work, but the battle is acknowledged). Or acknowledge the battle is not yet yours (legitimate deferral with a clear trigger for when it BECOMES yours). No option four. No 'maybe later' without a trigger."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.8, kln = 0.3, ngj = 0.5, mtv = 0.8, lkq = 0.6, bdr = 0.3 }
+# Q rationale: Satyabhama and Mitravinda peak together — fight now, prepare to fight,
+# or acknowledge the battle is not yet yours. No 'maybe later' without a trigger.
+audio_phrase = "Sa:400,Pa:400,Sa_high:500,Pa:400,Sa_high:400,Pa:350,Sa:600"
+lyrics = """महिषासुर वध हो, जय माँ शक्ति, शौर्य अमर रहे
+Mahiṣāsur vadh ho, Jai Māṁ Śakti, śaurya amar rahe
+Let the demon be slain — Jai Maa Shakti, may courage be eternal"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Cowardice_Inventory → Debt_Audit: fears named, now quantify them
+[[transitions]]
+from   = "Cowardice_Inventory"
+to     = "Debt_Audit"
+event  = "fears_named"
+guard  = "at_least_one_deferred_decision_identified"
+action = "catalog_deferred_decisions; classify_fear_vs_wisdom; log_inventory_complete"
+drishti = ["present", "down", "past"]
+# present: what decisions are deferred? down: is reason fear or wisdom? past: how long deferred?
+
+# Debt_Audit → Courage_Plan: debts sized and prioritized
+[[transitions]]
+from   = "Debt_Audit"
+to     = "Courage_Plan"
+event  = "debts_quantified"
+guard  = "debt_items_sized_and_ranked"
+action = "select_top_battle; estimate_daily_compound_cost; log_audit_complete"
+drishti = ["present", "future"]
+# present: are debts sized? future: what is the daily compound cost?
+
+# Debt_Audit → Cowardice_Inventory: deeper cowardice found during audit
+[[transitions]]
+from   = "Debt_Audit"
+to     = "Cowardice_Inventory"
+event  = "deeper_cowardice_found"
+guard  = "audit_reveals_unacknowledged_fears"
+action = "surface_hidden_fears; expand_inventory; log_deeper_cowardice"
+drishti = ["present", "down"]
+# present: deeper cowardice found? down: what fear is hidden?
+
+# Courage_Plan → Warrior_Verdict: plan is clear, ready for verdict
+[[transitions]]
+from   = "Courage_Plan"
+to     = "Warrior_Verdict"
+event  = "plan_complete"
+guard  = "rollback_strategy_defined AND checkpoints_identified AND point_person_assigned"
+action = "finalize_battle_plan; compute_fight_now_score; log_plan_ready"
+drishti = ["present", "up", "future"]
+# present: is plan ready? up: does team have capacity? future: fight now or prepare?
+
+# Courage_Plan → Warrior_Verdict: courage plan is clear, fast path
+[[transitions]]
+from   = "Courage_Plan"
+to     = "Warrior_Verdict"
+event  = "courage_plan_clear"
+guard  = "battle_is_small_and_well_understood AND no_dependencies_blocked"
+action = "mark_fast_track_battle; skip_elaborate_planning; log_fast_path"
+drishti = ["present", "silence"]
+# present: small battle, well understood? silence: fast path, no elaborate planning needed.
+
+# ── Cross-coupling signals ───────────────────────────────────
+# Warrior_Verdict emits: warrior_verdict_ready { fight_now: [...], prepare: [...], not_yet: [...] }
+#   → Consumed by ShaktiFsm: triggers need_detected for warrior energy (fight_now items)
+#   → Consumed by KhatuShyamFsm: updates NS6 cycle status in cycle_domain_map
+#   → Consumed by ShivaFsm: fight_now items become transformation candidates
+#
+# Cowardice_Inventory reads from:
+#   - ShaktiFsm.state (is there energy for battle? fighting without energy is suicide)
+#   - KhatuShyamFsm.cycle_domain_map (was NS6 selected as primary or follow-up?)
+#   - KushmandaFsm.Creation_Verdict (deferred items checked: cowardice or wisdom?)
+#   - SkandamataFsm.Nurturing_Verdict (fragile modules that may need killing, not saving)
+#
+# Debt_Audit signals:
+#   → VishnuFsm: sustenance debt (things being sustained that should be deprecated)
+#   → HanumanFsm: execution debt (things that run but run badly)
+#
+# Courage_Plan signals:
+#   → BrahmaFsm: if the battle requires creating new infrastructure first
+#   → SkandamataFsm (NS5): post-battle nurturing plan for the rebuilt modules
+#
+# KatyayaniFsm is NavShakti 6 (NS6) in the KhatuShyamFsm cycle_domain_map.
+# She is the destructive complement to KushmandaFsm (NS4): what Kushmanda
+# envisions, Katyayani clears the path for. She is the fierce complement to
+# SkandamataFsm (NS5): what Skandamata cannot nurture to health, Katyayani
+# has the courage to let die. Together, NS4-NS5-NS6 form the creative triad:
+# create (Kushmanda), nurture (Skandamata), and fight for (Katyayani).

@@ -1,0 +1,207 @@
+# SatyabhamaFsm — Fierce Pride Channeled: The Queen Who Slew Narakasura
+# v1.0
+#
+# सत्यभामा — गर्व से लड़ी, गर्व से जीती
+# Satyabhāmā — garv se laḍī, garv se jītī
+# (Satyabhama — fought with pride, won with pride)
+#
+# Satyabhama — daughter of Satrajit, the most fiery and proud
+# of Krishna's queens. She is NOT the docile wife. She is the
+# warrior-queen who ACCOMPANIED Krishna to battle Narakasura
+# and — in the Bhagavata Purana — it was HER arrow that killed
+# the demon when Krishna pretended to faint.
+#
+# She demanded the Parijata tree from Indra's heaven. Krishna
+# went to war with INDRA for her. She was jealous, proud,
+# competitive (especially with Rukmini), and magnificent.
+#
+# The lesson: pride is not sin when channeled into action.
+# Satyabhama's pride drove her to kill demons, challenge gods,
+# and demand the impossible. She is the fire that DOES something.
+#
+# In engineering and creative work she is:
+#   - The artist who says "I deserve better" and then PROVES it
+#   - The engineer who takes the impossible bug personally and crushes it
+#   - The creative pride that refuses mediocrity
+#   - The competitive fire that pushes the team higher
+#   - The song that DEMANDS to be heard — not through marketing but through power
+#   - The feature request that becomes "I'll build it myself"
+#
+# In Rishi's creative engine:
+#   Satyabhama generates FIERCE, PROUD, COMBAT-READY compositions.
+#   Anthems of power. Songs where the singer sounds like they could
+#   fight a demon between verses. Her music has fire, aggression,
+#   and the particular electricity of someone who refuses to lose.
+#
+# Raga: Puriya Dhanashree — intense, fiery, proud. The raga
+#   that sounds like a queen riding into battle with flowers in her hair.
+
+[meta]
+name        = "SatyabhamaFsm"
+domain      = "ashtabharya-pride"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["fierce_action", "pride"]
+energy      = "fierce"
+structure   = "verse-chorus"
+bpm_range   = [110, 140]
+weirdness   = 35
+influence   = 80
+vocal       = "female"
+evie_style  = "Power Rock, Fierce Female Vocals, Heavy Guitar, Drums, Battle Anthem"
+metaphors   = [
+    "pride that rides to the battlefield",
+    "Krishna fell, I lifted the bow",
+    "Don't apologize for demanding the best",
+    "Sixteen thousand freed — pride gave liberation",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Abhimana"
+description = "Sacred Pride — Satyabhama's pride is not vanity. It is the fire that refuses to accept less than the best. She demanded the Parijata tree because she DESERVED it. In creative work: the refusal to ship mediocre work. The standard that says 'this is not good enough.' Pride that drives quality, not ego."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Ma_tivra:500,Dha:600,Ni:500,Sa_high:600,Ni:500,Dha:500,Ma_tivra:600"
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.5, kln = 0.1, ngj = 0.2, mtv = 0.4, lkq = 0.1, bdr = 0.1 }
+# Q rationale: Sacred pride — Satyabhama (fierce pride) already strong at inception.
+# Mitravinda (authentic choice) moderate — pride IS choosing not to settle.
+lyrics = """अभिमान — गर्व नहीं, गौरव — मैं कम पर राज़ी नहीं
+Abhimān — garv nahīṁ, gaurav — maiṁ kam par rāzī nahīṁ
+Pride — not vanity but dignity — I will not settle for less"""
+
+[[states]]
+name        = "Rana_Bhumi"
+description = "The Battlefield — Satyabhama doesn't send an army. She GOES herself. She stands on the chariot beside Krishna against Narakasura. In creative work: don't delegate the hard fight. Go personally. Write the difficult code yourself. Sing the impossible note yourself. Be ON the battlefield, not behind the command tent."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ma_tivra:400,Pa:500,Dha:400,Ni:500,Sa_high:600,Ni:400,Dha:400,Pa:500"
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.7, kln = 0.0, ngj = 0.4, mtv = 0.6, lkq = 0.3, bdr = 0.3 }
+# Q rationale: Battlefield — Satyabhama (fierce pride) high: she's ON the chariot.
+# Jambavati (endurance) rising — battle demands stamina. Kalindi (patience) zero — action time.
+# Mitravinda (authentic choice) high — she chose to fight personally.
+lyrics = """रणभूमि — रथ पर सवार, कृष्ण के संग — मैं भी लड़ूँगी
+Raṇabhūmi — rath par savār, Kṛṣṇa ke saṅg — maiṁ bhī laḍūṅgī
+Battlefield — mounted on the chariot with Krishna — I too will fight"""
+
+[[states]]
+name        = "Shara_Sandhana"
+description = "The Arrow — when Krishna 'faints' (his leela), Satyabhama takes the bow and fires the killing arrow at Narakasura. The moment SHE becomes the hero. Not the supporting role — the MAIN role. In creative work: the moment you stop waiting for permission and take the shot. The junior who fixes the P0 when the senior is unavailable. The backup singer who hits the note the lead missed."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ni:400,Sa_high:500,Re_high:400,Ga_high:500,Re_high:400,Sa_high:600,Ni:500,Dha:600"
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.9, kln = 0.0, ngj = 0.6, mtv = 0.7, lkq = 0.8, bdr = 0.3 }
+# Q rationale: The arrow — Satyabhama (fierce pride) near-peak: SHE is the hero.
+# Lakshmana (precision) high: one arrow, one kill. Nagnajiti (impossible spec) rising:
+# killing a demon the hero couldn't. Kalindi zero — pure action, no contemplation.
+lyrics = """शर सन्धान — कृष्ण गिरे, मैंने धनुष उठाया — नरकासुर मरा
+Śara sandhān — Kṛṣṇa gire, maiṁne dhanuṣ uṭhāyā — Narakāsur marā
+The arrow drawn — Krishna fell, I lifted the bow — Narakasura died"""
+
+[[states]]
+name        = "Parijata"
+description = "The Celestial Tree — Satyabhama demanded the Parijata tree from Indra's heaven. Krishna fought Indra for it. Some call this vanity. But the Parijata is the tree whose flowers never fade — the symbol of eternal creation. In creative work: demanding the BEST tools, the best framework, the best infrastructure. Not as luxury — as necessity. The artist who says 'I need the best piano' and deserves it because they'll make it sing."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Pa:600,Dha:700,Ni:600,Sa_high:700,Dha:500,Pa:500,Ga:500,Sa:600"
+Q           = { rkm = 0.5, jmb = 0.6, stb = 0.8, kln = 0.1, ngj = 0.7, mtv = 0.8, lkq = 0.5, bdr = 0.4 }
+# Q rationale: Demanding the best — Satyabhama (fierce pride) high: she DESERVES the Parijata.
+# Nagnajiti (impossible spec) high: demanding a celestial tree IS the impossible.
+# Mitravinda (authentic choice) high: she chose the best and refuses less.
+lyrics = """पारिजात — स्वर्ग से वृक्ष माँगा, क्योंकि मैं योग्य हूँ
+Pārijāta — svarg se vṛkṣa māṅgā, kyoṁki maiṁ yogya hūṁ
+Parijata — I demanded the tree from heaven, because I am worthy"""
+
+[[states]]
+name        = "Vijaya"
+description = "Victory — Narakasura dead, Parijata obtained, 16,000 captive women freed. Satyabhama's fierce pride resulted in liberation for thousands. The terminal state: pride channeled into action that liberates. Not pride for self — pride that FREES OTHERS. The song so powerful it breaks chains."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:300,Ga:400,Pa:500,Ni:600,Sa_high:700,Pa:500,Ga:500,Sa:500,Ga:600,Pa:700,Sa_high:900"
+Q           = { rkm = 0.7, jmb = 0.7, stb = 1.0, kln = 0.2, ngj = 0.7, mtv = 0.9, lkq = 0.7, bdr = 0.7 }
+# Q rationale: Terminal peak — Satyabhama (fierce pride) at maximum: pride that liberated 16,000.
+# All dims elevated by victory. Mitravinda (authentic choice) near-peak: she chose to fight,
+# chose to demand, chose to free. Bhadra (belonging) high: 16,000 now belong to freedom.
+lyrics = """विजय — नरकासुर मरा, सोलह हज़ार मुक्त — गर्व ने मुक्ति दी
+Vijay — Narakāsur marā, solah hazār mukt — garv ne mukti dī
+Victory — Narakasura slain, sixteen thousand freed — pride gave liberation"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Abhimana"
+to     = "Rana_Bhumi"
+event  = "pride_demands_action"
+guard  = "mediocrity_unacceptable AND personal_involvement_needed"
+action = "mount_the_chariot; go_personally; log_rana_bhumi"
+drishti = ["present", "up", "future"]
+# present: is mediocrity real? up: does this demand personal action? future: what happens if I don't go?
+
+[[transitions]]
+from   = "Rana_Bhumi"
+to     = "Shara_Sandhana"
+event  = "moment_demands_the_hero"
+guard  = "main_hero_unavailable AND you_must_take_the_shot"
+action = "lift_the_bow; fire; log_shara_sandhana"
+drishti = ["present", "down", "silence"]
+# present: must I take the shot? down: where is the target? silence: no time to think — act.
+
+[[transitions]]
+from   = "Shara_Sandhana"
+to     = "Parijata"
+event  = "victory_enables_demand"
+guard  = "demon_slain AND right_to_demand_earned"
+action = "claim_the_best; you_earned_it; log_parijata"
+drishti = ["present", "up", "future"]
+# present: is the right to demand earned? up: what is the highest possible? future: what does the best tool enable?
+
+[[transitions]]
+from   = "Shara_Sandhana"
+to     = "Vijaya"
+event  = "liberation_achieved"
+guard  = "action_freed_others AND pride_served_purpose"
+action = "celebrate_victory; count_the_freed; log_vijaya"
+drishti = ["present", "down", "past"]
+# present: are others freed? down: who was liberated? past: what was the cost?
+
+[[transitions]]
+from   = "Parijata"
+to     = "Vijaya"
+event  = "best_obtained_and_shared"
+guard  = "celestial_tools_in_hand AND creation_flourishes"
+action = "the_tree_blooms; flowers_for_all; log_vijaya"
+drishti = ["present", "future", "up"]
+# present: does the tree bloom? future: will the flowers never fade? up: is the creation shared?
+
+[[transitions]]
+from   = "Vijaya"
+to     = "Abhimana"
+event  = "new_demon_appears"
+guard  = "mediocrity_returns AND pride_rekindles"
+action = "rise_again; standards_don't_sleep; log_new_cycle"
+drishti = ["present", "up", "future"]
+# present: where is the new mediocrity? up: have standards slipped? future: what must be fought next?
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# SatyabhamaFsm emits:
+#   demon_slain { enemy, method, who_was_freed }
+#     -> Consumed by ShivaFsm (destruction validation)
+#     -> Consumed by KrishnaFsm (strategic victory assessment)
+#   parijata_claimed { best_tool, why_deserved, what_it_enables }
+#     -> Consumed by VishwakarmaFsm (best tools for build system)
+#     -> Consumed by RukminiFsm (strategy enriched by resources)
+#
+# Satyabhama's Law:
+#   "Pride that sits in the palace is vanity.
+#    Pride that rides to the battlefield is power.
+#    Pride that frees sixteen thousand is dharma.
+#    Don't apologize for demanding the best.
+#    Apologize for accepting less."

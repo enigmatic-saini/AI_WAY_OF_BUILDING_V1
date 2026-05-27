@@ -1,0 +1,173 @@
+# BrahmachariniFsm — Discipline & Austerity (Nav Shakti 2)
+# v1.0
+#
+# Severe Penance. Mastery Through Restraint.
+#
+# Brahmacharini is the second form of Durga — the one who
+# walked barefoot for thousands of years, eating only fallen
+# leaves, then nothing at all, enduring every hardship to earn
+# Shiva's grace through pure discipline. Not talent, not
+# cleverness — discipline.
+#
+# In code: she reviews what ShailaputriFsm (NS1) left standing
+# and asks: is it disciplined? Do names follow conventions? Do
+# files follow structure? Is there excess — over-engineering,
+# unused imports, dead code, bloated abstractions? Is the lint
+# clean? Are the tests honest or ceremonial?
+#
+# Brahmacharini removes what is unnecessary. She does not create
+# or transform — she strips. Austerity is not poverty; it is
+# the refusal to carry what does not serve.
+#
+# She is the Svadhishthana (sacral) chakra — flow through
+# discipline, not through indulgence.
+
+[meta]
+name        = "BrahmachariniFsm"
+domain      = "navshakti-discipline"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Discipline_Audit"
+description = "Scan for coding standards compliance, formatting, naming conventions, lint violations. Run clippy, check module structure, verify that pub/crate/private visibility is intentional. Every file, every function, every type — measured against the standard. No exceptions, no 'we'll fix it later.'"
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.5, stb = 0.4, kln = 0.6, ngj = 0.0, mtv = 0.3, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) high — scanning every file against the standard.
+# Kalindi (patience) — no exceptions, no 'we'll fix it later.'
+audio_phrase = "Sa:400,Re:400,Ga:400,Ma:400"
+lyrics = """तपस्या का मार्ग, अनुशासन ही धर्म
+Tapasyā kā mārg, anuśāsan hī dharm
+The path of penance — discipline is the law"""
+
+[[states]]
+name        = "Austerity_Check"
+description = "What is excessive? Over-engineering: abstractions nobody asked for. Unnecessary generics. Trait hierarchies that serve one implementation. Dependencies that could be 10 lines of code. Feature flags for features that don't exist. If it doesn't earn its keep, it must go."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.2, mtv = 0.5, lkq = 0.6, bdr = 0.2 }
+# Q rationale: Mitravinda (self-choice) — courage to declare excess.
+# Satyabhama (fierce action) — if it doesn't earn its keep, it must go.
+audio_phrase = "Re:400,Ga:400,Re:400,Sa:500"
+lyrics = """जो अनावश्यक है, वो बोझ है — त्याग दो
+Jo anāvaśyak hai, vo bojh hai — tyāg do
+What is unnecessary is a burden — renounce it"""
+
+[[states]]
+name        = "Penance_List"
+description = "The hard, boring cleanup tasks everyone avoids. Enumerate them unflinchingly: rename that misleading function, split that 500-line file, delete that commented-out code, write that missing doc comment, fix that TODO from three months ago. Penance is not glamorous. It is necessary."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.7, stb = 0.3, kln = 0.7, ngj = 0.1, mtv = 0.3, lkq = 0.6, bdr = 0.3 }
+# Q rationale: Jambavati (endurance) peaks — the boring cleanup nobody wants.
+# Kalindi (patience) — penance is not glamorous, it is necessary.
+audio_phrase = "Sa:300,Re:300,Sa:300,Re:300,Ga:400,Re:300,Sa:400"
+lyrics = """कठिन कर्म से मत भागो, तप ही शिव को पाये
+Kaṭhin karm se mat bhāgo, tap hī Śiv ko pāye
+Do not flee hard work — only penance attains Shiva"""
+
+[[states]]
+name        = "Discipline_Verdict"
+description = "Enforce standards, remove excess, embrace simplicity. Each item gets: ENFORCE (apply the fix now), DEFER (schedule with deadline), or ACCEPT (already clean). The penance list becomes the work order. No negotiation — discipline is not optional. Jai Maa Shakti."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.5, kln = 0.6, ngj = 0.2, mtv = 0.5, lkq = 0.7, bdr = 0.4 }
+# Q rationale: Lakshmana (precision) peak — enforce standards, no negotiation.
+# Discipline is not optional. Pure code, pure mind.
+audio_phrase = "Sa:500,Ga:400,Pa:500,Sa:800"
+lyrics = """शुद्ध कोड, शुद्ध मन — जय माँ शक्ति
+Śuddh koḍ, śuddh man — Jai Māṃ Śakti
+Pure code, pure mind — Jai Maa Shakti"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Discipline_Audit → Austerity_Check: audit complete, check for excess
+[[transitions]]
+from   = "Discipline_Audit"
+to     = "Austerity_Check"
+event  = "audit_complete"
+guard  = "all_files_scanned AND lint_results_collected"
+action = "compile_violations; categorize_by_severity; log_audit_results"
+drishti = ["present", "down"]
+# present: is audit complete? down: what excess lurks beneath?
+
+# Austerity_Check → Penance_List: excess identified, enumerate cleanup tasks
+[[transitions]]
+from   = "Austerity_Check"
+to     = "Penance_List"
+event  = "excess_identified"
+guard  = "at_least_one_excess_found OR violations_need_remediation"
+action = "compile_excess_list; merge_with_violations; log_austerity_results"
+drishti = ["present", "future"]
+# present: what excess was found? future: what cleanup is needed?
+
+# Austerity_Check → Discipline_Audit: standards themselves need refinement
+# (the audit revealed that our standards are outdated or contradictory)
+[[transitions]]
+from   = "Austerity_Check"
+to     = "Discipline_Audit"
+event  = "standards_need_refinement"
+guard  = "standards_contradictory OR standards_outdated"
+action = "update_standards_definitions; log_standards_revision; re_audit_with_new_standards"
+drishti = ["present", "up"]
+# present: are standards themselves outdated? up: refine the standard first.
+
+# Penance_List → Discipline_Verdict: all cleanup tasks enumerated
+[[transitions]]
+from   = "Penance_List"
+to     = "Discipline_Verdict"
+event  = "penance_enumerated"
+guard  = "all_cleanup_tasks_listed AND effort_estimated"
+action = "prioritize_penance_items; assign_verdicts; log_penance_list_complete"
+drishti = ["present", "future"]
+# present: are all tasks enumerated? future: effort estimates ready?
+
+# Penance_List → Austerity_Check: cleanup revealed more excess
+# (deleting dead code exposed another unused abstraction)
+[[transitions]]
+from   = "Penance_List"
+to     = "Austerity_Check"
+event  = "excess_discovered_in_cleanup"
+guard  = "new_excess_found_during_enumeration"
+action = "add_new_excess_to_queue; log_cascading_excess"
+drishti = ["present", "down"]
+# present: did cleanup reveal more excess? down: cascade discovered.
+
+# ── Cross-coupling signals ───────────────────────────────────
+#
+# BrahmachariniFsm reads from:
+#   - ShaktiFsm.state: must be Channeled with target=NS2 to activate
+#   - KhatuShyamFsm: routed here when symptom is excess/sloppiness/drift
+#   - ShailaputriFsm (NS1): often runs after NS1 in the ground-up chain
+#
+# BrahmachariniFsm emits:
+#   - discipline_verdict_ready { violations: [...], penance_list: [...] }
+#     Consumed by KhatuShyamFsm (Dispatch) to close the cycle or
+#     chain to ChandraghantaFsm (NS3) for battle readiness check.
+#   - excess_removal_order { items: [...] }
+#     Consumed by ShivaFsm — excess removal is a form of dissolution.
+#     Shiva's Tandava can execute the actual deletions.
+#   - standards_update_proposal { changes: [...] }
+#     Consumed by ConfigGovernanceFsm for standards evolution.
+#
+# Typical KhatuShyamFsm chain:
+#   NS1 (Shailaputri) → NS2 (Brahmacharini) → NS3 (Chandraghanta)
+#   Foundation solid → Discipline enforced → Ready for battle
+#
+# ShaktiFsm coupling:
+#   When ShaktiFsm.state == Channeled AND target == "navshakti-discipline",
+#   this FSM activates. When Discipline_Verdict is reached,
+#   emit signal_shakti_ns2_spent so ShaktiFsm can transition to Spent.
+#
+# Relationship to ShivaFsm:
+#   Brahmacharini identifies excess; Shiva dissolves it.
+#   NS2's excess_removal_order is Shiva's work queue.
+#   But Brahmacharini does not invoke Shiva directly — she reports
+#   through KhatuShyamFsm, who decides if Shiva is needed.

@@ -1,0 +1,106 @@
+# CycleFsm — The 12-cycle review engine
+# Every review cycle is a profile of this single 12-step machine.
+
+[meta]
+name    = "CycleFsm"
+domain  = "review-engine"
+version = "1.0"
+
+# ──────────────────────────────────────────────────────────────────
+# §1 — STATES (the 12 cycles, in three phases of four)
+# ──────────────────────────────────────────────────────────────────
+
+# Phase 1 — PERCEIVE: What is true
+[[states]]
+id = "observe"      ; index = 1 ; phase = "perceive"
+purpose = "Scan the input — build an inventory of what exists."
+
+[[states]]
+id = "enrich"       ; index = 2 ; phase = "perceive"
+purpose = "Pull knowledge from references, shastras, RAG. Attach domain context."
+
+[[states]]
+id = "orient"       ; index = 3 ; phase = "perceive"
+purpose = "Classify context — project type, domain, patterns."
+
+[[states]]
+id = "distill"      ; index = 4 ; phase = "perceive"
+purpose = "Extract questions — gaps, issues, priorities."
+phase_gate = true
+
+# Phase 2 — THINK: What wants to change
+[[states]]
+id = "propose"      ; index = 5 ; phase = "think"
+purpose = "Generate approaches — 3 candidates, ranked."
+
+[[states]]
+id = "evaluate"     ; index = 6 ; phase = "think"
+purpose = "Score proposals, pick best."
+
+[[states]]
+id = "blueprint"    ; index = 7 ; phase = "think"
+purpose = "Structure the plan — ordered steps with file operations."
+
+[[states]]
+id = "gate"         ; index = 8 ; phase = "think"
+purpose = "Phase gate — pause and validate coherence before acting."
+phase_gate = true
+
+# Phase 3 — ACT: What to do
+[[states]]
+id = "forge"        ; index = 9  ; phase = "act"
+purpose = "Produce output — write files, implement changes."
+
+[[states]]
+id = "verify"       ; index = 10 ; phase = "act"
+purpose = "Self-check — correctness, completeness, law compliance."
+
+[[states]]
+id = "refine"       ; index = 11 ; phase = "act"
+purpose = "Surgical fixes from Verify feedback."
+
+[[states]]
+id = "reflect"      ; index = 12 ; phase = "act"
+purpose = "Meta-learn — what worked, what to improve next time."
+phase_gate = true
+
+# ──────────────────────────────────────────────────────────────────
+# §2 — PROFILES
+# ──────────────────────────────────────────────────────────────────
+
+[[profiles]]
+id     = "Q"
+name   = "Quick"
+length = 4
+states = ["observe", "orient", "forge", "reflect"]
+when   = "small fix, typo, trivial change"
+
+[[profiles]]
+id     = "S"
+name   = "Standard"
+length = 8
+states = ["observe", "orient", "distill", "propose", "blueprint", "forge", "verify", "reflect"]
+when   = "regular feature work, moderate complexity"
+
+[[profiles]]
+id     = "D"
+name   = "Deep"
+length = 12
+states = ["observe", "enrich", "orient", "distill", "propose", "evaluate", "blueprint", "gate", "forge", "verify", "refine", "reflect"]
+when   = "architecture, security, pre-release"
+
+[[profiles]]
+id     = "3x4"
+name   = "Matrix"
+length = 12
+states = ["observe", "enrich", "orient", "distill", "propose", "evaluate", "blueprint", "gate", "forge", "verify", "refine", "reflect"]
+phase_gates_enforced = true
+when   = "cross-module, multi-system, design unification"
+
+# ──────────────────────────────────────────────────────────────────
+# §3 — INVARIANT
+# ──────────────────────────────────────────────────────────────────
+
+[invariants]
+"deeper_profiles_contain_shallower" = "Q ⊂ S ⊂ D ⊂ 3x4"
+"phase_gates_block_premature_act"   = true

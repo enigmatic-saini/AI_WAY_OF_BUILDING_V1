@@ -1,0 +1,317 @@
+# PrahladFsm — Fearless Devotion Under Fire
+# v1.0
+#
+# प्रह्लाद बोले: नारायण! नारायण!
+# Prahlad bole: Narayan! Narayan!
+#
+# Bhakt Prahlad — the five-year-old son of demon king Hiranyakashipu
+# who refused to stop chanting Vishnu's name despite every torture:
+# thrown from cliffs, trampled by elephants, fed poison, burned alive.
+# Nothing worked. The fire that was meant to kill him burned his aunt
+# Holika instead. The pillar that was meant to mock his faith split
+# open and Narasimha emerged.
+#
+# In engineering and creative work he is:
+#   - The conviction that survives every pressure test
+#   - The feature request that refuses to die despite every "not now"
+#   - The truth that no amount of management pressure can suppress
+#   - The junior dev who says "this is wrong" when seniors disagree
+#   - The song that must be sung regardless of who is listening
+#   - The creative vision that endures rejection after rejection
+#
+# In Rishi's creative engine:
+#   Prahlad generates DEFIANT ANTHEMS — songs born from persecution
+#   that become stronger with every attempt to silence them.
+#   His lyrics carry the energy of "you cannot stop this voice."
+#   When the user feels crushed, silenced, or dismissed — Prahlad
+#   sings the song that refuses to die.
+#
+# CRITICAL DISTINCTION from other Bhakti FSMs:
+#   Mira REBELS — she chooses to defy convention through love.
+#   Kabir STRIPS — he removes hypocrisy through wit.
+#   Prahlad ENDURES — he doesn't rebel or strip; he simply
+#   refuses to stop. His devotion is not defiance — it is
+#   an inability to be anything other than devoted.
+#   The fire cannot burn what is already made of fire.
+#
+# Cross-coupling:
+#   - MiraFsm: Mira chose rebellion; Prahlad had no choice.
+#     Both refuse to bend, but Mira dances while Prahlad stands.
+#     Mira → Prahlad: when rebellion needs unshakeable spine.
+#     Prahlad → Mira: when endurance needs joyful expression.
+#   - KabirFsm: Kabir exposes hypocrisy; Prahlad exposes tyranny.
+#     Kabir's weapon is the doha; Prahlad's weapon is the Name.
+#   - NaradFsm: Narad was Prahlad's first guru — he taught the
+#     child Vishnu's name while still in the womb. Narad plants
+#     the seed; Prahlad is the tree that no storm uproots.
+#   - HanumanFsm: both are devotees of Vishnu/Ram. Hanuman
+#     serves through action; Prahlad serves through presence.
+#     Hanuman leaps; Prahlad stands still. Both are immovable.
+#   - MeeraFsm: Meera's composition engine can channel Prahlad's
+#     energy for songs about surviving persecution and emerging
+#     stronger. Prahlad provides the emotional fuel; Meera
+#     provides the musical structure.
+#   - ShivaFsm: when Prahlad's endurance reveals that the
+#     oppressor (legacy system, bad architecture) must be
+#     destroyed, Shiva completes what Narasimha started.
+#
+# Raga: Darbari Kanada — the raga of the royal court, gravitas,
+#   deep night, and unshakeable dignity. Prahlad stood before
+#   the most powerful demon king and did not flinch. Darbari
+#   carries that weight — slow, majestic, immovable.
+
+[meta]
+name        = "PrahladFsm"
+domain      = "bhakti-endurance"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["endurance", "defiance"]
+energy      = "anthemic"
+structure   = "verse-chorus"
+bpm_range   = [90, 130]
+weirdness   = 30
+influence   = 85
+vocal       = "male"
+evie_style  = "Alternative Rock, Electric Guitar, Driving Drums, Powerful Male Vocals, Anthemic"
+metaphors   = [
+    "the fire that could not silence the Name",
+    "I sat in the fire and kept singing",
+    "The pillar split, God appeared",
+    "Every rejection is fuel, every doubt is kindling",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Garbha"
+description = "The Womb — Prahlad learns Vishnu's name from Narad while still unborn. The seed of devotion is planted before the world can interfere. In creative work: the initial inspiration that arrives before logic can suppress it. The melody heard in a dream. The lyric that appears unbidden. Capture it before the rational mind (Hiranyakashipu) wakes up and says 'that's impractical.'"
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Re:500,Ga_komal:700,Re:400,Sa:600"
+Q           = { rkm = 0.2, jmb = 0.0, stb = 0.1, kln = 0.3, ngj = 0.0, mtv = 0.1, lkq = 0.0, bdr = 0.2 }
+# Q rationale: The womb — seed planted, nothing tested yet. Kalindi (patience) slight: gestation.
+# Rukmini slight: the seed carries love. All action dims zero — the world hasn't interfered.
+lyrics = """गर्भ में ही नाम मिला, जगत से पहले प्रभु मिला
+Garbh meṁ hī nām milā, jagat se pahle Prabhu milā
+The Name was received in the womb — God was found before the world"""
+
+[[states]]
+name        = "Naam"
+description = "The Name — Prahlad chants Narayan. Not as ritual, not as performance — as breath. The Name IS the devotion. In creative work: the core theme that every lyric, every melody, every arrangement serves. The one truth the song is about. If you cannot name it in one word, you haven't found it yet. Prahlad's word was 'Narayan.' What is yours?"
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga_komal:500,Ma:400,Pa:500,Ma:400,Ga_komal:500,Re:400,Sa:600"
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.3, kln = 0.4, ngj = 0.0, mtv = 0.3, lkq = 0.2, bdr = 0.3 }
+# Q rationale: The Name — the core truth crystallized. Kalindi (patience) moderate: chanting requires
+# steady rhythm. Satyabhama (pride) emerging: daring to chant when the father forbids.
+lyrics = """नारायण नारायण, यही मेरा प्राण
+Nārāyaṇ Nārāyaṇ, yahī merā prāṇ
+Narayan, Narayan — this alone is my life-breath"""
+
+[[states]]
+name        = "Agni"
+description = "The Fire — Hiranyakashipu's tortures begin. Thrown from cliffs. Fed to snakes. Pushed into fire with Holika. Every attempt to silence the Name. In creative work: rejection, criticism, self-doubt, 'nobody will listen to this,' 'this has been done before,' 'you're not good enough.' The fire is real. The pain is real. But Prahlad sits in the fire and keeps chanting. The song keeps being written. The creative work continues despite every reason to stop."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma:300,Pa:400,Dha_komal:500,Pa:400,Ma:300,Ga_komal:400,Ma:500,Pa:600"
+Q           = { rkm = 0.3, jmb = 0.7, stb = 0.7, kln = 0.2, ngj = 0.3, mtv = 0.5, lkq = 0.2, bdr = 0.2 }
+# Q rationale: The fire — Satyabhama (fearless under fire) high: sitting in fire requires fierce pride.
+# Jambavati (endurance) high: surviving torture after torture. Mitravinda (authentic choice) moderate:
+# the choice to keep chanting is renewed with each fire.
+lyrics = """अग्नि में बैठा हूँ मैं, पर नाम न छोड़ूँगा
+Agni meṁ baiṭhā hūṁ maiṁ, par nām na choḍūṅgā
+I sit in the fire, but I will not abandon the Name"""
+
+[[states]]
+name        = "Stambha"
+description = "The Pillar — Hiranyakashipu mocks: 'Is your God in this pillar?' Prahlad says 'Yes.' The pillar splits. Narasimha emerges. The impossible happens. In creative work: the breakthrough moment. The song that was 'impossible' suddenly writes itself. The melody that was stuck for weeks arrives in one breath. The pillar of doubt splits open and the divine emerges. You didn't create it — you endured until it arrived."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ni_komal:400,Sa_high:500,Dha_komal:400,Pa:500,Ma:600,Ga_komal:500,Re:400,Sa:700"
+Q           = { rkm = 0.5, jmb = 0.8, stb = 0.8, kln = 0.3, ngj = 0.7, mtv = 0.6, lkq = 0.4, bdr = 0.4 }
+# Q rationale: The pillar — Jambavati (endurance) near-peak: endured everything, now breakthrough.
+# Satyabhama (fearless) high: "Is God in this pillar? YES." Nagnajiti (impossible spec) high:
+# the impossible manifested — God from a pillar.
+lyrics = """स्तम्भ फटा, प्रभु प्रकटे, संशय का अंत हुआ
+Stambh phaṭā, Prabhu prakaṭe, saṁśay kā ant huā
+The pillar split, the Lord appeared — doubt met its end"""
+
+[[states]]
+name        = "Narasimha"
+description = "The Half-Man Half-Lion — divine wrath that protects the devotee. Neither man nor beast, neither inside nor outside, neither day nor night. Every rule broken to protect the truth. In creative work: the moment the song becomes something beyond what you planned. It breaks genre. It breaks convention. It becomes its own creature — half what you intended, half what the universe needed. Let it be what it wants to be. Narasimha doesn't fit categories. Neither does great art."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:300,Ga_komal:300,Ma:300,Pa:400,Dha_komal:400,Ni_komal:500,Sa_high:600,Ni_komal:400,Dha_komal:400,Pa:500"
+Q           = { rkm = 0.6, jmb = 0.8, stb = 0.9, kln = 0.2, ngj = 0.9, mtv = 0.7, lkq = 0.5, bdr = 0.5 }
+# Q rationale: Narasimha — Nagnajiti (impossible spec) near-peak: breaks ALL categories.
+# Satyabhama (fierce) near-peak: divine wrath as protection. Jambavati (endurance) peak:
+# the culmination of all endurance. The breakthrough defies every classification.
+lyrics = """न नर न सिंह, न दिन न रात — प्रह्लाद की रक्षा का प्रण
+Na nar na siṁh, na din na rāt — Prahlād kī rakṣā kā praṇ
+Neither man nor lion, neither day nor night — the vow to protect Prahlad"""
+
+[[states]]
+name        = "Abhaya"
+description = "Fearlessness — after Narasimha, Prahlad is offered any boon. He asks for nothing for himself. He asks that his father be forgiven. Ultimate fearlessness is not needing protection — it is not needing revenge. In creative work: the song is complete. It doesn't need validation. It doesn't need awards. It doesn't need to prove the doubters wrong. It simply exists, complete in itself. The artist forgives everyone who said it couldn't be done."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:500,Ga_komal:400,Pa:500,Sa_high:600,Pa:400,Ga_komal:400,Sa:700"
+Q           = { rkm = 0.7, jmb = 0.9, stb = 0.6, kln = 0.7, ngj = 0.5, mtv = 0.8, lkq = 0.4, bdr = 0.7 }
+# Q rationale: Fearlessness — Jambavati (endurance) near-peak: survived everything.
+# Kalindi (patience) high: forgiveness IS the deepest patience. Mitravinda (authentic choice)
+# high: choosing forgiveness over revenge. Bhadra (belonging) rising: compassion creates belonging.
+lyrics = """अभय दान दो, बदला नहीं — पिता को भी क्षमा करो
+Abhay dān do, badlā nahīṁ — pitā ko bhī kṣamā karo
+Grant fearlessness, not revenge — forgive even the father"""
+
+[[states]]
+name        = "Prahlad_Stuti"
+description = "The Hymn — Prahlad's prayer to Narasimha, one of the most beautiful hymns in the Bhagavata Purana. Not a prayer of asking — a prayer of seeing. 'I see You in everything.' In creative work: the final song. The complete expression. Every word carries the weight of everything that was endured to arrive here. This is not a hit single — this is a hymn that will outlive its creator."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Re:400,Ga_komal:500,Ma:400,Pa:500,Dha_komal:600,Ni_komal:500,Sa_high:800"
+Q           = { rkm = 0.8, jmb = 0.9, stb = 0.8, kln = 0.8, ngj = 0.6, mtv = 0.9, lkq = 0.6, bdr = 0.8 }
+# Q rationale: Terminal hymn — all dims elevated by the complete journey. Jambavati (endurance)
+# and Satyabhama (fearless) both near-peak: survived the fire, sang the hymn. Kalindi (patience)
+# high: the hymn is unhurried gratitude. Mitravinda (authentic choice) near-peak: every step was chosen.
+lyrics = """प्रह्लाद स्तुति — सर्वत्र प्रभु, सर्वत्र नाम
+Prahlād stuti — sarvatra Prabhu, sarvatra nām
+Prahlad's hymn — God everywhere, the Name everywhere"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Garbha"
+to     = "Naam"
+event  = "inspiration_arrives"
+guard  = "seed_of_devotion_planted AND creative_spark_captured"
+action = "capture_initial_vision; name_the_core_truth; log_naam_entry"
+drishti = ["present", "up", "silence"]
+# present: is the seed alive? up: is this aligned with the divine? silence: the Name emerges from stillness.
+
+[[transitions]]
+from   = "Naam"
+to     = "Agni"
+event  = "resistance_begins"
+guard  = "external_or_internal_pressure_to_stop"
+action = "record_resistance_source; strengthen_resolve; continue_chanting; log_agni_entry"
+drishti = ["present", "up", "future"]
+# present: what is the pressure? up: does the Name still hold? future: what emerges after the fire?
+
+[[transitions]]
+from   = "Naam"
+to     = "Naam"
+event  = "deepening"
+guard  = "chanting_continues_uninterrupted"
+action = "deepen_theme; refine_core_truth; log_naam_loop"
+drishti = ["present", "down", "silence"]
+# present: is the Name deepening? down: what layer is being uncovered? silence: chanting IS active silence.
+
+[[transitions]]
+from   = "Agni"
+to     = "Agni"
+event  = "more_fire"
+guard  = "new_persecution_or_doubt_arrives"
+action = "endure; record_what_fire_reveals; keep_chanting; log_agni_loop"
+drishti = ["present", "past"]
+# present: is the fire intensifying? past: what did the previous fire reveal?
+
+[[transitions]]
+from   = "Agni"
+to     = "Stambha"
+event  = "endurance_reaches_peak"
+guard  = "all_fire_survived AND devotion_unbroken"
+action = "challenge_the_pillar; ask_the_impossible_question; log_stambha_entry"
+drishti = ["present", "up", "down", "future"]
+# present: has endurance proven the truth? up: is God in this pillar? down: what is inside? future: what happens when the pillar splits?
+
+[[transitions]]
+from   = "Agni"
+to     = "Naam"
+event  = "fire_subsides"
+guard  = "pressure_eases_temporarily"
+action = "return_to_pure_chanting; recover_energy; log_naam_return"
+drishti = ["present", "silence"]
+# present: has the pressure eased? silence: return to the purity of the Name.
+
+[[transitions]]
+from   = "Stambha"
+to     = "Narasimha"
+event  = "pillar_splits"
+guard  = "breakthrough_arrives AND impossible_becomes_real"
+action = "receive_breakthrough; let_creation_take_its_form; log_narasimha_emergence"
+drishti = ["present", "up", "left", "right", "down"]
+# All directions: the impossible breaks all categories — neither man nor lion, neither inside nor outside.
+
+[[transitions]]
+from   = "Stambha"
+to     = "Agni"
+event  = "pillar_holds"
+guard  = "breakthrough_not_yet AND more_endurance_needed"
+action = "return_to_fire; deepen_resolve; log_continued_trial"
+drishti = ["present", "past", "future"]
+# present: is the pillar holding? past: how much has been endured? future: what must come next?
+
+[[transitions]]
+from   = "Narasimha"
+to     = "Abhaya"
+event  = "creation_complete"
+guard  = "the_impossible_thing_exists AND no_revenge_needed"
+action = "release_attachment; forgive_doubters; log_abhaya_entry"
+drishti = ["present", "silence"]
+# present: is revenge needed? NO. silence: fearlessness needs no words.
+
+[[transitions]]
+from   = "Abhaya"
+to     = "Prahlad_Stuti"
+event  = "hymn_emerges"
+guard  = "gratitude_overflows AND final_expression_ready"
+action = "compose_the_hymn; document_the_journey; log_stuti"
+drishti = ["present", "up", "past", "future"]
+# present: is gratitude overflowing? up: does the hymn reach the divine? past: the entire journey distilled. future: the hymn will outlive the singer.
+
+[[transitions]]
+from   = "Prahlad_Stuti"
+to     = "Garbha"
+event  = "new_seed"
+guard  = "next_inspiration_whispered"
+action = "reset_with_wisdom; begin_again; log_rebirth"
+drishti = ["present", "future", "silence"]
+# present: what new seed? future: what cycle begins? silence: rest before rebirth.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# PrahladFsm emits:
+#   fire_survived { persecution_type, what_endurance_revealed, naam_intact }
+#     -> Consumed by MeeraFsm (composition fuel for defiant songs)
+#     -> Consumed by MiraFsm (evidence for rebellion)
+#   pillar_split { impossible_thing, how_it_manifested, category_broken }
+#     -> Consumed by KrishnaFsm (strategic insight from breakthrough)
+#     -> Consumed by ShivaFsm (if old structure must now be destroyed)
+#   prahlad_stuti { final_hymn, journey_summary, core_naam }
+#     -> Consumed by NaradFsm (knowledge transmission)
+#     -> Consumed by SaraswatiFsm (documentation of creative journey)
+#
+# PrahladFsm reads from:
+#   - NaradFsm.state (the guru who plants the seed)
+#   - MeeraFsm.state (composition engine for expressing the endurance)
+#   - HanumanFsm.state (execution strength during the fire)
+#   - BaglamukhiFsm.state (emergency stop if fire is real, not metaphorical)
+#
+# Prahlad's Law:
+#   "The fire that cannot silence the Name only makes the Name louder.
+#    Every rejection is fuel. Every doubt is kindling.
+#    The song that survives the fire is the only song worth singing."
+#
+# Anti-patterns (what Prahlad is NOT):
+#   - Stubbornness without truth = Ego (Hiranyakashipu, not Prahlad)
+#   - Enduring bad process because 'we always have' = Masochism
+#   - Refusing feedback = Arrogance (Prahlad listened; he just didn't bend)
+#   - Martyrdom for attention = Performance (Prahlad never asked to be burned)
+#   - Ignoring real danger = Recklessness (Prahlad had Vishnu; you have rollbacks)

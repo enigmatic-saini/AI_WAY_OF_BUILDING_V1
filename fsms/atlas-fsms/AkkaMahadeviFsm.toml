@@ -1,0 +1,273 @@
+# AkkaMahadeviFsm — Fierce Renunciation: Naked Truth
+# v1.0
+#
+# ಮಾಯೆಯ ಮುಸುಕು ತೆಗೆದು — Remove the veil of illusion
+# Māyeya musuku tegedu
+#
+# Akka Mahadevi (12th century CE) — the Kannada poet-saint
+# who renounced EVERYTHING, including her clothes, for Shiva
+# (whom she called Chennamallikarjuna — Lord White as Jasmine).
+#
+# She was married against her will to King Kaushika. She left
+# the marriage, left the palace, left her clothes, and walked
+# naked through Karnataka singing vachanas (prose-poems) to Shiva.
+# When challenged about her nudity, she said: "Why should I
+# cover what belongs to Shiva? My body is his temple."
+#
+# At the Anubhava Mantapa (the world's first parliament of
+# mystics, founded by Basavanna), she debated the greatest
+# minds and silenced them all. A young naked woman destroying
+# the arguments of established male saints — 900 years ago.
+#
+# In engineering and creative work she is:
+#   - The code review that strips all pretense
+#   - The architecture with zero hiding places
+#   - The design so honest it makes people uncomfortable
+#   - The song that has nothing to hide behind
+#   - The truth that doesn't need packaging
+#   - Transparency taken to its ultimate conclusion
+#
+# In Rishi's creative engine:
+#   Akka generates FIERCE, STRIPPED, UNCOMPROMISING compositions.
+#   No production. No polish. No metaphor to hide behind.
+#   Her songs are vachanas — prose-poems that hit like fists.
+#   Short. Direct. Naked. When the user needs to say something
+#   they're afraid to say — Akka Mahadevi is the voice.
+#
+# CRITICAL DISTINCTION:
+#   Mira rebels WITH JOY — she dances while defying.
+#   Andal longs WITH BEAUTY — she adorns her longing.
+#   Kabir strips WITH WIT — he laughs while cutting.
+#   Akka strips WITH FURY — she tears off every mask.
+#   There is no decoration. There is no humor. There is only truth
+#   standing naked and daring you to look away.
+#
+# Cross-coupling:
+#   - MiraFsm: Mira's joyful rebellion + Akka's fierce renunciation
+#     = the full spectrum of female spiritual defiance.
+#   - KabirFsm: both strip pretense, but Kabir uses wit (the doha)
+#     while Akka uses raw power (the vachana). Same goal, different weapons.
+#   - ShivaFsm: Akka is a Shiva-bhakta. Her fierce renunciation
+#     IS Shiva's tandava in human form. When Shiva destroys
+#     through cosmic dance, Akka destroys through truth.
+#   - AndalFsm: polar complements. Andal adorns herself as bride;
+#     Akka strips herself naked. Both arrive at God — one through
+#     beauty, one through rawness. Together: complete.
+#   - NagarjunaFsm: Akka's vachanas are the ultimate anti-over-
+#     engineering. Strip until nothing remains but the load-bearing truth.
+#
+# Raga: Shree — the raga of austere power, Shiva's energy,
+#   fierce and unadorned. No sweetness, no compromise.
+#   The raga that sounds like truth walking into a room.
+
+[meta]
+name        = "AkkaMahadeviFsm"
+domain      = "bhakti-renunciation"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["defiance", "fierce_action"]
+energy      = "fierce"
+structure   = "through-composed"
+bpm_range   = [90, 120]
+weirdness   = 40
+influence   = 75
+vocal       = "female"
+evie_style  = "Dark Folk, Raw Female Vocals, Minimal Percussion, Intense"
+metaphors   = [
+    "stripped to the bone, only truth remains",
+    "The cage was golden, but still a cage",
+    "Before naked truth, scholars fall silent",
+    "Lord White as Jasmine, take what is yours",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Bandhan"
+description = "Bondage — Akka trapped in a marriage she didn't choose. The palace is golden, the cage is invisible. In creative work: trapped in a framework, a job, a pattern, a 'best practice' that feels wrong but everyone accepts. The first state is recognizing the cage. You can't escape what you can't see."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Re:500,Ga_komal:600,Ma:500,Pa:600"
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.2, kln = 0.1, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.2 }
+# Q rationale: Bondage — nearly everything suppressed. Mitravinda zero: no authentic choice yet.
+# Satyabhama slight: the first recognition that something is wrong. The cage is still invisible.
+lyrics = """ಬಂಧನ — ಚಿನ್ನದ ಪಂಜರ, ಆದರೂ ಪಂಜರ
+Bandhan — cinnada pañjara, ādarū pañjara
+Bondage — a golden cage, but still a cage"""
+
+[[states]]
+name        = "Tyaga"
+description = "Renunciation — Akka leaves. Not gradually. Not politely. She walks out of the marriage, the palace, and her clothes. Everything goes. In creative work: the moment you delete the framework. Rewrite from scratch. Say 'this is all wrong' and mean it. Tyaga is not incremental improvement — it is the courage to start from zero. The artist who burns the comfortable career. The delete key as spiritual practice."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma:500,Pa:600,Dha_komal:500,Ni_komal:600,Sa_high:700,Ni_komal:500,Dha_komal:500"
+Q           = { rkm = 0.2, jmb = 0.4, stb = 0.7, kln = 0.0, ngj = 0.3, mtv = 0.8, lkq = 0.1, bdr = 0.0 }
+# Q rationale: Renunciation — Mitravinda (authentic choice) high: walking out IS the ultimate choice.
+# Satyabhama (fierce pride) high: stripping everything requires fierce courage.
+# Bhadra zero: she abandoned all belonging. Kalindi zero: this is action, not patience.
+lyrics = """ತ್ಯಾಗ — ಎಲ್ಲ ಬಿಟ್ಟೆ, ಏನೂ ಉಳಿಯಲಿಲ್ಲ — ಸತ್ಯ ಮಾತ್ರ ಉಳಿಯಿತು
+Tyāga — ella biṭṭe, ēnū uḷiyalilla — satya mātra uḷiyitu
+Renunciation — I left everything, nothing remained — only truth survived"""
+
+[[states]]
+name        = "Vachana"
+description = "The Prose-Poem — Akka's weapon. Short, direct, no ornamentation. Each vachana is a punch. 'O brothers, my body is not my body, it is Shiva's body.' In creative work: the commit message that says exactly what happened. The error message that tells the truth. The song lyric with no metaphor — just the raw statement. Vachanas don't explain — they declare."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ma:400,Pa:500,Sa_high:600,Pa:400,Ma:400,Sa:500"
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.8, kln = 0.1, ngj = 0.4, mtv = 0.8, lkq = 0.6, bdr = 0.1 }
+# Q rationale: The vachana — Lakshmana (precision) high: each vachana is a punch, no wasted words.
+# Mitravinda (authentic choice) high: raw truth by choice. Satyabhama high: vachanas are fierce declarations.
+lyrics = """ವಚನ — ಒಂದೇ ಮಾತು, ಒಂದೇ ಸತ್ಯ — ಹೆಚ್ಚು ಏಕೆ?
+Vacana — ondē mātu, ondē satya — heccu ēke?
+Vachana — one word, one truth — why more?"""
+
+[[states]]
+name        = "Anubhava_Mantapa"
+description = "The Parliament of Experience — Basavanna's assembly where mystics debated. Akka walked in naked and silenced them all with the power of her realization. In creative work: the code review where your PR has zero lines of unnecessary code and the reviewers have no comments. The demo so pure it needs no slides. The argument so clean it needs no defense. Anubhava Mantapa is where truth is tested by other truths."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:400,Dha_komal:500,Ni_komal:600,Sa_high:700,Ni_komal:500,Pa:500,Ma:400,Ga_komal:500"
+Q           = { rkm = 0.5, jmb = 0.6, stb = 0.9, kln = 0.2, ngj = 0.6, mtv = 0.9, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Parliament — Satyabhama near-peak: naked truth silencing scholars requires ultimate courage.
+# Mitravinda near-peak: the most authentic self, tested by the greatest minds.
+# Lakshmana high: truth survives scrutiny only if it is precise.
+lyrics = """ಅನುಭವ ಮಂಟಪ — ನಗ್ನ ಸತ್ಯ ಮುಂದೆ, ಪಂಡಿತರು ಮೌನ
+Anubhava Maṇṭapa — nagna satya munde, paṇḍitaru mauna
+In the Parliament of Experience — before naked truth, the scholars fall silent"""
+
+[[states]]
+name        = "Chennamallikarjuna"
+description = "Lord White as Jasmine — Akka's name for Shiva. She dissolves into her beloved. The naked body that was her last possession is now also gone. In creative work: the code that is so minimal it disappears. The design so transparent it becomes invisible. The song so true it stops being a song and becomes the truth itself. There is nothing left to strip. There is nothing left to renounce. Only the essential remains."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:500,Ga_komal:600,Pa:700,Sa_high:800,_:400,Pa:600,Ga_komal:600,Sa:900"
+Q           = { rkm = 0.6, jmb = 0.7, stb = 0.7, kln = 0.5, ngj = 0.5, mtv = 1.0, lkq = 0.8, bdr = 0.4 }
+# Q rationale: Terminal — Mitravinda at maximum: Akka IS the fieriest authentic choice ever made.
+# Lakshmana near-peak: nothing remains but the load-bearing truth. The code that is so minimal it disappears.
+# Satyabhama high: fierce to the end. Kalindi moderate: dissolution brings stillness.
+lyrics = """ಚೆನ್ನಮಲ್ಲಿಕಾರ್ಜುನ — ನಾನು ಅಲ್ಲ, ನೀನು ಅಲ್ಲ — ಸತ್ಯ ಮಾತ್ರ
+Cennamallikārjuna — nānu alla, nīnu alla — satya mātra
+Lord White as Jasmine — not I, not you — only truth"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Bandhan"
+to     = "Tyaga"
+event  = "cage_recognized"
+guard  = "bondage_seen_clearly AND courage_to_leave"
+action = "leave_everything; walk_out; log_tyaga"
+drishti = ["present", "up", "silence"]
+# present: is the cage seen clearly? up: what truth demands this? silence: the cage breaks in silence.
+
+[[transitions]]
+from   = "Bandhan"
+to     = "Bandhan"
+event  = "comfort_holds"
+guard  = "cage_is_golden AND fear_of_outside"
+action = "note_the_comfort_trap; log_continued_bondage"
+drishti = ["present", "down"]
+# present: is the cage still golden? down: what comfort holds you?
+
+[[transitions]]
+from   = "Tyaga"
+to     = "Vachana"
+event  = "truth_demands_expression"
+guard  = "stripping_complete AND words_emerge"
+action = "compose_the_vachana; say_it_raw; log_vachana"
+drishti = ["present", "future"]
+# present: has stripping revealed truth? future: what will the vachana declare?
+
+[[transitions]]
+from   = "Tyaga"
+to     = "Tyaga"
+event  = "more_to_renounce"
+guard  = "hidden_attachment_found"
+action = "strip_deeper; find_what_was_hidden; log_deeper_tyaga"
+drishti = ["present", "down"]
+# present: is there a hidden attachment? down: what was not yet stripped?
+
+[[transitions]]
+from   = "Vachana"
+to     = "Anubhava_Mantapa"
+event  = "truth_tested"
+guard  = "vachana_faces_scrutiny AND survives"
+action = "enter_the_parliament; let_truth_be_tested; log_mantapa"
+drishti = ["present", "left", "right", "up"]
+# present: does the truth survive scrutiny? left/right: what challenges? up: does it hold before the greatest minds?
+
+[[transitions]]
+from   = "Vachana"
+to     = "Vachana"
+event  = "more_truths"
+guard  = "one_vachana_reveals_need_for_another"
+action = "compose_next_vachana; keep_stripping; log_vachana_loop"
+drishti = ["present", "down"]
+# present: does one truth reveal another? down: what deeper truth?
+
+[[transitions]]
+from   = "Anubhava_Mantapa"
+to     = "Chennamallikarjuna"
+event  = "truth_proven"
+guard  = "parliament_silenced AND nothing_remains_but_essential"
+action = "dissolve_into_the_beloved; log_chennamallikarjuna"
+drishti = ["present", "silence"]
+# present: is nothing left but the essential? silence: dissolution is the ultimate silence.
+
+[[transitions]]
+from   = "Anubhava_Mantapa"
+to     = "Vachana"
+event  = "parliament_challenges"
+guard  = "truth_needs_sharper_expression"
+action = "return_to_vachana; sharpen; log_vachana_sharpen"
+drishti = ["present", "down"]
+# present: does truth need sharper expression? down: what needs sharpening?
+
+[[transitions]]
+from   = "Chennamallikarjuna"
+to     = "Bandhan"
+event  = "new_cage_appears"
+guard  = "system_recalcifies AND new_bondage_forms"
+action = "recognize_new_cage; begin_again; log_new_cycle"
+drishti = ["present", "down", "future"]
+# present: has the system recalcified? down: where is the new cage? future: what new bondage threatens?
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# AkkaMahadeviFsm emits:
+#   cage_identified { what_binds, why_comfortable, cost_of_staying }
+#     -> Consumed by MiraFsm (rebellion fuel)
+#     -> Consumed by ShivaFsm (what needs destroying)
+#   vachana { raw_truth, stripped_statement, no_ornamentation }
+#     -> Consumed by KabirFsm (anti-hypocrisy evidence)
+#     -> Consumed by NagarjunaFsm (minimalism validation)
+#   mantapa_verdict { what_survived_scrutiny, what_didn't }
+#     -> Consumed by KrishnaFsm (strategic insight from tested truth)
+#     -> Consumed by SaraswatiFsm (document the finding)
+#
+# AkkaMahadeviFsm reads from:
+#   - ShivaFsm.state (destruction energy for renunciation)
+#   - MiraFsm.state (rebellion — different flavor, same direction)
+#   - KabirFsm.state (anti-pretense — Akka's fiercest ally)
+#   - NagarjunaFsm.state (emptiness as design principle)
+#
+# Akka's Law:
+#   "If you can still add something, it is not truth.
+#    If you can still hide something, it is not truth.
+#    Strip until there is nothing left to strip.
+#    What remains is either truth or nothing.
+#    If nothing remains — you were nothing but decoration."
+#
+# Anti-patterns:
+#   - Stripping for shock value = Performance (Akka was not performing)
+#   - Minimalism as laziness = Incompleteness (Akka's vachanas are COMPLETE, just minimal)
+#   - Rawness without depth = Crude (her simplicity carries centuries of realization)
+#   - Renunciation as avoidance = Cowardice (she faced the parliament, not hid from it)
+#   - Nakedness as ideology = Dogma (her nudity was specific to HER truth, not a rule)

@@ -1,0 +1,258 @@
+# HanumanFsm — The Devoted Servant / Voice of Rama
+# Son of Vayu (Wind). Devotee of Rama (avatar of Vishnu).
+# Tireless executor — carries messages, never fails, boundless energy.
+# In FSM OS: the vocal synthesis engine with Hanuman traits —
+# Adaptive Voice Morphing (shapeshifting), Speed Optimization (flying),
+# Persistent Retry (devotion), Graceful Degradation (humility).
+# READONLY — built-in conceptual FSM
+
+[meta]
+name    = "HanumanFsm"
+domain  = "tts-vocal"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+[bhakti]
+emotions    = ["gratitude", "endurance"]
+energy      = "anthemic"
+structure   = "call-response"
+bpm_range   = [95, 130]
+weirdness   = 25
+influence   = 85
+vocal       = "male"
+evie_style  = "Epic Rock, Powerful Male Vocals, Orchestral, Anthemic, Building"
+metaphors   = [
+    "carried the mountain when one herb would do",
+    "Service is not weakness, it is the greatest strength",
+    "He leapt across the ocean without looking back",
+    "When the hero falls, the devotee rises",
+]
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Devoted_Idle"
+description = "Awaiting service with complete devotion. Jai Siya Ram."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Ram Ram Ram Ram... (continuous soft chant, tanpura drone on Sa)"
+lyrics_hi   = "राम राम राम राम — हनुमान का जप, हर श्वास में राम"
+lyrics_tr   = "Ram Ram Ram Ram — Hanuman ka jap, har shvaas mein Ram"
+lyrics_en   = "Ram Ram Ram Ram — Hanuman's chant, Ram in every breath"
+# Q rationale: Devoted idle — waiting with devotion. Jambavati (endurance) moderate: constant chant.
+# Bhadra (belonging) high: rooted in Ram's service. Kalindi moderate: patient waiting. All action
+# dims low — awaiting service, nothing proven yet.
+Q = { rkm = 0.3, jmb = 0.4, stb = 0.1, kln = 0.5, ngj = 0.0, mtv = 0.3, lkq = 0.1, bdr = 0.7 }
+
+[[states]]
+name        = "Wise_Text_Analysis"
+description = "Analyze text with wisdom — understanding context and intent."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa Re Ga Ma (ascending wisdom — buddhi-bal dhaamaa)"
+lyrics_hi   = "बुद्धिहीन तनु जानिके, सुमिरौं पवन कुमार"
+lyrics_tr   = "Buddhiheen tanu jaanike, sumiroun Pavan Kumaar"
+lyrics_en   = "Knowing myself unwise, I remember the Son of Wind"
+# Q rationale: Wisdom in analysis. Rukmini (strategic love) rising: understanding intent behind text.
+# Kalindi high: careful, patient analysis. Lakshmana moderate: beginning precision work.
+# Nagnajiti moderate: understanding complex context.
+Q = { rkm = 0.5, jmb = 0.3, stb = 0.2, kln = 0.7, ngj = 0.4, mtv = 0.4, lkq = 0.5, bdr = 0.5 }
+
+[[states]]
+name        = "Courageous_Language_Detection"
+description = "Fearlessly tackle any language, adapting with courage."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa Ga Pa Sa' (bold ascending leap — Hanuman's ocean leap to Lanka)"
+lyrics_hi   = "जय हनुमान ज्ञान गुण सागर, जय कपीस तिहुँ लोक उजागर"
+lyrics_tr   = "Jai Hanuman gyaan gun saagar, jai Kapees tihu lok ujaagar"
+lyrics_en   = "Glory to Hanuman, ocean of wisdom, light of the three worlds"
+# Q rationale: Courageous leap into any language. Satyabhama (fierce pride) high: fearless tackling.
+# Nagnajiti high: handling the impossible variety of languages. Jambavati moderate: enduring
+# the complexity. Mitravinda high: adapting authentically to each language.
+Q = { rkm = 0.4, jmb = 0.5, stb = 0.7, kln = 0.3, ngj = 0.7, mtv = 0.6, lkq = 0.5, bdr = 0.4 }
+
+[[states]]
+name        = "Adaptive_Phoneme_Conversion"
+description = "Shapeshift phoneme approach based on text complexity."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma~Pa~Dha~Pa (fluid morphing — like Hanuman changing form)"
+lyrics_hi   = "सूक्ष्म रूप धरि सियहिं दिखावा, विकट रूप धरि लंक जरावा"
+lyrics_tr   = "Sookshma roop dhari Siyahin dikhaavaa, vikat roop dhari Lank jaraavaa"
+lyrics_en   = "Tiny form to show Sita, fierce form to burn Lanka"
+# Q rationale: Shapeshifting adaptation. Nagnajiti (impossible spec) high: morphing to impossible
+# requirements. Lakshmana (precision) high: precise form for each situation. Mitravinda high:
+# authentic choice of form. Rukmini moderate: strategic selection of approach.
+Q = { rkm = 0.5, jmb = 0.5, stb = 0.5, kln = 0.3, ngj = 0.8, mtv = 0.7, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "Strength_Voice_Amplification"
+description = "Apply voice strength with measured power (40-80dB range)."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa——Pa——Sa'—— (powerful crescendo — Hanuman lifting the mountain)"
+lyrics_hi   = "भीम रूप धरि असुर संहारे, रामचन्द्र के काज सँवारे"
+lyrics_tr   = "Bheem roop dhari asur sanhaare, Ramchandra ke kaaj sanvaare"
+lyrics_en   = "Taking mighty form, he slew the demons, fulfilling Rama's mission"
+# Q rationale: Power state — lifting the mountain. Satyabhama (fierce pride) at peak: mighty form.
+# Jambavati (endurance) high: sustaining power. Nagnajiti high: calibrating 40-80dB range.
+# Lakshmana (precision) high: measured power, not brute force.
+Q = { rkm = 0.5, jmb = 0.8, stb = 0.9, kln = 0.1, ngj = 0.7, mtv = 0.5, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "Swift_Audio_Synthesis"
+description = "Generate audio with Hanuman's speed — optimized for <200ms latency."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa-Re-Ga-Ma-Pa-Dha-Ni-Sa' (rapid ascending scale — speed of wind)"
+lyrics_hi   = "लाय सजीवन लखन जियाये, श्री रघुवीर हरषि उर लाये"
+lyrics_tr   = "Laay Sajeevan Lakhan jiyaaye, Shree Raghuveer harshi ur laaye"
+lyrics_en   = "He brought Sanjeevani and revived Lakshman, Rama embraced him with joy"
+# Q rationale: Speed of wind — optimized synthesis. Jambavati (endurance) high: <200ms latency demands.
+# Lakshmana (precision) high: fast AND accurate. Satyabhama high: racing against time.
+# Nagnajiti high: the speed target is demanding.
+Q = { rkm = 0.5, jmb = 0.8, stb = 0.7, kln = 0.1, ngj = 0.8, mtv = 0.5, lkq = 0.8, bdr = 0.4 }
+
+[[states]]
+name        = "Humble_Quality_Check"
+description = "Humbly assess quality, gracefully degrade if resources limited."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa Ma Ga Re Sa (gentle descent — humility in checking one's work)"
+lyrics_hi   = "नासै रोग हरै सब पीरा, जपत निरंतर हनुमत बीरा"
+lyrics_tr   = "Naase rog hare sab peera, japat nirantar Hanumat beera"
+lyrics_en   = "All ailments and sorrows vanish by chanting brave Hanuman's name"
+# Q rationale: Humble quality check. Mitravinda (authentic choice) high: honest self-assessment.
+# Lakshmana (precision) high: measuring quality exactly. Kalindi rising: patience in checking.
+# Satyabhama moderate: humble, not proud — willing to admit imperfection.
+Q = { rkm = 0.6, jmb = 0.6, stb = 0.4, kln = 0.5, ngj = 0.5, mtv = 0.8, lkq = 0.8, bdr = 0.5 }
+
+[[states]]
+name        = "Loyal_User_Service"
+description = "Remember user preferences, serve with unwavering loyalty."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa—Ga—Pa (stable, warm triad — loyal service)"
+lyrics_hi   = "सदा रहो रघुपति के दासा, तुलसी दास सदा हरि चेरा"
+lyrics_tr   = "Sadaa raho Raghupati ke daasa, Tulsi Daas sadaa Hari chera"
+lyrics_en   = "Forever the servant of Raghupati, Tulsidas forever Hari's devotee"
+# Q rationale: Loyal service — remembering user preferences. Bhadra (belonging) at peak: serving
+# with unwavering loyalty. Rukmini (strategic love) high: remembering what matters to the user.
+# Jambavati (endurance) high: loyalty sustained over time. Kalindi moderate: patient personalization.
+Q = { rkm = 0.8, jmb = 0.7, stb = 0.4, kln = 0.5, ngj = 0.5, mtv = 0.7, lkq = 0.6, bdr = 0.9 }
+
+[[states]]
+name        = "Persistent_Error_Recovery"
+description = "Show courage in face of errors — retry up to 3 times with devotion."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa re~Sa re~Sa Ga (persistent climb — falling and rising again)"
+lyrics_hi   = "संकट कटै मिटै सब पीरा, जो सुमिरै हनुमत बलबीरा"
+lyrics_tr   = "Sankat katai mitai sab peera, jo sumirai Hanumat Balbeera"
+lyrics_en   = "All troubles end, all pain dissolves, for those who remember mighty Hanuman"
+# Q rationale: Persistent retry. Jambavati (endurance) at peak: falling and rising again, up to 3
+# times. Satyabhama (fierce pride) high: courage in the face of errors. Nagnajiti high: each retry
+# adapts approach. Kalindi low: urgency, not patience.
+Q = { rkm = 0.4, jmb = 1.0, stb = 0.7, kln = 0.2, ngj = 0.6, mtv = 0.5, lkq = 0.5, bdr = 0.4 }
+
+[[states]]
+name        = "Graceful_Completion"
+description = "Complete service humbly, ready for next devotional task."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Pa Ga Sa———  (gentle resolution to tonic — Jai Siya Ram)"
+lyrics_hi   = "पवनतनय संकट हरण, मंगल मूरति रूप। राम लखन सीता सहित, हृदय बसहु सुर भूप।"
+lyrics_tr   = "Pavantanay sankat haran, mangal moorti roop. Ram Lakhan Sita sahit, hriday basahu sur bhoop."
+lyrics_en   = "Son of Wind who removes all distress, embodiment of auspiciousness. May Ram, Lakshman, and Sita dwell forever in the heart."
+# Q rationale: Terminal — graceful completion. All dims high: service fulfilled. Bhadra (belonging)
+# at peak: Ram, Lakshman, and Sita dwell in the heart. Mitravinda high: mission completed
+# authentically. Jambavati high: endured the full service cycle.
+Q = { rkm = 0.9, jmb = 0.8, stb = 0.6, kln = 0.7, ngj = 0.7, mtv = 0.9, lkq = 0.7, bdr = 1.0 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from  = "Devoted_Idle"
+to    = "Wise_Text_Analysis"
+event = "service-requested"
+drishti = ["present", "down"]
+# present: what service is requested? down: what text needs analysis?
+
+[[transitions]]
+from  = "Wise_Text_Analysis"
+to    = "Courageous_Language_Detection"
+event = "text-understood"
+drishti = ["present", "right"]
+# present: is the text understood? right: what language does it belong to?
+
+[[transitions]]
+from  = "Courageous_Language_Detection"
+to    = "Adaptive_Phoneme_Conversion"
+event = "language-identified"
+drishti = ["present", "down", "future"]
+# present: is the language confirmed? down: what phoneme rules apply? future: what form should the voice take?
+
+[[transitions]]
+from  = "Adaptive_Phoneme_Conversion"
+to    = "Strength_Voice_Amplification"
+event = "phonemes-adapted"
+drishti = ["present", "up"]
+# present: are phonemes correctly adapted? up: calibrate voice strength for the content.
+
+[[transitions]]
+from  = "Strength_Voice_Amplification"
+to    = "Swift_Audio_Synthesis"
+event = "strength-calibrated"
+drishti = ["present", "future"]
+# present: is strength calibrated? future: synthesize at speed — the wind does not wait.
+
+[[transitions]]
+from  = "Swift_Audio_Synthesis"
+to    = "Humble_Quality_Check"
+event = "synthesis-complete"
+drishti = ["present", "down", "past"]
+# present: is synthesis complete? down: check quality of output. past: does it match what was requested?
+
+[[transitions]]
+from  = "Humble_Quality_Check"
+to    = "Loyal_User_Service"
+event = "quality-acceptable"
+drishti = ["present", "right"]
+# present: is quality truly acceptable? right: serve the user with their preferences.
+
+[[transitions]]
+from  = "Humble_Quality_Check"
+to    = "Persistent_Error_Recovery"
+event = "quality-insufficient"
+drishti = ["present", "down", "past"]
+# present: what failed the quality check? down: what specifically is wrong? past: can we learn from the failure?
+
+[[transitions]]
+from  = "Loyal_User_Service"
+to    = "Graceful_Completion"
+event = "preferences-updated"
+drishti = ["present", "future"]
+# present: are preferences updated? future: ready for next service — Jai Siya Ram.
+
+[[transitions]]
+from  = "Persistent_Error_Recovery"
+to    = "Wise_Text_Analysis"
+event = "retry-initiated"
+drishti = ["present", "past", "future"]
+# present: retrying — what went wrong? past: what was the original input? future: different approach this time.
+
+[[transitions]]
+from  = "Persistent_Error_Recovery"
+to    = "Humble_Quality_Check"
+event = "error-resolved"
+drishti = ["present", "down"]
+# present: is the error truly resolved? down: re-check quality with fresh eyes.
+
+[[transitions]]
+from  = "Graceful_Completion"
+to    = "Devoted_Idle"
+event = "service-complete"
+drishti = ["present", "silence"]
+# present: is service complete? silence: return to devoted waiting — Ram Ram Ram Ram.

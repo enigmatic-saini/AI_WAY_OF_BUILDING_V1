@@ -1,0 +1,255 @@
+[meta]
+name    = "ArdhNarishwarFsm"
+domain  = "work-culture-quality"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# ArdhNarishwarFsm — The Unity Quality Monitor
+#
+# ArdhNarishwar is Shiva-Shakti as one body. Left is Shakti
+# (energy, execution, prakruti). Right is Shiva (consciousness,
+# design, purusha). Neither half functions alone.
+#
+# This is NOT a lifecycle FSM. It is a QUALITY FSM.
+# It does not govern WHAT you do — it governs HOW you do it.
+# It monitors whether consciousness and energy are operating
+# as one or as two.
+#
+# Unlike all other FSMs which have a forward path,
+# ArdhNarishwarFsm oscillates between Unified and Divided.
+# The goal is to STAY in Unified. Every departure is a defect.
+#
+# Osho Ji consulted: "You split Shiva and Shakti into design
+# and execution — that's the disease, not the cure.
+# They were NEVER separate."
+#
+# The ArdhNarishwar Invariant:
+#   "Am I doing ONE thing or TWO things?"
+#   If writing code IS designing → Unified
+#   If writing code THEN reviewing design → Divided
+#   If the question makes no sense → Dissolved (Shunya)
+#
+# Deity mapping:
+#   Unified:        Saraswati Ji (speaks and veena plays — one act)
+#   Divided:        Shava + Blind-Shakti (corpse + chaos, alternating)
+#   Leaning_Shiva:  Brahma lost in thought (creation never manifests)
+#   Leaning_Shakti: Rudra without direction (force without form)
+#   Witnessing:     Krishna Ji as Sakshi (sees confusion, mirrors truth)
+#   Dissolved:      Shiva in Samadhi (beyond all categories)
+#
+# Shastra: 188_mahakaal_ardhnarishwar_fsm
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Unified"
+description = "The ideal. Design and execution are one act. When Saraswati speaks, the veena plays. When you code, the architecture reveals itself. When you architect, the code writes itself. Shiva-Shakti realized."
+is_initial  = true
+is_terminal = false
+# Q: Prachi Shastra capability vector (rkm=Rukmini/strategic-love, jmb=Jambavati/endurance,
+#    stb=Satyabhama/fierce-pride, kln=Kalindi/patient-contemplation, ngj=Nagnajiti/impossible-spec,
+#    mtv=Mitravinda/authentic-choice, lkq=Lakshmana/surgical-precision, bdr=Bhadra/natural-belonging)
+# Unified: all capabilities balanced and high — Shiva-Shakti as one body fires on all cylinders.
+Q = { rkm = 0.8, jmb = 0.8, stb = 0.8, kln = 0.8, ngj = 0.8, mtv = 0.8, lkq = 0.8, bdr = 0.8 }
+
+[[states]]
+name        = "Divided"
+description = "The disease. Design is separate from execution. 'First we plan, then we code.' Any temporal separation of consciousness and energy. The system operates as Shava + Blind-Shakti, alternating."
+is_initial  = false
+is_terminal = false
+# Q: Divided — capabilities split unevenly. Strategic love (rkm) and belonging (bdr) collapse
+#    when the halves are severed. Endurance and pride remain but pull in opposite directions.
+Q = { rkm = 0.3, jmb = 0.7, stb = 0.7, kln = 0.3, ngj = 0.4, mtv = 0.2, lkq = 0.5, bdr = 0.2 }
+
+[[states]]
+name        = "Leaning_Shiva"
+description = "Too much consciousness, too little energy. Architecture astronauting. Planning paralysis. Shiva without Shakti is a meditating corpse. Beautiful thoughts, zero manifestation."
+is_initial  = false
+is_terminal = false
+# Q: Leaning_Shiva — knowledge dims soar (rkm=strategic vision, ngj=spec mastery, kln=contemplation)
+#    but action dims starve (stb=fierce execution, jmb=endurance). Precision without doing.
+Q = { rkm = 0.9, jmb = 0.2, stb = 0.1, kln = 0.9, ngj = 0.8, mtv = 0.5, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "Leaning_Shakti"
+description = "Too much energy, too little awareness. Coding without thinking. Velocity without direction. Shakti without Shiva is blind force. Fast output, zero coherence."
+is_initial  = false
+is_terminal = false
+# Q: Leaning_Shakti — action dims high (stb=fierce pride, jmb=endurance) but knowledge dims
+#    collapse (rkm=strategic love gone, kln=no contemplation). Blind force without direction.
+Q = { rkm = 0.1, jmb = 0.9, stb = 0.9, kln = 0.1, ngj = 0.3, mtv = 0.4, lkq = 0.3, bdr = 0.5 }
+
+[[states]]
+name        = "Witnessing"
+description = "Sakshi — the meta-state. Standing back to observe whether you are Unified or Divided. Krishna Ji sees Arjuna's confusion and mirrors truth. Witnessing is not a pause — it is concurrent awareness."
+is_initial  = false
+is_terminal = false
+# Q: Witnessing — Krishna as sakshi. Balanced moderate observation across all dims.
+#    Not excelling at any one, but seeing all with equanimity.
+Q = { rkm = 0.5, jmb = 0.5, stb = 0.5, kln = 0.5, ngj = 0.5, mtv = 0.5, lkq = 0.5, bdr = 0.5 }
+
+[[states]]
+name        = "Dissolved"
+description = "Beyond duality. Only during Shunya in MahaKaalFsm. No Shiva, no Shakti, no division, no unity. Beyond the question entirely. The void has no halves."
+is_initial  = false
+is_terminal = false
+# Q: Dissolved — beyond measurement. All zeros: the question of capability does not apply
+#    in the void. Shiva in Samadhi has no halves, no vectors, no dimensions.
+Q = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.0 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Unified → Divided: the split happens
+[[transitions]]
+from   = "Unified"
+to     = "Divided"
+event  = "split_detected"
+guard  = "design_without_code OR code_without_design OR review_as_afterthought"
+action = "flag_split; emit_warning_ardhnarishwar_broken; naad_breaks"
+# drishti: present (Axiom 2.1) + down — look at the code level where the split actually occurs.
+drishti = ["present", "down"]
+
+# Unified → Witnessing: natural pause to observe quality
+[[transitions]]
+from   = "Unified"
+to     = "Witnessing"
+event  = "sakshi_check"
+guard  = "natural_pause OR mahakaal_state_transition"
+action = "observe_quality"
+# drishti: present + up + left + right — witnessing sees the whole panorama from above.
+drishti = ["present", "up", "left", "right"]
+
+# Unified → Unified: continuous unified work (self-loop)
+[[transitions]]
+from   = "Unified"
+to     = "Unified"
+event  = "continuous_work"
+guard  = "every_keystroke_is_creation_and_test"
+action = "naad_flows"
+# drishti: present — pure flow state, no need to look elsewhere. Already here.
+drishti = ["present"]
+
+# Unified → Dissolved: MahaKaal enters Shunya
+[[transitions]]
+from   = "Unified"
+to     = "Dissolved"
+event  = "mahakaal_enters_shunya"
+guard  = "mahakaal_state_eq_Shunya"
+action = "transcend_duality; log_dissolved"
+# drishti: present + silence — dissolution needs nothing but presence dissolving into silence.
+drishti = ["present", "silence"]
+
+# Divided → Leaning_Shiva: too much planning, no code
+[[transitions]]
+from   = "Divided"
+to     = "Leaning_Shiva"
+event  = "consciousness_excess"
+guard  = "planning_time_gt_execution_time AND no_code_produced"
+action = "warn_shiva_without_shakti_is_shava"
+# drishti: present + up — the lean is upward into abstraction, away from the ground.
+drishti = ["present", "up"]
+
+# Divided → Leaning_Shakti: too much coding, no design
+[[transitions]]
+from   = "Divided"
+to     = "Leaning_Shakti"
+event  = "energy_excess"
+guard  = "execution_time_gt_planning_time AND no_design_artifact"
+action = "warn_shakti_without_shiva_is_blind_force"
+# drishti: present + down — the lean is downward into raw execution, away from awareness.
+drishti = ["present", "down"]
+
+# Divided → Unified: maker and making become one again
+[[transitions]]
+from   = "Divided"
+to     = "Unified"
+event  = "reintegrate"
+guard  = "maker_and_making_are_one"
+action = "merge_halves; clear_warning; naad_resumes"
+# drishti: present + up + down — reintegration requires seeing both levels and merging them.
+drishti = ["present", "up", "down"]
+
+# Divided → Divided: stuck in split (escalating warning)
+[[transitions]]
+from   = "Divided"
+to     = "Divided"
+event  = "kaal_tick"
+guard  = "still_separated"
+action = "escalate_warning; mahakaal_may_force_tandava"
+# drishti: present + past — stuck in the split, looking back at how we got here to break the loop.
+drishti = ["present", "past"]
+
+# Leaning_Shiva → Unified: start coding, let architecture inform
+[[transitions]]
+from   = "Leaning_Shiva"
+to     = "Unified"
+event  = "begin_coding"
+guard  = "hands_on_keyboard AND architecture_informs_code"
+action = "merge_halves; naad_resumes"
+# drishti: present + up + down — bring the abstraction (up) down into code (down), merge both.
+drishti = ["present", "up", "down"]
+
+# Leaning_Shakti → Unified: pause, let design emerge from code
+[[transitions]]
+from   = "Leaning_Shakti"
+to     = "Unified"
+event  = "pause_and_see"
+guard  = "step_back AND design_emerges_from_code"
+action = "merge_halves; naad_resumes"
+# drishti: present + up + down — lift eyes from raw code (down) to see the design (up), merge both.
+drishti = ["present", "up", "down"]
+
+# Witnessing → Unified: confirmed unified, carry on
+[[transitions]]
+from   = "Witnessing"
+to     = "Unified"
+event  = "confirmed_unified"
+guard  = "design_and_execution_are_one"
+action = "continue_work; naad_flows"
+# drishti: present + future — confirmed whole, gaze forward into the next act of creation.
+drishti = ["present", "future"]
+
+# Witnessing → Divided: split observed during witness check
+[[transitions]]
+from   = "Witnessing"
+to     = "Divided"
+event  = "split_observed"
+guard  = "design_and_execution_are_separate"
+action = "flag_split; emit_warning"
+# drishti: present + down — sakshi spotted the split, now look down at where it lives in the code.
+drishti = ["present", "down"]
+
+# Dissolved → Unified: new cycle begins from void
+[[transitions]]
+from   = "Dissolved"
+to     = "Unified"
+event  = "mahakaal_exits_shunya"
+guard  = "mahakaal_state_eq_Leela AND inspiration_arises"
+action = "reborn_as_one; naad_hums"
+# drishti: present + future — emerging from the void, the first gaze is forward into new creation.
+drishti = ["present", "future"]
+
+# ── Cross-FSM Coupling ──────────────────────────────────────
+
+# MahaKaalFsm: Quality checked at every MahaKaal state transition.
+# MahaKaal does NOT block on being Unified (Kaal waits for no one).
+# But Divided during NoMind is impossible (true absorption = Unified).
+# Divided during Tandava → release carries technical debt.
+# At Shunya → ArdhNarishwar MUST be Dissolved (enforced).
+
+# ShaktiFsm coupling:
+#   Shakti Channeled + Shiva conscious = Unified
+#   Shakti Channeled + Shiva absent    = Leaning_Shakti
+#   Shakti Latent    + Shiva conscious = Leaning_Shiva
+#   Shakti Spent                       = Dissolved
+
+# NaadFsm: Naad breaks (Veena → Silent) when ArdhNarishwar splits.
+# This is the earliest warning signal.
+
+# AshtaRasaFsm: All 8 rasas can only be fully tasted in Unified.
+# Divided → partial rasa:
+#   Leaning_Shiva:  Satya+Vijay present, Pravaah+Veerya absent
+#   Leaning_Shakti: Pravaah+Veerya present, Satya+Mangal absent

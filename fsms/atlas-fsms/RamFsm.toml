@@ -1,0 +1,376 @@
+# RamFsm — Dharma & Governance / Maryada Purushottam
+# v1.0
+#
+# रघुकुल रीत सदा चली आई, प्राण जाय पर वचन न जाई
+# The tradition of Raghu's lineage has always been:
+# Let life depart, but never the given word.
+#
+# Shri Ram is Dharma incarnate — the one who follows boundaries
+# perfectly. Not because he cannot break them, but because he
+# chooses not to. Maryada (boundary) is not a cage; it is the
+# architecture of trust.
+#
+# This FSM governs: rule enforcement, compliance auditing,
+# governance review, access control verification, and moral
+# correctness of any system under review.
+#
+# The journey follows Ram's own life as a governance metaphor:
+#   Ayodhya (peace) → Rule scan → Enforcement audit →
+#   Exile (adversity test) → Alliance verification →
+#   Boundary enforcement → Confrontation → Ideal governance →
+#   Final verdict
+#
+# ── Cross-coupling ──────────────────────────────────────────────
+#
+# KhatuShyamFsm dispatches here when the symptom is:
+#   - Governance violation / compliance drift
+#   - Access control confusion
+#   - Rule-doc mismatch (rules exist on paper but not in code)
+#   - Boundary erosion over time
+#   KhatuShyam's cycle_domain_map entry: RamD → RamFsm (dharma domain)
+#
+# LakshmanFsm — Lakshman is Ram's boundary enforcer. The
+#   Lakshman_Rekha state in this FSM directly corresponds to
+#   LakshmanFsm's core purpose. When RamFsm enters Lakshman_Rekha,
+#   it may dispatch boundary-specific checks to LakshmanFsm for
+#   detailed enforcement verification.
+#
+# SitaFsm — Sita endured the agni pariksha, exile, and separation.
+#   The Vanvas state (adversity simulation) draws from SitaFsm's
+#   resilience model. Vanvas is NOT punishment — it is purification
+#   through trial, just as Sita's fire-walk proved purity through
+#   ordeal, not guilt.
+#
+# HanumanFsm — Ram's devoted executor. When Lanka_March identifies
+#   violations, HanumanFsm carries the message and executes the fix.
+#   Ram decides; Hanuman acts.
+#
+# ── Raga ────────────────────────────────────────────────────────
+# Raga Darbari Kanada — the raga of the royal court. Gravity,
+# dignity, slow deliberation. Sa-Re-Ga(komal)-Ma-Pa-Dha(komal)-Ni(komal).
+# Dhrupad-style gravity throughout. Sa-Pa-Sa foundation for
+# the noble, unwavering character of Maryada Purushottam.
+
+[meta]
+name        = "RamFsm"
+domain      = "dharma-governance"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────────
+
+[[states]]
+name        = "Ayodhya"
+description = "The golden city — system at peace. All rules are documented, governance is clear, roles are defined, permissions are explicit. This is the starting point of any dharma audit: first understand the ideal state. What does this system claim its rules are? What constitution has it written for itself? Ayodhya is not naivety — it is the baseline against which all deviations will be measured."
+is_initial  = true
+is_terminal = false
+# Regal Sa-Pa-Sa foundation — the court at dawn, Darbari opening
+audio_phrase = "Sa:600,Pa:500,Sa_high:600,Pa:400,Dha_komal:500,Pa:400,Sa:800"
+lyrics = """रघुवर की लीला न्यारी, अयोध्या नगरी प्यारी
+Raghuvar kī līlā nyārī, Ayodhyā nagrī pyārī
+Wondrous are the ways of Raghuvar — beloved is the city of Ayodhya"""
+# Q rationale: Initial peace — the ideal baseline. Bhadra (belonging) high: Ayodhya IS home.
+# Kalindi (patient contemplation) moderate: understanding what the rules claim to be.
+# Most action dims low: the audit has not begun, nothing is yet tested or proven.
+Q = { rkm = 0.3, jmb = 0.1, stb = 0.2, kln = 0.4, ngj = 0.1, mtv = 0.2, lkq = 0.1, bdr = 0.7 }
+
+[[states]]
+name        = "Maryada_Scan"
+description = "Scan all rules, policies, permissions, and boundaries. Build the dharma inventory. What does this system claim to follow? Enumerate every access control rule, every validation check, every documented contract. Like Ram memorizing the Dharma Shastra before stepping into the world — you cannot enforce what you have not catalogued."
+is_initial  = false
+is_terminal = false
+# Methodical ascending phrases — cataloguing, enumerating, Darbari's careful alap
+audio_phrase = "Sa:400,Re:350,Ga_komal:400,Re:300,Sa:350,Re:400,Ga_komal:350,Ma:500,Ga_komal:400,Re:350,Sa:400"
+lyrics = """मर्यादा का लेखा लिखो, हर नियम गिनो
+Maryādā kā lekhā likho, har niyam gino
+Write the ledger of boundaries — count every rule"""
+# Q rationale: Methodical cataloguing. Lakshmana (precision) rises: enumerating every rule.
+# Kalindi (patience) high: careful, unhurried inventory. Rukmini (strategic love) moderate:
+# understanding the system's own claimed constitution. Nagnajiti moderate: cataloguing complex specs.
+Q = { rkm = 0.4, jmb = 0.3, stb = 0.2, kln = 0.6, ngj = 0.4, mtv = 0.3, lkq = 0.6, bdr = 0.4 }
+
+[[states]]
+name        = "Enforcement_Audit"
+description = "For each catalogued rule: is it enforced in code or only in documentation? Are there backdoors, special cases, admin overrides that break the contract? A rule that exists only in a README is no rule at all — it is a wish. Ram did not merely know dharma; he lived it. This state separates law-on-paper from law-in-practice."
+is_initial  = false
+is_terminal = false
+# Probing, questioning phrases — Darbari's characteristic andolan on Ga_komal
+audio_phrase = "Ga_komal:500,Ma:400,Pa:450,Ma:350,Ga_komal:500,Re:400,Ga_komal:600"
+lyrics = """लिखा है तो क्या, चला भी है क्या? नियम परखो
+Likhā hai to kyā, chalā bhī hai kyā? Niyam parkho
+Written is one thing — is it followed? Test the rules"""
+# Q rationale: Probing enforcement. Satyabhama (fierce pride) rising: fearless questioning.
+# Lakshmana (precision) high: checking each rule with exactitude. Mitravinda (authentic choice):
+# separating law-on-paper from law-in-practice requires honesty.
+Q = { rkm = 0.5, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.5, mtv = 0.5, lkq = 0.7, bdr = 0.3 }
+
+[[states]]
+name        = "Vanvas"
+description = "The exile test — remove key components, simulate adversity, inject failures. Does the system maintain dharma under pressure? Can it survive 14 years in the forest? This is NOT punishment — it is purification through trial. Ram's exile was not Kaikeyi's cruelty; it was the universe asking: does dharma hold when comfort is stripped away? Chaos engineering, resilience testing, degraded-mode compliance — all live here. Cross-ref: SitaFsm's resilience model for adversity patterns."
+is_initial  = false
+is_terminal = false
+# Austere, sparse phrases — the forest, deprivation, Darbari turning inward
+audio_phrase = "Sa:500,Re:400,Ga_komal:600,Re:500,Sa:400,Ni_komal_mandra:500,Sa:700"
+lyrics = """वनवास है परीक्षा, दंड नहीं — तपस्या है
+Vanvās hai parīkṣā, daṇḍ nahīṁ — tapasyā hai
+Exile is a test, not punishment — it is penance"""
+# Q rationale: Adversity test — Jambavati (endurance) peak: 14 years of exile. Satyabhama
+# (fierce pride) high: dharma held under pressure. Kalindi (patience) high: enduring without
+# complaint. Bhadra (belonging) drops: exile IS removal from home. Nagnajiti high: surviving
+# impossible conditions.
+Q = { rkm = 0.5, jmb = 0.9, stb = 0.7, kln = 0.7, ngj = 0.7, mtv = 0.6, lkq = 0.5, bdr = 0.1 }
+
+[[states]]
+name        = "Alliance_Forge"
+description = "Trust boundaries — who does the system trust? Are alliances (API contracts, service dependencies, third-party integrations) formal and explicit like Ram-Sugriva pact, or assumed and fragile like Ravana's with his own brothers? Every dependency must be a treaty, not an assumption. Are SLAs defined? Are fallback paths documented? Does the alliance have mutual obligations?"
+is_initial  = false
+is_terminal = false
+# Dialogic phrases — call and response, two voices agreeing, Darbari's sthayi
+audio_phrase = "Sa:350,Ma:400,Pa:450,Ma:350,Pa:400,Dha_komal:500,Pa:400,Ma:350,Pa:500"
+lyrics = """मित्रता का वचन दो, राम-सुग्रीव सा
+Mitratā kā vachan do, Rām-Sugrīv sā
+Give the word of friendship — like Ram and Sugriva"""
+# Q rationale: Trust verification. Rukmini (strategic love) high: alliances require strategic
+# affection. Mitravinda (authentic choice) high: choosing allies deliberately. Bhadra (belonging)
+# rising: building the coalition. Lakshmana (precision) moderate: checking SLAs and contracts.
+Q = { rkm = 0.7, jmb = 0.5, stb = 0.4, kln = 0.5, ngj = 0.5, mtv = 0.7, lkq = 0.5, bdr = 0.5 }
+
+[[states]]
+name        = "Lakshman_Rekha"
+description = "The absolute lines — maximum limits, forbidden operations, security boundaries, rate limits, resource ceilings. Are they enforced at code level or merely documented? The Lakshman Rekha is the line that must never be crossed. When it is crossed, the system must detect and respond — not silently allow. Self-loop on boundary violations: each breach is examined individually. Cross-ref: LakshmanFsm for detailed boundary enforcement verification."
+is_initial  = false
+is_terminal = false
+# Sharp, decisive phrases — the line drawn, absolute, Darbari's mukhda
+audio_phrase = "Pa:400,Dha_komal:350,Ni_komal:400,Sa_high:500,Ni_komal:350,Dha_komal:400,Pa:500"
+lyrics = """लक्ष्मण रेखा लाँघे कोई, विनाश निश्चित होई
+Lakṣmaṇ Rekhā lāṅghe koī, vināś niścit hoī
+Whoever crosses the Lakshman Rekha — destruction is certain"""
+# Q rationale: Absolute boundaries. Lakshmana (precision) at peak: the line is surgical. Satyabhama
+# (fierce pride) high: no compromise on limits. Nagnajiti (impossible spec) high: the Rekha IS
+# the spec that must not be violated. Kalindi low: this is decisive action, not contemplation.
+Q = { rkm = 0.5, jmb = 0.6, stb = 0.8, kln = 0.3, ngj = 0.8, mtv = 0.6, lkq = 1.0, bdr = 0.4 }
+
+[[states]]
+name        = "Lanka_March"
+description = "The confrontation — take the findings and face the violations. No softening, no excuses, no 'we will fix it later'. Every violation is named, evidence cited, severity assessed. Ram did not negotiate with adharma — he marched to Lanka. This state produces the violation report: what is broken, where, how badly, and what the consequence should be. Cross-ref: HanumanFsm carries the message and executes remediation."
+is_initial  = false
+is_terminal = false
+# War drums — powerful, ascending, Darbari at full force
+audio_phrase = "Sa:300,Ma:300,Pa:350,Dha_komal:300,Pa:300,Ma:350,Pa:400,Dha_komal:350,Ni_komal:400,Sa_high:500"
+lyrics = """लंका कूच करो, अधर्म से लड़ो, पीछे न हटो
+Laṅkā kūch karo, adharm se laḍo, pīche na haṭo
+March to Lanka, fight adharma, never retreat"""
+# Q rationale: Confrontation — naming violations. Satyabhama (fierce pride) at peak: no softening.
+# Jambavati (endurance) high: the march is long. Rukmini (strategic love) moderate: confrontation
+# with evidence, not anger. Lakshmana (precision) high: every violation cited exactly.
+Q = { rkm = 0.6, jmb = 0.8, stb = 0.9, kln = 0.2, ngj = 0.6, mtv = 0.7, lkq = 0.8, bdr = 0.3 }
+
+[[states]]
+name        = "Ram_Rajya"
+description = "The ideal governance state — Ram Rajya. Would the world be just if every system followed this pattern? This state assesses: succession planning (bus factor), knowledge sharing (are rules tribal or documented?), traceability (can every decision be explained?), and fairness (do the rules apply equally to all, including admins?). Ram Rajya is not utopia — it is a system where the rules serve the governed, not the governors."
+is_initial  = false
+is_terminal = false
+# Majestic, complete phrases — full Darbari, every swara represented, the ideal court
+audio_phrase = "Sa:400,Re:350,Ga_komal:400,Ma:350,Pa:400,Dha_komal:350,Ni_komal:400,Sa_high:500,Ni_komal:350,Dha_komal:400,Pa:350,Ma:400,Ga_komal:350,Re:400,Sa:600"
+lyrics = """राम राज्य बैठे तख़्त, न्याय सबको बराबर
+Rām rājya baiṭhe taḳht, nyāy sabko barābar
+Ram Rajya sits enthroned — justice equal for all"""
+# Q rationale: Ideal governance — near-peak on all dims. Rukmini (strategic love) high: rules
+# serve the governed. Bhadra (belonging) at peak: equal treatment for all. Mitravinda (authentic
+# choice) high: the rules apply to admins too. All dims elevated — this is the aspirational state.
+Q = { rkm = 0.8, jmb = 0.7, stb = 0.7, kln = 0.7, ngj = 0.7, mtv = 0.9, lkq = 0.8, bdr = 0.9 }
+
+[[states]]
+name        = "Dharma_Verdict"
+description = "The final judgment — does this system follow its own rules? Stated plainly, without embellishment. Three possible verdicts: (1) Dharmic — the system lives its rules; (2) Adharmic — the system violates its own contracts; (3) Praayashchit — the system has violations but shows path to correction. The verdict is not punishment; it is truth. Ram always spoke truth, even when it was costly."
+is_initial  = false
+is_terminal = true
+# Resolution — Sa to Pa to Sa, the final statement, Dhrupad sam
+audio_phrase = "Sa:500,Pa:600,Sa_high:500,Pa:400,Sa:800"
+lyrics = """जय श्री राम — धर्म की विजय, सत्य की जय
+Jai Śrī Rām — dharm kī vijay, satya kī jay
+Glory to Shri Ram — victory of dharma, victory of truth"""
+# Q rationale: Terminal verdict — truth spoken. All dims high: the audit is complete. Mitravinda
+# (authentic choice) at peak: the verdict is honest. Satyabhama (fierce pride) high: truth spoken
+# regardless of cost. Lakshmana (precision) high: the verdict is exact. Bhadra (belonging) moderate:
+# the verdict stands alone — it does not seek approval.
+Q = { rkm = 0.8, jmb = 0.8, stb = 0.8, kln = 0.6, ngj = 0.7, mtv = 1.0, lkq = 0.9, bdr = 0.5 }
+
+# ── Transitions ──────────────────────────────────────────────────
+
+# Ayodhya → Maryada_Scan: a governance review is requested, the audit begins
+[[transitions]]
+from   = "Ayodhya"
+to     = "Maryada_Scan"
+event  = "audit_begins"
+guard  = "governance_review_requested"
+action = "load_system_constitution; enumerate_rule_sources; log_audit_start"
+drishti = ["present", "down", "right"]
+# present: is a governance review genuinely needed? down: what are the actual rules? right: what systems are in scope?
+
+# Maryada_Scan → Enforcement_Audit: all rules catalogued, now check enforcement
+[[transitions]]
+from   = "Maryada_Scan"
+to     = "Enforcement_Audit"
+event  = "rules_catalogued"
+guard  = "dharma_inventory_complete"
+action = "freeze_rule_catalogue; begin_enforcement_checks; log_scan_complete"
+drishti = ["present", "down", "past"]
+# present: is the catalogue complete? down: where does enforcement actually live in code? past: were rules followed before?
+
+# Enforcement_Audit → Vanvas: enforcement checked, adversity test needed
+# The system claims to follow rules — but does it hold under pressure?
+[[transitions]]
+from   = "Enforcement_Audit"
+to     = "Vanvas"
+event  = "enforcement_checked"
+guard  = "adversity_test_needed"
+action = "prepare_chaos_scenarios; snapshot_current_state; log_entering_exile"
+drishti = ["present", "future", "down"]
+# present: are we ready for the exile test? future: what adversity scenarios await? down: what might break?
+
+# Enforcement_Audit → Lakshman_Rekha: shortcut when no adversity test needed
+# Some audits only need boundary verification, not full stress testing
+[[transitions]]
+from   = "Enforcement_Audit"
+to     = "Lakshman_Rekha"
+event  = "enforcement_checked"
+guard  = "boundaries_need_verification"
+action = "load_boundary_definitions; prepare_limit_checks; log_skipping_to_rekha"
+drishti = ["present", "left", "right"]
+# present: do we need boundary checks? left/right: scan laterally for all boundary definitions.
+
+# Vanvas → Alliance_Forge: adversity survived, now verify trust boundaries
+# The system held under pressure — but who did it lean on?
+[[transitions]]
+from   = "Vanvas"
+to     = "Alliance_Forge"
+event  = "adversity_survived"
+guard  = "system_maintained_dharma_under_pressure"
+action = "record_resilience_results; enumerate_dependencies; log_exile_survived"
+drishti = ["present", "right", "future"]
+# present: did dharma hold under pressure? right: who did we lean on? future: are these allies trustworthy going forward?
+
+# Vanvas → Lanka_March: adversity failed, violations found under pressure
+# The system broke its own rules when stressed — go directly to confrontation
+[[transitions]]
+from   = "Vanvas"
+to     = "Lanka_March"
+event  = "adversity_failed"
+guard  = "violations_found_under_pressure"
+action = "record_failure_evidence; prepare_violation_report; log_exile_failure"
+drishti = ["present", "down", "past"]
+# present: what broke? down: the evidence of failure. past: what should have held but didn't?
+
+# Alliance_Forge → Lakshman_Rekha: alliances verified, now check absolute limits
+[[transitions]]
+from   = "Alliance_Forge"
+to     = "Lakshman_Rekha"
+event  = "alliances_verified"
+guard  = "dependency_contracts_assessed"
+action = "record_alliance_status; load_boundary_definitions; log_alliances_done"
+drishti = ["present", "left", "right", "down"]
+# present: are all alliances verified? left/right: scan for all boundary definitions. down: where are the limits enforced?
+
+# Lakshman_Rekha → Lanka_March: boundaries assessed, proceed to confrontation
+[[transitions]]
+from   = "Lakshman_Rekha"
+to     = "Lanka_March"
+event  = "boundaries_assessed"
+guard  = "all_limits_checked"
+action = "compile_boundary_report; merge_with_audit_findings; log_boundaries_done"
+drishti = ["present", "future", "up"]
+# present: are all limits checked? future: what confrontation awaits? up: how do findings align with system purpose?
+
+# Lakshman_Rekha → Lakshman_Rekha: self-loop for each boundary violation found
+# Each breach of the Rekha is examined individually — not batched, not glossed over
+[[transitions]]
+from   = "Lakshman_Rekha"
+to     = "Lakshman_Rekha"
+event  = "rekha_breached"
+guard  = "boundary_violation_found"
+action = "record_violation_detail; assess_severity; increment_violation_count; log_rekha_breach"
+drishti = ["present", "down"]
+# present: what boundary was breached? down: examine this specific violation in full detail.
+
+# Lanka_March → Ram_Rajya: confrontation complete, assess ideal governance
+[[transitions]]
+from   = "Lanka_March"
+to     = "Ram_Rajya"
+event  = "confrontation_complete"
+guard  = "all_violations_addressed"
+action = "finalize_violation_report; begin_governance_assessment; log_lanka_complete"
+drishti = ["present", "up", "future"]
+# present: are all violations addressed? up: what does ideal governance look like? future: can this system achieve Ram Rajya?
+
+# Ram_Rajya → Dharma_Verdict: governance assessed, render the verdict
+[[transitions]]
+from   = "Ram_Rajya"
+to     = "Dharma_Verdict"
+event  = "governance_assessed"
+guard  = "ram_rajya_criteria_evaluated"
+action = "compute_dharma_score; render_verdict; log_governance_assessed"
+drishti = ["present", "up", "past", "future"]
+# present: is the governance assessment complete? up: does this serve the governed? past: what was the full audit journey? future: what verdict serves truth?
+
+# Dharma_Verdict → Ayodhya: the cycle completes — system returns to peace
+# Every audit ends where it began. The city is the same; the knowledge is new.
+[[transitions]]
+from   = "Dharma_Verdict"
+to     = "Ayodhya"
+event  = "new_cycle"
+guard  = "system_returns_to_peace"
+action = "archive_audit_results; reset_audit_context; log_cycle_complete"
+drishti = ["present", "future", "silence"]
+# present: is the cycle truly complete? future: the system returns to peace. silence: rest between audits.
+
+# ── Cross-coupling signals ───────────────────────────────────────
+#
+# RamFsm emits:
+#   dharma_audit_complete { verdict: "dharmic|adharmic|praayashchit",
+#                           score: 0.0..1.0,
+#                           violations: [...],
+#                           governance_grade: "A-F" }
+#   → Consumed by KhatuShyamFsm for cycle completion tracking
+#   → Consumed by ThoughtCycleFsm for system health assessment
+#
+#   boundary_check_request { boundaries: [...] }
+#   → Dispatched to LakshmanFsm for detailed enforcement verification
+#
+#   adversity_test_request { scenarios: [...], duration: "..." }
+#   → May invoke SitaFsm resilience patterns for stress-test design
+#
+#   violation_remediation { violation_id: "...", severity: "...", fix: "..." }
+#   → Dispatched to HanumanFsm for execution
+#
+# RamFsm reads from:
+#   - KhatuShyamFsm.dispatch (receives governance-type problems)
+#   - LakshmanFsm.state (boundary enforcement status)
+#   - SitaFsm.state (resilience/adversity patterns)
+#   - HanumanFsm.state (remediation execution status)
+#   - ConfigGovernanceFsm (system configuration rules)
+#
+# ── Design notes ─────────────────────────────────────────────────
+#
+# The Vanvas state deserves special emphasis: it is the adversity
+# simulation, NOT punishment. In Ram's story, exile was the forge
+# that proved his dharma was real, not performative. In systems
+# terms: chaos engineering, fault injection, degraded-mode testing.
+# A system that only follows its rules in production-happy-path
+# is not dharmic — it is lucky.
+#
+# The Lakshman_Rekha self-loop is deliberate: boundary violations
+# are examined one at a time, with full evidence, not batch-dismissed.
+# Each breach gets its own cycle through the state, its own severity
+# assessment, its own record. This mirrors how Ram treated each
+# situation on its own merit — no blanket judgments.
+#
+# Ram Rajya is the aspirational state, not a checkbox. The question
+# is not "did we fix the bugs?" but "would we be proud if every
+# system in the world worked this way?" Succession planning,
+# knowledge sharing, traceability, equal treatment — these are
+# the Ram Rajya criteria.

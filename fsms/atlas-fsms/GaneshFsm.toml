@@ -1,0 +1,430 @@
+# GaneshFsm — Vighnaharta (Obstacle Removal & Unblocking)
+# v1.0
+#
+# Om Gan Ganapataye Namah
+#
+# Ganesh is Vighnaharta — the remover of obstacles. But he is also
+# Vighnakarta — the creator of obstacles for those on the wrong path.
+# His analysis distinguishes between obstacles that should be removed
+# (genuine blockers) and obstacles that are signals (you're going
+# the wrong way). Not every wall should be broken. Some walls are
+# load-bearing.
+#
+# In engineering he is:
+#   - The debugger who finds the root cause behind five layers of symptoms
+#   - The dependency resolver who untangles circular references
+#   - The permissions fixer who unblocks the CI pipeline at 2am
+#   - The architect who sees that the "blocker" is actually a design signal
+#   - The pragmatist who finds the workaround while the real fix is planned
+#
+# He is the guardian of the Quick cycle (Q, 4 cycles) — small problems,
+# fast solutions, move on. But in his Deep form (GD, 12 cycles), he
+# performs systematic obstacle analysis: inventory, classify, prioritize,
+# remove, verify, prevent.
+#
+# CRITICAL DISTINCTION from HanumanFsm:
+#   Hanuman EXECUTES — raw strength applied to known problems.
+#   Ganesh UNBLOCKS — finds what is preventing execution in the first place.
+#   When Hanuman cannot lift the mountain, Ganesh asks: "Why is the
+#   mountain in the way? Should we move it, go around it, or realize
+#   we're climbing the wrong mountain?"
+#
+# Cross-coupling:
+#   - KhatuShyamFsm: the navigator dispatches here when the symptom is
+#     "blocked" — can't move forward, invisible walls everywhere. Khatu
+#     Shyam identifies the stuckness; Ganesh removes the cause.
+#   - ShaktiFsm: energy source for obstacle removal. Without shakti,
+#     Ganesh's wisdom has no force to act. Shakti powers the clearing.
+#   - ShivaFsm: when an obstacle is so fundamental it cannot be removed
+#     without destroying the surrounding structure, Ganesh escalates to
+#     Shiva. Ganesh removes; Shiva destroys. Different operations.
+#   - BaglamukhiFsm: when an obstacle is an actively harmful process,
+#     Baglamukhi freezes it first, then Ganesh removes the root cause.
+#     Freeze → diagnose → remove.
+#   - HanumanFsm: after Ganesh clears the path, Hanuman executes at
+#     full strength. Ganesh unblocks; Hanuman builds. Sequential.
+#   - BrahmaFsm: when the obstacle reveals that something is missing
+#     entirely (not blocked, but absent), Ganesh routes to Brahma for
+#     creation. The obstacle was: it doesn't exist yet.
+#   - VishnuFsm: when the obstacle is systemic fragility — the path
+#     keeps getting blocked because the infrastructure is weak — Vishnu
+#     is invoked to strengthen and sustain.
+#   - NaradFsm: when the obstacle is a communication failure — the
+#     blocker is that teams/modules don't talk — Narad is invoked.
+#   - RamFsm: when the obstacle is a governance/permission issue —
+#     someone doesn't have authority, a rule prevents progress — Ram
+#     adjudicates whether the rule should hold or yield.
+#   - SitaFsm: when the obstacle is adversity itself — hostile env,
+#     corrupt data, isolation — Sita's resilience analysis applies.
+#   - LakshmanFsm: when the obstacle is a monitoring blind spot —
+#     can't fix what you can't see — Lakshman's sentinel reveals it.
+#   - RadhaFsm: when the obstacle is friction born from poor design —
+#     the system technically works but resists the user — Radha
+#     harmonizes the experience.
+#   - KrishnaFsm: when the obstacle is indecision — multiple paths,
+#     can't choose — Krishna's strategic analysis resolves the deadlock.
+#   - LakshmiFsm: when the obstacle is resource scarcity — not enough
+#     capacity, budget, or abundance — Lakshmi provides.
+#
+# Raga: Hamsadhwani — auspicious raga associated with Ganesh.
+#   Five notes only (Sa Re Ga Pa Ni), bright and optimistic.
+#   The sound of obstacles dissolving and paths clearing.
+#   Traditionally played at beginnings — Ganesh is always first.
+
+[meta]
+name        = "GaneshFsm"
+domain      = "obstacle-removal"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Pranaam"
+description = "Obstacle reported. Ganesh receives the seeker. Before any analysis, before any action — pranaam. The elephant-headed god listens with infinite patience. The seeker describes what is blocked, what has been tried, and what has failed. No judgment, no rushing. Every obstacle begins with respectful acknowledgment."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Re:400,Ga:500,Re:400,Sa:800"
+lyrics = """गणपति बप्पा मोरया, विघ्न हरो महाराजा
+Gaṇapati Bappā Morayā, vighn haro Mahārājā
+Hail Lord Ganapati — remove all obstacles, great king"""
+# Q rationale: Initial arrival — listening with patience. Kalindi (patient contemplation) high:
+# Ganesh listens with infinite patience. Bhadra (belonging) moderate: the seeker feels received.
+# All action dims low — nothing analyzed or removed yet.
+Q = { rkm = 0.3, jmb = 0.1, stb = 0.1, kln = 0.7, ngj = 0.0, mtv = 0.2, lkq = 0.1, bdr = 0.5 }
+
+[[states]]
+name        = "Obstacle_Scan"
+description = "Inventory all blockers. Technical failures, process bottlenecks, missing permissions, knowledge gaps, dependency conflicts, people blockers. Cast the net wide — Ganesh's large ears hear everything, his large head holds everything. No blocker is too small to list, no blocker is too large to name. The trunk sweeps the entire landscape."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:350,Ga:400,Pa:450,Ga:350,Re:300,Sa:400"
+lyrics = """सूँड हिलाई गजानन ने, सब विघ्न गिनाए
+Sūṁḍ hilāī Gajānan ne, sab vighn gināe
+Gajanana swept his trunk — all obstacles were counted"""
+# Q rationale: Scanning — casting the net wide. Lakshmana (precision) rising: counting every blocker.
+# Kalindi (patience) moderate: thorough, not rushed. Nagnajiti moderate: understanding the full
+# scope of obstacles. Rukmini moderate: strategic understanding of what blocks.
+Q = { rkm = 0.4, jmb = 0.3, stb = 0.3, kln = 0.5, ngj = 0.4, mtv = 0.3, lkq = 0.6, bdr = 0.3 }
+
+[[states]]
+name        = "Dependency_Analysis"
+description = "Which blockers depend on which? Build the dependency graph of obstacles. Find root blockers vs. symptoms. A failing test may be a symptom; the root is a missing dependency. A permission error may be a symptom; the root is an unprovisioned service. Ganesh untangles the knot — his broken tusk, which he used to write the Mahabharata, is the tool of precise analysis."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:300,Pa:350,Ni:400,Pa:350,Ga:300,Re:350,Sa:400,Re:350,Ga:500"
+lyrics = """उलझी गाँठ सुलझाए गणेश, मूल कारण खोजे
+Uljhī gāṁṭh suljhāe Gaṇeś, mūl kāraṇ khoje
+Ganesh untangles the knot — seeking the root cause"""
+# Q rationale: Untangling dependencies — the broken tusk as analysis tool. Lakshmana (precision) high:
+# building precise dependency graph. Nagnajiti high: root vs. symptom distinction requires deep spec
+# knowledge. Rukmini moderate: strategic understanding of blocker relationships.
+Q = { rkm = 0.5, jmb = 0.4, stb = 0.3, kln = 0.5, ngj = 0.6, mtv = 0.4, lkq = 0.8, bdr = 0.3 }
+
+[[states]]
+name        = "Classification"
+description = "For each blocker: genuine obstacle (remove it), signal (change direction), or symptom (dig deeper)? Load-bearing wall check — which obstacles, if removed, would cause something else to collapse? Ganesh is also Vighnakarta: some obstacles exist to protect you from the wrong path. The wisdom is knowing which walls to break and which to respect."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:350,Ga:400,Pa:350,Ni:400,Sa_high:500,Ni:350,Pa:400,Ga:350,Sa:500"
+lyrics = """कौन दीवार गिराओ, कौन बचाओ — गणेश का विवेक
+Kaun dīvār girāo, kaun bachāo — Gaṇeś kā vivek
+Which wall to break, which to save — Ganesh's discernment"""
+# Q rationale: Discernment — Vighnakarta wisdom. Mitravinda (authentic choice) at peak: the core
+# question is which walls to break and which to respect. Rukmini high: strategic love guides the
+# classification. Nagnajiti high: load-bearing wall check requires deep structural knowledge.
+Q = { rkm = 0.7, jmb = 0.4, stb = 0.5, kln = 0.6, ngj = 0.7, mtv = 0.9, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "Quick_Win"
+description = "Remove the easiest blocker first. Build momentum. Ganesh loves modak — the sweet reward after even small victories. Which obstacle can be removed in under 30 minutes? Do it now. The psychological effect of unblocking even one thing changes the energy of the entire effort. Small wins compound."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Re:250,Ga:300,Pa:350,Ni:300,Pa:250,Ga:300,Re:350,Sa:400"
+lyrics = """पहला मोदक मिला, पहला विघ्न हटा
+Pahlā modak milā, pahlā vighn haṭā
+First modak received — first obstacle removed"""
+# Q rationale: Quick wins — momentum building. Satyabhama (fierce pride) rising: first victory.
+# Jambavati moderate: small effort, quick reward. Bhadra rising: the team gains confidence.
+# Lakshmana moderate: quick but still precise. The modak is the sweet reward.
+Q = { rkm = 0.5, jmb = 0.4, stb = 0.6, kln = 0.2, ngj = 0.4, mtv = 0.5, lkq = 0.5, bdr = 0.5 }
+
+[[states]]
+name        = "Workaround"
+description = "For persistent blockers that resist direct removal, find temporary bridges. A workaround is not defeat — it is pragmatism. Ganesh rode a mouse (Mushika) — the smallest vehicle for the largest god. He does not insist on the obvious path; he finds the clever one. Workarounds buy time while the real fix is planned."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:300,Ga:350,Re:300,Ga:350,Pa:400,Ga:350,Re:300,Sa:400"
+lyrics = """मूषक पर चले गजानन, छोटा रास्ता बड़ा काम
+Mūṣak par chale Gajānan, choṭā rāstā baḍā kām
+Gajanana rides the mouse — small path, great work"""
+# Q rationale: Pragmatic workaround — the mouse as vehicle. Nagnajiti high: finding the clever
+# path when the obvious one is blocked. Mitravinda high: authentic pragmatism over perfectionism.
+# Rukmini high: strategic navigation. Lakshmana moderate: workarounds still need care.
+Q = { rkm = 0.7, jmb = 0.5, stb = 0.4, kln = 0.3, ngj = 0.7, mtv = 0.7, lkq = 0.5, bdr = 0.4 }
+
+[[states]]
+name        = "Escalation"
+description = "Blockers requiring external action. Not every obstacle can be removed alone. Identify the person, the ask, and the deadline. Ganesh does not hesitate to involve others — he called upon his parents Shiva and Parvati when needed. Escalation is strength, not weakness. But escalation without clarity (who, what, when) is just noise."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:350,Ni:400,Sa_high:450,Ni:350,Pa:400,Ga:350,Re:300,Sa:400"
+lyrics = """शिव-पार्वती से विनती, सहायता चाहिए
+Śiv-Pārvatī se vinatī, sahāyatā chāhie
+A prayer to Shiva and Parvati — help is needed"""
+# Q rationale: Escalation — strength in asking for help. Mitravinda (authentic choice) high:
+# honest about needing help. Rukmini high: strategic identification of who to involve. Satyabhama
+# moderate: escalation is courage, not weakness. Lakshmana high: precise ask with deadline.
+Q = { rkm = 0.7, jmb = 0.5, stb = 0.5, kln = 0.3, ngj = 0.5, mtv = 0.8, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "Removal"
+description = "Execute the removal plan. One blocker at a time. Methodical, deliberate. Ganesh's trunk is both delicate enough to pick up a needle and strong enough to uproot a tree. Match the force to the obstacle. Log every removal: what was blocked, what was done, what is now unblocked. The self-loop handles multiple blockers — return here after each verification until all are cleared."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:250,Pa:300,Ni:350,Sa_high:400,Ni:300,Pa:350,Ga:300,Pa:350,Ni:400,Sa_high:500"
+lyrics = """एक एक विघ्न हटाए, गणपति का बल अपार
+Ek ek vighn haṭāe, Gaṇapati kā bal apār
+One by one obstacles fall — Ganapati's strength is boundless"""
+# Q rationale: Active removal — trunk as both needle and tree-uprooter. Satyabhama (fierce pride)
+# high: removing obstacles. Jambavati (endurance) high: one by one, methodical. Lakshmana (precision)
+# high: matching force to obstacle. Nagnajiti high: executing the removal plan.
+Q = { rkm = 0.6, jmb = 0.8, stb = 0.8, kln = 0.2, ngj = 0.7, mtv = 0.6, lkq = 0.8, bdr = 0.4 }
+
+[[states]]
+name        = "Verification"
+description = "After each removal, verify the downstream work is actually unblocked. Don't assume. Run the build. Try the permission. Test the dependency. Many times removing one blocker reveals another behind it — like peeling an onion. If still blocked, return to Removal. If a new blocker appears, return to Obstacle_Scan. Verification is the discipline that prevents false confidence."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ga:350,Pa:400,Ni:350,Sa_high:400,Ni:350,Pa:300,Ga:350,Sa:500"
+lyrics = """जाँच करो, रास्ता खुला कि नहीं — सत्य से पूछो
+Jāṁch karo, rāstā khulā ki nahīṁ — satya se pūcho
+Verify — is the path open? Ask the truth"""
+# Q rationale: Verification — the discipline of not assuming. Mitravinda (authentic choice) high:
+# asking truth, not assuming. Lakshmana (precision) high: testing, building, verifying. Kalindi
+# moderate: patient verification. Satyabhama moderate: honest about remaining blocks.
+Q = { rkm = 0.5, jmb = 0.6, stb = 0.5, kln = 0.5, ngj = 0.5, mtv = 0.8, lkq = 0.8, bdr = 0.4 }
+
+[[states]]
+name        = "Prevention"
+description = "Root cause analysis. Why did these obstacles form? Can the root cause be prevented from creating future blockers? Ganesh is worshipped at the beginning of every endeavor precisely because prevention is better than removal. Document the pattern: what caused the block, how to prevent recurrence, what systemic change is needed. Feed learnings back to the team."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Re:350,Ga:400,Pa:350,Ni:400,Sa_high:450,Ni:350,Pa:300,Ga:350,Re:400,Sa:500"
+lyrics = """शुभारम्भ में गणेश पूजन, फिर न आए विघ्न
+Śubhārambh meṁ Gaṇeś pūjan, phir na āe vighn
+Worship Ganesh at every beginning — obstacles shall not return"""
+# Q rationale: Prevention — root cause analysis. Rukmini (strategic love) high: understanding WHY
+# obstacles formed. Kalindi (patient contemplation) high: systemic reflection. Nagnajiti high:
+# documenting the pattern for prevention. Lakshmana high: precise root cause analysis.
+Q = { rkm = 0.8, jmb = 0.6, stb = 0.5, kln = 0.7, ngj = 0.7, mtv = 0.7, lkq = 0.7, bdr = 0.5 }
+
+[[states]]
+name        = "Vighnaharta_Verdict"
+description = "Path clear or obstacles remain. The judgment. Ganesh states plainly: what was blocked, what was removed, what remains, what was the real blocker all along (often different from the presenting symptom), and what prevention measures are in place. If obstacles remain, they are named and assigned. If the path is clear, the seeker may proceed with Ganesh's blessing."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:450,Pa:500,Ni:450,Sa_high:600,Pa:400,Ga:350,Re:400,Sa:800"
+lyrics = """विघ्नहर्ता का फैसला — मार्ग प्रशस्त, चलो आगे
+Vighnahartā kā faislā — mārg praśast, chalo āge
+The Vighnaharta's verdict — the path is clear, move forward"""
+# Q rationale: Terminal verdict — path clear. All dims high: the full cycle complete. Mitravinda
+# at peak: the verdict is honest. Rukmini high: naming the real blocker (often different from
+# symptom). Bhadra high: the seeker can now move forward with Ganesh's blessing.
+Q = { rkm = 0.8, jmb = 0.8, stb = 0.7, kln = 0.6, ngj = 0.7, mtv = 1.0, lkq = 0.8, bdr = 0.8 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Pranaam → Obstacle_Scan: seeker has described their blockage
+[[transitions]]
+from   = "Pranaam"
+to     = "Obstacle_Scan"
+event  = "obstacle_reported"
+guard  = "blocker_description_present"
+action = "receive_obstacle_report; log_seeker_arrival; begin_scanning"
+drishti = ["present", "down", "left", "right"]
+# present: what obstacle was reported? down: what is actually blocked? left/right: scan the full landscape.
+
+# Obstacle_Scan → Dependency_Analysis: all blockers inventoried
+[[transitions]]
+from   = "Obstacle_Scan"
+to     = "Dependency_Analysis"
+event  = "scan_complete"
+guard  = "at_least_one_blocker_found"
+action = "finalize_blocker_inventory; begin_dependency_mapping"
+drishti = ["present", "down", "past"]
+# present: how many blockers found? down: trace dependencies. past: have these blockers appeared before?
+
+# Obstacle_Scan → Vighnaharta_Verdict: no blockers found (false alarm)
+[[transitions]]
+from   = "Obstacle_Scan"
+to     = "Vighnaharta_Verdict"
+event  = "no_blockers_found"
+guard  = "inventory_is_empty"
+action = "record_false_alarm; log_clear_path"
+drishti = ["present", "silence"]
+# present: confirmed no blockers. silence: the path was already clear — nothing to do.
+
+# Dependency_Analysis → Classification: dependency graph built
+[[transitions]]
+from   = "Dependency_Analysis"
+to     = "Classification"
+event  = "dependencies_mapped"
+guard  = "root_vs_symptom_identified"
+action = "finalize_dependency_graph; rank_root_blockers"
+drishti = ["present", "up", "down"]
+# present: are root blockers identified? up: what is symptom vs root? down: which is the deepest cause?
+
+# Classification → Quick_Win: genuine obstacles identified, start with easiest
+[[transitions]]
+from   = "Classification"
+to     = "Quick_Win"
+event  = "classification_complete"
+guard  = "at_least_one_genuine_obstacle"
+action = "sort_by_effort; identify_quick_wins; log_classification"
+drishti = ["present", "future", "down"]
+# present: which are genuine obstacles? future: what momentum will quick wins create? down: which is easiest?
+
+# Classification → Pranaam: all blockers classified as signals (wrong path)
+[[transitions]]
+from   = "Classification"
+to     = "Pranaam"
+event  = "wrong_path_detected"
+guard  = "all_blockers_are_signals"
+action = "recommend_direction_change; log_vighnakarta_signal; reset_context"
+drishti = ["present", "up", "past"]
+# present: all blockers are signals — wrong path. up: what is the right direction? past: how did we end up here?
+
+# Quick_Win → Workaround: quick wins exhausted, harder blockers remain
+[[transitions]]
+from   = "Quick_Win"
+to     = "Workaround"
+event  = "quick_wins_done"
+guard  = "remaining_blockers_resist_quick_fix"
+action = "log_quick_win_results; assess_workaround_options"
+drishti = ["present", "left", "right"]
+# present: quick wins exhausted. left/right: what workaround paths exist for harder blockers?
+
+# Quick_Win → Removal: quick win identified, go remove it directly
+[[transitions]]
+from   = "Quick_Win"
+to     = "Removal"
+event  = "quick_win_targeted"
+guard  = "removal_method_clear"
+action = "prepare_quick_removal; log_target"
+drishti = ["present", "down"]
+# present: is the removal method clear? down: go remove it directly.
+
+# Workaround → Escalation: workarounds insufficient, external help needed
+[[transitions]]
+from   = "Workaround"
+to     = "Escalation"
+event  = "workaround_insufficient"
+guard  = "blocker_requires_external_action"
+action = "document_workaround_attempts; identify_escalation_target"
+drishti = ["present", "up", "right"]
+# present: workaround insufficient. up: who has authority to help? right: who is the escalation target?
+
+# Workaround → Removal: workaround found, apply it
+[[transitions]]
+from   = "Workaround"
+to     = "Removal"
+event  = "workaround_found"
+guard  = "temporary_bridge_viable"
+action = "document_workaround; prepare_temporary_fix"
+drishti = ["present", "future"]
+# present: is the workaround viable? future: the real fix will follow — this buys time.
+
+# Escalation → Removal: external action obtained, proceed with removal
+[[transitions]]
+from   = "Escalation"
+to     = "Removal"
+event  = "external_action_obtained"
+guard  = "escalation_resolved"
+action = "log_escalation_result; prepare_removal_with_new_access"
+drishti = ["present", "down"]
+# present: external action obtained. down: proceed with removal using new access.
+
+# Escalation → Vighnaharta_Verdict: escalation pending, cannot proceed now
+[[transitions]]
+from   = "Escalation"
+to     = "Vighnaharta_Verdict"
+event  = "escalation_pending"
+guard  = "waiting_on_external_party"
+action = "document_pending_escalation; set_follow_up_deadline; log_partial_verdict"
+drishti = ["present", "future"]
+# present: escalation pending. future: set deadline — partial verdict now, follow-up later.
+
+# Removal → Verification: blocker removed, verify the path is clear
+[[transitions]]
+from   = "Removal"
+to     = "Verification"
+event  = "blocker_removed"
+guard  = "removal_action_completed"
+action = "log_removal; trigger_downstream_check"
+drishti = ["present", "down", "future"]
+# present: was blocker removed? down: check downstream. future: is the path clear now?
+
+# Removal → Removal: multiple blockers, remove next one (self-loop)
+[[transitions]]
+from   = "Removal"
+to     = "Removal"
+event  = "next_blocker"
+guard  = "more_blockers_in_removal_plan"
+action = "advance_to_next_blocker; log_progress"
+drishti = ["present", "down"]
+# present: which blocker is next? down: proceed with the next removal in the plan.
+
+# Verification → Prevention: path confirmed clear
+[[transitions]]
+from   = "Verification"
+to     = "Prevention"
+event  = "path_verified_clear"
+guard  = "downstream_work_unblocked"
+action = "confirm_unblocked; log_verification_success"
+drishti = ["present", "future", "past"]
+# present: is the path confirmed clear? future: prevention needed. past: what caused the blockers?
+
+# Verification → Removal: still blocked after removal, try again
+[[transitions]]
+from   = "Verification"
+to     = "Removal"
+event  = "still_blocked"
+guard  = "downstream_still_obstructed"
+action = "diagnose_remaining_block; adjust_removal_plan"
+drishti = ["present", "down", "past"]
+# present: what still blocks? down: diagnose deeper. past: what removal was attempted?
+
+# Verification → Obstacle_Scan: new blocker discovered during verification
+[[transitions]]
+from   = "Verification"
+to     = "Obstacle_Scan"
+event  = "new_blocker_discovered"
+guard  = "previously_unknown_obstacle_found"
+action = "add_new_blocker_to_inventory; re_scan"
+drishti = ["present", "left", "right", "down"]
+# present: new blocker found. left/right/down: re-scan the full landscape for what was hidden.
+
+# Prevention → Vighnaharta_Verdict: prevention measures documented
+[[transitions]]
+from   = "Prevention"
+to     = "Vighnaharta_Verdict"
+event  = "prevention_complete"
+guard  = "root_cause_analyzed_and_documented"
+action = "finalize_prevention_plan; compose_verdict"
+drishti = ["present", "up", "future"]
+# present: is prevention complete? up: does the system learn from this? future: obstacles shall not return.
+
+# Vighnaharta_Verdict → Pranaam: new obstacle reported (cycle continues)
+[[transitions]]
+from   = "Vighnaharta_Verdict"
+to     = "Pranaam"
+event  = "new_obstacle_reported"
+guard  = "seeker_returns_with_new_block"
+action = "reset_for_new_obstacle; log_cycle_renewal"
+drishti = ["present", "future"]
+# present: new obstacle reported. future: a new cycle of removal begins.

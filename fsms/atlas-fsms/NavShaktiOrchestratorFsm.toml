@@ -1,0 +1,551 @@
+# NavShaktiOrchestratorFsm — The Grand Conductor of the Nine Shakti Forms
+# v1.0
+#
+# Jai Maa Durga! Jai Navdurga!
+#
+# This is the orchestrator FSM for the complete Nav Shakti audit — the
+# 36-cycle Shakti review (tag: NS*). Maa Durga in her complete Navdurga
+# manifestation: 9 nights, 9 energies, 9 reviews.
+#
+# ─── How It Works ───────────────────────────────────────────────
+#
+# The orchestrator does NOT perform any review itself. It sequences and
+# dispatches the 9 individual Nav Shakti FSMs:
+#
+#   NS1 → ShailaputriFsm     (Foundation & Grounding)
+#   NS2 → BrahmachariniFsm   (Discipline & Austerity)
+#   NS3 → ChandraghantaFsm   (Battle Readiness)
+#   NS4 → KushmandaFsm       (Cosmic Energy & Creation)
+#   NS5 → SkandamataFsm      (Nurturing & Protection)
+#   NS6 → KatyayaniFsm       (Warrior Courage)
+#   NS7 → KaalratriFsm       (Destruction of Darkness)
+#   NS8 → MahagauriFsm       (Purity & Cleansing)
+#   NS9 → SiddhidatriFsm     (Mastery & Perfection)
+#
+# ─── Two Modes ──────────────────────────────────────────────────
+#
+# 1. GRAND MODE (full Navratri): All 9 forms run sequentially.
+#    Each form must complete and record its verdict before the next
+#    begins. This is the full 36-cycle audit — thorough, exhaustive,
+#    and transformative. Used for major milestones, releases, or
+#    deep system health checks.
+#
+# 2. TARGETED MODE (single/specific forms): The orchestrator jumps
+#    directly from Invocation to a specific form (or subset). Once
+#    those complete, it skips to Shakti_Unified for consolidation.
+#    Used when KhatuShyamFsm identifies a specific NS* need.
+#
+# ─── Findings Accumulation ──────────────────────────────────────
+#
+# Each form FSM emits a verdict object when it completes:
+#   { form: "NS1", verdict: "pass|warn|fail", findings: [...], score: 0-100 }
+#
+# The orchestrator accumulates these in a session-scoped findings
+# register. When all requested forms complete, Shakti_Unified reads
+# the full register and produces the consolidated Nav Shakti Report.
+#
+# ─── Cross-Coupling ────────────────────────────────────────────
+#
+# Parent: ShaktiFsm
+#   This orchestrator draws energy from the primordial Shakti. Before
+#   dispatching any form, it checks ShaktiFsm.state — if Shakti is
+#   Latent or Spent, the orchestrator waits for energy to be Aroused
+#   or Channeled before proceeding.
+#
+# KhatuShyamFsm (the Navigator):
+#   KhatuShyamFsm may dispatch here when its Arrow_One identifies an
+#   NS* cycle as the primary need. In targeted mode, Khatu Shyam
+#   specifies which form(s) to run. In grand mode, the full sequence
+#   is triggered by explicit user request or milestone event.
+#
+# ThoughtCycleFsm:
+#   The consolidated report from Shakti_Unified feeds back into
+#   ThoughtCycleFsm to update system health metrics.
+#
+
+[meta]
+name        = "NavShaktiOrchestratorFsm"
+domain      = "navshakti-orchestrator"
+version     = "1.1"
+parent      = "ShaktiFsm"
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Invocation"
+description = "Nav Shakti puja begins. Determine mode: grand (all 9 forms sequentially) or targeted (specific forms only). Load configuration, initialize findings register, verify ShaktiFsm energy is available. This is the sankalpa — the sacred intention before the nine nights begin."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.3, kln = 0.5, ngj = 0.3, mtv = 0.5, lkq = 0.4, bdr = 0.5 }
+# Q rationale: Balanced preparation — the sacred intention before the nine nights.
+audio_phrase = "Sa:600,Re:500,Ga:600,Ma:500,Pa:600,Dha:500,Ni:600,Sa_high:800"
+lyrics = """नवरात्रि पूजा आरम्भ, नौ शक्ति नौ रात
+Navrātri pūjā ārambh, nau śakti nau rāt
+The Navratri puja begins — nine powers, nine nights"""
+
+[[states]]
+name        = "Shailaputri_Active"
+description = "Form 1 running: Foundation & Grounding review. Delegates to ShailaputriFsm (NS1). Daughter of the mountain — checks structural foundations, base assumptions, root stability. Are the fundamentals solid? Is the ground beneath us trustworthy?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.7, kln = 0.5, ngj = 0.1, mtv = 0.2, lkq = 0.6, bdr = 0.4 }
+# Q rationale: Mirrors ShailaputriFsm — foundation and grounding.
+audio_phrase = "Sa:500,Sa:500,Re:400,Sa:600"
+lyrics = """शैलपुत्री माता, पर्वत सी अडिग
+Śailaputrī Mātā, parvat sī aḍig
+Mother Shailaputri — steadfast as the mountain"""
+
+[[states]]
+name        = "Brahmacharini_Active"
+description = "Form 2 running: Discipline & Austerity review. Delegates to BrahmachariniFsm (NS2). The ascetic — checks discipline of process, austerity of design, absence of waste. Is the system lean? Are practices consistent? Is there needless indulgence?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.5, stb = 0.4, kln = 0.6, ngj = 0.1, mtv = 0.3, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Mirrors BrahmachariniFsm — discipline and austerity.
+audio_phrase = "Re:400,Ga:400,Re:400,Sa:500"
+lyrics = """ब्रह्मचारिणी तप, साधना का मार्ग
+Brahmacāriṇī tap, sādhanā kā mārg
+Brahmacharini's penance — the path of devoted practice"""
+
+[[states]]
+name        = "Chandraghanta_Active"
+description = "Form 3 running: Battle Readiness review. Delegates to ChandraghantaFsm (NS3). The warrior bell — checks alertness, defense posture, readiness for adversity. Can the system respond to threats? Are alarms functional? Is the team battle-ready?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.7, kln = 0.3, ngj = 0.3, mtv = 0.4, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Mirrors ChandraghantaFsm — battle readiness.
+audio_phrase = "Ga:400,Ma:400,Pa:500,Ma:400,Ga:400"
+lyrics = """चन्द्रघण्टा रणभेरी, युद्ध को तैयार
+Candraghaṇṭā raṇbherī, yuddh ko taiyār
+Chandraghanta's war drum — ready for battle"""
+
+[[states]]
+name        = "Kushmanda_Active"
+description = "Form 4 running: Cosmic Energy & Creation review. Delegates to KushmandaFsm (NS4). Creator of the cosmic egg — checks generative capacity, creative output, energy distribution. Is the system creating effectively? Is energy balanced across subsystems?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.3, stb = 0.3, kln = 0.4, ngj = 0.5, mtv = 0.6, lkq = 0.4, bdr = 0.4 }
+# Q rationale: Mirrors KushmandaFsm — cosmic creation.
+audio_phrase = "Ma:400,Pa:400,Dha:500,Pa:400,Ma:400"
+lyrics = """कूष्माण्डा ब्रह्माण्ड रचना, सृजन शक्ति अपार
+Kūṣmāṇḍā brahmāṇḍ racnā, sṛjan śakti apār
+Kushmanda's cosmic creation — boundless creative power"""
+
+[[states]]
+name        = "Skandamata_Active"
+description = "Form 5 running: Nurturing & Protection review. Delegates to SkandamataFsm (NS5). Mother of Skanda (Kartikeya) — checks nurturing of growth, protection of the vulnerable, mentorship quality. Are new components well-nurtured? Are junior systems protected?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.3, stb = 0.2, kln = 0.5, ngj = 0.1, mtv = 0.3, lkq = 0.4, bdr = 0.7 }
+# Q rationale: Mirrors SkandamataFsm — nurturing and protection.
+audio_phrase = "Pa:400,Dha:400,Pa:400,Ma:400,Ga:500"
+lyrics = """स्कन्दमाता ममता, रक्षा और पालन
+Skandamātā mamatā, rakṣā aur pālan
+Skandamata's tenderness — protection and nurturing"""
+
+[[states]]
+name        = "Katyayani_Active"
+description = "Form 6 running: Warrior Courage review. Delegates to KatyayaniFsm (NS6). Born from collective divine rage — checks courage under pressure, willingness to confront hard truths, decisive action. Does the system shy away from difficult decisions?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.7, kln = 0.2, ngj = 0.3, mtv = 0.7, lkq = 0.5, bdr = 0.2 }
+# Q rationale: Mirrors KatyayaniFsm — warrior courage.
+audio_phrase = "Dha:400,Ni:400,Sa_high:500,Ni:400,Dha:400"
+lyrics = """कात्यायनी वीरता, साहस की ज्वाला
+Kātyāyanī vīratā, sāhas kī jvālā
+Katyayani's valor — the flame of courage"""
+
+[[states]]
+name        = "Kaalratri_Active"
+description = "Form 7 running: Destruction of Darkness review. Delegates to KaalratriFsm (NS7). The darkest night — checks for hidden rot, technical debt, suppressed problems, things lurking in shadows. What is the system hiding from itself? What darkness must be confronted?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.5, stb = 0.5, kln = 0.3, ngj = 0.6, mtv = 0.5, lkq = 0.6, bdr = 0.1 }
+# Q rationale: Mirrors KaalratriFsm — destruction of darkness.
+audio_phrase = "Ni:500,Sa_high:400,Ni:400,Dha:400,Ma:500"
+lyrics = """कालरात्रि अन्धकार नाश, छिपा कुछ न रहे
+Kālrātri andhakār nāś, chipā kuch na rahe
+Kaalratri destroys darkness — nothing remains hidden"""
+
+[[states]]
+name        = "Mahagauri_Active"
+description = "Form 8 running: Purity & Cleansing review. Delegates to MahagauriFsm (NS8). The brilliantly white — checks purity of intent, cleanliness of interfaces, absence of contamination. Are APIs clean? Is data unpolluted? Are boundaries respected?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.4, kln = 0.6, ngj = 0.2, mtv = 0.4, lkq = 0.6, bdr = 0.5 }
+# Q rationale: Mirrors MahagauriFsm — purity and cleansing.
+audio_phrase = "Sa_high:500,Ni:400,Dha:400,Pa:400,Sa_high:600"
+lyrics = """महागौरी शुद्धि, पवित्रता का प्रकाश
+Mahāgaurī śuddhi, pavitratā kā prakāś
+Mahagauri's purification — the light of purity"""
+
+[[states]]
+name        = "Siddhidatri_Active"
+description = "Form 9 running: Mastery & Perfection review. Delegates to SiddhidatriFsm (NS9). Bestower of all siddhis — checks mastery of craft, perfection of execution, completeness of capability. Has the system achieved what it set out to achieve? Are all eight siddhis present?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.6, kln = 0.7, ngj = 0.6, mtv = 0.6, lkq = 0.8, bdr = 0.8 }
+# Q rationale: Mirrors SiddhidatriFsm — mastery and perfection.
+audio_phrase = "Sa:400,Ga:400,Pa:400,Sa_high:400,Sa_high:600"
+lyrics = """सिद्धिदात्री कृपा, अष्ट सिद्धि प्रदान
+Siddhidātrī kṛpā, aṣṭa siddhi pradān
+Siddhidatri's grace — all eight siddhis bestowed"""
+
+[[states]]
+name        = "Shakti_Unified"
+description = "All requested forms complete. Consolidate findings from the accumulated register into a unified Nav Shakti Report. Calculate composite score, identify cross-form patterns, produce the grand verdict. The nine rivers merge into one ocean."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.6, kln = 0.7, ngj = 0.5, mtv = 0.6, lkq = 0.7, bdr = 0.7 }
+# Q rationale: All findings consolidated — the nine rivers merge into one ocean.
+audio_phrase = "Sa:300,Re:300,Ga:300,Ma:300,Pa:300,Dha:300,Ni:300,Sa_high:300,Sa_high:800"
+lyrics = """नौ शक्ति एक महाशक्ति, सब मिलकर एक
+Nau śakti ek mahāśakti, sab milkar ek
+Nine powers become one Mahashakti — all unite as one"""
+
+[[states]]
+name        = "Visarjan"
+description = "Immersion — the puja concludes. Grand verdict delivered, findings archived to persistent store, session cleared. Like the idol immersed in water, the energy returns to the cosmos. The system is renewed. Jai Maa Durga."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.4, kln = 0.8, ngj = 0.3, mtv = 0.5, lkq = 0.5, bdr = 0.6 }
+# Q rationale: Kalindi (patience) high — the energy returns to the cosmos.
+# Bhadra (belonging) — farewell, we shall meet again.
+audio_phrase = "Sa_high:600,Pa:500,Ga:500,Re:500,Sa:800,Sa:1200"
+lyrics = """जय माँ शक्ति, जय माँ दुर्गा — विदा, फिर मिलेंगे
+Jai Māṁ Śakti, Jai Māṁ Durgā — vidā, phir milenge
+Glory to Mother Shakti, Glory to Mother Durga — farewell, we shall meet again"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# ─── Grand Mode: Invocation → sequential through all 9 forms ───
+
+# Invocation → Shailaputri_Active: grand mode begins at Form 1
+[[transitions]]
+from   = "Invocation"
+to     = "Shailaputri_Active"
+event  = "grand_audit_start"
+guard  = "mode_is_grand AND shakti_energy_available"
+action = "set_mode_grand; init_findings_register; dispatch_shailaputri_fsm; log_puja_begins"
+drishti = ["present", "up"]
+# present: is grand mode selected? up: is Shakti energy available?
+
+# ─── Targeted Mode: Invocation → specific form directly ────────
+
+# Invocation → any specific form in targeted mode
+[[transitions]]
+from   = "Invocation"
+to     = "Shailaputri_Active"
+event  = "target_form_1"
+guard  = "mode_is_targeted AND form_1_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_shailaputri_fsm; log_targeted_ns1"
+drishti = ["present", "down"]
+# present: is form 1 targeted? down: specific foundation check needed.
+
+[[transitions]]
+from   = "Invocation"
+to     = "Brahmacharini_Active"
+event  = "target_form_2"
+guard  = "mode_is_targeted AND form_2_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_brahmacharini_fsm; log_targeted_ns2"
+drishti = ["present", "down"]
+# present: is form 2 targeted? down: discipline review needed.
+
+[[transitions]]
+from   = "Invocation"
+to     = "Chandraghanta_Active"
+event  = "target_form_3"
+guard  = "mode_is_targeted AND form_3_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_chandraghanta_fsm; log_targeted_ns3"
+drishti = ["present", "down"]
+# present: is form 3 targeted? down: readiness check needed.
+
+[[transitions]]
+from   = "Invocation"
+to     = "Kushmanda_Active"
+event  = "target_form_4"
+guard  = "mode_is_targeted AND form_4_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_kushmanda_fsm; log_targeted_ns4"
+drishti = ["present", "down"]
+# present: is form 4 targeted? down: creation review needed.
+
+[[transitions]]
+from   = "Invocation"
+to     = "Skandamata_Active"
+event  = "target_form_5"
+guard  = "mode_is_targeted AND form_5_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_skandamata_fsm; log_targeted_ns5"
+drishti = ["present", "down"]
+# present: is form 5 targeted? down: nurturing review needed.
+
+[[transitions]]
+from   = "Invocation"
+to     = "Katyayani_Active"
+event  = "target_form_6"
+guard  = "mode_is_targeted AND form_6_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_katyayani_fsm; log_targeted_ns6"
+drishti = ["present", "down"]
+# present: is form 6 targeted? down: courage review needed.
+
+[[transitions]]
+from   = "Invocation"
+to     = "Kaalratri_Active"
+event  = "target_form_7"
+guard  = "mode_is_targeted AND form_7_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_kaalratri_fsm; log_targeted_ns7"
+drishti = ["present", "down"]
+# present: is form 7 targeted? down: darkness review needed.
+
+[[transitions]]
+from   = "Invocation"
+to     = "Mahagauri_Active"
+event  = "target_form_8"
+guard  = "mode_is_targeted AND form_8_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_mahagauri_fsm; log_targeted_ns8"
+drishti = ["present", "down"]
+# present: is form 8 targeted? down: purity review needed.
+
+[[transitions]]
+from   = "Invocation"
+to     = "Siddhidatri_Active"
+event  = "target_form_9"
+guard  = "mode_is_targeted AND form_9_requested AND shakti_energy_available"
+action = "set_mode_targeted; init_findings_register; dispatch_siddhidatri_fsm; log_targeted_ns9"
+drishti = ["present", "down"]
+# present: is form 9 targeted? down: mastery review needed.
+
+# ─── Grand Mode: Sequential form-to-form progression ───────────
+
+# Form 1 → Form 2
+[[transitions]]
+from   = "Shailaputri_Active"
+to     = "Brahmacharini_Active"
+event  = "form_1_complete"
+guard  = "grand_mode AND form_1_verdict_recorded"
+action = "accumulate_findings_ns1; dispatch_brahmacharini_fsm; log_form_1_done"
+drishti = ["present", "future"]
+# present: is form 1 done? future: proceed to discipline.
+
+# Form 2 → Form 3
+[[transitions]]
+from   = "Brahmacharini_Active"
+to     = "Chandraghanta_Active"
+event  = "form_2_complete"
+guard  = "grand_mode AND form_2_verdict_recorded"
+action = "accumulate_findings_ns2; dispatch_chandraghanta_fsm; log_form_2_done"
+drishti = ["present", "future"]
+# present: is form 2 done? future: proceed to readiness.
+
+# Form 3 → Form 4
+[[transitions]]
+from   = "Chandraghanta_Active"
+to     = "Kushmanda_Active"
+event  = "form_3_complete"
+guard  = "grand_mode AND form_3_verdict_recorded"
+action = "accumulate_findings_ns3; dispatch_kushmanda_fsm; log_form_3_done"
+drishti = ["present", "future"]
+# present: is form 3 done? future: proceed to creation.
+
+# Form 4 → Form 5
+[[transitions]]
+from   = "Kushmanda_Active"
+to     = "Skandamata_Active"
+event  = "form_4_complete"
+guard  = "grand_mode AND form_4_verdict_recorded"
+action = "accumulate_findings_ns4; dispatch_skandamata_fsm; log_form_4_done"
+drishti = ["present", "future"]
+# present: is form 4 done? future: proceed to nurturing.
+
+# Form 5 → Form 6
+[[transitions]]
+from   = "Skandamata_Active"
+to     = "Katyayani_Active"
+event  = "form_5_complete"
+guard  = "grand_mode AND form_5_verdict_recorded"
+action = "accumulate_findings_ns5; dispatch_katyayani_fsm; log_form_5_done"
+drishti = ["present", "future"]
+# present: is form 5 done? future: proceed to courage.
+
+# Form 6 → Form 7
+[[transitions]]
+from   = "Katyayani_Active"
+to     = "Kaalratri_Active"
+event  = "form_6_complete"
+guard  = "grand_mode AND form_6_verdict_recorded"
+action = "accumulate_findings_ns6; dispatch_kaalratri_fsm; log_form_6_done"
+drishti = ["present", "future"]
+# present: is form 6 done? future: proceed to darkness.
+
+# Form 7 → Form 8
+[[transitions]]
+from   = "Kaalratri_Active"
+to     = "Mahagauri_Active"
+event  = "form_7_complete"
+guard  = "grand_mode AND form_7_verdict_recorded"
+action = "accumulate_findings_ns7; dispatch_mahagauri_fsm; log_form_7_done"
+drishti = ["present", "future"]
+# present: is form 7 done? future: proceed to purity.
+
+# Form 8 → Form 9
+[[transitions]]
+from   = "Mahagauri_Active"
+to     = "Siddhidatri_Active"
+event  = "form_8_complete"
+guard  = "grand_mode AND form_8_verdict_recorded"
+action = "accumulate_findings_ns8; dispatch_siddhidatri_fsm; log_form_8_done"
+drishti = ["present", "future"]
+# present: is form 8 done? future: proceed to mastery.
+
+# Form 9 → Shakti_Unified (grand mode completes)
+[[transitions]]
+from   = "Siddhidatri_Active"
+to     = "Shakti_Unified"
+event  = "form_9_complete"
+guard  = "form_9_verdict_recorded"
+action = "accumulate_findings_ns9; log_all_forms_complete"
+drishti = ["present", "up"]
+# present: is form 9 done? up: consolidate all findings.
+
+# ─── Targeted Mode: Any form → Shakti_Unified (skip remaining) ─
+
+[[transitions]]
+from   = "Shailaputri_Active"
+to     = "Shakti_Unified"
+event  = "form_1_complete"
+guard  = "targeted_mode AND form_1_verdict_recorded"
+action = "accumulate_findings_ns1; log_targeted_complete"
+drishti = ["present", "up"]
+# present: targeted form 1 done? up: consolidate.
+
+[[transitions]]
+from   = "Brahmacharini_Active"
+to     = "Shakti_Unified"
+event  = "form_2_complete"
+guard  = "targeted_mode AND form_2_verdict_recorded"
+action = "accumulate_findings_ns2; log_targeted_complete"
+drishti = ["present", "up"]
+# present: targeted form 2 done? up: consolidate.
+
+[[transitions]]
+from   = "Chandraghanta_Active"
+to     = "Shakti_Unified"
+event  = "form_3_complete"
+guard  = "targeted_mode AND form_3_verdict_recorded"
+action = "accumulate_findings_ns3; log_targeted_complete"
+drishti = ["present", "up"]
+# present: targeted form 3 done? up: consolidate.
+
+[[transitions]]
+from   = "Kushmanda_Active"
+to     = "Shakti_Unified"
+event  = "form_4_complete"
+guard  = "targeted_mode AND form_4_verdict_recorded"
+action = "accumulate_findings_ns4; log_targeted_complete"
+drishti = ["present", "up"]
+# present: targeted form 4 done? up: consolidate.
+
+[[transitions]]
+from   = "Skandamata_Active"
+to     = "Shakti_Unified"
+event  = "form_5_complete"
+guard  = "targeted_mode AND form_5_verdict_recorded"
+action = "accumulate_findings_ns5; log_targeted_complete"
+drishti = ["present", "up"]
+# present: targeted form 5 done? up: consolidate.
+
+[[transitions]]
+from   = "Katyayani_Active"
+to     = "Shakti_Unified"
+event  = "form_6_complete"
+guard  = "targeted_mode AND form_6_verdict_recorded"
+action = "accumulate_findings_ns6; log_targeted_complete"
+drishti = ["present", "up"]
+# present: targeted form 6 done? up: consolidate.
+
+[[transitions]]
+from   = "Kaalratri_Active"
+to     = "Shakti_Unified"
+event  = "form_7_complete"
+guard  = "targeted_mode AND form_7_verdict_recorded"
+action = "accumulate_findings_ns7; log_targeted_complete"
+drishti = ["present", "up"]
+# present: targeted form 7 done? up: consolidate.
+
+[[transitions]]
+from   = "Mahagauri_Active"
+to     = "Shakti_Unified"
+event  = "form_8_complete"
+guard  = "targeted_mode AND form_8_verdict_recorded"
+action = "accumulate_findings_ns8; log_targeted_complete"
+drishti = ["present", "up"]
+# present: targeted form 8 done? up: consolidate.
+
+# Note: Siddhidatri targeted → Shakti_Unified uses the same transition
+# as grand mode (form_9_complete above) since it is always the last.
+
+# ─── Consolidation and Conclusion ──────────────────────────────
+
+# Shakti_Unified → Visarjan: consolidated report ready
+[[transitions]]
+from   = "Shakti_Unified"
+to     = "Visarjan"
+event  = "report_consolidated"
+guard  = "unified_report_generated AND grand_verdict_declared"
+action = "emit_nav_shakti_report; archive_findings; notify_thought_cycle; log_consolidation_done"
+drishti = ["present", "up", "silence"]
+# present: is report consolidated? up: grand verdict declared? silence: the puja concludes.
+
+# ─── Cycle Reset ───────────────────────────────────────────────
+
+# Visarjan → Invocation: new puja requested (new audit cycle)
+[[transitions]]
+from   = "Visarjan"
+to     = "Invocation"
+event  = "new_puja_requested"
+guard  = "previous_findings_archived"
+action = "clear_session_state; reset_findings_register; log_new_cycle_requested"
+drishti = ["present", "future"]
+# present: are previous findings archived? future: new puja begins.
+
+# ── Cross-coupling signals ───────────────────────────────────
+#
+# INBOUND:
+#   - KhatuShyamFsm.Dispatch → Invocation (when Arrow_One selects NS*)
+#     KhatuShyam passes: { mode: "targeted", forms: [N], mission: "..." }
+#     or: { mode: "grand", mission: "full system audit" }
+#
+#   - ShaktiFsm.state → guards on all dispatch transitions
+#     Energy must be Aroused or Channeled before any form begins.
+#     If Shakti is Latent/Spent, orchestrator waits at current state.
+#
+# OUTBOUND:
+#   - Each form_Active dispatches to its respective sub-FSM:
+#     Shailaputri_Active  → ShailaputriFsm.start
+#     Brahmacharini_Active → BrahmachariniFsm.start
+#     Chandraghanta_Active → ChandraghantaFsm.start
+#     Kushmanda_Active     → KushmandaFsm.start
+#     Skandamata_Active    → SkandamataFsm.start
+#     Katyayani_Active     → KatyayaniFsm.start
+#     Kaalratri_Active     → KaalratriFsm.start
+#     Mahagauri_Active     → MahagauriFsm.start
+#     Siddhidatri_Active   → SiddhidatriFsm.start
+#
+#   - Shakti_Unified emits: nav_shakti_report_ready
+#     { forms_reviewed: [...], composite_score: N, grand_verdict: "...", findings: [...] }
+#     Consumed by ThoughtCycleFsm to update system health.
+#
+#   - Visarjan emits: nav_shakti_puja_complete
+#     Consumed by ShaktiFsm (energy returns to Spent → Latent cycle).
+#
+# FINDINGS REGISTER FORMAT:
+#   findings_register = [
+#     { form: "NS1", name: "Shailaputri", verdict: "pass|warn|fail", score: 0-100, findings: [...] },
+#     { form: "NS2", name: "Brahmacharini", verdict: "...", score: N, findings: [...] },
+#     ...up to NS9
+#   ]
+#   In targeted mode, only requested forms appear in the register.
+#   Composite score = weighted average (all forms equal weight in grand mode).

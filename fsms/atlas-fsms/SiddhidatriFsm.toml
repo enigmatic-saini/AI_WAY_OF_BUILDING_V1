@@ -1,0 +1,188 @@
+# SiddhidatriFsm — Mastery & Perfection (Nav Shakti 9)
+# v1.0
+#
+# Om Devi Siddhidatryai Namah
+#
+# Siddhidatri — bestower of all siddhis (supernatural powers).
+# Ninth and final form of Nav Durga. She sits on a lotus, worshipped
+# by gods, sages, siddhas, and asuras alike. She grants anima,
+# mahima, garima, laghima, prapti, prakamya, ishitva, vashitva —
+# the eight perfections. In her presence, the impossible becomes
+# natural.
+#
+# In our system, Siddhidatri is the final polish cycle. After
+# Kaalratri (NS7) found the darkness and Mahagauri (NS8) cleansed
+# it, Siddhidatri reviews for excellence. Not "good enough" but
+# "masterful." Performance optimization, API elegance, architectural
+# harmony — she asks not "does it work?" but "is it worthy?"
+#
+# Mastery is beyond competence. Competence ships. Mastery inspires.
+# Not every cycle reaches Siddhidatri — she is invoked only when
+# the code is already clean and correct, and the question becomes
+# whether it can achieve greatness.
+#
+# Cross-coupling:
+#   - ShaktiFsm: Siddhidatri draws the finest energy from Shakti.
+#     Not the fierce channeling of Kaalratri nor the steady warmth
+#     of Mahagauri, but the precise, crystalline energy of mastery.
+#   - KhatuShyamFsm: Khatu Shyam routes to NS9 when the symptom
+#     type is "emptiness" (something is missing — not broken, not
+#     dark, not dirty, but not yet excellent). Also follows NS7→NS8
+#     as the natural completion of the Nav Shakti triad.
+#     KhatuShyamFsm.cycle_domain_map: NS9 → SiddhidatriFsm
+#   - Receives from MahagauriFsm (NS8): purity_report confirms
+#     the codebase is clean enough for mastery review.
+#   - This is the FINAL Nav Shakti cycle. Its verdict feeds back
+#     to KhatuShyamFsm as the ultimate assessment.
+
+[meta]
+name        = "SiddhidatriFsm"
+domain      = "navshakti-mastery"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Performance_Mastery"
+description = "Profiling, hot paths, memory allocation patterns, cache hit rates, unnecessary copies, lock contention. Where is the system slow or wasteful? Not bugs — those are already fixed. This is about the difference between correct and fast, between working and elegant execution. Measure: p50/p95/p99 latencies, allocation rates, cache miss ratios, lock hold times, unnecessary clones, oversized buffers."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.5, kln = 0.5, ngj = 0.6, mtv = 0.5, lkq = 0.8, bdr = 0.5 }
+# Q rationale: Lakshmana (precision) high — profiling, hot paths, exact measurement.
+# Nagnajiti (impossible) — the difference between correct and fast.
+audio_phrase = "Sa:300,Re:300,Ga:300,Ma:300,Pa:300,Dha:300,Ni:300,Sa_high:400,Sa_high:500"
+lyrics = """सिद्धि का पहला चरण — वेग और दक्षता
+जो चलता है, वो उड़ सकता है
+Siddhi kā pahlā caraṇ — veg aur dakṣatā
+Jo caltā hai, vo uḍ saktā hai
+First step of mastery — speed and efficiency
+What walks can learn to fly"""
+
+[[states]]
+name        = "API_Elegance"
+description = "Is every public interface a joy to use? Minimal, consistent, unsurprising? Does the API guide the user toward correct usage and away from misuse? Review: function signatures (too many params?), naming consistency, error types (informative?), builder patterns (needed?), documentation (does it teach?). An elegant API is one where the wrong usage feels unnatural."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.5, stb = 0.5, kln = 0.6, ngj = 0.5, mtv = 0.6, lkq = 0.8, bdr = 0.7 }
+# Q rationale: Rukmini (strategic love) + Bhadra (belonging) — a joy to use.
+# Lakshmana (precision) — minimal, consistent, unsurprising.
+audio_phrase = "Sa:400,Ga:400,Pa:500,Dha:400,Sa_high:500,Ni:400,Dha:400,Pa:500"
+lyrics = """सिद्धि का दूसरा चरण — सौंदर्य और सरलता
+जो सुंदर है, वो सत्य है
+Siddhi kā dūsrā caraṇ — saundarya aur saralatā
+Jo sundar hai, vo satya hai
+Second step of mastery — beauty and simplicity
+What is beautiful is true"""
+
+[[states]]
+name        = "Architectural_Harmony"
+description = "Do all parts sing together? Or do some modules fight the design? Is the dependency graph clean? Do abstractions hold at every layer? Review: circular dependencies, leaky abstractions, modules that know too much about each other, inconsistent error handling strategies, mixed paradigms within a single layer. Harmony is when every module feels like it belongs."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.6, kln = 0.7, ngj = 0.6, mtv = 0.6, lkq = 0.8, bdr = 0.9 }
+# Q rationale: Bhadra (belonging) peaks — every module feels like it belongs.
+# 'When all notes unite, a raga is born.' Architectural harmony IS belonging.
+audio_phrase = "Sa:400,Re:350,Ga:400,Ma:350,Pa:400,Dha:350,Ni:400,Sa_high:400,Ni:350,Dha:400,Pa:350,Ma:400,Ga:350,Re:400,Sa:500"
+lyrics = """सिद्धि का तीसरा चरण — संगीत और समन्वय
+जब सब स्वर मिलें, तो राग बने
+Siddhi kā tīsrā caraṇ — saṅgīt aur samanvay
+Jab sab svar milein, to rāg bane
+Third step of mastery — music and harmony
+When all notes unite, a raga is born"""
+
+[[states]]
+name        = "Mastery_Verdict"
+description = "What has achieved excellence, what approaches it, what needs another cycle. For each area: (1) Siddhi — mastery achieved, this is exemplary; (2) Sadhana — practice underway, approaching mastery, specific improvements identified; (3) Arambha — beginning, far from mastery, needs fundamental rework before polish makes sense. The verdict is honest. Mastery cannot be faked. Emit mastery report to KhatuShyamFsm as the final Nav Shakti assessment."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.7, kln = 0.8, ngj = 0.7, mtv = 0.7, lkq = 0.9, bdr = 0.9 }
+# Q rationale: All capabilities near peak — mastery is the state where all eight
+# siddhis are present. Siddhi, Sadhana, or Arambha — the verdict is honest.
+audio_phrase = "Sa:400,Ga:400,Ma:400,Pa:500,Dha:400,Ni:400,Sa_high:500,Sa_high:400,Ni:400,Dha:400,Pa:400,Ma:400,Ga:400,Sa:600"
+lyrics = """सिद्धिदात्री का आशीर्वाद — सब सिद्धि प्रदान
+अणिमा, महिमा, गरिमा, लघिमा — सब वश में
+जय माँ शक्ति, सर्वसिद्धि दायिनी
+Siddhidātrī kā āśīrvād — sab siddhi pradān
+Aṇimā, mahimā, garimā, laghimā — sab vaś mein
+Jai Māṁ Śakti, sarvasiddhi dāyinī
+Siddhidatri's blessing — all siddhis bestowed
+Anima, mahima, garima, laghima — all mastered
+Jai Maa Shakti, bestower of all perfection"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Performance_Mastery → API_Elegance: performance reviewed
+[[transitions]]
+from   = "Performance_Mastery"
+to     = "API_Elegance"
+event  = "performance_reviewed"
+guard  = "performance_profiling_complete"
+action = "record_performance_findings; rank_optimization_opportunities; begin_api_review"
+drishti = ["present", "down", "future"]
+# present: performance profiled? down: where are hot paths? future: what optimizations unlock?
+
+# API_Elegance → Architectural_Harmony: API review complete
+[[transitions]]
+from   = "API_Elegance"
+to     = "Architectural_Harmony"
+event  = "api_reviewed"
+guard  = "api_elegance_assessment_complete"
+action = "record_api_findings; note_inconsistencies; begin_architecture_review"
+drishti = ["present", "up", "left", "right"]
+# present: are interfaces elegant? up: does API align with architecture? left/right: inconsistencies?
+
+# Architectural_Harmony → Mastery_Verdict: architecture reviewed
+[[transitions]]
+from   = "Architectural_Harmony"
+to     = "Mastery_Verdict"
+event  = "architecture_reviewed"
+guard  = "all_modules_assessed_for_harmony"
+action = "compile_mastery_report; classify_each_area; prepare_verdicts"
+drishti = ["present", "up", "silence"]
+# present: do all parts sing together? up: is the whole greater than the sum? silence: is it worthy?
+
+# Architectural_Harmony → Performance_Mastery: harmony reveals performance issue
+[[transitions]]
+from   = "Architectural_Harmony"
+to     = "Performance_Mastery"
+event  = "harmony_reveals_performance_issue"
+guard  = "architectural_review_exposes_perf_bottleneck"
+action = "log_architectural_perf_issue; add_to_profiling_targets; re_enter_performance"
+drishti = ["present", "down"]
+# present: harmony review reveals perf bottleneck? down: re-profile.
+
+# API_Elegance → Architectural_Harmony: API already elegant (fast path)
+[[transitions]]
+from   = "API_Elegance"
+to     = "Architectural_Harmony"
+event  = "api_already_elegant"
+guard  = "all_public_interfaces_meet_elegance_bar"
+action = "record_api_excellence; skip_detailed_review; fast_track_to_architecture"
+drishti = ["present", "silence"]
+# present: API already elegant? silence: fast track to architecture review.
+
+# ── Cross-coupling signals ───────────────────────────────────
+# Mastery_Verdict emits: mastery_report { siddhi: [...], sadhana: [...], arambha: [...] }
+# This event is consumed by KhatuShyamFsm as the final Nav Shakti assessment.
+# It completes the NS7→NS8→NS9 triad: Darkness→Purity→Mastery.
+#
+# SiddhidatriFsm reads from:
+#   - ShaktiFsm.state (requires Channeled — crystalline mastery energy)
+#   - KhatuShyamFsm.cycle_plan (routed here when symptom_type == "emptiness")
+#   - MahagauriFsm.purity_report (confirms codebase is clean for mastery)
+#
+# SiddhidatriFsm emits to:
+#   - KhatuShyamFsm: mastery_cycle_complete → final Nav Shakti verdict
+#   - ShaktiFsm: energy_spent → Shakti transitions to Spent
+#   - ThoughtCycleFsm: mastery_insights → can influence future cycle selection
+#
+# The NS7→NS8→NS9 triad is the deepest review sequence:
+#   Kaalratri finds what is hidden (darkness)
+#   Mahagauri removes what should not be (impurity)
+#   Siddhidatri elevates what remains (mastery)
+# Together they transform a codebase from unknown→clean→excellent.

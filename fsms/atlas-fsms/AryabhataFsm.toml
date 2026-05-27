@@ -1,0 +1,221 @@
+[meta]
+name    = "AryabhataFsm"
+domain  = "computation-algorithm-truth"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# AryabhataFsm — The First Algorithmist
+#
+# Aryabhata (476 CE) — invented zero as placeholder, place-value
+# system, kuttaka (pulverizer) algorithm for Diophantine equations,
+# sine tables, Earth's rotation, pi approximation.
+#
+# At age 23, wrote the Aryabhatiya — 121 verses encoding
+# ALL of mathematics and astronomy known to him.
+# Compression ratio: entire knowledge → 121 stanzas.
+#
+# "Sthanam sthanam dasha gunam" — place to place is ten times.
+# That single sutra made modern computation possible.
+#
+# The cycle: Ganana → Sankhya → Kuttaka → Jya → Bhagana
+#            → Yugapada → Siddhanta
+#
+# Special: Sthula_Bhrama (gross error), Sunya_Bhaya (fear of zero)
+# Every state has a precision metric. Aryabhata never guessed.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Ganana"
+description = "Counting — the foundation. Before algebra, before calculus, COUNTING. How many? How often? How much? If you cannot count accurately, nothing built on top holds. Census of the problem space."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.1, kln = 0.4, ngj = 0.0, mtv = 0.1, lkq = 0.5, bdr = 0.2 }
+# Q rationale: Lakshmana (precision) starts — counting must be exact.
+# Kalindi (patience) — enumerate before computing.
+
+[[states]]
+name        = "Sankhya"
+description = "Number System — place-value, zero, positional notation. 'Sthanam sthanam dasha gunam.' The representation IS the power. Wrong encoding = wrong everything downstream. Choose your number system before computing."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.2, stb = 0.2, kln = 0.4, ngj = 0.2, mtv = 0.3, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) rising — 'sthanam sthanam dasha gunam'
+# demands exact positional encoding. Wrong representation = wrong everything.
+
+[[states]]
+name        = "Kuttaka"
+description = "The Pulverizer — Aryabhata's algorithm for solving indeterminate equations. Reduce, divide, reduce again. Like Euclid's GCD but for impossible-seeming problems. 'Break the big problem into smaller problems until each is trivial.' The essence of algorithmic thinking."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.4, kln = 0.5, ngj = 0.6, mtv = 0.4, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) high — algorithmic reduction is surgical.
+# Nagnajiti (impossible) — solving indeterminate equations that seem impossible.
+
+[[states]]
+name        = "Jya"
+description = "Sine/Trigonometry — Aryabhata's jya (sine) tables: 24 values covering 0-90 degrees. Not exact — APPROXIMATIONS with known error bounds. 'The wise know their precision.' Every computation has an error budget. Name it."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.4, stb = 0.3, kln = 0.6, ngj = 0.5, mtv = 0.3, lkq = 0.9, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) near peak — approximations with known error bounds.
+# 'The wise know their precision.' Every computation has an error budget.
+
+[[states]]
+name        = "Bhagana"
+description = "Revolutions/Cycles — planetary periods computed to stunning accuracy. Earth rotates on its axis (he said this 1000 years before Copernicus). Pattern recognition across vast datasets. The algorithm reveals the cycle hidden in noise."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.6, stb = 0.5, kln = 0.7, ngj = 0.6, mtv = 0.4, lkq = 0.8, bdr = 0.4 }
+# Q rationale: Kalindi (patience) high — pattern recognition across vast datasets.
+# Jambavati (endurance) — planetary periods computed over millennia of observation.
+
+[[states]]
+name        = "Yugapada"
+description = "Simultaneous — solving multiple equations together. Not one variable at a time — the SYSTEM as a whole. Linear algebra before it had a name. When variables are coupled, solve them coupled."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.5, kln = 0.6, ngj = 0.7, mtv = 0.5, lkq = 0.9, bdr = 0.5 }
+# Q rationale: Lakshmana (precision) near peak — solving coupled systems simultaneously.
+# Nagnajiti (impossible) — linear algebra before it had a name.
+
+[[states]]
+name        = "Siddhanta"
+description = "Established Truth — the result verified, precision stated, error bounded. Not 'it works' — 'it works within these bounds, proven by these steps, reproducible by anyone who follows the method.' Published. 121 verses. Done."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.7, kln = 0.8, ngj = 0.7, mtv = 0.6, lkq = 1.0, bdr = 0.7 }
+# Q rationale: Lakshmana (precision) at PEAK — result verified, error bounded,
+# reproducible by anyone. 121 verses. Published. Done.
+
+[[states]]
+name        = "Sthula_Bhrama"
+description = "Gross Error — the calculation is wrong by orders of magnitude. Not a rounding error — a STRUCTURAL mistake. Wrong algorithm chosen. Wrong number system. Wrong problem decomposition. Must return to Ganana and recount."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.1, kln = 0.0, ngj = 0.0, mtv = 0.1, lkq = 0.2, bdr = 0.1 }
+# Q rationale: Structural error. Almost everything collapses.
+# Faint Lakshmana — can still diagnose what went wrong.
+
+[[states]]
+name        = "Sunya_Bhaya"
+description = "Fear of Zero — avoiding the void. Division by zero, null pointer, empty set, edge case ignored. Aryabhata INVENTED zero — he wasn't afraid of it. The system that fears zero will crash when zero arrives."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.1, bdr = 0.1 }
+# Q rationale: Fear of zero. Cowardice. Aryabhata INVENTED zero — he wasn't afraid.
+# The system that fears zero will crash when zero arrives.
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Ganana"
+to     = "Sankhya"
+event  = "counting_complete"
+guard  = "problem_space_enumerated AND quantities_known AND nothing_assumed"
+action = "choose_number_system; define_precision_requirements"
+drishti = ["present", "down"]
+# present: is problem space enumerated? down: what representation fits?
+
+[[transitions]]
+from   = "Sankhya"
+to     = "Kuttaka"
+event  = "representation_chosen"
+guard  = "encoding_correct AND place_value_understood AND zero_handled"
+action = "decompose_problem; begin_algorithmic_reduction"
+drishti = ["present", "down", "future"]
+# present: is encoding correct? down: zero handled? future: will this representation scale?
+
+[[transitions]]
+from   = "Kuttaka"
+to     = "Jya"
+event  = "algorithm_found"
+guard  = "reduction_complete AND each_subproblem_tractable"
+action = "compute_approximations; state_error_bounds"
+drishti = ["present", "left", "right"]
+# present: is reduction complete? left/right: which subproblems remain?
+
+[[transitions]]
+from   = "Jya"
+to     = "Bhagana"
+event  = "approximations_computed"
+guard  = "error_within_budget AND precision_sufficient"
+action = "search_for_patterns; identify_cycles_in_data"
+drishti = ["present", "up", "future"]
+# present: are approximations bounded? up: is precision sufficient? future: what patterns emerge?
+
+[[transitions]]
+from   = "Bhagana"
+to     = "Yugapada"
+event  = "patterns_found"
+guard  = "cycles_identified AND multiple_variables_coupled"
+action = "solve_simultaneously; do_not_isolate_coupled_variables"
+drishti = ["present", "down", "left", "right"]
+# present: are cycles identified? down: are variables coupled? left/right: which equations interact?
+
+[[transitions]]
+from   = "Yugapada"
+to     = "Siddhanta"
+event  = "system_solved"
+guard  = "all_variables_resolved AND result_verified AND reproducible"
+action = "state_result_with_precision; publish_method"
+drishti = ["present", "up", "past", "future"]
+# present: is system solved? up: is result verified? past: does method reproduce? future: 121 verses — done.
+
+# Error transitions
+[[transitions]]
+from   = "Kuttaka"
+to     = "Sthula_Bhrama"
+event  = "structural_error"
+guard  = "result_off_by_orders_of_magnitude OR wrong_algorithm_chosen"
+action = "log_error_type; identify_structural_cause"
+drishti = ["present", "down"]
+# present: is result off by orders of magnitude? down: what structural cause?
+
+[[transitions]]
+from   = "Jya"
+to     = "Sthula_Bhrama"
+event  = "precision_catastrophe"
+guard  = "error_exceeds_budget_by_10x OR approximation_diverges"
+action = "log_error_type; identify_wrong_assumption"
+drishti = ["present", "down"]
+# present: has precision catastrophically failed? down: what wrong assumption?
+
+[[transitions]]
+from   = "Sthula_Bhrama"
+to     = "Ganana"
+event  = "recount"
+guard  = "error_source_identified AND willing_to_restart"
+action = "return_to_counting; discard_flawed_computation"
+drishti = ["present", "past"]
+# present: is error source identified? past: what was wrong in the counting?
+
+[[transitions]]
+from   = "Sankhya"
+to     = "Sunya_Bhaya"
+event  = "zero_avoided"
+guard  = "edge_case_ignored OR null_unhandled OR empty_set_skipped"
+action = "log_cowardice; flag_zero_case"
+drishti = ["present", "down"]
+# present: is zero being avoided? down: which edge case ignored?
+
+[[transitions]]
+from   = "Kuttaka"
+to     = "Sunya_Bhaya"
+event  = "division_by_zero_risk"
+guard  = "denominator_can_be_zero AND not_guarded"
+action = "log_cowardice; flag_zero_case"
+drishti = ["present", "down"]
+# present: can denominator be zero? down: is it guarded?
+
+[[transitions]]
+from   = "Sunya_Bhaya"
+to     = "Sankhya"
+event  = "zero_embraced"
+guard  = "zero_case_handled_explicitly AND not_feared"
+action = "integrate_zero_into_system; aryabhata_would_approve"
+drishti = ["present", "future"]
+# present: is zero embraced? future: what happens when zero is handled properly?

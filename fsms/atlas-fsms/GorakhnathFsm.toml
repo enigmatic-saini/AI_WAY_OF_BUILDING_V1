@@ -1,0 +1,216 @@
+[meta]
+name    = "GorakhnathFsm"
+domain  = "liberation-body-alchemy"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# GorakhnathFsm — The Alchemist of the Body
+#
+# Founder of Nath tradition, father of Hatha Yoga.
+# The body IS the laboratory. Pind brahmand — body is universe.
+#
+# The cycle: Pashu → Sadhaka → Hatha → Nada → Kaya_Siddhi → Unmani → Avadhuta
+#
+# Kundalini rises through six chakras mapped to states.
+# Special: Siddhi_Trap (powers become prison), Kaya_Collapse (wrong practice)
+# Guru-Disciple cycle is CIRCULAR — student can save teacher.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Pashu"
+description = "Animal/Bound — ordinary consciousness. Slave to senses. Body is unconscious, not bad — just asleep. Muladhara chakra. Default state."
+is_initial  = true
+is_terminal = false
+# Q rationale: Starting state — asleep. Natural fit (bdr) moderate — the body is natural,
+# just unconscious. All else near zero — no discipline, no precision yet.
+Q           = { rkm = 0.0, jmb = 0.0, stb = 0.1, kln = 0.1, ngj = 0.0, mtv = 0.1, lkq = 0.0, bdr = 0.4 }
+
+[[states]]
+name        = "Sadhaka"
+description = "Practitioner — diksha received. Ears split (kanphata). No going back. Daily practice. 'Aadesh!' The body is now a laboratory, not a cage."
+is_initial  = false
+is_terminal = false
+# Q rationale: Commitment made — no going back. Endurance (jmb) begins.
+# Authentic choice (mtv) high — diksha is the most authentic choice: permanent commitment.
+Q           = { rkm = 0.2, jmb = 0.3, stb = 0.3, kln = 0.3, ngj = 0.2, mtv = 0.6, lkq = 0.2, bdr = 0.4 }
+
+[[states]]
+name        = "Hatha"
+description = "Forceful Practice — Ha (sun/pingala) + Tha (moon/ida) united. Shat-karmas, asana, pranayama, mudra, bandha. Svadhisthana→Manipura chakras. Body resists, practice insists."
+is_initial  = false
+is_terminal = false
+# Q rationale: Body-breaking discipline. Endurance (jmb) high — the body resists, practice insists.
+# Fierce pride (stb) rising — forcing through resistance. Patience (kln) moderate.
+Q           = { rkm = 0.3, jmb = 0.6, stb = 0.5, kln = 0.4, ngj = 0.3, mtv = 0.5, lkq = 0.4, bdr = 0.4 }
+
+[[states]]
+name        = "Nada"
+description = "Inner Sound — anahata nada heard. Unstruck sound: buzzing → flute → veena → silence-as-fullness. Kundalini at Anahata (heart). Practitioner stops forcing — body sings."
+is_initial  = false
+is_terminal = false
+# Q rationale: The body sings — force gives way to grace. Strategic love (rkm) rising.
+# Patience (kln) high — Nada requires listening, not pushing.
+# Natural fit (bdr) rising — the body is becoming the instrument.
+Q           = { rkm = 0.6, jmb = 0.6, stb = 0.5, kln = 0.7, ngj = 0.5, mtv = 0.6, lkq = 0.6, bdr = 0.6 }
+
+[[states]]
+name        = "Kaya_Siddhi"
+description = "Body Perfection — disease conquered, aging slowed. Vajra deha (diamond body). Kundalini at Ajna (third eye). Siddhis manifest: clairvoyance, telepathy. Vishuddhi→Ajna chakras."
+is_initial  = false
+is_terminal = false
+# Q rationale: Diamond body achieved. All capabilities high.
+# Impossible spec (ngj) high — conquering disease and aging is the ultimate impossible spec.
+# Precision (lkq) high — the perfected body is precise to the atom.
+Q           = { rkm = 0.7, jmb = 0.8, stb = 0.7, kln = 0.6, ngj = 0.8, mtv = 0.7, lkq = 0.8, bdr = 0.7 }
+
+[[states]]
+name        = "Unmani"
+description = "No-Mind — mind dissolves into pure awareness. Body functions perfectly, mind absent. Kundalini at Sahasrara (crown). Shiva-Shakti union. River meets ocean."
+is_initial  = false
+is_terminal = false
+# Q rationale: Mind dissolved — pure awareness. Near-peak on all.
+# Patience (kln) near peak — no-mind is infinite patience. Natural fit (bdr) high.
+Q           = { rkm = 0.9, jmb = 0.8, stb = 0.7, kln = 0.9, ngj = 0.8, mtv = 0.9, lkq = 0.9, bdr = 0.9 }
+
+[[states]]
+name        = "Avadhuta"
+description = "The Liberated — beyond all categories. Neither monk nor householder. No identity, no home, no name, no caste. Body walks, no person claims ownership. Eternal uptime."
+is_initial  = false
+is_terminal = true
+# Q rationale: Peak state — liberation complete. All capabilities at maximum.
+# Natural fit (bdr) at peak — the liberated one IS nature. No separation.
+Q           = { rkm = 1.0, jmb = 1.0, stb = 0.8, kln = 1.0, ngj = 0.9, mtv = 1.0, lkq = 0.9, bdr = 1.0 }
+
+[[states]]
+name        = "Siddhi_Trap"
+description = "Powers become prison. Siddhis used for ego, fame, followers. 'The most beautiful chains — they bind tighter than desire because they look like freedom.' Worse than Pashu."
+is_initial  = false
+is_terminal = false
+# Q rationale: High capability corrupted by ego. Impossible spec (ngj) still present —
+# the powers are real. But authentic choice (mtv) zero — ego replaced authenticity.
+# Strategic love (rkm) zero — love replaced by fame-seeking.
+Q           = { rkm = 0.0, jmb = 0.6, stb = 0.8, kln = 0.1, ngj = 0.7, mtv = 0.0, lkq = 0.6, bdr = 0.1 }
+
+[[states]]
+name        = "Kaya_Collapse"
+description = "Body breaks. Wrong practice, no guru, premature kundalini. Burning, psychosis, uncontrollable shaking. 'Hatha without guru is a sword without a handle.'"
+is_initial  = false
+is_terminal = false
+# Q rationale: System failure. Nearly everything at zero — the body broke.
+# A trace of endurance (jmb) — the practitioner survived to tell the tale.
+Q           = { rkm = 0.1, jmb = 0.2, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.1 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Pashu"
+to     = "Sadhaka"
+event  = "diksha_received"
+guard  = "guru_found AND ears_split AND commitment_total"
+action = "initiate_into_nath_order; mark_permanent"
+drishti = ["present", "up", "future", "silence"]
+# present: is the guru real? up: does this serve liberation?
+# future: this is permanent — no going back. silence: should you NOT take diksha?
+
+[[transitions]]
+from   = "Sadhaka"
+to     = "Hatha"
+event  = "practice_begins"
+guard  = "daily_discipline_established AND shat_karmas_learned"
+action = "begin_body_purification"
+drishti = ["present", "down", "past"]
+# present: is discipline real? down: which practices specifically?
+# past: has the guru verified readiness?
+
+[[transitions]]
+from   = "Hatha"
+to     = "Nada"
+event  = "inner_sound_heard"
+guard  = "pranayama_stable AND nadis_purified AND kundalini_rising AND heart_open"
+action = "enter_sound_meditation; log_nada_type"
+drishti = ["present", "down", "up", "silence"]
+# present: is the inner sound real, not imagined? down: body purification verified.
+# up: does this serve the kundalini path? silence: is non-action correct here?
+
+[[transitions]]
+from   = "Hatha"
+to     = "Kaya_Collapse"
+event  = "body_breaks"
+guard  = "practice_without_guru OR force_exceeds_readiness OR kundalini_premature"
+action = "system_damage; alert_guru"
+drishti = ["present", "past"]
+# present: the body is breaking. past: what went wrong in the practice?
+
+[[transitions]]
+from   = "Kaya_Collapse"
+to     = "Sadhaka"
+event  = "guru_intervention"
+guard  = "guru_present AND rest_complete AND humility_restored"
+action = "restart_with_guidance"
+drishti = ["present", "down", "past", "silence"]
+# present: is the body recovered? down: what specifically broke?
+# past: what caused the collapse? silence: should practice stop entirely?
+
+[[transitions]]
+from   = "Nada"
+to     = "Kaya_Siddhi"
+event  = "body_perfected"
+guard  = "kundalini_at_ajna AND disease_absent AND aging_slowed AND heart_open"
+action = "achieve_body_mastery; log_siddhis_manifest"
+drishti = ["present", "down", "up", "future"]
+# present: is the body truly perfected? down: verify disease absent.
+# up: kundalini at ajna verified. future: what siddhis will manifest?
+
+[[transitions]]
+from   = "Kaya_Siddhi"
+to     = "Siddhi_Trap"
+event  = "powers_become_identity"
+guard  = "siddhis_demonstrated_publicly AND ego_claims_powers"
+action = "crystallize_spiritual_ego"
+drishti = ["present", "left", "right"]
+# present: is ego claiming the powers? left: other paths exist.
+# right: where does this ego-path lead?
+
+[[transitions]]
+from   = "Siddhi_Trap"
+to     = "Kaya_Siddhi"
+event  = "guru_intervention"
+guard  = "guru_still_alive AND humility_returned"
+action = "renounce_ego_keep_powers"
+drishti = ["present", "up", "past", "silence"]
+# present: is humility real? up: does the guru still guide?
+# past: what caused the ego trap? silence: should powers be renounced entirely?
+
+[[transitions]]
+from   = "Kaya_Siddhi"
+to     = "Unmani"
+event  = "mind_dissolves"
+guard  = "siddhis_renounced AND kundalini_at_sahasrara AND shiva_shakti_union AND heart_open"
+action = "dissolve_mind_into_awareness"
+drishti = ["present", "up", "down", "left", "right", "past", "future", "silence"]
+# All 8 directions — this is the most critical transition in the path.
+# Every direction must be scanned before mind dissolves.
+
+[[transitions]]
+from   = "Unmani"
+to     = "Avadhuta"
+event  = "all_categories_dissolved"
+guard  = "no_identity_remains AND body_moves_by_sahaja"
+action = "become_liberated_wanderer"
+drishti = ["present", "silence"]
+# present: is identity truly gone? silence: the avadhuta has no direction — only being.
+
+# Guru-Disciple circular rescue (Gorakhnath rescuing Matsyendranath)
+[[transitions]]
+from   = "Unmani"
+to     = "Pashu"
+event  = "awareness_lapses"
+guard  = "sensual_attachment_returns"
+action = "log_guru_regression; alert_disciple_for_rescue"
+drishti = ["present", "past", "down"]
+# present: is awareness lapsing? past: what caused the regression?
+# down: what attachment specifically?

@@ -1,0 +1,195 @@
+# NagnajitiFsm — The Impossible Challenge: Taming Seven Bulls
+# v1.0
+#
+# नाग्नजिती — सात वृषभ जिसने वश किए, वही योग्य
+# Nāgnajitī — sāt vṛṣabh jisne vaś kie, vahī yogya
+# (Nagnajiti — only the one who tames seven bulls is worthy)
+#
+# Nagnajiti (also called Satya) — princess of Kosala. Her father
+# King Nagnajit set an impossible challenge: whoever could tame
+# his seven ferocious bulls simultaneously would win her hand.
+# Many kings tried. All failed. Krishna came, multiplied himself
+# into seven forms, and tamed all seven at once.
+#
+# The lesson: some challenges require you to be in seven places
+# at once. The impossible spec. The feature that needs seven
+# simultaneous constraints satisfied. And the answer is not
+# "pick three" — it is "become seven."
+#
+# In creative work: the song that must be tender AND powerful
+# AND simple AND deep AND original AND universal AND commercially
+# viable. Seven constraints. All simultaneously. Most people
+# say "pick three." Krishna says "all seven."
+#
+# Raga: Kedar — the raga of strength meeting tenderness.
+#   Multiple threads woven simultaneously. The raga that can
+#   hold Ma and Pa in tension without breaking.
+
+[meta]
+name        = "NagnajitiFsm"
+domain      = "ashtabharya-challenge"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["fierce_action", "precision"]
+energy      = "epic"
+structure   = "seven-part"
+bpm_range   = [95, 130]
+weirdness   = 35
+influence   = 80
+vocal       = "female"
+evie_style  = "Epic Orchestral, Powerful Female Vocals, Strings, Building, Seven Movements"
+metaphors   = [
+    "seven bulls, all at once, zero compromise",
+    "The impossible spec was met",
+    "Don't multithread — become seven",
+    "If it were possible, anyone would have done it",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Swayamvar"
+description = "The Challenge Declared — seven bulls, all ferocious, all must be tamed simultaneously. Not one at a time — ALL AT ONCE. In creative work: the impossible specification. The stakeholder who wants fast AND cheap AND good. The song that must be in seven genres at once. The challenge is real. The constraint is real. Don't dismiss it — accept it."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:400,Ma:500,Pa:600,Dha:500,Ma:400,Pa:500,Dha:600,Ni:500,Sa_high:600"
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.3, kln = 0.1, ngj = 0.3, mtv = 0.2, lkq = 0.1, bdr = 0.1 }
+# Q rationale: Challenge declared — Nagnajiti (impossible spec) starting: the constraint is visible.
+# Satyabhama (pride) moderate — daring to set an impossible bar. Everything else low — nothing proven.
+lyrics = """स्वयंवर — सात वृषभ, सात चुनौती — एक साथ सब जीतो
+Svayaṁvar — sāt vṛṣabh, sāt cunautī — ek sāth sab jīto
+Swayamvar — seven bulls, seven challenges — tame all at once"""
+
+[[states]]
+name        = "Asambhav"
+description = "The Impossible — king after king tries and fails. Each can handle one or two bulls. None can handle seven. The 'realistic' conclusion: it can't be done. In creative work: every expert says the spec is impossible. 'Pick your three priorities.' 'You can't optimize for everything.' The reasonable advice is to compromise. Nagnajiti's father didn't compromise. He waited for someone who could do the impossible."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma:500,Dha:500,Ni:600,Sa_high:500,Ni:500,Dha:600,Ma:500,Pa:600"
+Q           = { rkm = 0.2, jmb = 0.3, stb = 0.2, kln = 0.2, ngj = 0.5, mtv = 0.2, lkq = 0.2, bdr = 0.1 }
+# Q rationale: Impossible declared — Nagnajiti (impossible spec) rising: everyone failed.
+# Jambavati (endurance) slight: watching failure after failure. Low everywhere else — stuck.
+lyrics = """असम्भव — सब राजा हारे, सब ने कहा नहीं होगा
+Asaṁbhav — sab rājā hāre, sab ne kahā nahīṁ hogā
+Impossible — every king failed, everyone said it cannot be done"""
+
+[[states]]
+name        = "Sapt_Rupa"
+description = "Seven Forms — Krishna multiplies into seven. Each form tames one bull. All seven tamed simultaneously. The secret: don't try to be in seven places at once. BECOME seven. In creative work: the parallel architecture. The seven microservices that each handle one concern. The seven-part harmony where each voice is independent but the whole is unified. Don't multithread — multithread AND synchronize."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:300,Ga:300,Ma:300,Pa:300,Dha:300,Ni:300,Sa_high:500,Ni:300,Dha:300,Pa:300,Ma:300,Ga:300,Re:300,Sa:500"
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.6, kln = 0.2, ngj = 0.8, mtv = 0.5, lkq = 0.7, bdr = 0.4 }
+# Q rationale: Seven forms — Nagnajiti (impossible spec) high: becoming seven.
+# Lakshmana (precision) high: each form must tame its bull exactly. Satyabhama (pride) rising:
+# doing what all others couldn't. All dims activated — seven simultaneous capabilities.
+lyrics = """सप्त रूप — सात कृष्ण, सात वृषभ — एक ही समय, एक ही सत्य
+Sapt rūp — sāt Kṛṣṇa, sāt vṛṣabh — ek hī samay, ek hī satya
+Seven forms — seven Krishnas, seven bulls — same moment, same truth"""
+
+[[states]]
+name        = "Vash"
+description = "Tamed — all seven bulls subdued. The impossible done. Not through brute force (Satyabhama's approach) or strategy (Rukmini's approach) or patience (Kalindi's approach) but through MULTIPLICATION — being enough to match every constraint. In creative work: the spec met. All seven requirements satisfied. Not by compromising — by expanding capability."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:700,Pa:500,Ga:500,Sa:600,Ga:500,Pa:600,Sa_high:800"
+Q           = { rkm = 0.6, jmb = 0.6, stb = 0.7, kln = 0.3, ngj = 0.9, mtv = 0.6, lkq = 0.8, bdr = 0.5 }
+# Q rationale: Tamed — Nagnajiti (impossible spec) near-peak: all seven constraints met.
+# Lakshmana (precision) high: simultaneous taming requires extreme precision.
+# Satyabhama (fierce pride) high: the impossible was made possible.
+lyrics = """वश — सातों वृषभ शान्त — असम्भव सम्भव हुआ
+Vaś — sātoṁ vṛṣabh śānt — asambhav sambhav huā
+Tamed — all seven bulls calmed — the impossible became possible"""
+
+[[states]]
+name        = "Satya_Vivah"
+description = "The True Marriage — Nagnajiti (Satya = truth) marries Krishna. Her name IS truth. The marriage of impossible challenges met honestly. Not by lowering the bar — by rising to it. In creative work: the product that actually satisfies all seven stakeholders. The song that IS tender AND powerful AND simple AND deep. The creation that refuses compromise and achieves completeness."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:500,Pa:600,Ni:700,Sa_high:800,Ni:600,Pa:500,Ga:500,Sa:700"
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.8, kln = 0.4, ngj = 1.0, mtv = 0.7, lkq = 0.9, bdr = 0.7 }
+# Q rationale: Terminal — Nagnajiti (impossible spec) at maximum: she IS zero-compromise achievement.
+# Lakshmana (precision) near-peak: seven constraints, each met perfectly.
+# All dims high — the impossible marriage proves all capabilities simultaneously.
+lyrics = """सत्य विवाह — सत्य से सत्य मिला — सात चुनौती, शून्य समझौता
+Satya vivāh — satya se satya milā — sāt cunautī, śūnya samjhautā
+True marriage — truth met truth — seven challenges, zero compromise"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Swayamvar"
+to     = "Asambhav"
+event  = "challenge_seems_impossible"
+guard  = "multiple_attempts_failed AND experts_say_impossible"
+action = "record_all_failures; understand_why; log_asambhav"
+drishti = ["present", "past", "down"]
+# present: what makes this impossible? past: why did others fail? down: what are the actual constraints?
+
+[[transitions]]
+from   = "Asambhav"
+to     = "Sapt_Rupa"
+event  = "multiplication_insight"
+guard  = "dont_multithread_become_seven"
+action = "multiply; parallelize; match_every_constraint; log_sapt_rupa"
+drishti = ["present", "down", "left", "right", "up", "future"]
+# All directions: multiplying into seven requires panoramic awareness. Each bull needs its own perspective.
+
+[[transitions]]
+from   = "Asambhav"
+to     = "Swayamvar"
+event  = "try_again_same_way"
+guard  = "hasnt_understood_need_for_multiplication"
+action = "fail_again; learn_again; log_retry"
+drishti = ["present", "past"]
+# present: is this the same approach? past: what was learned from last failure?
+
+[[transitions]]
+from   = "Sapt_Rupa"
+to     = "Vash"
+event  = "all_seven_tamed"
+guard  = "every_constraint_met_simultaneously"
+action = "celebrate_the_impossible; log_vash"
+drishti = ["present", "down", "future"]
+# present: are all seven tamed simultaneously? down: is each constraint truly met? future: what does this unlock?
+
+[[transitions]]
+from   = "Vash"
+to     = "Satya_Vivah"
+event  = "truth_marries_capability"
+guard  = "challenge_complete AND zero_compromise"
+action = "the_impossible_spec_met; log_satya_vivah"
+drishti = ["present", "up", "silence"]
+# present: is zero compromise achieved? up: is the spec truly met at the highest level? silence: completeness needs no argument.
+
+[[transitions]]
+from   = "Satya_Vivah"
+to     = "Swayamvar"
+event  = "new_impossible_challenge"
+guard  = "seven_new_bulls_appear"
+action = "face_the_next_impossible; log_new_cycle"
+drishti = ["present", "future", "down"]
+# present: what are the new seven? future: where does this challenge lead? down: what constraints exactly?
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# NagnajitiFsm emits:
+#   impossible_achieved { seven_constraints, how_multiplied, what_synchronized }
+#     -> Consumed by KrishnaFsm (multi-path capability validated)
+#     -> Consumed by VishwakarmaFsm (parallel build strategy)
+#   zero_compromise { original_spec, delivered_spec, nothing_dropped }
+#     -> Consumed by RukminiFsm (strategy that doesn't compromise)
+#     -> Consumed by TyagarajaFsm (structured precision meeting all requirements)
+#
+# Nagnajiti's Law:
+#   "When the spec has seven constraints and experts say 'pick three,'
+#    the answer is not to compromise.
+#    The answer is to become seven.
+#    The impossible challenge is the only challenge worth accepting.
+#    If it were possible, anyone would have done it."

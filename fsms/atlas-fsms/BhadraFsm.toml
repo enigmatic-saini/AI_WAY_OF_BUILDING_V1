@@ -1,0 +1,207 @@
+# BhadraFsm — Harmony Through Kinship: Natural Belonging
+# v1.0
+#
+# भद्रा — न युद्ध, न तपस्या, न स्वयंवर — बस परिवार का प्रेम
+# Bhadrā — na yuddh, na tapasyā, na svayaṁvar — bas parivār kā prem
+# (Bhadra — no battle, no tapas, no swayamvar — just family's love)
+#
+# Bhadra — daughter of Krishna's paternal aunt Shrutadeva
+# (some texts say Shrutakirti). She is Krishna's cousin.
+# Their marriage was arranged naturally through family ties.
+# No battle (Jambavati). No letter (Rukmini). No impossible
+# challenge (Nagnajiti). No defiance (Mitravinda). Just the
+# natural, organic union of family love.
+#
+# In a world where every other queen has an EPIC origin story,
+# Bhadra's story is quiet. She simply belonged. And that is
+# its own form of grace.
+#
+# The lesson: not every creation needs drama. Not every union
+# needs a battle. Sometimes the right thing is already in your
+# family, your team, your existing codebase. The feature that
+# doesn't need an RFC because it naturally belongs.
+#
+# In engineering and creative work she is:
+#   - The feature that was always meant to be there
+#   - The natural extension that requires no justification
+#   - The song that flows from the album's existing mood
+#   - The team member who fits without onboarding drama
+#   - The dependency that is already in your ecosystem
+#   - The merge that has no conflicts because the code was aligned
+#
+# In Rishi's creative engine:
+#   Bhadra generates NATURAL, ORGANIC, FLOWING compositions.
+#   Songs that feel like they always existed. No shock, no
+#   rebellion, no drama — just rightness. The harmony that
+#   was already there before anyone noticed it.
+#
+# Raga: Khamaj — the raga of natural sweetness, folk melody,
+#   the evening song that sounds like home. No drama. No
+#   virtuosity. Just the raga your grandmother hummed.
+
+[meta]
+name        = "BhadraFsm"
+domain      = "ashtabharya-belonging"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["natural_peace", "gratitude"]
+energy      = "gentle"
+structure   = "folk"
+bpm_range   = [65, 85]
+weirdness   = 20
+influence   = 85
+vocal       = "female"
+evie_style  = "Gentle Folk, Warm Female Vocals, Acoustic, Home, Natural"
+metaphors   = [
+    "not every union needs a war",
+    "the right thing is already in the family",
+    "peace of the home, love of the home",
+    "heaven is right where I am",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Kul_Sambandh"
+description = "Family Connection — Bhadra and Krishna are already family. There is no meeting to arrange, no suitor to evaluate. The connection pre-exists. In creative work: the solution already exists in your ecosystem. The library is already in your dependencies. The melody is already in your raga. You don't need to search — you need to NOTICE what's already there."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:500,Re:400,Ga:500,Ma:400,Pa:500,Dha:400,Ni:400,Sa_high:500"
+Q           = { rkm = 0.2, jmb = 0.0, stb = 0.0, kln = 0.3, ngj = 0.0, mtv = 0.2, lkq = 0.0, bdr = 0.4 }
+# Q rationale: Family connection — Bhadra (belonging) already present: the bond pre-exists.
+# Kalindi (patience) slight: the recognition hasn't happened yet, just quiet awareness.
+lyrics = """कुल सम्बन्ध — पहले से जुड़े हैं, जानते नहीं थे
+Kul sambandh — pahle se juḍe haiṁ, jānte nahīṁ the
+Family bond — already connected, just didn't know it"""
+
+[[states]]
+name        = "Sahaj_Prem"
+description = "Natural Love — not love at first sight (dramatic) or love through letters (strategic) or love through battle (earned). Love that was always there, like the love between cousins who grew up together. In creative work: the natural affinity between components that were designed by the same team, in the same style, with the same philosophy. No integration pain. They just fit."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Pa:500,Dha:400,Pa:500,Ga:400,Re:400,Sa:500"
+Q           = { rkm = 0.3, jmb = 0.1, stb = 0.0, kln = 0.4, ngj = 0.0, mtv = 0.3, lkq = 0.1, bdr = 0.6 }
+# Q rationale: Natural love — Bhadra (belonging) growing: the connection is recognized.
+# Rukmini (strategic love) slight: love emerges but without strategy. No drama dims activated.
+lyrics = """सहज प्रेम — न नाटक, न संघर्ष — बस प्रेम, जैसा है
+Sahaj prem — na nāṭak, na saṅgharṣ — bas prem, jaisā hai
+Natural love — no drama, no struggle — just love, as it is"""
+
+[[states]]
+name        = "Vivah_Sahaj"
+description = "The Natural Wedding — no army, no fire, no swayamvar, no fish-eye test. Just families agreeing because it's obviously right. In creative work: the feature that ships with zero ceremony. The PR that merges without drama. The song that slides into the album without any arrangement crisis. The naturalest of all creative acts: the thing that belongs."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:400,Ma:400,Pa:500,Dha:500,Ni:500,Sa_high:600,Ni:400,Dha:400,Pa:500"
+Q           = { rkm = 0.4, jmb = 0.2, stb = 0.0, kln = 0.5, ngj = 0.0, mtv = 0.4, lkq = 0.2, bdr = 0.7 }
+# Q rationale: Natural wedding — Bhadra (belonging) high: two families becoming one.
+# No combat dims needed — this union requires no force. Kalindi (patience) moderate: natural timing.
+lyrics = """विवाह सहज — न सेना, न अग्नि — बस दो परिवार, एक प्रेम
+Vivāh sahaj — na senā, na agni — bas do parivār, ek prem
+Natural wedding — no army, no fire — just two families, one love"""
+
+[[states]]
+name        = "Griha_Lakshmi"
+description = "Home-Lakshmi — Bhadra in Dwaraka. She doesn't fight demons (Satyabhama) or write letters (Rukmini) or meditate (Kalindi). She holds the HOME. The quiet center around which all drama revolves. In creative work: the core module that never crashes, never trends on Twitter, never gets a conference talk, but without which nothing works. The unglamorous, essential, always-there component."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:500,Ga:400,Pa:500,Ga:400,Sa:500,Re:400,Ga:500,Pa:600"
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.0, kln = 0.6, ngj = 0.0, mtv = 0.4, lkq = 0.3, bdr = 0.8 }
+# Q rationale: Home-Lakshmi — Bhadra (belonging) near-peak: she IS the quiet center.
+# Kalindi (patience) high: sustaining requires patient presence. No fire dims — the home needs no drama.
+lyrics = """गृह लक्ष्मी — घर की शांति, घर का प्रेम — बिना नाटक, बिना शोर
+Gṛha Lakṣmī — ghar kī śānti, ghar kā prem — binā nāṭak, binā śor
+Home-Lakshmi — peace of the home, love of the home — without drama, without noise"""
+
+[[states]]
+name        = "Sahaj_Ananda"
+description = "Natural Bliss — the terminal state that isn't an achievement but a RETURN. Bhadra's bliss is not the ecstasy of Chaitanya or the fire of Satyabhama. It is the quiet contentment of being exactly where you belong. In creative work: the system that just works. The song that just feels right. No revision needed. No optimization needed. It arrived natural and it stays natural."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:700,Pa:500,Ga:500,Sa:500,Re:400,Ga:500,Pa:600,Sa_high:800"
+Q           = { rkm = 0.6, jmb = 0.4, stb = 0.1, kln = 0.7, ngj = 0.0, mtv = 0.5, lkq = 0.4, bdr = 1.0 }
+# Q rationale: Terminal — Bhadra (belonging) at maximum: she IS natural belonging.
+# Kalindi (patience) high: contentment is unhurried. Rukmini (strategic love) moderate:
+# sustaining requires wisdom. No impossible/fire dims — Bhadra's grace needs no drama.
+lyrics = """सहज आनन्द — न प्राप्ति, न खोज — बस होना, जहाँ हूँ वहीं स्वर्ग
+Sahaj ānand — na prāpti, na khoj — bas honā, jahāṁ hūṁ vahīṁ svarg
+Natural bliss — not attainment, not search — just being, heaven is right where I am"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Kul_Sambandh"
+to     = "Sahaj_Prem"
+event  = "connection_recognized"
+guard  = "existing_bond_noticed AND no_external_search_needed"
+action = "recognize_what_was_always_there; log_sahaj_prem"
+drishti = ["present", "silence"]
+# present: is the existing bond real? silence: natural recognition needs no noise.
+
+[[transitions]]
+from   = "Sahaj_Prem"
+to     = "Vivah_Sahaj"
+event  = "natural_union"
+guard  = "no_obstacle AND both_families_agree"
+action = "unite_naturally; no_ceremony_needed; log_vivah"
+drishti = ["present", "silence"]
+# present: do both sides agree? silence: natural union needs no argument.
+
+[[transitions]]
+from   = "Vivah_Sahaj"
+to     = "Griha_Lakshmi"
+event  = "home_established"
+guard  = "creation_in_place AND sustaining_begins"
+action = "hold_the_center; be_the_quiet_foundation; log_griha_lakshmi"
+drishti = ["present", "down", "silence"]
+# present: is the home established? down: what needs sustaining? silence: the quiet center holds without noise.
+
+[[transitions]]
+from   = "Griha_Lakshmi"
+to     = "Sahaj_Ananda"
+event  = "peace_deepens"
+guard  = "no_drama_needed AND natural_contentment"
+action = "arrive_at_natural_bliss; log_sahaj_ananda"
+drishti = ["present", "silence"]
+# present: is contentment real? silence: bliss is the deepest silence.
+
+[[transitions]]
+from   = "Griha_Lakshmi"
+to     = "Kul_Sambandh"
+event  = "new_family_need"
+guard  = "home_stable_but_new_connection_awaits"
+action = "notice_new_kinship; log_new_cycle"
+drishti = ["present", "left", "right"]
+# present: what new connection? left/right: where does the new kinship lie?
+
+[[transitions]]
+from   = "Sahaj_Ananda"
+to     = "Kul_Sambandh"
+event  = "bliss_reveals_new_bonds"
+guard  = "contentment_opens_eyes_to_more_connections"
+action = "see_new_family; log_eternal_belonging"
+drishti = ["present", "future", "silence"]
+# present: what new bonds revealed? future: where does belonging expand? silence: contentment opens eyes gently.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# BhadraFsm emits:
+#   natural_fit { what_belonged, why_no_drama, integration_cost_zero }
+#     -> Consumed by RadhaFsm (harmony validation)
+#     -> Consumed by VishwakarmaFsm (build system that just works)
+#   griha_holding { what_is_sustained, quietly, without_credit }
+#     -> Consumed by JanabaiFsm (invisible work kinship)
+#     -> Consumed by HanumanFsm (selfless service)
+#
+# Bhadra's Law:
+#   "Not every union needs a war.
+#    Not every feature needs an RFC.
+#    Not every song needs a key change.
+#    Sometimes the right thing is already in the family.
+#    Look at what you have before searching for what you don't."

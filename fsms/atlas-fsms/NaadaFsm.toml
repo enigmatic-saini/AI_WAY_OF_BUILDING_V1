@@ -1,0 +1,251 @@
+[meta]
+name    = "NaadaFsm"
+domain  = "sonification"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# NaadaFsm — The OS Sings Its Own Raga
+#
+# Naada (नाद) = primordial sound, the vibration from which all
+# music arises. In FSM OS, every state transition IS already
+# musical — NaadaFsm makes that music audible.
+#
+# This FSM subscribes to ALL events on the EventBus (broadcast
+# listener). It taps transition events and maps them to musical
+# notes via raga-based rules. The result: the OS plays live
+# background music that reflects its actual computational state.
+#
+# Design principles:
+#   - TAP, DON'T BLOCK: observation is fire-and-forget
+#   - DROP FRAMES, NOT TICKS: if behind, skip notes, never stall OS
+#   - FIXED AUDIO BUDGET: 1-2% CPU cap, degrades to silence
+#   - DIAGNOSTIC VALUE: experienced users HEAR system health
+#
+# Inspired by: Hanuman ji's devotional singing — Ram Ram —
+# the OS sings praise of its own dharma through every transition.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Silent"
+description = "No sonification active. The OS is quiet. Audio engine not engaged. Zero CPU cost."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.2, bdr = 0.2, kln = 0.2, jmb = 0.1, stb = 0.1, ngj = 0.1, mtv = 0.1, lkq = 0.1 }
+
+[[states]]
+name        = "Listening"
+description = "Subscribed to EventBus (Filter::All). Collecting transition events into ring buffer. No audio output yet — building initial musical phrase."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, bdr = 0.3, kln = 0.3, jmb = 0.1, stb = 0.1, ngj = 0.1, mtv = 0.1, lkq = 0.1 }
+
+[[states]]
+name        = "Sonifying"
+description = "Actively converting FSM events to musical notes. Each source FSM mapped to a voice/instrument. Transitions become melodic phrases. The OS is singing."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, bdr = 0.5, kln = 0.4, jmb = 0.2, stb = 0.2, ngj = 0.2, mtv = 0.2, lkq = 0.2 }
+audio_phrase = "Sa re Ga Ma Pa (CPU load mapped to Bhairav aroha — higher load = higher swara)"
+lyrics_hi   = "यन्त्र गा रहा है — हर संक्रमण एक स्वर, हर स्वर एक सत्य"
+lyrics_tr   = "Yantra gaa raha hai — har sankraman ek swar, har swar ek satya"
+lyrics_en   = "The machine is singing — each transition a note, each note a truth"
+
+[[states]]
+name        = "Harmonizing"
+description = "Multiple FSMs firing simultaneously. NaadaFsm detects concurrent transitions and maps them to chords/harmonies rather than sequential notes. Rich texture = busy system."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, bdr = 0.6, kln = 0.5, jmb = 0.2, stb = 0.2, ngj = 0.2, mtv = 0.2, lkq = 0.2 }
+audio_phrase = "Sa+Ga+Pa (triad chord — three FSMs firing together, CPU+Memory+IO as Bhairav+Yaman+Kafi)"
+lyrics_hi   = "अनेक यन्त्र एक साथ — सुरों का संगम, तन्त्र का ताना-बाना"
+lyrics_tr   = "Anek yantra ek saath — suron ka sangam, tantra ka taana-baana"
+lyrics_en   = "Many machines at once — a confluence of notes, the system's woven fabric"
+
+[[states]]
+name        = "Fading"
+description = "Gracefully reducing volume and note density. Transitioning toward silence. Active notes complete but no new notes scheduled."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, bdr = 0.7, kln = 0.6, jmb = 0.3, stb = 0.3, ngj = 0.3, mtv = 0.3, lkq = 0.3 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Silent → Listening: user enables sonification
+[[transitions]]
+from   = "Silent"
+to     = "Listening"
+event  = "sonification_enabled"
+guard  = "audio_engine_available"
+action = "subscribe_eventbus_all; init_ring_buffer; log_naada_awakens"
+drishti = ["present", "down"]
+
+# Listening → Sonifying: first event captured, begin playback
+[[transitions]]
+from   = "Listening"
+to     = "Sonifying"
+event  = "first_event_captured"
+guard  = "ring_buffer_has_events"
+action = "map_event_to_note; send_to_audio_engine; log_naada_sings"
+drishti = ["present", "down"]
+
+# Sonifying → Harmonizing: multiple concurrent transitions detected
+[[transitions]]
+from   = "Sonifying"
+to     = "Harmonizing"
+event  = "concurrent_transitions"
+guard  = "event_count_in_window > 3"
+action = "build_chord_from_events; send_chord_to_audio; log_naada_harmonizes"
+drishti = ["present", "down"]
+
+# Harmonizing → Sonifying: concurrency subsides, back to melody
+[[transitions]]
+from   = "Harmonizing"
+to     = "Sonifying"
+event  = "concurrency_subsides"
+guard  = "event_count_in_window <= 3"
+action = "resolve_chord_to_melody; log_naada_simplifies"
+drishti = ["present", "down"]
+
+# Sonifying → Sonifying: normal operation, each event = a note
+[[transitions]]
+from   = "Sonifying"
+to     = "Sonifying"
+event  = "event_received"
+guard  = "audio_budget_available"
+action = "map_event_to_note; send_to_audio_engine"
+drishti = ["present", "down"]
+
+# Harmonizing → Harmonizing: sustained high activity
+[[transitions]]
+from   = "Harmonizing"
+to     = "Harmonizing"
+event  = "event_received"
+guard  = "audio_budget_available AND event_count_in_window > 3"
+action = "add_note_to_chord; send_chord_to_audio"
+drishti = ["present", "down"]
+
+# Sonifying → Fading: user requests stop or budget exceeded
+[[transitions]]
+from   = "Sonifying"
+to     = "Fading"
+event  = "sonification_stopping"
+guard  = "fade_requested OR audio_budget_exceeded"
+action = "begin_fade_out; log_naada_fading"
+drishti = ["present", "silence"]
+
+# Harmonizing → Fading: same
+[[transitions]]
+from   = "Harmonizing"
+to     = "Fading"
+event  = "sonification_stopping"
+guard  = "fade_requested OR audio_budget_exceeded"
+action = "begin_fade_out; log_naada_fading"
+drishti = ["present", "silence"]
+
+# Fading → Silent: fade complete
+[[transitions]]
+from   = "Fading"
+to     = "Silent"
+event  = "fade_complete"
+guard  = "all_notes_released"
+action = "unsubscribe_eventbus; release_ring_buffer; log_naada_sleeps"
+drishti = ["present", "up"]
+
+# Sonifying → Listening: no events for a while, go quiet but stay subscribed
+[[transitions]]
+from   = "Sonifying"
+to     = "Listening"
+event  = "idle_timeout"
+guard  = "no_events_for_duration"
+action = "release_active_notes; log_naada_waits"
+drishti = ["present", "future", "silence"]
+
+# Harmonizing → Listening: same idle path
+[[transitions]]
+from   = "Harmonizing"
+to     = "Listening"
+event  = "idle_timeout"
+guard  = "no_events_for_duration"
+action = "release_active_notes; log_naada_waits"
+drishti = ["present", "future", "silence"]
+
+# Listening → Silent: user disables while listening
+[[transitions]]
+from   = "Listening"
+to     = "Silent"
+event  = "sonification_disabled"
+guard  = ""
+action = "unsubscribe_eventbus; release_ring_buffer; log_naada_sleeps"
+drishti = ["present", "down"]
+
+# Silent → Silent: tick while silent (no-op)
+[[transitions]]
+from   = "Silent"
+to     = "Silent"
+event  = "tick"
+guard  = "sonification_not_enabled"
+action = ""
+drishti = ["present", "down"]
+
+# ── Raga Mapping Rules (metadata for the runtime) ───────────
+# These are NOT transitions but config data for the note mapper.
+
+[raga_mapping]
+description = "Maps source FSMs to musical scales and instruments"
+
+# Trimurti divine layer → Raga Bhairav (morning, serious, foundational)
+[raga_mapping.trimurti]
+scale       = ["Sa", "re", "Ga", "Ma", "Pa", "dha", "Ni"]  # Bhairav thaat
+base_octave = 4
+instrument  = 19  # GM: Church Organ (divine, solemn)
+
+# Health/System FSMs → Raga Yaman (evening, calm, stable)
+[raga_mapping.system]
+scale       = ["Sa", "Re", "Ga", "ma", "Pa", "Dha", "Ni"]  # Yaman thaat (tivra Ma)
+base_octave = 5
+instrument  = 0   # GM: Acoustic Grand Piano
+
+# User/Chat FSMs → Raga Kafi (playful, interactive)
+[raga_mapping.user]
+scale       = ["Sa", "Re", "ga", "Ma", "Pa", "Dha", "ni"]  # Kafi thaat
+base_octave = 5
+instrument  = 25  # GM: Acoustic Guitar (nylon)
+
+# LLM/AI FSMs → Raga Malkauns (deep, contemplative, thinking)
+[raga_mapping.ai]
+scale       = ["Sa", "ga", "Ma", "dha", "ni"]  # Malkauns (pentatonic)
+base_octave = 3
+instrument  = 71  # GM: Clarinet (contemplative)
+
+# Error/Alert → Raga Marwa (tension, urgency)
+[raga_mapping.alert]
+scale       = ["Sa", "re", "Ga", "ma", "Pa", "Dha", "Ni"]  # Marwa thaat
+base_octave = 4
+instrument  = 56  # GM: Trumpet (alert)
+
+# ── Event-to-Note Mapping ────────────────────────────────────
+
+[note_mapping]
+description = "How transition properties map to musical parameters"
+
+# State entry → note ON (pitch from raga scale, position = state index)
+# State exit  → note OFF
+# Guard pass  → grace note (quick ornament before main note)
+# Guard fail  → rest (silence, diagnostic: you hear the gap)
+# Action exec → velocity boost (louder = more work happening)
+# Idle tick   → drone on Sa (tanpura-like, very soft)
+
+[dynamics]
+# Load-based dynamics: busier system = louder + faster
+idle_velocity     = 30   # pp (pianissimo)
+normal_velocity   = 64   # mf (mezzo forte)
+busy_velocity     = 100  # f (forte)
+overload_velocity = 127  # ff (fortissimo) — you'll HEAR trouble
+
+# Tempo maps to event rate
+min_tempo_bpm     = 40   # slow system
+max_tempo_bpm     = 180  # busy system

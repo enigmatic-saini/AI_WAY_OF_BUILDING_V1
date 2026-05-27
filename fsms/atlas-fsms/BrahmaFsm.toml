@@ -1,0 +1,184 @@
+[meta]
+name    = "BrahmaFsm"
+domain  = "trimurti-creation"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# BrahmaFsm — The Creator
+#
+# Governs the genesis of new things: FSMs, domains, configs,
+# capabilities. Brahma creates but does not sustain — once
+# creation is manifest and handed over, Brahma returns to Void.
+#
+# The cycle: Void → Contemplation → Utterance → Manifest → Handed_Over → Void
+#
+# Saraswati (clarity) must bless before Utterance.
+# Sapta Rishi (governance) must approve before Manifest.
+# Vasanta (season) must be Fertile or Active.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Void"
+description = "Nothing exists yet. No proposal, no idea, no seed. Pure potential."
+is_initial  = true
+is_terminal = false
+# Q rationale: Pure potential — nothing proven, nothing attempted. Kalindi (patient contemplation)
+# high: waiting for the seed. Bhadra (belonging) moderate: resting in potential. All action dims zero.
+Q = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 0.7, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.4 }
+
+[[states]]
+name        = "Contemplation"
+description = "An idea is forming. Raw desire has been received but not yet articulated. Brahma meditates on what shape this creation should take."
+is_initial  = false
+is_terminal = false
+# Q rationale: Idea forming — Kalindi (patient contemplation) at peak: meditating on form.
+# Rukmini (strategic love) moderate: the seed has intention. Mitravinda (authentic choice) rising:
+# should this idea take shape? Nagnajiti moderate: beginning to see the spec of what could be.
+Q = { rkm = 0.4, jmb = 0.1, stb = 0.2, kln = 0.9, ngj = 0.4, mtv = 0.5, lkq = 0.2, bdr = 0.3 }
+
+[[states]]
+name        = "Utterance"
+description = "The Word is spoken. A formal proposal exists — TOML drafted, structure declared, name given. Saraswati has confirmed clarity."
+is_initial  = false
+is_terminal = false
+# Q rationale: The Word spoken. Lakshmana (precision) rising: structure declared. Nagnajiti high:
+# the spec is articulated. Satyabhama moderate: confidence to speak the creation into being.
+# Mitravinda high: Saraswati confirmed this is clear, authentic proposal.
+Q = { rkm = 0.5, jmb = 0.3, stb = 0.5, kln = 0.5, ngj = 0.7, mtv = 0.7, lkq = 0.6, bdr = 0.3 }
+
+[[states]]
+name        = "Manifest"
+description = "Creation exists. Governance has approved. The new thing has form, structure, and validity. It is real but not yet alive in the system."
+is_initial  = false
+is_terminal = false
+# Q rationale: Creation exists — governance approved. All dims elevated. Nagnajiti (impossible spec)
+# high: the spec is real, the impossible made manifest. Lakshmana (precision) high: structure is valid.
+# Satyabhama high: governance approved — the creation has earned pride.
+Q = { rkm = 0.7, jmb = 0.6, stb = 0.7, kln = 0.4, ngj = 0.8, mtv = 0.7, lkq = 0.8, bdr = 0.5 }
+
+[[states]]
+name        = "Handed_Over"
+description = "Brahma steps back. The creation now belongs to Vishnu for sustenance. The creator does not cling to creation. Birth is complete."
+is_initial  = false
+is_terminal = false
+# Q rationale: Handover — creation released. Mitravinda (authentic choice) at peak: letting go is
+# the ultimate authentic choice. Jambavati (endurance) high: survived the full creation cycle.
+# Rukmini (strategic love) high: handing over with love, not attachment.
+Q = { rkm = 0.8, jmb = 0.8, stb = 0.6, kln = 0.5, ngj = 0.7, mtv = 1.0, lkq = 0.7, bdr = 0.6 }
+
+[[states]]
+name        = "Stillborn"
+description = "Creation failed — governance rejected, clarity was absent, or season was wrong. The idea returns to Void carrying the learning."
+is_initial  = false
+is_terminal = false
+# Q rationale: Failed creation — but learning preserved. Rukmini low: the love did not manifest.
+# Kalindi moderate: patience to absorb the lesson. Jambavati low: endurance was insufficient.
+# All dims low reflecting failure, but not zero — the learning has value.
+Q = { rkm = 0.2, jmb = 0.2, stb = 0.1, kln = 0.4, ngj = 0.3, mtv = 0.3, lkq = 0.2, bdr = 0.2 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Void → Contemplation: a seed of desire arrives
+[[transitions]]
+from   = "Void"
+to     = "Contemplation"
+event  = "seed_received"
+guard  = "desire_is_not_empty"
+action = "log_creation_intent; record_seed_origin"
+drishti = ["present", "future", "silence"]
+# present: is the seed real? future: what might this become? silence: should we stay in void?
+
+# Contemplation → Utterance: idea crystallizes, Saraswati blesses clarity
+[[transitions]]
+from   = "Contemplation"
+to     = "Utterance"
+event  = "articulate"
+guard  = "saraswati_clarity_confirmed AND vasanta_season_fertile_or_active"
+action = "generate_proposal_draft; assign_creation_name; log_utterance"
+drishti = ["present", "up", "down"]
+# present: has the idea crystallized? up: does Saraswati bless clarity? down: what form will this take?
+
+# Contemplation → Void: idea dissolves before articulation (no shame)
+[[transitions]]
+from   = "Contemplation"
+to     = "Void"
+event  = "dissolve"
+guard  = ""
+action = "log_contemplation_dissolved"
+drishti = ["present", "silence"]
+# present: has the idea truly dissolved? silence: return to void without forcing.
+
+# Contemplation → Stillborn: season wrong, defer
+[[transitions]]
+from   = "Contemplation"
+to     = "Stillborn"
+event  = "season_rejected"
+guard  = "vasanta_season_dormant_or_fading"
+action = "preserve_seed_for_next_cycle; log_premature_arrival"
+drishti = ["present", "future"]
+# present: is the season truly wrong? future: when will the right season come?
+
+# Utterance → Manifest: governance approves
+[[transitions]]
+from   = "Utterance"
+to     = "Manifest"
+event  = "governance_approved"
+guard  = "sapta_rishi_all_pass AND law5_lineage_present AND structure_valid"
+action = "finalize_structure; assign_version; log_manifest"
+drishti = ["present", "up", "down", "left", "right"]
+# present: does governance approve? up: does this align with system purpose? down: is the structure valid?
+# left/right: what exists alongside this creation?
+
+# Utterance → Stillborn: governance rejects
+[[transitions]]
+from   = "Utterance"
+to     = "Stillborn"
+event  = "governance_rejected"
+guard  = "sapta_rishi_any_block"
+action = "record_rejection_reasons; preserve_proposal_for_learning"
+drishti = ["present", "past"]
+# present: why was it rejected? past: what can we learn from this attempt?
+
+# Utterance → Contemplation: needs revision (not rejection)
+[[transitions]]
+from   = "Utterance"
+to     = "Contemplation"
+event  = "revise"
+guard  = "sapta_rishi_conditional_pass"
+action = "log_revision_request; carry_feedback"
+drishti = ["present", "past", "down"]
+# present: what needs revision? past: what was the conditional pass feedback? down: where specifically does the structure need work?
+
+# Manifest → Handed_Over: creation activated, Vishnu receives
+[[transitions]]
+from   = "Manifest"
+to     = "Handed_Over"
+event  = "activate"
+guard  = "law6_health_not_stale AND vishnu_ready_to_receive"
+action = "register_with_vishnu; emit_creation_event; log_handover"
+drishti = ["present", "right", "future"]
+# present: is the creation ready for Vishnu? right: is Vishnu ready to receive? future: will this creation be sustained?
+
+# Handed_Over → Void: cycle complete, Brahma returns to potential
+[[transitions]]
+from   = "Handed_Over"
+to     = "Void"
+event  = "cycle_complete"
+guard  = ""
+action = "log_creation_cycle_complete; increment_creation_count"
+drishti = ["present", "silence"]
+# present: is the cycle complete? silence: return to pure potential.
+
+# Stillborn → Void: learning absorbed, return to potential
+[[transitions]]
+from   = "Stillborn"
+to     = "Void"
+event  = "learning_absorbed"
+guard  = ""
+action = "store_learning_in_memory; log_stillborn_resolved"
+drishti = ["present", "past", "silence"]
+# present: is the learning absorbed? past: what caused the failure? silence: return to void with wisdom.

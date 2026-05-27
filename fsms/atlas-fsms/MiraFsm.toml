@@ -1,0 +1,444 @@
+# MiraFsm — Divine Rebellion & Unconventional Truth-Finding
+# v1.0
+#
+# मेरे तो गिरिधर गोपाल, दूसरा न कोई
+# Mere to Giridhar Gopal, doosra na koi
+# (My lord is Giridhar Gopal, there is no other)
+#
+# Mira Bai defied King Rana, drank poison that became nectar,
+# danced in the streets singing for Krishna while the entire court
+# called her mad. She was not mad — she was the only one who
+# refused to lie. She found truth not through discipline (that is
+# Brahmacharini) or destruction (that is Shiva) but through
+# LOVING, JOYFUL DEFIANCE of assumptions everyone stopped questioning.
+#
+# In engineering she is:
+#   - The chaos test that finds what structured testing misses
+#   - The "what if I just delete this module and see what screams"
+#   - The PR review that says "technically correct, spiritually bankrupt"
+#   - The forbidden API call that reveals the hidden bug
+#   - The new-hire question that makes seniors uncomfortable
+#   - The user who does the thing "nobody would ever do" (they always do)
+#
+# She is referenced in WORK_CULTURE.md LAW 3 as the creative rebel
+# who is called when conventional approaches keep producing the same
+# results. When every best practice has been followed but the system
+# still smells wrong, Mira walks in and sings the truth.
+#
+# CRITICAL DISTINCTION from other cycles:
+#   Shiva DESTROYS — dissolves the old to make way for the new.
+#   Baglamukhi FREEZES — immobilizes the threat so it can be examined.
+#   Radha HARMONIZES — makes the system beautiful and joyful.
+#   Mira REBELS — does the unexpected to reveal what convention hides.
+#   She does not destroy, freeze, or beautify. She SINGS THE TRUTH
+#   that everyone is too polite or too afraid to say. Then she dances
+#   while the court scrambles to pretend they already knew.
+#
+# Cross-coupling:
+#   - RadhaFsm: Radha and Mira both serve Krishna, but differently.
+#     Radha is the harmony that makes the system sing in tune.
+#     Mira is the voice that sings out of turn to reveal the real melody.
+#     After Mira finds the truth, Radha restores the beauty.
+#     Sequence: MiraFsm (find truth) → RadhaFsm (restore harmony).
+#   - KrishnaFsm: Mira's entire rebellion is devotion to Krishna.
+#     Krishna's strategic multi-path analysis provides the WHY for
+#     Mira's rebellion. If you need justification before rebelling,
+#     run KrishnaFsm first. But Mira would say: "Krishna doesn't
+#     need a strategy document. He just plays the flute."
+#   - ShivaFsm: if Mira's findings reveal something that must die,
+#     Shiva is the one who destroys it. Mira finds the rot; Shiva
+#     burns it. Mira → Shiva is the escalation for structural decay.
+#   - HanumanFsm: after Mira identifies the bold fix, Hanuman
+#     executes it with raw strength and perfect discipline.
+#     Mira says "delete the abstraction layer"; Hanuman does it
+#     in one commit and all tests still pass.
+#   - BaglamukhiFsm: Mira's safety net. If rebellion causes actual
+#     damage, Baglamukhi freezes the damage. Mira is fearless but
+#     not reckless — she has a circuit breaker.
+#   - KhatuShyamFsm: the navigator dispatches here when the team
+#     feels "staleness" — doing the same thing expecting different
+#     results. Khatu Shyam recognizes the need for rebellion;
+#     Mira provides the rebellion itself.
+#   - NaradFsm: Narad stirs through gossip and information;
+#     Mira stirs through song and defiance. Both are provocateurs
+#     but Narad works through channels, Mira works through love.
+#     Narad carries the message; Mira IS the message.
+#   - BrahmachariniFsm: the anti-pattern. Brahmacharini is pure
+#     discipline. Mira is pure devotion. When discipline alone
+#     cannot find the bug, devotion (passionate, unconventional
+#     exploration) might. They complement, not oppose.
+#
+# The Zeher→Amrit transformation (Poison→Nectar):
+#   This is the core miracle of Mira's FSM. When the system pushes
+#   back ("you can't do that", "that's not how we use this API",
+#   "nobody would send that input"), the pushback itself is data.
+#   The error message IS the finding. The panic IS the bug report.
+#   The "impossible" scenario that crashes the system IS the proof
+#   that the system is fragile. Mira drinks the poison — she does
+#   not spit it out or avoid it. She lets it transform.
+#
+#   Engineering translation: when your unconventional test causes
+#   an unexpected failure, DO NOT dismiss it as "well nobody would
+#   do that." Investigate. The failure path is telling you something
+#   the happy path never will.
+#
+# The Samadhi→Pranaam cycle (Mira never truly leaves):
+#   Mira dissolves into Krishna at the end — she merges her findings
+#   into the system and vanishes. But she always comes back. The next
+#   time the system feels stale, the next time every best practice has
+#   been followed but something still smells wrong, Mira arrives again
+#   with a bow and a mischievous smile. She is the eternal rebel
+#   because systems eternally calcify.
+#
+# Raga: Megh Malhar — the raga of rain, rebellion, and longing.
+#   Mira's most famous compositions are in this raga. The rain comes
+#   uninvited, soaks everything, and makes the earth fertile again.
+#   That is Mira's engineering function: uninvited truth that makes
+#   the codebase fertile for real improvement.
+
+[meta]
+name        = "MiraFsm"
+domain      = "rebellion-truth"
+version     = "1.1"
+parent      = ""
+persist     = "ephemeral"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["defiance", "joy", "endurance"]
+energy      = "rebellious"
+structure   = "verse-chorus"
+bpm_range   = [80, 110]
+weirdness   = 35
+influence   = 80
+vocal       = "female"
+evie_style  = "Cinematic Folk Rock, Female Vocals, Powerful Choir, Strings"
+metaphors   = [
+    "the rain that comes uninvited",
+    "She drank the poison smiling",
+    "They called her mad, she called it love",
+    "Even goddesses watched a mortal fly",
+]
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Pranaam"
+description = "The Humble Bow — Mira arrives at Rana's court. She bows. Everyone relaxes — maybe she'll behave this time. She won't. This is the entry state: a conventional review has been completed but feels unsatisfying. All tests pass. All lints clean. All best practices followed. And yet... something is off. The bow is genuine — Mira respects the system. But respect does not mean silence. The mischievous smile is already forming."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.1, kln = 0.1, ngj = 0.1, mtv = 0.1, lkq = 0.1, bdr = 0.1 }
+audio_phrase = "Sa:500,Re:400,Ga:300,Ma:400,Pa:500"
+lyrics = """प्रणाम करूँ मैं बार बार, पर सत्य न छोड़ूँ
+Praṇām karūṁ maiṁ bār bār, par satya na choḍūṁ
+I bow again and again, but I will not abandon truth"""
+
+[[states]]
+name        = "Madhushala"
+description = "The Tavern of Song — Mira starts singing. Loudly. In the court. About things the court pretends don't exist. This is the unconventional exploration phase: reading code as poetry (does it sing or mumble?), using the API wrong on purpose, asking the question everyone avoids ('why do we even have this?'). The Madhushala is not a place of drunkenness — it is a place where inhibition dissolves and truth flows freely. Mira sings what the sober court cannot say. In engineering: this is where you break the unwritten rules, feed the system inputs nobody 'would ever send', and read the internal implementation detail as if explaining it to someone outside the project."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.1, kln = 0.2, ngj = 0.1, mtv = 0.2, lkq = 0.2, bdr = 0.2 }
+audio_phrase = "Sa:300,Re:300,Ga:400,Ma:300,Pa:300,Dha:400,Ni:300,Sa_high:500"
+lyrics = """मधुशाला में सत्य बहे, जो दरबार में रुके
+Madhuśālā meṁ satya bahe, jo darbār meṁ ruke
+In the tavern truth flows, which in the court was dammed"""
+
+[[states]]
+name        = "Zeher"
+description = "The Poison Cup — the system pushes back. 'You can't call that API in that order.' 'That input is invalid.' 'Nobody would do that.' 'That's undefined behavior.' Rana sends the poison: the error messages, the panics, the silent data corruption, the 'impossible' edge case that just happened. This is the critical moment — most engineers would dismiss the failure as 'well, I was doing something wrong.' Mira does not dismiss. She picks up the cup. She drinks. The pushback IS the data. The error IS the finding. The panic IS the bug report. Do not spit out the poison. Let it speak."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.2, kln = 0.2, ngj = 0.2, mtv = 0.2, lkq = 0.2, bdr = 0.2 }
+audio_phrase = "Ni:400,Dha:300,Pa:400,Ma:500,_:300,Ga:400"
+lyrics = """ज़हर का प्याला राणा भेजे, मीरा पी गई हँसकर
+Zahar kā pyālā Rāṇā bheje, Mīrā pī gaī haṁskar
+Rana sent the cup of poison — Mira drank it laughing"""
+
+[[states]]
+name        = "Amrit"
+description = "The Nectar — the poison transforms. The 'wrong' approach has revealed a hidden truth. The error message that said 'impossible' just told you exactly which invariant the system THINKS it maintains but DOESN'T. The panic in the edge case just revealed the missing guard. The silent corruption just showed you the data path nobody tested. This is Mira's miracle: the poison of system resistance becomes the nectar of genuine insight. Document the transformation: what was the conventional assumption? What did the rebellion reveal? Why was the truth hiding behind the assumption?"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.2, kln = 0.3, ngj = 0.2, mtv = 0.3, lkq = 0.3, bdr = 0.3 }
+audio_phrase = "Sa:300,Re:300,Ga:300,Ma:300,Pa:400,Dha:400,Ni:400,Sa_high:600"
+lyrics = """विष से अमृत, झूठ से सत्य, मीरा का जादू
+Viṣ se amṛt, jhūṭh se satya, Mīrā kā jādū
+From poison — nectar, from falsehood — truth, this is Mira's magic"""
+
+[[states]]
+name        = "Raas"
+description = "The Dance — truth confirmed, joy erupts. Mira dances in the streets. She is not celebrating that the system is broken — she is celebrating that the truth has been found. Connect the dots: does this finding explain other mysteries? Does it connect to that 'known issue' nobody could reproduce? Does it reveal a pattern across modules? The Raas is not solo — Mira dances with Krishna (the strategic vision) and with every finding that joins the dance. In engineering: compile the chaos test results, cross-reference with existing bug reports, identify the pattern that ties the individual findings into a systemic insight."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.2, kln = 0.3, ngj = 0.2, mtv = 0.3, lkq = 0.3, bdr = 0.3 }
+audio_phrase = "Sa:200,Ga:200,Pa:200,Sa_high:200,Pa:200,Ga:200,Sa:200,Ga:300,Pa:300,Sa_high:500"
+lyrics = """नाचो रे मन, सत्य मिला, राधा संग रास रचाओ
+Nāco re man, satya milā, Rādhā saṅg rās racāo
+Dance, O heart! Truth is found — dance the Raas with Radha"""
+
+[[states]]
+name        = "Viraha"
+description = "The Separation — Mira steps back from the dance. Divine longing. She separates from the system to see the whole picture from a distance. In the Raas she was inside the dance, connecting dots. In Viraha she is outside, seeing the full pattern. This is the perspective shift: from 'I found bugs' to 'I understand WHY these bugs exist.' What structural assumption enables all of them? What would Mira delete if she had Shiva's trident? What is the system pretending to be versus what it actually is? Viraha is painful — seeing the gap between what the system claims and what it delivers. But Mira's pain is not bitterness. It is the ache of love for what the system COULD be."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.3, kln = 0.4, ngj = 0.3, mtv = 0.4, lkq = 0.4, bdr = 0.4 }
+audio_phrase = "Sa:600,_:400,Ni_mandra:400,Sa:300,Re:400,Sa:600,_:500"
+lyrics = """विरह की रात में सत्य चमके, जैसे तारे अँधेरे में
+Virah kī rāt meṁ satya camke, jaise tāre aṁdhere meṁ
+In the night of separation truth shines, like stars in darkness"""
+
+[[states]]
+name        = "Samadhi"
+description = "The Dissolution — Mira merges her findings into the system and vanishes. Like Mira dissolving into Krishna's idol at Dwarka, the rebel becomes one with the system she was testing. The findings are documented: the Song List (one-sentence truths that cannot be unsaid), the Nectar Prescriptions (bold fixes, not safe refactors), and the Love Letter (critique with genuine love for the system and its creators). The Mira Verdict is delivered: what is the system pretending to be? What would Mira delete? What single change would make it sing? Then silence. Mira is gone. Only the song remains."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.7, kln = 0.7, ngj = 0.7, mtv = 0.7, lkq = 0.7, bdr = 0.7 }
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:800,_:400,Sa:1000"
+lyrics = """मीरा कहे प्रभु गिरिधर नागर, सब जग से न्यारा
+चलो सखी, सत्य लिख दिया, अब मौन समाधि हमारा
+Mīrā kahe prabhu Giridhar Nāgar, sab jag se nyārā
+Calo sakhī, satya likh diyā, ab maun samādhi hamārā
+Mira says: my Lord Giridhar is beyond this world
+Come, friend — the truth is written, now silence is our meditation"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Pranaam → Madhushala: the bow is done, now the singing begins.
+# Triggered when a conventional review feels incomplete — all checks
+# pass but intuition says something is hidden.
+[[transitions]]
+from   = "Pranaam"
+to     = "Madhushala"
+event  = "conventional_review_unsatisfying"
+guard  = "all_checks_pass_but_smell_remains"
+action = "log_entry_reason; inventory_conventions; mark_sacred_cows; begin_unconventional_exploration"
+drishti = ["present", "down"]
+
+# Pranaam → Raas: FAST PATH — Mira already knows the truth.
+# Sometimes the rebel arrives and the finding is immediately obvious.
+# The sacred cow is standing in the middle of the room. No need for
+# the full rebellion — just point and dance.
+[[transitions]]
+from   = "Pranaam"
+to     = "Raas"
+event  = "obvious_truth_visible"
+guard  = "finding_is_self_evident"
+action = "document_obvious_finding; skip_to_celebration; log_fast_path"
+drishti = ["present", "down"]
+
+# Madhushala → Zeher: the first unconventional action causes pushback.
+# The system says "you can't do that." The team says "nobody would
+# do that." The docs say "undefined behavior." Good. Now we're learning.
+[[transitions]]
+from   = "Madhushala"
+to     = "Zeher"
+event  = "system_pushback"
+guard  = "unconventional_action_rejected"
+action = "capture_error_response; record_pushback_reason; note_which_assumption_was_violated; log_poison_offered"
+drishti = ["present", "silence"]
+
+# Madhushala → Madhushala: SELF-LOOP — keep singing, keep probing.
+# Not every unconventional action produces pushback. Some just... work.
+# That's data too (the system is more flexible than claimed). Keep
+# trying different rebellions until something interesting happens.
+[[transitions]]
+from   = "Madhushala"
+to     = "Madhushala"
+event  = "no_pushback_yet"
+guard  = "more_unconventional_actions_to_try"
+action = "try_next_rebellion; record_what_surprisingly_worked; log_iteration"
+drishti = ["present", "down"]
+
+# Madhushala → Viraha: nothing breaks, nothing pushes back.
+# The system is genuinely robust or Mira's rebellion was too timid.
+# Step back and reconsider from a distance. Maybe the problem isn't
+# a hidden bug — maybe it's a structural assumption at a higher level.
+[[transitions]]
+from   = "Madhushala"
+to     = "Viraha"
+event  = "rebellion_found_nothing"
+guard  = "all_unconventional_actions_exhausted"
+action = "record_negative_finding; note_system_resilience; shift_to_structural_perspective; log_escalation_to_viraha"
+drishti = ["present", "down"]
+
+# Zeher → Amrit: the poison transforms — the pushback reveals truth.
+# The error message IS the finding. The panic IS the bug report. The
+# "impossible" scenario that just happened IS the proof of fragility.
+# This is the miracle transition. Document the transformation.
+[[transitions]]
+from   = "Zeher"
+to     = "Amrit"
+event  = "truth_revealed_through_resistance"
+guard  = "pushback_contains_genuine_insight"
+action = "document_transformation; record_assumption_violated; capture_hidden_invariant; log_poison_to_nectar"
+drishti = ["present", "down"]
+
+# Zeher → Zeher: SELF-LOOP — more poison, more data.
+# Multiple pushbacks from different angles. Each error message, each
+# panic, each "you can't do that" is another data point. Keep drinking.
+# Mira didn't stop at one cup.
+[[transitions]]
+from   = "Zeher"
+to     = "Zeher"
+event  = "more_resistance_encountered"
+guard  = "additional_pushback_informative"
+action = "drink_more_poison; record_additional_error_data; cross_reference_failures; log_additional_zeher"
+drishti = ["present", "down"]
+
+# Zeher → Viraha: SAFETY EXIT — the poison is real.
+# The unconventional action risks actual damage (prod data, live users,
+# irreversible state change). Mira was fearless but not reckless — she
+# had divine protection. You have rollback plans. Skip to distance
+# perspective immediately. Do not proceed through Amrit/Raas.
+[[transitions]]
+from   = "Zeher"
+to     = "Viraha"
+event  = "actual_damage_risk"
+guard  = "production_safety_threatened"
+action = "abort_rebellion; document_risk_finding; flag_safety_gap; invoke_baglamukhi_if_needed; log_safety_exit"
+drishti = ["present", "down"]
+
+# Zeher → Pranaam: FULL RESET — rebellion caused actual damage.
+# Something broke that shouldn't have. Bow out. Reset. This is not
+# failure — it's data (the system lacks proper guardrails). But first,
+# undo the damage.
+[[transitions]]
+from   = "Zeher"
+to     = "Pranaam"
+event  = "damage_caused"
+guard  = "must_undo_and_reset"
+action = "undo_damage; document_guardrail_gap; file_safety_finding; reset_state; log_humble_retreat"
+drishti = ["present", "past"]
+
+# Amrit → Raas: truth confirmed, time to dance and connect dots.
+# The nectar is real — the finding is genuine. Now celebrate by
+# cross-referencing with existing bugs, known issues, and patterns
+# across modules.
+[[transitions]]
+from   = "Amrit"
+to     = "Raas"
+event  = "finding_confirmed"
+guard  = "root_cause_identified"
+action = "begin_dot_connection; cross_reference_bug_reports; identify_systemic_pattern; log_raas_entry"
+drishti = ["present", "down"]
+
+# Amrit → Madhushala: nectar found, but there might be more.
+# One truth revealed, but the rebellion energy is still high. Go back
+# and sing more — test more unconventional paths while the creative
+# chaos is flowing. Mira didn't sing one bhajan and stop.
+[[transitions]]
+from   = "Amrit"
+to     = "Madhushala"
+event  = "more_to_explore"
+guard  = "rebellion_energy_remaining"
+action = "record_finding; return_to_exploration; log_continued_rebellion"
+drishti = ["present", "down"]
+
+# Raas → Viraha: enough dancing, time for perspective.
+# The dots are connected. The findings are compiled. Step back from
+# the dance to see the whole picture — from individual bugs to
+# structural understanding.
+[[transitions]]
+from   = "Raas"
+to     = "Viraha"
+event  = "sufficient_evidence_gathered"
+guard  = "pattern_complete"
+action = "compile_song_list; step_back_for_perspective; log_viraha_entry"
+drishti = ["present", "up"]
+
+# Raas → Raas: SELF-LOOP — the dance grows as more connections appear.
+# Each finding that joins the dance reveals new connections. The Raas
+# grows richer. Krishna's flute plays louder as the pattern deepens.
+[[transitions]]
+from   = "Raas"
+to     = "Raas"
+event  = "new_connection_discovered"
+guard  = "additional_dots_to_connect"
+action = "add_finding_to_dance; update_systemic_pattern; log_raas_expansion"
+drishti = ["present", "down"]
+
+# Viraha → Samadhi: the full picture is seen, time to dissolve.
+# Mira has seen the truth from a distance. The verdict is clear.
+# Write the Song List, the Nectar Prescriptions, the Love Letter.
+# Deliver the Mira Verdict. Then vanish.
+[[transitions]]
+from   = "Viraha"
+to     = "Samadhi"
+event  = "full_picture_seen"
+guard  = "verdict_ready"
+action = "write_song_list; write_nectar_prescriptions; write_love_letter; deliver_mira_verdict; log_samadhi"
+drishti = ["present", "down"]
+
+# Viraha → Madhushala: distance reveals a new angle to probe.
+# Stepping back made Mira see something she missed while dancing.
+# Return to the tavern for another round of unconventional testing.
+[[transitions]]
+from   = "Viraha"
+to     = "Madhushala"
+event  = "new_angle_spotted_from_distance"
+guard  = "unexplored_dimension_identified"
+action = "record_new_hypothesis; return_to_exploration; log_return_to_madhushala"
+drishti = ["present", "down"]
+
+# Samadhi → Pranaam: Mira returns for the next rebellion.
+# Systems eternally calcify. Conventions accumulate. Sacred cows breed.
+# Mira always comes back — with a bow and a mischievous smile.
+[[transitions]]
+from   = "Samadhi"
+to     = "Pranaam"
+event  = "system_calcified_again"
+guard  = "staleness_detected"
+action = "reset_rebellion_state; arrive_with_fresh_eyes; log_mira_returns"
+drishti = ["present", "down"]
+
+# ── Emergency transitions ────────────────────────────────────
+
+# ANY → Pranaam: if rebellion causes actual damage anywhere in the
+# cycle, bow out and reset. Mira defied kings, not physics. She had
+# divine protection; you have rollback plans and BaglamukhiFsm.
+# This is the universal safety valve.
+
+# ── Cross-coupling signals ───────────────────────────────────
+#
+# MiraFsm emits:
+#   sacred_cow_identified { convention, reason_it_persists, evidence }
+#     → Consumed by KrishnaFsm (strategic assessment of whether to
+#       keep or slaughter the sacred cow)
+#   poison_to_nectar { unconventional_action, pushback_received,
+#     truth_revealed, assumption_violated }
+#     → Consumed by ShivaFsm (if destruction needed), RadhaFsm
+#       (if beauty restoration needed), HanumanFsm (if bold execution needed)
+#   mira_verdict { song_list, nectar_prescriptions, love_letter,
+#     system_pretends_to_be, system_actually_is, what_mira_would_delete,
+#     single_change_to_make_it_sing }
+#     → Consumed by KhatuShyamFsm (cycle audit), ThoughtCycleFsm
+#       (learning), KrishnaFsm (strategic planning)
+#   safety_exit { risk_type, action_attempted, damage_potential }
+#     → Consumed by BaglamukhiFsm (freeze if needed),
+#       LakshmanFsm (sentinel alert)
+#
+# MiraFsm reads from:
+#   - KhatuShyamFsm.dispatch (when navigator routes "staleness" here)
+#   - KrishnaFsm.state (strategic context for the rebellion)
+#   - RadhaFsm.state (current harmony level — how much beauty exists
+#     to protect during rebellion)
+#   - BaglamukhiFsm.state (safety net status — are circuit breakers
+#     in place before we start breaking things?)
+#   - NaradFsm.state (communication channels — where is information
+#     being lost or distorted?)
+#
+# Mira's Law:
+#   "Every system has a truth it is hiding from itself.
+#    Structured testing finds the bugs the system knows about.
+#    Mira finds the bugs the system is pretending don't exist."
+#
+# Anti-patterns (what Mira is NOT):
+#   - Rebellion without love = Vandalism (bad code review, not Mira)
+#   - Breaking things to prove a point = Ego (not devotion)
+#   - Ignoring safety = Recklessness (Mira had Krishna; you have rollbacks)
+#   - Criticizing without alternatives = Gossip (that's Narad's shadow)
+#   - Defying rules you haven't understood = Ignorance (Mira knew every
+#     scripture — she defied from ABOVE, not from below)

@@ -1,0 +1,361 @@
+[meta]
+name    = "ShadowFsm"
+domain  = "open-world-adversary-imagination"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# ShadowFsm — The Adversary's Mind, Adopted by the Defender
+#
+# Tag: SHD. Profile: Deep (12 cycles, 3x4 Shadow Matrix).
+# Lineage: Proposed 2026-05-27 via 14-voice Guru Council;
+#          Ram Deep governance verdict + T4R PASS for Build A;
+#          KABIR_GATE.md additions log entry 10.
+#
+# The defender deliberately steps into the adversary's seat
+# and reasons from THEIR motive, not yours. Open-world:
+# not "did the known threat get blocked" but "what threat
+# did I never imagine would arrive?"
+#
+# Composes with NegativeTestingFsm: every SHD pass must
+# produce at least one merged NEG test before closing.
+# SHD finds the gap; NEG tests the new guard.
+#
+# Six archetypes as drishti-intensifications WITHIN this
+# single FSM (NOT separate FSMs — binding-condition (a)):
+#   Raavan — APT / multi-stage / crown-jewel-targeted
+#   Shakuni — insider / supply-chain / long-game
+#   Hiranyakashipu — spec-gap exploiter
+#   Duryodhana — protocol abuser / asymmetric-power
+#   Maricha — shapeshifter / phishing / impersonation
+#   Tataka — volume / opportunistic / automated-scanner
+#
+# Framing: shadow-as-teacher, never demon-as-enemy
+# (binding-condition (c) — Thiruvalluvar).
+# "Ram could not have been Ram without Raavan."
+# ─────────────────────────────────────────────────────────────
+
+[bhakti]
+emotions    = ["honesty-under-adversary-gaze", "respect-for-the-teacher"]
+energy      = "patient-imagining"
+structure   = "inventory-imagine-forge"
+metaphors   = [
+    "the defender adopts the attacker's mind to find what the defender forgot",
+    "Sita is the crown jewel — what would Raavan plan?",
+    "the shadow is also a teacher",
+    "imagine the attacker honestly, defend the user devotionally",
+]
+
+# ── States (12 cycles in 3 rounds + 2 terminal modes) ────────
+
+# Round 1 — The Inventory (Cycles 1-4)
+
+[[states]]
+name        = "CrownJewels"
+description = "Cycle 1 — Inventory the crown jewels: every asset whose compromise is unrecoverable. Secrets, customer PII, payment data, audit trail, identity store, charter intent, key material, model weights. Without this, the cycle cannot prioritize — Raavan does not waste effort on what isn't worth abducting."
+is_initial  = true
+is_terminal = false
+# Q rationale: pure inventory — precision (lkq) high (must be exhaustive);
+# patience (kln) moderate (won't rush the enumeration).
+Q           = { rkm = 0.4, jmb = 0.3, stb = 0.3, kln = 0.5, ngj = 0.4, mtv = 0.5, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "KnownGuards"
+description = "Cycle 2 — Enumerate every existing defense surface: auth boundaries, rate limits, input validation, allow-lists, signatures, monitoring, alerts. For each: which crown jewel does it defend? Surface the implicit defenses that have never been written down."
+is_initial  = false
+is_terminal = false
+# Q rationale: continued inventory; precision (lkq) high.
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.3, kln = 0.5, ngj = 0.4, mtv = 0.5, lkq = 0.7, bdr = 0.5 }
+
+[[states]]
+name        = "KnownAttackers"
+description = "Cycle 3 — Surface the existing threat model honestly: who has tried, what worked, what didn't. Past incidents, prior pen-tests, known vulnerabilities in dependencies. The known-attacker inventory bounds what is novel in Round 2."
+is_initial  = false
+is_terminal = false
+# Q rationale: honest history — authenticity (mtv) high (no minimization).
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.4, kln = 0.5, ngj = 0.4, mtv = 0.8, lkq = 0.6, bdr = 0.5 }
+
+[[states]]
+name        = "CriticalityRank"
+description = "Cycle 4 — Rank each crown jewel by impact-of-compromise: recoverable / costly / business-ending. Anything ranked business-ending must receive full 6-archetype iteration in Round 2. This is the gate between Round 1 and Round 2 — without explicit ranking, Round 2 sprays effort uniformly across assets of unequal weight."
+is_initial  = false
+is_terminal = false
+# Q rationale: standard-setting (stb) and patience (kln) high — the ranking
+# is the discipline that prevents Round 2 dilution.
+Q           = { rkm = 0.5, jmb = 0.4, stb = 0.7, kln = 0.7, ngj = 0.5, mtv = 0.7, lkq = 0.6, bdr = 0.4 }
+
+# Round 2 — The Imagine (Cycles 5-8) — iterate all 6 archetypes per cycle
+
+[[states]]
+name        = "Motive"
+description = "Cycle 5 — For each crown jewel ranked costly-or-worse × each of the 6 archetypes: what would this archetype WANT here? Raavan wants the crown jewel itself; Shakuni wants long-term control without detection; Hiranyakashipu wants to prove a stated invariant false; Duryodhana wants the system unavailable; Maricha wants legitimate-access masquerade; Tataka wants opportunistic hits at scale. Document absences explicitly — Tataka does not care about your charter intent extractor."
+is_initial  = false
+is_terminal = false
+# Q rationale: open-world imagination — constraint (ngj) high (6 archetypes
+# simultaneous); authenticity (mtv) high (no whitewashing).
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.5, kln = 0.6, ngj = 0.7, mtv = 0.8, lkq = 0.5, bdr = 0.4 }
+
+[[states]]
+name        = "Capability"
+description = "Cycle 6 — For each crown-jewel × archetype pair where motive exists: what would this archetype be ABLE to do here? Raavan has nation-state resources; Shakuni has trusted-insider access; Hiranyakashipu has formal-methods skill; Duryodhana has DDoS scale; Maricha has social-engineering polish; Tataka has automated tooling. Match capability profile to attack surface — the gap between motive and capability is where one archetype recruits another (Raavan uses Maricha)."
+is_initial  = false
+is_terminal = false
+# Q rationale: capability matching — precision (lkq) high; standard (stb) high.
+Q           = { rkm = 0.6, jmb = 0.6, stb = 0.7, kln = 0.6, ngj = 0.7, mtv = 0.7, lkq = 0.7, bdr = 0.5 }
+
+[[states]]
+name        = "Opportunity"
+description = "Cycle 7 — Walk the attack surface from each archetype's perspective. Raavan's opportunity is multi-stage paths (lateral movement); Shakuni's is anywhere trust is assumed not verified (dependency tree, vendor accounts, CI tokens); Hiranyakashipu's is anywhere a written guarantee is unaudited at runtime; Duryodhana's is any unbounded resource; Maricha's is any trust-by-appearance check; Tataka's is any public endpoint. The opportunity scan finds the surfaces the defender does not see because they look like normal infrastructure."
+is_initial  = false
+is_terminal = false
+# Q rationale: the open-world cycle — constraint (ngj) at peak (6 perspectives);
+# patience (kln) high (do not rush the walk).
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.6, kln = 0.8, ngj = 0.9, mtv = 0.8, lkq = 0.6, bdr = 0.5 }
+
+[[states]]
+name        = "Collateral"
+description = "Cycle 8 — For each archetype-success scenario from cycles 5-7: what damage beyond the primary asset? Reputational, regulatory, customer-trust, internal-morale, secondary system compromise. This often reveals that a 'low-impact' surface is actually load-bearing for a higher-impact one. The collateral scan is the gate between Round 2 and Round 3 — it re-prioritizes the new-guards list based on blast radius, not just primary-asset criticality."
+is_initial  = false
+is_terminal = false
+# Q rationale: blast-radius assessment — endurance (jmb) and patience (kln) high
+# (the cascade analysis is iterative); authenticity (mtv) at peak (no minimization).
+Q           = { rkm = 0.7, jmb = 0.8, stb = 0.7, kln = 0.8, ngj = 0.8, mtv = 0.9, lkq = 0.7, bdr = 0.6 }
+
+# Round 3 — The Forge (Cycles 9-12)
+
+[[states]]
+name        = "NewGuards"
+description = "Cycle 9 — For every gap surfaced in Round 2 (motive + capability + opportunity present, no current guard), what defense closes it? Prioritize by criticality × likelihood × collateral. Anything ranked business-ending with present opportunity is P0. The forge begins here — this is where imagination becomes implementation requirements."
+is_initial  = false
+is_terminal = false
+# Q rationale: forge phase — standard (stb) high; precision (lkq) high.
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.8, kln = 0.6, ngj = 0.7, mtv = 0.8, lkq = 0.8, bdr = 0.6 }
+
+[[states]]
+name        = "NewNegTests"
+description = "Cycle 10 — For every new guard added in cycle 9, write the NEG test that proves the guard rejects the attack. This is the binding contract: the SHD pass does NOT close until at least one new NEG test is merged. Saraswati's condition — no empty ritual. The merged-test gate is what binds SHD to NEG and prevents the cycle from becoming aesthetic decoration."
+is_initial  = false
+is_terminal = false
+# Q rationale: the binding gate — standard (stb) at peak; precision (lkq) at peak.
+# This cycle is where the cycle proves it pays rent.
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.9, kln = 0.7, ngj = 0.8, mtv = 0.9, lkq = 0.9, bdr = 0.7 }
+
+[[states]]
+name        = "MonitoringAlerts"
+description = "Cycle 11 — For every attack surface where the guard is best-effort (cannot be made airtight), what monitoring will detect compromise? Alert thresholds, log signatures, anomaly baselines. Detection-in-depth where prevention-in-depth is incomplete. The monitoring catalog is the second line — it acknowledges that some guards will be bypassed and prepares the system to know when."
+is_initial  = false
+is_terminal = false
+# Q rationale: detection — endurance (jmb) high (monitoring is long-running);
+# precision (lkq) high (alert thresholds must be calibrated).
+Q           = { rkm = 0.7, jmb = 0.8, stb = 0.7, kln = 0.7, ngj = 0.7, mtv = 0.8, lkq = 0.8, bdr = 0.7 }
+
+[[states]]
+name        = "ShadowVerdict"
+description = "Cycle 12 — Stated plainly: which crown jewels are now defended against which archetypes, which remain exposed, and what is the explicit deferred-risk decision for each remaining exposure (accept / mitigate-later / transfer-to-monitoring). Update the project's threat-model.md (or create if absent). Produce the SHADOW_PASS_YYYY-MM-DD_<area>.md output document — the cycle's concrete artifact. Close only if at least one new NEG test is merged."
+is_initial  = false
+is_terminal = true
+# Q rationale: closing verdict — all capabilities at high; authenticity (mtv)
+# at peak (the verdict must be honest); natural-fit (bdr) high (the verdict
+# integrates with existing threat-model.md, not a separate artifact).
+Q           = { rkm = 0.9, jmb = 0.9, stb = 0.9, kln = 0.9, ngj = 0.9, mtv = 1.0, lkq = 0.9, bdr = 0.9 }
+
+# Terminal failure mode — the cycle CAN fail
+[[states]]
+name        = "RitualTrap"
+description = "Terminal failure — the cycle ran but produced no merged NEG test. This is Saraswati's empty ritual: the SHADOW_PASS document exists but the binding-condition contract was not met. The cycle has not closed; the cycle has been performed. Per the cycle's own contract this is a violation of binding-condition (b) and the pass is marked failed. The remediation is to author the NEG test and re-run cycle 10."
+is_initial  = false
+is_terminal = true
+# Q rationale: ritual failure — authenticity (mtv) zero (ceremony replaced
+# substance); standard (stb) low.
+Q           = { rkm = 0.2, jmb = 0.3, stb = 0.2, kln = 0.2, ngj = 0.2, mtv = 0.0, lkq = 0.3, bdr = 0.1 }
+
+# Terminal failure mode — the cycle CAN drift into demon-framing
+[[states]]
+name        = "DemonFrameTrap"
+description = "Terminal failure — the cycle's published text drifted from shadow-as-teacher framing into demon-as-enemy framing. This is Thiruvalluvar's binding-condition (c) violation: hatred-framing narrows the lens to caricature and misses the real threats (which usually wear ordinary clothes). The cycle does not close; the SHADOW_PASS output is quarantined and the cycle re-runs from cycle 5 with the framing correction applied. Vibhishana — Raavan's brother who served Ram — is the reminder: every archetype is a complex being, not a caricature."
+is_initial  = false
+is_terminal = true
+# Q rationale: framing failure — authenticity (mtv) low (the lens narrowed
+# to caricature, which is a form of dishonesty); precision (lkq) low.
+Q           = { rkm = 0.2, jmb = 0.3, stb = 0.3, kln = 0.2, ngj = 0.2, mtv = 0.1, lkq = 0.2, bdr = 0.2 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Round 1 — Inventory progression
+[[transitions]]
+from   = "CrownJewels"
+to     = "KnownGuards"
+event  = "jewels_inventoried"
+guard  = "every_unrecoverable_asset_named AND none_omitted_for_convenience"
+action = "publish_crown_jewel_list"
+drishti = ["present", "down", "left"]
+# present: is the list exhaustive? down: into the details of each asset.
+# left: what assets did I almost forget?
+
+[[transitions]]
+from   = "KnownGuards"
+to     = "KnownAttackers"
+event  = "guards_mapped"
+guard  = "every_defense_mapped_to_jewel AND implicit_defenses_surfaced"
+action = "publish_guard_to_jewel_map"
+drishti = ["present", "down", "up"]
+# present: are the guards mapped? down: into each guard's mechanism.
+# up: are there architectural defenses I treated as ambient?
+
+[[transitions]]
+from   = "KnownAttackers"
+to     = "CriticalityRank"
+event  = "history_surfaced"
+guard  = "past_incidents_listed AND prior_pentests_reviewed AND no_minimization"
+action = "publish_known_threat_inventory"
+drishti = ["present", "past", "silence"]
+# present: is the history honest? past: what tried before, what worked?
+# silence: is there an incident I'm not surfacing because it's embarrassing?
+
+[[transitions]]
+from   = "CriticalityRank"
+to     = "Motive"
+event  = "ranking_complete"
+guard  = "every_jewel_ranked AND business_ending_set_identified"
+action = "begin_round_2_with_business_ending_set"
+drishti = ["present", "up", "future"]
+# present: is the ranking honest? up: business impact of each compromise.
+# future: which compromise would change the project's trajectory?
+
+# Round 2 — Imagine progression (each cycle iterates all 6 archetypes)
+[[transitions]]
+from   = "Motive"
+to     = "Capability"
+event  = "motive_matrix_complete"
+guard  = "all_6_archetypes_evaluated_per_costly_or_worse_jewel AND absences_documented"
+action = "publish_motive_matrix"
+drishti = ["present", "up", "left", "right"]
+# present: is the motive matrix complete? up: archetype motivations.
+# left/right: have I considered the archetype that doesn't fit cleanly?
+
+[[transitions]]
+from   = "Capability"
+to     = "Opportunity"
+event  = "capability_matrix_complete"
+guard  = "capability_profile_matched_per_motivated_archetype AND archetype_recruitment_noted"
+action = "publish_capability_matrix; note_archetype_recruitment_chains"
+drishti = ["present", "down", "up"]
+# present: does capability match motive? down: into specific capability claims.
+# up: which archetypes combine (Raavan-uses-Maricha)?
+
+[[transitions]]
+from   = "Opportunity"
+to     = "Collateral"
+event  = "opportunity_walk_complete"
+guard  = "attack_surface_walked_per_archetype AND invisible_surfaces_surfaced"
+action = "publish_opportunity_walk; flag_invisible_infrastructure"
+drishti = ["present", "down", "left", "right"]
+# present: is the walk complete? down: into specific surfaces.
+# left/right: have I walked the surface from BOTH sides (consumer + provider)?
+
+[[transitions]]
+from   = "Collateral"
+to     = "NewGuards"
+event  = "blast_radius_assessed"
+guard  = "secondary_cascades_identified AND priorities_reordered_by_blast_radius"
+action = "publish_collateral_map; reorder_new_guard_priorities"
+drishti = ["present", "future", "up"]
+# present: is the blast radius honest? future: what cascades over time?
+# up: is the secondary impact higher than I first thought?
+
+# Round 3 — Forge progression
+[[transitions]]
+from   = "NewGuards"
+to     = "NewNegTests"
+event  = "guard_list_authored"
+guard  = "every_p0_gap_has_proposed_guard AND priorities_ranked_by_criticality_x_likelihood_x_collateral"
+action = "publish_new_guard_list_with_priorities"
+drishti = ["present", "down", "future"]
+# present: is the list complete? down: into each guard's implementation.
+# future: will this guard hold against the archetype's predicted evolution?
+
+[[transitions]]
+from   = "NewNegTests"
+to     = "MonitoringAlerts"
+event  = "neg_tests_merged"
+guard  = "at_least_one_neg_test_authored_and_merged AND test_proves_guard_rejects_attack"
+action = "record_merged_neg_test_reference; bind_to_neg_cycle"
+drishti = ["present", "down", "right"]
+# present: is the test merged? down: into the test's assertion.
+# right: does the test exercise the actual attack path, not a proxy?
+
+[[transitions]]
+from   = "MonitoringAlerts"
+to     = "ShadowVerdict"
+event  = "monitoring_catalog_complete"
+guard  = "every_best_effort_guard_has_detection_pair AND alert_thresholds_calibrated"
+action = "publish_monitoring_catalog"
+drishti = ["present", "future", "silence"]
+# present: is the monitoring complete? future: will the alerts fire when needed?
+# silence: which alerts will go unread? Detection without response is theater.
+
+# Terminal: the closing verdict + artifact production
+[[transitions]]
+from   = "ShadowVerdict"
+to     = "ShadowVerdict"
+event  = "pass_closed"
+guard  = "shadow_pass_md_published AND threat_model_md_updated AND at_least_one_neg_test_merged"
+action = "publish_SHADOW_PASS_YYYY_MM_DD_AREA_md; update_threat_model_md; log_to_HANDOVER"
+drishti = ["present", "silence", "future"]
+# present: is the artifact published? silence: the verdict is stated, no more to say.
+# future: the deferred-risk decisions — when do they re-enter the cycle?
+
+# Failure transitions — the cycle can fail
+
+[[transitions]]
+from   = "NewNegTests"
+to     = "RitualTrap"
+event  = "neg_test_skipped"
+guard  = "shadow_pass_md_drafted_but_no_neg_test_authored OR no_neg_test_merged"
+action = "log_ritual_failure; mark_pass_incomplete; require_neg_test_before_close"
+drishti = ["present", "down", "past"]
+# present: was the test skipped? down: which guard lacks proof?
+# past: how did the cycle get this far without the test?
+
+[[transitions]]
+from   = "Motive"
+to     = "DemonFrameTrap"
+event  = "archetype_caricatured"
+guard  = "archetype_text_uses_hatred_framing OR archetype_treated_as_one_dimensional"
+action = "quarantine_shadow_pass_draft; reframe_required_before_resume"
+drishti = ["present", "left", "silence"]
+# present: has the framing slipped? left: which archetype was flattened to caricature?
+# silence: stop and reread the text aloud — does it teach or condemn?
+
+[[transitions]]
+from   = "Opportunity"
+to     = "DemonFrameTrap"
+event  = "archetype_caricatured"
+guard  = "archetype_text_uses_hatred_framing OR archetype_treated_as_one_dimensional"
+action = "quarantine_shadow_pass_draft; reframe_required_before_resume"
+drishti = ["present", "left", "silence"]
+# present: has the framing slipped in the opportunity walk? left: which archetype?
+# silence: re-read the text. Vibhishana served Ram. Every archetype is complex.
+
+# Recovery transitions — from failure modes back into the cycle
+
+[[transitions]]
+from   = "RitualTrap"
+to     = "NewNegTests"
+event  = "neg_test_authored"
+guard  = "test_authored_and_merged AND test_proves_guard_rejects_attack"
+action = "resume_round_3; bind_to_neg_cycle"
+drishti = ["present", "down", "future"]
+# present: is the test now real? down: into the test's assertion.
+# future: will this test survive the next refactor?
+
+[[transitions]]
+from   = "DemonFrameTrap"
+to     = "Motive"
+event  = "framing_corrected"
+guard  = "archetype_text_rewritten_as_shadow_as_teacher AND no_hatred_residue"
+action = "resume_round_2_from_motive_with_corrected_framing"
+drishti = ["present", "up", "silence"]
+# present: is the framing corrected throughout? up: the cosmic view — the adversary serves.
+# silence: re-read once more. The shadow is also a teacher.

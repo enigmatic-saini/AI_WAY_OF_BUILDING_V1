@@ -1,0 +1,241 @@
+[meta]
+name    = "BuddhaFsm"
+domain  = "liberation-middle-path"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# BuddhaFsm — The Middle Path
+#
+# Siddhartha's journey from palace comfort through extreme
+# austerity to the middle way, awakening, teaching, and release.
+#
+# The cycle: Sukha → Samvega → Pabbajja → Tapas → Majjhima
+#            → Dhyana → Bodhi → Dhammacakka → Parinibbana
+#
+# Special: Mara_Temptation (from Dhyana), Ascetic_Trap (from Tapas)
+# Each transition carries a cost. The FSM tracks the price paid.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Sukha"
+description = "Comfort — the palace. Three seasons, three palaces. Metrics green. Ignorance maintained by walls, not choice. Default state."
+is_initial  = true
+is_terminal = false
+# Q rationale: Comfort — all metrics green but nothing real. Natural fit (bdr) moderate —
+# comfort is natural but ignorant. All else low — no real capability tested yet.
+Q           = { rkm = 0.2, jmb = 0.0, stb = 0.1, kln = 0.1, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.4 }
+
+[[states]]
+name        = "Samvega"
+description = "Spiritual Urgency — the four sights: old age, sickness, death, and the wandering monk. Visceral shock. The walls crack. Cannot unsee."
+is_initial  = false
+is_terminal = false
+# Q rationale: Shock — walls crack. Authentic choice (mtv) rising — seeing truth for the first time.
+# Impossible spec (ngj) appears — the question "can suffering end?" seems impossible.
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.2, kln = 0.1, ngj = 0.3, mtv = 0.4, lkq = 0.1, bdr = 0.3 }
+
+[[states]]
+name        = "Pabbajja"
+description = "Renunciation — leaving the known. Cutting ties. Not running away — running toward the question. The system dismantles its own comfort. Cost: family."
+is_initial  = false
+is_terminal = false
+# Q rationale: Renunciation — the hardest authentic choice. Fierce pride (stb) rising —
+# courage to leave. Endurance (jmb) tested — can you bear the cost?
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.5, kln = 0.2, ngj = 0.4, mtv = 0.7, lkq = 0.2, bdr = 0.2 }
+
+[[states]]
+name        = "Tapas"
+description = "Austerity — six years of extreme practice. Every technique tried. The assumption: suffering defeated by more suffering. Cost: health."
+is_initial  = false
+is_terminal = false
+# Q rationale: Extreme practice — endurance at peak but misdirected. Patience (kln) low —
+# tapas is FORCING, not waiting. Precision (lkq) moderate — techniques are precise but wrong.
+Q           = { rkm = 0.2, jmb = 0.8, stb = 0.6, kln = 0.1, ngj = 0.5, mtv = 0.4, lkq = 0.4, bdr = 0.2 }
+
+[[states]]
+name        = "Majjhima"
+description = "Middle Way — rejecting BOTH extremes. Accepting Sujata's kheer. Neither indulgence nor mortification. The loneliest state: standing alone. Cost: companions."
+is_initial  = false
+is_terminal = false
+# Q rationale: The loneliest state — standing alone between extremes.
+# Authentic choice (mtv) at peak — rejecting both extremes is the supreme authentic act.
+# Impossible spec (ngj) high — the middle path seemed impossible to those around him.
+Q           = { rkm = 0.5, jmb = 0.6, stb = 0.6, kln = 0.5, ngj = 0.7, mtv = 1.0, lkq = 0.5, bdr = 0.3 }
+
+[[states]]
+name        = "Dhyana"
+description = "Meditation — sitting under the Bodhi tree. 'I will not move.' Active investigation: past lives, karma, dependent origination. Mara attacks. All witnessed."
+is_initial  = false
+is_terminal = false
+# Q rationale: Deep meditation — all capabilities rising. Endurance (jmb) high — will not move.
+# Patience (kln) high — sitting through Mara's attacks. Precision (lkq) high — investigation.
+Q           = { rkm = 0.6, jmb = 0.8, stb = 0.7, kln = 0.8, ngj = 0.7, mtv = 0.8, lkq = 0.8, bdr = 0.6 }
+
+[[states]]
+name        = "Bodhi"
+description = "Awakening — dependent origination seen. 'When this exists, that comes to be. When this ceases, that ceases.' The morning star rises."
+is_initial  = false
+is_terminal = false
+# Q rationale: Awakening — near-peak on all. Impossible spec (ngj) at peak —
+# dependent origination is the ultimate impossible insight. Precision (lkq) at peak.
+Q           = { rkm = 0.9, jmb = 0.8, stb = 0.8, kln = 0.9, ngj = 1.0, mtv = 0.9, lkq = 1.0, bdr = 0.8 }
+
+[[states]]
+name        = "Dhammacakka"
+description = "Turning the Wheel — first sermon at Sarnath. Four Noble Truths. Eightfold Path. 45 years of teaching. The awakened being shares. Cost: a lifetime of labor."
+is_initial  = false
+is_terminal = false
+# Q rationale: Teaching for 45 years. Strategic love (rkm) at peak — compassion drives teaching.
+# Endurance (jmb) at peak — a lifetime of labor. Natural fit (bdr) high.
+Q           = { rkm = 1.0, jmb = 1.0, stb = 0.8, kln = 0.8, ngj = 0.9, mtv = 0.9, lkq = 0.9, bdr = 0.9 }
+
+[[states]]
+name        = "Parinibbana"
+description = "Final Release — 'All conditioned things are impermanent. Work out your salvation with diligence.' The system completes and releases all resources."
+is_initial  = false
+is_terminal = true
+# Q rationale: Final release — everything drops. Patience (kln) at peak — ultimate patience.
+# Natural fit (bdr) at peak — returning to nature. All else dissolves.
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.5, kln = 1.0, ngj = 0.7, mtv = 0.8, lkq = 0.7, bdr = 1.0 }
+
+[[states]]
+name        = "Mara_Temptation"
+description = "From Dhyana. Mara offers the world: desire, fear, doubt. 'Why struggle? Rule with this power.' The system tempted to return to Sukha."
+is_initial  = false
+is_terminal = false
+# Q rationale: Temptation — capabilities present but corrupted by desire.
+# Fierce pride (stb) high — Mara appeals to pride. Authentic choice (mtv) tested.
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.6, kln = 0.2, ngj = 0.4, mtv = 0.2, lkq = 0.3, bdr = 0.2 }
+
+[[states]]
+name        = "Ascetic_Trap"
+description = "From Tapas. Body breaks before mind opens. Self-punishment mistaken for purification. Health critical, no insight gained."
+is_initial  = false
+is_terminal = false
+# Q rationale: Body failing — endurance spent, nothing gained. Near-zero on all.
+# A trace of endurance (jmb) — the body hasn't died yet.
+Q           = { rkm = 0.1, jmb = 0.3, stb = 0.2, kln = 0.0, ngj = 0.1, mtv = 0.1, lkq = 0.1, bdr = 0.1 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Sukha"
+to     = "Samvega"
+event  = "four_sights_witnessed"
+guard  = "wall_breached AND suffering_seen_directly"
+action = "shatter_comfortable_ignorance; log_which_sight"
+drishti = ["present", "down", "left", "right"]
+# present: is suffering real? down: look at the actual sights.
+# left/right: are there alternatives to seeing this? No.
+
+[[transitions]]
+from   = "Samvega"
+to     = "Pabbajja"
+event  = "great_renunciation"
+guard  = "urgency_exceeds_attachment AND path_sensed"
+action = "sever_comfort_dependencies; record_cost(family)"
+drishti = ["present", "future", "silence"]
+# present: is urgency real? future: what does leaving cost?
+# silence: should you stay? Is non-action the right path?
+
+[[transitions]]
+from   = "Pabbajja"
+to     = "Tapas"
+event  = "seeking_method"
+guard  = "teachers_found AND discipline_embraced"
+action = "adopt_extreme_practice; record_cost(health)"
+drishti = ["present", "down", "past"]
+# present: which method? down: what does the practice demand of the body?
+# past: what have these teachers achieved?
+
+[[transitions]]
+from   = "Tapas"
+to     = "Ascetic_Trap"
+event  = "body_failing"
+guard  = "health_critical AND insight_not_gained"
+action = "system_collapse_warning"
+drishti = ["present", "down"]
+# present: the body is failing. down: what specifically is breaking?
+
+[[transitions]]
+from   = "Ascetic_Trap"
+to     = "Majjhima"
+event  = "nourishment_accepted"
+guard  = "humility_to_receive AND willingness_to_be_judged"
+action = "accept_sujata_kheer; record_cost(companions)"
+drishti = ["present", "left", "right", "silence"]
+# present: accept nourishment. left/right: what lies between the two extremes?
+# silence: should practice stop entirely?
+
+[[transitions]]
+from   = "Tapas"
+to     = "Majjhima"
+event  = "extremes_rejected"
+guard  = "both_extremes_experienced AND neither_sufficient"
+action = "discover_middle_way; record_cost(companions)"
+drishti = ["present", "left", "right", "past", "future"]
+# present: are both extremes exhausted? left/right: the middle between them.
+# past: what was tried. future: what the middle path might yield.
+
+[[transitions]]
+from   = "Majjhima"
+to     = "Dhyana"
+event  = "resolve_crystallizes"
+guard  = "method_found AND commitment_total"
+action = "sit_under_bodhi_tree"
+drishti = ["present", "down", "future", "silence"]
+# present: is resolve crystallized? down: sit. Just sit.
+# future: what awaits under the tree? silence: will not move.
+
+[[transitions]]
+from   = "Dhyana"
+to     = "Mara_Temptation"
+event  = "desire_or_fear_arises"
+guard  = "old_patterns_resurface AND power_sensed"
+action = "face_mara"
+drishti = ["present", "left", "right"]
+# present: what is arising? left/right: desire or fear — which face of Mara?
+
+[[transitions]]
+from   = "Mara_Temptation"
+to     = "Dhyana"
+event  = "temptation_witnessed"
+guard  = "attachment_released AND earth_touched"
+action = "return_to_investigation"
+drishti = ["present", "down", "silence"]
+# present: is attachment released? down: touch the earth — this is real.
+# silence: the earth witnesses. Non-reaction IS the victory.
+
+[[transitions]]
+from   = "Dhyana"
+to     = "Bodhi"
+event  = "dependent_origination_seen"
+guard  = "three_watches_complete AND causal_chain_clear"
+action = "awaken; log_morning_star"
+drishti = ["present", "up", "down", "past", "future"]
+# present: the causal chain is clear NOW. up: the cosmic view — dependent origination.
+# down: every link verified. past: past lives seen. future: the chain can be broken.
+
+[[transitions]]
+from   = "Bodhi"
+to     = "Dhammacakka"
+event  = "compassion_overrides_silence"
+guard  = "beings_suffering AND teaching_possible"
+action = "turn_wheel_of_dharma; record_cost(lifetime)"
+drishti = ["present", "future", "silence"]
+# present: beings are suffering. future: 45 years of teaching ahead.
+# silence: should the Buddha remain silent? Brahma requests: teach.
+
+[[transitions]]
+from   = "Dhammacakka"
+to     = "Parinibbana"
+event  = "body_exhausted"
+guard  = "sangha_self_sustaining AND teaching_complete"
+action = "final_release; log_last_words"
+drishti = ["present", "past", "silence"]
+# present: the body is exhausted. past: 45 years of teaching — is it complete?
+# silence: the final silence. "Work out your salvation with diligence."

@@ -1,0 +1,177 @@
+# MahagauriFsm — Purity & Cleansing (Nav Shakti 8)
+# v1.0
+#
+# Om Devi Mahagauryai Namah
+#
+# Mahagauri — the radiantly white one. Eighth form of Nav Durga.
+# She who performed severe penance and was cleansed of all darkness,
+# emerging pure as the moon. Her white radiance is not innocence —
+# it is the purity that comes AFTER enduring darkness. She has
+# seen everything and chosen to be clean.
+#
+# In our system, Mahagauri is the post-incident, post-refactor,
+# post-migration cleanup cycle. After Kaalratri (NS7) has found
+# the darkness, Mahagauri cleanses it. Dead code removal, legacy
+# purge, debt settlement — she leaves the codebase lighter,
+# cleaner, ready for a fresh start.
+#
+# Purity is not perfection. It is the absence of accumulated rot.
+# A pure codebase is one where every line earns its place.
+#
+# Cross-coupling:
+#   - ShaktiFsm: Mahagauri draws energy from Shakti's Channeled
+#     state. Cleansing requires sustained, gentle energy — not
+#     the fierce burst of Kaalratri but a steady, warm light.
+#   - KhatuShyamFsm: Khatu Shyam routes to NS8 when the symptom
+#     type is "friction" (something resists) or after NS7 completes.
+#     KhatuShyamFsm.cycle_domain_map: NS8 → MahagauriFsm
+#   - Receives from KaalratriFsm (NS7): darkness_findings feed
+#     directly into Dead_Code_Scan as pre-loaded targets.
+#   - Feeds into SiddhidatriFsm (NS9): after purity, mastery
+#     becomes possible. Clean code can be perfected.
+
+[meta]
+name        = "MahagauriFsm"
+domain      = "navshakti-purity"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Dead_Code_Scan"
+description = "Unused functions, unreachable branches, commented-out blocks, orphan files. Code that exists but serves no purpose — it is weight without strength. Scan for: functions with zero callers, #[allow(dead_code)] annotations, commented-out blocks longer than 5 lines, files not imported anywhere, feature flags that are always off. If KaalratriFsm provided darkness_findings, begin with those targets."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.3, kln = 0.5, ngj = 0.2, mtv = 0.3, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) high — scanning for unused, unreachable, orphaned.
+# Kalindi (patience) — thorough scanning takes time.
+audio_phrase = "Sa:400,Re:300,Ga:350,Ma:300,Pa:400,Dha:350,Ni:300,Sa_high:500"
+lyrics = """श्वेत ज्योति जागी, अशुद्धि को ढूंढे
+जो मरा पड़ा है, उसे पहचाने
+Śvet jyoti jāgī, aśuddhi ko ḍhūṇḍhe
+Jo marā paḍā hai, use pahchāne
+White light awakens, seeking impurity —
+recognize what lies dead"""
+
+[[states]]
+name        = "Legacy_Purge"
+description = "Deprecated APIs still in use, old migration scripts that ran years ago, compatibility shims past their expiry, version-specific workarounds for versions no longer supported. The barnacles of evolution that slow the ship. Identify: deprecated function calls, migration files from 3+ versions ago, cfg blocks for obsolete targets, shims whose original reason is gone."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.5, kln = 0.5, ngj = 0.3, mtv = 0.5, lkq = 0.6, bdr = 0.3 }
+# Q rationale: Mitravinda (self-choice) — courage to let go of the old.
+# Satyabhama (fierce action) — barnacles must be scraped.
+audio_phrase = "Re:300,Ga:350,Pa:400,Dha:350,Ni:400,Sa_high:500"
+lyrics = """पुराना बोझ उतारो, नया मार्ग बनाओ
+जो बीत गया, उसे जाने दो
+Purānā bojh utāro, nayā mārg banāo
+Jo bīt gayā, use jāne do
+Shed the old burden, forge a new path —
+what has passed, let it go"""
+
+[[states]]
+name        = "Debt_Settlement"
+description = "Close old issues, remove TODO comments that are done, update stale documentation, resolve FIXME markers that have been fixed but not cleaned. The administrative debt of a living codebase. Find: TODO/FIXME comments where the work is already done, open issues that are actually resolved, docs that describe old behavior, CHANGELOG entries that are wrong."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.4, kln = 0.6, ngj = 0.2, mtv = 0.4, lkq = 0.6, bdr = 0.5 }
+# Q rationale: Kalindi (patience) high — administrative cleanup is not exciting.
+# Bhadra (belonging) — on clean ground, new creation begins.
+audio_phrase = "Ga:300,Ma:300,Pa:350,Dha:400,Ni:350,Sa_high:400,Ni:300,Sa_high:500"
+lyrics = """हर कर्ज चुकाओ, हर बोझ हटाओ
+स्वच्छ भूमि पर, नव निर्माण हो
+Har karj chukāo, har bojh haṭāo
+Svacch bhūmi par, nav nirmāṇ ho
+Pay every debt, remove every burden —
+on clean ground, new creation begins"""
+
+[[states]]
+name        = "Purity_Verdict"
+description = "What is clean, what needs cleansing, what is pure enough to ship. For each finding: (1) Removed — dead code deleted, legacy purged, debt settled; (2) Deferred — too risky to remove now, mark with expiry date; (3) Pure — already clean, no action needed. Emit purity report. The codebase should be lighter after this cycle. If not, the cycle failed."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.5, kln = 0.6, ngj = 0.3, mtv = 0.5, lkq = 0.7, bdr = 0.6 }
+# Q rationale: Lakshmana (precision) peaks — what is clean, what needs cleansing.
+# The codebase should be lighter after this cycle.
+audio_phrase = "Sa:400,Ga:400,Pa:400,Sa_high:500,Ni:300,Dha:300,Pa:300,Ga:300,Sa:600"
+lyrics = """महागौरी का प्रकाश — सब शुद्ध हुआ
+मैल धुली, काया निर्मल
+जय माँ शक्ति, पवित्रता की देवी
+Mahāgaurī kā prakāś — sab śuddh huā
+Mail dhulī, kāyā nirmal
+Jai Māṁ Śakti, pavitratā kī devī
+Mahagauri's radiance — all is purified
+Stains washed, the body made pristine
+Jai Maa Shakti, goddess of purity"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Dead_Code_Scan → Legacy_Purge: dead code identified, move to legacy
+[[transitions]]
+from   = "Dead_Code_Scan"
+to     = "Legacy_Purge"
+event  = "dead_code_catalogued"
+guard  = "dead_code_scan_complete"
+action = "record_dead_code_list; calculate_removal_impact; begin_legacy_scan"
+drishti = ["present", "past"]
+# present: is dead code catalogued? past: what code died and when?
+
+# Legacy_Purge → Debt_Settlement: legacy items identified
+[[transitions]]
+from   = "Legacy_Purge"
+to     = "Debt_Settlement"
+event  = "legacy_items_catalogued"
+guard  = "legacy_purge_scan_complete"
+action = "record_legacy_items; assess_removal_risk; begin_debt_scan"
+drishti = ["present", "past", "future"]
+# present: are legacy items identified? past: when deprecated? future: what breaks if removed?
+
+# Debt_Settlement → Purity_Verdict: all debt items reviewed
+[[transitions]]
+from   = "Debt_Settlement"
+to     = "Purity_Verdict"
+event  = "debt_items_reviewed"
+guard  = "all_debt_items_assessed"
+action = "compile_purity_report; calculate_weight_removed; prepare_verdicts"
+drishti = ["present", "up"]
+# present: all debt items reviewed? up: how much weight was removed?
+
+# Legacy_Purge → Dead_Code_Scan: purge reveals more dead code
+[[transitions]]
+from   = "Legacy_Purge"
+to     = "Dead_Code_Scan"
+event  = "purge_reveals_more_dead_code"
+guard  = "removing_legacy_exposes_unused_callers"
+action = "log_newly_dead_code; expand_scan_scope; re_enter_dead_code_scan"
+drishti = ["present", "down"]
+# present: did purge reveal more dead code? down: cascade removal.
+
+# Debt_Settlement → Legacy_Purge: stale doc references deprecated API
+[[transitions]]
+from   = "Debt_Settlement"
+to     = "Legacy_Purge"
+event  = "stale_doc_references_deprecated_api"
+guard  = "doc_references_deprecated_api_not_yet_catalogued"
+action = "log_missed_legacy_item; add_to_legacy_list; re_enter_legacy_purge"
+drishti = ["present", "down"]
+# present: stale doc references deprecated API? down: missed legacy item.
+
+# ── Cross-coupling signals ───────────────────────────────────
+# Purity_Verdict emits: purity_report { removed: [...], deferred: [...], pure: [...], weight_delta: N }
+# This event is consumed by SiddhidatriFsm (NS9) to begin mastery review
+# on a now-clean codebase.
+#
+# MahagauriFsm reads from:
+#   - ShaktiFsm.state (requires Channeled — steady cleansing energy)
+#   - KhatuShyamFsm.cycle_plan (routed here when symptom_type == "friction")
+#   - KaalratriFsm.darkness_findings (pre-loaded targets for Dead_Code_Scan)
+#
+# MahagauriFsm emits to:
+#   - SiddhidatriFsm: purity_report → clean codebase ready for mastery
+#   - KhatuShyamFsm: purity_cycle_complete → navigator can plan follow-ups
+#   - ShaktiFsm: energy_spent → Shakti transitions to Spent

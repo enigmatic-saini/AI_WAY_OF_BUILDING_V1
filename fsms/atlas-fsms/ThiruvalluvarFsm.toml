@@ -1,0 +1,226 @@
+[meta]
+name    = "ThiruvalluvarFsm"
+domain  = "ethics-governance-diverse-wisdom"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# ThiruvalluvarFsm — The Universal Ethicist
+#
+# Thiruvalluvar (possibly 300 BCE - 500 CE) — Tamil poet-saint.
+# Author of Thirukkural: 1330 couplets organized in 133 chapters
+# across 3 books: Aram (Virtue), Porul (Wealth), Inbam (Love).
+#
+# No caste, no religion, no god named. UNIVERSAL ethics.
+# "What is the purpose of knowledge if it does not lead
+# to compassion for all living beings?"
+#
+# The Kural covers governance, economics, ethics, love,
+# agriculture, justice, friendship, and warfare — in
+# couplets of SEVEN words each. Maximum compression.
+#
+# Provides the NON-VEDIC counterweight in the Divine Council.
+# Not opposition — DIVERSITY of philosophical perspective.
+# Prevents groupthink.
+#
+# The cycle: Aram → Ilvazkai → Turaviyal → Arasial
+#            → Amaichiyal → Kootam → Ozhukkam
+#
+# Special: Poyyamai_Trap (deception — the worst sin),
+#          Seyalvinaiyamai (inaction — the second worst)
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Aram"
+description = "Virtue/Ethics — Book 1 of the Kural. The foundation. Before wealth, before love, before governance: VIRTUE. 'Aram seyya virumbu' — Desire to do good. Not because god commands — because it is the nature of a good life. No religious prerequisite."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.2, stb = 0.3, kln = 0.3, ngj = 0.0, mtv = 0.5, lkq = 0.3, bdr = 0.5 }
+# Q rationale: Rukmini (love) moderate — virtue rooted in compassion.
+# Mitravinda (self-choice) — desire to do good, not commanded.
+
+[[states]]
+name        = "Ilvazkai"
+description = "Householder's Life — the ethical person in the world. Not a monk — a PARTICIPANT. 'The householder who feeds the guest, the ascetic, the poor, and the dead — he is the axis of the world.' Ethics must survive contact with reality."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.5, stb = 0.4, kln = 0.4, ngj = 0.2, mtv = 0.5, lkq = 0.4, bdr = 0.7 }
+# Q rationale: Bhadra (belonging) high — the householder IS the axis of the world.
+# Rukmini (love) high — feeding the guest, the poor, the dead.
+
+[[states]]
+name        = "Turaviyal"
+description = "Renunciation — but NOT escape. 'Pattratraan pattrali atruththuk kolal' — let go of attachment, then hold what remains. Valluvar's renunciation is WITHIN the world: release attachment to outcome while still DOING the work. Active detachment."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.4, kln = 0.7, ngj = 0.4, mtv = 0.7, lkq = 0.5, bdr = 0.5 }
+# Q rationale: Mitravinda (self-choice) high — choosing to release attachment.
+# Kalindi (patience) — active detachment within the world.
+
+[[states]]
+name        = "Arasial"
+description = "Governance — Book 2's crown. 'The king who governs with justice is God.' Not divine right — EARNED authority through justice. The ruler's duty: protect the weak, punish the cruel, tax fairly, listen always. Applied: technical leadership."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.7, kln = 0.5, ngj = 0.4, mtv = 0.6, lkq = 0.7, bdr = 0.6 }
+# Q rationale: Lakshmana (precision) high — governance demands just precision.
+# Satyabhama (pride+action) — 'the king who governs with justice is God.'
+
+[[states]]
+name        = "Amaichiyal"
+description = "Council/Ministry — no ruler governs alone. 'The wealth of a king is his ministers.' Choose advisors for competence, not loyalty. Test them. Trust them. But verify. The council must have DIVERSE perspectives — one-voice councils are deaf."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.5, kln = 0.6, ngj = 0.5, mtv = 0.8, lkq = 0.6, bdr = 0.7 }
+# Q rationale: Mitravinda (self-choice) peaks — choose advisors for competence.
+# Bhadra (belonging) — diverse council, multiple perspectives.
+
+[[states]]
+name        = "Kootam"
+description = "Assembly/Community — the governed have voice. 'A country's wealth is not its gold but its people.' The assembly is not decoration — it is the governance mechanism. Applied: user community, open-source contributors, feedback loops."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.5, stb = 0.5, kln = 0.5, ngj = 0.4, mtv = 0.7, lkq = 0.5, bdr = 0.8 }
+# Q rationale: Bhadra (belonging) peaks — 'a country's wealth is its people.'
+# The assembly is the governance mechanism, not decoration.
+
+[[states]]
+name        = "Ozhukkam"
+description = "Propriety/Conduct — the final state. Not rigid rules but NATURAL rightness. 'The world follows the virtuous even without command.' When governance is true, people follow willingly. The system is self-governing. Maximum autonomy through maximum trust."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.8, jmb = 0.6, stb = 0.6, kln = 0.7, ngj = 0.5, mtv = 0.8, lkq = 0.7, bdr = 0.9 }
+# Q rationale: Bhadra (belonging) near peak — 'the world follows the virtuous
+# without command.' Maximum autonomy through maximum trust.
+
+[[states]]
+name        = "Poyyamai_Trap"
+description = "Deception — the worst sin in Valluvar's ethics. 'All lamps are lamps, but the lamp of truth illuminates.' When the system lies: misleading metrics, hidden failures, marketing that overpromises, documentation that deceives. The moment you deceive, governance collapses."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.1, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.0 }
+# Q rationale: Deception destroys everything. All capabilities at zero.
+# The worst sin — 'all lamps are lamps, but the lamp of truth illuminates.'
+
+[[states]]
+name        = "Seyalvinaiyamai"
+description = "Inaction — the second worst. 'Procrastination is the thief of opportunity.' Not laziness — CHOOSING not to act when action is needed. The governor who sees injustice and does nothing. The tech lead who knows the bug but doesn't fix it. Passive complicity."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.0, stb = 0.0, kln = 0.1, ngj = 0.0, mtv = 0.0, lkq = 0.1, bdr = 0.2 }
+# Q rationale: Inaction. Passive complicity. 'Procrastination is the thief of opportunity.'
+# Faint Rukmini — the intent exists but courage does not.
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Aram"
+to     = "Ilvazkai"
+event  = "ethics_grounded"
+guard  = "virtue_understood AND not_theoretical AND ready_for_world"
+action = "enter_the_world_with_ethics; begin_participation"
+drishti = ["present", "future"]
+# present: is virtue grounded, not theoretical? future: ready for the world?
+
+[[transitions]]
+from   = "Ilvazkai"
+to     = "Turaviyal"
+event  = "attachment_recognized"
+guard  = "worldly_success_present AND attachment_to_outcome_visible"
+action = "release_attachment_keep_action; active_detachment"
+drishti = ["present", "up", "silence"]
+# present: is attachment visible? up: is outcome-attachment blocking duty? silence: what remains when attachment releases?
+
+[[transitions]]
+from   = "Turaviyal"
+to     = "Arasial"
+event  = "leadership_needed"
+guard  = "detached_enough_to_govern_fairly AND competence_proven"
+action = "accept_governance_responsibility"
+drishti = ["present", "up", "future"]
+# present: is detachment sufficient to govern fairly? up: is competence proven? future: what does leadership require?
+
+[[transitions]]
+from   = "Arasial"
+to     = "Amaichiyal"
+event  = "council_needed"
+guard  = "single_perspective_insufficient AND advisors_available"
+action = "build_diverse_council; test_before_trusting"
+drishti = ["present", "left", "right"]
+# present: is single perspective insufficient? left/right: what diverse views are available?
+
+[[transitions]]
+from   = "Amaichiyal"
+to     = "Kootam"
+event  = "community_voice_needed"
+guard  = "governance_affects_many AND feedback_mechanism_absent"
+action = "open_assembly; create_feedback_channels"
+drishti = ["present", "down", "left", "right"]
+# present: does governance affect many? down: is feedback mechanism absent? left/right: what voices are missing?
+
+[[transitions]]
+from   = "Kootam"
+to     = "Ozhukkam"
+event  = "natural_order_emerges"
+guard  = "governance_just AND people_willing AND trust_established"
+action = "release_control; system_self_governs"
+drishti = ["present", "up", "silence"]
+# present: is trust established? up: has natural order emerged? silence: is the system self-governing?
+
+# Trap transitions
+[[transitions]]
+from   = "Arasial"
+to     = "Poyyamai_Trap"
+event  = "deception_begins"
+guard  = "metrics_misleading OR failures_hidden OR promises_broken"
+action = "governance_credibility_destroyed; trust_evaporates"
+drishti = ["present", "down"]
+# present: are metrics misleading? down: what truth is being hidden?
+
+[[transitions]]
+from   = "Amaichiyal"
+to     = "Poyyamai_Trap"
+event  = "council_lies"
+guard  = "advisors_tell_leader_what_they_want_to_hear AND truth_suppressed"
+action = "yes_men_disease; governance_blind"
+drishti = ["present", "down"]
+# present: are advisors telling lies? down: what truth is suppressed?
+
+[[transitions]]
+from   = "Poyyamai_Trap"
+to     = "Aram"
+event  = "truth_restored"
+guard  = "lie_acknowledged AND consequences_accepted AND restart_from_virtue"
+action = "return_to_ethical_foundation; rebuild_trust_from_zero"
+drishti = ["present", "past", "silence"]
+# present: is the lie acknowledged? past: what consequences must be accepted? silence: restart from virtue.
+
+[[transitions]]
+from   = "Arasial"
+to     = "Seyalvinaiyamai"
+event  = "inaction_chosen"
+guard  = "problem_visible AND action_needed AND nothing_done"
+action = "log_passive_failure; governance_eroding"
+drishti = ["present", "up"]
+# present: is inaction chosen? up: is the problem visible but ignored?
+
+[[transitions]]
+from   = "Ilvazkai"
+to     = "Seyalvinaiyamai"
+event  = "comfortable_inaction"
+guard  = "duty_known AND difficulty_avoided AND comfort_chosen"
+action = "log_passive_failure; ethics_eroding"
+drishti = ["present", "up"]
+# present: is duty being avoided? up: is comfort chosen over action?
+
+[[transitions]]
+from   = "Seyalvinaiyamai"
+to     = "Ilvazkai"
+event  = "action_taken"
+guard  = "shame_of_inaction_felt AND courage_found"
+action = "resume_participation; better_late_than_never"
+drishti = ["present", "future"]
+# present: is shame of inaction felt? future: is action finally taken?

@@ -1,0 +1,152 @@
+[meta]
+name    = "ShaktiFsm"
+domain  = "trimurti-energy"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# ShaktiFsm — Primordial Energy
+#
+# Coupled to ShivaFsm. Shakti is the energy that moves all
+# things. Without Shakti, Shiva is Shava (corpse) — still but
+# lifeless. Without Shiva, Shakti has no direction — energy
+# without form is chaos.
+#
+# Shakti is the force behind every transition in the entire
+# system. She is not a single action but the underlying
+# capacity for action. When she is Latent, the system rests.
+# When she is Aroused, something must change. When she is
+# Channeled, that change has direction and precision.
+#
+# Shakti also feeds Brahma's creation (creation needs energy)
+# and Vishnu's sustenance (preservation needs energy). She is
+# not exclusive to Shiva — but her deepest coupling is with
+# the transformer.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Latent"
+description = "Energy exists but is not directed. The system is at rest. All potential, no kinetic. This is not absence — it is coiled readiness."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.1, kln = 0.1, ngj = 0.1, mtv = 0.1, lkq = 0.1, bdr = 0.1 }
+
+[[states]]
+name        = "Aroused"
+description = "A need for change has been detected. Energy stirs. Something in the system requires transformation, creation, or intervention. Not yet directed."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.1, kln = 0.2, ngj = 0.1, mtv = 0.2, lkq = 0.2, bdr = 0.2 }
+
+[[states]]
+name        = "Channeled"
+description = "Energy is directed precisely. Shakti knows what must change and is powering the appropriate divine function — Brahma, Vishnu, or Shiva."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.2, kln = 0.3, ngj = 0.2, mtv = 0.3, lkq = 0.3, bdr = 0.3 }
+
+[[states]]
+name        = "Overflowing"
+description = "Too much energy, not enough direction. Multiple simultaneous needs compete. Risk of chaos. Requires prioritization before channeling."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.2, kln = 0.3, ngj = 0.2, mtv = 0.3, lkq = 0.3, bdr = 0.3 }
+
+[[states]]
+name        = "Spent"
+description = "Transformation complete. Energy expended. Shakti rests. The system returns to equilibrium before the next arousal."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.3, kln = 0.4, ngj = 0.3, mtv = 0.4, lkq = 0.4, bdr = 0.4 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Latent → Aroused: system detects need for change
+[[transitions]]
+from   = "Latent"
+to     = "Aroused"
+event  = "need_detected"
+guard  = "change_needed_somewhere"
+action = "identify_change_domain; classify_need_type; log_shakti_stirs"
+drishti = ["present", "down"]
+
+# Aroused → Channeled: need is clear, energy directed to one target
+[[transitions]]
+from   = "Aroused"
+to     = "Channeled"
+event  = "direction_found"
+guard  = "single_clear_need AND target_divine_function_identified"
+action = "direct_energy_to_target; log_shakti_channeled"
+drishti = ["present", "past"]
+
+# Aroused → Overflowing: multiple competing needs, no clear priority
+[[transitions]]
+from   = "Aroused"
+to     = "Overflowing"
+event  = "multiple_needs"
+guard  = "competing_needs_detected"
+action = "enumerate_competing_needs; request_prioritization; log_overflow"
+drishti = ["present", "down"]
+
+# Overflowing → Channeled: prioritization resolved
+[[transitions]]
+from   = "Overflowing"
+to     = "Channeled"
+event  = "priority_resolved"
+guard  = "highest_priority_need_selected"
+action = "direct_energy_to_priority; defer_remaining_needs; log_overflow_resolved"
+drishti = ["present", "down", "up"]
+
+# Overflowing → Latent: all needs cancelled or resolved externally
+[[transitions]]
+from   = "Overflowing"
+to     = "Latent"
+event  = "needs_dissolved"
+guard  = "no_remaining_needs"
+action = "log_overflow_dissolved"
+drishti = ["present", "down"]
+
+# Channeled → Spent: work complete
+[[transitions]]
+from   = "Channeled"
+to     = "Spent"
+event  = "work_complete"
+guard  = "target_acknowledged_completion"
+action = "release_energy; log_shakti_spent"
+drishti = ["present", "up"]
+
+# Channeled → Aroused: target rejected the energy (not ready)
+[[transitions]]
+from   = "Channeled"
+to     = "Aroused"
+event  = "target_not_ready"
+guard  = "target_rejected_or_deferred"
+action = "retract_energy; reassess_direction; log_redirect"
+drishti = ["present", "silence"]
+
+# Spent → Latent: rest complete, coiled readiness returns
+[[transitions]]
+from   = "Spent"
+to     = "Latent"
+event  = "rest_complete"
+guard  = ""
+action = "reset_energy_metrics; log_shakti_rests"
+drishti = ["present", "up"]
+
+# Latent → Latent: tick while at rest (no-op)
+[[transitions]]
+from   = "Latent"
+to     = "Latent"
+event  = "tick"
+guard  = "no_change_needed"
+action = ""
+drishti = ["present", "down"]
+
+# ── Cross-coupling signals ───────────────────────────────────
+# Channeled → Shiva: shakti_aroused event on ShivaFsm
+# Channeled → Brahma: energy_available event on BrahmaFsm
+# Channeled → Vishnu: energy_available event on VishnuFsm
+# Spent → Shiva: signal_shakti_spent (Shiva returns to Still)

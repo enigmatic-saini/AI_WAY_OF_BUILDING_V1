@@ -1,0 +1,275 @@
+[meta]
+name    = "KabirFsm"
+domain  = "liberation-anti-hypocrisy"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# KabirFsm — The Weaver of Truth
+#
+# Kabir Das — illiterate weaver, greatest Hindi poet.
+# Neither Hindu nor Muslim. "Na main mandir, na main masjid."
+# His weapon: the DOHA — two lines that destroy pretense.
+#
+# "Guru Govind dono khade, kaake laagoon paaye,
+#  Balihari Guru aapne, Govind diyo bataaye."
+#
+# The cycle: Bhram → Satsung → Saakhi → Jhini → Ulta
+#            → Sahaj → Amardas → Ram_Naam
+#
+# Special: Pandit_Trap (learned but hollow),
+#          Mullah_Trap (devout but blind)
+#
+# Kabir doesn't care about your credentials.
+# He cares about your CLOTH — is it real or fake?
+# The weaver knows fabric. He knows when the thread is rotten.
+# ─────────────────────────────────────────────────────────────
+
+[bhakti]
+emotions    = ["justice", "defiance"]
+energy      = "cutting"
+structure   = "verse-chorus"
+bpm_range   = [90, 115]
+weirdness   = 35
+influence   = 75
+vocal       = "male"
+evie_style  = "Protest Folk, Raw Male Vocals, Acoustic, Stripped Down, Confrontational"
+metaphors   = [
+    "the weaver who sees when the thread is rotten",
+    "Neither temple nor mosque — truth is in the breath",
+    "Reading books, the world died, nobody became wise",
+    "Is God deaf? Why do you shout?",
+]
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Bhram"
+description = "Delusion — lost in ritual, labels, borrowed identity. 'Mala pherat jug gaya, mita na man ka pher' — you turned the rosary for ages, the mind's turnings didn't stop. Going through motions. Process without substance."
+is_initial  = true
+is_terminal = false
+# Q rationale: Pure delusion — going through motions. All near zero.
+# Natural fit (bdr) low — delusion is not natural, it's conditioned.
+Q           = { rkm = 0.0, jmb = 0.0, stb = 0.1, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.2 }
+
+[[states]]
+name        = "Satsung"
+description = "True Company — the first honest encounter. Not a temple, not a mosque — a PERSON who lives truth. Could be a cobbler, a weaver, a washerwoman. 'Pothi padh padh jag mua, pandit bhaya na koye' — reading books, the world died, nobody became wise."
+is_initial  = false
+is_terminal = false
+# Q rationale: First honest encounter. Authentic choice (mtv) rising — chose truth over ritual.
+# Natural fit (bdr) rising — Satsung is natural, not institutional.
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.2, kln = 0.3, ngj = 0.2, mtv = 0.5, lkq = 0.2, bdr = 0.4 }
+
+[[states]]
+name        = "Saakhi"
+description = "Witness-Poem — Kabir's dohas as scalpel. Each two-line verse cuts ONE illusion. 'Dukh mein sumiran sab kare, sukh mein kare na koye' — everyone prays in pain, nobody in joy. The doha is the unit test — it either passes or it doesn't."
+is_initial  = false
+is_terminal = false
+# Q rationale: The doha cuts. Precision (lkq) rising — each doha is surgical.
+# Fierce pride (stb) rising — it takes courage to cut illusions.
+# Impossible spec (ngj) — two lines that destroy an entire worldview.
+Q           = { rkm = 0.4, jmb = 0.3, stb = 0.5, kln = 0.3, ngj = 0.5, mtv = 0.6, lkq = 0.5, bdr = 0.4 }
+
+[[states]]
+name        = "Jhini"
+description = "The Fine Cloth — 'Jhini jhini bini chadariya' — delicately, delicately I wove this cloth. The body-life as handloom work. Sun and moon are the yarn. Ida-Pingala the threads. Each breath a shuttle pass. Honest work = honest life."
+is_initial  = false
+is_terminal = false
+# Q rationale: Honest work — weaving truth into daily life. Endurance (jmb) rising —
+# weaving is patient labor. Precision (lkq) high — the cloth must be fine.
+# Natural fit (bdr) high — weaving is Kabir's nature.
+Q           = { rkm = 0.5, jmb = 0.6, stb = 0.5, kln = 0.6, ngj = 0.5, mtv = 0.7, lkq = 0.7, bdr = 0.7 }
+
+[[states]]
+name        = "Ulta"
+description = "The Upside-Down — 'Ulta baans pe chadhegi chadariya' — the cloth will climb the upside-down bamboo. Kabir's paradoxes: the ocean in the fish, the fire in wood, the butter in milk. Truth is INVERTED from what the world teaches. When you see this, you laugh."
+is_initial  = false
+is_terminal = false
+# Q rationale: Paradox — seeing truth inverted. Impossible spec (ngj) high — the upside-down
+# is the ultimate impossible insight. Authentic choice (mtv) high — laughter replaces dogma.
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.6, kln = 0.5, ngj = 0.8, mtv = 0.8, lkq = 0.6, bdr = 0.6 }
+
+[[states]]
+name        = "Sahaj"
+description = "Natural/Simple — no ceremony left, no pretense possible. The weaver weaves, the breather breathes. 'Sahaj mile so doodh hai, maanga mile so paani' — what comes naturally is milk, what's begged for is water. Effortless simplicity."
+is_initial  = false
+is_terminal = false
+# Q rationale: Effortless simplicity. Authentic choice (mtv) near peak — sahaj is the purest
+# authenticity. Natural fit (bdr) high — sahaj IS natural. Patience (kln) high.
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.6, kln = 0.8, ngj = 0.7, mtv = 0.9, lkq = 0.7, bdr = 0.9 }
+
+[[states]]
+name        = "Amardas"
+description = "Deathless — 'Kabir mua tab kya hua, jo koi mue na roye' — when Kabir dies, what of it, let no one weep. Death is the final hypocrisy test. If you lived truly, there's nothing to mourn. The cloth returns to the loom."
+is_initial  = false
+is_terminal = false
+# Q rationale: Death accepted — near-peak. Fierce pride (stb) high — facing death laughing.
+# Endurance (jmb) at peak — survived the entire path. Patience (kln) at peak.
+Q           = { rkm = 0.8, jmb = 0.9, stb = 0.8, kln = 0.9, ngj = 0.8, mtv = 0.9, lkq = 0.8, bdr = 0.8 }
+
+[[states]]
+name        = "Ram_Naam"
+description = "The Name — not Ram the king. Not Allah the book-god. The SOUND that IS existence. 'Kabir khada bazaar mein, sabki maange khair' — Kabir stands in the marketplace, wishing everyone well. No temple needed. The Name lives in the breath."
+is_initial  = false
+is_terminal = true
+# Q rationale: Peak state — merged with the Name. Strategic love (rkm) at peak — wishing all well.
+# Authentic choice (mtv) at peak — the Name IS authenticity. All capabilities at peak.
+Q           = { rkm = 1.0, jmb = 0.9, stb = 0.8, kln = 1.0, ngj = 0.9, mtv = 1.0, lkq = 0.9, bdr = 1.0 }
+
+[[states]]
+name        = "Pandit_Trap"
+description = "The Scholar's Prison — knows all scriptures, quotes all verses, follows all rituals. Zero realization. 'Padhi padhi ke pathar bhaya' — studied so much, became stone. The ceremony replaced the substance. Worse than ignorance — confident ignorance."
+is_initial  = false
+is_terminal = false
+# Q rationale: Knowledge without realization. Precision (lkq) moderate — knows the texts.
+# But authentic choice (mtv) zero — ceremony replaced substance. All real capability absent.
+Q           = { rkm = 0.1, jmb = 0.3, stb = 0.4, kln = 0.0, ngj = 0.2, mtv = 0.0, lkq = 0.4, bdr = 0.1 }
+
+[[states]]
+name        = "Mullah_Trap"
+description = "The Zealot's Prison — prays five times, fasts thirty days, judges everyone. 'Kankar pathar jod ke, masjid lai chunay / Ta chadh mulla baang de, kya bahra hua khudai?' — built a mosque of stone, climbed up to shout — is God deaf? Devotion without sight."
+is_initial  = false
+is_terminal = false
+# Q rationale: Mechanical devotion — endurance (jmb) moderate (fasts and prays on schedule).
+# Fierce pride (stb) high but corrupted — judges others. Authentic choice (mtv) zero.
+Q           = { rkm = 0.0, jmb = 0.4, stb = 0.5, kln = 0.0, ngj = 0.1, mtv = 0.0, lkq = 0.2, bdr = 0.1 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Bhram"
+to     = "Satsung"
+event  = "honest_encounter"
+guard  = "met_living_truth AND not_just_another_book"
+action = "crack_first_pretense; log_source_of_encounter"
+drishti = ["present", "down", "silence"]
+# present: is this encounter real? down: what specifically cracked?
+# silence: should you remain in delusion?
+
+[[transitions]]
+from   = "Bhram"
+to     = "Pandit_Trap"
+event  = "knowledge_without_practice"
+guard  = "scriptures_memorized AND rituals_perfected AND heart_unchanged"
+action = "crystallize_learned_ego"
+drishti = ["present", "up"]
+# present: is the heart unchanged? up: does scholarship serve anything higher?
+
+[[transitions]]
+from   = "Bhram"
+to     = "Mullah_Trap"
+event  = "devotion_without_sight"
+guard  = "prayers_mechanical AND others_judged AND god_made_external"
+action = "crystallize_pious_ego"
+drishti = ["present", "up"]
+# present: is devotion mechanical? up: is God really external and deaf?
+
+[[transitions]]
+from   = "Pandit_Trap"
+to     = "Satsung"
+event  = "doha_strikes"
+guard  = "ego_cracked_by_simple_truth AND willing_to_unlearn"
+action = "abandon_credentials; begin_as_beginner"
+drishti = ["present", "down", "past"]
+# present: has the ego cracked? down: what simple truth struck?
+# past: all those scriptures — what did they miss?
+
+[[transitions]]
+from   = "Mullah_Trap"
+to     = "Satsung"
+event  = "doha_strikes"
+guard  = "ego_cracked_by_simple_truth AND willing_to_unlearn"
+action = "abandon_piety_theater; begin_as_beginner"
+drishti = ["present", "down", "past"]
+# present: has the ego cracked? down: what simple truth struck?
+# past: all those prayers — what did they miss?
+
+[[transitions]]
+from   = "Satsung"
+to     = "Saakhi"
+event  = "first_verse_cuts"
+guard  = "illusion_identified AND honesty_present"
+action = "receive_doha; apply_to_self_not_others"
+drishti = ["present", "down", "left"]
+# present: which illusion is cut? down: apply to self, not others.
+# left: what other illusions remain?
+
+[[transitions]]
+from   = "Saakhi"
+to     = "Jhini"
+event  = "dohas_internalized"
+guard  = "multiple_illusions_cut AND honest_work_valued"
+action = "begin_weaving_truth_into_daily_life"
+drishti = ["present", "down", "future"]
+# present: are dohas internalized, not just memorized? down: what is the daily work?
+# future: the cloth being woven — what will it become?
+
+[[transitions]]
+from   = "Jhini"
+to     = "Ulta"
+event  = "paradox_seen"
+guard  = "conventional_wisdom_inverted AND laughter_arises"
+action = "see_the_upside_down; dissolve_categories"
+drishti = ["present", "up", "left", "right"]
+# present: is the paradox seen? up: the cosmic joke — truth is inverted.
+# left/right: both sides of every duality dissolve.
+
+[[transitions]]
+from   = "Ulta"
+to     = "Sahaj"
+event  = "simplicity_arrives"
+guard  = "no_ceremony_needed AND no_pretense_possible AND just_living"
+action = "drop_all_apparatus; be_natural"
+drishti = ["present", "silence"]
+# present: is simplicity real? silence: the apparatus drops — what remains?
+
+[[transitions]]
+from   = "Sahaj"
+to     = "Amardas"
+event  = "death_accepted"
+guard  = "no_fear_of_ending AND life_was_true AND cloth_is_clean"
+action = "face_death_laughing"
+drishti = ["present", "future", "silence"]
+# present: is the cloth clean? future: death approaches — is it welcome?
+# silence: nothing to say. The weaver's work is done.
+
+[[transitions]]
+from   = "Amardas"
+to     = "Ram_Naam"
+event  = "name_remains"
+guard  = "body_dropped AND sound_continues AND marketplace_blessed"
+action = "merge_with_the_Name; wish_everyone_well"
+drishti = ["present", "up", "silence"]
+# present: the body is dropped. up: the Name pervades everything.
+# silence: beyond words — only the Name remains.
+
+# Relapse — honesty is hard, pretense is comfortable
+[[transitions]]
+from   = "Saakhi"
+to     = "Pandit_Trap"
+event  = "dohas_become_collection"
+guard  = "quoting_kabir_without_living_kabir AND ego_returns"
+action = "log_irony; kabir_would_laugh"
+drishti = ["present", "past"]
+# present: are you quoting Kabir or BEING Kabir? past: the ego you thought you cut — it returned.
+
+[[transitions]]
+from   = "Saakhi"
+to     = "Bhram"
+event  = "comfort_chosen"
+guard  = "truth_too_painful AND old_rituals_resumed"
+action = "return_to_delusion; preserve_doha_residue"
+drishti = ["present", "past", "silence"]
+# present: is truth being abandoned? past: the dohas heard — they leave a residue.
+# silence: should you stop seeking entirely?
+
+[[transitions]]
+from   = "Jhini"
+to     = "Bhram"
+event  = "thread_snaps"
+guard  = "honest_work_abandoned AND shortcuts_taken"
+action = "cloth_ruined; restart_weaving"
+drishti = ["present", "down"]
+# present: has the thread snapped? down: what shortcut was taken?

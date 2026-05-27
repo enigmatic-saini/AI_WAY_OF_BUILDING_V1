@@ -1,0 +1,226 @@
+# AshtabharyaOrchestratorFsm — The Eight Queens as Creative Council
+# v1.0
+#
+# ���ष्टभार्या — आठ रान���याँ, आठ शक्तियाँ, एक द्वा��का
+# Aṣṭabhāryā — āṭh rāniyāṁ, āṭh śaktiyāṁ, ek Dvārakā
+# (Ashtabharya — eight queens, eight powers, one Dwaraka)
+#
+# Krishna's eight principal queens are not eight wives — they are
+# eight DIMENSIONS of creative capability. Together they form
+# Dwaraka: the golden city that rose from the sea. Each queen
+# governs a different aspect of creation:
+#
+#   1. Rukmini    — Strategy + Love     (the plan AND the passion)
+#   2. Jambavati  — Endurance + Proof   (28 days of honest battle)
+#   3. Satyabhama — Pride + Action      (fierce fire that liberates)
+#   4. Kalindi    — Patience + Standard (the river brings what's worthy)
+#   5. Nagnajiti  — Challenge + Scale   (seven bulls, zero compromise)
+#   6. Mitravinda — Self-Choice + Courage (the garland against the family)
+#   7. Lakshmana  — Precision + Focus   (one arrow, one eye, one shot)
+#   8. Bhadra     — Belonging + Peace   (the natural fit, no drama)
+#
+# Together they answer EVERY creative situation:
+#   - Need a plan? → Rukmini
+#   - Need to outlast? → Jambavati
+#   - Need to fight? → Satyabhama
+#   - Need to wait? → Kalindi
+#   - Need to do the impossible? → Nagnajiti
+#   - Need to choose against pressure? → Mitravinda
+#   - Need one perfect shot? → Lakshmana
+#   - Need to just belong? → Bhadra
+#
+# The orchestrator dispatches to the right queen based on the
+# creative situation. It can also invoke multiple queens in
+# sequence or parallel for complex compositions.
+#
+# This is the DWARAKA ENGINE — the complete creative council.
+
+[meta]
+name        = "AshtabharyaOrchestratorFsm"
+domain      = "ashtabharya-council"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Dwaraka_Sabha"
+description = "The Court of Dwaraka — all eight queens assembled. The creative challenge is presented. The orchestrator surveys the situation and determines which queen (or combination) is needed. Like Khatu Shyam for the divine cycles, Dwaraka Sabha is the dispatcher for the Ashtabharya."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.3, kln = 0.5, ngj = 0.3, mtv = 0.5, lkq = 0.5, bdr = 0.5 }
+# Q rationale: All capabilities moderate — the court is assembled, ready to dispatch.
+# Balanced surveying before choosing which queen(s) are needed.
+
+[[states]]
+name        = "Ek_Rani"
+description = "Single Queen — one queen dispatched for a focused creative task. The situation maps cleanly to one dimension. Simple, direct, powerful."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.4, stb = 0.4, kln = 0.4, ngj = 0.4, mtv = 0.5, lkq = 0.6, bdr = 0.4 }
+# Q rationale: Focused single-dimension creative task.
+# Lakshmana (precision) — one queen, one focus, one power.
+
+[[states]]
+name        = "Dvandva"
+description = "Queen Pair — two queens dispatched together. The creative challenge spans two dimensions. Common pairs: Rukmini+Satyabhama (strategy+fire), Kalindi+Lakshmana (patience+precision), Jambavati+Nagnajiti (endurance+impossible), Mitravinda+Bhadra (choice+belonging)."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.5, kln = 0.5, ngj = 0.5, mtv = 0.5, lkq = 0.6, bdr = 0.5 }
+# Q rationale: Two dimensions engaged — broader capability engagement.
+
+[[states]]
+name        = "Chaturanga"
+description = "Four Queens ��� half the council for complex creative challenges. The composition needs strategy AND endurance AND precision AND patience. Four queens work in sequence or parallel, each addressing their dimension."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.6, kln = 0.6, ngj = 0.6, mtv = 0.6, lkq = 0.7, bdr = 0.6 }
+# Q rationale: Four queens — half the council. Multiple capabilities rising together.
+
+[[states]]
+name        = "Purna_Sabha"
+description = "Full Council — all eight queens for the most complex creative challenge. Every dimension must be addressed. The song must be strategic AND enduring AND fierce AND patient AND impossible AND self-chosen AND precise AND natural. This is the DWARAKA GRAND — the complete creative audit."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.9, jmb = 0.8, stb = 0.8, kln = 0.8, ngj = 0.8, mtv = 0.8, lkq = 0.9, bdr = 0.9 }
+# Q rationale: All eight queens — all capabilities near peak.
+# The DWARAKA GRAND — the complete creative audit.
+
+[[states]]
+name        = "Dwaraka_Siddhi"
+description = "Dwaraka Achievement — the creative challenge resolved. The golden city stands. The composition carries all the dimensions it needs. The council rests until the next challenge."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.7, kln = 0.7, ngj = 0.7, mtv = 0.7, lkq = 0.8, bdr = 0.8 }
+# Q rationale: Achievement. The golden city stands.
+# The composition carries all the dimensions it needs.
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Dwaraka_Sabha"
+to     = "Ek_Rani"
+event  = "single_dimension_clear"
+guard  = "challenge_maps_to_one_queen"
+action = "dispatch_single_queen; log_ek_rani"
+drishti = ["present", "down"]
+# present: which dimension is needed? down: is single queen sufficient?
+
+[[transitions]]
+from   = "Dwaraka_Sabha"
+to     = "Dvandva"
+event  = "two_dimensions_needed"
+guard  = "challenge_spans_two_domains"
+action = "dispatch_queen_pair; log_dvandva"
+drishti = ["present", "left", "right"]
+# present: two dimensions needed? left/right: which pair of queens?
+
+[[transitions]]
+from   = "Dwaraka_Sabha"
+to     = "Chaturanga"
+event  = "complex_challenge"
+guard  = "four_dimensions_needed"
+action = "dispatch_four_queens; log_chaturanga"
+drishti = ["present", "down", "left", "right"]
+# present: complex challenge? down: which four dimensions? left/right: which queens?
+
+[[transitions]]
+from   = "Dwaraka_Sabha"
+to     = "Purna_Sabha"
+event  = "grand_challenge"
+guard  = "all_dimensions_needed OR magnum_opus"
+action = "invoke_all_eight; full_dwaraka; log_purna_sabha"
+drishti = ["present", "up", "down", "left", "right", "past", "future", "silence"]
+# All directions scanned — grand challenge requires the complete council.
+
+[[transitions]]
+from   = "Ek_Rani"
+to     = "Dwaraka_Siddhi"
+event  = "single_queen_succeeds"
+guard  = "creative_challenge_resolved"
+action = "queen_returns_to_court; log_siddhi"
+drishti = ["present", "up"]
+# present: is challenge resolved? up: does solution serve the whole?
+
+[[transitions]]
+from   = "Dvandva"
+to     = "Dwaraka_Siddhi"
+event  = "pair_succeeds"
+guard  = "both_dimensions_resolved"
+action = "queens_return; log_siddhi"
+drishti = ["present", "up"]
+# present: both dimensions resolved? up: integrated successfully?
+
+[[transitions]]
+from   = "Dvandva"
+to     = "Chaturanga"
+event  = "escalation_needed"
+guard  = "pair_insufficient AND more_dimensions_needed"
+action = "add_two_more_queens; log_escalation"
+drishti = ["present", "down"]
+# present: pair insufficient? down: which additional dimensions needed?
+
+[[transitions]]
+from   = "Chaturanga"
+to     = "Dwaraka_Siddhi"
+event  = "four_queens_succeed"
+guard  = "four_dimensions_resolved"
+action = "queens_return; log_siddhi"
+drishti = ["present", "up"]
+# present: four dimensions resolved? up: integrated successfully?
+
+[[transitions]]
+from   = "Chaturanga"
+to     = "Purna_Sabha"
+event  = "full_council_needed"
+guard  = "four_insufficient AND all_dimensions_needed"
+action = "invoke_remaining_four; log_full_escalation"
+drishti = ["present", "down"]
+# present: four insufficient? down: invoke remaining queens.
+
+[[transitions]]
+from   = "Purna_Sabha"
+to     = "Dwaraka_Siddhi"
+event  = "grand_composition_complete"
+guard  = "all_eight_dimensions_addressed"
+action = "dwaraka_achieved; golden_city_stands; log_grand_siddhi"
+drishti = ["present", "up", "silence"]
+# present: all eight dimensions addressed? up: golden city stands? silence: completion.
+
+[[transitions]]
+from   = "Dwaraka_Siddhi"
+to     = "Dwaraka_Sabha"
+event  = "next_challenge"
+guard  = "new_creative_task_arrives"
+action = "reassemble_council; log_new_session"
+drishti = ["present", "future"]
+# present: new challenge arrives? future: reassemble the council.
+
+# -- Dispatch Table ------------------------------------------------
+#
+# | Situation                              | Queen(s)                    | Tag  |
+# |----------------------------------------|-----------------------------|------|
+# | Need a plan with heart                 | Rukmini                     | RKM  |
+# | Need to outlast and prove              | Jambavati                   | JMB  |
+# | Need fierce action, kill the demon     | Satyabhama                  | STB  |
+# | Need patient contemplation             | Kalindi                     | KLN  |
+# | Need to satisfy impossible spec        | Nagnajiti                   | NGJ  |
+# | Need to choose against pressure        | Mitravinda                  | MTV  |
+# | Need one perfect surgical shot         | Lakshmana                   | LKQ  |
+# | Need natural organic fit               | Bhadra                      | BDR  |
+# | Strategy + Fire                        | Rukmini + Satyabhama        | RS   |
+# | Patience + Precision                   | Kalindi + Lakshmana         | KL   |
+# | Endurance + Impossible                 | Jambavati + Nagnajiti       | JN   |
+# | Self-Choice + Belonging                | Mitravinda + Bhadra         | MB   |
+# | Full creative audit                    | All Eight                   | AB*  |
+#
+# The Ashtabharya principle:
+#   "Krishna did not have eight wives because he was greedy.
+#    He had eight wives because creation requires eight dimensions.
+#    Strategy alone is cold. Fire alone burns. Patience alone stalls.
+#    Precision alone is brittle. All eight together build Dwaraka —
+#    the golden city that rises from the sea."

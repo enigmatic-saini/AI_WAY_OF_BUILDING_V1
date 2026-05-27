@@ -1,0 +1,256 @@
+[meta]
+name    = "ChanakyaFsm"
+domain  = "strategy-statecraft"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# ChanakyaFsm — The Ruthless Strategist
+#
+# Kautilya / Vishnugupta / Chanakya — the kingmaker.
+# Author of Arthashastra. Destroyed the Nanda dynasty
+# with one brahmin's intellect and zero armies of his own.
+#
+# "A person should not be too honest. Straight trees are
+# cut first and honest people are screwed first."
+#
+# The cycle: Apmaan → Pratigya → Chhandma → Mandala → Danda
+#            → Kosha → Shasana → Tyaga
+#
+# Special: Vishwas_Bhanga (trust broken — betrayal),
+#          Rajya_Nashta (kingdom lost — strategy failed)
+#
+# The FSM tracks: allies, enemies, treasury, intelligence.
+# Every state has a cost. Chanakya never forgets who owes what.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Apmaan"
+description = "Insult — the origin. Dragged from Nanda's court by his shikha. Not rage — COLD calculation begins. 'I will uproot this dynasty.' The insult is fuel, not wound. Every great strategy begins with a refused reality."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.3, stb = 0.6, kln = 0.0, ngj = 0.0, mtv = 0.3, lkq = 0.2, bdr = 0.0 }
+# Q rationale: Satyabhama (fierce fire) ignites — insult is fuel, not wound.
+# Bhadra zero — dragged from court, belonging destroyed.
+
+[[states]]
+name        = "Pratigya"
+description = "The Vow — shikha untied, oath taken. 'Until the Nanda tree is uprooted, I will not tie my hair.' Irreversible commitment. No emotion — pure strategic intent crystallized into a single sentence."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.7, kln = 0.3, ngj = 0.1, mtv = 0.5, lkq = 0.4, bdr = 0.0 }
+# Q rationale: Satyabhama (fierce pride) — shikha untied, oath taken.
+# Mitravinda (self-choice) — irreversible commitment, chosen freely.
+
+[[states]]
+name        = "Chhandma"
+description = "Disguise/Intelligence — Chanakya becomes invisible. Gathering intelligence, mapping networks, identifying the pawn (Chandragupta). Sama (persuasion), Dana (incentive), Bheda (division) — weapons readied BEFORE the war."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.4, kln = 0.6, ngj = 0.5, mtv = 0.5, lkq = 0.7, bdr = 0.2 }
+# Q rationale: Lakshmana (precision) high — intelligence gathering must be precise.
+# Kalindi (patience) — patience present while mapping networks.
+
+[[states]]
+name        = "Mandala"
+description = "Circle of Kings — the alliance matrix. Enemy's enemy is friend. Categorize every player: Ari (enemy), Mitra (ally), Madhyama (neutral), Udasina (indifferent). 12-king mandala mapped. No permanent friends, only permanent interests."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.5, stb = 0.5, kln = 0.5, ngj = 0.6, mtv = 0.6, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) peaks — 12-king mandala mapped precisely.
+# Rukmini (strategic love) — permanent interests, not permanent friends.
+
+[[states]]
+name        = "Danda"
+description = "Force/Punishment — when Sama-Dana-Bheda fail, Danda speaks. Military deployment, economic warfare, assassination if needed. 'A debt, an enemy, and a disease — must be destroyed at the root.' Surgical, proportional, decisive."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.7, stb = 0.9, kln = 0.1, ngj = 0.5, mtv = 0.5, lkq = 0.7, bdr = 0.1 }
+# Q rationale: Satyabhama (fierce force) peaks — when diplomacy fails, Danda speaks.
+# Jambavati (endurance) — war demands stamina. Surgical, proportional, decisive.
+
+[[states]]
+name        = "Kosha"
+description = "Treasury — the real power. An army marches on gold, not morale. Revenue systems, taxation, trade routes, resource allocation. 'The root of wealth is economic activity.' No treasury = no sovereignty."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.5, kln = 0.6, ngj = 0.4, mtv = 0.4, lkq = 0.7, bdr = 0.4 }
+# Q rationale: Lakshmana (precision) — revenue systems, taxation, exact accounting.
+# Kalindi (patience) — 'the root of wealth is economic activity.' Steady growth.
+
+[[states]]
+name        = "Shasana"
+description = "Governance — Chandragupta on the throne, Chanakya behind it. Law, administration, spy network, welfare. The state runs like a machine. 'The king's happiness lies in the happiness of his subjects.' Not kindness — strategy."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.6, kln = 0.6, ngj = 0.5, mtv = 0.5, lkq = 0.7, bdr = 0.6 }
+# Q rationale: All capabilities moderate-high. The state runs like a machine.
+# 'The king's happiness lies in the happiness of his subjects.'
+
+[[states]]
+name        = "Tyaga"
+description = "Renunciation — the final move. Chanakya walks away. No title, no court, no power retained. Goes to the forest. The ultimate strategist's move: prove you never wanted the throne. Shikha tied. Vow complete."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.5, jmb = 0.7, stb = 0.3, kln = 0.8, ngj = 0.6, mtv = 0.9, lkq = 0.5, bdr = 0.4 }
+# Q rationale: Mitravinda (self-choice) at peak — the choice to walk away.
+# Kalindi (patience) — waited until the kingdom was stable. Shikha tied.
+
+[[states]]
+name        = "Vishwas_Bhanga"
+description = "Trust Broken — betrayal from within. The spy turned, the ally defected, the treasury leaked. Not despair — recalculation. 'Before you start a war, ask yourself: is the enemy within?' Worse than external attack."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.4, kln = 0.0, ngj = 0.2, mtv = 0.2, lkq = 0.5, bdr = 0.0 }
+# Q rationale: Betrayal. Bhadra (belonging) zero — trust destroyed.
+# Lakshmana (precision) retains — must identify the traitor precisely.
+
+[[states]]
+name        = "Rajya_Nashta"
+description = "Kingdom Lost — strategy failed. Territory taken, resources gone. Not the end — Chanakya lost battles before winning the war. 'Even if a snake is not poisonous, it should pretend to be.' Retreat, regroup, recalculate."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.4, stb = 0.3, kln = 0.2, ngj = 0.1, mtv = 0.3, lkq = 0.3, bdr = 0.0 }
+# Q rationale: Kingdom lost. Jambavati (endurance) — survive to fight again.
+# 'Even if a snake is not poisonous, it should pretend to be.'
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Apmaan"
+to     = "Pratigya"
+event  = "insult_crystallizes"
+guard  = "anger_transmuted_to_strategy AND no_impulsive_reaction"
+action = "untie_shikha; record_oath; identify_enemy"
+drishti = ["present", "future"]
+# present: has anger transmuted to strategy? future: what is the oath?
+
+[[transitions]]
+from   = "Pratigya"
+to     = "Chhandma"
+event  = "intelligence_gathering_begins"
+guard  = "oath_recorded AND target_identified AND patience_present"
+action = "go_underground; deploy_initial_spies"
+drishti = ["present", "down", "future"]
+# present: is oath recorded? down: who is the pawn? future: what intelligence is needed?
+
+[[transitions]]
+from   = "Chhandma"
+to     = "Mandala"
+event  = "map_complete"
+guard  = "key_players_identified AND pawn_found AND weaknesses_catalogued"
+action = "construct_alliance_matrix; categorize_all_players"
+drishti = ["present", "left", "right"]
+# present: are key players identified? left/right: who is friend, who is foe?
+
+[[transitions]]
+from   = "Mandala"
+to     = "Danda"
+event  = "diplomacy_exhausted"
+guard  = "sama_dana_bheda_tried AND enemy_not_neutralized"
+action = "deploy_force; log_reason_for_escalation"
+drishti = ["present", "past", "future"]
+# present: is diplomacy exhausted? past: what was tried? future: what force is needed?
+
+[[transitions]]
+from   = "Mandala"
+to     = "Kosha"
+event  = "alliances_secured"
+guard  = "allies_committed AND trade_routes_mapped AND revenue_model_viable"
+action = "build_treasury; establish_revenue_streams"
+drishti = ["present", "down"]
+# present: are alliances secured? down: what resources are available?
+
+[[transitions]]
+from   = "Danda"
+to     = "Kosha"
+event  = "enemy_neutralized"
+guard  = "nanda_uprooted AND territory_secured"
+action = "redirect_war_resources_to_treasury"
+drishti = ["present", "future"]
+# present: is enemy neutralized? future: redirect to treasury building.
+
+[[transitions]]
+from   = "Kosha"
+to     = "Shasana"
+event  = "treasury_stable"
+guard  = "revenue_exceeds_expenditure AND reserves_for_six_seasons"
+action = "establish_governance_machinery; deploy_spy_network"
+drishti = ["present", "up"]
+# present: is treasury stable? up: is governance machinery ready?
+
+[[transitions]]
+from   = "Shasana"
+to     = "Tyaga"
+event  = "vow_fulfilled"
+guard  = "kingdom_stable AND successor_capable AND no_attachment_remains"
+action = "tie_shikha; walk_to_forest; destroy_all_intelligence_records"
+drishti = ["present", "up", "silence"]
+# present: is vow fulfilled? up: is kingdom stable? silence: no attachment remains.
+
+# Failure transitions
+[[transitions]]
+from   = "Chhandma"
+to     = "Vishwas_Bhanga"
+event  = "spy_turned"
+guard  = "intelligence_compromised AND identity_at_risk"
+action = "burn_network; identify_traitor"
+drishti = ["present", "down"]
+# present: has spy turned? down: how deep is the compromise?
+
+[[transitions]]
+from   = "Mandala"
+to     = "Vishwas_Bhanga"
+event  = "ally_defected"
+guard  = "mitra_became_ari AND plans_exposed"
+action = "reclassify_mandala; damage_assessment"
+drishti = ["present", "left", "right"]
+# present: has ally defected? left/right: reclassify the mandala.
+
+[[transitions]]
+from   = "Shasana"
+to     = "Vishwas_Bhanga"
+event  = "internal_betrayal"
+guard  = "minister_turned OR treasury_embezzled"
+action = "activate_counter_intelligence"
+drishti = ["present", "down"]
+# present: internal betrayal? down: activate counter-intelligence.
+
+[[transitions]]
+from   = "Vishwas_Bhanga"
+to     = "Chhandma"
+event  = "recalculation_complete"
+guard  = "traitor_identified AND new_network_seeded"
+action = "rebuild_intelligence; log_lesson_learned"
+drishti = ["present", "future"]
+# present: is traitor identified? future: rebuild intelligence network.
+
+[[transitions]]
+from   = "Danda"
+to     = "Rajya_Nashta"
+event  = "battle_lost"
+guard  = "force_insufficient AND territory_lost"
+action = "retreat; preserve_treasury; protect_king"
+drishti = ["present", "past"]
+# present: is battle lost? past: what went wrong?
+
+[[transitions]]
+from   = "Shasana"
+to     = "Rajya_Nashta"
+event  = "kingdom_falls"
+guard  = "invasion_succeeded OR internal_collapse"
+action = "evacuate_king; secure_intelligence"
+drishti = ["present", "down"]
+# present: has kingdom fallen? down: what can be salvaged?
+
+[[transitions]]
+from   = "Rajya_Nashta"
+to     = "Chhandma"
+event  = "strategic_retreat"
+guard  = "king_alive AND some_resources_remain AND will_unbroken"
+action = "go_underground_again; log_what_failed"
+drishti = ["present", "future"]
+# present: is king alive? future: go underground again.

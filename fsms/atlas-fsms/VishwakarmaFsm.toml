@@ -1,0 +1,224 @@
+[meta]
+name    = "VishwakarmaFsm"
+domain  = "build-system-architecture"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# VishwakarmaFsm — The Divine Architect
+#
+# Vishwakarma — architect of the gods. Built:
+# - Lanka (gold city for Kubera, stolen by Ravana)
+# - Dwarka (Krishna's underwater city)
+# - Indraprastha (Pandavas' palace of illusions)
+# - Pushpaka Vimana (the flying vehicle)
+# - Sudarshana Chakra (Vishnu's weapon)
+# - Vajra (Indra's thunderbolt, from Dadhichi's bones)
+#
+# He builds for GODS — his tolerance for shoddy work is zero.
+# Every structure is functional, beautiful, and eternal.
+# "The architect who builds for eternity thinks differently
+# from the one who builds for the season."
+#
+# The cycle: Sankalpa → Vastu → Shilpa → Yantra → Nirmana
+#            → Pariksha → Pratishtha
+#
+# Special: Bhagna (structural failure), Maya_Sabaha
+#          (palace of illusions — impressive but fragile)
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Sankalpa"
+description = "Intent/Vision — what is being built and WHY. Not requirements — VISION. Vishwakarma didn't ask Indra for a spec doc. He understood the NEED. Dwarka needed to survive the ocean. Lanka needed to intimidate. The intent shapes every joint."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.2, stb = 0.4, kln = 0.3, ngj = 0.3, mtv = 0.5, lkq = 0.4, bdr = 0.3 }
+# Q rationale: Rukmini (strategic love) high — vision, not mere requirements.
+# Mitravinda (self-choice) — Vishwakarma understood the NEED, not the spec.
+
+[[states]]
+name        = "Vastu"
+description = "Foundation/Site — Vastu Shastra. Orientation, alignment, energy flow. Where will this structure sit? What are the forces acting on it? Gravity, wind, earthquake, enemy. The foundation isn't glamorous — it's everything."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.2, mtv = 0.3, lkq = 0.7, bdr = 0.4 }
+# Q rationale: Lakshmana (precision) high — foundation is everything.
+# Satyabhama (pride) — the foundation isn't glamorous but it's everything.
+
+[[states]]
+name        = "Shilpa"
+description = "Design/Blueprint — the detailed plan. Materials selected, dimensions calculated, tolerances defined. Shilpa Shastra: the science of forms. Not abstract architecture — BUILDABLE design. If it can't be built, it's not a design — it's a dream."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.4, mtv = 0.4, lkq = 0.8, bdr = 0.4 }
+# Q rationale: Lakshmana (precision) peaks — tolerances defined, buildable design.
+# Not abstract architecture — every joint calculated.
+
+[[states]]
+name        = "Yantra"
+description = "Tooling — the tools and machines needed to build. Vishwakarma forged Vajra from bones, Sudarshana from sun-dust. The tools must match the material. Build your tools BEFORE building your structure. Toolchain first."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.5, kln = 0.4, ngj = 0.5, mtv = 0.4, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Nagnajiti (impossible) rising — forging Vajra from bones, tools from nothing.
+# Lakshmana (precision) — tools must match the material exactly.
+
+[[states]]
+name        = "Nirmana"
+description = "Construction — the building itself. Layer by layer, joint by joint. No shortcuts. Vishwakarma's cities survived millennia, floods, wars. Each layer tested before the next is added. The process is as sacred as the product."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.7, stb = 0.7, kln = 0.5, ngj = 0.4, mtv = 0.4, lkq = 0.8, bdr = 0.5 }
+# Q rationale: Jambavati (endurance) high — layer by layer, no shortcuts.
+# Satyabhama (pride) — the process is as sacred as the product.
+
+[[states]]
+name        = "Pariksha"
+description = "Testing/Inspection — load testing, stress testing, beauty testing. Pushpaka Vimana was flight-tested. Indraprastha was illusion-tested (Duryodhana fell in the pool). Every structure must survive its worst expected day."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.6, stb = 0.8, kln = 0.4, ngj = 0.5, mtv = 0.5, lkq = 0.9, bdr = 0.5 }
+# Q rationale: Lakshmana (precision) near peak — load testing, stress testing.
+# Satyabhama (fierce pride) — survive your worst expected day.
+
+[[states]]
+name        = "Pratishtha"
+description = "Consecration/Installation — the structure handed over, alive, operational. Not a delivery — a CONSECRATION. The building is now part of the world. Vishwakarma doesn't maintain — he builds so well that maintenance is minimal. Eternal uptime."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.8, kln = 0.7, ngj = 0.6, mtv = 0.6, lkq = 0.9, bdr = 0.8 }
+# Q rationale: All capabilities high — a CONSECRATION, not a delivery.
+# Bhadra (belonging) — the building is now part of the world. Eternal uptime.
+
+[[states]]
+name        = "Bhagna"
+description = "Structural Failure — the building breaks. Foundation cracked, load exceeded, material failed. Not cosmetic damage — STRUCTURAL. Must return to Vastu and examine what was wrong in the foundation. Vishwakarma never blamed the earthquake — he blamed his own joints."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.1, kln = 0.0, ngj = 0.0, mtv = 0.1, lkq = 0.3, bdr = 0.1 }
+# Q rationale: Structural failure. Vishwakarma blamed his own joints, not the earthquake.
+# Faint Lakshmana — can still diagnose the failure.
+
+[[states]]
+name        = "Maya_Sabha"
+description = "Palace of Illusions — looks magnificent, impresses everyone, but structurally fragile. Indraprastha's Maya Sabha was DESIGNED as illusion. In engineering, accidental Maya Sabha is a catastrophe: beautiful demos, broken internals."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.1, stb = 0.2, kln = 0.0, ngj = 0.1, mtv = 0.1, lkq = 0.1, bdr = 0.3 }
+# Q rationale: Beautiful demos, broken internals. Bhadra false belonging — looks like it fits.
+# Lakshmana near zero — precision sacrificed for cosmetics.
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Sankalpa"
+to     = "Vastu"
+event  = "vision_clear"
+guard  = "purpose_understood AND constraints_known AND not_just_requirements"
+action = "survey_the_site; identify_forces"
+drishti = ["present", "down", "future"]
+# present: is vision clear? down: what forces act on the site? future: what must survive?
+
+[[transitions]]
+from   = "Vastu"
+to     = "Shilpa"
+event  = "foundation_designed"
+guard  = "site_surveyed AND forces_mapped AND orientation_chosen"
+action = "begin_detailed_design; select_materials"
+drishti = ["present", "down", "left", "right"]
+# present: is foundation designed? down: are forces mapped? left/right: what materials?
+
+[[transitions]]
+from   = "Shilpa"
+to     = "Yantra"
+event  = "design_complete"
+guard  = "blueprints_done AND materials_specified AND tolerances_defined"
+action = "forge_tools; build_toolchain_first"
+drishti = ["present", "down"]
+# present: is design complete? down: what tools are needed?
+
+[[transitions]]
+from   = "Yantra"
+to     = "Nirmana"
+event  = "tooling_ready"
+guard  = "tools_forged AND tested AND matching_materials"
+action = "begin_construction; layer_by_layer"
+drishti = ["present", "up"]
+# present: is tooling ready? up: does tooling match the design?
+
+[[transitions]]
+from   = "Nirmana"
+to     = "Pariksha"
+event  = "construction_complete"
+guard  = "all_layers_built AND all_joints_checked AND no_shortcuts_taken"
+action = "begin_load_testing; stress_testing; beauty_testing"
+drishti = ["present", "down", "future"]
+# present: is construction complete? down: are all joints checked? future: what load must it survive?
+
+[[transitions]]
+from   = "Pariksha"
+to     = "Pratishtha"
+event  = "tests_pass"
+guard  = "load_survived AND stress_survived AND beautiful AND functional"
+action = "consecrate_and_handover; log_build_record"
+drishti = ["present", "up", "silence"]
+# present: do tests pass? up: is it beautiful AND functional? silence: is it ready for the world?
+
+# Failure transitions
+[[transitions]]
+from   = "Nirmana"
+to     = "Bhagna"
+event  = "structure_fails"
+guard  = "load_exceeded OR material_failed OR foundation_cracked"
+action = "halt_construction; assess_damage"
+drishti = ["present", "down"]
+# present: has structure failed? down: what broke?
+
+[[transitions]]
+from   = "Pariksha"
+to     = "Bhagna"
+event  = "test_breaks_structure"
+guard  = "stress_test_reveals_structural_flaw"
+action = "log_failure_mode; halt"
+drishti = ["present", "down"]
+# present: did test break structure? down: what flaw was revealed?
+
+[[transitions]]
+from   = "Bhagna"
+to     = "Vastu"
+event  = "foundation_reexamined"
+guard  = "failure_understood AND foundation_blamed_not_weather"
+action = "return_to_foundation; redesign_from_base"
+drishti = ["present", "past", "down"]
+# present: is failure understood? past: what was wrong? down: return to foundation.
+
+# Illusion transitions
+[[transitions]]
+from   = "Pariksha"
+to     = "Maya_Sabha"
+event  = "looks_good_but_fragile"
+guard  = "demo_impressive AND internal_structure_weak AND tests_shallow"
+action = "flag_illusion; do_not_ship"
+drishti = ["present", "down"]
+# present: looks good but fragile? down: are tests shallow?
+
+[[transitions]]
+from   = "Nirmana"
+to     = "Maya_Sabha"
+event  = "shortcuts_taken"
+guard  = "deadline_pressure AND cosmetic_over_structural AND technical_debt_hidden"
+action = "flag_illusion; log_shortcuts"
+drishti = ["present", "past"]
+# present: were shortcuts taken? past: what deadline pressure caused this?
+
+[[transitions]]
+from   = "Maya_Sabha"
+to     = "Shilpa"
+event  = "honesty_returns"
+guard  = "illusion_acknowledged AND willing_to_rebuild_properly"
+action = "strip_cosmetics; redesign_for_real"
+drishti = ["present", "up", "silence"]
+# present: is illusion acknowledged? up: willing to rebuild properly? silence: strip cosmetics.

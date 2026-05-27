@@ -1,0 +1,185 @@
+# ChandraghantaFsm — Battle Readiness (Nav Shakti 3)
+# v1.0
+#
+# The War Bell Rings. Preparation, Not Panic.
+#
+# Chandraghanta is the third form of Durga — she who wears the
+# crescent moon as a bell (ghanta) on her forehead. When it rings,
+# demons tremble. She rides a tiger, ten-armed, weapons ready.
+# But she is not aggression — she is preparedness. The bell rings
+# before the battle, not during.
+#
+# In code: this is the pre-release, pre-deployment, pre-merge
+# review. Can the system survive contact with reality? Real
+# traffic, real users, real edge cases, real attackers? If NS1
+# (Shailaputri) checked the foundation and NS2 (Brahmacharini)
+# enforced discipline, NS3 asks: are we ready to fight?
+#
+# The 4-state cycle: readiness → armor → retreat plan → verdict.
+# You cannot deploy without knowing you can retreat. You cannot
+# fight without armor. You cannot assess armor without knowing
+# what you're fighting.
+#
+# She is the Manipura (solar plexus) chakra — confidence born
+# from preparation, not from ignorance.
+
+[meta]
+name        = "ChandraghantaFsm"
+domain      = "navshakti-readiness"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Battle_Readiness"
+description = "Can the system handle real traffic, real users, real edge cases right now? Check: all tests pass, no known critical bugs, documentation current, migrations applied, monitoring in place, error reporting active. This is not hope — it is measurement."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.7, kln = 0.3, ngj = 0.2, mtv = 0.4, lkq = 0.6, bdr = 0.3 }
+# Q rationale: Satyabhama (fierce readiness) high — can the system handle real combat?
+# Lakshmana (precision) — measurement, not hope.
+audio_phrase = "Pa:300,Dha:300,Ni:350,Sa_high:500,Ni:300,Sa_high:400"
+lyrics = """चंद्रघंटा की घंटी बजी, रणभूमि तैयार
+Candraghaṇṭā kī ghaṇṭī bajī, raṇbhūmi taiyār
+Chandraghanta's bell rings — the battlefield is ready"""
+
+[[states]]
+name        = "Armor_Check"
+description = "Security hardening, input validation, rate limiting, auth boundaries. Check: SQL injection guards, XSS prevention, CSRF tokens, API rate limits, auth on every endpoint, secrets not in code, TLS everywhere, dependency CVEs scanned. The armor must have no gaps — one arrow finds the one gap."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.8, kln = 0.3, ngj = 0.3, mtv = 0.3, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Satyabhama and Lakshmana both peak — armor must have no gaps.
+# One arrow finds the one gap.
+audio_phrase = "Sa_high:400,Ni:350,Dha:400,Pa:350,Dha:400,Ni:350,Sa_high:500"
+lyrics = """कवच पहनो, हर कमज़ोरी जानो
+Kavac pahno, har kamzorī jāno
+Don the armor — know every weakness"""
+
+[[states]]
+name        = "Retreat_Plan"
+description = "Rollback procedures, feature flags, kill switches. Can we retreat safely? Check: database migration has down(), feature flags can disable new code, blue-green or canary deployment configured, health checks will catch regressions, alerts will fire within minutes. A warrior who cannot retreat is not brave — they are trapped."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.6, stb = 0.5, kln = 0.5, ngj = 0.3, mtv = 0.5, lkq = 0.7, bdr = 0.4 }
+# Q rationale: Lakshmana (precision) — rollback procedures must be exact.
+# Jambavati (endurance) — a warrior who cannot retreat is trapped.
+audio_phrase = "Dha:400,Pa:350,Ma:400,Ga:350,Re:400,Sa:500"
+lyrics = """पीछे हटने का रास्ता जानो, तभी आगे बढ़ो
+Pīche haṭne kā rāstā jāno, tabhī āge baḍho
+Know the path of retreat — only then advance"""
+
+[[states]]
+name        = "Battle_Verdict"
+description = "Deploy with confidence, delay with reason, or abort with honesty. Three verdicts: DEPLOY (all checks pass, armor solid, retreat tested), DELAY (specific blockers listed with fix timeline), or ABORT (fundamental issues, not safe to proceed, return to NS1/NS2). No 'it's probably fine.' Jai Maa Shakti."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.7, kln = 0.4, ngj = 0.4, mtv = 0.6, lkq = 0.7, bdr = 0.5 }
+# Q rationale: Deploy with confidence or abort with honesty.
+# No 'it is probably fine.' Mitravinda — the choice must be authentic.
+audio_phrase = "Sa:400,Pa:400,Sa_high:600,Pa:400,Sa_high:400,Sa:800"
+lyrics = """विजय निश्चित, माँ की कृपा — जय माँ शक्ति
+Vijay niścit, Māṃ kī kṛpā — Jai Māṃ Śakti
+Victory is certain, by Mother's grace — Jai Maa Shakti"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Battle_Readiness → Armor_Check: readiness assessed, check armor
+[[transitions]]
+from   = "Battle_Readiness"
+to     = "Armor_Check"
+event  = "readiness_assessed"
+guard  = "baseline_readiness_evaluated AND test_suite_executed"
+action = "compile_readiness_report; begin_security_audit; log_readiness_results"
+drishti = ["present", "down", "left", "right"]
+# present: baseline readiness? down: what gaps exist? left/right: what attack vectors?
+
+# Armor_Check → Retreat_Plan: armor inspected, plan the retreat
+[[transitions]]
+from   = "Armor_Check"
+to     = "Retreat_Plan"
+event  = "armor_inspected"
+guard  = "all_security_vectors_checked"
+action = "compile_armor_report; begin_retreat_assessment; log_armor_results"
+drishti = ["present", "future"]
+# present: is armor inspected? future: if deployment fails, what then?
+
+# Armor_Check → Battle_Readiness: critical gap found, re-assess everything
+# (a security hole so fundamental it changes the readiness picture)
+[[transitions]]
+from   = "Armor_Check"
+to     = "Battle_Readiness"
+event  = "critical_gap_found"
+guard  = "severity_critical AND gap_affects_core_functionality"
+action = "flag_critical_gap; invalidate_readiness_report; log_critical_regression"
+drishti = ["present", "down"]
+# present: critical gap found? down: re-assess everything.
+
+# Retreat_Plan → Battle_Verdict: retreat plan verified, render verdict
+[[transitions]]
+from   = "Retreat_Plan"
+to     = "Battle_Verdict"
+event  = "retreat_verified"
+guard  = "rollback_tested AND kill_switches_confirmed"
+action = "compile_final_report; calculate_deploy_confidence; log_retreat_verified"
+drishti = ["present", "up", "future"]
+# present: is rollback tested? up: overall confidence? future: deploy or delay?
+
+# Retreat_Plan → Armor_Check: retreat planning reveals armor gap
+# (testing rollback exposed an unprotected endpoint or missing guard)
+[[transitions]]
+from   = "Retreat_Plan"
+to     = "Armor_Check"
+event  = "retreat_reveals_armor_gap"
+guard  = "rollback_test_exposed_vulnerability"
+action = "add_gap_to_armor_queue; log_retreat_exposed_gap"
+drishti = ["present", "down"]
+# present: retreat test exposed gap? down: which armor point failed?
+
+# ── Cross-coupling signals ───────────────────────────────────
+#
+# ChandraghantaFsm reads from:
+#   - ShaktiFsm.state: must be Channeled with target=NS3 to activate
+#   - KhatuShyamFsm: routed here when symptom is deployment fear/unreadiness
+#   - ShailaputriFsm (NS1): foundation verdicts feed readiness assessment
+#   - BrahmachariniFsm (NS2): discipline verdicts feed armor check
+#
+# ChandraghantaFsm emits:
+#   - battle_verdict_ready { verdict: "DEPLOY|DELAY|ABORT", report: {...} }
+#     Consumed by KhatuShyamFsm (Dispatch) to close the cycle.
+#     DEPLOY → proceed to release pipeline.
+#     DELAY → schedule re-check with KhatuShyamFsm.
+#     ABORT → KhatuShyamFsm re-routes to NS1 (Shailaputri) for
+#             foundation re-inspection or ShivaFsm for dissolution.
+#   - critical_gap_alert { gap: "...", severity: "critical" }
+#     Consumed by MonitoringCircuitBreakerFsm for immediate attention.
+#   - deploy_confidence_score { score: 0.0..1.0, factors: [...] }
+#     Consumed by PipelineProgressFsm for deployment gate decisions.
+#
+# Typical KhatuShyamFsm chain:
+#   NS1 (Shailaputri) → NS2 (Brahmacharini) → NS3 (Chandraghanta)
+#   Foundation solid → Discipline enforced → Battle ready → DEPLOY
+#   This is the complete "ground-to-deployment" preparation sequence.
+#   NS3 is the final gate. If NS3 says ABORT, the chain restarts.
+#
+# ShaktiFsm coupling:
+#   When ShaktiFsm.state == Channeled AND target == "navshakti-readiness",
+#   this FSM activates. When Battle_Verdict is reached,
+#   emit signal_shakti_ns3_spent so ShaktiFsm can transition to Spent.
+#
+# Relationship to KhatuShyamFsm:
+#   KhatuShyamFsm's cycle_domain_map entry NS3 points here.
+#   Chandraghanta is the "bell" that KhatuShyam rings before
+#   dispatching to production. If the bell sounds wrong (ABORT),
+#   KhatuShyam re-routes — he trusts her judgment absolutely.
+#
+# Relationship to ShivaFsm:
+#   If Battle_Verdict is ABORT with reason "obsolete_architecture",
+#   KhatuShyamFsm may route to ShivaFsm for dissolution of the
+#   current approach, followed by BrahmaFsm for recreation.
+#   Chandraghanta does not invoke Shiva directly — she reports.

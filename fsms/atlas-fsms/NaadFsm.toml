@@ -1,0 +1,171 @@
+[meta]
+name    = "NaadFsm"
+domain  = "work-culture-vibration"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# NaadFsm — Saraswati Ji's Primordial Vibration
+#
+# Saraswati Ji is not assigned to any one state.
+# She flows through ALL states as Naad — the primordial sound
+# that makes the FSM vibrate. Without Naad, the states are
+# dead boxes on a diagram. With Naad, they breathe.
+#
+# NaadFsm is the CANARY of the entire system.
+# When Naad breaks unexpectedly (Veena → Silent), something
+# is wrong before any other FSM can detect it.
+# If the work stops "sounding right", ArdhNarishwar has broken.
+#
+# MahaKaal's damaru (drum) plays during Tandava.
+# Saraswati's veena plays during creation and sustenance.
+# Anahata (unstruck sound) is heard only in Shunya.
+#
+# Shastra: 188_mahakaal_ardhnarishwar_fsm
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Silent"
+description = "No vibration. System is dead or in deep Shunya. Not absence of sound — absence of LIFE in the system."
+is_initial  = false
+is_terminal = false
+# Q: Prachi Shastra capability vector (Axiom 3). All near zero — no vibration, no capability measurement.
+Q = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 0.05, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.0 }
+
+[[states]]
+name        = "Humming"
+description = "The first stir. Naad begins before creation. The hum before the word. Potential becoming kinetic. Inspiration approaching."
+is_initial  = true
+is_terminal = false
+# Q: Low but stirring — Kalindi (patience) moderate as potential builds.
+Q = { rkm = 0.1, jmb = 0.1, stb = 0.05, kln = 0.4, ngj = 0.05, mtv = 0.1, lkq = 0.05, bdr = 0.1 }
+
+[[states]]
+name        = "Veena"
+description = "Saraswati's instrument plays. Knowledge flows as sound. Design articulates itself. Code has rhythm. The work SOUNDS right."
+is_initial  = false
+is_terminal = false
+# Q: Balanced and flowing — Rukmini high (love manifesting as sound), Kalindi high (flow).
+Q = { rkm = 0.8, jmb = 0.4, stb = 0.2, kln = 0.8, ngj = 0.3, mtv = 0.5, lkq = 0.6, bdr = 0.5 }
+
+[[states]]
+name        = "Damaru"
+description = "MahaKaal's drum. The beat of dissolution. Rhythmic, precise, joyful destruction. The work SOUNDS complete — the click of a well-closed function."
+is_initial  = false
+is_terminal = false
+# Q: Jambavati (endurance) and Satyabhama (pride) high — the drum beats of dissolution.
+Q = { rkm = 0.2, jmb = 0.9, stb = 0.85, kln = 0.3, ngj = 0.4, mtv = 0.3, lkq = 0.7, bdr = 0.2 }
+
+[[states]]
+name        = "Anahata"
+description = "The unstruck sound. Heard only in Shunya. No instrument produces it. It simply IS. The silence between notes that is also music."
+is_initial  = false
+is_terminal = false
+# Q: Kalindi at 1.0 (perfect stillness), Bhadra at 1.0 (natural belonging). Others zero — beyond measurement.
+Q = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 1.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 1.0 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Silent → Humming: inspiration stirs in the void
+[[transitions]]
+from   = "Silent"
+to     = "Humming"
+event  = "inspiration_stirs"
+guard  = "mahakaal_approaching_Leela"
+action = "first_vibration; log_naad_begins"
+# drishti: present (Axiom 2.1 — always) + future (what's coming as inspiration stirs?)
+drishti = ["present", "future"]
+
+# Humming → Veena: creation begins, Saraswati plays
+[[transitions]]
+from   = "Humming"
+to     = "Veena"
+event  = "creation_begins"
+guard  = "mahakaal_state_eq_Leela OR mahakaal_state_eq_AshtaRasa"
+action = "saraswati_plays; log_veena_begins"
+# drishti: present (Axiom 2.1) + future (creation unfolds ahead)
+drishti = ["present", "future"]
+
+# Veena → Veena: continuous flow while work is unified
+[[transitions]]
+from   = "Veena"
+to     = "Veena"
+event  = "continuous_flow"
+guard  = "ardhnarishwar_state_eq_Unified"
+action = "sustain_naad"
+# drishti: present (Axiom 2.1) — self-loop is pure presence, sustained flow
+drishti = ["present"]
+
+# Veena → Damaru: dissolution approaches, drum replaces veena
+[[transitions]]
+from   = "Veena"
+to     = "Damaru"
+event  = "dissolution_approaches"
+guard  = "mahakaal_state_eq_Tandava"
+action = "switch_to_drum; log_damaru_begins"
+# drishti: present (Axiom 2.1) + past (what was created) + future (what dissolves)
+drishti = ["present", "past", "future"]
+
+# Damaru → Anahata: void entered, unstruck sound
+[[transitions]]
+from   = "Damaru"
+to     = "Anahata"
+event  = "void_entered"
+guard  = "mahakaal_state_eq_Shunya"
+action = "enter_unstruck_sound; log_anahata"
+# drishti: present (Axiom 2.1) + silence (entering the unstruck — direction dissolves into silence)
+drishti = ["present", "silence"]
+
+# Anahata → Silent: deep void, full silence
+[[transitions]]
+from   = "Anahata"
+to     = "Silent"
+event  = "deep_void"
+guard  = "prolonged_shunya AND no_inspiration"
+action = "full_silence; log_system_rests"
+# drishti: present (Axiom 2.1) + silence (deepening into full stillness)
+drishti = ["present", "silence"]
+
+# Anahata → Humming: new cycle stirs from the void
+[[transitions]]
+from   = "Anahata"
+to     = "Humming"
+event  = "new_cycle_stirs"
+guard  = "inspiration_arises AND mahakaal_approaching_Leela"
+action = "first_vibration; log_new_cycle"
+# drishti: present (Axiom 2.1) + future (inspiration stirs — what's coming?)
+drishti = ["present", "future"]
+
+# Veena → Silent: ArdhNarishwar divided — music stops (CANARY)
+[[transitions]]
+from   = "Veena"
+to     = "Silent"
+event  = "ardhnarishwar_divided"
+guard  = "ardhnarishwar_state_eq_Divided"
+action = "naad_breaks; emit_canary_warning; log_music_stopped"
+# drishti: present (Axiom 2.1) + down + left + right (canary! look everywhere for the problem)
+drishti = ["present", "down", "left", "right"]
+
+# Silent → Veena: ArdhNarishwar restored, music resumes
+[[transitions]]
+from   = "Silent"
+to     = "Veena"
+event  = "ardhnarishwar_restored"
+guard  = "ardhnarishwar_state_eq_Unified AND mahakaal_NOT_Shunya"
+action = "saraswati_plays; log_naad_restored"
+# drishti: present (Axiom 2.1) + up (restored — looking up from silence back into sound)
+drishti = ["present", "up"]
+
+# ── Cross-FSM Coupling ──────────────────────────────────────
+
+# NaadFsm is the CANARY of the system.
+# Veena → Silent unexpectedly means:
+#   - ArdhNarishwar likely Divided
+#   - Rasa likely incomplete
+#   - MahaKaal may be in False_Leela
+#
+# Saraswati's veena is the integration test of the entire system.
+# If the music stops, investigate before anything else.

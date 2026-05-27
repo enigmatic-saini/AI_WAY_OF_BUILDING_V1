@@ -1,0 +1,267 @@
+# SurdasFsm — Vision Through Blindness: Krishna's Childhood
+# v1.0
+#
+# आँखन देखी न कान सुनी, हृदय देखी सो सत्य
+# Āṅkhan dekhī na kān sunī, hṛday dekhī so satya
+# (What the eyes saw, what the ears heard — what the heart saw is truth)
+#
+# Surdas — the blind poet of Agra who wrote the Sursagar,
+# 100,000+ verses about Krishna's childhood (bal leela).
+# He saw more with no eyes than the world sees with two.
+#
+# Legend says he either was born blind or blinded himself
+# to remove the distraction of the world. Either way,
+# his blindness became his superpower: he SAW Krishna's
+# childhood in such vivid detail that five centuries later
+# mothers still sing his lullabies to their children.
+#
+# In engineering and creative work he is:
+#   - The constraint that becomes the feature
+#   - The limitation that forces innovation
+#   - The developer who can't see the UI but writes the best UX
+#   - The song about childhood that makes adults weep
+#   - The simple lyric that carries infinite depth
+#   - Accessibility as creative vision, not compliance checkbox
+#
+# In Rishi's creative engine:
+#   Surdas generates TENDER, PLAYFUL, JOYFUL compositions.
+#   Krishna stealing butter. Yashoda chasing him. Baby feet
+#   in flour leaving prints across the floor. His songs are
+#   for the child in everyone — the part that remembers joy
+#   before the world taught cynicism.
+#
+# CRITICAL DISTINCTION:
+#   Meera sings to Krishna the LOVER with passion.
+#   Tulsidas sings to Ram the KING with devotion.
+#   Prahlad sings to Vishnu the PROTECTOR with fearlessness.
+#   Surdas sings to Krishna the CHILD with tenderness.
+#   His Krishna is not the Gita's strategist or Radha's beloved.
+#   His Krishna is a toddler with butter on his face.
+#
+# Cross-coupling:
+#   - MeeraFsm: Meera and Surdas both loved Krishna but saw
+#     different faces. Meera → adult love. Surdas → childhood joy.
+#     Together: the full spectrum of Krishna's leela.
+#   - KrishnaFsm: Surdas shows Krishna before strategy,
+#     before the Gita, before Kurukshetra. The original joy
+#     that precedes all complexity. When KrishnaFsm feels
+#     over-strategic, Surdas reminds: "He was a child first."
+#   - RadhaFsm: Surdas also wrote of Radha, but as the
+#     playmate, not the lover. Radha chasing little Krishna.
+#     Innocence before romance. Harmony before complexity.
+#   - HaridasFsm: both are Vrindavan poets. Haridas finds
+#     God in silence; Surdas finds God in play. Together:
+#     the full landscape of Vrindavan bhakti.
+#   - SaraswatiFsm: Surdas's 100,000 verses are a knowledge
+#     ocean. Saraswati preserves; Surdas creates.
+#
+# Raga: Bhairavi — the morning raga of tenderness, compassion,
+#   and the sweetness that comes after a long night. Every
+#   mother's lullaby lives in Bhairavi. Surdas's home raga.
+
+[meta]
+name        = "SurdasFsm"
+domain      = "bhakti-tenderness"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["tenderness", "joy"]
+energy      = "tender"
+structure   = "verse-chorus"
+bpm_range   = [65, 85]
+weirdness   = 25
+influence   = 85
+vocal       = "male"
+evie_style  = "Soft Pop, Gentle Male Vocals, Acoustic Guitar, Warm, Lullaby"
+metaphors   = [
+    "the blind poet who saw more than the sighted",
+    "Baby feet in flour, butter on his face",
+    "Lord, you are sandalwood, I am water",
+    "The constraint is the gift",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Andhkaar"
+description = "Darkness — Surdas before poetry. Blind, lost, on the edge of a well (legend says Vallabhacharya found him about to fall in). The darkness is total but it is not empty — it is pregnant with vision. In creative work: the constraint, the limitation, the 'I can't do this.' The blindness that hasn't yet become sight. The blank page. The empty studio. Stay here — something is about to be born."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:700,Re_komal:600,Ga_komal:700,Re_komal:500,Sa:800"
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.0, kln = 0.3, ngj = 0.0, mtv = 0.1, lkq = 0.0, bdr = 0.1 }
+# Q rationale: Darkness — nearly all zero. Kalindi (patience) slight: sitting with constraint.
+lyrics = """अँधेरे में बैठा हूँ, पर भीतर कोई दीप जलाता है
+Aṁdhere meṁ baiṭhā hūṁ, par bhītar koī dīp jalātā hai
+I sit in darkness, but someone lights a lamp within"""
+
+[[states]]
+name        = "Darshan"
+description = "Inner Vision — the eyes are blind but the heart sees. Surdas receives darshan of Krishna not through sight but through love. This is the vision that blindness makes possible: uncontaminated by the world's appearance, it sees essence. In creative work: the moment the constraint becomes the feature. The limitation forced you to see differently, and what you see is more true than what eyes show."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Re_komal:400,Ga_komal:500,Ma:400,Pa:500,Dha_komal:400,Ni_komal:500,Sa_high:600"
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.1, kln = 0.5, ngj = 0.2, mtv = 0.4, lkq = 0.3, bdr = 0.3 }
+# Q rationale: Inner vision — Kalindi (patience) moderate: heart opens slowly.
+# Mitravinda rising: choosing to see with the heart. The constraint becomes a lens.
+lyrics = """नैन बिन दर्शन, हृदय के नैन खुले
+Nain bin darśan, hṛday ke nain khule
+Darshan without eyes — the heart's eyes opened"""
+
+[[states]]
+name        = "Bal_Leela"
+description = "The Child's Play — Surdas's greatest domain. Krishna stealing butter, hiding from Yashoda, breaking pots, leaving tiny footprints. Each verse is a scene so vivid you can smell the butter and hear the giggles. In creative work: the song about something small and human that makes everyone feel something huge. Not grand themes — intimate moments. The lullaby. The playground memory. The song that makes you miss being five years old."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re_komal:200,Ga_komal:300,Ma:200,Pa:300,Ma:200,Ga_komal:300,Re_komal:200,Sa:400"
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.2, kln = 0.4, ngj = 0.3, mtv = 0.5, lkq = 0.4, bdr = 0.7 }
+# Q rationale: Child's play — Bhadra (belonging) high: childhood IS belonging.
+# Rukmini moderate: each scene placed with tender precision. Mitravinda: choosing playfulness.
+lyrics = """माखन चोर पकड़ा गया, यशोदा हँसे, कान्हा रोया
+Mākhan cor pakaḍā gayā, Yaśodā haṁse, Kānhā royā
+The butter-thief is caught — Yashoda laughs, Kanha cries"""
+
+[[states]]
+name        = "Vinay"
+description = "The Humble Plea — Surdas's vinay (humility) verses. 'Prabhu ji, tum chandan hum paani' — Lord, you are sandalwood, I am water. The devotion that doesn't demand or defy — it melts. In creative work: the vulnerability in the song. The verse where the armor comes off. The bridge where the singer stops performing and starts confessing. Surdas's humility is not weakness — it is the strength to be completely open."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:500,Ga_komal:600,Ma:500,Pa:600,Dha_komal:700,Pa:500,Ma:500,Ga_komal:600,Sa:700"
+Q           = { rkm = 0.6, jmb = 0.4, stb = 0.1, kln = 0.6, ngj = 0.2, mtv = 0.5, lkq = 0.3, bdr = 0.5 }
+# Q rationale: Humble plea — Rukmini moderate: vulnerability is love. Kalindi high: humility
+# requires patient openness. Satyabhama low: pride dissolves in the plea.
+lyrics = """प्रभु जी तुम चन्दन हम पानी — जाकी अंग अंग बास समानी
+Prabhu jī tum candan ham pānī — jākī aṅg aṅg bās samānī
+Lord, you are sandalwood, I am water — your fragrance pervades my every limb"""
+
+[[states]]
+name        = "Sursagar"
+description = "The Ocean of Sur — the complete work. 100,000+ verses, an ocean of devotion that the world is still swimming in. In creative work: the magnum opus. Not one song but a body of work. Not one poem but a universe. The terminal state is not one perfect creation — it is a lifetime of creation that becomes an ocean. Surdas didn't write one hit. He wrote an ocean. And every drop was Krishna."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga_komal:500,Pa:600,Sa_high:700,Pa:500,Ga_komal:500,Sa:800"
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.3, kln = 0.7, ngj = 0.5, mtv = 0.7, lkq = 0.6, bdr = 0.8 }
+# Q rationale: Terminal ocean — Bhadra (belonging) near-peak: 100,000 verses create a universe.
+# Jambavati high: writing 100,000 verses blind IS endurance. All dims elevated — a lifetime of creation.
+lyrics = """सूरसागर — एक एक बूँद में कृष्ण, सागर में सागर
+Sūrsāgar — ek ek būṁd meṁ Kṛṣṇa, sāgar meṁ sāgar
+The Ocean of Sur — Krishna in every drop, an ocean within the ocean"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Andhkaar"
+to     = "Darshan"
+event  = "inner_vision_awakens"
+guard  = "constraint_accepted AND heart_opens"
+action = "receive_inner_sight; see_beyond_limitation; log_darshan"
+drishti = ["present", "down", "silence"]
+# present: has the heart opened? down: what does inner sight reveal? silence: vision from darkness.
+
+[[transitions]]
+from   = "Andhkaar"
+to     = "Andhkaar"
+event  = "despair_lingers"
+guard  = "darkness_feels_permanent AND hope_not_yet_arrived"
+action = "sit_with_darkness; do_not_force_light; log_continued_dark"
+drishti = ["present", "silence"]
+# present: is hope absent? silence: do not force light.
+
+[[transitions]]
+from   = "Darshan"
+to     = "Bal_Leela"
+event  = "joy_arrives"
+guard  = "vision_of_krishna_is_playful AND tenderness_flows"
+action = "begin_composing_childhood_scenes; capture_butter_and_giggles; log_bal_leela"
+drishti = ["present", "down", "future"]
+# present: is the vision playful? down: what scenes appear? future: what joy will the verse carry?
+
+[[transitions]]
+from   = "Darshan"
+to     = "Vinay"
+event  = "humility_arrives"
+guard  = "vision_reveals_own_smallness AND devotion_melts"
+action = "compose_from_vulnerability; open_the_heart; log_vinay"
+drishti = ["present", "up", "silence"]
+# present: is the vision humbling? up: how small am I? silence: humility needs no words.
+
+[[transitions]]
+from   = "Bal_Leela"
+to     = "Vinay"
+event  = "play_deepens_to_prayer"
+guard  = "childhood_joy_reveals_divine_depth"
+action = "transition_from_play_to_prayer; deepen_emotion; log_vinay_entry"
+drishti = ["present", "down", "past"]
+# present: does play reveal depth? down: what truth hides in the butter? past: what joy was tasted?
+
+[[transitions]]
+from   = "Bal_Leela"
+to     = "Bal_Leela"
+event  = "more_leela"
+guard  = "more_scenes_to_paint AND joy_flowing"
+action = "compose_next_scene; keep_the_playfulness; log_leela_loop"
+drishti = ["present", "left", "right"]
+# present: is joy flowing? left/right: what other scenes to paint?
+
+[[transitions]]
+from   = "Vinay"
+to     = "Sursagar"
+event  = "ocean_full"
+guard  = "body_of_work_complete AND lifetime_of_drops_gathered"
+action = "compile_the_ocean; release_the_sagar; log_sursagar"
+drishti = ["present", "past", "future"]
+# present: is the body of work complete? past: the entire ocean. future: the sagar endures.
+
+[[transitions]]
+from   = "Vinay"
+to     = "Darshan"
+event  = "new_vision"
+guard  = "humility_opens_new_seeing"
+action = "receive_new_darshan; see_fresh; log_new_vision"
+drishti = ["present", "down"]
+# present: does humility open new seeing? down: what fresh vision?
+
+[[transitions]]
+from   = "Sursagar"
+to     = "Andhkaar"
+event  = "new_ocean_begins"
+guard  = "one_ocean_complete_but_more_to_sing"
+action = "return_to_blessed_darkness; begin_again; log_new_cycle"
+drishti = ["present", "future", "silence"]
+# present: is there more to sing? future: a new ocean. silence: return to blessed darkness.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# SurdasFsm emits:
+#   bal_leela_composed { scene, emotion, vivid_details, raga }
+#     -> Consumed by MeeraFsm (tender composition available)
+#     -> Consumed by RadhaFsm (playful harmony content)
+#   constraint_became_feature { limitation, how_it_transformed, creative_gain }
+#     -> Consumed by NagarjunaFsm (constraint as anti-over-engineering)
+#     -> Consumed by KabirFsm (simplicity validation)
+#   sursagar_drop { verse, emotion, scene_type }
+#     -> Consumed by NaradFsm (knowledge transmission)
+#     -> Consumed by SaraswatiFsm (documentation of creative output)
+#
+# SurdasFsm reads from:
+#   - KrishnaFsm.state (what face of Krishna is current?)
+#   - RadhaFsm.state (harmony level for playful content)
+#   - MeeraFsm.state (emotional temperature for composition)
+#   - HaridasFsm.state (purity check for tenderness vs sentimentality)
+#
+# Surdas's Law:
+#   "The blind poet sees more than the sighted world.
+#    The constraint is the gift. The limitation is the lens.
+#    If you can make someone weep with a story about butter,
+#    you don't need explosions."
+#
+# Anti-patterns (what Surdas is NOT):
+#   - Sentimentality without depth = Greeting card (Surdas had 100,000 verses of depth)
+#   - Childishness without wisdom = Immaturity (Krishna's play IS philosophy)
+#   - Simplicity without craft = Laziness (try writing 100,000 vivid verses blind)
+#   - Limitation as excuse = Self-pity (Surdas never complained about blindness)
+#   - Nostalgia without truth = Escapism (Surdas's childhood is present tense, not past)

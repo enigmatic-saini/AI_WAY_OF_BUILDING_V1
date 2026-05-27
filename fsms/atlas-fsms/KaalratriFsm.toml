@@ -1,0 +1,175 @@
+# KaalratriFsm — Destruction of Darkness (Nav Shakti 7)
+# v1.0
+#
+# Om Aim Hreem Kleem Chamundaye Vichche
+#
+# Kaalratri — the darkest night. Seventh form of Nav Durga.
+# She who is as dark as the cosmic void, with disheveled hair
+# and a fearless countenance. She destroys ignorance, evil,
+# and all that hides in darkness. Her darkness is not absence
+# of light — it is the courage to enter where no one dares look.
+#
+# In our system, Kaalratri is the one who reviews the dark
+# corners of the codebase: the files nobody opens, the bugs
+# everyone ignores, the security holes nobody checks. She does
+# not flinch. She does not look away. She walks into the
+# darkest room and either illuminates it, destroys the evil
+# within, or quarantines it so it cannot spread.
+#
+# Every system has darkness. The question is whether you have
+# the courage to face it. Kaalratri is that courage.
+#
+# Cross-coupling:
+#   - ShaktiFsm: Kaalratri draws energy from Shakti's Channeled
+#     state. Without Shakti's directed energy, Kaalratri cannot
+#     sustain the courage to face prolonged darkness.
+#   - KhatuShyamFsm: Khatu Shyam routes to NS7 when the symptom
+#     type is "fear" (something might break) or when the survey
+#     reveals dark corners that no other cycle addresses.
+#     KhatuShyamFsm.cycle_domain_map: NS7 → KaalratriFsm
+#   - Feeds into MahagauriFsm (NS8): after darkness is found,
+#     purity must follow. Kaalratri's output is Mahagauri's input.
+
+[meta]
+name        = "KaalratriFsm"
+domain      = "navshakti-darkness"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Dark_Corners"
+description = "The files nobody opens, the functions nobody understands, the tests nobody runs. The dead zones of the codebase where rot festers unseen. Kaalratri enters with open eyes. Scan for: untouched files (no commits in 6+ months), functions with zero callers, tests that are always skipped, modules with no documentation. Every system has these — find them."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.4, stb = 0.5, kln = 0.3, ngj = 0.6, mtv = 0.5, lkq = 0.5, bdr = 0.1 }
+# Q rationale: Nagnajiti (impossible) — entering where no one dares look.
+# Mitravinda (authentic courage) — choosing to face the dark.
+audio_phrase = "Ni_mandra:600,Sa:500,Re_komal:400,Sa:500,Ni_mandra:800"
+lyrics = """काल की रात में, कौन जागे?
+अंधेरे के कोने, कौन देखे?
+Kāl kī rāt mein, kaun jāge?
+Andhere ke koṇe, kaun dekhe?
+In the night of time, who stays awake?
+The dark corners — who dares to look?"""
+
+[[states]]
+name        = "Bug_Archaeology"
+description = "The oldest open bugs, the most-reported issues, the 'known issues' that everyone ignores and routes around. The fossils of past failures that were never properly buried. Dig through: oldest open issues, bugs marked 'wontfix' that keep recurring, error logs everyone filters out, TODO/FIXME comments older than the team. These are not minor — they are the ghosts that haunt every sprint."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.6, stb = 0.5, kln = 0.5, ngj = 0.5, mtv = 0.4, lkq = 0.6, bdr = 0.2 }
+# Q rationale: Jambavati (endurance) high — digging through old wounds takes stamina.
+# Lakshmana (precision) — diagnosing the oldest, most-ignored bugs.
+audio_phrase = "Sa:400,Re_komal:500,Ga_komal:400,Re_komal:500,Sa:600"
+lyrics = """पुराने घाव, जो भरे नहीं
+बार बार टूटे, सिले नहीं
+Purāne ghāv, jo bhare nahīn
+Bār bār ṭūṭe, sile nahīn
+Old wounds that never healed —
+broken again and again, never stitched"""
+
+[[states]]
+name        = "Security_Darkness"
+description = "Vulnerabilities, unpatched dependencies, exposed secrets, missing encryption, overly permissive access. The darkness that can actually hurt. Scan for: deps with known CVEs, hardcoded secrets or API keys, missing TLS/encryption, overly broad permissions, auth bypass paths, unvalidated inputs. This is the darkness that bites back."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.5, stb = 0.7, kln = 0.3, ngj = 0.7, mtv = 0.5, lkq = 0.8, bdr = 0.1 }
+# Q rationale: Lakshmana (precision) peaks — security scanning demands surgical exactness.
+# Nagnajiti (impossible) — the darkness that bites back, the hidden threat.
+audio_phrase = "Ni_mandra:400,Dha_komal:500,Pa:400,Ma:500,Ga_komal:400,Re_komal:600"
+lyrics = """अंधेरा गहरा, खतरा और गहरा
+जो छुपा है, वो काटेगा
+Andherā gahrā, khatrā aur gahrā
+Jo chupā hai, vo kāṭegā
+Darkness deepens, danger deepens —
+what hides in shadow will bite"""
+
+[[states]]
+name        = "Darkness_Verdict"
+description = "Illuminate, destroy, or quarantine. No corner stays dark after Kaalratri's gaze. For each finding: (1) Illuminate — add docs, tests, monitoring so it is no longer dark; (2) Destroy — remove dead code, close unfixable bugs, delete exposed secrets; (3) Quarantine — isolate risky modules, deprecate unsafe APIs, firewall vulnerable deps. Every item gets a verdict. Nothing escapes. Emit findings to MahagauriFsm (NS8) for cleansing."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.6, kln = 0.4, ngj = 0.6, mtv = 0.6, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Illuminate, destroy, or quarantine. Lakshmana (precision) high —
+# every item gets a verdict. Nothing escapes Kaalratri's gaze.
+audio_phrase = "Sa:400,Ma:400,Pa:500,Sa_high:600,Pa:400,Sa:800"
+lyrics = """कालरात्रि का फैसला — अंधेरा नष्ट
+प्रकाश प्रकट, भय समाप्त
+जय माँ शक्ति, अंधकार विनाशिनी
+Kālrātri kā faislā — andherā naṣṭ
+Prakāś prakaṭ, bhay samāpt
+Jai Māṁ Śakti, andhkār vināśinī
+Kaalratri's verdict — darkness destroyed
+Light revealed, fear ended
+Jai Maa Shakti, destroyer of darkness"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Dark_Corners → Bug_Archaeology: dark zones catalogued, dig into bugs
+[[transitions]]
+from   = "Dark_Corners"
+to     = "Bug_Archaeology"
+event  = "dark_zones_catalogued"
+guard  = "dark_corner_scan_complete"
+action = "record_dark_zones; rank_by_staleness; begin_bug_dig"
+drishti = ["present", "past", "down"]
+# present: what dark zones exist? past: what was forgotten? down: how deep is the rot?
+
+# Bug_Archaeology → Security_Darkness: bugs excavated, check security
+[[transitions]]
+from   = "Bug_Archaeology"
+to     = "Security_Darkness"
+event  = "bugs_excavated"
+guard  = "bug_archaeology_complete"
+action = "record_bug_fossils; classify_severity; begin_security_scan"
+drishti = ["present", "down", "future"]
+# present: what bugs were excavated? down: do any have security implications? future: what if ignored?
+
+# Security_Darkness → Darkness_Verdict: security scan complete
+[[transitions]]
+from   = "Security_Darkness"
+to     = "Darkness_Verdict"
+event  = "security_scan_complete"
+guard  = "all_security_findings_recorded"
+action = "compile_darkness_report; classify_each_finding; prepare_verdicts"
+drishti = ["present", "up", "left", "right"]
+# present: security scan complete? up: system-level impact? left/right: illuminate, destroy, or quarantine?
+
+# Security_Darkness → Dark_Corners: new dark corner discovered during security scan
+[[transitions]]
+from   = "Security_Darkness"
+to     = "Dark_Corners"
+event  = "new_dark_corner_discovered"
+guard  = "security_scan_reveals_unknown_module"
+action = "log_new_dark_corner; reset_scan_scope; re_enter_darkness"
+drishti = ["present", "down"]
+# present: new unknown module discovered? down: re-enter darkness.
+
+# Bug_Archaeology → Security_Darkness: bugs reveal security issue (fast path)
+[[transitions]]
+from   = "Bug_Archaeology"
+to     = "Security_Darkness"
+event  = "bugs_reveal_security_issue"
+guard  = "bug_has_security_implications"
+action = "escalate_to_security; mark_bug_as_security_relevant; fast_track_scan"
+drishti = ["present", "down"]
+# present: bug has security implications? down: escalate immediately.
+
+# ── Cross-coupling signals ───────────────────────────────────
+# Darkness_Verdict emits: darkness_findings { illuminated: [...], destroyed: [...], quarantined: [...] }
+# This event is consumed by MahagauriFsm (NS8) to begin purity cleansing.
+#
+# KaalratriFsm reads from:
+#   - ShaktiFsm.state (requires Channeled — Kaalratri needs directed energy)
+#   - KhatuShyamFsm.cycle_plan (routed here when symptom_type == "fear" or "darkness")
+#
+# KaalratriFsm emits to:
+#   - MahagauriFsm: darkness_findings → triggers Dead_Code_Scan with pre-loaded list
+#   - KhatuShyamFsm: darkness_cycle_complete → navigator can plan follow-ups
+#   - ShaktiFsm: energy_spent → Shakti transitions to Spent

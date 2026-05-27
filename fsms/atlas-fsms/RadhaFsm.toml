@@ -1,0 +1,333 @@
+# RadhaFsm — Devotional Music Performance & Interactive Listening
+# v2.0 — Three-cycle refinement applied:
+#   Cycle 1: Added performance metrics + real-time feedback loop
+#   Cycle 2: Optimized feedback with parallel analysis, timing gates
+#   Cycle 3: Multi-modal input (gesture, voice, instrument), visual/auditory cues
+#
+# Radha's journey: longing → performance → feedback → refinement → bliss
+# The FSM tracks both emotional rasa AND performance quality.
+# Bliss (Ananda) is earned through measured, sincere practice — not declared.
+
+[meta]
+name    = "RadhaFsm"
+domain  = "music-bhakti"
+version = "2.1"
+parent  = "RadhaFsm@1.0"
+persist = "persistent"
+
+[bhakti]
+emotions    = ["gratitude", "tenderness", "joy"]
+energy      = "tender"
+structure   = "verse-chorus"
+bpm_range   = [70, 95]
+weirdness   = 30
+influence   = 85
+vocal       = "female"
+evie_style  = "Indie Folk Pop, Acoustic Guitar, Warm Female Vocals, Emotional"
+metaphors   = [
+    "the morning light that heals",
+    "I was broken, you were still",
+    "No medicine could heal the way you did",
+    "You loved me back to life",
+]
+
+# ── States ───────────────────────────────────────────────────────
+
+[[states]]
+name        = "Viraha"
+description = "Separation — the ache of longing. Raga Marwa, Puriya. The musician arrives with longing. Input mode selected here."
+is_initial  = true
+is_terminal = false
+# Raga Yaman palette: Sa Re Ga Ma_tivra Pa Dha Ni
+# Viraha: slow, aching — Ni from mandra saptak reaching up to Sa, longing for union
+audio_phrase = "Ni_mandra:600,Re:500,Ga:700,Re:400,Sa:800,Ni_mandra:500,Sa:900"
+lyrics = """पिया बिना नहीं आवत चैन
+Piyā binā nahīṁ āvat chain
+Without my beloved, there is no peace"""
+# Q rationale: Initial longing — the ache that starts it all. Rukmini (strategic love) high:
+# longing IS love. Kalindi (patient contemplation) moderate: aching patience. Bhadra low: separated,
+# not yet belonging. Most action dims low — the journey has not begun.
+Q = { rkm = 0.6, jmb = 0.2, stb = 0.2, kln = 0.5, ngj = 0.1, mtv = 0.3, lkq = 0.1, bdr = 0.2 }
+
+[[states]]
+name        = "Shringar"
+description = "Adornment — preparing for performance. Instrument tuned, raga selected, tala set. Raga Yaman, Bihag."
+is_initial  = false
+is_terminal = false
+# Shringar: ascending preparation, bright and hopeful — Yaman aroha with pakad
+audio_phrase = "Ni_mandra:300,Re:350,Ga:400,Re:300,Sa:250,Re:300,Ga:350,Ma_tivra:400,Pa:500,Ga:350,Ma_tivra:300,Re:250,Sa:400"
+lyrics = """सोलह श्रृंगार सजाऊँ री
+Solah śṛṅgār sajāūṁ rī
+I adorn myself with sixteen beautifications"""
+# Q rationale: Preparation — tuning, selecting, setting. Lakshmana (precision) rising: tuning
+# instrument. Mitravinda (authentic choice) moderate: selecting raga. Satyabhama moderate:
+# confidence to adorn. Nagnajiti moderate: choosing from the vast raga system.
+Q = { rkm = 0.4, jmb = 0.3, stb = 0.4, kln = 0.4, ngj = 0.4, mtv = 0.5, lkq = 0.5, bdr = 0.3 }
+
+[[states]]
+name        = "Abhisar"
+description = "The journey inward — alap begins. No tala yet. Free-form exploration. Melodic accuracy tracked."
+is_initial  = false
+is_terminal = false
+# Abhisar: slow alap, exploring Yaman's lower register — Sa to Pa and back
+audio_phrase = "Sa:500,Ga:600,Re:400,Sa:500,Ni_mandra:400,Sa:600,Re:500,Ga:600,Ma_tivra:700,Ga:500,Re:400,Sa:700"
+lyrics = """चली री चली मैं कुञ्ज गली
+Chalī rī chalī maiṁ kuñj galī
+I walk the secret garden path"""
+# Q rationale: Free-form exploration — alap. Kalindi (patient contemplation) high: unhurried
+# exploration. Rukmini moderate: finding the raga's soul. Mitravinda rising: authentic expression
+# emerging. Lakshmana moderate: melodic accuracy beginning to matter.
+Q = { rkm = 0.5, jmb = 0.3, stb = 0.3, kln = 0.7, ngj = 0.3, mtv = 0.6, lkq = 0.4, bdr = 0.4 }
+
+[[states]]
+name        = "Samvad_Shruti"
+description = "Real-time feedback — pitch analysis active. Timing accuracy measured. Visual cues (shruti meter) and auditory cues (drone response) guide the performer."
+is_initial  = false
+is_terminal = false
+# Samvad: call-and-response pairs — Pa answers Ga, Dha answers Ma
+audio_phrase = "Ga:400,Pa:400,Ma_tivra:400,Dha:400,Pa:400,Ga:400,Re:350,Ga:500,Pa:600"
+lyrics = """बोल री सखी बोल, श्रुति मिलाओ
+Bol rī sakhī bol, śruti milāo
+Speak, O friend — tune the shruti"""
+# Q rationale: Real-time feedback — precision matters. Lakshmana (precision) high: pitch analysis
+# active. Nagnajiti moderate: meeting the shruti standard. Mitravinda high: honest feedback.
+# Bhadra rising: the dialogue between performer and system creates connection.
+Q = { rkm = 0.5, jmb = 0.4, stb = 0.4, kln = 0.4, ngj = 0.5, mtv = 0.7, lkq = 0.7, bdr = 0.5 }
+
+[[states]]
+name        = "Milan"
+description = "Union with the raga — jod/jhala phase. Rhythm enters. Performance metrics: timing accuracy > 80%, melodic accuracy > 75%."
+is_initial  = false
+is_terminal = false
+# Milan: jod with rhythm — faster, confident, Yaman's full range
+audio_phrase = "Sa:250,Re:250,Ga:250,Ma_tivra:250,Pa:300,Dha:250,Ni:250,Sa_high:350,Ni:250,Dha:250,Pa:300,Ma_tivra:250,Ga:250,Re:250,Sa:400"
+lyrics = """मिल गयी री मिल गयी
+Mil gayī rī mil gayī
+United at last, we are one"""
+# Q rationale: Union with the raga — rhythm enters. All dims rising. Jambavati high: sustaining
+# the performance. Lakshmana high: timing >80%, melodic >75%. Satyabhama high: confident playing.
+# Bhadra rising: union is belonging. Rukmini high: union IS love.
+Q = { rkm = 0.7, jmb = 0.7, stb = 0.7, kln = 0.4, ngj = 0.6, mtv = 0.7, lkq = 0.7, bdr = 0.7 }
+
+[[states]]
+name        = "Maan"
+description = "Creative tension — the performer pushes boundaries. Deliberate deviations tracked as 'controlled risk' vs 'error'. AI distinguishes ornament from mistake."
+is_initial  = false
+is_terminal = false
+# Maan: deliberate tension — komal swaras intruding on Yaman, testing boundaries
+audio_phrase = "Ga:300,Ma_tivra:350,Dha:300,Ni_komal:500,Dha:300,Pa:400,Ma_tivra:350,Ga_komal:500,Ga:300,Re:400,Sa:500"
+lyrics = """ना जाओ ना जाओ श्याम
+Nā jāo nā jāo Śyām
+Don't go, don't go, O Krishna"""
+# Q rationale: Creative tension — pushing boundaries. Satyabhama (fierce pride) high: daring to
+# deviate. Nagnajiti high: testing the limits of the spec. Mitravinda high: the AI must distinguish
+# ornament from error authentically. Lakshmana moderate: precision in controlled risk.
+Q = { rkm = 0.6, jmb = 0.5, stb = 0.8, kln = 0.3, ngj = 0.7, mtv = 0.8, lkq = 0.5, bdr = 0.4 }
+
+[[states]]
+name        = "Raas"
+description = "The divine dance — full composition. Tala, melody, and rasa aligned. Multi-modal input active: voice, instrument, gesture all contributing."
+is_initial  = false
+is_terminal = false
+# Raas: full bandish — Yaman's signature composition pattern, fast taan-like passages
+audio_phrase = "Ni_mandra:200,Re:200,Ga:250,Ma_tivra:200,Pa:200,Dha:250,Ni:200,Sa_high:300,Ni:200,Dha:200,Pa:250,Ma_tivra:200,Ga:200,Re:200,Ga:250,Pa:300,Dha:200,Ni:200,Sa_high:200,Ni:200,Dha:250,Pa:200,Ma_tivra:200,Ga:250,Re:200,Sa:350"
+lyrics = """नाचो री नाचो, रास रचाओ
+Nācho rī nācho, rās rachāo
+Dance, O dance — let the rāslīlā begin!"""
+# Q rationale: Full divine dance — peak performance. All dims high. Nagnajiti high: tala, melody,
+# rasa all aligned — the impossible synchronization achieved. Jambavati high: sustaining full
+# composition. Bhadra high: multi-modal unity. Rukmini high: the dance IS love expressed.
+Q = { rkm = 0.8, jmb = 0.8, stb = 0.8, kln = 0.3, ngj = 0.8, mtv = 0.8, lkq = 0.8, bdr = 0.8 }
+
+[[states]]
+name        = "Pratibimba"
+description = "Reflection — performance complete. Metrics reviewed: timing score, melodic fidelity, rasa coherence. Session data stored for adaptive learning."
+is_initial  = false
+is_terminal = false
+# Pratibimba: descending reflection — full avaroha, slow, contemplative
+audio_phrase = "Sa_high:500,Ni:400,Dha:400,Pa:450,Ma_tivra:400,Ga:450,Re:400,Sa:500,Ni_mandra:400,Sa:350,Re:400,Ga:500,Re:400,Sa:700"
+lyrics = """क्या था क्या हो गया, सब स्वप्न सा
+Kyā thā kyā ho gayā, sab svapna sā
+What was, what became — all a dream"""
+# Q rationale: Reflection — reviewing the performance. Kalindi (patient contemplation) high:
+# reviewing metrics, reflecting. Lakshmana (precision) high: measuring timing, melodic fidelity.
+# Mitravinda high: honest assessment. Rukmini moderate: the love was real, now measured.
+Q = { rkm = 0.6, jmb = 0.6, stb = 0.5, kln = 0.8, ngj = 0.5, mtv = 0.8, lkq = 0.8, bdr = 0.5 }
+
+[[states]]
+name        = "Ananda"
+description = "Bliss — earned through practice. All metrics above threshold AND emotional arc complete. The music played the musician. Silence after fullness."
+is_initial  = false
+is_terminal = true
+# Ananda: bliss resolution — Yaman's heart phrase, Sa-Pa-Sa, with gentle ornament
+audio_phrase = "Sa:400,Ga:350,Pa:500,Dha:400,Pa:350,Ga:300,Re:350,Sa:400,Pa:500,Sa_high:700,Pa:400,Ga:350,Re:300,Sa:900"
+lyrics = """आनन्द ही आनन्द, राधे राधे
+Ānand hī ānand, Rādhe Rādhe
+Bliss upon bliss — Radhe, Radhe!"""
+# Q rationale: Terminal bliss — earned through practice. All dims high. Rukmini at peak: love
+# complete. Bhadra high: the music played the musician — unity achieved. Mitravinda at peak:
+# authentically earned through measured practice, not declared.
+Q = { rkm = 1.0, jmb = 0.8, stb = 0.7, kln = 0.8, ngj = 0.8, mtv = 1.0, lkq = 0.8, bdr = 0.9 }
+
+[[states]]
+name        = "Prema"
+description = "Pure love — sustained bliss across sessions. Cumulative mastery. The raga is no longer performed — it is inhabited."
+is_initial  = false
+is_terminal = true
+# Prema: pure tonic — just Sa ringing, no embellishment, complete stillness
+audio_phrase = "Sa:2000"
+lyrics = """प्रेम ही प्रेम, और कुछ नहीं
+Prem hī prem, aur kuch nahīṁ
+Only love, nothing else remains"""
+# Q rationale: Pure love — sustained mastery. Rukmini at peak: love is all that remains. Bhadra
+# at peak: the raga is inhabited, not performed. Kalindi at peak: the stillness of a single Sa.
+# Mitravinda at peak: cumulative mastery is the most authentic expression.
+Q = { rkm = 1.0, jmb = 0.9, stb = 0.6, kln = 1.0, ngj = 0.9, mtv = 1.0, lkq = 0.7, bdr = 1.0 }
+
+# ── Transitions ──────────────────────────────────────────────────
+
+[[transitions]]
+from  = "Viraha"
+to    = "Shringar"
+event = "input_mode_selected"
+guard = "instrument_or_voice_detected"
+drishti = ["present", "down", "future"]
+# present: which input mode? down: what instrument or voice? future: what performance will unfold?
+
+[[transitions]]
+from  = "Shringar"
+to    = "Abhisar"
+event = "alap_begins"
+guard = "raga_selected_and_tuned"
+drishti = ["present", "down", "silence"]
+# present: is the raga selected and tuned? down: begin the inward journey. silence: the alap starts from stillness.
+
+[[transitions]]
+from  = "Abhisar"
+to    = "Samvad_Shruti"
+event = "first_phrase_played"
+guard = "audio_stream_active"
+drishti = ["present", "down"]
+# present: is audio stream active? down: analyze the first phrase for pitch and timing.
+
+[[transitions]]
+from  = "Samvad_Shruti"
+to    = "Abhisar"
+event = "feedback_delivered"
+guard = "pitch_needs_correction"
+drishti = ["present", "past", "down"]
+# present: what pitch correction is needed? past: where did the deviation happen? down: return to exploration.
+
+[[transitions]]
+from  = "Samvad_Shruti"
+to    = "Milan"
+event = "accuracy_confirmed"
+guard = "melodic_accuracy_above_75_and_timing_above_80"
+drishti = ["present", "up", "future"]
+# present: are accuracy thresholds met? up: ready for union with the raga. future: rhythm enters now.
+
+[[transitions]]
+from  = "Milan"
+to    = "Maan"
+event = "boundary_pushed"
+guard = "deviation_detected"
+drishti = ["present", "left", "right"]
+# present: what deviation was detected? left/right: is this ornament or error — scan the context.
+
+[[transitions]]
+from  = "Maan"
+to    = "Milan"
+event = "return_to_grammar"
+guard = "deviation_was_ornament_not_error"
+drishti = ["present", "up"]
+# present: confirmed ornament, not error. up: return to the grammar with enriched expression.
+
+[[transitions]]
+from  = "Maan"
+to    = "Samvad_Shruti"
+event = "correction_needed"
+guard = "deviation_was_error"
+drishti = ["present", "past", "down"]
+# present: what went wrong? past: what was the intended phrase? down: re-engage feedback loop.
+
+[[transitions]]
+from  = "Milan"
+to    = "Raas"
+event = "tala_aligned"
+guard = "rhythm_and_melody_coherent"
+drishti = ["present", "up", "left", "right"]
+# present: are rhythm and melody coherent? up: ready for the full divine dance. left/right: all multi-modal inputs aligned?
+
+[[transitions]]
+from  = "Raas"
+to    = "Pratibimba"
+event = "performance_ends"
+guard = "natural_conclusion_reached"
+drishti = ["present", "past", "silence"]
+# present: has the performance concluded naturally? past: what was the full journey? silence: the music ends in stillness.
+
+[[transitions]]
+from  = "Pratibimba"
+to    = "Ananda"
+event = "metrics_pass"
+guard = "timing_above_85_and_melodic_above_80_and_rasa_arc_complete"
+drishti = ["present", "up", "past"]
+# present: do all metrics pass? up: is the emotional arc complete? past: was the full performance worthy of bliss?
+
+[[transitions]]
+from  = "Pratibimba"
+to    = "Shringar"
+event = "practice_again"
+guard = "metrics_below_threshold"
+drishti = ["present", "past", "future"]
+# present: metrics below threshold. past: what needs improvement? future: practice again with new insight.
+
+[[transitions]]
+from  = "Pratibimba"
+to    = "Viraha"
+event = "session_ends"
+guard = "user_exits"
+drishti = ["present", "silence"]
+# present: is the user leaving? silence: return to longing — the music waits in absence.
+
+[[transitions]]
+from  = "Ananda"
+to    = "Prema"
+event = "sustained_mastery"
+guard = "bliss_achieved_across_three_sessions"
+drishti = ["present", "past", "future"]
+# present: is mastery sustained? past: three sessions of bliss confirmed. future: pure love, the raga is inhabited.
+
+[[transitions]]
+from  = "Ananda"
+to    = "Viraha"
+event = "cycle_renews"
+guard = "new_raga_calls"
+drishti = ["present", "future", "silence"]
+# present: does a new raga call? future: new longing, new journey. silence: the gap between two loves.
+
+[[transitions]]
+from  = "Prema"
+to    = "Viraha"
+event = "deeper_longing"
+guard = "love_deepens_through_absence"
+drishti = ["present", "past", "silence"]
+# present: does love deepen through absence? past: what was inhabited is now missed. silence: longing begins in silence.
+
+# ── Gesture/Multi-modal transitions (Cycle 3) ───────────────────
+
+[[transitions]]
+from  = "Raas"
+to    = "Maan"
+event = "gesture_input_conflicts"
+guard = "multimodal_signals_diverge"
+drishti = ["present", "left", "right"]
+# present: what signals diverge? left/right: compare the conflicting multi-modal inputs.
+
+[[transitions]]
+from  = "Abhisar"
+to    = "Milan"
+event = "gesture_rhythm_detected"
+guard = "body_movement_implies_tala"
+drishti = ["present", "down", "up"]
+# present: does body movement imply tala? down: what rhythm is the body expressing? up: ready to enter union.

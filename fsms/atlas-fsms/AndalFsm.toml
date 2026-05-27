@@ -1,0 +1,290 @@
+# AndalFsm — Bridal Mysticism: Longing as Creation
+# v1.0
+#
+# வாராணம் ஆயிரம் — A Thousand Elephants
+# Vaaranam Aayiram — the dream wedding with Vishnu
+#
+# Andal (Kodhai, 8th century CE) — the only female Alvar
+# (Vishnu-saint) among the twelve Tamil Alvars. She is the
+# girl who wore the temple garland meant for Lord Ranganatha
+# before offering it, and when caught, the Lord PREFERRED
+# her worn garland to a fresh one.
+#
+# Her two works:
+#   - Tiruppavai (30 verses): dawn songs for Margazhi month,
+#     waking Krishna to receive devotion. Still sung every
+#     December in every Vishnu temple in Tamil Nadu.
+#   - Nachiyar Tirumozhi (143 verses): the most passionate,
+#     sensual devotional poetry in Tamil. She BECOMES the bride.
+#     She doesn't imagine the wedding — she LIVES it.
+#
+# Legend says she walked into the sanctum of Srirangam temple
+# and merged into the deity. The bride became one with the groom.
+#
+# In engineering and creative work she is:
+#   - The user who falls so in love with the product they become it
+#   - The designer who wears the garland before presenting it
+#   - The prototype that is more real than the production version
+#   - The song that is so intimate it feels like a love letter opened
+#   - The passion that doesn't wait for permission
+#   - Longing that creates — not passively waits
+#
+# In Rishi's creative engine:
+#   Andal generates INTIMATE, SENSUAL, LONGING compositions.
+#   Love songs that are prayers. Prayers that are love songs.
+#   The boundary between sacred and romantic dissolves completely.
+#   Her songs are dawn songs — written in the hour between
+#   darkness and light, between sleep and waking, between
+#   human and divine.
+#
+# CRITICAL DISTINCTION:
+#   Meera DEFIES for love — rebellion is her path to Krishna.
+#   Radha EMBODIES love — she IS the love itself.
+#   Andal BECOMES the bride — she doesn't seek love, she enacts it.
+#   She didn't wait for Krishna to come to her.
+#   She wore his garland, dreamed his wedding, and walked into his temple.
+#   The longing was not passive — it was the most active force in the universe.
+#
+# Cross-coupling:
+#   - RadhaFsm: Radha is love as principle; Andal is love as action.
+#     Both serve the harmony of creation, but Andal adds urgency.
+#   - MiraFsm/MeeraFsm: Meera rebels FOR Krishna; Andal BECOMES
+#     Krishna's bride. When Meera's rebellion needs a destination,
+#     Andal provides the bridal chamber.
+#   - SurdasFsm: Surdas saw baby Krishna; Andal sees the bridegroom.
+#     Together: the full lifecycle of divine love.
+#   - TyagarajaFsm: Tyagaraja's structured Carnatic forms meet
+#     Andal's passionate Tamil verses. South Indian bhakti complete.
+#   - SaraswatiFsm: Andal's Tiruppavai is both literature AND
+#     liturgy — Saraswati preserves, Andal creates what is preserved.
+#
+# Raga: Sahana — the raga of longing, patience, and the
+#   sweetness of waiting. Not desperate — tender. The bride
+#   who knows the groom will come, and makes the waiting beautiful.
+
+[meta]
+name        = "AndalFsm"
+domain      = "bhakti-longing"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["longing", "tenderness"]
+energy      = "intimate"
+structure   = "verse-chorus"
+bpm_range   = [65, 85]
+weirdness   = 30
+influence   = 85
+vocal       = "female"
+evie_style  = "Intimate Acoustic, Soft Female Vocals, Dawn Ambience, Devotional"
+metaphors   = [
+    "the dawn song that wakes the divine",
+    "She wore the garland before offering",
+    "A thousand elephants in the dream",
+    "The bride walked into the temple and never came back",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Nandavanam"
+description = "The Garden — Andal (Kodhai) is found as a baby in Periyalvar's garden, beneath a Tulsi plant. She grows among flowers meant for the temple. In creative work: the environment that shapes the artist. The garden you grew up in IS your creative palette. The songs you heard as a child. The code you first read. The garden doesn't know it is growing a poet — it just grows flowers."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:500,Re:400,Ga:500,Ma:400,Pa:600,Ma:400,Ga:500"
+Q           = { rkm = 0.2, jmb = 0.0, stb = 0.1, kln = 0.3, ngj = 0.0, mtv = 0.2, lkq = 0.1, bdr = 0.4 }
+# Q rationale: The garden — Bhadra (belonging) moderate: garden IS natural home.
+# Kalindi slight: growing up is patient. All action dims low — the poet is still a seedling.
+lyrics = """நந்தவனத்தில் பிறந்தேன் — மலர் மணம் என் சுவாசம்
+Nandavanaththil piranthēn — malar maṇam en suvāsam
+Born in the garden — the fragrance of flowers is my breath"""
+
+[[states]]
+name        = "Maalai"
+description = "The Garland — Andal secretly wears the temple garland meant for Ranganatha before offering it. She tries it on. She looks at herself. She becomes the bride in that moment. In creative work: the prototype you fall in love with. The first draft that is more alive than the polished version. The developer who uses their own product so intensely they become the user. Wearing the garland is not theft — it is the purest form of devotion."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Pa:600,Dha:500,Pa:500,Ga:400,Re:400,Sa:500"
+Q           = { rkm = 0.5, jmb = 0.1, stb = 0.4, kln = 0.2, ngj = 0.2, mtv = 0.7, lkq = 0.2, bdr = 0.4 }
+# Q rationale: The garland — Mitravinda (authentic choice) high: wearing the garland IS the purest choice.
+# Rukmini moderate: the first act of strategic devotion. Satyabhama moderate: daring to wear it.
+lyrics = """மாலை அணிந்தேன் — என் மாலை அவருக்கு, அவர் மாலை எனக்கு
+Mālai aṇinthēn — en mālai avarukku, avar mālai enakku
+I wore the garland — my garland for Him, His garland for me"""
+
+[[states]]
+name        = "Tiruppavai"
+description = "The Dawn Songs — 30 verses sung in the pre-dawn darkness of December, waking Krishna and the gopis. Each verse is a knock on a door. In creative work: the daily ritual. The morning commit. The dawn practice. Tiruppavai is the proof that greatness is built in the dark, before anyone is watching, in the cold, consistently, for thirty days. The song that wakes the world."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:300,Ga:400,Ma:300,Pa:400,Dha:300,Ni:400,Sa_high:500,Ni:300,Dha:300,Pa:400"
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.3, kln = 0.4, ngj = 0.3, mtv = 0.6, lkq = 0.5, bdr = 0.5 }
+# Q rationale: Dawn songs — Jambavati (endurance) moderate: thirty days of dawn practice.
+# Lakshmana (precision) moderate: each verse has structure, meter, theology.
+# Mitravinda (authentic choice): choosing to sing before anyone is watching.
+lyrics = """திருப்பாவை — விடியும் முன் பாடுவேன், கதவைத் திறவுங்கள்
+Tiruppāvai — viḍiyum mun pāḍuvēn, kadavaith thiravuṅgaḷ
+Tiruppavai — I sing before dawn, open your doors"""
+
+[[states]]
+name        = "Nachiyar"
+description = "The Beloved's Cry — Nachiyar Tirumozhi: 143 verses of raw, unfiltered longing. Andal doesn't hint — she DECLARES. 'My breasts ache for him.' 'I dream of the wedding.' 'A thousand elephants will come.' The most uninhibited devotional poetry ever written. In creative work: the song that holds nothing back. No filter. No market calculation. No 'will this offend?' The truth that pours out when you stop curating and start confessing."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:400,Ma:500,Pa:600,Dha:700,Ni:600,Sa_high:700,Ni:600,Dha:500,Pa:500,Ma:400,Ga:500"
+Q           = { rkm = 0.7, jmb = 0.4, stb = 0.6, kln = 0.3, ngj = 0.4, mtv = 0.8, lkq = 0.4, bdr = 0.5 }
+# Q rationale: The beloved's cry — Mitravinda (authentic choice) high: holding nothing back.
+# Rukmini high: passionate yet structured. Satyabhama moderate: uninhibited declaration.
+lyrics = """நாச்சியார் திருமொழி — ஆசை மறைக்க மாட்டேன், உண்மை பாடுவேன்
+Nācciyār Tirumozhi — āsai maṟaikka māṭṭēn, uṇmai pāḍuvēn
+Nachiyar Tirumozhi — I will not hide my longing, I will sing the truth"""
+
+[[states]]
+name        = "Vaaranam"
+description = "The Dream Wedding — 'Vaaranam Aayiram' — a thousand elephants, a dream so vivid it becomes real. Andal describes her wedding to Vishnu in such detail that the listener forgets it is a dream. In creative work: the vision so clear, so detailed, so alive that it pulls reality toward it. The product spec that is so compelling people build it without being asked. The song that creates the world it describes."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:700,Pa:500,Dha:600,Sa_high:800,Pa:500,Ga:500,Sa:600"
+Q           = { rkm = 0.8, jmb = 0.5, stb = 0.5, kln = 0.4, ngj = 0.6, mtv = 0.8, lkq = 0.6, bdr = 0.6 }
+# Q rationale: Dream wedding — Rukmini high: vision so detailed it pulls reality. Nagnajiti moderate:
+# a thousand elephants is the impossible spec made vivid. Mitravinda near-peak: the dream is chosen.
+lyrics = """வாரணம் ஆயிரம் — கனவு இல்லை, உண்மை வரும்
+Vāraṇam Āyiram — kaṉavu illai, uṇmai varum
+A thousand elephants — this is not a dream, it will become real"""
+
+[[states]]
+name        = "Srirangam"
+description = "The Merging — Andal walks into the sanctum of Srirangam temple and merges with the deity. The bride becomes one with the groom. The seeker becomes the sought. In creative work: when the creator disappears into the creation. The singer dissolves into the song. The code and the coder become one. This is not death — it is the most complete form of arrival."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:500,Ga:600,Pa:700,Sa_high:800,_:400,Pa:600,Ga:600,Sa:900"
+Q           = { rkm = 0.9, jmb = 0.6, stb = 0.6, kln = 0.6, ngj = 0.7, mtv = 1.0, lkq = 0.7, bdr = 0.8 }
+# Q rationale: Terminal — Mitravinda at maximum: Andal IS the active choice to merge with the divine.
+# Rukmini near-peak: love made strategic and complete. Nagnajiti high: walking into the deity IS impossible.
+# All dims elevated — the bride became one with the groom.
+lyrics = """ஸ்ரீரங்கம் — மணப்பெண் கோவிலுக்குள் நடந்தாள், கடவுளோடு கலந்தாள்
+Srīraṅgam — maṇappeṇ kōvilukkuḷ naḍanthāḷ, kaḍavuḷōḍu kalanthāḷ
+Srirangam — the bride walked into the temple, and merged with God"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Nandavanam"
+to     = "Maalai"
+event  = "first_devotion_act"
+guard  = "garden_grows_the_poet AND first_creative_impulse"
+action = "wear_the_garland; taste_the_creation; log_maalai"
+drishti = ["present", "up", "silence"]
+# present: is the first creative impulse real? up: is this act of devotion true? silence: the garland speaks.
+
+[[transitions]]
+from   = "Maalai"
+to     = "Tiruppavai"
+event  = "daily_practice_begins"
+guard  = "devotion_becomes_discipline AND dawn_ritual_established"
+action = "begin_the_thirty_days; wake_the_world; log_tiruppavai"
+drishti = ["present", "future", "past"]
+# present: has devotion become discipline? future: thirty days ahead. past: what did the garland teach?
+
+[[transitions]]
+from   = "Maalai"
+to     = "Nachiyar"
+event  = "longing_overflows"
+guard  = "garland_experience_unleashes_passion"
+action = "pour_out_the_longing; hold_nothing_back; log_nachiyar"
+drishti = ["present", "down", "future"]
+# present: has longing overflowed? down: what raw truth emerges? future: where does passion lead?
+
+[[transitions]]
+from   = "Tiruppavai"
+to     = "Nachiyar"
+event  = "discipline_deepens_to_passion"
+guard  = "thirty_days_of_dawn_build_fire"
+action = "transition_from_ritual_to_raw; log_nachiyar_from_pavai"
+drishti = ["present", "past", "future"]
+# present: have thirty days built fire? past: what did the ritual reveal? future: where does raw passion go?
+
+[[transitions]]
+from   = "Nachiyar"
+to     = "Vaaranam"
+event  = "longing_becomes_vision"
+guard  = "passion_crystallizes_into_vivid_dream"
+action = "compose_the_wedding; detail_the_elephants; log_vaaranam"
+drishti = ["present", "down", "future"]
+# present: has passion crystallized into vision? down: every elephant, every detail. future: this dream will become real.
+
+[[transitions]]
+from   = "Nachiyar"
+to     = "Tiruppavai"
+event  = "passion_needs_structure"
+guard  = "raw_longing_needs_daily_form"
+action = "return_to_discipline; channel_the_fire; log_pavai_return"
+drishti = ["present", "down"]
+# present: does passion need structure? down: what daily form channels the fire?
+
+[[transitions]]
+from   = "Vaaranam"
+to     = "Srirangam"
+event  = "dream_becomes_real"
+guard  = "vision_so_complete_it_pulls_reality AND creator_merges_with_creation"
+action = "walk_into_the_temple; become_one; log_srirangam"
+drishti = ["present", "up", "silence"]
+# present: is the vision complete enough to pull reality? up: is the divine ready? silence: merging is the deepest silence.
+
+[[transitions]]
+from   = "Vaaranam"
+to     = "Nachiyar"
+event  = "dream_needs_more_fire"
+guard  = "vision_is_beautiful_but_not_yet_alive"
+action = "return_to_raw_longing; add_more_truth; log_nachiyar_return"
+drishti = ["present", "down"]
+# present: is the dream not yet alive? down: what more truth is needed?
+
+[[transitions]]
+from   = "Srirangam"
+to     = "Nandavanam"
+event  = "new_garden"
+guard  = "merging_complete_but_new_flower_grows"
+action = "return_to_the_garden; new_creation_cycle; log_new_garden"
+drishti = ["present", "future", "silence"]
+# present: is the merging complete? future: a new flower grows. silence: the garden waits.
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# AndalFsm emits:
+#   garland_worn { creation_tasted_before_shipping, personal_experience }
+#     -> Consumed by RadhaFsm (harmony check — does the creator love their creation?)
+#     -> Consumed by MeeraFsm (composition fuel for love songs)
+#   tiruppavai_dawn { daily_ritual, what_was_woken, verse_number }
+#     -> Consumed by BrahmachariniFsm (discipline validation)
+#     -> Consumed by TyagarajaFsm (structured devotion comparison)
+#   nachiyar_cry { raw_longing, uninhibited_expression, emotional_payload }
+#     -> Consumed by MiraFsm (rebellion fuel — truth without filter)
+#     -> Consumed by MeeraFsm (passionate composition material)
+#   srirangam_merge { creator_became_creation, how_boundary_dissolved }
+#     -> Consumed by ShivaFsm (dissolution signal)
+#     -> Consumed by SaraswatiFsm (document the arrival)
+#
+# AndalFsm reads from:
+#   - RadhaFsm.state (love as principle — Andal enacts what Radha embodies)
+#   - MeeraFsm.state (composition engine for expressing longing)
+#   - SaraswatiFsm.state (knowledge of form — Tamil poetic traditions)
+#   - TyagarajaFsm.state (Carnatic structure for devotional songs)
+#
+# Andal's Law:
+#   "Wear the garland before offering it.
+#    Use your product before shipping it.
+#    Sing your song before recording it.
+#    If you haven't fallen in love with your creation,
+#    why should anyone else?"
+#
+# Anti-patterns:
+#   - Longing without action = Pining (Andal didn't wait — she wore the garland)
+#   - Passion without craft = Gushing (Tiruppavai has structure, meter, theology)
+#   - Intimacy without truth = Performance (Nachiyar is embarrassingly honest)
+#   - Merging without completion = Giving up (Srirangam comes AFTER the full body of work)
+#   - Dream without detail = Fantasy (Vaaranam describes every elephant)

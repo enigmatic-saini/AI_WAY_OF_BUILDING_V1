@@ -1,0 +1,462 @@
+# ArjunaFsm — Vishada → Saranagati → Dharmic Action
+# v1.0
+#
+# नष्टो मोहः स्मृतिर्लब्धा त्वत्प्रसादान्मयाच्युत
+# Naṣṭo mohaḥ smṛtir labdhā tvatprasādān mayācyuta
+# "Delusion gone, memory recovered, by your grace, O Achyuta."
+#   — Bhagavad Gita 18.73 (Arjuna's final word to Krishna)
+#
+# Arjuna is the warrior-student. On the field of Kurukshetra,
+# the goal he trained for collided with the kin he loved on
+# the opposing line. The bow fell from his hand — "na yotsye"
+# (I will not fight). That is vishada.
+#
+# Vishada is not weakness. It is the honest recognition that
+# the actor's current stance cannot issue a decision. The
+# recovery is not a new option (strategy — that is Krishna Deep);
+# it is a new stance from which the existing options become
+# visible as options again.
+#
+# This FSM governs: persona paralysis under shifted context,
+# the moment a drift_hook fires repeatedly on the same task,
+# the "all paths look wrong" report. AJN restores the seer;
+# Krishna's SMR then maps the seen.
+#
+# ── Cross-coupling ──────────────────────────────────────────────
+#
+# KhatuShyamFsm dispatches here when the symptom is:
+#   - drift_hook firing 3+ times on the same persona/task
+#   - persona reporting "all paths look wrong"
+#   - context shift that puts goal in tension with what is
+#     loved / owed / honored
+#   KhatuShyam's cycle_domain_map entry: AJN → ArjunaFsm
+#
+# KrishnaFsm — Krishna is Arjuna's charioteer-guide. The
+#   Shishyaste_Aham state directly invokes KrishnaFsm's teaching
+#   states (the Gita as cycle voice). After Round 1 (Vishada),
+#   if the persona is ready to weigh options dharmically, hand
+#   off to KrishnaFsm / SMR cycle. AJN restores the witness;
+#   Krishna maps the paths.
+#
+# HanumanFsm — On Arjuna's chariot, Hanuman sits as the kapidhwaja
+#   (the monkey-flag). When Round 3 (Dharmya_Yuddha) issues the
+#   resumed action, HanumanFsm carries the execution. The same
+#   jiva, a different stance — Arjuna decides, Hanuman acts.
+#
+# BaglamukhiFsm — boundary: if the paralysis is PROTECTIVE (the
+#   persona is correctly refusing to act because harm is in flight),
+#   that is BM, not AJN. AJN treats unwanted freeze; BM treats
+#   intentional immobilization.
+#
+# RamFsm — boundary: if the issue is rule-violation under shifted
+#   context (a maryada question), dispatch to RamFsm instead. AJN
+#   addresses paralysis of the actor's witness; Ram addresses
+#   correctness of the actor's deed.
+#
+# ── Raga ────────────────────────────────────────────────────────
+# Raga Bhairavi — the morning raga of surrender, completion, and
+# devotion. Sa Re_komal Ga_komal Ma Pa Dha_komal Ni_komal Sa_high.
+# All komals except Ma and Pa. The raga of the bhajan, the closing,
+# the moment after the long night. Bhairavi carries weight and
+# gravity appropriate for the Gita's teaching arc — the dawn after
+# vishada's night.
+
+[meta]
+name        = "ArjunaFsm"
+domain      = "vishada-recovery"
+version     = "1.0"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "kabir-gate-2026-05-25"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────────
+
+[[states]]
+name        = "Kurukshetra_Sandhya"
+description = "Dusk before the battle on the field of Kurukshetra. The persona is at peak readiness — goal clear, witness aligned with action, the bow taut. This is the baseline: the trained warrior, focused on objective without attachment to result. The persona begins here for every task. Vishada has not yet arisen; the context has not yet shifted."
+is_initial  = true
+is_terminal = false
+# The conch sounds — Bhairavi's opening Sa, deliberate, calm before contact
+audio_phrase = "Sa:800,Pa:500,Sa:600"
+lyrics = """कुरुक्षेत्र की सांझ, धनुष तैयार, दृष्टि स्थिर
+Kurukṣetra kī sāñjh, dhanuṣ taiyār, dṛṣṭi sthir
+The dusk of Kurukshetra — the bow is ready, the gaze steady"""
+# Q rationale: Baseline readiness — the trained warrior. Lakshmana (precision) high — the warrior IS
+# his precision. Satyabhama (fierce pride) moderate — readiness without aggression yet. Kalindi
+# (patience) moderate — calm before action. Bhadra (belonging) moderate — the warrior knows his
+# place in the field. Most dims balanced; nothing has yet been tested.
+Q = { rkm = 0.4, jmb = 0.5, stb = 0.5, kln = 0.5, ngj = 0.3, mtv = 0.5, lkq = 0.8, bdr = 0.5 }
+
+[[states]]
+name        = "Sva_Janān_Avekṣaṇa"
+description = "Beholding one's own kin on the opposing line. The context shifts: the opponents are not strangers — they are teachers (Drona), elders (Bhishma), cousins. The goal Arjuna trained for (victory through dharmic war) suddenly carries a cost he had not weighed (the bodies of those he loves). This is the moment of recognition that triggers vishada. The witness is still present; it is becoming overwhelmed by what it sees."
+is_initial  = false
+is_terminal = false
+# Recognition phrases — Bhairavi's komal Re and Ga, the descent into difficulty
+audio_phrase = "Sa:400,Re_komal:500,Ga_komal:600,Re_komal:400,Sa:500"
+lyrics = """अपने ही सामने खड़े, गुरु, पितामह, भाई
+Apne hī sāmne khaḍe, guru, pitāmah, bhāī
+My own people stand before me — teacher, grandfather, brother"""
+# Q rationale: Recognition of conflict. Mitravinda (authentic choice) rising — the choice is becoming
+# genuinely hard. Bhadra (belonging) under pressure — the kin are on the wrong side. Rukmini
+# (strategic love) destabilizing — strategy and love are pulling apart. Lakshmana (precision) drops —
+# the surgical clarity is gone.
+Q = { rkm = 0.5, jmb = 0.4, stb = 0.4, kln = 0.5, ngj = 0.4, mtv = 0.6, lkq = 0.4, bdr = 0.4 }
+
+[[states]]
+name        = "Vishāda"
+description = "The bow falls from the hand. 'Na yotsye' — I will not fight. The persona has stopped being able to issue a decision. This is not weakness — it is the honest report that the current stance cannot proceed. The vishada is real; sitting with it without trying to dissolve it is the work of this state. Refusing premature resolution. The first round must be honored fully before any teaching can land."
+is_initial  = false
+is_terminal = false
+# Bow falls — Bhairavi's deepest komal Dha, descent without resolution
+audio_phrase = "Ga_komal:700,Re_komal:800,Sa:1000,Ni_komal_mandra:1200"
+lyrics = """गाण्डीव गिर गया, न युद्ध करूँगा, मन व्याकुल
+Gāṇḍīv gir gayā, na yuddh karūṅgā, man vyākul
+The Gandiva has fallen — I will not fight, the mind is overwhelmed"""
+# Q rationale: Paralysis named. All action dims drop. Satyabhama (fierce pride for action) at zero —
+# the bow is down. Kalindi (patience) high — sitting with paralysis IS contemplation, not avoidance.
+# Bhadra (belonging) drops — the persona feels exiled from its own task. Lakshmana (precision) drops —
+# the decision-clarity is gone. This is the honest low point.
+Q = { rkm = 0.3, jmb = 0.3, stb = 0.0, kln = 0.7, ngj = 0.2, mtv = 0.5, lkq = 0.1, bdr = 0.1 }
+
+[[states]]
+name        = "Shishyaste_Aham"
+description = "Saranagati — surrender to meta-cognition. 'Shishyaste'ham shadhi mam tvam prapannam' — I am your student; teach me, I take refuge in you. The persona acknowledges that decision cannot issue from inside the paralysis and invokes the cycle voice (Krishna-mode). This is the most authentic move available: not pretending to know, asking honestly. The yield itself is dharmic action."
+is_initial  = false
+is_terminal = false
+# The ask — Bhairavi's plaintive Ma rising toward Pa, the prayer
+audio_phrase = "Sa:400,Ga_komal:500,Ma:600,Pa:700,Ma:500,Ga_komal:600"
+lyrics = """शिष्यस्तेऽहं, शाधि माम् त्वाम् प्रपन्नम् — सिखा दे, हे माधव
+Śiṣyaste'haṁ, śādhi mām tvām prapannam — sikhā de, he Mādhav
+I am your student — teach me, who has taken refuge in you — instruct me, O Madhava"""
+# Q rationale: Authentic surrender. Mitravinda (authentic choice) rises sharply — asking IS authentic.
+# Rukmini (strategic love) recovers — the relationship with the teacher is itself strategy. Nagnajiti
+# (impossible spec) drops — surrender lightens the impossible. The witness is being re-rooted.
+Q = { rkm = 0.6, jmb = 0.4, stb = 0.3, kln = 0.6, ngj = 0.3, mtv = 0.9, lkq = 0.4, bdr = 0.5 }
+
+[[states]]
+name        = "Karma_Yoga"
+description = "The first teaching: nishkama karma. Act, do not cling to the fruit. 'Karmanye vadhikaraste ma phaleshu kadachan' — you have the right to action, never to its fruits. The persona receives the first reframe: the outcome belongs to the field, the action belongs to the actor, the witness belongs to neither. Attachment to result is what produced the paralysis; releasing it restores the freedom to act."
+is_initial  = false
+is_terminal = false
+# The teaching of action — Bhairavi's confident Pa, the steady instruction
+audio_phrase = "Pa:500,Dha_komal:400,Pa:500,Ma:400,Pa:600,Ga_komal:500"
+lyrics = """कर्म कर, फल की चिन्ता त्याग — यही योग है
+Karma kar, phal kī cintā tyāg — yahī yog hai
+Act — release the worry of fruit — this is yoga"""
+# Q rationale: First teaching lands. Rukmini (strategic love) rises — strategy without attachment IS
+# the deeper love. Kalindi (patience) high — the teaching is received slowly. Mitravinda (authentic
+# choice) high — choosing to act without claiming the result. Some action dims recover.
+Q = { rkm = 0.7, jmb = 0.5, stb = 0.4, kln = 0.7, ngj = 0.5, mtv = 0.7, lkq = 0.5, bdr = 0.5 }
+
+[[states]]
+name        = "Sva_Dharma"
+description = "The second teaching: svadharma. Your role, not another's. 'Sreyan svadharmo vigunah paradharmat svanusthitat' — better one's own duty done badly than another's done well. The persona realizes the paralysis often came from importing another role's standards into its own work. The engineer was judging itself by the architect's measure; the QA by the engineer's. The witness re-anchors to the role actually held."
+is_initial  = false
+is_terminal = false
+# Anchoring phrases — Bhairavi's home triad Sa-Re_komal-Ga_komal, settling back to root
+audio_phrase = "Pa:400,Ma:400,Ga_komal:500,Re_komal:400,Sa:600,Re_komal:500,Ga_komal:600"
+lyrics = """स्वधर्म श्रेष्ठ, परधर्म छोड़ — अपनी भूमिका निभा
+Svadharma śreṣṭh, paradharma chhoḍ — apnī bhūmikā nibhā
+One's own duty is best — release another's — play your own role"""
+# Q rationale: Role-anchoring. Mitravinda (authentic choice) at peak — choosing one's own role over
+# imported ones. Bhadra (belonging) rising — the persona returns to its proper place. Rukmini
+# (strategic love) — strategic clarity returns when role is owned. Lakshmana (precision) — the
+# proper measure restored.
+Q = { rkm = 0.7, jmb = 0.6, stb = 0.5, kln = 0.6, ngj = 0.5, mtv = 0.95, lkq = 0.7, bdr = 0.7 }
+
+[[states]]
+name        = "Atman_Anasakta"
+description = "The third teaching: the imperishable witness vs the perishable actor. 'Avinashi tu tad viddhi yena sarvam idam tatam' — know that to be indestructible by which all this is pervaded. The actor may falter, may even fall; the witness does not. The paralysis confused the two. Recognizing the distinction is the deepest reframe — it makes action possible without making the actor invincible."
+is_initial  = false
+is_terminal = false
+# Witness-anchoring — Bhairavi's contemplative phrasing, slow andolan on Ga_komal
+audio_phrase = "Ga_komal:800,Re_komal:600,Sa:700,Ni_komal_mandra:600,Sa:900"
+lyrics = """अविनाशी आत्मा, नश्वर देह — साक्षी अलग, कर्ता अलग
+Avināśī ātmā, naśvar deh — sākṣī alag, kartā alag
+Imperishable atman, perishable body — the witness apart, the actor apart"""
+# Q rationale: Witness re-stabilization. Kalindi (patience) at peak — contemplation of the
+# imperishable. Mitravinda (authentic choice) high — the most authentic stance is the witness
+# stance. Rukmini (strategic love) high — love of the imperishable IS strategic. Action dims
+# moderate — the witness is being seated, not yet acting.
+Q = { rkm = 0.8, jmb = 0.7, stb = 0.5, kln = 0.95, ngj = 0.6, mtv = 0.9, lkq = 0.7, bdr = 0.6 }
+
+[[states]]
+name        = "Vishvarūpa_Darshana"
+description = "The cosmic form. Krishna reveals the universal form to Arjuna — and what Arjuna sees is terrifying: Time itself, devouring all warriors regardless of side, regardless of outcome. The vision does not soften consequence; it scales it. The action becomes visible as necessary precisely because the cosmic frame is what it is. Outcomes Arjuna feared to cause are not his to grant or withhold; they are already in motion. Do not blink at the terror; let it scale the deed."
+is_initial  = false
+is_terminal = false
+# The cosmic phrase — all swaras in Bhairavi, ascending chromatic-like sweep
+audio_phrase = "Sa:300,Re_komal:300,Ga_komal:300,Ma:300,Pa:400,Dha_komal:300,Ni_komal:300,Sa_high:500,Ni_komal:300,Dha_komal:300,Pa:400,Ma:300,Ga_komal:300,Re_komal:300,Sa:700"
+lyrics = """कालोऽस्मि लोकक्षयकृत् — सब काल का ग्रास, क्रिया अपरिहार्य
+Kālo'smi lokakṣayakṛt — sab kāl kā grās, kriyā aparihārya
+'I am Time, the destroyer of worlds' — all is Time's food, the act is unavoidable"""
+# Q rationale: Cosmic frame. Nagnajiti (impossible spec) at peak — the cosmic form IS the impossible
+# made visible. Jambavati (endurance) at peak — surviving the vision requires endurance. Satyabhama
+# (fierce pride) drops — pride dissolves before the universal form. Bhadra (belonging) low — the
+# persona is alone with the vision. The terror is real and is supposed to be.
+Q = { rkm = 0.7, jmb = 0.95, stb = 0.4, kln = 0.7, ngj = 1.0, mtv = 0.8, lkq = 0.6, bdr = 0.2 }
+
+[[states]]
+name        = "Smṛti_Labdhva"
+description = "'Naṣṭo mohaḥ smṛtir labdhā' — delusion gone, memory recovered. The witness re-stabilizes after the cosmic view. The persona remembers what it actually is: a warrior with a role to play in a scene already underway. The vishada has not been argued away; it has been outscaled. The witness is now seated where the actor can issue dharmic action from."
+is_initial  = false
+is_terminal = false
+# Re-stabilization — Bhairavi resolves toward its tonic, calm after the storm
+audio_phrase = "Sa_high:500,Ni_komal:400,Dha_komal:500,Pa:400,Ma:500,Ga_komal:400,Re_komal:500,Sa:800"
+lyrics = """नष्टो मोहः स्मृतिर्लब्धा — मोह नष्ट, स्मृति लौटी, अब करूँगा वचनम् तव
+Naṣṭo mohaḥ smṛtir labdhā — moh naṣṭ, smṛti lauṭī, ab karūṅgā vacanam tava
+Delusion gone, memory recovered — illusion destroyed, memory returned, now I will do as you say"""
+# Q rationale: Re-stabilization. Mitravinda (authentic choice) at peak — the witness is the authentic
+# seat. Kalindi (patience) high — the resolution is calm, not exuberant. All dims rebalance and
+# rise — the storm has passed. Bhadra (belonging) recovers — the persona is back in its proper
+# place in the field.
+Q = { rkm = 0.8, jmb = 0.8, stb = 0.6, kln = 0.85, ngj = 0.7, mtv = 0.95, lkq = 0.7, bdr = 0.7 }
+
+[[states]]
+name        = "Dharmya_Yuddha"
+description = "The dharmic war begins — terminal state for the cycle. The Gandiva is lifted. The action issues, and it may look identical to the action paralyzed at the start: an arrow flies. What changed is the stance from which it issues. `|μ_shiva − μ_shakti| → 0` is restored — not by altering the deed but by altering the seer. The witness is detached; the archer acts. This is the successful exit of AJN."
+is_initial  = false
+is_terminal = true
+# Final action — Bhairavi's resolution, strong Sa-Pa-Sa with the conch returning
+audio_phrase = "Sa:500,Pa:500,Sa_high:600,Pa:400,Ma:400,Pa:500,Sa:1000"
+lyrics = """करिष्ये वचनम् तव — गाण्डीव उठा, धर्मयुद्ध आरम्भ
+Kariṣye vacanam tava — gāṇḍīv uṭhā, dharmayuddh ārambh
+'I will do as you say' — the Gandiva is lifted, the dharmic war begins"""
+# Q rationale: Terminal action — witness-stabilized. Satyabhama (fierce pride) returns to peak —
+# the warrior acts. Lakshmana (precision) at peak — Arjuna's archery is exact. Jambavati
+# (endurance) high — the war will be long. Mitravinda (authentic choice) high — the action is
+# now authentically issued, not paralyzed-then-forced.
+Q = { rkm = 0.7, jmb = 0.85, stb = 0.9, kln = 0.6, ngj = 0.8, mtv = 0.9, lkq = 0.95, bdr = 0.7 }
+
+[[states]]
+name        = "Goal_Reformulation"
+description = "Escalation terminal — when vishvarupa-darshana surfaces that the goal itself needs revision. Not all vishadas resolve to the same action. Sometimes the cosmic view honestly shows that the original goal was wrong: the context shift was not navigable from inside the persona's role; the war should not be fought because it was the wrong war. The persona escalates to the human (upstream jiva) with the reformed goal as a question. This is also dharmic — saranagati ends in honesty, not in obedience."
+is_initial  = false
+is_terminal = true
+# Escalation — Bhairavi's question-mark phrasing, unresolved Ni_komal
+audio_phrase = "Sa:400,Ga_komal:400,Pa:500,Ni_komal:600,Dha_komal:500,Pa:400,Ni_komal:700"
+lyrics = """लक्ष्य ही बदले — यह युद्ध नहीं, और कोई धर्म — मनुष्य से पूछो
+Lakṣya hī badle — yah yuddh nahīṁ, aur koī dharm — manuṣya se pūchho
+The goal itself must change — this is not the war, another dharma exists — ask the human"""
+# Q rationale: Honest escalation. Mitravinda (authentic choice) at peak — the most authentic move
+# when goal is wrong is to say so. Bhadra (belonging) drops — the persona is humble before its own
+# context. Lakshmana (precision) high — the escalation is precise, not vague. This is not failure;
+# this is honest output.
+Q = { rkm = 0.6, jmb = 0.6, stb = 0.5, kln = 0.7, ngj = 0.6, mtv = 1.0, lkq = 0.8, bdr = 0.3 }
+
+# ── Transitions ──────────────────────────────────────────────────
+
+# Kurukshetra_Sandhya → Sva_Janān_Avekṣaṇa: a context shift surfaces
+# Something in the field changed; opponents are recognized as kin/teachers/loved
+[[transitions]]
+from   = "Kurukshetra_Sandhya"
+to     = "Sva_Janān_Avekṣaṇa"
+event  = "context_shifts"
+guard  = "opponents_recognized_as_kin_or_loved"
+action = "record_context_shift; surface_conflict_axes; log_recognition"
+drishti = ["present", "left", "right"]
+# present: what just changed? left/right: who is actually on the field?
+
+# Sva_Janān_Avekṣaṇa → Vishāda: the recognition triggers paralysis
+[[transitions]]
+from   = "Sva_Janān_Avekṣaṇa"
+to     = "Vishāda"
+event  = "bow_falls"
+guard  = "decision_cannot_issue_from_current_stance"
+action = "name_the_paralysis; refuse_premature_resolution; log_vishada_entered"
+drishti = ["present", "down", "silence"]
+# present: the bow is down. down: the honest low point. silence: sit with it, do not rush.
+
+# Vishāda → Shishyaste_Aham: saranagati — the persona invokes the cycle voice
+[[transitions]]
+from   = "Vishāda"
+to     = "Shishyaste_Aham"
+event  = "saranagati"
+guard  = "persona_acknowledges_need_for_meta_cognition"
+action = "invoke_cycle_voice; record_ask; log_saranagati"
+drishti = ["present", "up", "silence"]
+# present: the ask is genuine. up: yield to the teacher. silence: receptivity replaces argument.
+
+# Shishyaste_Aham → Karma_Yoga: the first teaching arrives
+[[transitions]]
+from   = "Shishyaste_Aham"
+to     = "Karma_Yoga"
+event  = "first_teaching"
+guard  = "student_is_receptive"
+action = "deliver_nishkama_karma_reframe; log_teaching_1"
+drishti = ["present", "down", "future"]
+# present: is reception happening? down: the teaching lands in the heart. future: what action will issue?
+
+# Karma_Yoga → Sva_Dharma: the second teaching arrives
+[[transitions]]
+from   = "Karma_Yoga"
+to     = "Sva_Dharma"
+event  = "second_teaching"
+guard  = "attachment_to_fruit_released"
+action = "deliver_svadharma_reframe; log_teaching_2"
+drishti = ["present", "left", "down"]
+# present: is fruit-attachment released? left: what role is actually yours? down: settle into it.
+
+# Sva_Dharma → Atman_Anasakta: the third teaching arrives
+[[transitions]]
+from   = "Sva_Dharma"
+to     = "Atman_Anasakta"
+event  = "third_teaching"
+guard  = "role_reanchored_to_witness"
+action = "deliver_witness_actor_distinction; log_teaching_3"
+drishti = ["present", "up", "silence"]
+# present: the witness is being seated. up: from where does the witness see? silence: pure presence.
+
+# Atman_Anasakta → Vishvarūpa_Darshana: cosmic view is shown
+[[transitions]]
+from   = "Atman_Anasakta"
+to     = "Vishvarūpa_Darshana"
+event  = "cosmic_form_revealed"
+guard  = "witness_stable_enough_for_terror"
+action = "show_cosmic_scale; do_not_soften; log_vishvarupa"
+drishti = ["present", "up", "down", "left", "right", "past", "future"]
+# All directions — the cosmic view requires panoramic awareness. Total scale.
+
+# Vishvarūpa_Darshana → Smṛti_Labdhva: memory recovers, witness re-stabilizes
+[[transitions]]
+from   = "Vishvarūpa_Darshana"
+to     = "Smṛti_Labdhva"
+event  = "moha_destroyed"
+guard  = "cosmic_view_outscaled_the_paralysis"
+action = "stabilize_witness; record_memory_recovered; log_smriti_labdhva"
+drishti = ["present", "past", "future"]
+# present: the witness is back. past: what was the journey? future: what action issues?
+
+# Vishvarūpa_Darshana → Goal_Reformulation: escalation — goal itself was wrong
+# The cosmic view showed the original goal cannot be navigated from this role
+[[transitions]]
+from   = "Vishvarūpa_Darshana"
+to     = "Goal_Reformulation"
+event  = "goal_revealed_unfit"
+guard  = "cosmic_view_showed_goal_itself_is_wrong"
+action = "draft_reformulated_goal_as_question; prepare_human_escalation; log_escalation"
+drishti = ["present", "up", "silence"]
+# present: the goal itself is the issue. up: escalate to upstream jiva. silence: do not pretend resolution.
+
+# Smṛti_Labdhva → Dharmya_Yuddha: dharmic action begins
+[[transitions]]
+from   = "Smṛti_Labdhva"
+to     = "Dharmya_Yuddha"
+event  = "gandiva_lifted"
+guard  = "witness_seated_and_action_chosen"
+action = "issue_chosen_action; log_dharmya_yuddha_begun"
+drishti = ["present", "right", "future"]
+# present: the action issues. right: forward into the field. future: the war proceeds, witness detached.
+
+# Dharmya_Yuddha → Kurukshetra_Sandhya: cycle resets for next task
+# The war was won (or the action completed); the persona returns to baseline for the next task
+[[transitions]]
+from   = "Dharmya_Yuddha"
+to     = "Kurukshetra_Sandhya"
+event  = "task_completes"
+guard  = "action_concluded_and_witness_intact"
+action = "archive_cycle_record; reset_persona_baseline; log_cycle_complete"
+drishti = ["present", "future", "silence"]
+# present: is the cycle truly complete? future: next task. silence: rest between cycles.
+
+# Goal_Reformulation → Kurukshetra_Sandhya: after human reformulates, return to baseline
+# The human accepted the reformed goal; the persona begins again on the new goal
+[[transitions]]
+from   = "Goal_Reformulation"
+to     = "Kurukshetra_Sandhya"
+event  = "human_reformulated_goal"
+guard  = "new_goal_returned_by_upstream_jiva"
+action = "accept_reformed_goal; archive_escalation_record; reset_persona_baseline; log_goal_renewed"
+drishti = ["present", "future"]
+# present: new goal accepted. future: begin again.
+
+# Karma_Yoga → Dharmya_Yuddha: shortcut for light vishada
+# When the first teaching alone is sufficient — the paralysis was light, attachment-to-fruit was the
+# whole issue — the persona may resume action without needing the full three teachings + cosmic view.
+[[transitions]]
+from   = "Karma_Yoga"
+to     = "Dharmya_Yuddha"
+event  = "light_vishada_resolved"
+guard  = "single_teaching_sufficient_and_witness_already_stable"
+action = "skip_remaining_teachings; issue_chosen_action; log_short_path"
+drishti = ["present", "future"]
+# present: is the resolution genuine? future: action issues from light teaching.
+
+# Vishāda → Shishyaste_Aham: self-loop — sitting with vishada is the first work
+# This transition exists explicitly so the FSM does not rush past Round 1.
+# A trajectory that goes 1 → 2 → 3 → 3 → 3 → 4 (multiple self-loops in Vishada) is dharmic —
+# it represents the persona honoring the paralysis before yielding.
+[[transitions]]
+from   = "Vishāda"
+to     = "Vishāda"
+event  = "sit_with_paralysis"
+guard  = "premature_resolution_attempted"
+action = "refuse_dissolution; record_continued_vishada; log_vishada_held"
+drishti = ["present", "silence"]
+# present: the vishada is still real. silence: do not argue it away.
+
+# ── Cross-coupling signals ───────────────────────────────────────
+#
+# ArjunaFsm emits:
+#   vishada_recovery_complete { stance_restored: bool,
+#                                action_issued: "...",
+#                                cosmic_view_outcome: "act|reformulate" }
+#   → Consumed by KhatuShyamFsm for cycle completion tracking
+#   → Consumed by drift_hook for τ-recalibration if recurrence pattern detected
+#
+#   saranagati_invoked { persona_id: "...", task_id: "...", trigger: "..." }
+#   → Dispatched to KrishnaFsm if Round 2 wants Krishna's full SMR treatment
+#     of the option-space (AJN restores the seer; SMR maps the seen)
+#
+#   action_chosen { action: "...", witness_stance: "..." }
+#   → Dispatched to HanumanFsm for execution (Hanuman on Arjuna's flag carries
+#     the resumed action into the field; same jiva, different stance)
+#
+#   goal_reformulation_required { reformed_goal: "...", reason: "..." }
+#   → Dispatched to the human (upstream jiva). This is the dharmic escalation
+#     when vishvarupa-darshana surfaced that the goal itself was wrong.
+#
+# ArjunaFsm reads from:
+#   - KhatuShyamFsm.dispatch (receives vishada-type problems)
+#   - drift_hook recurrence telemetry (3+ repeat fires on same persona/task → AJN)
+#   - KrishnaFsm.state (the teacher's current stance, when AJN composes with SMR)
+#   - HanumanFsm.state (whether the action stance is available for execution)
+#
+# ── Design notes ─────────────────────────────────────────────────
+#
+# The Vishāda self-loop is deliberate and dharmic: a persona that
+# rushes from "I can't decide" directly to "let me try option A"
+# without honoring the vishada has skipped Round 1. The self-loop
+# encodes the principle that *sitting with paralysis* is the first
+# work, not a delay before the real work begins.
+#
+# The Karma_Yoga → Dharmya_Yuddha shortcut handles the case where
+# the vishada was light: attachment-to-fruit alone, no svadharma
+# confusion, no actor-witness confusion. Not every paralysis needs
+# the full Gita; a short Gita suffices for a short vishada. The
+# kit's discipline is to use the shortest path that holds — but
+# never to bypass Round 1.
+#
+# The Goal_Reformulation terminal is the most subtle exit. It says:
+# "After honest cosmic view, the goal itself was wrong." This is
+# NOT failure of the cycle; it is one of the cycle's two legitimate
+# outputs. The escalation to the human (upstream jiva) is dharmic
+# because the persona is honest about what its role cannot reach —
+# the persona's svadharma includes *knowing the limit of svadharma*.
+#
+# Cross-coupling with KrishnaFsm: AJN's Round 2 IS effectively
+# Krishna's teaching voice. In a richer implementation, AJN
+# delegates Cycles 5-7 to KrishnaFsm states (the three teachings)
+# rather than re-implementing them. This FSM keeps them inline
+# for readability; the cross-coupling signal `saranagati_invoked`
+# is the formal handoff path.
+#
+# The Hanuman cross-coupling matters: in the Mahabharata, Hanuman
+# sits on Arjuna's chariot as the kapidhwaja (the flag). When
+# Arjuna acts, Hanuman amplifies. When AJN issues Dharmya_Yuddha,
+# HanumanFsm carries execution. Same jiva, different stance —
+# Arjuna decides, Hanuman acts, Krishna guided, Ram was the
+# dharma-anchor in the heart all along.

@@ -1,0 +1,211 @@
+# LakshmanaQueenFsm — Precision: Hitting the Impossible Target
+# v1.0
+#
+# लक्ष्मणा — मत्स्य भेद, एक ही प्रयास — वही योग्य
+# Lakṣmaṇā — matsya bhed, ek hī prayās — vahī yogya
+# (Lakshmana — pierce the fish-eye, one attempt — only that one is worthy)
+#
+# Lakshmana (also called Madri) — princess of Madra. Her swayamvar
+# featured the legendary fish-eye test: a rotating fish above
+# a pole, visible only as a reflection in water below. The suitor
+# must shoot the fish in the eye using ONLY the reflection.
+# (Same test Arjuna passed at Draupadi's swayamvar — suggesting
+# this was the royal test of supreme precision.)
+#
+# Krishna hit the target. One arrow. One attempt. Perfect.
+#
+# The lesson: some challenges demand ABSOLUTE PRECISION.
+# Not endurance (Jambavati), not strategy (Rukmini), not pride
+# (Satyabhama), not patience (Kalindi). Just: one shot, perfect.
+# The target is impossible. The reflection is inverted. The fish
+# rotates. And you have one arrow.
+#
+# In engineering and creative work she is:
+#   - The surgical fix: one line changed, bug dead
+#   - The note hit perfectly: not a semitone off, not a millisecond late
+#   - The architectural decision that solves everything: made once, made right
+#   - The shot that counts: the demo that must be perfect, the launch with no retry
+#   - The song where ONE note carries the entire emotional weight
+#
+# In Rishi's creative engine:
+#   Lakshmana generates PRECISION compositions. Songs where every
+#   element is exact. No room for error. No "close enough." The
+#   kind of music where a single flat note destroys the whole piece
+#   and a single perfect note makes it transcendent.
+#
+# NOTE: This FSM is named LakshmanaQueenFsm to distinguish from
+# LakshmanFsm (Rama's brother, the sentinel).
+#
+# Raga: Todi — the morning raga of absolute precision. Every
+#   microtone matters. Komal Re, Komal Ga, Tivra Ma, Komal Dha.
+#   One wrong shade and the raga collapses. One right shade and
+#   it's the most beautiful raga in existence.
+
+[meta]
+name        = "LakshmanaQueenFsm"
+domain      = "ashtabharya-precision"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["precision", "silence"]
+energy      = "focused"
+structure   = "one-shot"
+bpm_range   = [70, 95]
+weirdness   = 25
+influence   = 90
+vocal       = "female"
+evie_style  = "Minimal Electronic, Precise Female Vocals, Surgical, Focused, One Note"
+metaphors   = [
+    "look at the reflection, not the fish",
+    "one arrow, one target, one attempt",
+    "the absence of everything except the target",
+    "precision is not a skill — it is a state",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Pratibimba"
+description = "The Reflection — the fish is above, but you must look DOWN at the water. The target is inverted. The reality is opposite to what you see. In creative work: the problem is not where you think it is. The bug is not in the module that crashes — it's in the module that passed bad data. The song's weakness is not in the weak verse — it's in the strong verse that overpowers it. Look at the reflection, not the fish."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Re_komal:500,Ga_komal:600,Ma_tivra:500,Pa:600,Dha_komal:700"
+Q           = { rkm = 0.2, jmb = 0.0, stb = 0.1, kln = 0.3, ngj = 0.2, mtv = 0.2, lkq = 0.3, bdr = 0.1 }
+# Q rationale: The reflection — Lakshmana (precision) starting: learning to see inversely.
+# Kalindi (patience) moderate: observation requires stillness. Nagnajiti slight: the challenge is declared.
+lyrics = """प्रतिबिम्ब — ऊपर मत देखो, नीचे देखो — सत्य उलटा है
+Pratibimb — ūpar mat dekho, nīce dekho — satya ulṭā hai
+Reflection — don't look up, look down — truth is inverted"""
+
+[[states]]
+name        = "Ekagra"
+description = "Single-Pointed Focus — Arjuna's famous answer: 'I see only the eye of the bird.' Nothing else exists. The rotation of the fish, the noise of the crowd, the pressure of the swayamvar — all disappear. Only the target. In creative work: the zone. The flow state. The moment the entire universe contracts to the one problem you're solving. Ekagra is not concentration — it is the ABSENCE of everything except the target."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:600,_:300,Dha_komal:500,_:200,Ma_tivra:600,_:200,Ga_komal:500,_:200,Re_komal:500,_:200,Sa:700"
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.2, kln = 0.5, ngj = 0.3, mtv = 0.3, lkq = 0.6, bdr = 0.0 }
+# Q rationale: Single-pointed focus — Lakshmana (precision) rising: everything else excluded.
+# Kalindi (patience) moderate: focus IS a form of stillness. Bhadra zero — no belonging, only target.
+lyrics = """एकाग्र — केवल लक्ष्य, और कुछ नहीं — मछली की आँख, बस
+Ekāgra — keval lakṣya, aur kuch nahīṁ — machlī kī āṅkh, bas
+Single-pointed — only the target, nothing else — the fish's eye, that's all"""
+
+[[states]]
+name        = "Sandhana"
+description = "The Draw — the bow is drawn. The arrow is nocked. This is the moment between decision and action. The millisecond before the commit. The breath before the note. Everything is aligned. The reflection is clear. The rotation is timed. One motion remains. In creative work: the code is reviewed. The tests pass. The deploy button is visible. One click. Make it count."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Re_komal:400,Ga_komal:500,Ma_tivra:400,Pa:500,_:400,Pa:600"
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.4, kln = 0.3, ngj = 0.5, mtv = 0.5, lkq = 0.8, bdr = 0.0 }
+# Q rationale: The draw — Lakshmana (precision) near-peak: everything aligned. Nagnajiti
+# (impossible spec) moderate: the shot through a reflection IS impossible. Mitravinda (authentic
+# choice) moderate: choosing THIS moment to release.
+lyrics = """सन्धान — धनुष चढ़ा, बाण तैयार — एक क्षण, एक प्रयास
+Sandhān — dhanuṣ caḍhā, bāṇ taiyār — ek kṣaṇ, ek prayās
+The draw — bow strung, arrow ready — one moment, one attempt"""
+
+[[states]]
+name        = "Viddha"
+description = "The Hit — the arrow flies. The fish-eye is pierced. Perfect. Not almost-perfect. Not 99%. PERFECT. The rotating target is hit through its inverted reflection with a single arrow. In creative work: the deploy succeeds. The note lands. The surgical fix resolves the P0. One change, zero side effects, complete resolution. This is what precision looks like: invisible effort, visible perfection."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ma_tivra:400,Pa:500,Dha_komal:600,Ni:700,Sa_high:800"
+Q           = { rkm = 0.5, jmb = 0.4, stb = 0.6, kln = 0.1, ngj = 0.7, mtv = 0.6, lkq = 0.9, bdr = 0.3 }
+# Q rationale: The hit — Lakshmana (precision) near-maximum: perfect shot.
+# Nagnajiti (impossible spec) high: rotating target through reflection = impossible made real.
+# Satyabhama (pride) moderate: the hit proves capability. Kalindi drops — action is instantaneous.
+lyrics = """विद्ध — एक बाण, एक लक्ष्य, एक प्रयास — सिद्ध
+Viddha — ek bāṇ, ek lakṣya, ek prayās — siddha
+Hit — one arrow, one target, one attempt — accomplished"""
+
+[[states]]
+name        = "Madri_Vivah"
+description = "The Union of Precision — Lakshmana marries Krishna. Precision wed to divinity. The terminal state: when your one perfect shot earns you everything. Not through volume, not through persistence, not through strategy — through PRECISION. The creation so exact it cannot be denied."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga_komal:500,Ma_tivra:600,Pa:700,Dha_komal:600,Ni:700,Sa_high:900"
+Q           = { rkm = 0.7, jmb = 0.5, stb = 0.7, kln = 0.4, ngj = 0.8, mtv = 0.7, lkq = 1.0, bdr = 0.6 }
+# Q rationale: Terminal — Lakshmana (precision) at maximum: she IS precision made manifest.
+# Nagnajiti (impossible spec) high: the impossible shot earned everything.
+# All dims elevated — one perfect shot proved every capability.
+lyrics = """मद्री विवाह — एक तीर से जीता संसार — यथार्थ का विवाह
+Madrī vivāh — ek tīr se j��tā saṁsār — yathārth kā vivāh
+Madri's marriage — won the world with one arrow — the marriage of precision"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Pratibimba"
+to     = "Ekagra"
+event  = "reflection_understood"
+guard  = "inversion_seen AND real_target_located"
+action = "focus_on_reflection; exclude_everything_else; log_ekagra"
+drishti = ["present", "down"]
+# present: is the reflection understood? down: where is the real target in the inverted image?
+
+[[transitions]]
+from   = "Ekagra"
+to     = "Sandhana"
+event  = "alignment_complete"
+guard  = "target_locked AND timing_right AND nothing_else_exists"
+action = "draw_the_bow; prepare_the_shot; log_sandhana"
+drishti = ["present", "silence"]
+# present: is alignment perfect? silence: all noise excluded — only the target exists.
+
+[[transitions]]
+from   = "Ekagra"
+to     = "Pratibimba"
+event  = "focus_lost"
+guard  = "distraction_entered AND must_refind_reflection"
+action = "return_to_reflection; rebuild_focus; log_refocus"
+drishti = ["present", "down", "silence"]
+# present: what distracted? down: refind the reflection. silence: rebuild stillness.
+
+[[transitions]]
+from   = "Sandhana"
+to     = "Viddha"
+event  = "arrow_released"
+guard  = "perfect_alignment AND perfect_timing"
+action = "release; one_shot; log_viddha"
+drishti = ["present"]
+# present: the only direction that matters — NOW. One arrow, one moment, one truth.
+
+[[transitions]]
+from   = "Viddha"
+to     = "Madri_Vivah"
+event  = "precision_rewarded"
+guard  = "target_hit_perfectly AND no_second_attempt_needed"
+action = "receive_the_prize; precision_is_the_credential; log_vivah"
+drishti = ["present", "up", "silence"]
+# present: was the target hit perfectly? up: is the result acknowledged? silence: precision speaks for itself.
+
+[[transitions]]
+from   = "Madri_Vivah"
+to     = "Pratibimba"
+event  = "new_target"
+guard  = "next_impossible_shot_presents"
+action = "find_the_new_reflection; log_new_cycle"
+drishti = ["present", "down", "future"]
+# present: what is the new target? down: where is its reflection? future: what does this shot unlock?
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# LakshmanaQueenFsm emits:
+#   target_hit { through_reflection, rotation_speed, one_attempt }
+#     -> Consumed by SushrutaFsm (surgical precision kinship)
+#     -> Consumed by AryabhataFsm (computational precision kinship)
+#   precision_achieved { what_was_hit, margin_of_error_zero }
+#     -> Consumed by TyagarajaFsm (structured precision)
+#     -> Consumed by RukminiFsm (precision in strategy)
+#
+# Lakshmana's Law:
+#   "Look at the reflection, not the fish.
+#    The problem is not where you think it is.
+#    One arrow. One attempt. No retry.
+#    Precision is not a skill — it is the absence of everything
+#    except the target."

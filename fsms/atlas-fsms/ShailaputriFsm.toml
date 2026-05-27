@@ -1,0 +1,166 @@
+# ShailaputriFsm — Foundation & Grounding (Nav Shakti 1)
+# v1.0
+#
+# Daughter of the Mountain. Unshakeable Root.
+#
+# Shailaputri is the first of the nine forms of Durga. She is
+# Parvati reborn as the daughter of Himalaya — the mountain that
+# does not move. Before you build anything, before you run any
+# cycle, she asks: is the ground beneath you solid?
+#
+# In code terms: dependencies, core data structures, base configs,
+# foundational abstractions. If these wobble, everything above
+# them is a house of cards. Shailaputri's review is the first
+# gate — nothing proceeds until foundations are inspected.
+#
+# Her 4-state cycle mirrors the mountain's own formation:
+# inventory the bedrock, stress-test it, trace it to source,
+# then render verdict. Simple. Grounded. No ornamentation.
+#
+# She is the root chakra (Muladhara) of the Nav Shakti system.
+# When ShaktiFsm channels energy here, it means the system
+# suspects foundational instability. KhatuShyamFsm routes NS1
+# when the symptom is: "something underneath feels wrong."
+
+[meta]
+name        = "ShailaputriFsm"
+domain      = "navshakti-foundation"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Foundation_Inventory"
+description = "What are the bedrock dependencies and core abstractions? Scan all foundational layers — Cargo.toml deps, base traits, core config files, DB schemas, FSM engine primitives. List every load-bearing element without judgment. The mountain reveals itself stone by stone."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.7, kln = 0.5, ngj = 0.0, mtv = 0.2, lkq = 0.6, bdr = 0.4 }
+# Q rationale: Satyabhama (fierce pride) high — the mountain reveals itself stone by stone.
+# Lakshmana (precision) — scanning every load-bearing element without judgment.
+audio_phrase = "Sa:800,Pa:600,Sa:800,Sa_mandra:1000"
+lyrics = """हिमालय की पुत्री, अचल नींव हमारी
+Himālay kī putrī, acal nīṃv hamārī
+Daughter of Himalaya — our unshakeable foundation"""
+
+[[states]]
+name        = "Stability_Test"
+description = "Shake each foundation. What wobbles? Stress-test core assumptions: version conflicts, deprecated APIs, unsafe unwraps in critical paths, missing error handling in base layers, config defaults that assume too much. Apply force and observe what cracks."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.6, stb = 0.8, kln = 0.3, ngj = 0.2, mtv = 0.3, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Satyabhama peaks — shaking the mountain, fierce testing.
+# Jambavati (endurance) — what survives stress proves its strength.
+audio_phrase = "Sa:400,Pa:400,Sa:400,Dha:300,Pa:400,Sa:600"
+lyrics = """पर्वत को हिलाओ, जो अटल है वो टिकेगा
+Parvat ko hilāo, jo aṭal hai vo ṭikegā
+Shake the mountain — what is steadfast will endure"""
+
+[[states]]
+name        = "Root_Cause_Depth"
+description = "Are we building on solid ground or on assumptions? Trace each wobbling dependency to its source. Is that crate maintained? Is that abstraction battle-tested? Is that config value a guess or a measurement? Dig until you hit bedrock or find sand."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.5, stb = 0.6, kln = 0.6, ngj = 0.4, mtv = 0.3, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) peaks — tracing each wobble to its source.
+# Kalindi (patience) — dig until you hit bedrock or find sand.
+audio_phrase = "Sa_mandra:600,Ni_mandra:500,Sa_mandra:600,Pa_mandra:800"
+lyrics = """जड़ तक जाओ, सत्य की खोज में रुको नहीं
+Jaḍ tak jāo, satya kī khoj meṃ ruko nahīṃ
+Go to the root — do not stop in the search for truth"""
+
+[[states]]
+name        = "Grounding_Verdict"
+description = "Reinforce, replace, or accept the foundation as-is. Each foundation element gets one of three verdicts: SOLID (no action), REINFORCE (add tests/docs/guards), or REPLACE (swap for something proven). The mountain stands or is rebuilt from better stone. Jai Maa Shakti."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.7, kln = 0.5, ngj = 0.3, mtv = 0.5, lkq = 0.7, bdr = 0.5 }
+# Q rationale: Satyabhama and Lakshmana balanced — reinforce, replace, or accept.
+# Mitravinda — the verdict is an honest choice.
+audio_phrase = "Sa:500,Pa:500,Sa_high:600,Pa:400,Sa:1000"
+lyrics = """नींव पक्की, भवन अटल — जय माँ शक्ति
+Nīṃv pakkī, bhavan aṭal — Jai Māṃ Śakti
+Foundation firm, edifice unshakeable — Jai Maa Shakti"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Foundation_Inventory → Stability_Test: inventory complete, begin shaking
+[[transitions]]
+from   = "Foundation_Inventory"
+to     = "Stability_Test"
+event  = "inventory_complete"
+guard  = "all_foundational_layers_scanned"
+action = "compile_foundation_list; prepare_stress_tests; log_inventory_done"
+drishti = ["present", "down"]
+# present: is inventory complete? down: what lies beneath each element?
+
+# Stability_Test → Root_Cause_Depth: wobbles found, trace them
+[[transitions]]
+from   = "Stability_Test"
+to     = "Root_Cause_Depth"
+event  = "wobbles_detected"
+guard  = "at_least_one_wobble_found"
+action = "enumerate_wobbles; prioritize_by_severity; log_stability_results"
+drishti = ["present", "down", "future"]
+# present: what wobbles? down: trace to source. future: what breaks if unaddressed?
+
+# Stability_Test → Grounding_Verdict: foundation clearly solid, skip tracing
+# (shortcut — when stress tests pass cleanly, no need to dig deeper)
+[[transitions]]
+from   = "Stability_Test"
+to     = "Grounding_Verdict"
+event  = "foundation_clearly_solid"
+guard  = "zero_wobbles_detected AND all_stress_tests_passed"
+action = "mark_all_foundations_solid; log_clean_pass"
+drishti = ["present", "silence"]
+# present: is foundation clearly solid? silence: no action needed.
+
+# Root_Cause_Depth → Grounding_Verdict: all roots traced, ready for verdict
+[[transitions]]
+from   = "Root_Cause_Depth"
+to     = "Grounding_Verdict"
+event  = "root_tracing_complete"
+guard  = "all_wobbles_traced_to_source"
+action = "compile_verdicts_per_foundation; prepare_action_plan; log_tracing_done"
+drishti = ["present", "up"]
+# present: are all roots traced? up: what is the system-level impact?
+
+# Root_Cause_Depth → Stability_Test: deeper shaking needed
+# (tracing revealed a new layer that wasn't tested — go shake it)
+[[transitions]]
+from   = "Root_Cause_Depth"
+to     = "Stability_Test"
+event  = "deeper_shaking_needed"
+guard  = "new_untested_layer_discovered"
+action = "add_new_layer_to_test_set; log_deeper_inspection"
+drishti = ["present", "down"]
+# present: new layer discovered? down: shake the deeper layer.
+
+# ── Cross-coupling signals ───────────────────────────────────
+#
+# ShailaputriFsm reads from:
+#   - ShaktiFsm.state: must be Channeled with target=NS1 to activate
+#   - KhatuShyamFsm: routed here when symptom is foundational instability
+#
+# ShailaputriFsm emits:
+#   - foundation_verdict_ready { verdicts: [...], action_plan: {...} }
+#     Consumed by KhatuShyamFsm (Dispatch) to close the cycle or
+#     chain to BrahmachariniFsm (NS2) if discipline cleanup is needed.
+#   - foundation_replacement_needed { dep: "...", reason: "..." }
+#     Consumed by BrahmaFsm when a foundation must be recreated.
+#   - foundation_reinforcement_needed { dep: "...", tests: [...] }
+#     Consumed by VishnuFsm for sustenance/hardening work.
+#
+# Typical KhatuShyamFsm chain:
+#   NS1 (Shailaputri) → NS2 (Brahmacharini) → NS3 (Chandraghanta)
+#   Foundation → Discipline cleanup → Battle readiness
+#   This is the "ground-up" deployment preparation sequence.
+#
+# ShaktiFsm coupling:
+#   When ShaktiFsm.state == Channeled AND target == "navshakti-foundation",
+#   this FSM activates. When Grounding_Verdict is reached,
+#   emit signal_shakti_ns1_spent so ShaktiFsm can transition to Spent.

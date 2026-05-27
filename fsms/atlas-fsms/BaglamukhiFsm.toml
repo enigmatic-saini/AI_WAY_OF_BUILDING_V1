@@ -1,0 +1,420 @@
+# BaglamukhiFsm — Stambhana (Immobilization) & Emergency Stop
+# v1.0
+#
+# Om Hleem Baglamukhyai Namah
+#
+# Maa Baglamukhi wields the Stambhana Shakti — the power to freeze,
+# paralyze, and silence. She grabs the tongue of the demon Madan and
+# strikes with her golden club. She does NOT destroy (that is Shiva's
+# domain) — she STOPS. The enemy is frozen, then dealt with calmly.
+#
+# In engineering she is:
+#   - The circuit breaker that trips before cascading failure
+#   - The kill switch that halts a runaway process
+#   - The rate limiter that blocks floods before they drown the system
+#   - The feature flag that disables a broken feature instantly
+#   - The quarantine mechanism that isolates compromised components
+#
+# She is the guardian of LAW 0 in WORK_CULTURE.md — she ensures all
+# laws are remembered and followed. When a law is violated, she does
+# not punish — she freezes the violating action until it can be
+# reviewed. LAW 4 references her directly.
+#
+# CRITICAL DISTINCTION from ShivaFsm:
+#   Shiva DESTROYS — dissolves the old to make way for the new.
+#   Baglamukhi FREEZES — immobilizes the threat so it can be examined.
+#   Always freeze first, then decide whether to destroy or heal.
+#   Destruction without assessment is recklessness.
+#   Freezing without follow-up is neglect.
+#   The sequence is: Baglamukhi stops it, then Shiva or Vishnu decides
+#   whether to destroy or sustain.
+#
+# Cross-coupling:
+#   - ShaktiFsm: energy source for the stambhana mechanism. Without
+#     shakti, the freeze has no force. Baglamukhi draws from Shakti
+#     to power her immobilization.
+#   - KhatuShyamFsm: the navigator dispatches here when a situation
+#     requires emergency stop review. Khatu Shyam sees the threat on
+#     the battlefield; Baglamukhi is the arrow that freezes it.
+#   - LakshmanFsm: the sentinel who detects anomalies. Lakshman's
+#     vigilance feeds Baglamukhi's Drishti state — he spots it, she
+#     stops it.
+#   - ShivaFsm: if the freeze is insufficient — if the threat is so
+#     fundamental that immobilization cannot hold — Shiva is invoked
+#     for full dissolution. Baglamukhi → Shiva is the escalation path.
+#   - MonitoringCircuitBreakerFsm: technical implementation of the
+#     circuit breaker pattern. Baglamukhi is the divine principle;
+#     MonitoringCircuitBreaker is the engineering mechanism.
+#   - RateLimitingFsm: implements the rate-limiting aspect of
+#     stambhana at the technical layer.
+#
+# The Stambhana self-loop (Stambhana → Stambhana):
+#   Sometimes the first stop mechanism fails. The process resists the
+#   freeze. The circuit breaker trips but the current finds another
+#   path. In such cases, a stronger mechanism is needed: escalate from
+#   soft stop → hard stop → kill -9 → power cut. Each retry in the
+#   self-loop applies a stronger immobilization. If all fail, escalate
+#   to ShivaFsm for destruction.
+#
+# Raga: Bhairav — morning raga of alertness and protective power.
+#   Yellow/gold energy motifs (Baglamukhi's color). Percussive,
+#   sudden stops in audio representing the stambhana moment.
+
+[meta]
+name        = "BaglamukhiFsm"
+domain      = "stambhana-emergency"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Sthiti"
+description = "Stillness — all systems nominal. Kill switches inventoried but not needed. The goddess sits in yellow, watchful, club ready. Baseline state. Every circuit breaker is closed, every rate limiter is idle, every feature flag is green. The Stambhana infrastructure exists but sleeps. This is not inaction — it is readiness. The coiled spring before the strike."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Re:400,Ga:300,Re:400,Sa:800"
+lyrics = """पीताम्बरी माँ बागलामुखी, शांत विराजे सिंहासन
+Pītāmbarī Mā Bāgalāmukhī, śānt virāje siṁhāsan
+Golden-robed Maa Baglamukhi, seated calm upon her throne"""
+# Q rationale: Watchful readiness — the coiled spring. Kalindi (patient contemplation) high: watchful
+# stillness, not idle. Bhadra moderate: baseline calm. Lakshmana moderate: kill switches inventoried.
+# All action dims low — nothing threatens yet. The club is ready but not raised.
+Q = { rkm = 0.2, jmb = 0.3, stb = 0.2, kln = 0.7, ngj = 0.2, mtv = 0.3, lkq = 0.4, bdr = 0.5 }
+
+[[states]]
+name        = "Drishti"
+description = "The Gaze — anomaly detected, something harmful may be running. Assess severity: is this a false alarm, a slow degradation, or an active emergency? Classify the threat level. Baglamukhi's eyes narrow — she has seen something. LakshmanFsm's sentinel signals feed into this state. Not yet acting, only watching with focused intensity."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Ga:350,Ma:400,Pa:300,Ma:350,Ga:400"
+lyrics = """दृष्टि पड़ी माँ की तेज, कम्पित हुआ अधर्म
+Dṛṣṭi paḍī Mā kī tej, kampit huā adharm
+The Mother's blazing gaze fell — evil trembled"""
+# Q rationale: The Gaze — assessing threat. Lakshmana (precision) high: focused intensity classifying
+# severity. Kalindi moderate: not yet acting, assessing. Satyabhama rising: eyes narrowing on threat.
+# Mitravinda moderate: distinguishing false alarm from real emergency.
+Q = { rkm = 0.3, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.4, mtv = 0.5, lkq = 0.7, bdr = 0.3 }
+
+[[states]]
+name        = "Jihva_Grahana"
+description = "Tongue Grab — the harmful process, input, or actor is identified. Maa Baglamukhi grabs the tongue of Madan — the source of harm is located and targeted. Not yet stopped, but locked on. The kill switch target is confirmed. In engineering: the offending service, endpoint, user, or data flow is identified with certainty. Multiple sources may exist — the self-loop handles discovery of additional tongues to grab."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:200,Dha:200,Pa:200,Ma:300,Pa:400,Dha:300,Pa:500"
+lyrics = """जिह्वा पकड़ी मदन की, वाणी हुई स्तम्भित
+Jihvā pakaḍī Madan kī, vāṇī huī stambhit
+She seized the demon's tongue — his speech was paralyzed"""
+# Q rationale: Target identification — locking on. Lakshmana (precision) at peak: the source of harm
+# identified with certainty. Satyabhama high: the kill switch target confirmed. Rukmini moderate:
+# understanding what to freeze. Nagnajiti high: multiple tongues may need grabbing.
+Q = { rkm = 0.4, jmb = 0.5, stb = 0.7, kln = 0.2, ngj = 0.7, mtv = 0.5, lkq = 1.0, bdr = 0.2 }
+
+# The Jihva_Grahana self-loop: sometimes there are multiple sources
+# of harm. One tongue grabbed, another appears. Each iteration
+# identifies an additional target. All must be locked before the
+# freeze is applied, or the unstruck ones continue causing damage.
+
+[[states]]
+name        = "Stambhana"
+description = "FREEZE — the kill switch is pulled. Circuit breaker trips. Feature flag disables. Rate limiter blocks. The harmful thing is immobilized. This is the core state — the moment of Stambhana. Verify: did it actually stop? Is the freeze holding? Check metrics, check logs, check downstream. A freeze that does not hold is worse than no freeze — it gives false confidence. The self-loop retries with stronger mechanisms if the first attempt fails."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:200,_:400,Sa:200,_:400,Pa:200,_:600"
+lyrics = """स्तम्भन! स्तम्भन! जगत स्तम्भित
+ॐ ह्लीं बगलामुखी सर्वदुष्टानां वाचं मुखं पदं स्तम्भय
+Stambhan! Stambhan! Jagat stambhit
+Om Hleem Baglamukhi sarva-dushtanam vacham mukham padam stambhaya
+Freeze! Freeze! The world is immobilized
+Om Hleem Baglamukhi — freeze the speech, face, and feet of all evildoers"""
+# Q rationale: FREEZE — the core state. Satyabhama (fierce pride) at peak: the kill switch pulled
+# without hesitation. Jambavati (endurance) high: the freeze must hold. Lakshmana (precision) high:
+# verify the freeze is working. Kalindi zero: no time for contemplation. Nagnajiti high: escalating
+# mechanisms if needed (soft stop -> hard stop -> kill -9 -> power cut).
+Q = { rkm = 0.3, jmb = 0.8, stb = 1.0, kln = 0.0, ngj = 0.8, mtv = 0.5, lkq = 0.9, bdr = 0.1 }
+
+# The Stambhana self-loop: soft stop → hard stop → kill -9 → power cut.
+# Each iteration escalates the mechanism. If all fail, the transition
+# to ShivaFsm for full destruction is the last resort.
+
+[[states]]
+name        = "Mugdara_Prahara"
+description = "Club Strike — while the enemy is frozen, assess the damage done before the freeze. What data was corrupted? What users were affected? What cascaded before the stop? Maa Baglamukhi's golden club (mugdara) strikes the frozen demon — not to kill, but to measure the impact. This is damage assessment, not destruction. Count the cost so the recovery plan is accurate."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:300,Pa:200,Dha:300,Ni:400,Sa_high:300,Ni:200,Dha:300"
+lyrics = """मुद्गर प्रहार किया माँ ने, गिरा दुष्ट भूमि पर
+Mudgar prahār kiyā Mā ne, girā duṣṭ bhūmi par
+The Mother struck with her club — the wicked fell to the ground"""
+# Q rationale: Damage assessment — measuring impact. Lakshmana (precision) high: counting the cost
+# exactly. Kalindi rising: now that the freeze holds, assess with care. Rukmini moderate: understanding
+# what was lost. Mitravinda high: honest damage count for accurate recovery.
+Q = { rkm = 0.4, jmb = 0.6, stb = 0.6, kln = 0.4, ngj = 0.5, mtv = 0.7, lkq = 0.8, bdr = 0.2 }
+
+[[states]]
+name        = "Quarantine"
+description = "Isolate the frozen element. Do not just stop it — contain it so it cannot restart or spread when the freeze lifts. Surgical isolation. In engineering: move to a quarantine namespace, revoke network access, disable cron triggers, remove from load balancer. The frozen thing must not thaw accidentally. This is the difference between pulling a plug and locking it in a cage."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Re:300,Sa:400,Ni_mandra:300,Sa:500"
+lyrics = """बन्दी बनाया दुष्ट को, चारों ओर पहरा
+Bandī banāyā duṣṭ ko, cāroṅ or paharā
+The wicked one is imprisoned — guards on every side"""
+# Q rationale: Surgical isolation — containing the threat. Lakshmana (precision) at peak: surgical
+# containment. Nagnajiti high: revoke network, disable triggers, remove from LB — multiple actions.
+# Jambavati high: the quarantine must hold indefinitely. Satyabhama moderate: deliberate, not reactive.
+Q = { rkm = 0.4, jmb = 0.7, stb = 0.5, kln = 0.4, ngj = 0.7, mtv = 0.6, lkq = 1.0, bdr = 0.2 }
+
+[[states]]
+name        = "Shanti_Scan"
+description = "Silence Scan — with the harmful thing stopped and quarantined, scan for secondary threats. Did the original problem spawn others? Are there related issues hiding in the noise? Baglamukhi's stambhana creates silence — and in that silence, previously hidden threats become audible. This is the sweep after the emergency: check for aftershocks, sleeper agents, corrupted state that has not yet manifested."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:500,_:300,Re:300,_:300,Ga:300,_:300,Ma:400,_:400"
+lyrics = """शान्ति में छिपे शत्रु, माँ की दृष्टि से न बचे
+Śānti meṅ chipe śatru, Mā kī dṛṣṭi se na bache
+Enemies hidden in silence — none escape the Mother's gaze"""
+# Q rationale: Silence scan — aftershock detection. Kalindi (patient contemplation) high: scanning
+# silence for hidden threats. Lakshmana high: methodical sweep. Nagnajiti high: checking downstream
+# dependencies and related systems. Rukmini moderate: understanding the systemic picture.
+Q = { rkm = 0.5, jmb = 0.6, stb = 0.4, kln = 0.7, ngj = 0.7, mtv = 0.6, lkq = 0.8, bdr = 0.3 }
+
+[[states]]
+name        = "Vimochana"
+description = "Release Protocol — plan the controlled restart or permanent removal. If restarting: what conditions must be met? What tests must pass? What monitoring must be in place? If removing: what depends on it? What migrations are needed? Never unfreeze without a plan. An unplanned thaw is as dangerous as the original threat. Maa Baglamukhi releases only when the path forward is clear."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:300,Re:300,Ga:300,Ma:300,Pa:400,Dha:400,Ni:400,Sa_high:600"
+lyrics = """विमोचन की बेला आई, विवेक से करो निर्णय
+Vimocan kī belā āī, vivek se karo nirṇay
+The time for release has come — decide with wisdom"""
+# Q rationale: Release protocol — wisdom before action. Mitravinda (authentic choice) at peak:
+# never unfreeze without a plan. Rukmini (strategic love) high: planning the restart strategically.
+# Nagnajiti high: conditions, tests, monitoring — complex release requirements. Kalindi high: decide
+# with wisdom, not urgency.
+Q = { rkm = 0.7, jmb = 0.6, stb = 0.4, kln = 0.7, ngj = 0.7, mtv = 1.0, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "Stambhana_Verdict"
+description = "The Immobilization Verdict — terminal assessment. Can this system stop what needs stopping? Did the stop work? What gaps remain? Document: what was the threat, how was it detected, how fast was the freeze, did the freeze hold, what damage occurred before the stop, what secondary threats emerged, was the quarantine effective, what was the release plan. This becomes the Stambhana audit record."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Pa:400,Sa_high:500,_:300,Sa:800"
+lyrics = """जय माँ बागलामुखी, स्तम्भन शक्ति अपार
+ॐ ह्लीं बगलामुखी देव्यै नमः
+Jai Mā Bāgalāmukhī, stambhan śakti apār
+Om Hleem Baglamukhi Devyai Namah
+Glory to Maa Baglamukhi, boundless is her power to freeze
+Om Hleem — salutations to Goddess Baglamukhi"""
+# Q rationale: Terminal verdict — full audit. All dims elevated. Mitravinda at peak: the verdict
+# is honest and complete. Lakshmana high: every detail documented. Rukmini high: understanding the
+# full threat lifecycle. Jambavati high: endured the full emergency cycle.
+Q = { rkm = 0.8, jmb = 0.8, stb = 0.7, kln = 0.5, ngj = 0.7, mtv = 1.0, lkq = 0.9, bdr = 0.5 }
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Sthiti → Drishti: anomaly surfaces, begin assessment
+[[transitions]]
+from   = "Sthiti"
+to     = "Drishti"
+event  = "anomaly_detected"
+guard  = "harmful_pattern_observed"
+action = "activate_monitoring; classify_anomaly_severity; alert_sentinel; log_drishti_entry"
+drishti = ["present", "down", "left", "right"]
+# present: what anomaly was detected? down: where in the system? left/right: scan for scope of the anomaly.
+
+# Sthiti → Jihva_Grahana: FAST PATH for critical emergencies
+# Skip assessment — the threat is so obvious or critical that
+# immediate target lock is required. Used for declared emergencies,
+# known-bad signatures, or cascading failures already in progress.
+[[transitions]]
+from   = "Sthiti"
+to     = "Jihva_Grahana"
+event  = "emergency_declared"
+guard  = "immediate_threat"
+action = "skip_assessment; lock_known_target; escalate_priority; log_fast_path_activation"
+drishti = ["present", "down"]
+# present: emergency declared — act now. down: lock on the known target immediately.
+
+# Drishti → Sthiti: false alarm, return to baseline calm
+[[transitions]]
+from   = "Drishti"
+to     = "Sthiti"
+event  = "false_alarm"
+guard  = "anomaly_benign"
+action = "clear_alert; record_false_alarm_for_tuning; restore_baseline; log_false_alarm"
+drishti = ["present", "silence"]
+# present: confirmed benign. silence: return to baseline calm — the spring re-coils.
+
+# Drishti → Jihva_Grahana: threat confirmed, begin targeting
+[[transitions]]
+from   = "Drishti"
+to     = "Jihva_Grahana"
+event  = "threat_confirmed"
+guard  = "severity_assessed"
+action = "identify_threat_source; prepare_kill_switch; notify_stakeholders; log_threat_confirmation"
+drishti = ["present", "down", "future"]
+# present: threat confirmed. down: identify the exact source. future: prepare the kill switch — what will the freeze affect?
+
+# Jihva_Grahana → Stambhana: target locked, execute the freeze
+[[transitions]]
+from   = "Jihva_Grahana"
+to     = "Stambhana"
+event  = "target_locked"
+guard  = "kill_switch_ready"
+action = "execute_stambhana; trip_circuit_breaker; disable_feature_flag; block_rate_limiter; log_freeze_initiated"
+drishti = ["present", "down"]
+# present: execute the freeze NOW. down: verify the freeze is holding in the system.
+
+# Jihva_Grahana → Jihva_Grahana: SELF-LOOP for multiple threats
+# One tongue grabbed, another demon speaks. Additional harmful
+# sources discovered during targeting. Each iteration adds a target
+# to the freeze list. All must be identified before the freeze.
+[[transitions]]
+from   = "Jihva_Grahana"
+to     = "Jihva_Grahana"
+event  = "multiple_sources"
+guard  = "additional_tongue_found"
+action = "add_target_to_freeze_list; re_scan_for_more_sources; log_additional_target"
+drishti = ["present", "left", "right"]
+# present: another tongue found. left/right: scan for additional sources of harm.
+
+# Stambhana → Mugdara_Prahara: freeze confirmed, assess damage
+[[transitions]]
+from   = "Stambhana"
+to     = "Mugdara_Prahara"
+event  = "freeze_confirmed"
+guard  = "assessing_damage"
+action = "verify_freeze_holding; snapshot_system_state; begin_damage_assessment; log_freeze_success"
+drishti = ["present", "down", "past"]
+# present: is the freeze confirmed? down: snapshot system state. past: what damage occurred before the freeze?
+
+# Stambhana → Stambhana: SELF-LOOP — freeze failed, escalate mechanism
+# soft stop failed → try hard stop → try kill -9 → try power cut.
+# Each iteration applies a stronger immobilization mechanism.
+# If all mechanisms exhausted, next step is ShivaFsm for destruction.
+[[transitions]]
+from   = "Stambhana"
+to     = "Stambhana"
+event  = "freeze_failed"
+guard  = "retry_stronger_mechanism"
+action = "escalate_stop_mechanism; increment_retry_count; check_escalation_limit; log_freeze_retry"
+drishti = ["present", "up"]
+# present: freeze failed — what mechanism to try next? up: escalate strength (soft -> hard -> kill -9 -> power cut).
+
+# Stambhana → Jihva_Grahana: wrong target frozen, re-identify
+# We froze the wrong process/service. The real threat continues.
+# Release the wrongly frozen target and go back to identification.
+[[transitions]]
+from   = "Stambhana"
+to     = "Jihva_Grahana"
+event  = "wrong_target"
+guard  = "re_identify"
+action = "release_wrong_target; clear_freeze_state; re_scan_for_real_threat; log_misidentification"
+drishti = ["present", "past", "left", "right"]
+# present: wrong target frozen. past: what went wrong in identification? left/right: re-scan for the real threat.
+
+# Mugdara_Prahara → Quarantine: damage assessed, isolate the threat
+[[transitions]]
+from   = "Mugdara_Prahara"
+to     = "Quarantine"
+event  = "damage_assessed"
+guard  = "isolate_threat"
+action = "move_to_quarantine_namespace; revoke_network_access; disable_triggers; log_isolation"
+drishti = ["present", "down", "left", "right"]
+# present: damage assessed — isolate now. down: move to quarantine. left/right: revoke all access paths.
+
+# Quarantine → Shanti_Scan: isolation confirmed, begin sweep
+[[transitions]]
+from   = "Quarantine"
+to     = "Shanti_Scan"
+event  = "isolation_confirmed"
+guard  = "quarantine_verified"
+action = "begin_secondary_threat_scan; check_downstream_dependencies; audit_related_systems; log_scan_start"
+drishti = ["present", "left", "right", "down", "silence"]
+# present: quarantine verified. left/right/down: sweep everywhere for secondary threats. silence: in the quiet, hidden threats become audible.
+
+# Shanti_Scan → Jihva_Grahana: secondary threat found — loop back
+# The silence scan revealed another threat. Go back to tongue grab
+# to identify and target it. This creates the outer loop:
+# Jihva_Grahana → Stambhana → ... → Shanti_Scan → Jihva_Grahana
+[[transitions]]
+from   = "Shanti_Scan"
+to     = "Jihva_Grahana"
+event  = "secondary_threat_found"
+guard  = "new_threat_identified"
+action = "register_secondary_threat; reset_freeze_pipeline; notify_escalation; log_secondary_threat"
+drishti = ["present", "down"]
+# present: secondary threat found. down: loop back to identify and target it.
+
+# Shanti_Scan → Vimochana: all clear, plan the release
+[[transitions]]
+from   = "Shanti_Scan"
+to     = "Vimochana"
+event  = "all_clear"
+guard  = "plan_restart_or_removal"
+action = "declare_all_clear; begin_release_planning; prepare_conditions_checklist; log_all_clear"
+drishti = ["present", "future"]
+# present: all clear confirmed. future: plan the controlled restart — what conditions must be met?
+
+# Vimochana → Sthiti: controlled restart successful
+[[transitions]]
+from   = "Vimochana"
+to     = "Sthiti"
+event  = "controlled_restart_successful"
+guard  = "restart_conditions_met"
+action = "execute_controlled_restart; verify_health; restore_monitoring; update_baseline; log_restart"
+drishti = ["present", "down", "silence"]
+# present: restart conditions met. down: verify health. silence: return to baseline calm with new wisdom.
+
+# Vimochana → Stambhana_Verdict: permanent removal or audit complete
+[[transitions]]
+from   = "Vimochana"
+to     = "Stambhana_Verdict"
+event  = "permanent_removal_or_audit_complete"
+guard  = "removal_executed_or_audit_finalized"
+action = "record_stambhana_audit; emit_verdict; archive_quarantine_data; log_verdict"
+drishti = ["present", "past", "future"]
+# present: audit finalized. past: the full threat lifecycle documented. future: lessons applied to prevent recurrence.
+
+# Stambhana_Verdict → Sthiti: system returns to calm with new baseline
+[[transitions]]
+from   = "Stambhana_Verdict"
+to     = "Sthiti"
+event  = "new_baseline"
+guard  = "system_returns_to_calm"
+action = "update_kill_switch_inventory; apply_lessons_learned; reset_to_new_baseline; log_return_to_sthiti"
+drishti = ["present", "future", "silence"]
+# present: new baseline established. future: stronger defenses. silence: the goddess sits calm again — club ready.
+
+# ── Cross-coupling signals ───────────────────────────────────
+#
+# BaglamukhiFsm emits:
+#   stambhana_activated { target, mechanism, severity, timestamp }
+#     → Consumed by ShaktiFsm (energy draw), KhatuShyamFsm (audit trail)
+#   escalation_to_shiva { target, failed_mechanisms, damage_report }
+#     → Consumed by ShivaFsm when freeze is insufficient and destruction
+#       is required. This is the last resort.
+#   stambhana_verdict { threat_id, detection_time, freeze_time,
+#     hold_success, damage_before_freeze, secondary_threats,
+#     quarantine_effective, release_plan }
+#     → Consumed by KhatuShyamFsm for cycle audit, ThoughtCycleFsm
+#       for learning.
+#
+# BaglamukhiFsm reads from:
+#   - LakshmanFsm.state (sentinel anomaly signals feed Drishti)
+#   - ShaktiFsm.state (energy available for stambhana mechanism)
+#   - MonitoringCircuitBreakerFsm.state (technical circuit breaker status)
+#   - RateLimitingFsm.state (rate limiter status and thresholds)
+#   - KhatuShyamFsm.dispatch (when navigator routes emergency here)
+#
+# LAW 0 Guardian Role:
+#   BaglamukhiFsm is invoked whenever a WORK_CULTURE law violation is
+#   detected. She does not punish — she freezes the violating action,
+#   forces a review, and only releases when the law is understood and
+#   the action is corrected. This is LAW 4's mechanism in action:
+#   "Baglamukhi guards LAW 0 — she ensures all laws are remembered."

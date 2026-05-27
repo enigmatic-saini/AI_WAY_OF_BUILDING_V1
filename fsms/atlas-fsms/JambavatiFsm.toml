@@ -1,0 +1,205 @@
+# JambavatiFsm — Endurance Earned: The 28-Day Battle
+# v1.0
+#
+# अठाईस दिन का युद्ध — जो सहा वही पाया
+# Aṭhāīs din kā yuddh — jo sahā vahī pāyā
+# (Twenty-eight days of battle — what was endured was earned)
+#
+# Jambavati — daughter of Jambavan, the immortal bear-king
+# who served Rama in the Ramayana. When the Syamantaka jewel
+# was lost, Krishna tracked it to Jambavan's cave. They fought
+# for 28 DAYS without rest. Jambavan, the ancient warrior who
+# had fought in Rama's army, recognized Krishna as Vishnu himself
+# through the quality of the battle. He gave Krishna both the
+# jewel AND his daughter Jambavati.
+#
+# The lesson: some things can only be earned through prolonged,
+# honest combat. Not trickery. Not speed. Not strategy. Just
+# endurance. 28 days of standing your ground until the truth
+# is proven through the fight itself.
+#
+# In engineering and creative work she is:
+#   - The feature that took 28 sprints but was worth every one
+#   - The song that was rewritten 28 times until it was right
+#   - The debugging session that lasted days but found the root cause
+#   - The negotiation that wore down all pretense until truth remained
+#   - The proof that some problems cannot be shortcut — only outlasted
+#   - The marriage of ancient wisdom (Jambavan) and new energy (Krishna)
+#
+# In Rishi's creative engine:
+#   Jambavati generates EARNED, BATTLE-TESTED compositions.
+#   Songs that carry the weight of long effort. Not instant hits
+#   but slow-burn masterpieces. The song you listen to 28 times
+#   and hear something new each time. Built through endurance.
+#
+# Raga: Marwa — the raga of twilight tension. No Pa (fifth).
+#   It hangs unresolved, fighting between Dha and Re, never
+#   settling. 28 days of unresolved combat. Then — resolution.
+
+[meta]
+name        = "JambavatiFsm"
+domain      = "ashtabharya-endurance"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["endurance", "patience"]
+energy      = "tense"
+structure   = "slow-build"
+bpm_range   = [75, 105]
+weirdness   = 30
+influence   = 80
+vocal       = "female"
+evie_style  = "Post-Rock, Building Female Vocals, Slow Build, Tense, Atmospheric"
+metaphors   = [
+    "twenty-eight days of honest battle",
+    "The fight IS the credential",
+    "Some jewels only come from deep caves",
+    "Ancient and new united — patience is the dowry",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Guha"
+description = "The Cave — Jambavan's cave where the Syamantaka jewel lies. Dark, deep, ancient. Before the battle begins, there is the approach — entering the territory of the problem. In creative work: entering the deep, unfamiliar codebase. Opening the legacy project. Facing the ancient problem nobody else wanted to solve. The cave is intimidating. Go in anyway."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:600,Re:500,Ga:400,Ma_tivra:600,Dha:700,Ni:500,Sa_high:600"
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.3, kln = 0.1, ngj = 0.1, mtv = 0.3, lkq = 0.1, bdr = 0.1 }
+# Q rationale: Entering the cave — Satyabhama (courage) moderate: daring to enter.
+# Jambavati (endurance) just beginning. Most dims low — the fight hasn't started.
+lyrics = """गुहा में प्रवेश — अंधेरा गहरा, समस्या पुरानी
+Guhā meṁ praveś — aṁdherā gahrā, samasyā purānī
+Entering the cave — the darkness is deep, the problem is ancient"""
+
+[[states]]
+name        = "Yuddha"
+description = "The Battle — 28 days. No rest. No tricks. Just honest combat. Krishna and Jambavan — new energy meeting ancient strength. In creative work: the long debugging session. The rewrite that takes weeks. The creative process that demands showing up every single day without knowing when the breakthrough will come. Yuddha is not glamorous. It is grinding. But the grinding IS the proof."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma_tivra:300,Dha:300,Ni:400,Sa_high:300,Ni:300,Dha:400,Ma_tivra:300,Ga:400,Ma_tivra:500"
+Q           = { rkm = 0.3, jmb = 0.7, stb = 0.5, kln = 0.2, ngj = 0.3, mtv = 0.4, lkq = 0.3, bdr = 0.2 }
+# Q rationale: Battle raging — Jambavati (endurance) dominant: 28 days of grinding.
+# Satyabhama (fierce pride) moderate: fighting requires pride. Kalindi (patience) low —
+# this is active combat, not contemplation.
+lyrics = """युद्ध — अठाईस दिन, न विश्राम, न छल — केवल सत्य का संघर्ष
+Yuddha — aṭhāīs din, na viśrām, na chal — keval satya kā saṅgharṣ
+Battle — twenty-eight days, no rest, no trickery — only the struggle of truth"""
+
+[[states]]
+name        = "Pehchaan"
+description = "Recognition — after 28 days, Jambavan recognizes Krishna. Not through scripture or introduction — through the QUALITY OF THE FIGHT. Only Vishnu could fight Jambavan for 28 days without tiring. The battle itself was the credential. In creative work: the moment your work proves your capability. No resume needed. No credentials checked. The code speaks. The song speaks. 28 days of honest work IS your introduction."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Dha:500,Ni:600,Sa_high:700,Ni:500,Dha:500,Ma_tivra:400,Ga:500,Re:400,Sa:600"
+Q           = { rkm = 0.5, jmb = 0.8, stb = 0.4, kln = 0.3, ngj = 0.4, mtv = 0.5, lkq = 0.5, bdr = 0.5 }
+# Q rationale: Recognition — Jambavati (endurance) near-peak: endurance proved identity.
+# Lakshmana (precision) rises — recognition requires seeing clearly. Bhadra (belonging)
+# emerging — ancient and new begin to see kinship.
+lyrics = """पहचान — युद्ध से पहचान, शब्द से नहीं — तू वही है, प्रभु!
+Pehchān — yuddh se pehchān, śabd se nahīṁ — tū vahī hai, Prabhu!
+Recognition — known through battle, not through words — You are HIM, Lord!"""
+
+[[states]]
+name        = "Mani"
+description = "The Jewel — Jambavan gives the Syamantaka jewel to Krishna. The treasure that was hidden in the cave, guarded by an ancient warrior, is now freely given because it was EARNED. In creative work: the breakthrough insight that only comes after weeks of honest struggle. The solution you couldn't have found on day one — it required 28 days of living with the problem."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Ma_tivra:600,Dha:700,Ni:600,Sa_high:700,Ni:500,Dha:500"
+Q           = { rkm = 0.6, jmb = 0.9, stb = 0.5, kln = 0.4, ngj = 0.5, mtv = 0.6, lkq = 0.6, bdr = 0.5 }
+# Q rationale: Jewel found — Jambavati (endurance) near-peak: the treasure proves the fight.
+# Rukmini (strategic love) rising — the jewel is the strategic prize. Lakshmana (precision)
+# and Nagnajiti (impossible spec) moderate — the impossible cave yielded its treasure.
+lyrics = """मणि मिली — गुहा से रत्न, युद्ध से सत्य — जो सहा वही पाया
+Maṇi milī — guhā se ratna, yuddh se satya — jo sahā vahī pāyā
+The jewel was found — gem from the cave, truth from the battle — what was endured was earned"""
+
+[[states]]
+name        = "Vivah"
+description = "The Marriage — Jambavan gives his daughter. Ancient wisdom marries new energy. The past and future join. In creative work: the moment old and new integrate. The legacy system married to the new architecture. The traditional raga married to the modern arrangement. The ancient problem finally solved by persistent new effort. The terminal state: endurance creates union."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Re:500,Ga:600,Ma_tivra:500,Dha:600,Ni:700,Sa_high:800"
+Q           = { rkm = 0.7, jmb = 1.0, stb = 0.6, kln = 0.6, ngj = 0.5, mtv = 0.7, lkq = 0.7, bdr = 0.8 }
+# Q rationale: Terminal — Jambavati (endurance) at maximum: she IS endurance proven.
+# Bhadra (belonging) high: ancient and new united in marriage. All dims elevated —
+# 28 days of battle has strengthened every capability.
+lyrics = """विवाह — पुरातन और नवीन का मिलन — धैर्य ही दहेज
+Vivāh — purātan aur navīn kā milan — dhairya hī dahej
+Marriage — ancient and new united — patience itself is the dowry"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Guha"
+to     = "Yuddha"
+event  = "enter_the_fight"
+guard  = "problem_located AND courage_to_engage"
+action = "begin_the_28_days; no_shortcuts; log_yuddha"
+drishti = ["present", "down", "future"]
+# present: is the problem located? down: what lies inside the cave? future: how long will this take?
+
+[[transitions]]
+from   = "Yuddha"
+to     = "Yuddha"
+event  = "another_day"
+guard  = "not_yet_28_days AND neither_side_yields"
+action = "continue_the_fight; show_up_again; log_day_N"
+drishti = ["present", "past"]
+# present: is the fight still honest? past: what did yesterday's battle reveal?
+
+[[transitions]]
+from   = "Yuddha"
+to     = "Pehchaan"
+event  = "quality_of_fight_proves_identity"
+guard  = "endurance_proves_capability AND ancient_recognizes_new"
+action = "receive_recognition; earned_not_given; log_pehchaan"
+drishti = ["present", "up", "past"]
+# present: does the quality of work prove identity? up: is this recognized at the highest level? past: what did 28 days reveal?
+
+[[transitions]]
+from   = "Pehchaan"
+to     = "Mani"
+event  = "treasure_freely_given"
+guard  = "recognition_complete AND trust_established"
+action = "receive_the_jewel; log_mani"
+drishti = ["present", "down", "future"]
+# present: is the treasure genuine? down: what does the jewel contain? future: what does it enable?
+
+[[transitions]]
+from   = "Mani"
+to     = "Vivah"
+event  = "endurance_creates_union"
+guard  = "jewel_secured AND ancient_new_ready_to_merge"
+action = "marry_old_and_new; integrate; log_vivah"
+drishti = ["present", "up", "silence"]
+# present: is the integration complete? up: does the whole system recognize the union? silence: is rest earned?
+
+[[transitions]]
+from   = "Vivah"
+to     = "Guha"
+event  = "new_cave_found"
+guard  = "next_ancient_problem_beckons"
+action = "enter_new_cave; log_new_cycle"
+drishti = ["present", "future", "down"]
+# present: is the next problem real? future: what awaits inside? down: how deep is this cave?
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# JambavatiFsm emits:
+#   battle_proven { days_fought, what_endurance_revealed, capability_demonstrated }
+#     -> Consumed by PrahladFsm (endurance kinship)
+#     -> Consumed by RukminiFsm (strategy enriched by endurance data)
+#   ancient_new_merged { old_system, new_approach, integration_method }
+#     -> Consumed by VishwakarmaFsm (build system integration)
+#     -> Consumed by KrishnaFsm (strategic union of old and new)
+#
+# Jambavati's Law:
+#   "Some jewels can only be found in caves that take 28 days to clear.
+#    There is no shortcut for endurance. There is no hack for honesty.
+#    The fight IS the credential. The struggle IS the proof."

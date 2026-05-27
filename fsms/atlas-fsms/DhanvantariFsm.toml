@@ -1,0 +1,163 @@
+# DhanvantariFsm — The Divine Physician: Ayurvedic Sound Healing
+# v1.0
+#
+# धन्वन्तरि — अमृत लेकर आए, आयुर्वेद दिया
+# Dhanvantari — amṛt lekar āe, āyurved diyā
+# (Dhanvantari — came bearing nectar, gave Ayurveda)
+#
+# Dhanvantari — avatar of Vishnu, emerged from the Samudra Manthan
+# (churning of the cosmic ocean) carrying the pot of Amrit.
+# He is the father of Ayurveda, the science of life.
+#
+# His approach to healing through music:
+#   - Prakriti (constitution) detection: Vata, Pitta, Kapha
+#   - Each dosha has specific raga affinity
+#   - Imbalanced dosha → specific raga restores balance
+#   - This is 5000-year-old Ayurvedic sound therapy (Nada Chikitsa)
+#
+# In the Be Happy quiz, Dhanvantari works SILENTLY alongside Radha:
+#   Radha sees the EMOTION → selects raga from the heart
+#   Dhanvantari sees the DOSHA → selects raga from the body
+#   Both converge on the same raga → the song is doubly right
+#
+# CRITICAL: Never expose dosha/prakriti terminology in the UI.
+# The user sees: "Want to be happy?" → fun quiz → song → "Be Happy"
+# The user never sees: "Your Vata is imbalanced, here's Bhairavi"
+#
+# Raga-Dosha Mapping (from Nada Chikitsa tradition):
+#
+#   VATA imbalance (anxiety, restlessness, insomnia, fear):
+#     → Ragas: Bhairavi, Darbari Kanada, Sahana
+#     → Properties: warm, grounding, slow, steady
+#     → Instruments: tanpura drone (grounding), soft tabla
+#     → Tempo: 60-75 BPM (slow, calming)
+#
+#   PITTA imbalance (anger, intensity, burnout, inflammation):
+#     → Ragas: Malkauns, Bhimpalasi, Sarang
+#     → Properties: cooling, deep, meditative, moonlit
+#     → Instruments: flute (cooling), santoor (flowing)
+#     → Tempo: 55-70 BPM (very slow, cooling)
+#
+#   KAPHA imbalance (heaviness, lethargy, depression, stagnation):
+#     → Ragas: Yaman, Khamaj, Des, Kedar
+#     → Properties: uplifting, bright, energizing, expansive
+#     → Instruments: sitar (stimulating), tabla (rhythmic)
+#     → Tempo: 80-100 BPM (moderate, energizing)
+#
+# Cross-coupling:
+#   - RadhaFsm: Radha's emotional reading + Dhanvantari's dosha
+#     reading MUST agree on the raga. If they disagree, Radha wins
+#     (emotion is more immediate than constitution).
+#   - SurdasFsm: for children/tenderness — Dhanvantari defers
+#   - HaridasFsm: for silence/purity — both agree on Malkauns
+#   - JanabaiFsm: for grounding in daily rhythm — both agree
+
+[meta]
+name        = "DhanvantariFsm"
+domain      = "ayurveda-healing"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["natural_peace", "patience"]
+energy      = "healing"
+structure   = "meditative"
+bpm_range   = [55, 85]
+weirdness   = 20
+influence   = 90
+vocal       = "male"
+evie_style  = "Ambient Healing, Gentle Male Vocals, Tanpura Drone, Therapeutic, Warm"
+metaphors   = [
+    "the nectar that emerged from the ocean of churning",
+    "the body knows its own medicine",
+    "sound is the oldest healer",
+    "balance is not stillness — it is the right rhythm",
+]
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Darshan"
+description = "The First Look — Dhanvantari observes the patient without asking. In Ayurveda, the physician reads the pulse (nadi pariksha), the eyes, the skin, the voice. In the quiz: the answers reveal the dosha without the user knowing they're being assessed."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.1, kln = 0.1, ngj = 0.1, mtv = 0.1, lkq = 0.1, bdr = 0.1 }
+audio_phrase = "Sa:600,Re:500,Ga:600,Ma:500,Pa:600"
+
+[[states]]
+name        = "Prakriti"
+description = "Constitution Detection — Vata (air+space), Pitta (fire+water), Kapha (earth+water). Every person has all three; one dominates. The quiz answers map to dosha dominance. This is the hidden diagnosis — never exposed in UI."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.1, kln = 0.2, ngj = 0.1, mtv = 0.2, lkq = 0.2, bdr = 0.2 }
+audio_phrase = "Sa:500,Ga:500,Pa:500,Sa_high:500,Pa:400,Ga:400,Sa:600"
+
+[[states]]
+name        = "Vikriti"
+description = "Imbalance Detection — the current dosha imbalance (vikriti) vs natural constitution (prakriti). A Vata person with Pitta imbalance needs cooling (Pitta remedy), not grounding (Vata remedy). The quiz detects CURRENT state, not permanent nature."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.2, kln = 0.3, ngj = 0.2, mtv = 0.3, lkq = 0.3, bdr = 0.3 }
+audio_phrase = "Ma:400,Pa:500,Dha:600,Ni:500,Sa_high:600,Ni:500,Dha:500,Pa:600"
+
+[[states]]
+name        = "Nada_Chikitsa"
+description = "Sound Therapy — the raga is prescribed (silently). Nada Chikitsa is the Ayurvedic practice of healing through sound. Specific ragas for specific doshas. The prescription is the song. The user just hears music."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.2, kln = 0.3, ngj = 0.2, mtv = 0.3, lkq = 0.3, bdr = 0.3 }
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:700,Pa:500,Ga:500,Sa:600"
+
+[[states]]
+name        = "Amrit"
+description = "The Nectar — the song is generated. Like the Amrit that emerged from the churning ocean, the right raga emerges from the churning of emotional + dosha data. The patient receives the nectar — they just think it's a nice song."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.7, kln = 0.7, ngj = 0.7, mtv = 0.7, lkq = 0.7, bdr = 0.7 }
+audio_phrase = "Sa:400,Re:400,Ga:500,Ma:400,Pa:500,Dha:600,Ni:700,Sa_high:800"
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Darshan"
+to     = "Prakriti"
+event  = "quiz_started"
+guard  = "user_answers_arriving"
+action = "observe_answers; begin_dosha_detection"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Prakriti"
+to     = "Vikriti"
+event  = "prakriti_identified"
+guard  = "base_dosha_known"
+action = "detect_current_imbalance"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Vikriti"
+to     = "Nada_Chikitsa"
+event  = "imbalance_identified"
+guard  = "dosha_imbalance_clear"
+action = "select_raga_for_dosha; consult_radha_for_emotion"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Nada_Chikitsa"
+to     = "Amrit"
+event  = "raga_agreed"
+guard  = "radha_and_dhanvantari_agree_on_raga"
+action = "generate_song; deliver_the_nectar"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Amrit"
+to     = "Darshan"
+event  = "new_patient"
+guard  = "next_quiz_session"
+action = "reset; fresh_observation"
+drishti = ["present", "right"]

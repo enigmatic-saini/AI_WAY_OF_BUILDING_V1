@@ -1,0 +1,100 @@
+# SkillFsm — The shape of every skill
+# A skill IS a CycleFsm profile run as a procedure. Cycle states = the skill's states.
+
+[meta]
+name    = "SkillFsm"
+domain  = "claude-code-skill"
+version = "1.0"
+parent  = "CycleFsm"
+
+# ──────────────────────────────────────────────────────────────────
+# §1 — STATES (the cycle profile chosen by the skill)
+# ──────────────────────────────────────────────────────────────────
+
+# Per-instance below. Each skill picks a CycleFsm profile (Q/S/D/3x4)
+# and inherits its states.
+
+# ──────────────────────────────────────────────────────────────────
+# §2 — GUARDS (template-driven)
+# ──────────────────────────────────────────────────────────────────
+
+# Each state's exit guard is the named output template being filled.
+# E.g., the "verdict" state of pre-commit-8l cannot exit without a
+# checklist of 12 results, each with PASS/FAIL and (on FAIL) a file:line.
+
+# ──────────────────────────────────────────────────────────────────
+# §3 — INSTANCES (the 8 skills)
+# ──────────────────────────────────────────────────────────────────
+
+[[instances]]
+name    = "intake"
+file    = ".claude/skills/intake/SKILL.md"
+profile = "Q"
+length  = 4
+states  = ["listen", "mirror", "classify", "draft_and_gate"]
+purpose = "Pre-T₀ front door — receive raw human desire, draft CHARTER.md so T₀ can fire."
+
+[[instances]]
+name    = "triage"
+file    = ".claude/skills/triage/SKILL.md"
+profile = "Q"
+length  = 4
+states  = ["symptom", "survey", "plan", "begin"]
+purpose = "Witness function — pick the right cycle when situation is ambiguous."
+
+[[instances]]
+name    = "pre-commit-8l"
+file    = ".claude/skills/pre-commit-8l/SKILL.md"
+profile = "D"
+length  = 12
+states  = ["engine_law_1..8", "security", "thread_safety", "data_loss", "ui_consistency"]
+purpose = "12-point check before every commit. The guard on T₂."
+
+[[instances]]
+name    = "handover"
+file    = ".claude/skills/handover/SKILL.md"
+profile = "Q"
+length  = 4
+states  = ["what_done", "what_failed", "what_next", "open_questions"]
+purpose = "End-of-session HANDOVER.md per L9."
+
+[[instances]]
+name    = "commit"
+file    = ".claude/skills/commit/SKILL.md"
+profile = "Q"
+length  = 4
+states  = ["run_8L", "draft_message", "stage", "commit"]
+purpose = "The engineer's workhorse — wraps /pre-commit-8l + commit."
+
+[[instances]]
+name    = "mr"
+file    = ".claude/skills/mr/SKILL.md"
+profile = "S"
+length  = 5
+states  = ["sensitivity_scan", "reviewer_routing", "template_fill", "push", "open_MR"]
+purpose = "Open a Merge Request with the SDLC §5 template auto-populated."
+
+[[instances]]
+name    = "release"
+file    = ".claude/skills/release/SKILL.md"
+profile = "D"
+length  = 7
+states  = ["RH3_pass", "status_honesty", "draft_notes", "propose_tag", "canary_watch", "rollback_gate", "tag"]
+purpose = "Release captain's procedure. Guard on T₃ (build → service)."
+
+[[instances]]
+name    = "incident"
+file    = ".claude/skills/incident/SKILL.md"
+profile = "D"
+length  = 7
+states  = ["ack", "channel", "triage", "mitigate", "restore", "watch", "postmortem"]
+purpose = "On-call incident command. Guard on T_prarabdha when fired by alert."
+
+# ──────────────────────────────────────────────────────────────────
+# §4 — INVARIANTS
+# ──────────────────────────────────────────────────────────────────
+
+[invariants]
+"every_skill_picks_a_profile"   = true
+"every_state_has_output_template" = true
+"skip_state_is_structurally_impossible_when_template_missing" = true

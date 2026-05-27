@@ -1,0 +1,196 @@
+[meta]
+name    = "AshtavakraFsm"
+domain  = "liberation-witness"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# AshtavakraFsm — The Witness Awakening
+#
+# The most direct path. No practice, no accumulation.
+# Ashtavakra taught Janaka: "You are already free.
+# The bondage is imaginary. You are the witness, not the actor."
+#
+# The cycle: Bandha → Shravana → Manana → Vichara → Sakshi → Sahaja → Turiya
+# Maya_Relapse possible from any state before Sahaja.
+#
+# The rubber band weakens with each pass.
+# When relapse_duration approaches zero, Sahaja is near.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Bandha"
+description = "Bondage — identifying with body, mind, world. 'I am this body, these thoughts, this suffering.' Default state. Carries shravana_count residue after relapse."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.0, jmb = 0.0, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.2 }
+# Q rationale: Total identification. Zero capability. Faint Bhadra —
+# the bound soul feels it belongs to the body.
+
+[[states]]
+name        = "Shravana"
+description = "Hearing — the teaching arrives: 'You are not the body. You are the awareness in which body and mind appear.' The first crack in identification."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.1, stb = 0.1, kln = 0.3, ngj = 0.1, mtv = 0.2, lkq = 0.2, bdr = 0.2 }
+# Q rationale: Kalindi (patience) — hearing requires stillness.
+# Rukmini (love) — the teaching arrives through grace.
+
+[[states]]
+name        = "Manana"
+description = "Reflection — turning the teaching inward. 'If I am not the body, what am I?' Genuine self-examination begins. The mind uses itself to question itself."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.2, stb = 0.3, kln = 0.5, ngj = 0.2, mtv = 0.4, lkq = 0.4, bdr = 0.3 }
+# Q rationale: Kalindi deepens — genuine self-examination takes patience.
+# Mitravinda — honest questioning is a choice against comfort.
+
+[[states]]
+name        = "Vichara"
+description = "Self-Inquiry — direct investigation. Who is the one who is aware? Who sees the thought? The search turns back on the searcher."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.4, stb = 0.4, kln = 0.6, ngj = 0.5, mtv = 0.6, lkq = 0.6, bdr = 0.3 }
+# Q rationale: Nagnajiti (impossible) rising — who sees the seer?
+# Lakshmana (precision) — the search must be exact. No vague spirituality.
+
+[[states]]
+name        = "Sakshi"
+description = "Witness — the observer stabilizes. Thoughts arise, witnessed. Emotions arise, witnessed. The body still has eight bends. But awareness is separate from content."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.5, kln = 0.8, ngj = 0.7, mtv = 0.7, lkq = 0.8, bdr = 0.5 }
+# Q rationale: Lakshmana (precision) high — the witness is precise discrimination.
+# Nagnajiti (impossible) — maintaining separation from content seems impossible yet happens.
+
+[[states]]
+name        = "Sahaja"
+description = "Natural — effortless abiding. No practice needed. Witness is the default. Janaka ruled a kingdom from this state. No relapse possible."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.8, jmb = 0.6, stb = 0.6, kln = 0.9, ngj = 0.8, mtv = 0.8, lkq = 0.9, bdr = 0.8 }
+# Q rationale: Effortless abiding. Lakshmana (precision) near peak — witness is default.
+# Bhadra (belonging) — Janaka ruled a kingdom from this state, fully engaged.
+
+[[states]]
+name        = "Turiya"
+description = "The Fourth — beyond waking, dreaming, deep sleep. Not a state at all — the ground in which states appear. Even 'witness' is seen as a concept and dropped."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.9, jmb = 0.7, stb = 0.6, kln = 1.0, ngj = 1.0, mtv = 0.9, lkq = 0.9, bdr = 0.9 }
+# Q rationale: Kalindi and Nagnajiti at peak — infinite patience, impossible achieved.
+# Even 'witness' dropped as concept. Beyond beyond.
+
+[[states]]
+name        = "Maya_Relapse"
+description = "Identification returns. Old patterns triggered. 'I am this body' reasserts. Not failure — the noticing of relapse proves the witness never fully left. Returns to Bandha with residue."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.1, jmb = 0.0, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.1, bdr = 0.1 }
+# Q rationale: Identification returns. Near zero. The noticing of relapse
+# proves the witness never fully left — faint Lakshmana remains.
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Bandha"
+to     = "Shravana"
+event  = "teaching_received"
+guard  = "guru_present OR text_encountered OR suffering_peaked"
+action = "crack_first_identification; log_teaching_source"
+drishti = ["present", "up"]
+# present: has teaching arrived? up: is a guru present?
+
+[[transitions]]
+from   = "Shravana"
+to     = "Manana"
+event  = "turning_inward"
+guard  = "intellectual_honesty AND not_merely_collecting_knowledge"
+action = "begin_self_examination"
+drishti = ["present", "down"]
+# present: is the teaching penetrating? down: are you collecting or examining?
+
+[[transitions]]
+from   = "Manana"
+to     = "Vichara"
+event  = "inquiry_deepens"
+guard  = "questioning_questioner AND mind_willing_to_dissolve"
+action = "initiate_self_inquiry"
+drishti = ["present", "down", "silence"]
+# present: is the questioner being questioned? down: who is asking? silence: where does inquiry lead?
+
+[[transitions]]
+from   = "Vichara"
+to     = "Sakshi"
+event  = "witness_emerges"
+guard  = "observer_stable_for_duration AND not_suppressing_thoughts"
+action = "stabilize_witness_awareness"
+drishti = ["present", "silence"]
+# present: is the observer stable? silence: has thought receded?
+
+[[transitions]]
+from   = "Sakshi"
+to     = "Sahaja"
+event  = "effort_dissolves"
+guard  = "no_practice_needed AND witness_is_default"
+action = "release_practice_scaffolding"
+drishti = ["present", "silence"]
+# present: is effort dissolving? silence: is witnessing effortless?
+
+[[transitions]]
+from   = "Sahaja"
+to     = "Turiya"
+event  = "ground_recognized"
+guard  = "even_witness_seen_as_concept"
+action = "dissolve_final_duality"
+drishti = ["present", "up", "silence"]
+# present: is even witness a concept? up: what is the ground? silence: beyond all categories.
+
+# Maya_Relapse transitions
+[[transitions]]
+from   = "Shravana"
+to     = "Maya_Relapse"
+event  = "identification_returns"
+guard  = "old_pattern_triggered"
+action = "log_relapse; increment_shravana_count"
+drishti = ["present", "past"]
+# present: has old pattern triggered? past: what identification returned?
+
+[[transitions]]
+from   = "Manana"
+to     = "Maya_Relapse"
+event  = "identification_returns"
+guard  = "old_pattern_triggered"
+action = "log_relapse; increment_shravana_count"
+drishti = ["present", "past"]
+# present: has old pattern triggered? past: what identification returned?
+
+[[transitions]]
+from   = "Vichara"
+to     = "Maya_Relapse"
+event  = "identification_returns"
+guard  = "old_pattern_triggered"
+action = "log_relapse; record_peak_state(Vichara)"
+drishti = ["present", "past"]
+# present: has old pattern triggered? past: what identification returned?
+
+[[transitions]]
+from   = "Sakshi"
+to     = "Maya_Relapse"
+event  = "identification_returns"
+guard  = "old_pattern_triggered"
+action = "log_relapse; record_peak_state(Sakshi)"
+drishti = ["present", "past"]
+# present: has old pattern triggered? past: what identification returned?
+
+[[transitions]]
+from   = "Maya_Relapse"
+to     = "Bandha"
+event  = "automatic"
+guard  = ""
+action = "reset_state; preserve_shravana_count; log_rubber_band_duration"
+drishti = ["present", "past"]
+# present: confirm relapse. past: preserve count of how far we reached.

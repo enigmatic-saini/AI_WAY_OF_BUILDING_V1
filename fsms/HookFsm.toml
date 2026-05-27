@@ -1,0 +1,130 @@
+# HookFsm — The shape of every hook
+# Hooks are FSMs with NO LLM in the loop. They are the runtime instance of T_prarabdha.
+
+[meta]
+name    = "HookFsm"
+domain  = "claude-code-hook"
+version = "1.0"
+
+# ──────────────────────────────────────────────────────────────────
+# §1 — STATES
+# ──────────────────────────────────────────────────────────────────
+
+[[states]]
+id      = "idle"
+initial = true
+
+[[states]]
+id      = "scanning"
+purpose = "Hook script reads tool input; pattern-match runs."
+
+[[states]]
+id      = "allow"
+terminal = true
+purpose = "Pattern did not match. Tool proceeds."
+
+[[states]]
+id      = "block"
+terminal = true
+purpose = "Pattern matched. Tool is refused with a reason."
+
+# ──────────────────────────────────────────────────────────────────
+# §2 — TRANSITIONS
+# ──────────────────────────────────────────────────────────────────
+
+[[transitions]]
+from = "idle" ; to = "scanning"
+event = "PreToolUse | Stop | UserPromptSubmit"
+guard = "matcher matches tool"
+
+[[transitions]]
+from = "scanning" ; to = "allow"
+event = "no_match"
+
+[[transitions]]
+from = "scanning" ; to = "block"
+event = "pattern_match"
+action = "exit code 2 with reason printed to stderr"
+
+# ──────────────────────────────────────────────────────────────────
+# §3 — INSTANCES (the 5 hooks)
+# ──────────────────────────────────────────────────────────────────
+
+[[instances]]
+name        = "block-dangerous-bash"
+script      = ".claude/hooks/block-dangerous-bash.sh"
+event       = "PreToolUse"
+matcher     = "Bash"
+patterns    = [
+  "git push.*--force",
+  "git push.*-f\\b",
+  "--no-verify",
+  "rm -rf /",
+  "rm -rf \\*",
+  "git config --global",
+]
+law         = "L10"
+
+[[instances]]
+name        = "secret-scan"
+script      = ".claude/hooks/secret-scan.sh"
+event       = "PreToolUse"
+matcher     = "Write|Edit"
+patterns    = [
+  "-----BEGIN [A-Z ]+ PRIVATE KEY-----",
+  "AKIA[0-9A-Z]{16}",
+  "ghp_[A-Za-z0-9]{36}",
+  "xox[baprs]-[A-Za-z0-9-]+",
+  "sk-ant-api[0-9]{2}-[A-Za-z0-9_-]{80,}",
+  "ya29\\.[A-Za-z0-9_-]+",
+  "eyJ[A-Za-z0-9_=-]+\\.eyJ[A-Za-z0-9_=-]+\\.[A-Za-z0-9_=-]+",
+]
+law         = "L10"
+
+[[instances]]
+name        = "vocabulary-lint"
+script      = ".claude/hooks/vocabulary-lint.sh"
+event       = "PreToolUse"
+matcher     = "Write|Edit"
+mode        = "exclusion-based"
+exempt_ext  = [".md", ".toml", ".txt", ".json", ".yaml", ".lock", ".log", ".csv", ".tsv"]
+exempt_dirs = ["*/shastras/*", "*/templates/*"]
+law         = "Vocabulary law (see VOCABULARY.md)"
+
+[[instances]]
+name        = "handover-reminder"
+script      = ".claude/hooks/handover-reminder.sh"
+event       = "Stop"
+matcher     = "*"
+purpose     = "If HANDOVER.md missing or >3 days old at session stop, remind."
+law         = "L9"
+
+[[instances]]
+name        = "stage-tip"
+script      = ".claude/hooks/stage-tip.sh"
+event       = "UserPromptSubmit"
+matcher     = "*"
+purpose     = "On every prompt, list the 7 M_build stages + 8 skills."
+law         = "L3"
+
+[[instances]]
+name        = "frontmatter-check"
+script      = ".claude/hooks/frontmatter-check.sh"
+event       = "PreToolUse"
+matcher     = "Write|Edit"
+purpose     = "Structural enforcement of the DASHBOARD.md frontmatter contract on canonical docs."
+canonical_basenames = ["CHARTER.md", "DESIGN.md", "STATUS.md", "TODO.md", "HANDOVER.md"]
+canonical_patterns  = ["*/decisions/ADR-*.md", "*/postmortems/INC-*.md", "*/runbooks/*.md"]
+law         = "L11 (Anti-Hypocrisy / Kabir Gate audit point 13)"
+note        = "Edit-tool calls are passed through (slice-only mutations); Write-tool calls on canonical paths are enforced."
+
+# ──────────────────────────────────────────────────────────────────
+# §4 — INVARIANTS (verified by KABIR_GATE.md)
+# ──────────────────────────────────────────────────────────────────
+
+[invariants]
+"no_LLM_in_loop"           = true
+"deterministic_per_input"  = true
+"reason_printed_on_block"  = true
+"all_6_instances_present"  = true
+"settings_json_wires_all"  = true

@@ -1,0 +1,502 @@
+# DrishtiFsm — Krishna's Eight-Direction Awareness Scan
+# v1.1
+#
+# दृष्टि — the gaze before the act
+#
+# Before any FSM fires a transition, the strategist looks in 8 directions.
+# This is not a cycle. This is not a guardian. This is PRE-transition
+# awareness — the charioteer scanning the battlefield before the
+# horses move.
+#
+# The 8 directions are 3 axes + 1 null:
+#
+#   Spatial axis (x):  Left  (-1) ←→ Right (+1)
+#                      Adjacent alternatives, lateral solutions
+#
+#   Depth axis (y):    Down  (-1) ←→ Up    (+1)
+#                      Zoom in (implementation) ←→ Zoom out (architecture)
+#
+#   Time axis (t):     Past  (-1) ←→ Future (+1)
+#                      What was tried before ←→ What this becomes
+#
+#   Origin:            Present (0, 0, 0)
+#                      What is real right now, not imagined
+#
+#   Null:              Silence (∅)
+#                      The path of non-action. Should this NOT be built?
+#
+# ── Mathematical definition ─────────────────────────────────────
+#
+#   Standard FSM:   M = (S, Σ, δ, s₀, F)
+#   With Drishti:   M = (S, Σ, δ, s₀, F, D)
+#
+#   D : S × Σ → Vec8
+#   Vec8 = (left, right, up, down, past, future, present, silence)
+#   Each element ∈ {0, 1}  (looked / not looked)
+#
+#   Transition fires only when:
+#     δ(s, σ) = s'  AND  guard(s, σ) = true  AND  D(s, σ) ≠ ∅
+#
+#   i.e. you must LOOK before you MOVE.
+#
+# ── How it composes with existing FSMs ──────────────────────────
+#
+#   Every [[transitions]] block gains an optional field:
+#
+#     drishti = ["left", "right", "up", "down",
+#                "past", "future", "present", "silence"]
+#
+#   The drishti field lists which directions MUST be scanned before
+#   this transition fires. If omitted, defaults to ["present"]
+#   (minimum awareness — know what is real now).
+#
+#   Example (from RamFsm):
+#     [[transitions]]
+#     from    = "Maryada_Scan"
+#     to      = "Vanvas"
+#     event   = "adversity_test"
+#     guard   = "rules_catalogued"
+#     action  = "simulate_component_removal"
+#     drishti = ["down", "past", "present"]
+#     # Down: zoom into implementation. Past: what broke before.
+#     # Present: what is real now. No future-gazing needed for a stress test.
+#
+#   Example (from KrishnaFsm — strategic decision):
+#     [[transitions]]
+#     from    = "Venu_Naad"
+#     to      = "Gopi_Aahvaan"
+#     event   = "call_begins"
+#     guard   = "raga_established"
+#     drishti = ["left", "right", "up", "future", "present"]
+#     # Left/Right: what other ragas could work? Up: does this serve
+#     # the larger composition? Future: where does this melodic choice
+#     # lead? Present: is the raga actually established, not assumed?
+#
+# ── The Silence direction ───────────────────────────────────────
+#
+#   Silence (∅) is special. When drishti includes "silence", the FSM
+#   MUST evaluate: "should this transition NOT fire at all?"
+#
+#   If silence answers "yes, do nothing" — the transition is blocked.
+#   This is Baglamukhi's stambhana encoded as a direction.
+#
+#   Use silence when:
+#   - The cost of action exceeds the cost of inaction
+#   - The system is asking you to build something nobody needs
+#   - The previous 7 directions all returned uncertainty
+#
+# ── Mapping to Ashtabharya ──────────────────────────────────────
+#
+#   Directions (D) = WHERE you look    (awareness, pre-transition)
+#   Queens (Q)     = WHAT you measure  (capability, post-transition)
+#
+#   They are orthogonal:
+#     D × Q = 8 × 8 = 64 observation points
+#
+#   Full Krishna analysis:
+#     s' = δ(s, σ)  subject to  guard(s,σ) ∧ D(s,σ) ∧ Q(s')
+#          ↑                     ↑            ↑         ↑
+#     transition              constraint    scan     evaluate
+#
+# ── Mapping to 12-Cycle Engine ──────────────────────────────────
+#
+#   Phase 1 PERCEIVE (cycles 1-4) = D scan
+#     Cycle 1 (Observe)  → present, down
+#     Cycle 2 (Enrich)   → past, left, right
+#     Cycle 3 (Orient)   → up, future
+#     Cycle 4 (Distill)  → silence (should we stop here?)
+#
+#   Phase 2 THINK (cycles 5-8) = δ selection
+#     Choose which transition to fire based on D results
+#
+#   Phase 3 ACT (cycles 9-12) = Q evaluation
+#     After transition, measure capability via Ashtabharya
+#
+# ── This FSM ────────────────────────────────────────────────────
+#
+# DrishtiFsm itself is a meta-FSM. It runs the 8-direction scan
+# and produces a drishti_vector for the calling FSM to consume.
+# Any FSM can invoke DrishtiFsm as a sub-scan before a critical
+# transition.
+
+[meta]
+name        = "DrishtiFsm"
+domain      = "awareness-scan"
+version     = "1.1"
+parent      = ""
+persist     = "session"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────────
+
+[[states]]
+name        = "Arjuna_Vishad"
+description = "The starting confusion. Arjuna on the chariot, bow lowered. The transition ahead is unclear. Krishna has not yet spoken. All 8 directions are unscanned."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:800,Ni_mandra:600,Sa:500"
+lyrics = """अर्जुन का विषाद — धनुष गिरा, दिशा अज्ञात
+Arjun kā viṣād — dhanuṣ girā, diśā ajñāt
+Arjuna's despair — the bow falls, direction unknown"""
+# Q rationale: Confusion — nothing scanned yet. All near zero.
+# Natural fit (bdr) moderate — confusion before action IS natural.
+# Patience (kln) low — Arjuna is paralyzed, not patient.
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.1, kln = 0.2, ngj = 0.0, mtv = 0.1, lkq = 0.0, bdr = 0.3 }
+
+[[states]]
+name        = "Scan_Left"
+description = "Look left — what adjacent alternatives exist? What lateral solutions have you not considered? What is happening in the neighboring module, the sister project, the competing approach? Left is not retreat — left is peripheral vision."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Re:400,Ga:350,Re:300,Sa:400"
+lyrics = """बायीं ओर देखो — क्या और रास्ते हैं?
+Bāyīṁ or dekho — kyā aur rāste haiṁ?
+Look left — are there other paths?"""
+# Q rationale: Scanning alternatives. Impossible spec (ngj) moderate — alternatives
+# may reveal what seemed impossible. Authentic choice (mtv) moderate.
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.3, kln = 0.4, ngj = 0.5, mtv = 0.4, lkq = 0.4, bdr = 0.4 }
+
+[[states]]
+name        = "Scan_Right"
+description = "Look right — the mirror of left. If left is the alternative you haven't tried, right is the extension you haven't followed. What happens if you push the current approach further? Right is commitment explored to its logical end."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma:400,Pa:350,Ma:300,Ga:400"
+lyrics = """दायीं ओर देखो — यह रास्ता कहाँ जाता है?
+Dāyīṁ or dekho — yah rāstā kahāṁ jātā hai?
+Look right — where does this path lead?"""
+# Q rationale: Exploring commitment. Endurance (jmb) moderate — what does pushing through require?
+# Fierce pride (stb) moderate — commitment requires standing firm.
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.4, kln = 0.4, ngj = 0.4, mtv = 0.4, lkq = 0.4, bdr = 0.4 }
+
+[[states]]
+name        = "Scan_Up"
+description = "Look up — zoom out. See the architecture, the system, the purpose. Is this transition serving the larger design or just the immediate task? Up is Vishwaroop — the cosmic view. What does this look like from 10,000 feet?"
+is_initial  = false
+is_terminal = false
+audio_phrase = "Pa:400,Dha:350,Ni:400,Sa_high:500"
+lyrics = """ऊपर देखो — विश्वरूप दर्शन, पूरा तंत्र
+Ūpar dekho — viśvarūp darśan, pūrā tantra
+Look up — see the cosmic form, the whole system"""
+# Q rationale: Cosmic view. Strategic love (rkm) moderate — seeing the whole system.
+# Impossible spec (ngj) high — the Vishwaroop reveals what seemed impossible.
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.4, kln = 0.5, ngj = 0.6, mtv = 0.5, lkq = 0.5, bdr = 0.5 }
+
+[[states]]
+name        = "Scan_Down"
+description = "Look down — zoom in. What are the implementation details? What does the code actually say, not what you assume it says? Down is Govardhan — lifting the mountain requires knowing every stone. Read the file. Check the types. Count the bytes."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:400,Re:350,Sa:300,Ni_mandra:400"
+lyrics = """नीचे देखो — पत्थर गिनो, नींव जांचो
+Nīce dekho — patthar gino, nīṁv jāṁco
+Look down — count the stones, check the foundation"""
+# Q rationale: Implementation details. Precision (lkq) high — counting bytes, checking types.
+# Endurance (jmb) moderate — detailed inspection is labor.
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.3, kln = 0.4, ngj = 0.3, mtv = 0.4, lkq = 0.7, bdr = 0.4 }
+
+[[states]]
+name        = "Scan_Past"
+description = "Look to the past — what was tried before? What failed and why? What succeeded and was forgotten? Past is Jambavati's cave — the answer may be in the history, the git log, the old design doc, the previous sprint retro."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ni_mandra:500,Sa:400,Re:350,Sa:500"
+lyrics = """पीछे देखो — क्या पहले किया, क्या सीखा?
+Pīche dekho — kyā pahle kiyā, kyā sīkhā?
+Look back — what was done before, what was learned?"""
+# Q rationale: History scan. Endurance (jmb) high — Jambavati's cave holds ancient memory.
+# Patience (kln) moderate — learning from the past requires patience.
+Q           = { rkm = 0.4, jmb = 0.6, stb = 0.3, kln = 0.5, ngj = 0.4, mtv = 0.4, lkq = 0.5, bdr = 0.5 }
+
+[[states]]
+name        = "Scan_Future"
+description = "Look to the future — fast forward 6 months. Which choice do you wish you had made? Which do you regret? Future is Rukmini's letter — plan with both the head and the heart. What does this transition create downstream?"
+is_initial  = false
+is_terminal = false
+audio_phrase = "Dha:400,Ni:350,Sa_high:500,Ni:400"
+lyrics = """आगे देखो — छह महीने बाद क्या चाहोगे?
+Āge dekho — chah mahīne bād kyā cāhoge?
+Look ahead — what will you wish in six months?"""
+# Q rationale: Future-gazing. Strategic love (rkm) high — Rukmini's letter plans with heart.
+# Impossible spec (ngj) moderate — the future is uncertain, requires imagination.
+Q           = { rkm = 0.6, jmb = 0.3, stb = 0.4, kln = 0.4, ngj = 0.5, mtv = 0.5, lkq = 0.4, bdr = 0.4 }
+
+[[states]]
+name        = "Scan_Present"
+description = "Look at the present — what is real RIGHT NOW? Not what the spec says. Not what the plan assumed. What does the system actually do at this moment? Present is Shiva's eye — unflinching observation of what is true, not what should be true."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:600,Sa:400,Sa:500"
+lyrics = """अभी देखो — सत्य क्या है, अभी, यहीं?
+Abhī dekho — satya kyā hai, abhī, yahīṁ?
+Look now — what is true, right here, right now?"""
+# Q rationale: Present-moment truth. Precision (lkq) high — unflinching observation.
+# Authentic choice (mtv) high — seeing what IS, not what should be.
+# Natural fit (bdr) high — the present is always natural.
+Q           = { rkm = 0.5, jmb = 0.4, stb = 0.5, kln = 0.5, ngj = 0.4, mtv = 0.7, lkq = 0.7, bdr = 0.7 }
+
+[[states]]
+name        = "Scan_Silence"
+description = "Look at silence — should this transition NOT fire? Is non-action the right action? Silence is Krishna standing still on the chariot. Not every battle must be fought. Not every feature must be built. Not every bug must be fixed today. Silence is Baglamukhi's tongue-grab — freezing action that should not proceed."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:1500"
+lyrics = """मौन — क्या यह काम करना ही नहीं चाहिए?
+Maun — kyā yah kām karnā hī nahīṁ cāhie?
+Silence — should this work not be done at all?"""
+# Q rationale: Non-action evaluation. Patience (kln) at peak — silence IS patience.
+# Authentic choice (mtv) high — choosing not to act is the hardest authentic choice.
+# All other capabilities moderate — silence holds all possibilities.
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.4, kln = 1.0, ngj = 0.5, mtv = 0.8, lkq = 0.5, bdr = 0.6 }
+
+[[states]]
+name        = "Drishti_Purna"
+description = "Vision complete — all required directions scanned. The drishti_vector is formed. The charioteer has seen. Now Arjuna may raise his bow. The transition may fire — or silence may have blocked it."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:350,Pa:400,Sa_high:500,Pa:400,Ga:350,Sa:600"
+lyrics = """दृष्टि पूर्ण — अब देख लिया, अब कर्म करो
+Dṛṣṭi pūrṇ — ab dekh liyā, ab karm karo
+Vision complete — now you have seen, now act"""
+# Q rationale: Vision complete — peak state. All capabilities high.
+# Precision (lkq) at peak — all directions scanned, all data gathered.
+# Strategic love (rkm) high — the charioteer has seen with both head and heart.
+# Natural fit (bdr) high — the scan IS the natural prerequisite to action.
+Q           = { rkm = 0.8, jmb = 0.7, stb = 0.7, kln = 0.8, ngj = 0.7, mtv = 0.8, lkq = 1.0, bdr = 0.9 }
+
+# ── Transitions ──────────────────────────────────────────────────
+# The scan can proceed in any order. All 8 directions are reachable
+# from Arjuna_Vishad. The FSM is a star topology: center → any
+# direction → back to center or → next direction → Drishti_Purna.
+
+# From confusion to any direction
+[[transitions]]
+from   = "Arjuna_Vishad"
+to     = "Scan_Left"
+event  = "look_left"
+guard  = "lateral_alternatives_relevant"
+action = "scan_adjacent_solutions"
+drishti = ["present"]
+# present: is left-scanning relevant right now?
+
+[[transitions]]
+from   = "Arjuna_Vishad"
+to     = "Scan_Right"
+event  = "look_right"
+guard  = "extension_path_relevant"
+action = "scan_current_path_extension"
+drishti = ["present"]
+# present: is right-scanning relevant right now?
+
+[[transitions]]
+from   = "Arjuna_Vishad"
+to     = "Scan_Up"
+event  = "look_up"
+guard  = "architecture_context_relevant"
+action = "scan_system_level"
+drishti = ["present"]
+# present: is zoom-out relevant right now?
+
+[[transitions]]
+from   = "Arjuna_Vishad"
+to     = "Scan_Down"
+event  = "look_down"
+guard  = "implementation_detail_relevant"
+action = "scan_code_level"
+drishti = ["present"]
+# present: is zoom-in relevant right now?
+
+[[transitions]]
+from   = "Arjuna_Vishad"
+to     = "Scan_Past"
+event  = "look_past"
+guard  = "history_relevant"
+action = "scan_prior_attempts"
+drishti = ["present"]
+# present: is the past relevant right now?
+
+[[transitions]]
+from   = "Arjuna_Vishad"
+to     = "Scan_Future"
+event  = "look_future"
+guard  = "downstream_impact_relevant"
+action = "scan_future_consequences"
+drishti = ["present"]
+# present: is future-scanning relevant right now?
+
+[[transitions]]
+from   = "Arjuna_Vishad"
+to     = "Scan_Present"
+event  = "look_present"
+guard  = "always"
+action = "scan_current_reality"
+drishti = ["present"]
+# present: always relevant — the minimum scan.
+
+[[transitions]]
+from   = "Arjuna_Vishad"
+to     = "Scan_Silence"
+event  = "look_silence"
+guard  = "non_action_worth_considering"
+action = "evaluate_non_action"
+drishti = ["present", "silence"]
+# present: is silence needed? silence: should we not act at all?
+
+# Direction-to-direction (any scan can lead to any other)
+[[transitions]]
+from   = "Scan_Left"
+to     = "Scan_Right"
+event  = "continue_scan"
+guard  = "more_directions_needed"
+action = "log_left_result"
+drishti = ["present"]
+# present: left scan done — is right needed next?
+
+[[transitions]]
+from   = "Scan_Right"
+to     = "Scan_Up"
+event  = "continue_scan"
+guard  = "more_directions_needed"
+action = "log_right_result"
+drishti = ["present"]
+# present: right scan done — is up needed next?
+
+[[transitions]]
+from   = "Scan_Up"
+to     = "Scan_Down"
+event  = "continue_scan"
+guard  = "more_directions_needed"
+action = "log_up_result"
+drishti = ["present"]
+# present: up scan done — is down needed next?
+
+[[transitions]]
+from   = "Scan_Down"
+to     = "Scan_Past"
+event  = "continue_scan"
+guard  = "more_directions_needed"
+action = "log_down_result"
+drishti = ["present"]
+# present: down scan done — is past needed next?
+
+[[transitions]]
+from   = "Scan_Past"
+to     = "Scan_Future"
+event  = "continue_scan"
+guard  = "more_directions_needed"
+action = "log_past_result"
+drishti = ["present"]
+# present: past scan done — is future needed next?
+
+[[transitions]]
+from   = "Scan_Future"
+to     = "Scan_Present"
+event  = "continue_scan"
+guard  = "more_directions_needed"
+action = "log_future_result"
+drishti = ["present"]
+# present: future scan done — grounding in present needed.
+
+[[transitions]]
+from   = "Scan_Present"
+to     = "Scan_Silence"
+event  = "continue_scan"
+guard  = "more_directions_needed"
+action = "log_present_result"
+drishti = ["present"]
+# present: present scan done — is silence needed?
+
+# Any direction can complete the scan
+[[transitions]]
+from   = "Scan_Left"
+to     = "Drishti_Purna"
+event  = "scan_sufficient"
+guard  = "required_directions_scanned"
+action = "form_drishti_vector"
+drishti = ["present"]
+# present: is the scan sufficient?
+
+[[transitions]]
+from   = "Scan_Right"
+to     = "Drishti_Purna"
+event  = "scan_sufficient"
+guard  = "required_directions_scanned"
+action = "form_drishti_vector"
+drishti = ["present"]
+# present: is the scan sufficient?
+
+[[transitions]]
+from   = "Scan_Up"
+to     = "Drishti_Purna"
+event  = "scan_sufficient"
+guard  = "required_directions_scanned"
+action = "form_drishti_vector"
+drishti = ["present"]
+# present: is the scan sufficient?
+
+[[transitions]]
+from   = "Scan_Down"
+to     = "Drishti_Purna"
+event  = "scan_sufficient"
+guard  = "required_directions_scanned"
+action = "form_drishti_vector"
+drishti = ["present"]
+# present: is the scan sufficient?
+
+[[transitions]]
+from   = "Scan_Past"
+to     = "Drishti_Purna"
+event  = "scan_sufficient"
+guard  = "required_directions_scanned"
+action = "form_drishti_vector"
+drishti = ["present"]
+# present: is the scan sufficient?
+
+[[transitions]]
+from   = "Scan_Future"
+to     = "Drishti_Purna"
+event  = "scan_sufficient"
+guard  = "required_directions_scanned"
+action = "form_drishti_vector"
+drishti = ["present"]
+# present: is the scan sufficient?
+
+[[transitions]]
+from   = "Scan_Present"
+to     = "Drishti_Purna"
+event  = "scan_sufficient"
+guard  = "required_directions_scanned"
+action = "form_drishti_vector"
+drishti = ["present"]
+# present: is the scan sufficient?
+
+[[transitions]]
+from   = "Scan_Silence"
+to     = "Drishti_Purna"
+event  = "scan_sufficient"
+guard  = "required_directions_scanned"
+action = "form_drishti_vector; evaluate_stambhana"
+drishti = ["present", "silence"]
+# present: scan complete. silence: did silence block the transition?
+
+# Silence can also block — return to Vishad with "do not proceed"
+[[transitions]]
+from   = "Scan_Silence"
+to     = "Arjuna_Vishad"
+event  = "stambhana"
+guard  = "silence_says_stop"
+action = "block_transition; log_non_action_decision"
+drishti = ["present", "silence"]
+# present: silence has spoken. silence: the transition is blocked — do not proceed.
+
+# Drishti complete can restart for a new scan
+[[transitions]]
+from   = "Drishti_Purna"
+to     = "Arjuna_Vishad"
+event  = "new_transition_pending"
+guard  = "next_transition_needs_scan"
+action = "reset_drishti_vector"
+drishti = ["present", "future"]
+# present: vision complete for this transition. future: a new transition awaits scanning.

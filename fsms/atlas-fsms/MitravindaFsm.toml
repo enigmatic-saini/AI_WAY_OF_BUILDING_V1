@@ -1,0 +1,199 @@
+# MitravindaFsm — Self-Choice Against Family: Swayamvar Courage
+# v1.0
+#
+# मित्रविन्दा — परिवार ने रोका, हृदय ने चुना
+# Mitravindā — parivār ne rokā, hṛday ne cunā
+# (Mitravinda — family blocked, the heart chose)
+#
+# Mitravinda — princess of Avantika (Ujjain). She chose Krishna
+# in her swayamvar AGAINST her brothers' wishes. Her brothers
+# Vinda and Anuvinda supported Duryodhana and tried to prevent
+# her from choosing Krishna. She chose anyway.
+#
+# Krishna took her by force from the swayamvar when her brothers
+# tried to stop the marriage. The princess who made her own choice
+# and had a partner who backed that choice with action.
+#
+# The lesson: sometimes the family, the team, the establishment
+# says "no." And the right answer is to choose anyway.
+# Self-choice (swa-vara: one's own choice) is the most sacred
+# act when it comes from genuine love, not rebellion for its own sake.
+#
+# In creative work: the artist who chooses their own direction
+# despite the label, the manager, the market. The developer who
+# picks the right technology against the team's comfort zone.
+# The song that is written the way the heart demands, not the
+# way the producer demands.
+#
+# Raga: Bihag — the late-night raga of independent beauty.
+#   It walks its own melodic path. Playful, free, gentle but
+#   absolutely certain of its direction.
+
+[meta]
+name        = "MitravindaFsm"
+domain      = "ashtabharya-self-choice"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+[bhakti]
+emotions    = ["self_choice", "defiance"]
+energy      = "free"
+structure   = "verse-chorus"
+bpm_range   = [85, 110]
+weirdness   = 30
+influence   = 80
+vocal       = "female"
+evie_style  = "Indie Pop, Free-spirited Female Vocals, Acoustic Guitar, Empowering"
+metaphors   = [
+    "the garland is not a necklace, it is a flag",
+    "Brothers decided, my opinion was not asked",
+    "I will choose, only I — my heart, my decision",
+    "Walking on, opposition behind — truth's choice is invincible",
+]
+
+# -- States -------------------------------------------------------
+
+[[states]]
+name        = "Bandhan_Kul"
+description = "Family Pressure — Mitravinda's brothers have decided FOR her. She will marry who THEY choose. The establishment has spoken. In creative work: the team has decided the tech stack. The label has decided the genre. The market has decided the product. Your input was not requested. The family's decision is presented as final."
+is_initial  = true
+is_terminal = false
+audio_phrase = "Sa:500,Ga:400,Ma:500,Ga:400,Re:400,Sa:600"
+Q           = { rkm = 0.1, jmb = 0.1, stb = 0.2, kln = 0.2, ngj = 0.0, mtv = 0.1, lkq = 0.0, bdr = 0.3 }
+# Q rationale: Family pressure — Mitravinda (authentic choice) suppressed: she has no voice yet.
+# Bhadra (belonging) slight but ironic — belonging here is a cage, not a home.
+lyrics = """बन्धन कुल का — भाइयों ने तय किया, मेरी राय नहीं पूछी
+Bandhan kul kā — bhāiyoṁ ne tay kiyā, merī rāy nahīṁ pūchī
+Family's bondage — brothers decided, my opinion was not asked"""
+
+[[states]]
+name        = "Swa_Vara"
+description = "Self-Choice — the swayamvar. Literally 'choosing for oneself.' Mitravinda looks at the assembly of kings and her heart knows. Not the brothers' choice. Not the political choice. HER choice. In creative work: the moment you recognize what YOU want to build, regardless of what the establishment chose for you. The authentic creative vision that emerges despite pressure."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Sa:400,Ga:500,Ma:400,Pa:500,Dha:500,Ni:500,Sa_high:600"
+Q           = { rkm = 0.3, jmb = 0.2, stb = 0.4, kln = 0.1, ngj = 0.1, mtv = 0.6, lkq = 0.2, bdr = 0.2 }
+# Q rationale: Self-choice awakens — Mitravinda (authentic choice) surging.
+# Satyabhama (pride) moderate: choosing for yourself requires pride. Rukmini (strategic love)
+# emerging — the choice has strategic clarity.
+lyrics = """स्व-वर — मैं चुनूँगी, मैं ही — मेरा हृदय, मेरा निर्णय
+Sva-vara — maiṁ cunūṅgī, maiṁ hī — merā hṛday, merā nirṇay
+Self-choice — I will choose, only I — my heart, my decision"""
+
+[[states]]
+name        = "Virodh"
+description = "Opposition — the brothers rage. Vinda and Anuvinda try to block the choice. The family that was supposed to protect her now becomes the obstacle. In creative work: the backlash. The team that says 'we don't do it that way.' The manager who vetoes. The community that objects. The opposition to authentic choice is always loud."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ma:400,Pa:500,Dha:500,Ni:600,Dha:500,Pa:500,Ma:400,Ga:500"
+Q           = { rkm = 0.3, jmb = 0.4, stb = 0.5, kln = 0.1, ngj = 0.3, mtv = 0.7, lkq = 0.2, bdr = 0.1 }
+# Q rationale: Opposition — Mitravinda (authentic choice) growing stronger under pressure.
+# Jambavati (endurance) rising: facing opposition requires stamina. Satyabhama (pride) moderate:
+# refusing to bend. Bhadra (belonging) drops — family has become the enemy.
+lyrics = """विरोध — भाई रोके, दरबार रोके — पर हृदय कौन रोके?
+Virodh — bhāī roke, darbār roke — par hṛday kaun roke?
+Opposition — brothers block, court blocks — but who can block the heart?"""
+
+[[states]]
+name        = "Garland"
+description = "The Garland Falls — Mitravinda places the garland on Krishna despite everything. The choice made visible, public, irreversible. In creative work: the commit. The public declaration. The open-source release. The song uploaded. The choice made visible to everyone, including those who opposed it. Once the garland falls, there is no taking it back."
+is_initial  = false
+is_terminal = false
+audio_phrase = "Ga:400,Pa:500,Dha:600,Ni:500,Sa_high:600,Ni:500,Pa:500,Ga:500,Sa:600"
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.7, kln = 0.1, ngj = 0.4, mtv = 0.9, lkq = 0.5, bdr = 0.3 }
+# Q rationale: The garland — Mitravinda (authentic choice) near-peak: the irreversible public declaration.
+# Satyabhama (pride) high: placing the garland despite opposition. Lakshmana (precision) moderate:
+# the garland must land on the RIGHT person.
+lyrics = """माला पड़ी — चुनाव सार्वजनिक, अटल — जो चुना वो चुना
+Mālā paḍī — cunāv sārvajanik, aṭal — jo cunā vo cunā
+The garland fell — the choice is public, irreversible — what was chosen is chosen"""
+
+[[states]]
+name        = "Sahagaman"
+description = "Departing Together — Krishna and Mitravinda leave the swayamvar together. The brothers' armies are defeated. The choice is defended with action, not just words. In creative work: the creation ships. The opposition was noted, heard, and overruled — not by ignoring it but by proving the choice right. The creator and creation depart together into the world."
+is_initial  = false
+is_terminal = true
+audio_phrase = "Sa:400,Ga:500,Pa:600,Sa_high:700,Pa:500,Ga:500,Sa:500,Ga:600,Pa:700,Sa_high:800"
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.8, kln = 0.3, ngj = 0.5, mtv = 1.0, lkq = 0.6, bdr = 0.7 }
+# Q rationale: Terminal — Mitravinda (authentic choice) at maximum: she IS self-choice proven.
+# Bhadra (belonging) high: departing together creates new belonging. Satyabhama (pride) high:
+# opposition overcome. All dims elevated — authentic choice strengthened everything.
+lyrics = """सहगमन — साथ चले, विरोध पीछे — सत्य का चुनाव अजेय
+Sahagaman — sāth cale, virodh pīche — satya kā cunāv ajey
+Departing together — walking on, opposition behind — truth's choice is invincible"""
+
+# -- Transitions ---------------------------------------------------
+
+[[transitions]]
+from   = "Bandhan_Kul"
+to     = "Swa_Vara"
+event  = "heart_recognizes_truth"
+guard  = "authentic_vision_emerges AND despite_family_plan"
+action = "acknowledge_the_real_choice; log_swa_vara"
+drishti = ["present", "up", "silence"]
+# present: is the authentic vision real? up: is this aligned with truth? silence: does the heart know?
+
+[[transitions]]
+from   = "Swa_Vara"
+to     = "Virodh"
+event  = "choice_opposed"
+guard  = "establishment_resists AND pressure_to_conform"
+action = "face_the_opposition; don't_bend; log_virodh"
+drishti = ["present", "left", "right", "future"]
+# present: who opposes? left/right: where is the pressure coming from? future: what happens if I bend?
+
+[[transitions]]
+from   = "Virodh"
+to     = "Garland"
+event  = "courage_prevails"
+guard  = "opposition_heard_but_heart_clear"
+action = "place_the_garland; make_it_public; log_garland"
+drishti = ["present", "up", "future"]
+# present: is the heart clear? up: is this irreversible? future: the garland changes everything.
+
+[[transitions]]
+from   = "Virodh"
+to     = "Bandhan_Kul"
+event  = "courage_fails"
+guard  = "pressure_wins AND authentic_choice_suppressed"
+action = "retreat_to_family_choice; note_the_cost; log_retreat"
+drishti = ["present", "past", "silence"]
+# present: did courage fail? past: what was the cost of surrender? silence: the authentic voice went quiet.
+
+[[transitions]]
+from   = "Garland"
+to     = "Sahagaman"
+event  = "choice_defended"
+guard  = "creation_ships_AND_opposition_overcome"
+action = "depart_together; choice_proven; log_sahagaman"
+drishti = ["present", "future", "past"]
+# present: is the choice defended? future: where do we go together? past: the opposition is behind us.
+
+[[transitions]]
+from   = "Sahagaman"
+to     = "Bandhan_Kul"
+event  = "new_pressure"
+guard  = "establishment_tries_again"
+action = "face_new_family_pressure; log_new_cycle"
+drishti = ["present", "left", "right"]
+# present: what new pressure? left/right: where is it coming from?
+
+# -- Cross-coupling signals ----------------------------------------
+#
+# MitravindaFsm emits:
+#   self_choice_made { what_was_chosen, what_was_rejected, cost_of_choice }
+#     -> Consumed by MiraFsm (rebellion kinship)
+#     -> Consumed by AkkaMahadeviFsm (renunciation of imposed will)
+#   garland_placed { public_declaration, irreversible_commitment }
+#     -> Consumed by AndalFsm (garland kinship — both wore/placed garlands)
+#     -> Consumed by RukminiFsm (strategic commitment)
+#
+# Mitravinda's Law:
+#   "The swayamvar is not a ceremony — it is a declaration of sovereignty.
+#    When the family chooses for you, you are furniture.
+#    When you choose for yourself, you are fire.
+#    The garland is not a necklace — it is a flag planted on truth."

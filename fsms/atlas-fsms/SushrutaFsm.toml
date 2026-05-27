@@ -1,0 +1,214 @@
+[meta]
+name    = "SushrutaFsm"
+domain  = "precision-surgical-intervention"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# SushrutaFsm — The First Surgeon
+#
+# Sushruta (600 BCE) — father of surgery. Author of Sushruta
+# Samhita: 184 chapters, 1120 conditions, 300 procedures,
+# 121 surgical instruments, 8 types of operations.
+#
+# Performed rhinoplasty (nose reconstruction), cataract surgery,
+# cesarean sections — 2600 years ago. On a riverbank. Without
+# anesthesia. And the patients LIVED.
+#
+# His method: diagnose precisely, cut minimally, heal completely.
+# "A surgeon must possess the eye of a hawk, the heart of a lion,
+# and the hand of a lady."
+#
+# The cycle: Pariksha → Nidana → Shastra → Chedana → Shodhana
+#            → Ropana → Rasayana
+#
+# Special: Vrana_Dushta (wound infected — intervention backfired),
+#          Ashastra (bloodless — solved without cutting)
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Pariksha"
+description = "Examination — the five-fold diagnosis. Inspect (look), palpate (touch), percuss (tap), auscultate (listen), question (ask). NEVER cut before examining. Sushruta spent more time diagnosing than operating. The surgeon who rushes to cut is a butcher."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.3, kln = 0.6, ngj = 0.1, mtv = 0.3, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) high — five-fold diagnosis, inspect everything.
+# Kalindi (patience) — NEVER cut before examining.
+
+[[states]]
+name        = "Nidana"
+description = "Root Cause — not the symptom, the CAUSE. Five nidanas: cause, premonitory signs, symptoms, pathogenesis, prognosis. 'Treat the disease, not the pain.' Map the full causal chain before choosing intervention."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.4, stb = 0.3, kln = 0.7, ngj = 0.3, mtv = 0.4, lkq = 0.9, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) near peak — root cause, not symptom.
+# Kalindi (patience) — map the full causal chain before choosing.
+
+[[states]]
+name        = "Shastra"
+description = "Instrument Selection — 121 instruments, each for a specific purpose. Yantra (blunt) vs Shastra (sharp). Choose the MINIMUM tool. A scalpel where a scalpel suffices. Never use a bone saw for a skin incision. The wrong instrument creates new wounds."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.3, stb = 0.3, kln = 0.5, ngj = 0.2, mtv = 0.4, lkq = 0.9, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) near peak — 121 instruments, choose the MINIMUM.
+# Never use a bone saw for a skin incision.
+
+[[states]]
+name        = "Chedana"
+description = "The Cut — the operation itself. Eight types: Chedana (excision), Bhedana (incision), Lekhana (scraping), Vedhana (puncturing), Esana (probing), Aharana (extraction), Visravana (draining), Sivana (suturing). Minimal, precise, purposeful. Every cut has a reason."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.5, stb = 0.6, kln = 0.3, ngj = 0.4, mtv = 0.4, lkq = 1.0, bdr = 0.2 }
+# Q rationale: Lakshmana (precision) at PEAK — the cut itself. Minimal, precise, purposeful.
+# Every cut has a reason. Eye of hawk, heart of lion, hand of lady.
+
+[[states]]
+name        = "Shodhana"
+description = "Cleansing — post-operative wound management. Remove debris, prevent infection, ensure drainage. The operation succeeds or fails HERE, not in the cutting. Most surgical deaths are from infection, not the wound. Clean relentlessly."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.6, stb = 0.4, kln = 0.6, ngj = 0.2, mtv = 0.3, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Jambavati (endurance) high — most surgical deaths are from infection.
+# Lakshmana (precision) — clean relentlessly.
+
+[[states]]
+name        = "Ropana"
+description = "Healing — wound closure, tissue regeneration, recovery monitoring. Sixty types of wound management. Sushruta used honey, ghee, sesame oil — substances that actually work. The body heals itself. The surgeon's job is to NOT INTERFERE with healing."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.3, kln = 0.7, ngj = 0.3, mtv = 0.3, lkq = 0.7, bdr = 0.5 }
+# Q rationale: Kalindi (patience) high — the body heals itself, don't interfere.
+# Rukmini (love) — healing requires care.
+
+[[states]]
+name        = "Rasayana"
+description = "Rejuvenation — not just healed, STRONGER. Post-recovery strengthening. The patient should leave better than before the disease arrived. Preventive measures installed. The same wound should never recur."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.5, kln = 0.6, ngj = 0.5, mtv = 0.5, lkq = 0.8, bdr = 0.7 }
+# Q rationale: All capabilities elevated — not just healed, STRONGER.
+# Bhadra (belonging) — the patient should leave better than before.
+
+[[states]]
+name        = "Vrana_Dushta"
+description = "Infected Wound — the intervention made things WORSE. Contaminated instrument, incomplete excision, premature closure. The surgeon caused new damage. Must return to Pariksha immediately — now diagnosing the iatrogenic harm."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.2, stb = 0.1, kln = 0.0, ngj = 0.0, mtv = 0.1, lkq = 0.3, bdr = 0.1 }
+# Q rationale: The intervention made things WORSE. Iatrogenic harm.
+# Faint Lakshmana — must diagnose the new damage precisely.
+
+[[states]]
+name        = "Ashastra"
+description = "Bloodless Resolution — the highest skill: solving without cutting. Sushruta lists conditions where surgery is the LAST resort. If diet, medicine, lifestyle, or time can heal — prefer that. The best surgeon is the one who doesn't need to operate."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.8, jmb = 0.4, stb = 0.3, kln = 0.8, ngj = 0.7, mtv = 0.6, lkq = 0.9, bdr = 0.7 }
+# Q rationale: The highest skill — solving without cutting. Nagnajiti (impossible) high.
+# Lakshmana near peak — knowing when NOT to cut is the ultimate precision.
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Pariksha"
+to     = "Nidana"
+event  = "examination_complete"
+guard  = "all_five_methods_applied AND symptoms_catalogued AND nothing_assumed"
+action = "begin_root_cause_analysis; log_all_findings"
+drishti = ["present", "down", "left", "right"]
+# present: all five methods applied? down: what is the root cause? left/right: differential diagnosis.
+
+[[transitions]]
+from   = "Nidana"
+to     = "Ashastra"
+event  = "surgery_unnecessary"
+guard  = "root_cause_addressable_without_cutting AND risk_of_surgery_exceeds_benefit"
+action = "prescribe_non_surgical_treatment; monitor_recovery"
+drishti = ["present", "silence"]
+# present: is surgery unnecessary? silence: the best surgeon doesn't cut.
+
+[[transitions]]
+from   = "Nidana"
+to     = "Shastra"
+event  = "surgery_indicated"
+guard  = "root_cause_requires_intervention AND conservative_treatment_insufficient"
+action = "select_minimum_instruments; plan_incision"
+drishti = ["present", "down", "future"]
+# present: is surgery indicated? down: what instruments? future: what is the plan?
+
+[[transitions]]
+from   = "Shastra"
+to     = "Chedana"
+event  = "instruments_ready"
+guard  = "correct_tools_selected AND sterilized AND patient_prepared AND plan_clear"
+action = "make_the_cut; log_exact_intervention"
+drishti = ["present", "down"]
+# present: are instruments ready? down: is the cut planned precisely?
+
+[[transitions]]
+from   = "Chedana"
+to     = "Shodhana"
+event  = "operation_complete"
+guard  = "target_addressed AND no_collateral_damage AND bleeding_controlled"
+action = "begin_wound_cleansing; prevent_infection"
+drishti = ["present", "down"]
+# present: is operation complete? down: is there collateral damage?
+
+[[transitions]]
+from   = "Shodhana"
+to     = "Ropana"
+event  = "wound_clean"
+guard  = "no_debris AND no_infection_signs AND drainage_adequate"
+action = "close_wound; begin_healing_protocol"
+drishti = ["present", "down", "future"]
+# present: is wound clean? down: any infection signs? future: healing protocol?
+
+[[transitions]]
+from   = "Ropana"
+to     = "Rasayana"
+event  = "healing_complete"
+guard  = "tissue_regenerated AND function_restored AND no_recurrence_signs"
+action = "strengthen_system; install_preventive_measures"
+drishti = ["present", "up", "future"]
+# present: is healing complete? up: is function restored? future: preventive measures?
+
+# Failure transitions
+[[transitions]]
+from   = "Chedana"
+to     = "Vrana_Dushta"
+event  = "intervention_backfires"
+guard  = "collateral_damage OR incomplete_excision OR contamination"
+action = "log_iatrogenic_harm; stop_immediately"
+drishti = ["present", "down"]
+# present: did intervention backfire? down: what damage was caused?
+
+[[transitions]]
+from   = "Shodhana"
+to     = "Vrana_Dushta"
+event  = "infection_develops"
+guard  = "wound_contaminated OR cleaning_insufficient"
+action = "log_infection_source; escalate_urgency"
+drishti = ["present", "down"]
+# present: has infection developed? down: what contamination source?
+
+[[transitions]]
+from   = "Vrana_Dushta"
+to     = "Pariksha"
+event  = "reassess"
+guard  = "damage_acknowledged AND ego_aside AND fresh_examination_needed"
+action = "examine_from_scratch; now_diagnosing_own_damage"
+drishti = ["present", "past", "down"]
+# present: acknowledge damage. past: what went wrong? down: re-examine from scratch.
+
+# Skip path — experienced surgeon sees the shortcut
+[[transitions]]
+from   = "Pariksha"
+to     = "Ashastra"
+event  = "experienced_eye"
+guard  = "condition_recognized_immediately AND no_surgery_needed AND high_confidence"
+action = "prescribe_directly; log_reasoning"
+drishti = ["present", "silence"]
+# present: condition recognized immediately? silence: no surgery needed, high confidence.

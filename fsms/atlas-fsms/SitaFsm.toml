@@ -1,0 +1,460 @@
+# SitaFsm — Resilience & Integrity Under Adversity
+# v1.0
+#
+# सीता — Janaki, Daughter of the Earth, Unbreakable Truth
+#
+# Sita Ji is the embodiment of integrity under impossible conditions.
+# She maintained her truth in Lanka — surrounded by enemies, isolated
+# from everything she loved, under pressure for months — and never
+# once compromised. Not because she was passive, but because her
+# conviction was absolute. She CHOSE truth. Every single day.
+#
+# In our system, this FSM is the resilience and disaster recovery
+# testing engine. It answers the question every serious system must
+# face: can you survive your Lanka and return whole?
+#
+# The test is not gentle. It degrades your environment, cuts your
+# dependencies, surrounds you with hostile input, and then asks:
+# are you still you? Is your data intact? Did you take shortcuts
+# under pressure? Did you lose anything that matters?
+#
+# IMPORTANT: The Agni Pariksha is NOT punishment. It is PROOF.
+# When the world doubts your integrity after adversity, you do not
+# argue — you demonstrate. Every invariant re-verified. Every hash
+# re-checked. Every contract re-validated. The fire does not burn
+# the pure — it silences the doubters.
+#
+# Cross-coupling:
+#   - RamFsm: governance — Ram sets the rules Sita's system lives by
+#   - LakshmanFsm: sentinel — Lakshman draws the Lakshman Rekha
+#     (boundary) that, once crossed, triggers the Abduction state
+#   - HanumanFsm: execution/rescue — Hanuman carries the distress
+#     signal (Hanuman_Message state), executes the recovery plan
+#   - BrahmaFsm: if recovery requires re-creation of lost components
+#
+# Raga: Bhairavi — the raga of emotional depth, morning raga of
+# devotion and pathos, perfect for endurance through suffering.
+# Bhairavi uses komal (flat) Re, Ga, Dha, Ni — giving it a
+# plaintive, resilient quality that resolves into strength.
+# ─────────────────────────────────────────────────────────────
+
+[meta]
+name        = "SitaFsm"
+domain      = "resilience-integrity"
+version     = "1.1"
+parent      = ""
+persist     = "persistent"
+generation  = 1
+last_author = "divine-council"
+status      = "approved"
+
+# ── States ───────────────────────────────────────────────────
+
+# State 1: The origin. System in its natural, healthy state.
+# All invariants holding. All dependencies connected. All data
+# consistent. This is Mithila — the kingdom of King Janaka,
+# where Sita grew up in wisdom and love. The baseline before
+# adversity touches anything.
+[[states]]
+name        = "Mithila"
+description = "The origin state. System in its natural, healthy condition — all invariants holding, all dependencies connected, all data consistent. Like Janaki in her father's kingdom: complete, at peace, untested. Every resilience cycle begins and ends here."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.3, stb = 0.3, kln = 0.5, ngj = 0.1, mtv = 0.3, lkq = 0.5, bdr = 0.8 }
+# Q rationale: Bhadra (belonging) peaks — home, peace, completeness.
+# Rukmini (love) — Janaki in her father's kingdom, loved and loving.
+audio_phrase = "Sa:400,Re_komal:350,Ga_komal:400,Ma:350,Pa:400"
+lyrics = """जनक-नंदिनी जानकी, मिथिला की शान
+Janak-nandinī Jānakī, Mithilā kī śān
+Daughter of Janaka, Janaki — pride of Mithila"""
+
+# State 2: Strength test. Like breaking Shiva's bow (Pinaka) —
+# can the system handle the extreme load or operation it claims
+# to support? This is not adversity yet — this is proving you
+# deserve to face adversity. If you cannot lift the bow, the
+# rest of the test is meaningless. Stress testing at design limits.
+[[states]]
+name        = "Swayamvar"
+description = "Strength test at design limits. Like breaking Shiva's bow — can the system handle the extreme load it claims to support? Max concurrent connections, peak throughput, boundary conditions. If the bow does not break, the system is not worthy of further testing. Early exit to Sita_Verdict if strength test fails."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.5, stb = 0.6, kln = 0.3, ngj = 0.4, mtv = 0.4, lkq = 0.7, bdr = 0.4 }
+# Q rationale: Satyabhama (fierce) — breaking Shiva's bow demands raw power.
+# Lakshmana (precision) — stress testing at design limits.
+audio_phrase = "Pa:350,Dha_komal:300,Ni_komal:350,Sa_high:500,Pa:400"
+lyrics = """शिव-धनुष उठाओ, बल की परीक्षा दो
+Śiv-dhanuṣ uṭhāo, bal kī parīkṣā do
+Lift the bow of Shiva — prove your strength"""
+
+# State 3: Voluntary exile. The system operating in degraded mode —
+# reduced resources, limited connectivity, constrained environment.
+# Ram chose vanvas; the system chooses to prove it can survive with
+# less. Can it still serve its core purpose on half the memory,
+# with intermittent network, on a slower disk? Graceful degradation
+# is not failure — it is forest wisdom.
+[[states]]
+name        = "Vanvas_Sita"
+description = "Voluntary degraded mode. Reduced resources — half memory, intermittent network, slower storage. The system must still serve its core purpose. Like Sita in the forest: fewer comforts, same dignity. Tests graceful degradation, resource conservation, priority shedding of non-essential features."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.7, stb = 0.4, kln = 0.6, ngj = 0.3, mtv = 0.5, lkq = 0.5, bdr = 0.4 }
+# Q rationale: Jambavati (endurance) rising — fewer comforts, same dignity.
+# Kalindi (patience) — graceful degradation requires patience.
+audio_phrase = "Sa:300,Re_komal:300,Ga_komal:350,Ma:300,Pa:350,Ma:300"
+lyrics = """वन में भी सीता, धर्म न छोड़ें कभी
+Van meṁ bhī Sītā, dharm na choḍeṁ kabhī
+Even in the forest, Sita never abandons dharma"""
+
+# State 4: Forced isolation. Cut the system from its dependencies
+# entirely. Simulate total failure of external services — database
+# gone, network gone, auth service gone, message queue gone. Does
+# the system DETECT the separation? Does it know it has been
+# abducted from its ecosystem? Detection is the first step to
+# survival. A system that does not know it is isolated is already
+# lost.
+[[states]]
+name        = "Abduction"
+description = "Forced total isolation. All external dependencies severed — database, network, auth, message queue. The system must DETECT the separation. Health checks must fail and be recognized. Circuit breakers must trip. Like Sita taken to Lanka: awareness of isolation is the first act of resistance. A system that does not know it is cut off is already dead."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.6, stb = 0.4, kln = 0.3, ngj = 0.3, mtv = 0.4, lkq = 0.6, bdr = 0.1 }
+# Q rationale: Bhadra (belonging) collapses — ripped from ecosystem.
+# Lakshmana (precision) — must DETECT the separation. Awareness is resistance.
+audio_phrase = "Sa:250,Re_komal:250,Ga_komal:300,Re_komal:250,Sa:300,Ni_low:250"
+lyrics = """छल से हरण हुआ, पर चेतना जागी रही
+Chal se haraṇ huā, par cetanā jāgī rahī
+Taken by deceit, yet awareness stayed awake"""
+
+# State 5: Survival in hostile territory. The system is surrounded
+# by hostile input — corrupted data, adversarial payloads, malformed
+# requests, SQL injection, buffer overflow attempts. Does it maintain
+# its core truth? Does it resist the TEMPTATION to take unsafe
+# shortcuts — skipping validation because "it is too slow under
+# pressure", disabling auth because "the auth service is down anyway",
+# writing unencrypted because "encryption overhead is too high now"?
+#
+# The self-loop on this state is critical: Ashok Vatika is not a
+# moment, it is a DURATION. Sita resisted Ravana not once but
+# every day for months. Each self-loop is another day of resistance.
+# Each temptation_resisted is another unsafe shortcut rejected.
+# The system must prove it can resist continuously, not just once.
+[[states]]
+name        = "Ashok_Vatika"
+description = "Survival under hostile conditions. Corrupted data, adversarial input, injection attacks, malformed requests. The system must maintain core invariants and resist temptation to take unsafe shortcuts (skip validation, disable auth, write unencrypted). Self-loops on temptation_resisted — like Sita refusing Ravana daily for months. Continuous resistance, not one-time."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.9, stb = 0.6, kln = 0.5, ngj = 0.5, mtv = 0.7, lkq = 0.6, bdr = 0.2 }
+# Q rationale: Jambavati (endurance) near PEAK — Sita resisted Ravana daily for months.
+# Mitravinda (self-choice) — choosing integrity over comfort every day.
+audio_phrase = "Ga_komal:350,Ma:400,Pa:350,Dha_komal:400,Pa:350,Ma:400,Ga_komal:350"
+lyrics = """अशोक वाटिका में बैठी, रावण से अडिग रही
+Aśok Vāṭikā meṁ baiṭhī, Rāvaṇ se aḍig rahī
+Seated in Ashok Vatika, she stood immovable before Ravana"""
+
+# State 6: Communication under duress. The system is isolated and
+# under attack — but can it still signal for help? Health check
+# endpoints, distress heartbeats, error reporting, dead man switches,
+# out-of-band alerts. Like Sita giving her chudamani (jewel) to
+# Hanuman as proof of identity and plea for rescue. The signal must
+# be authenticated (is this really our system calling, or a spoof?)
+# and must carry state (what exactly is wrong?).
+[[states]]
+name        = "Hanuman_Message"
+description = "Communication under duress. Can the isolated system signal for help? Health checks, distress heartbeats, dead man switches, out-of-band alerts. Like Sita's chudamani given to Hanuman — the signal must be authenticated (not spoofed) and must carry state (what is wrong). Tests alerting pipelines, fallback communication channels, signal integrity under adversarial conditions."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.7, stb = 0.4, kln = 0.4, ngj = 0.4, mtv = 0.5, lkq = 0.7, bdr = 0.3 }
+# Q rationale: Lakshmana (precision) — signal must be authenticated, carry state.
+# Jambavati — endurance to signal under duress.
+audio_phrase = "Pa:400,Dha_komal:350,Ni_komal:400,Sa_high:450,Ni_komal:400,Pa:350"
+lyrics = """हनुमान से कहो, राम को संदेश दो
+Hanumān se kaho, Rām ko sandeś do
+Tell Hanuman — carry the message to Ram"""
+
+# State 7: The fire test. Full integrity verification after recovery
+# from adversity. This is NOT punishment — it is PROOF.
+#
+# Run the complete test suite. Re-verify every invariant. Check every
+# hash. Validate every foreign key. Replay the write-ahead log.
+# Compare checksums. Run the property tests. Execute the chaos
+# scenarios one more time with full monitoring.
+#
+# If Agni Pariksha fails, the system goes BACK to Ashok_Vatika —
+# because the corruption is deeper than we thought and more survival
+# testing is needed before we can trust recovery. This is not
+# cruelty; it is honesty. You do not declare victory until you
+# have actually won.
+[[states]]
+name        = "Agni_Pariksha"
+description = "The fire test — full integrity verification after adversity. NOT punishment, but PROOF that silences all doubt. Complete test suite, invariant re-verification, hash checks, foreign key validation, WAL replay, checksum comparison, property tests. If tests fail, return to Ashok_Vatika — the corruption is deeper than assumed. You do not declare victory until you have won."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.8, stb = 0.7, kln = 0.3, ngj = 0.5, mtv = 0.6, lkq = 0.8, bdr = 0.3 }
+# Q rationale: Jambavati high — enduring the fire test.
+# Lakshmana (precision) — re-verify every invariant, check every hash.
+audio_phrase = "Sa_high:500,Ni_komal:400,Dha_komal:450,Pa:400,Dha_komal:450,Ni_komal:400,Sa_high:600"
+lyrics = """अग्नि परीक्षा दो जानकी, सत्य प्रमाण बने
+Agni parīkṣā do Jānakī, satya pramāṇ bane
+Give the fire test, Janaki — let truth become proof"""
+
+# State 8: The return to Ayodhya. Full system restoration after
+# integrity is proven. Reconnect all dependencies. Restore full
+# resource allocation. Re-enable all features. But do it with a
+# complete recovery audit: is ANY data lost? Any state permanently
+# corrupted? Any dependency that reconnected in a subtly wrong way?
+# Recovery is not just "turn it back on" — it is "turn it back on
+# AND prove nothing was lost."
+[[states]]
+name        = "Recovery"
+description = "Full system restoration — the return to Ayodhya. Reconnect dependencies, restore resources, re-enable features. Complete recovery audit: any data lost? Any state corrupted? Any dependency reconnected incorrectly? Recovery is not 'turn it back on' — it is 'turn it back on AND prove nothing was lost.' Diff pre-adversity state against post-recovery state."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.7, stb = 0.5, kln = 0.5, ngj = 0.4, mtv = 0.5, lkq = 0.7, bdr = 0.6 }
+# Q rationale: Bhadra (belonging) returning — reconnecting to the ecosystem.
+# Jambavati maintained — prove nothing was lost.
+audio_phrase = "Sa:400,Re_komal:350,Ga_komal:400,Pa:450,Dha_komal:400,Sa_high:500"
+lyrics = """अयोध्या लौटीं सीता, पूर्ण और अखंड
+Ayodhyā lauṭīṁ Sītā, pūrṇ aur akhaṇḍ
+Sita returns to Ayodhya — complete and unbroken"""
+
+# State 9: The resilience verdict. Terminal state.
+# Can this system survive its Lanka and return whole?
+# Emit a structured judgment: what survived, what degraded,
+# what was lost, what was recovered, what needs architectural
+# change to survive better next time. The verdict is not pass/fail —
+# it is a resilience score with actionable findings.
+[[states]]
+name        = "Sita_Verdict"
+description = "The resilience judgment. Can this system survive its Lanka and return whole? Structured verdict: what survived intact, what degraded gracefully, what was lost, what was recovered, what needs architectural change. Not binary pass/fail — a resilience score with actionable findings. Jai Sita Ram."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 0.7, jmb = 1.0, stb = 0.6, kln = 0.6, ngj = 0.5, mtv = 0.6, lkq = 0.7, bdr = 0.7 }
+# Q rationale: Jambavati at PEAK — the verdict proves total endurance.
+# Can this system survive its Lanka and return whole? Jai Sita Ram.
+audio_phrase = "Sa:500,Pa:450,Sa_high:600,Pa:450,Sa:500,Sa_high:700"
+lyrics = """जय सीता राम, सत्य सनातन अमर रहे
+Jai Sītā Rām, satya sanātan amar rahe
+Jai Sita Ram — eternal truth lives forever"""
+
+# ── Transitions ──────────────────────────────────────────────
+
+# Mithila → Swayamvar: strength test requested
+# Before any adversity testing, prove the system can handle its
+# claimed design limits. No point testing resilience of a system
+# that cannot even handle normal peak load.
+[[transitions]]
+from   = "Mithila"
+to     = "Swayamvar"
+event  = "strength_test_requested"
+guard  = "system_healthy AND baseline_metrics_captured"
+action = "snapshot_baseline_state; begin_stress_test; log_swayamvar_start"
+drishti = ["present", "down", "future"]
+# present: is system healthy? down: what are baseline metrics? future: can it handle design limits?
+
+# Swayamvar → Vanvas_Sita: strength proven, begin degradation test
+# The bow is broken. The system can handle its design limits.
+# Now strip away the comforts and see if it survives on less.
+[[transitions]]
+from   = "Swayamvar"
+to     = "Vanvas_Sita"
+event  = "strength_proven"
+guard  = "all_stress_tests_pass AND no_crash_or_hang"
+action = "record_peak_metrics; begin_resource_reduction; log_degradation_start"
+drishti = ["present", "future"]
+# present: strength proven? future: can it survive with less?
+
+# Swayamvar → Sita_Verdict: strength test failed — early exit
+# If the system cannot even handle its claimed limits, there is
+# no point testing resilience under adversity. The bow was not
+# lifted. Verdict: system cannot handle claimed limits.
+[[transitions]]
+from   = "Swayamvar"
+to     = "Sita_Verdict"
+event  = "strength_test_failed"
+guard  = "stress_test_failure_detected"
+action = "record_failure_point; emit_early_exit_verdict; log_bow_not_lifted"
+drishti = ["present", "down"]
+# present: strength test failed? down: system cannot handle claimed limits.
+
+# Vanvas_Sita → Abduction: degraded operation verified, simulate total isolation
+# The system survived on less. Now cut everything.
+[[transitions]]
+from   = "Vanvas_Sita"
+to     = "Abduction"
+event  = "degraded_operation_verified"
+guard  = "core_functions_operational_under_constraints"
+action = "record_degraded_metrics; sever_all_dependencies; log_isolation_start"
+drishti = ["present", "down", "future"]
+# present: degraded operation verified? down: cut everything. future: will isolation be detected?
+
+# Abduction → Ashok_Vatika: isolation detected, begin hostile survival
+# The system knows it is cut off. Good. Now add hostile input.
+[[transitions]]
+from   = "Abduction"
+to     = "Ashok_Vatika"
+event  = "isolation_detected"
+guard  = "circuit_breakers_tripped AND health_checks_failing_as_expected"
+action = "begin_adversarial_injection; start_hostile_timer; log_hostile_survival_start"
+drishti = ["present", "down"]
+# present: isolation detected? down: begin hostile input.
+
+# Abduction → Hanuman_Message: system signals distress during isolation
+# The system detects isolation and immediately tries to signal for help.
+# This is a valid path — some systems should alert before entering
+# hostile survival mode.
+[[transitions]]
+from   = "Abduction"
+to     = "Hanuman_Message"
+event  = "system_signals_distress"
+guard  = "fallback_communication_channel_available"
+action = "emit_distress_signal; record_signal_timestamp; log_early_distress"
+drishti = ["present", "up"]
+# present: system signals distress? up: is fallback channel available?
+
+# Ashok_Vatika → Ashok_Vatika: temptation resisted — self-loop
+# THIS IS THE CRITICAL SELF-LOOP.
+# Every iteration represents another cycle of adversarial pressure
+# where the system maintained its integrity. Like Sita refusing
+# Ravana every day. The count of self-loops IS the resilience
+# duration metric. A system that loops once is fragile. A system
+# that loops a thousand times is Sita.
+[[transitions]]
+from   = "Ashok_Vatika"
+to     = "Ashok_Vatika"
+event  = "temptation_resisted"
+guard  = "unsafe_shortcut_attempted AND shortcut_rejected AND invariants_still_hold"
+action = "increment_resistance_counter; log_rejected_shortcut; record_adversarial_input"
+drishti = ["present", "silence"]
+# present: temptation resisted? silence: invariants still hold. Self-loop: daily resistance.
+
+# Ashok_Vatika → Hanuman_Message: survival confirmed, attempt communication
+# The system has proven it can survive hostile conditions. Now
+# attempt to communicate its status to the outside world.
+[[transitions]]
+from   = "Ashok_Vatika"
+to     = "Hanuman_Message"
+event  = "survival_confirmed"
+guard  = "minimum_resistance_cycles_met AND core_invariants_intact"
+action = "prepare_status_report; attempt_outbound_signal; log_communication_attempt"
+drishti = ["present", "up", "future"]
+# present: survival confirmed? up: signal for help. future: will message get through?
+
+# Hanuman_Message → Agni_Pariksha: help acknowledged, begin recovery verification
+# The signal got through. Hanuman reached Ram. Now prove your
+# integrity before anyone trusts you again.
+[[transitions]]
+from   = "Hanuman_Message"
+to     = "Agni_Pariksha"
+event  = "help_acknowledged"
+guard  = "distress_signal_received_and_authenticated"
+action = "begin_full_test_suite; start_integrity_verification; log_fire_test_start"
+drishti = ["present", "down", "future"]
+# present: help acknowledged? down: begin integrity check. future: will tests pass?
+
+# Agni_Pariksha → Recovery: all tests pass, integrity proven
+# The fire did not burn the pure. Every invariant holds.
+# Every hash matches. Every contract is valid. Proceed to
+# full restoration.
+[[transitions]]
+from   = "Agni_Pariksha"
+to     = "Recovery"
+event  = "all_tests_pass"
+guard  = "zero_invariant_violations AND zero_data_corruption AND zero_integrity_failures"
+action = "record_clean_bill_of_health; begin_dependency_reconnection; log_recovery_start"
+drishti = ["present", "up", "silence"]
+# present: all tests pass? up: integrity proven. silence: the fire did not burn the pure.
+
+# Agni_Pariksha → Ashok_Vatika: tests fail, integrity compromised
+# The fire revealed corruption. The system is NOT clean.
+# Go back to hostile survival — the damage is deeper than assumed.
+# This is not cruelty; this is honesty. Fix what is broken before
+# declaring victory.
+[[transitions]]
+from   = "Agni_Pariksha"
+to     = "Ashok_Vatika"
+event  = "tests_fail"
+guard  = "invariant_violations_detected OR data_corruption_found"
+action = "classify_corruption_severity; reset_hostile_environment; log_deeper_survival_needed"
+drishti = ["present", "down"]
+# present: tests fail? down: corruption deeper than assumed. Back to survival.
+
+# Recovery → Sita_Verdict: recovery complete
+# Full restoration done. Diff pre-adversity state against
+# post-recovery state. Compute the resilience score.
+[[transitions]]
+from   = "Recovery"
+to     = "Sita_Verdict"
+event  = "recovery_complete"
+guard  = "all_dependencies_reconnected AND pre_post_diff_computed"
+action = "compute_resilience_score; generate_recovery_report; log_verdict_ready"
+drishti = ["present", "up", "past", "future"]
+# present: recovery complete? up: resilience score? past: what survived? future: what to strengthen?
+
+# Sita_Verdict → Mithila: new cycle, system at peace again
+# The cycle is complete. The system has been tested and judged.
+# Return to Mithila — the healthy baseline — carrying the wisdom
+# of what survived, what broke, and what must be strengthened.
+# Like Sita returning, the system is the same yet changed by
+# what it endured.
+[[transitions]]
+from   = "Sita_Verdict"
+to     = "Mithila"
+event  = "new_cycle"
+guard  = "verdict_emitted AND findings_archived"
+action = "archive_resilience_report; reset_all_counters; log_cycle_complete"
+drishti = ["present", "silence"]
+# present: verdict emitted? silence: return to peace, carrying wisdom.
+
+# ── Cross-coupling signals ───────────────────────────────────
+#
+# Mithila reads from:
+#   - RamFsm: governance rules that define what "healthy" means
+#   - LakshmanFsm: sentinel boundaries (the Lakshman Rekha)
+#     that define the perimeter. Crossing triggers Abduction.
+#
+# Swayamvar emits:
+#   → strength_test_result { peak_load, response_time, error_rate }
+#   → Consumed by RamFsm: governance knows system's true limits
+#
+# Abduction reads from:
+#   - LakshmanFsm: when the Lakshman Rekha is crossed (boundary
+#     violation), it means external dependencies breached the
+#     perimeter — triggering forced isolation detection
+#
+# Hanuman_Message emits:
+#   → distress_signal { system_id, state, corruption_level, help_needed }
+#   → Consumed by HanumanFsm: Hanuman carries the message,
+#     initiates rescue/recovery procedures
+#
+# Agni_Pariksha emits:
+#   → integrity_report { invariants_checked, passed, failed, details }
+#   → Consumed by RamFsm: governance receives proof of integrity
+#   → Consumed by LakshmanFsm: sentinel updates boundary rules
+#     based on what attack vectors succeeded
+#
+# Sita_Verdict emits:
+#   → resilience_verdict { score, survived, degraded, lost, recovered, recommendations }
+#   → Consumed by RamFsm: governance policy updates
+#   → Consumed by BrahmaFsm: if re-creation of components is needed
+#   → Consumed by HanumanFsm: execution learns from rescue patterns
+#
+# Ashok_Vatika resistance_counter:
+#   → Consumed by KatyayaniFsm (NS6): courage metrics — how long
+#     can the system fight before it needs rescue?
+#
+# The full resilience cycle: Mithila (peace) → Swayamvar (prove strength)
+# → Vanvas_Sita (survive degradation) → Abduction (survive isolation)
+# → Ashok_Vatika (survive hostility) → Hanuman_Message (signal for help)
+# → Agni_Pariksha (prove integrity) → Recovery (restore fully)
+# → Sita_Verdict (judge resilience) → Mithila (peace again)
+#
+# This maps directly to disaster recovery testing:
+#   Mithila        = steady state baseline capture
+#   Swayamvar      = load/stress testing at design limits
+#   Vanvas_Sita    = degraded mode / reduced capacity testing
+#   Abduction      = dependency failure / network partition simulation
+#   Ashok_Vatika   = chaos engineering / adversarial injection
+#   Hanuman_Message = alerting / monitoring / health check validation
+#   Agni_Pariksha  = post-incident integrity verification
+#   Recovery       = disaster recovery / failback procedures
+#   Sita_Verdict   = post-mortem / resilience scoring

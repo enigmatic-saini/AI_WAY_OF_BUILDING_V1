@@ -1,0 +1,250 @@
+[meta]
+name    = "TulsidasFsm"
+domain  = "liberation-bhakti-path"
+version = "1.1"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# TulsidasFsm — The Devotion Path (Seven Kandas)
+#
+# Seven steps into the sacred lake of Rama's deeds.
+# Each kanda purifies deeper layers of spiritual impurity.
+#
+# The cycle: Bal → Ayodhya → Aranya → Kishkindha → Sundara → Lanka → Uttara
+#
+# Special: Vairagya_Crisis (faith shaken), Nama_Relapse (heart goes cold)
+# Three concurrent threads at all times: karma, jnana, bhakti.
+# shabari_love is the baseline metric at every state.
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Bal"
+description = "Innocence/Birth — Balkand. First encounter with the divine. Delight, not philosophy. A child hearing Rama's story. The seed planted by love. Rama breaks Shiva's bow."
+is_initial  = true
+is_terminal = false
+Q           = { rkm = 0.3, jmb = 0.0, stb = 0.1, kln = 0.2, ngj = 0.0, mtv = 0.1, lkq = 0.0, bdr = 0.7 }
+# Q rationale: Bhadra (belonging) high — child hears Rama's story in warmth.
+# Low everything else — innocence has no strategy yet, no endurance tested.
+
+[[states]]
+name        = "Ayodhya"
+description = "Discipline/Exile — Ayodhyakand. Love costs. Rama exiled, Dasharatha dies. Devotion tested: will you still love when the story hurts? Dharma chosen over comfort."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.5, jmb = 0.3, stb = 0.4, kln = 0.3, ngj = 0.0, mtv = 0.2, lkq = 0.1, bdr = 0.5 }
+# Q rationale: Rukmini (love) rising — love costs, exile tests it.
+# Jambavati (endurance) begins — suffering demands stamina.
+
+[[states]]
+name        = "Aranya"
+description = "Wilderness/Seeking — Aranyakand. Sita abducted. The beloved LOST. Dark night of the soul. Rama weeps — God himself knows longing. Loss deepens love."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.6, stb = 0.3, kln = 0.5, ngj = 0.2, mtv = 0.3, lkq = 0.1, bdr = 0.3 }
+# Q rationale: Rukmini deepens — God himself weeps for the beloved.
+# Kalindi (patience) rises — dark night of the soul demands waiting.
+
+[[states]]
+name        = "Kishkindha"
+description = "Alliance/Trust — Kishkindhakand. Rama meets Hanuman. Fellowship matters. Define yourself by what you love, not what you have. Trust must be built."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.6, jmb = 0.5, stb = 0.5, kln = 0.4, ngj = 0.3, mtv = 0.5, lkq = 0.2, bdr = 0.7 }
+# Q rationale: Bhadra (belonging) peaks — fellowship, trust, alliance.
+# Mitravinda (self-choice) rises — choosing whom to trust.
+
+[[states]]
+name        = "Sundara"
+description = "Devotion/Service — Sundarkand. Hanuman leaps the ocean. Pure service, no personal agenda. The ego dissolves into service. The most sacred kanda."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.8, jmb = 0.8, stb = 0.7, kln = 0.6, ngj = 0.7, mtv = 0.6, lkq = 0.5, bdr = 0.8 }
+# Q rationale: All capabilities rising. Hanuman leaps the ocean — impossible (ngj) achieved.
+# Pure service dissolves ego. The most sacred kanda.
+
+[[states]]
+name        = "Lanka"
+description = "Battle/Victory — Lankakand. Rama vs Ravana. Dharma vs ego. Ten heads (ten egos) regrow until the root (navel) is struck. When Ravana falls, the devotee's ego falls."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.7, jmb = 0.9, stb = 0.9, kln = 0.3, ngj = 0.8, mtv = 0.7, lkq = 0.8, bdr = 0.6 }
+# Q rationale: Satyabhama (fierce action) peaks — battle against ego.
+# Lakshmana (precision) high — striking Ravana's navel, not his heads.
+
+[[states]]
+name        = "Uttara"
+description = "Peace/Wisdom — Uttarkand. Ram Rajya established. Not absence of world — presence with love. Rivers of milk, fruit in all seasons. Heart fully surrendered."
+is_initial  = false
+is_terminal = true
+Q           = { rkm = 1.0, jmb = 0.7, stb = 0.6, kln = 0.9, ngj = 0.5, mtv = 0.8, lkq = 0.6, bdr = 1.0 }
+# Q rationale: Rukmini (love) and Bhadra (belonging) peak — Ram Rajya is love at home.
+# Kalindi (patience) near peak — peace is sustained patience.
+
+[[states]]
+name        = "Vairagya_Crisis"
+description = "Faith shaken. 'Why does devotion bring suffering?' Not doubt — the deepening wound of love. Recovery: Shabari's simplicity — wait with berries, love with innocence."
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.4, jmb = 0.2, stb = 0.1, kln = 0.1, ngj = 0.0, mtv = 0.1, lkq = 0.0, bdr = 0.2 }
+# Q rationale: Most capabilities collapse. Only faint Rukmini (love) remains —
+# the wound of love is still love.
+
+[[states]]
+name        = "Nama_Relapse"
+description = "Heart goes cold. The Name 'Rama' feels empty. Practice mechanical, joy absent. Vinay Patrika state: 'I have nothing. But I will not stop saying the Name.'"
+is_initial  = false
+is_terminal = false
+Q           = { rkm = 0.2, jmb = 0.1, stb = 0.0, kln = 0.0, ngj = 0.0, mtv = 0.0, lkq = 0.0, bdr = 0.1 }
+# Q rationale: Near zero. Heart gone cold. Only the faintest memory of love.
+# Vinay Patrika state: 'I have nothing but the Name.'
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Bal"
+to     = "Ayodhya"
+event  = "innocence_tested"
+guard  = "joy_of_discovery_present AND first_loss_encountered"
+action = "discover_cost_of_love"
+drishti = ["present", "future"]
+# present: is innocence still intact? future: what cost lies ahead?
+
+[[transitions]]
+from   = "Ayodhya"
+to     = "Aranya"
+event  = "exile_accepted"
+guard  = "comfort_released AND dharma_chosen_over_ease"
+action = "enter_the_wilderness"
+drishti = ["present", "past", "silence"]
+# present: can you bear the exile? past: what comforts were released? silence: is dharma speaking?
+
+[[transitions]]
+from   = "Aranya"
+to     = "Kishkindha"
+event  = "loss_deepens_into_seeking"
+guard  = "beloved_lost AND grief_channeled_into_action"
+action = "seek_allies"
+drishti = ["present", "down", "future"]
+# present: is grief transforming? down: what does loss reveal? future: where are allies?
+
+[[transitions]]
+from   = "Kishkindha"
+to     = "Sundara"
+event  = "trust_established"
+guard  = "hanuman_present AND complete_surrender_in_service"
+action = "leap_of_faith"
+drishti = ["present", "up", "left", "right"]
+# present: is trust genuine? up: is this aligned with Rama? left/right: what other paths exist?
+
+[[transitions]]
+from   = "Sundara"
+to     = "Lanka"
+event  = "intelligence_gathered"
+guard  = "enemy_known AND allies_committed AND strategy_clear"
+action = "wage_dharma_yuddha"
+drishti = ["present", "down", "future", "left", "right"]
+# present: is intelligence complete? down: what does enemy hide? future: consequence of battle?
+
+[[transitions]]
+from   = "Lanka"
+to     = "Uttara"
+event  = "ego_defeated"
+guard  = "ravana_fallen AND sita_recovered AND crown_accepted"
+action = "establish_ram_rajya"
+drishti = ["present", "up", "past", "future", "silence"]
+# present: has ego truly fallen? up: is Ram Rajya possible? past: what was conquered? silence: is peace real?
+
+# Vairagya_Crisis branches
+[[transitions]]
+from   = "Ayodhya"
+to     = "Vairagya_Crisis"
+event  = "faith_shaken"
+guard  = "loss_experienced AND anger_at_divine"
+action = "log_crisis; preserve_shabari_love_metric"
+drishti = ["present", "up", "silence"]
+# present: is faith truly shaken? up: is the divine absent or hiding? silence: listen before despairing.
+
+[[transitions]]
+from   = "Aranya"
+to     = "Vairagya_Crisis"
+event  = "faith_shaken"
+guard  = "loss_experienced AND divine_feels_absent"
+action = "log_crisis; preserve_shabari_love_metric"
+drishti = ["present", "up", "silence"]
+# present: is faith truly shaken? up: is the divine absent or hiding? silence: listen before despairing.
+
+[[transitions]]
+from   = "Vairagya_Crisis"
+to     = "Aranya"
+event  = "shabari_moment"
+guard  = "simplest_devotee_encountered AND humility_restored"
+action = "receive_grace_through_simplicity"
+drishti = ["present", "down"]
+# present: has Shabari appeared? down: what simple truth restores faith?
+
+[[transitions]]
+from   = "Vairagya_Crisis"
+to     = "Kishkindha"
+event  = "shabari_moment"
+guard  = "simplest_devotee_encountered AND allies_visible"
+action = "receive_grace_through_simplicity"
+drishti = ["present", "down", "left", "right"]
+# present: has grace returned? down: what humility teaches? left/right: where are allies?
+
+# Nama_Relapse from any state
+[[transitions]]
+from   = "Ayodhya"
+to     = "Nama_Relapse"
+event  = "heart_goes_cold"
+guard  = "practice_mechanical AND joy_absent"
+action = "forget_the_Name; log_vinay_patrika_state"
+drishti = ["present", "past"]
+# present: has the Name gone empty? past: when was joy last felt?
+
+[[transitions]]
+from   = "Aranya"
+to     = "Nama_Relapse"
+event  = "heart_goes_cold"
+guard  = "practice_mechanical AND joy_absent"
+action = "forget_the_Name; log_vinay_patrika_state"
+drishti = ["present", "past"]
+# present: has the Name gone empty? past: when was joy last felt?
+
+[[transitions]]
+from   = "Kishkindha"
+to     = "Nama_Relapse"
+event  = "heart_goes_cold"
+guard  = "practice_mechanical AND joy_absent"
+action = "forget_the_Name; log_vinay_patrika_state"
+drishti = ["present", "past"]
+# present: has the Name gone empty? past: when was joy last felt?
+
+[[transitions]]
+from   = "Sundara"
+to     = "Nama_Relapse"
+event  = "heart_goes_cold"
+guard  = "practice_mechanical AND joy_absent"
+action = "forget_the_Name; log_vinay_patrika_state"
+drishti = ["present", "past"]
+# present: has the Name gone empty? past: when was joy last felt?
+
+[[transitions]]
+from   = "Lanka"
+to     = "Nama_Relapse"
+event  = "heart_goes_cold"
+guard  = "practice_mechanical AND joy_absent"
+action = "forget_the_Name; log_vinay_patrika_state"
+drishti = ["present", "past"]
+# present: has the Name gone empty? past: when was joy last felt?
+
+[[transitions]]
+from   = "Nama_Relapse"
+to     = "Bal"
+event  = "desperation_becomes_prayer"
+guard  = "stopped_pretending AND cried_genuinely"
+action = "return_to_innocence; carry_memory_of_warmth"
+drishti = ["present", "silence"]
+# present: is desperation genuine? silence: the Name returns in silence, not in effort.
