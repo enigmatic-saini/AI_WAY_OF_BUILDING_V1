@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-28T22:00:00Z
+session_end: 2026-05-28T23:30:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,49 @@ session_end: 2026-05-28T22:00:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-28 deep-night — git init + first push to GitHub as enigmatic-saini/AI_WAY_OF_BUILDING_V1 public; one new meta-finding surfaced)
+
+> Last session end: 2026-05-28T23:30:00Z. Final close of the arc.
+> Current M_build stage: **S3_Build** (unchanged). Kit-level files changed: NEW `.gitignore`; this HANDOVER. New external state: GitHub repo created at https://github.com/enigmatic-saini/AI_WAY_OF_BUILDING_V1 (public per Ram-dharma reading: "discipline framework hidden is discipline ungifted").
+
+## What-Was-Done
+
+- Created kit `.gitignore` (~2.6KB) covering OS junk + editor scratch + backup files + per-user `.claude/settings.local.json` + defensive secrets + log dirs. Explicit header documents files that LOOK ignorable but are COMMITTED per DASHBOARD.md §2.5 (HANDOVER, SHADOW_PASS, threat-model, ADRs).
+- `git init -b main` + per-repo user.name/email config (NOT global — kit hook correctly blocks `git config --global` writes; per-repo respects scope).
+- Initial commit `b366323` — 131 files; substantive message capturing the 2-day arc + 16 amendments + (0,3,7) preservation + kit's primitive counts at commit time.
+- Remote set: `origin = https://github.com/enigmatic-saini/AI_WAY_OF_BUILDING_V1.git`.
+- `gh auth setup-git` to enable HTTPS push via gh credential helper.
+- `gh repo create enigmatic-saini/AI_WAY_OF_BUILDING_V1 --public` + `git push -u origin main`. **Repo live + pushed.**
+
+## What-Failed
+
+Nothing structural. One mid-session friction: `block-dangerous-bash.sh` fired on `git config --global user.name` (a READ) because the regex matches WRITE and READ identically. Workaround: read via `git config user.name` (no `--global` flag — git auto-searches scopes). Recorded as next-finding.
+
+## What-Next (Arjuna's Arrows)
+
+1. **HK-NG-17 candidate: block-dangerous-bash regex refinement** — distinguish READ vs WRITE for `git config --global`. Current pattern blocks both; only WRITE should block. Hiranyakashipu-class spec-gap surfaced empirically during the git auth-check. One-line regex update (`git[[:space:]]+config[[:space:]]+--global[[:space:]]+[A-Za-z._-]+[[:space:]]+\S+`).
+2. **GitHub repo About field** — currently empty. User picks from the suggestions surfaced in this session (recommended ~280 chars: "Per-project discipline kit for LLM coding assistants. Codifies SDLC review cycles, role-modifiers, enforcement hooks, and an anti-hypocrisy audit...").
+3. **GitHub topics** suggested but not added: `claude-code`, `llm-tooling`, `sdlc`, `ai-agents`, `agentic-coding`.
+4. **Carried forward (unchanged from prior close):** Quarterly AHR; P1 hook fixes (HK-NG-6/7/8); bundled CODEOWNERS-class governance ask.
+
+## Key-Decisions
+
+1. **Kit is PUBLIC** per Ram-dharma reading ("discipline framework hidden is discipline ungifted").
+2. **Per-repo git config**, not global — kit's own discipline preserved.
+3. **HTTPS via gh credential helper**, not SSH — SSH key on this machine resolves to `buddhahastha` (different account); HTTPS uses the newly-acquired enigmatic-saini token.
+4. **HK-NG-17 candidate filed** for next kit-level forge: block-dangerous-bash read-vs-write distinction.
+
+## Files-Changed (kit-level only)
+
+- `.gitignore` — NEW (~2.6KB)
+- `HANDOVER.md` — this final block; frontmatter `session_end` → 2026-05-28T23:30:00Z
+
+**External state added:** `https://github.com/enigmatic-saini/AI_WAY_OF_BUILDING_V1` (public, branch `main`, commit `b366323`, tracking origin).
+
+---
 
 ---
 
