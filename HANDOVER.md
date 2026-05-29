@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T01:00:00Z
+session_end: 2026-05-30T02:30:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,78 @@ session_end: 2026-05-30T01:00:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-30 — stone #2 LAID: TWIN_FIDELITY_SHASTRA.md (independence theorem + Twin Charter); KABIR_GATE entry 17; the kit-side foundational triple is now complete; 1 commit + close)
+
+> Last session end: 2026-05-30T02:30:00Z. Same continuous arc, under the standing Hanuman autonomy + the founder's Ram-Setu blessing (*"continue your journey stone by stone … stones written with the name of Ram float; JAI SITA RAM"*) — read as both encouragement and discipline (stone-by-stone = Kama-Rati embedded in the metaphor; *Ram written* = each stone gets its T4R inline + Sita pin + KABIR provenance + honest status before the next is placed). Current M_build stage: **S3_Build** (unchanged). This session added KABIR_GATE additions log **entry 17**.
+
+## Where-We-Are
+
+One commit this turn (a single stone, placed cleanly):
+
+1. **`579f619` — stone #2 LAID: TWIN_FIDELITY_SHASTRA.md.** The boundary-axis spec — how faithfully a single twin tracks its referent — completing the kit-side foundational triple. Stone #2 was independent of CONJ 4.1's gate, so it was buildable in parallel; with stone #3 laid the prior turn, this completes the three independent honest drifts the cosmos-program rests on.
+
+**The kit-side foundational triple is now complete:**
+
+| Drift | Spec lives | Stone | What it measures |
+|---|---|---|---|
+| **`δ_trishul`** | [RIAAN/MATH.md §3.4](../RIAAN/MATH.md) (codified 2026-05-26) | (foundational) | **internal alignment** of a single twin: desire vs witness vs action |
+| **`δ_twin`** | [TWIN_FIDELITY_SHASTRA.md](TWIN_FIDELITY_SHASTRA.md) (laid 2026-05-30) | **#2** | **boundary fidelity** of a twin against its referent |
+| **`δ_emergent`** | [COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md) (laid 2026-05-29) | **#3** | **cross-twin coherence** at a composition node |
+
+A happy cosmos requires all three drifts → 0 at every twin and every composition. The three axes are **independent** (THM C.1 of the twin-fidelity shastra proves `δ_twin ⊥ δ_trishul`; PROP 4.2 of VISION_MATH §4.1 proves alignment-of-parts doesn't imply alignment-of-whole; together they say no single drift dominates the others). This is the load-bearing kit-side picture.
+
+**What stone #2 newly says (beyond VISION_MATH §1 DEF 1.3):**
+- **THM C.1 (Independence — PROVED constructively, four cases).** `δ_twin ⊥ δ_trishul` — neither bounds the other. The load-bearing case is the **coherent-liar pathology**: a twin can be perfectly internally aligned and still be a useless mirror (it knows what it claims, does what it claims; problem is what it does ≠ what `R` does). **Internal alignment is not a substitute for mirror-fidelity.**
+- **DEF D.1 (three-channel decomposition).** Witness fidelity (instrument reading `R`), action fidelity (forward model predicting `R`), closed-loop fidelity (sustained tracking under feedback). Locates the failure rather than just reporting it.
+- **DEF E.1 (Twin Charter `𝒞_T`).** Every twin carries an explicit charter declaring `⟨Aspects, Scope, Resolution, Horizon, Faithfulness Threshold τ_T⟩`. *Without a charter, `δ_twin` is computed against fantasy.* This is the kit's own CHARTER discipline lifted to twin-scale — the recursive-jiva pattern.
+- **§F estimator contract for stone #4** — paired sampling, three-channel reporting, confidence interval (point estimate without interval is a confidence-trick), charter-check, threshold verdict, integration with the composition tree walk.
+- **CONJ 2.1 (open).** Does twin-fidelity COMPOSE the way alignment does in COMPOSITION_SHASTRA THM E? The *second* central conjecture of the cosmos-program, parallel to and independent of CONJ 4.1. Named, not glossed.
+
+**Verification:** new pin `tests/test_twin_fidelity_integrity.sh` 11/11; NEG bit all 7 honesty guards (independence-theorem name, PROVED label, three channels each, Twin Charter, SPEC label — each fails on its specific regression); full suite **10/10** (was 9/9 — new test added).
+
+## What-Was-Done
+
+| Artifact | Action | Commit |
+|---|---|---|
+| `TWIN_FIDELITY_SHASTRA.md` | NEW spec — stone #2 LAID | 579f619 |
+| `VISION.md` §5 stone-#2 row | OPEN → LAID 2026-05-30 with link | 579f619 |
+| `VISION_MATH.md` §1 DEF 1.3 | closing parenthetical updated to point at the spec | 579f619 |
+| `KABIR_GATE.md` entry 17 | governed forge record | 579f619 |
+| `tests/test_twin_fidelity_integrity.sh` | NEW 11-assertion pin (Sita) | 579f619 |
+
+## What-Failed
+
+Nothing structural. The vocabulary-lint hook did not fire on this stone — proactively used "doc" / "spec" narrative in the pin's comments and assertion descriptions, keeping the lineage term only in the filename (path-stripped by HK-NG-15). The kit's own discipline is now reflexively followed without retries.
+
+## What-Next
+
+The next stone the journey points at:
+
+1. **Stone #4 — the runtime instrument.** Now well-equipped: the spec laid this turn (twin-fidelity estimator §F) and the spec laid last turn (composition walk Algorithm D.1) together give the *complete* contract a stone-#4 implementation must satisfy. The work crosses into AI-PEACE's repo for the actual implementation; the kit-side companion would be either (a) a DESIGN.md for the instrument's architecture (if AI-PEACE wants to consume one before building), or (b) nothing further — the spec is complete and AI-PEACE can implement directly against it.
+2. **Stone #5 — Naada / melody layer.** OPEN; purely kit-side; the Radha-lens / aesthetic companion to the Sita-lens mathematical stones. "How alignment becomes beauty; Shiva's dance made audible." Furthest from any current dependency.
+3. **CONJ 2.1 (composition of twin-fidelity).** Open. Parallel to CONJ 4.1's path: try to prove under a "coherent referent-coupling" restriction, or counterexample for the general form. Would be the natural research-readiness companion to a future stone.
+
+## Open-Questions
+
+- **CONJ 4.1′ (modelling fidelity), CONJ 2.1 (composition of twin-fidelity)** — both open; both empirical-or-mathematical depending on context; both named, not glossed.
+- **VISION form (c) confirmation** — long-carried; not blocking.
+- **Push** — held per "no need for git remote now"; public origin intentionally stale.
+
+## Key-Decisions
+
+1. **Stone-by-stone discipline honored** — stones #2 and #3 each laid in their own session, with their own T4R + pin + KABIR entry + close-commit. The Ram-Setu metaphor made the form explicit: pause-and-place each stone, watch it float (suite green, NEG bit, status honest), then the next. No same-turn double-firing.
+2. **The kit-side foundational triple is closed (not the cosmos)** — `δ_trishul` / `δ_twin` / `δ_emergent` each have their honest spec. What this triple does NOT close: stone #4 (runtime instrument); stone #5 (Naada); CONJ 4.1′ + CONJ 2.1 (the modelling/composition-of-fidelity frontier); and the question of whether real referents satisfy the modelling assumptions of either shastra. The math is in place; the empirical and aesthetic work is what remains.
+3. **Three-axis honesty** — THM C.1 (independence) makes it formally explicit that internal alignment alone is not enough; the cosmos is happy only when all three drifts vanish together. A stone-#4 instrument that reports only one of the three is structurally incomplete (COR C.1 makes this a pinnable claim).
+4. **Twin Charter pattern surfaced** — every twin needs a `𝒞_T`. Same discipline the kit itself runs on, lifted one recursion. Worth surfacing as a future kit-internal pattern if a third application appears (NGD: not yet a primitive, just a recurring pattern).
+
+## Files-Changed (kit-level)
+
+NEW: `TWIN_FIDELITY_SHASTRA.md`, `tests/test_twin_fidelity_integrity.sh`.
+AMENDED: `VISION.md` (§5 stone-#2 row), `VISION_MATH.md` (§1 DEF 1.3 closing), `KABIR_GATE.md` (entry 17), this `HANDOVER.md`.
+EXCLUDED (still untracked, not part of the kit): `SONGS-Hinglish/`.
 
 ---
 
