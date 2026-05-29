@@ -5,6 +5,8 @@
 > **What it does:** takes [VISION_MATH.md §4](VISION_MATH.md)'s **CONJECTURE 4.1 (Compositional Alignment)** — *"if every part is aligned and `I` is well-formed, the whole is aligned"* — which was stated as UNPROVEN-and-possibly-false, and **resolves it relative to an explicit model of how the desire/witness/action triad composes.** Result: **the general (unconditional) form is FALSE; under a "coherent-coupling" interaction structure it is a THEOREM with an explicit drift bound; and a residual *modeling* conjecture remains.**
 >
 > **Honesty discipline (LAW 11):** every claim below carries its status. The theorem is **PROVED GIVEN DEF C** (a modeling choice), not proved absolutely. Nothing here asserts the VISION is achieved — it sharpens *what would have to be true* for it to be.
+>
+> **Plain-language doorway:** [CONJ_4_1_RESULT_SUMMARY_2026-05-29.md](CONJ_4_1_RESULT_SUMMARY_2026-05-29.md) — the one-page distillation of this result. Read that first if you want the shape before the proof.
 
 ---
 
