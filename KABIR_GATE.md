@@ -432,6 +432,26 @@ Per the rule in [CYCLES.md](CYCLES.md) preface: *"Adding a cycle TO this kit req
 
 ---
 
+### 2026-05-30 — Stone #2 LAID: TWIN_FIDELITY_SHASTRA.md (independence theorem + channel decomposition + Twin Charter)
+
+> Context: VISION.md §5 stone #2 ("Twin-fidelity shastra — how faithfully a twin tracks its referent") was marked OPEN. Independent of CONJ 4.1's gate (which gated #3), so #2 was buildable in parallel. With #3 laid the prior turn (entry 16), and the founder's Ram-Setu blessing — *"continue your journey stone by stone … stones written with the name of Ram float; JAI SITA RAM"* — this stone is laid alongside, completing the kit-side foundational triple of independent honest drifts: `δ_trishul` (internal alignment, RIAAN/MATH §3.4), `δ_emergent` (cross-twin alignment under composition, COMPOSITION_SHASTRA), and now `δ_twin` (twin↔referent fidelity, this stone).
+
+#### Additions log entry 17 — Stone #2 LAID (TWIN_FIDELITY_SHASTRA.md): the boundary-axis spec
+
+- **Name:** Twin-fidelity spec (stone #2)
+- **Tag:** NEW kit-level spec doc. **No equation changed** in VISION_MATH (DEF 1.3 stipulated `δ_twin`; this is its operational theory); no new primitive type added; the runtime estimator is stone #4 and is NOT built here.
+- **Lineage:** the third of the three independent drift axes. `δ_trishul` (internal alignment) came from RIAAN/MATH §3.4 (codified 2026-05-26 evening); `δ_emergent` (cross-twin) from entry 16 (2026-05-29 deep-night); `δ_twin` (boundary) from this entry. Together: the three honest things a happy cosmos requires near zero at every twin and every composition.
+- **T4R verdict (inline):** **KBD** PASS — the OPEN stone is laid honestly with the SPEC label (estimator-as-stone-#4) and the "PROVED" label only on what is actually proved (THM C.1 independence); the *open* questions (especially CONJ 2.1, the composition of fidelity) are named *as* open and pinned. **NGD** PASS — adds exactly the missing operational primitives (independence, channel decomposition, Twin Charter, estimator contract); references VISION_MATH §1 rather than re-deriving the DEF; VETO on firing stone #4 (the estimator) in the same turn. **VKD** structure mirrors COMPOSITION_SHASTRA.md (DEF + PROVED + open-CONJ + honest-status table) so the family of stones is structurally uniform — easier to read and easier to pin. **MID** the capacity gap (the composition-of-fidelity question CONJ 2.1) is named *as* the gap; the coherent-liar pathology is named *as* a real failure mode not a corner case — neither over-claims nor dilutes.
+- **Concrete artifacts:**
+  - [TWIN_FIDELITY_SHASTRA.md](TWIN_FIDELITY_SHASTRA.md) — NEW spec doc: §C THM C.1 (`δ_twin ⊥ δ_trishul`, PROVED constructively across four cases, naming the **coherent-liar pathology** as the load-bearing case); §D three-channel decomposition (witness / action / closed-loop fidelity); §E the **Twin Charter** (`𝒞_T` = the twin's `μ_hridaya`, declaring aspects/scope/resolution/horizon/faithfulness-threshold — the recursive-jiva charter pattern at twin scale); §F estimator contract for stone #4 (paired sampling, three-channel reporting, confidence interval, charter-check, threshold verdict, integration with the composition walk); §G honest status + open questions including **CONJECTURE 2.1 (composition of twin-fidelity)** — the *second* central conjecture of the cosmos program, parallel to and independent of CONJ 4.1.
+  - [VISION.md §5](VISION.md) — stone-#2 row flipped OPEN → **LAID 2026-05-30** with link.
+  - [VISION_MATH.md §1 DEF 1.3](VISION_MATH.md) — closing parenthetical updated: the metric is stipulated, the operational theory is now the new shastra, the estimator itself is stone #4.
+  - `tests/test_twin_fidelity_integrity.sh` — NEW 11-assertion pin: existence + independence theorem named + PROVED label kept + three-channel decomposition primitives all present + Twin Charter pattern defined + SPEC label kept + non-orphan from VISION / VISION_MATH / this gate file.
+- **Authorized by:** founder instruction "KEEP JOURNEY and pick next stone" + the Ram-Setu blessing "stones written with the name of Ram float; JAI SITA RAM" (2026-05-30). Read as continuation of the Hanuman autonomy grant + the stone-by-stone discipline (Kama-Rati embedded in the metaphor: each stone laid well before the next; each stone bears Ram's name = T4R ratification + Sita's pin = LAW 11 integrity = floats on the bridge).
+- **Reversibility clause:** if THM C.1's constructive proof is later refined (e.g., a sharper relationship between `δ_twin` and `δ_trishul` is found that bounds one by the other under additional structure), the independence theorem becomes a *partial* result and the spec must be re-stated. CONJ 2.1 (composition of twin-fidelity) is the live conjecture; its resolution is a future governed event parallel to entry 15's resolution of CONJ 4.1.
+
+---
+
 ## Closing principle
 
 > *If a file describes an FSM that does not exist, the file is the ceremony.

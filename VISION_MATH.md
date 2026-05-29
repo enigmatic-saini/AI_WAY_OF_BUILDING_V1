@@ -36,7 +36,7 @@ session_end: 2026-05-29
 δ_twin(T, R, t) = ‖ β_T(t) − β_R(t) ‖_p
 ```
 
-*Fidelity* is `1 / (1 + δ_twin)` (high fidelity ⇔ low twin-drift). This is the **same drift form** as the witness-action drift of [`../RIAAN/MATH.md §3.1`](../RIAAN/MATH.md), applied across the twin↔referent boundary instead of the claim↔behavior boundary. **(DEF; the metric is stipulated, its estimator is stone #2 in VISION.md — OPEN.)**
+*Fidelity* is `1 / (1 + δ_twin)` (high fidelity ⇔ low twin-drift). This is the **same drift form** as the witness-action drift of [`../RIAAN/MATH.md §3.1`](../RIAAN/MATH.md), applied across the twin↔referent boundary instead of the claim↔behavior boundary. **(DEF; the metric is stipulated; the operational theory is now [TWIN_FIDELITY_SHASTRA.md](TWIN_FIDELITY_SHASTRA.md) (stone #2, LAID 2026-05-30) — including the independence theorem `δ_twin ⊥ δ_trishul`, the three-channel decomposition, the Twin Charter pattern, and the sample-based estimator contract; the runtime estimator itself is stone #4.)**
 
 **Remark.** A twin has the full faculty triad of [JIVA.md §5b](JIVA.md): a desire (`μ_hridaya` — what the twin is *for*), a witness (`μ_shiva` — what it believes it is doing), an action (`μ_shakti` — what it actually does). Twin-drift (`T` vs `R`) is a *fourth* axis layered on the triad, not a replacement.
 
