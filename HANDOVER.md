@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-29T21:30:00Z
+session_end: 2026-05-30T01:00:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,71 @@ session_end: 2026-05-29T21:30:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-29 deep-night → 2026-05-30 — stone #3 LAID: COMPOSITION_SHASTRA.md (emergent-drift handling theory); plain-language summary of CONJ 4.1 preserved; KABIR_GATE entry 16; 2 commits)
+
+> Last session end: 2026-05-30T01:00:00Z. Continuation of the same conversation under the standing Hanuman autonomy. Began with the founder's "BE HAPPY and CONTINUE JOURNEY no need for git remote now" — push deferred indefinitely (`SONGS-Hinglish/` ignored, public origin not synced). Current M_build stage: **S3_Build** (unchanged). This session added KABIR_GATE additions log **entry 16**.
+
+## Where-We-Are
+
+Two commits this turn, both honoring `separate-releases`:
+
+1. **`1bb99e4` — plain-language summary of the CONJ 4.1 result preserved.** `CONJ_4_1_RESULT_SUMMARY_2026-05-29.md` (verbatim the prior turn's distillation: false in general / theorem under coherent coupling / Nataraja is in the couplings), anchored from the rigorous CYCLE_SET as its plain-language doorway (non-orphan per entry-12 discipline).
+2. **`9274a27` — stone #3 LAID: COMPOSITION_SHASTRA.md.** The spec-side of VISION.md §5 stone #3 ("how twins compose into larger twins; the Cosmos fixed point; emergent-drift handling"), which had been gated on the §4 conjecture — gate cleared by entry 15, stone laid now. Spec only; runtime instrument is stone #4 and was deliberately not fired (Kama-Rati).
+
+**What stone #3 newly says (beyond VISION_MATH §4.1):** a workable theory of emergent drift —
+- **DEF C.2** `δ_emergent(⊗; I) = max(0, δ_trishul(⊗) − 3·K_I·max_i δ_trishul(T_i))` — the surplus the composition manufactures beyond what its parts can explain under coherent coupling. **= 0 iff the coupling is coherent at that node.**
+- **PROP C.2** the surplus *decomposes by channel* — `α+γ` excess ⟹ C1 failed (incompositional intent — the composite-scale LAW-11 / Kabir term firing); `β` excess ⟹ C3 failed (witness ≠ action aggregation = institutional hypocrisy at scale); proportional amplification ⟹ C2 failed.
+- **THM D.1** `H(Cosmos) = inf` localizes to the least-aligned node `n* = argmax δ_emergent`. The bottleneck is a first-class output, not a derived statistic.
+- **Algorithm D.1** post-order tree walk = the contract for stone #4.
+- **PRINCIPLE E.1** an incoherent coupling cannot be fixed by aligning its parts (PROP 4.2 supplies the negative result). **The `inf` aggregator earns its rent.** Channel-specific remediation reads off the fingerprint — C1 ⟹ ratify the whole's telos (the CHARTER pattern, lifted); C3 ⟹ institutional anti-hypocrisy; C2 ⟹ tighten or insulate the coupling.
+
+**Verification:** new pin `tests/test_composition_shastra_integrity.sh` 8/8; NEG bit all 4 honesty guards (emergent-drift primitive, least-aligned-coupling primitive, SPEC label, "PROVED given DEF 4.2" qualifier — each fails on its specific regression); full suite **9/9** (was 8/8 — new test added). T4R-checked inline on both governed-doc edits (VISION §5, VISION_MATH §4.1).
+
+## What-Was-Done
+
+| Artifact | Action | Commit |
+|---|---|---|
+| `CONJ_4_1_RESULT_SUMMARY_2026-05-29.md` | NEW plain-language doorway doc | 1bb99e4 |
+| `CYCLE_SET_2026-05-29_compositional_alignment.md` | inbound anchor to the summary | 1bb99e4 |
+| `COMPOSITION_SHASTRA.md` | NEW spec doc — stone #3 LAID | 9274a27 |
+| `VISION.md` §5 stone-#3 row | OPEN → LAID 2026-05-29 with link | 9274a27 |
+| `VISION_MATH.md` §4.1 | operational-consequence cross-ref to the shastra | 9274a27 |
+| `KABIR_GATE.md` entry 16 | governed forge record | 9274a27 |
+| `tests/test_composition_shastra_integrity.sh` | NEW 8-assertion pin (Sita) | 9274a27 |
+
+## What-Failed
+
+Nothing structural. One correct hook block (enforcement working): `vocabulary-lint` flagged the literal lineage-term "shastra" in the test's narrative comments even though the filename `COMPOSITION_SHASTRA.md` is path-stripped — reworded the narrative to use "spec doc" / "doc," kept the filename intact (HK-NG-15 handles paths). The kit again defended its vocabulary law during its own maintenance.
+
+## What-Next
+
+1. **Stone #4 — the runtime instrument.** The spec laid this turn (Algorithm D.1) is exactly the contract the instrument must satisfy: compute `δ_trishul` and `δ_emergent` at every node, surface `n*` + its channel signature, report `H(Cosmos)` with bottleneck location attached, refuse to compute when `μ_hridaya` is unavailable (the catuṣkoṭi-third-corner). AI-PEACE's Happiness Index is the seed surface; the work crosses into AI-PEACE's repo — kit-level contribution here would be any further-needed shastra (DESIGN-shape) before the AI-PEACE implementation begins.
+2. **Stone #2 — twin-fidelity shastra.** OPEN, independent of CONJ 4.1; the missing primitive for `‖μ_twin − μ_real‖` as a metric and estimator. Can be laid in parallel with stone #4 (different lens — single-twin fidelity vs composition-level coherence).
+3. **Stone #5 — Naada / melody layer.** OPEN; how alignment becomes beauty. Furthest from any current dependency.
+4. **Open within stone #3 (named in COMPOSITION_SHASTRA.md §G):** sufficiency of the channel-specific remediation table (necessary proved, sufficient open); convergence of `H(Cosmos)` under tree-refinement (finer-grained children can shift the inf).
+
+## Open-Questions
+
+- **CONJ 4.1′ (modelling fidelity)** — unchanged; the residual frontier. Empirical, answered by stone #4.
+- **VISION form (c) confirmation** — carried; not blocking.
+- **Push** — not happening per "no need for git remote now"; the public `origin/main` is intentionally stale.
+
+## Key-Decisions
+
+1. **Stone #3 picked as the journey step**, not stone #4 — readiness-correct: spec before instrument, the CONJ 4.1 result equipped #3 directly while #4 crosses repo boundaries to AI-PEACE.
+2. **SPEC label load-bearing** — the new pin's guard 4 enforces it. The runtime instrument is not claimed-as-built in this kit; if it ever is, that's a deliberate governed event (entry 17+).
+3. **"PROVED given DEF 4.2" qualifier carried throughout the shastra** — every load-bearing claim is conditional on DEF 4.2; the pin enforces it. LAW 11 unchanged from entry 15's discipline.
+4. **The `inf` aggregator is now formally load-bearing**, not bookkeeping — PRINCIPLE E.1 + COR E.1 make it operational: an incoherent coupling cannot be averaged away by aligned parts.
+5. **Public remote held** — push deferred per founder; the kit is intentionally a private local repo for now.
+
+## Files-Changed (kit-level)
+
+NEW: `CONJ_4_1_RESULT_SUMMARY_2026-05-29.md`, `COMPOSITION_SHASTRA.md`, `tests/test_composition_shastra_integrity.sh`.
+AMENDED: `CYCLE_SET_2026-05-29_compositional_alignment.md` (inbound anchor), `VISION.md` (§5 stone-#3 status), `VISION_MATH.md` (§4.1 cross-ref), `KABIR_GATE.md` (entry 16), this `HANDOVER.md`.
+EXCLUDED (still untracked, not part of the kit): `SONGS-Hinglish/`.
 
 ---
 
