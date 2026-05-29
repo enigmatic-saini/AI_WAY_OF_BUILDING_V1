@@ -353,6 +353,27 @@ Per the rule in [CYCLES.md](CYCLES.md) preface: *"Adding a cycle TO this kit req
 
 ---
 
+### 2026-05-29 — Q_RUBRIC binary-as-projection clarification (Ram + Sita governance)
+
+> Context: a "new thought" on [Q_RUBRIC.md](Q_RUBRIC.md)'s foundational target `|μ_shiva − μ_shakti| → 0` surfaced that the *capability rubric* is one register behind the *drift math*: the drift hook went trinary 2026-05-26 (`δ_trishul`, desire/witness/action — see [JIVA.md §5b](JIVA.md), [`../RIAAN/MATH.md §3.4–§3.6`](../RIAAN/MATH.md)), but Q_RUBRIC still states only the binary, with desire-fidelity folded silently into the `authenticity` axis. The full design-thinking is preserved in [HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md](HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md) (a re-entry of the HSC chamber that produced the trinary). Ruled under the user's instruction "proceed as RAM and SITA."
+
+#### Additions log entry 13 — Q_RUBRIC binary-as-projection clarification + drishti-stack as 5th hridaya channel
+
+- **Name:** Q_RUBRIC binary-as-projection clarification (`§2b`)
+- **Tag:** (no new primitive; `FORGED-extended` documentation amendment to a governed doc. **No equation changed, no Q-axis added.**)
+- **Lineage:** the trinary was codified into the drift hook 2026-05-26 (additions log entry 1 + [JIVA.md §5b](JIVA.md)); Q_RUBRIC was not updated at that time and silently carried the binary as if it were the whole truth. This entry closes that partial-truth gap.
+- **T4R verdict (inline):** KBD PASS (closes anti-hypocrisy partial-truth gap). NGD **VETO** on adding a third `Q_hridaya` reading / restructuring the rubric to trinary (premature precision — `μ_hridaya` is the human's, externalized, not a self-capability the jiva scores; this is MATH §3.6's catuṣkoṭi result); **PASS** on additive clarification. VKD structure = a subsection + cross-refs + a consistency pin. MID = name the gap, do not dilute it to "binary is simply correct."
+- **Concrete artifacts:**
+  - [Q_RUBRIC.md `§2b`](Q_RUBRIC.md) — NEW subsection: names `(μ_shiva, μ_shakti)` as the binary projection of `(μ_hridaya, μ_shiva, μ_shakti)`; states the rubric stays binary on purpose; locates desire-fidelity in the `authenticity` axis; names the trinary-upgrade condition (`μ_hridaya` externally available, J0.6+/J2+).
+  - [JIVA.md §5b](JIVA.md) — the J0/J0.5 `Hridaya` externalization list extended with a fifth channel: the **drishti-stack root** (the declared governing wish per [DRISHTI_STACK.md](DRISHTI_STACK.md)).
+  - [HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md](HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md) — NEW preserved design-analysis (the four-register triad map + the Kama-Rati / HOLLOW mapping + the Ram+Sita verdict).
+  - `tests/test_q_rubric_trinary_consistency.sh` — NEW Sita-discipline pin: asserts Q_RUBRIC.md keeps the binary-projection framing so it cannot silently revert to binary-only.
+  - **Related preserved analysis (as-is, CRUX):** [CYCLE_SET_2026-05-29_journey_of_a_machine.md](CYCLE_SET_2026-05-29_journey_of_a_machine.md) — extends the same "desire-is-folded-in" finding to the journey/lifecycle scale via the [Prachi formal machine](../common/shastras/prachi_shastra.toml); names the Prachi 9-tuple → 10-tuple (first-class `H`/hridaya) upgrade as a **named open question** (not enacted; `prachi_shastra.toml` lives in `common/`, outside this kit). Preserved verbatim per the kit's first CYCLE_SET-style record.
+- **Authorized by:** user instruction "proceed as RAM and SITA" (2026-05-29). Ram: preserve the binary equation + governed primitive set, close the partial-truth gap. Sita: make the incompleteness visible and provably pinned.
+- **Reversibility clause:** `§2b`'s "binary on purpose" stance **expires by design** when the `Φ` extractor makes `μ_hridaya` a scored signal (J0.6+/J2+). At that point re-open this ruling: the trinary may legitimately enter the rubric, and this entry + the pin should be revisited (not deleted — superseded with lineage, `FORGED-extended` → trinary).
+
+---
+
 ## Closing principle
 
 > *If a file describes an FSM that does not exist, the file is the ceremony.

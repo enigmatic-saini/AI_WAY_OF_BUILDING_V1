@@ -38,6 +38,20 @@ Dharmic target: `|δ| → 0`. The **sign** of δ is the steering signal — see 
 
 ---
 
+## §2b — The third reading, and why this rubric stays binary (for now)
+
+The dyad `(μ_shiva, μ_shakti)` is the **binary projection** of a **trinary** the kit's drift math already carries: `(μ_hridaya, μ_shiva, μ_shakti)` — desire, witness, action (see [JIVA.md §5b](JIVA.md) and [`../RIAAN/MATH.md §3.4–§3.6`](../RIAAN/MATH.md)). The foundational drift equation there is `δ_trishul → 0`; this rubric's `|μ_shiva − μ_shakti| → 0` is its projection onto the witness–action plane when `μ_hridaya ≡ μ_shiva`.
+
+This rubric stays **binary on purpose**:
+
+- `μ_hridaya` (the originating desire) is the *human's*, externalized at J0/J0.5 — it is not a capability the jiva scores about *itself*. The rubric measures the jiva's capability, so desire-fidelity is scored **indirectly**, through the `authenticity` / Mitravinda axis ([§4](#§4--the-rubric)), whose 0.0 anchor is literally "cannot distinguish own wish from another's."
+- A jiva can be **binary-aligned and still charter-drifted** — high on the witness/action dyad while the work quietly fails to serve what was asked (the Kama-Rati **HOLLOW** state; the `‖μ_hridaya − μ_shakti‖` term the binary cannot see). Reading the `authenticity` axis *against the originating CHARTER* is the rubric-level guard; the trinary `drift_hook` is the runtime guard.
+- The rubric goes **trinary only when `μ_hridaya` is externally available** as a scored signal (J0.6+ / J2+, when the `Φ` extractor sources desire from CHARTER). Until then a third `Q_hridaya` reading would be premature precision.
+
+Full analysis and the governance ruling that fixed this scope: [HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md](HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md).
+
+---
+
 ## §3 — The 8 axes (canonical from VOCABULARY.md)
 
 | Axis | Lineage | Domain meaning | Where M_BUILD invokes |
