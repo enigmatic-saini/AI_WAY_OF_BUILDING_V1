@@ -7,6 +7,8 @@
 > **Honesty discipline (LAW 11):** every claim below carries its status. The theorem is **PROVED GIVEN DEF C** (a modeling choice), not proved absolutely. Nothing here asserts the VISION is achieved — it sharpens *what would have to be true* for it to be.
 >
 > **Plain-language doorway:** [CONJ_4_1_RESULT_SUMMARY_2026-05-29.md](CONJ_4_1_RESULT_SUMMARY_2026-05-29.md) — the one-page distillation of this result. Read that first if you want the shape before the proof.
+>
+> **Historical-citation note (added 2026-05-30):** references below to `../RIAAN/MATH.md §3.4 / §3.6` were authored before the upward codification of the foundational drift math into the kit (`MATH.md`, [KABIR_GATE entry 18](KABIR_GATE.md)). Read those as **first-witness citations** to the project where the math was empirically discovered — the kit's own source is now [MATH.md §5.4 / §5.6](MATH.md). The body of this analysis is preserved verbatim; the citations are historically accurate even if the dependency direction is no longer.
 
 ---
 

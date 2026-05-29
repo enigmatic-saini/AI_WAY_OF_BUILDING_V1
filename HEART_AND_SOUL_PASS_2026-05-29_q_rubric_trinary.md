@@ -11,6 +11,8 @@ session_end: 2026-05-29
 > **Origin.** A "new thought" on [Q_RUBRIC.md](Q_RUBRIC.md)'s foundational target `|μ_shiva − μ_shakti| → 0`, paired with a recollection of "μ_desire / q_desire" from [`../common/shastras/06_kama_rati_fsm.toml`](../common/shastras/06_kama_rati_fsm.toml). This document preserves the design-thinking. The governance resolution is [§7](#7-ram--sita-verdict).
 >
 > **Lineage.** This is a re-entry of the same chamber that produced the trinary in the first place — the HSC firing recorded as `CYCLE_SET_2026_05_26_HEART_AND_SOUL.md` (RIAAN), referenced by [JIVA.md §5b](JIVA.md) and [`../RIAAN/MATH.md §2/§3.4`](../RIAAN/MATH.md). The trinary entered the *drift* math then; the question now is whether the *capability* rubric should follow.
+>
+> **Historical-citation note (added 2026-05-30):** references to `../RIAAN/MATH.md` in this preserved analysis predate the upward codification of the foundational drift math into the kit (`MATH.md`, [KABIR_GATE entry 18](KABIR_GATE.md)). Read those as **first-witness citations** to the project where the math was empirically discovered — the kit's own source is now [MATH.md](MATH.md) (§3 faculty mapping, §4 functionals, §5 drift). The body of this analysis is preserved verbatim; the citations are historically accurate even if the dependency direction is no longer.
 
 ---
 

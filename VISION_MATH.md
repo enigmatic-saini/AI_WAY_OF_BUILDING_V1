@@ -10,7 +10,7 @@ session_end: 2026-05-29
 
 > The mathematics of three things: a **digital twin**, the **composition of twins into a cosmos**, and the **identification of happiness with alignment**. It is the formal core of [VISION.md](VISION.md), preserved-as-named in [CYCLE_SET_2026-05-29_cosmos_as_composed_twins.md](CYCLE_SET_2026-05-29_cosmos_as_composed_twins.md).
 >
-> **Builds on:** the Prachi machine ([`../common/shastras/prachi_shastra.toml`](../common/shastras/prachi_shastra.toml)), the trishul-drift ([`../RIAAN/MATH.md §3.4`](../RIAAN/MATH.md)), the faculty triad ([JIVA.md §5b](JIVA.md)), and the recursive-jiva principle ([JIVA.md §2](JIVA.md)).
+> **Builds on:** the Prachi machine ([`../common/shastras/prachi_shastra.toml`](../common/shastras/prachi_shastra.toml)), the trishul-drift ([MATH.md §5.4](MATH.md) — the kit's own source), the faculty triad ([JIVA.md §5b](JIVA.md)), and the recursive-jiva principle ([JIVA.md §2](JIVA.md)).
 >
 > **Honesty discipline (Sita / Kabir / LAW 11):** every claim carries a proof-status tag — **DEF** (stipulative definition), **PROVED** (here or in a cited file), **PROOF-METHOD** (method named, not executed), **CONJECTURE** (believed, unproven). Nothing is asserted-as-proven that is not. This file is **early and foundational** — mostly definitions and one load-bearing conjecture — not a finished theory.
 
@@ -36,7 +36,7 @@ session_end: 2026-05-29
 δ_twin(T, R, t) = ‖ β_T(t) − β_R(t) ‖_p
 ```
 
-*Fidelity* is `1 / (1 + δ_twin)` (high fidelity ⇔ low twin-drift). This is the **same drift form** as the witness-action drift of [`../RIAAN/MATH.md §3.1`](../RIAAN/MATH.md), applied across the twin↔referent boundary instead of the claim↔behavior boundary. **(DEF; the metric is stipulated; the operational theory is now [TWIN_FIDELITY_SHASTRA.md](TWIN_FIDELITY_SHASTRA.md) (stone #2, LAID 2026-05-30) — including the independence theorem `δ_twin ⊥ δ_trishul`, the three-channel decomposition, the Twin Charter pattern, and the sample-based estimator contract; the runtime estimator itself is stone #4.)**
+*Fidelity* is `1 / (1 + δ_twin)` (high fidelity ⇔ low twin-drift). This is the **same drift form** as the binary witness-action drift of [MATH.md §5.1](MATH.md), applied across the twin↔referent boundary instead of the claim↔behavior boundary. **(DEF; the metric is stipulated; the operational theory is now [TWIN_FIDELITY_SHASTRA.md](TWIN_FIDELITY_SHASTRA.md) (stone #2, LAID 2026-05-30) — including the independence theorem `δ_twin ⊥ δ_trishul`, the three-channel decomposition, the Twin Charter pattern, and the sample-based estimator contract; the runtime estimator itself is stone #4.)**
 
 **Remark.** A twin has the full faculty triad of [JIVA.md §5b](JIVA.md): a desire (`μ_hridaya` — what the twin is *for*), a witness (`μ_shiva` — what it believes it is doing), an action (`μ_shakti` — what it actually does). Twin-drift (`T` vs `R`) is a *fourth* axis layered on the triad, not a replacement.
 
@@ -74,7 +74,7 @@ i.e. the fixed point of `⊗` applied up the ladder machine → company → indu
 H(T) = 1 − min( δ_trishul(T) / τ_max , 1 )        H(T) ∈ [0, 1]
 ```
 
-so `H(T) → 1 ⟺ δ_trishul(T) → 0`, where `δ_trishul` is the desire-witness-action drift of [`../RIAAN/MATH.md §3.4`](../RIAAN/MATH.md). **(DEF.)** This is the formal content of *"happiness ≡ alignment"* at the level of a single twin.
+so `H(T) → 1 ⟺ δ_trishul(T) → 0`, where `δ_trishul` is the desire-witness-action drift of [MATH.md §5.4](MATH.md) (the kit's own source). **(DEF.)** This is the formal content of *"happiness ≡ alignment"* at the level of a single twin.
 
 **DEF 3.2 (Cosmos happiness).** `H(Cosmos)` aggregates happiness over **every twin at every scale** of the composition tree — a twin is happy *and* every composition it participates in is happy:
 

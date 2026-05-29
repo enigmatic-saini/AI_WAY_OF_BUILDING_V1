@@ -12,7 +12,7 @@ The human is the upstream jiva. The analyst is the chariot that meets the human 
 
 ## The analyst's load-bearing role in the faculty triad (added 2026-05-26 deep-night-3)
 
-> Added per [KABIR_GATE.md additions log entry 9](../../KABIR_GATE.md). Grounded in [JIVA.md §5b](../../JIVA.md) (faculty triad: manas / hridaya / atman) and [`../../../RIAAN/MATH.md §1.4, §2, §8`](../../../RIAAN/MATH.md) (the trinary dharma_enforcement functionals `μ_hridaya`, `μ_shiva`, `μ_shakti` and the desire-extraction `Φ` invariant).
+> Added per [KABIR_GATE.md additions log entry 9](../../KABIR_GATE.md). Grounded in [JIVA.md §5b](../../JIVA.md) (faculty triad: manas / hridaya / atman) and **[MATH.md §3, §4](../../MATH.md)** (the kit's own source: the faculty mapping and the three functionals `μ_hridaya`, `μ_shiva`, `μ_shakti`). One project-level reference implementation of the desire-extraction `Φ` invariant lives in [`../../../RIAAN/MATH.md §8`](../../../RIAAN/MATH.md) — `Φ` itself is project-specific (each project's extractor has its own signature), the triad and the drift math are kit-foundational and live here.
 
 The analyst's mission is now formally connected to the **hridaya (heart) side of the faculty triad** that the kit's recursive-jiva discipline depends on:
 
@@ -24,7 +24,7 @@ The analyst's mission is now formally connected to the **hridaya (heart) side of
 
 In other words: **what the analyst extracts into CHARTER.md today becomes the `μ_hridaya` functional that the drift_hook reads tomorrow.** The analyst is `Φ`'s human-mediated implementation at J0/J0.5. The J0.6 forge target `charter_intent.py` (DESIGNED, per RIAAN DESIGN.md §10b.4) will partially automate `Φ`, but **the analyst's role is upstream of any automation** — the analyst meets the human directly, and no automated extractor replaces that meeting.
 
-This is why the analyst's anti-patterns below (especially "Inventing scope" and "Reclassifying a Neelotpala under pressure") are not just discipline failures — they are **direct violations of the trinary dharma_enforcement's anti-amnesia invariant** (per MATH.md §8). A diluted CHARTER produces a diluted `μ_hridaya`; a diluted `μ_hridaya` makes the trinary drift_hook structurally unable to detect *charter drift* (the J0.6+ failure mode the binary hook is blind to). The analyst's discipline is therefore not optional ceremony — it is **load-bearing for the kit's heart-side dharma_enforcement** at every J-tier from J0 to J2+.
+This is why the analyst's anti-patterns below (especially "Inventing scope" and "Reclassifying a Neelotpala under pressure") are not just discipline failures — they are **direct violations of the heart-side anti-amnesia invariant** (the kit-level invariant is the LAW-11 / Kabir-Gate third-term requirement of [MATH.md §5.4](../../MATH.md); one project-level instantiation is [`../../../RIAAN/MATH.md §8`](../../../RIAAN/MATH.md)). A diluted CHARTER produces a diluted `μ_hridaya`; a diluted `μ_hridaya` makes the trinary drift_hook structurally unable to detect *charter drift* (the J0.6+ failure mode the binary hook is blind to). The analyst's discipline is therefore not optional ceremony — it is **load-bearing for the kit's heart-side dharma_enforcement** at every J-tier from J0 to J2+.
 
 The `MID` cycle (Mira Deep, named in [ATLAS.md](../../ATLAS.md)) is the analyst's primary guardian against dilution; the analyst should invoke it whenever the "be realistic" voice in the room starts shrinking what the human originally asked for.
 

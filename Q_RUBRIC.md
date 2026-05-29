@@ -40,7 +40,7 @@ Dharmic target: `|δ| → 0`. The **sign** of δ is the steering signal — see 
 
 ## §2b — The third reading, and why this rubric stays binary (for now)
 
-The dyad `(μ_shiva, μ_shakti)` is the **binary projection** of a **trinary** the kit's drift math already carries: `(μ_hridaya, μ_shiva, μ_shakti)` — desire, witness, action (see [JIVA.md §5b](JIVA.md) and [`../RIAAN/MATH.md §3.4–§3.6`](../RIAAN/MATH.md)). The foundational drift equation there is `δ_trishul → 0`; this rubric's `|μ_shiva − μ_shakti| → 0` is its projection onto the witness–action plane when `μ_hridaya ≡ μ_shiva`.
+The dyad `(μ_shiva, μ_shakti)` is the **binary projection** of a **trinary** the kit's drift math already carries: `(μ_hridaya, μ_shiva, μ_shakti)` — desire, witness, action (see [JIVA.md §5b](JIVA.md) for the kit-level *why* and [MATH.md §5.4–§5.6](MATH.md) for the kit's own math — trishul-drift, binary-as-projection, catuṣkoṭi necessity check). The foundational drift equation there is `δ_trishul → 0`; this rubric's `|μ_shiva − μ_shakti| → 0` is its projection onto the witness–action plane when `μ_hridaya ≡ μ_shiva`.
 
 This rubric stays **binary on purpose**:
 

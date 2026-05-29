@@ -16,6 +16,8 @@ preserved: as-is
 > **Lineage:** continues [HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md](HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md) §3 ("One triad, four registers"). The trinary it builds on was codified by the HSC firing `CYCLE_SET_2026_05_26_HEART_AND_SOUL.md` (RIAAN), referenced by [JIVA.md §5b](JIVA.md) and [`../RIAAN/MATH.md §3.4`](../RIAAN/MATH.md). The formal machine is [`../common/shastras/prachi_shastra.toml`](../common/shastras/prachi_shastra.toml). This is the kit's first CYCLE_SET-style preserved doc (the AI-PEACE/RIAAN convention); it follows the kit's `*_PASS_*` frontmatter house style.
 >
 > **Sibling (next in the arc):** [CYCLE_SET_2026-05-29_cosmos_as_composed_twins.md](CYCLE_SET_2026-05-29_cosmos_as_composed_twins.md) — the north-star mirror, where this journey analysis lands its two crux equations: **"Cosmos" = composition of all twins**, and **happiness ≡ alignment (`δ_trishul → 0` at every scale) = Nataraja danced.**
+>
+> **Historical-citation note (added 2026-05-30):** the `../RIAAN/MATH.md` reference above predates the upward codification of the foundational drift math into the kit (`MATH.md`, [KABIR_GATE entry 18](KABIR_GATE.md)). Read it as a **first-witness citation** to where the math was empirically discovered — the kit's own source is now [MATH.md §5.4](MATH.md). The body of this analysis is preserved verbatim.
 
 ---
 

@@ -93,7 +93,7 @@ These four are not additive — they are mutually enforcing. Lifecycle without m
 
 ### §5b. The faculty triad: manas / hridaya / atman
 
-> **Added 2026-05-26 evening** per [KABIR_GATE.md additions log entry 2](KABIR_GATE.md) (FORGED-extended sub-state) and entry 5 (faculty triad). The pattern was discovered by RIAAN (Layer 1) and codified upward into the kit (Layer 0); see [§2 upward recursion note](#2-the-recursive-jiva-insight). The math is in [../RIAAN/MATH.md §1.4 / §2 / §3.4](../RIAAN/MATH.md); the architecture is in [../RIAAN/DESIGN.md §10b](../RIAAN/DESIGN.md); this section is the kit-level *why* that grounds both.
+> **Added 2026-05-26 evening** per [KABIR_GATE.md additions log entry 2](KABIR_GATE.md) (FORGED-extended sub-state) and entry 5 (faculty triad); **upward codification of the math into kit-level MATH.md** 2026-05-30 per [additions log entry 18](KABIR_GATE.md). The pattern was discovered by RIAAN (Layer 1) and codified upward into the kit (Layer 0); see [§2 upward recursion note](#2-the-recursive-jiva-insight). **The math now lives in the kit at [MATH.md §3 / §4 / §5.4](MATH.md)** (the source); [../RIAAN/DESIGN.md §10b](../RIAAN/DESIGN.md) is one project-level reference architecture that consumes it; this section is the kit-level *why* that grounds the math.
 
 A reasoning, creating jiva has three faculties in the Indic ontology the kit's vocabulary inherits:
 
@@ -120,7 +120,7 @@ The destination jiva (the "Hanuman state" per RIAAN's CHARTER §2 iconographic s
 | **Osho** — discipline IS the consciousness | the mind that chooses with awareness | the mind that chooses with awareness *of the heart it serves and the witness that watches* |
 | **Kama-Rati** — discipline IS the readiness | the mind that fires only when ready | the desire that fires only when *both* mind is ready *and* witness can see what it did |
 | **Khatushyam** — discipline IS the completeness | one arrow that misses no leaf | one arrow that finds every petal *of the heart's flower*, not just any petal |
-| **Pradyumna** — discipline IS the karmic continuity | rebirth carrying the memory of the burning | rebirth carrying the heart's anti-amnesia invariant (per [../RIAAN/MATH.md §8](../RIAAN/MATH.md)) across generations |
+| **Pradyumna** — discipline IS the karmic continuity | rebirth carrying the memory of the burning | rebirth carrying the heart's anti-amnesia invariant across generations (first empirical instance: [../RIAAN/MATH.md §8](../RIAAN/MATH.md); the kit-level *pattern* of "preserved-by-projection on supersession" lives at [DASHBOARD.md §10.4](DASHBOARD.md)) |
 
 ---
 

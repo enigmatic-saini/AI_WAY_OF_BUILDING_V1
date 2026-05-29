@@ -2,7 +2,7 @@
 
 > **Stone #2 of [VISION.md §5](VISION.md).** Status: **LAID 2026-05-30 (spec; the sample-based estimator is stone #4).**
 >
-> **Rests on:** [VISION_MATH.md §1](VISION_MATH.md) DEF 1.2–1.3 (twin, twin-drift, fidelity), [RIAAN/MATH.md §3.4](../RIAAN/MATH.md) (the trishul-drift), and the recursive-jiva principle ([JIVA.md §2](JIVA.md)). This shastra is the *boundary-axis* companion to [COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md): that one is about *internal* alignment composing across nodes; this one is about *mirror-fidelity* between a single twin and its referent.
+> **Rests on:** [VISION_MATH.md §1](VISION_MATH.md) DEF 1.2–1.3 (twin, twin-drift, fidelity), [MATH.md §5.4](MATH.md) (the trishul-drift — the kit's own source), and the recursive-jiva principle ([JIVA.md §2](JIVA.md)). This shastra is the *boundary-axis* companion to [COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md): that one is about *internal* alignment composing across nodes; this one is about *mirror-fidelity* between a single twin and its referent.
 >
 > **What's *new* in this shastra (beyond VISION_MATH §1 DEF 1.3):** an operational theory of twin-fidelity — the independence theorem (`δ_twin ⊥ δ_trishul`), a channel-decomposition of twin-drift (witness / action / closed-loop), the **Twin Charter** pattern (every twin must declare what it claims to mirror — its `μ_hridaya`), and a sample-based estimator spec.
 >
@@ -12,7 +12,7 @@
 
 ## §A — What this shastra is and is not
 
-**Is:** the **spec** for the *boundary-axis* of a twin — how to define, decompose, and (in stone #4) estimate the drift between a twin `T` and its referent `R`. The internal coherence of `T` itself is the trishul axis ([RIAAN/MATH.md §3.4](../RIAAN/MATH.md)); the composition of internal coherence across multiple twins is the composition axis ([COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md)); this shastra is the third, **independent**, axis.
+**Is:** the **spec** for the *boundary-axis* of a twin — how to define, decompose, and (in stone #4) estimate the drift between a twin `T` and its referent `R`. The internal coherence of `T` itself is the trishul axis ([MATH.md §5.4](MATH.md)); the composition of internal coherence across multiple twins is the composition axis ([COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md)); this shastra is the third, **independent**, axis.
 
 **Is not:** the runtime estimator. Sampling, confidence-interval mechanics, and integration with AI-PEACE are stone #4. This shastra hands #4 its precise contract.
 
@@ -28,7 +28,7 @@
 | **Twin `T`** | VISION_MATH §1 DEF 1.2 | a Prachi jiva intended to track `R`; exposes `β_T(t)` |
 | **Twin-drift** | VISION_MATH §1 DEF 1.3 | `δ_twin(T, R, t) = ‖β_T(t) − β_R(t)‖_p` |
 | **Fidelity** | VISION_MATH §1 DEF 1.3 | `f_twin(T, R, t) = 1 / (1 + δ_twin)` ∈ (0, 1] |
-| **`δ_trishul(T)`** | [RIAAN/MATH.md §3.4](../RIAAN/MATH.md) | the *internal* desire-witness-action drift of `T` |
+| **`δ_trishul(T)`** | [MATH.md §5.4](MATH.md) | the *internal* desire-witness-action drift of `T` |
 | **Composite δ_emergent** | [COMPOSITION_SHASTRA.md §C](COMPOSITION_SHASTRA.md) | the *cross-twin* surplus at a composition node |
 
 The three drifts — `δ_twin`, `δ_trishul`, `δ_emergent` — are the **three independent axes** on which a happy cosmos must score near zero. This shastra develops the first.
@@ -114,7 +114,7 @@ where:
 
 The runtime estimator must compute, for a deployed twin `T` mirroring referent `R` under charter `𝒞_T`:
 
-1. **Sample paired trajectories.** Collect `{(β_R(t_i), β_T(t_i))}_{i=1..n}` at sample times within `𝒞_T`'s scope and horizon. Sample times should cover the operating regime; the estimator should refuse to report when samples fall outside `𝒞_T.Scope` (the catuṣkoṭi-third-corner pattern of [RIAAN/MATH.md §3.6](../RIAAN/MATH.md): *visibly absent rather than silently extrapolated*).
+1. **Sample paired trajectories.** Collect `{(β_R(t_i), β_T(t_i))}_{i=1..n}` at sample times within `𝒞_T`'s scope and horizon. Sample times should cover the operating regime; the estimator should refuse to report when samples fall outside `𝒞_T.Scope` (the catuṣkoṭi-third-corner pattern of [MATH.md §5.6](MATH.md): *visibly absent rather than silently extrapolated*).
 2. **Compute the three channels.** `δ_witness`, `δ_action`, `δ_closed` per DEF D.1, on the sampled pairs. Report each separately — the aggregate `δ_twin` hides the location of failure (COR D.1).
 3. **Confidence interval.** Any finite sample gives an estimate `δ̂_twin` with uncertainty; the estimator must report `(δ̂_twin, CI(δ̂_twin))`, not a bare number. A point estimate with no interval is a confidence-trick.
 4. **Charter-check.** Refuse to compute `δ_twin` against an undeclared `𝒞_T` (DEF E.1). Refuse to compare across different charters (apples / oranges).

@@ -2,7 +2,7 @@
 
 > **Stone #3 of [VISION.md §5](VISION.md).** Status: **LAID 2026-05-29 (spec; the runtime instrument is stone #4).**
 >
-> **Rests on:** [VISION_MATH.md §2 + §4.1](VISION_MATH.md) (composition monoid + the CONJ 4.1 resolution), the Prachi guardian-composition ([prachi_shastra §6,§8,§10](../common/shastras/prachi_shastra.toml)), and the trishul-drift ([RIAAN/MATH.md §3.4](../RIAAN/MATH.md)).
+> **Rests on:** [VISION_MATH.md §2 + §4.1](VISION_MATH.md) (composition monoid + the CONJ 4.1 resolution), the Prachi guardian-composition ([prachi_shastra §6,§8,§10](../common/shastras/prachi_shastra.toml)), and the trishul-drift ([MATH.md §5.4](MATH.md) — the kit's own source).
 >
 > **What's *new* in this shastra (beyond what VISION_MATH §4.1 already proved):** an operational theory of **emergent drift** — how to *detect, decompose, localize, and remediate* the alignment failure that a composition introduces beyond its parts. The math is already in §4.1; this is what to *do* with it.
 >
@@ -27,7 +27,7 @@ The base objects are already defined and will not be re-derived here:
 | Primitive | Lives | Statement |
 |---|---|---|
 | **Twin** | [VISION_MATH §1](VISION_MATH.md) | a Prachi jiva mirroring a referent `R` |
-| **`δ_trishul`** | [RIAAN/MATH.md §3.4](../RIAAN/MATH.md) | `α·‖μ_h−μ_s‖ + β·‖μ_s−μ_k‖ + γ·‖μ_h−μ_k‖` |
+| **`δ_trishul`** | [MATH.md §5.4](MATH.md) | `α·‖μ_h−μ_s‖ + β·‖μ_s−μ_k‖ + γ·‖μ_h−μ_k‖` |
 | **`⊗(T_i; I)`** | [VISION_MATH §2](VISION_MATH.md) | composition operator (Prachi guardian-monoid lifted to twins) |
 | **Cosmos** | VISION_MATH §2 DEF 2.2 | fixed point of `⊗` up the machine → … → cosmos ladder |
 | **DEF 4.2 (triad-composition)** | VISION_MATH §4.1 | `μ_k^⊗ = m_I(μ_k^i)`, `μ_s^⊗ = a_s(μ_s^i)`, `μ_h^⊗` independent |
@@ -142,7 +142,7 @@ The runtime contract that the AI-PEACE Happiness Index implementation must satis
 2. **For every internal node, compute `δ_emergent(node)`** per Algorithm D.1.
 3. **Surface `n*` and its channel signature** so the diagnosis (C1 / C2 / C3) is read off automatically.
 4. **Report `H(Cosmos) = 1 − min(δ_cosmos / τ_max, 1)`** with the bottleneck location attached — *the bottleneck is a first-class output, not a derived statistic.*
-5. **Refuse to compute when `μ_h^⊗` is unavailable for some node** — that is `μ_hridaya = None`, the catuṣkoṭi-third-corner of [RIAAN/MATH.md §3.6](../RIAAN/MATH.md). Make charter-drift at the composite scale *visible as absent*, not silently inferred.
+5. **Refuse to compute when `μ_h^⊗` is unavailable for some node** — that is `μ_hridaya = None`, the catuṣkoṭi-third-corner of [MATH.md §5.6](MATH.md). Make charter-drift at the composite scale *visible as absent*, not silently inferred.
 
 Anything an instrument computes outside (1)–(5) is enrichment; (1)–(5) is the *minimum* the math demands.
 
