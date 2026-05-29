@@ -1,6 +1,8 @@
 # Charter — AI_WAY_OF_BUILDING_V1
 
 > S0 Garbha. The seed. Read this before any other file.
+>
+> **Above this charter:** [VISION.md](VISION.md) holds the *telos* — why the loom exists (to birth the AI-PEACE + RIAAN combo whose end is a happy cosmos). This charter is the loom's mechanics; VISION.md is its purpose.
 
 ## Why this kit exists
 
