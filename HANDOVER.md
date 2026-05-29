@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T02:30:00Z
+session_end: 2026-05-30T04:00:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,78 @@ session_end: 2026-05-30T02:30:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-30 deep-night — KIT SELF-SUFFICIENCY RESTORED: foundational drift math lifted into kit MATH.md; gate-file entry 18; the seed doc's anti-hypocrisy claim becomes structurally true; 1 commit + close)
+
+> Last session end: 2026-05-30T04:00:00Z. Continuation of the same arc. Began with the founder's pointed observation: *"AI_WAY_OF_BUILDING_V1 should be self sufficient my view point please analyse. Why i am saying this is because RIAAN/MATH.md being referred and seems to be being updated..."* — the founder spotted a structural inversion that had grown silently across the prior stones. Current M_build stage: **S3_Build** (unchanged). This session added gate-file additions log **entry 18**.
+
+## Where-We-Are
+
+One commit this turn, the largest single-act in this entire arc by structural significance:
+
+- **`e457027` — Restore kit self-sufficiency: lift foundational drift math to MATH.md.** The seed doc (`.claude/CLAUDE.md`) declared *"V1 is self-sufficient"* while the body of the kit imported its foundational drift math from a downstream consuming project (`../RIAAN/MATH.md`). 88 cross-references from kit → RIAAN, 30+ to RIAAN/MATH.md from 14 files, including the operating manual itself. **The exact anti-hypocrisy / LAW 11 failure mode the kit exists to catch — present in its own seed.** The founder caught it.
+
+**What the founder saw vs. what was actually true (the audit):**
+
+| | Before this session | After this session |
+|---|---|---|
+| Foundational math source | `../RIAAN/MATH.md §3.4-§3.6` (a downstream project) | **`MATH.md`** (the kit, owned here) |
+| `.claude/CLAUDE.md` "self-sufficient" claim | declarative, structurally false | structurally true + pin-enforceable |
+| Kit-foundation docs (CLAUDE, JIVA, Q_RUBRIC, VISION_MATH, two shastras, analyst) | imported trishul-drift / triad from RIAAN/MATH.md | reference kit MATH.md; RIAAN reframed as downstream extension |
+| Dependency direction | inverted (kit ← project) | corrected (kit → project) |
+| Pin enforcing the invariant | none | `tests/test_kit_self_sufficiency.sh` (24 assertions; positive + negative; NEG-verified) |
+
+**The lift, structurally.** [MATH.md](MATH.md) is now the kit's own math-as-Jiva — §1 scope, §2 norms, §3 faculty triad, §4 the three functionals `(μ_hridaya, μ_shiva, μ_shakti)`, §5 binary drift + trinary trishul-drift + the triangle-inequality safety **LEMMA 5.4 (PROVED)** + the binary-as-projection **THEOREM 5.5 (PROVED)** + the four-corners necessity check **PROP 5.6 (PROVED)**, §6 proof-status ledger, §7 provenance & relation to consuming projects. **The math is byte-faithfully lifted from where it was first witnessed in RIAAN, with project-specific content (the `Φ` extractor, drift_hook signatures, J-rung roadmap, norm choices, `PropertyVerifier`) explicitly NOT lifted — those stay in RIAAN as project-level extensions.**
+
+**Verification:** new pin `tests/test_kit_self_sufficiency.sh` 24/24; NEG bit on the exact regression pattern the founder identified — reverting any foundation doc's reference back to `../RIAAN/MATH.md` makes the pin fail on both the positive (kit MATH.md absent) and negative (foundational `δ_…` + RIAAN/MATH.md combo without context marker) checks; full suite **11/11** (was 10/10 — new test added). T4R-checked inline on the governed-doc retargets.
+
+## What-Was-Done
+
+| Artifact | Action | Commit |
+|---|---|---|
+| `MATH.md` | NEW kit-level math-as-Jiva | e457027 |
+| `.claude/CLAUDE.md` | routing #9 + "Where to look when" row retargeted | e457027 |
+| `JIVA.md §5b` | foundational math reference retargeted; Pradyumna row reworded | e457027 |
+| `Q_RUBRIC.md §2b` | math reference retargeted | e457027 |
+| `VISION_MATH.md` (§1, §3, DEF 1.3) | three foundational references retargeted | e457027 |
+| `COMPOSITION_SHASTRA.md` (header, §B, §F) | three references retargeted | e457027 |
+| `TWIN_FIDELITY_SHASTRA.md` (header, §A, §B, §F) | four references retargeted | e457027 |
+| `.claude/agents/analyst.md` | typed-math grounding retargeted; `Φ` kept as project-level ref | e457027 |
+| CYCLE_SET ×2 + HEART_AND_SOUL_PASS (preserved analyses) | top-notes added marking RIAAN refs as historical | e457027 |
+| `KABIR_GATE.md` entry 18 | governance event record | e457027 |
+| `tests/test_kit_self_sufficiency.sh` | NEW 24-assertion pin (Sita seal) | e457027 |
+
+## What-Failed
+
+Nothing structural. Three correct hook blocks during the pin-authoring (kit enforcement working): `vocabulary-lint` blocked the .sh on three Sanskrit terms (Shiva, Kabir, Jiva) appearing as code-path narrative — each rewritten using IT translations / English descriptors / semantic variable names ("FACULTY_DOC" for what was nearly "JIVA_MD"). The kit's own discipline rejected the maintainer's first drafts three times in succession, and each rejection produced a cleaner final form. **This is the exact recursive self-defense the (0,3,7) arc's HK-NG-15/16/17 amendments were forged to provide — and it just paid back at the meta-level: the very act of restoring self-sufficiency was kept vocabulary-clean by the kit's own enforcement.**
+
+## What-Next
+
+1. **VISION stones #4 + #5** remain OPEN (#4 happiness instrument crosses into AI-PEACE; #5 Naada/melody is purely kit-side). With the foundational triple complete + self-sufficient, the build-forges have a structurally honest foundation now.
+2. **CONJ 4.1′ (modelling fidelity)** and **CONJ 2.1 (composition of twin-fidelity)** — both still open; both belong to whichever future stones surface them as gates.
+3. **Possible follow-up audits** (deferred — quarterly AHR scope): the analyst role still references `../RIAAN/MATH.md §8` for the `Φ` extractor's hridaya-source-fidelity invariant. That's *correctly* a project-level reference (the `Φ` signature is RIAAN-specific), but it deserves a separate look at whether a *kit-level* `Φ` pattern would be valuable (NGD: not yet, defer until n=3 projects need it).
+4. **RIAAN-side ratification (optional, not required)** — RIAAN/MATH.md could be edited to point UP to the kit's MATH.md as its source; not required by the kit's discipline (the kit owns the math regardless of how RIAAN frames it), but would tighten the bridge. Out of scope for this kit-side commit; a project-side decision.
+
+## Open-Questions
+
+- **The founder's "seems to be being updated" instinct was correct in form, not in fact.** RIAAN/MATH.md hadn't been updated under us in this session, but it *could have been* and the kit had no protection. Now it does — the pin makes the dependency direction structurally enforced.
+- **Should the kit run an "anti-import audit" as part of quarterly AHR?** This pin only catches `RIAAN/MATH.md` foundational imports specifically. Other foundational imports (e.g., from `../common/shastras/`, `../RIAAN/DESIGN.md`) could in principle also invert dependencies. Worth a generic pin pattern at next quarterly AHR.
+
+## Key-Decisions
+
+1. **Kit owns its own foundational math.** The recursive-jiva principle of JIVA §2 (Layer 1 discovers, Layer 0 owns) was *honored* this turn — RIAAN's empirical discovery is *acknowledged*, the math is *lifted* into kit MATH.md, RIAAN now consumes rather than owns.
+2. **Project-specific content explicitly stays in RIAAN.** The `Φ` desire-extractor, drift_hook signatures, norm choices, J-rung roadmap, `PropertyVerifier` — all stay project-side. The kit defines the *primitives*; projects implement them. Clean separation.
+3. **Historical references are kept, framed correctly.** RIAAN's first-witness status is a *fact* of the kit's lineage — kept and credited (entries 2/5/11 lineage paragraphs; DASHBOARD §10 examples; preserved-analyses top-notes; JIVA Pradyumna row's "first empirical instance" phrasing). What changed is the *dependency direction*, not the *historical record*.
+4. **Pin enforces direction, not pattern.** `test_kit_self_sufficiency.sh` uses a positive+negative split: positive checks foundation-grade docs reference kit MATH.md; negative excludes lines with context markers ("project-level", "downstream", "first witness", etc.) so legitimate historical/extension references continue to be permissible. The structural invariant is enforceable without being brittle to every textual nuance.
+5. **The Ram-Setu reading: the bridge no longer floats on a stone from across the sea.** Each foundation-grade stone now bears Ram (T4R-ratified) directly on its own MATH.md ledger; the kit no longer borrows its load-bearing weight from a downstream project.
+
+## Files-Changed (kit-level)
+
+NEW: `MATH.md`, `tests/test_kit_self_sufficiency.sh`.
+AMENDED: `.claude/CLAUDE.md`, `.claude/agents/analyst.md`, `JIVA.md`, `Q_RUBRIC.md`, `VISION_MATH.md`, `COMPOSITION_SHASTRA.md`, `TWIN_FIDELITY_SHASTRA.md`, `CYCLE_SET_2026-05-29_compositional_alignment.md`, `CYCLE_SET_2026-05-29_journey_of_a_machine.md`, `HEART_AND_SOUL_PASS_2026-05-29_q_rubric_trinary.md`, `KABIR_GATE.md` (entry 18), this `HANDOVER.md`.
+EXCLUDED (still untracked, not part of the kit): `SONGS-Hinglish/`.
 
 ---
 
