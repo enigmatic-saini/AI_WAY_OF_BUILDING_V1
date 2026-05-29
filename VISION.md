@@ -10,7 +10,7 @@ session_end: 2026-05-29
 
 > This document sits **above** the kit's mechanics-charter. [CHARTER.md](CHARTER.md) says what the loom *is*; this says **why the loom exists in the journey.** It is the externalized `μ_hridaya` — the originating desire — for the whole arc, and therefore the **anti-amnesia anchor**: every future "is this required?" decision is measured against this file. (Per [CYCLE_SET_2026-05-29_journey_of_a_machine.md](CYCLE_SET_2026-05-29_journey_of_a_machine.md) §D: across a long journey, desire is the faculty most easily lost — so it is made first-class here, deliberately.)
 >
-> Authored as **Hanuman** — devoted execution of the declared wish — under the founder's drishti stack: **Sita + Ram** (integrity + governance), **Radha + Krishna** (beauty + strategy), **Saraswati** (knowledge / the shastras), **Shiva** (witness + the dance), **ArdhNarishwar** (the `μ_shiva ⇄ μ_shakti` balance), **MahaKaal** (time, the terminal edge, death-and-rebirth).
+> Authored as **Hanuman** — devoted execution of the declared wish — under the founder's drishti stack: **Sita + Ram** (integrity + governance), **Radha + Krishna** (beauty + strategy), **Saraswati** (knowledge / the shastras), **Parvati + Shiva** (action ⇄ witness, the founding pairing — Parvati added 2026-05-30), **ArdhNarishwar** (their union — the `μ_shiva ⇄ μ_shakti` balance), **MahaKaal** (time, the terminal edge, death-and-rebirth).
 
 ---
 
@@ -46,8 +46,9 @@ One specifiable sentence: *a happy cosmos is a recursive composition of twins in
 | **Saraswati** | the **shastras** — knowledge-first (LAW 9); the heart of "enrich with required shastras" |
 | **Krishna** | strategy — the *sequence*, which stone first, the leela of the whole arc |
 | **Radha** | beauty/joy — the "cosmos is **happy**" requirement; the twin must be lovely, not just correct |
+| **Parvati** | the action side (`μ_shakti`) — Shakti embodied; the doing/energy that meets Shiva's witnessing; sustained devotion across the long arc |
 | **Shiva** | the witness (`μ_shiva`) **and** the dance (Nataraja) — consciousness and dissolution as one |
-| **ArdhNarishwar** | the founding balance `|μ_shiva − μ_shakti| → 0` and its trinary extension `δ_trishul → 0` |
+| **ArdhNarishwar** | the founding balance \|μ_shiva − μ_shakti\| → 0 and its trinary extension `δ_trishul → 0` (Parvati ⇄ Shiva as one motion) |
 | **MahaKaal** | time, the terminal edge, the hooks — and death-and-rebirth (Pradyumna across the journey) |
 
 ## 5. The road — Krishna's leela (sequenced by readiness, not eagerness)

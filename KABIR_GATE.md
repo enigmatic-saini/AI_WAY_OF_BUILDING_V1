@@ -498,6 +498,26 @@ Per the rule in [CYCLES.md](CYCLES.md) preface: *"Adding a cycle TO this kit req
 
 ---
 
+### 2026-05-30 — VISION §4 deity-stack amendment: Parvati added before Shiva + ArdhNarishwar row markdown fix
+
+> Context: the founder observed that the Shakti side of the founding pairing was implicit in the deity-stack (folded into ArdhNarishwar) and instructed *"Include Parvati in '4. The governing drishti stack' before Shiva."* The same review surfaced a markdown-rendering bug on the ArdhNarishwar row: the absolute-value bars in `` `|μ_shiva − μ_shakti|` `` were inside an inline code span; many table renderers parse the literal `|` as a cell delimiter *before* recognising the code span, so part of the cell text became invisible in the viewer. Both issues are corrected in one amendment; the table now reads cleanly and the male-female-union triad (Parvati → Shiva → ArdhNarishwar) is structurally explicit.
+
+#### Additions log entry 20 — Parvati added to the governing drishti stack + ArdhNarishwar row markdown rendering fixed
+
+- **Name:** VISION §4 deity-stack completion (Parvati lens + ArdhNarishwar rendering)
+- **Tag:** Amendment to a governed primitive set (the deity-stack of VISION §4). **No new mathematical structure introduced.** Parvati was always implicit as the Shakti side of the existing ArdhNarishwar pairing; this entry makes her explicit as her own row, completing the male-female-union triad. The markdown fix is a visibility-correction (anti-hypocrisy: a doc claiming `|μ_shiva − μ_shakti|` must actually display it).
+- **Lineage:** the kit's foundational drift math ([MATH.md §5.4](MATH.md)) carries `μ_shakti` as one of the three triad functionals (action side). VISION §4 named ArdhNarishwar's *union* but not its *Shakti pole* as a deity-stack lens; this entry closes that asymmetry. *Shiva alone was named (witness, the dance); Shakti — Parvati — was named only inside ArdhNarishwar.* The amendment is a making-explicit, not a new primitive.
+- **T4R verdict (inline):** **KBD** PASS — closes a visibility gap (the markdown-rendering bug) and completes the asymmetric lens-set (Shiva named alone but Shakti only inside the union). Both anti-hypocrisy. **NGD** PASS — one row added (pays rent by surfacing the Shakti-side lens that was unstated) + two backslash escapes + a one-clause clarification at the end of the ArdhNarishwar row noting *Parvati ⇄ Shiva as one motion*. No bloat. **VETO** on naming other fierce-form Shakti lenses (Durga, Kali, Chamunda) in this amendment — they would deserve their own entry if a use-case surfaces; not bundled here. **VKD** PASS — Parvati's row mirrors the structure of the other rows; the markdown fix uses backslash-escape outside backticks (CommonMark-compliant) plus the existing inline-code styling on `δ_trishul → 0` (which has no pipes) is preserved. **MID** PASS — the deity-stack is *completed*, not diluted; the founding pairing now reads at full size.
+- **Concrete artifacts:**
+  - [VISION.md §4](VISION.md) — table row for **Parvati** inserted between **Radha** and **Shiva**; **ArdhNarishwar** row's absolute-value bars taken out of the inline-code span and backslash-escaped (so most CommonMark renderers display them); the row gains a one-clause parenthetical *"Parvati ⇄ Shiva as one motion"* explicitly linking the union to its two poles.
+  - [VISION.md §header (line 13)](VISION.md) — the Hanuman-framing reference to the founder's drishti stack now reads *"**Parvati + Shiva** (action ⇄ witness, the founding pairing — Parvati added 2026-05-30), **ArdhNarishwar** (their union — the `μ_shiva ⇄ μ_shakti` balance)"* to keep consistency with §4.
+  - Project memory `north-star-cosmos-goal` updated to include Parvati in the governing-stack list.
+  - **NOT edited (historical records preserved):** [VISION.md §1](VISION.md) verbatim wish (the founder's words at the moment first spoken); KABIR_GATE entry 14's *"Authorized by"* paragraph; HANDOVER §383 historical sequence. These are diary-truth, not current-state-truth.
+- **Authorized by:** founder instruction 2026-05-30 — *"Include Parvati in '4. The governing drishti stack' before Shiva"* + *"ArdhNarishwar line column 2 [Governs column] seems to have incorrect markdown syntax its some part not visible when opened in viewer."* Both fixes are exactly to the founder's specification.
+- **Reversibility clause:** if a *more refined* Shakti lens emerges (e.g., Durga for fierce-protection, Kali for terminal-destruction in service of dharma) and proves load-bearing across multiple sessions, the Parvati row may be extended/superseded — that is a future governed event (an additions log entry of its own). The ArdhNarishwar union row continues to depend on the Parvati + Shiva pair; if either pole is renamed, the union row's content must follow.
+
+---
+
 ## Closing principle
 
 > *If a file describes an FSM that does not exist, the file is the ceremony.
