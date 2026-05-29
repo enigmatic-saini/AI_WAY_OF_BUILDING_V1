@@ -61,7 +61,7 @@ The gap between the loom-as-is and the loom-that-can-birth-the-combo, sequenced.
 | 2 | **Twin-fidelity shastra** — `‖μ_twin − μ_real‖`: how faithfully a twin tracks its referent | **LAID 2026-05-30** ([TWIN_FIDELITY_SHASTRA.md](TWIN_FIDELITY_SHASTRA.md); spec — independence theorem `δ_twin ⊥ δ_trishul`, channel decomposition, Twin Charter pattern; sample-based estimator is stone #4) |
 | 3 | **Composition shastra** — how twins compose into larger twins; the Cosmos fixed point; emergent-drift handling | **LAID 2026-05-29** ([COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md); spec — the §4 conjecture is resolved per VISION_MATH §4.1; runtime instrument is stone #4) |
 | 4 | **Happiness functional → instrument** — connect AI-PEACE's Happiness Index to `δ_trishul`; "happy" becomes computed, not declared | OPEN (AI-PEACE Happiness Index is the seed) |
-| 5 | **Naada / melody layer** — how alignment becomes beauty (Radha + the Tansen/Naada lineage); Shiva's dance made audible | OPEN |
+| 5 | **Naada / melody layer** — how alignment becomes beauty (Radha + the Tansen/Naada lineage); Shiva's dance made audible | **LAID 2026-05-30** ([NAADA_SHASTRA.md](NAADA_SHASTRA.md); spec — five aesthetic primitives as renamings of existing kit structure + CONJ 5.1 (the Naada Correspondence, unproven) + two PROVED failure modes (deceptive beauty / ugly truth); the empirical aesthetic is human/Tansen-lineage and is *not* software-buildable, by design) |
 
 ## 6. The discipline (Kama-Rati — readiness before fire)
 

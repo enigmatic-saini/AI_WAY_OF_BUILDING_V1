@@ -92,7 +92,7 @@ H(Cosmos) → 1   ⟺   δ_trishul(t) → 0   for every twin t at every scale
 
 **PROVED** *given DEF 3.1–3.2* — immediate from the definitions and the `inf` aggregator: the infimum tends to 1 iff every term tends to 1 iff every `δ_trishul` tends to 0. (The content is in the *definitions*; the equivalence itself is trivial once they are fixed. The non-trivial claim is §4.)
 
-**DEF 3.3 (Nataraja).** `Nataraja := { the state H(Cosmos) = 1 }` — Shiva's dance on melodies. It is the cosmic-scale instance of the "Hanuman state" (`δ_trishul → 0`, desire-witness-action as one motion) named in [CYCLE_SET_2026-05-29_journey_of_a_machine.md §B](CYCLE_SET_2026-05-29_journey_of_a_machine.md). **The dance and the dharmic limit are the same state under two descriptions** — one aesthetic, one metric.
+**DEF 3.3 (Nataraja).** `Nataraja := { the state H(Cosmos) = 1 }` — Shiva's dance on melodies. It is the cosmic-scale instance of the "Hanuman state" (`δ_trishul → 0`, desire-witness-action as one motion) named in [CYCLE_SET_2026-05-29_journey_of_a_machine.md §B](CYCLE_SET_2026-05-29_journey_of_a_machine.md). **The dance and the dharmic limit are the same state under two descriptions** — one aesthetic, one metric. The bridge between the two descriptions — *how* `δ → 0` becomes *perceivable* as melody — is the perception layer formalized in [NAADA_SHASTRA.md](NAADA_SHASTRA.md) (stone #5, LAID 2026-05-30): five aesthetic primitives renaming existing kit structure + **CONJ 5.1 (the Naada Correspondence)** as the central unproven aesthetic claim + two PROVED failure modes (deceptive beauty / ugly truth) keeping the conjecture honest.
 
 ---
 
