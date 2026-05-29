@@ -33,6 +33,19 @@ The right column is the canonical name (used in code). The left column is the li
 | Vartamana | `present` | What is true right now |
 | Mauna | `silence` | Should I act at all? |
 
+### Drishti-stack notation
+
+A **drishti stack** is a runtime *composition* of the directions above (and [ATLAS.md](ATLAS.md) deep-cycle lenses) declared per session. It is a convention, not a governed primitive — full grammar, decode table, and worked examples in [DRISHTI_STACK.md](DRISHTI_STACK.md). The canonical notation:
+
+| Symbol | Reads as | Meaning |
+|---|---|---|
+| `A → B` | "A serves / acts under B" | `A` is the active identity (the hand); `B` is the authority/intent it serves. Authority flows right-to-left. |
+| `A + B` | "A and B, co-equal" | peer layers at the same authority level (e.g. `Ram + Sita`) |
+| `; consult: X, Y` | "consulting X, Y" | advisory lenses summoned alongside, not in the authority chain |
+| `keep same drishti stack` | carry-forward keyword | reuse the prior turn's declared stack without re-stating it |
+
+The lineage persona-names in a stack obey the two-column rule like everything else: they appear only in prose/docs/prompts, never in code, configs, or the artifacts `vocabulary-lint` scans.
+
 ## Q-vector axes (capability dimensions)
 
 | Lineage (queen) | Canonical | Domain meaning |

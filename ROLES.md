@@ -61,6 +61,10 @@ To propose a new role, you must:
 
 The Anti-Hypocrisy Review will run on the new role at the next quarterly cycle.
 
+## Composing role-lenses: drishti stacks
+
+A role intensifies a fixed drishti/Q bundle at one transition. When a session needs a *layered* lens — one identity acting under the authority of another, jointly serving a governing intent — the human declares a **drishti stack** (e.g. `Vishwakarma → Hanuman → Ram + Sita`). A stack is **not** a new role and **not** a new jiva; it is a runtime *composition* of the same drishti-intensifiers this file governs, plus [ATLAS.md](ATLAS.md) deep-cycle lenses. Because a role is defined as a drishti-intensifier and intensifiers compose, the role system supports arbitrary-depth stacks for free. The convention — notation, decode table, and the rule that a stack may only compose *existing* drishti directions and ATLAS cycles — lives in [DRISHTI_STACK.md](DRISHTI_STACK.md).
+
 ## Anti-patterns
 
 - **Inventing a role mid-conversation** to handle a one-off task. Do the work as the existing jiva; don't manufacture a label.

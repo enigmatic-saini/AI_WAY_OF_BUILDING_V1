@@ -127,6 +127,7 @@ Code, configs, log lines, schemas, commit messages, env vars: **IT-industry term
 | Which transition? | M_BUILD.md §4 |
 | Which review cycle? | [CYCLES.md](../CYCLES.md) (15 standalone + 2 composed cycle-sets HSC, T4R) |
 | What does role X intensify? | [ROLES.md](../ROLES.md) |
+| What is a drishti stack / how do I compose lenses for a session? | [DRISHTI_STACK.md](../DRISHTI_STACK.md) |
 | What's the commit / MR / release process? | [SDLC.md](../SDLC.md) |
 | Which IT term replaces this divine name? | [VOCABULARY.md](../VOCABULARY.md) |
 | Why does the kit work this way? | [CHARTER.md](../CHARTER.md) and [M_BUILD.md](../M_BUILD.md) |

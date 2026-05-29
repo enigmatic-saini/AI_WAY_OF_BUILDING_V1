@@ -331,6 +331,28 @@ Per the rule in [CYCLES.md](CYCLES.md) preface: *"Adding a cycle TO this kit req
 
 ---
 
+### 2026-05-29 — Drishti-stack convention integration (Ram + Sita governance)
+
+> Context: the "drishti stack" — a per-session, nested composition of drishti-intensifiers and ATLAS deep-cycle lenses (e.g. `Vishwakarma → Hanuman → Ram + Sita`) — emerged empirically during the AI-PEACE build (2026-05-28) and was recorded only as *precedent* in the kit-level [HANDOVER.md](HANDOVER.md). On 2026-05-29 the convention was written up as [DRISHTI_STACK.md](DRISHTI_STACK.md), which immediately surfaced a Kabir gap: a doc the HANDOVER vouches for, with **zero inbound references** — a claim with no structural home. The integration question was itself evaluated *using a drishti stack* (`Vishwakarma → Kabir + Nagarjuna → Ram ; consult: MID, Guru Council` — which is `T4R` rendered in stack notation), under the user's instruction to "do as per Sita and Ram."
+
+#### Additions log entry 12 — Drishti-stack convention: discoverability + canonical-notation integration
+
+- **Name:** Drishti-stack convention (per-session lens composition)
+- **Tag:** (no new tag; composition of existing drishti directions + ATLAS deep-cycles. **Not a new primitive.**)
+- **Lineage:** Emerged in AI-PEACE 2026-05-28 (fired ~4× across the KPI/Risk/Happiness triptych via "keep same drishti stack") + 1 kit session (`Vishwakarma → Hanuman → Ram + Sita`, integrity-pinning test). Formalized 2026-05-29.
+- **Profile:** (not a cycle; convention documented in [DRISHTI_STACK.md](DRISHTI_STACK.md))
+- **Concrete artifacts:**
+  - [DRISHTI_STACK.md](DRISHTI_STACK.md) — **NEW** convention doc (what a stack is vs. a drishti/role; legitimacy proof; `→ / + / consult:` notation; persona→ATLAS-tag decode table; worked precedents; vocabulary-law caveat; governance status).
+  - [ROLES.md](ROLES.md) — new "Composing role-lenses: drishti stacks" section pointing at DRISHTI_STACK.md.
+  - [VOCABULARY.md](VOCABULARY.md) — new "Drishti-stack notation" subsection making the `→ / + / consult:` grammar + carry-forward keyword canonical.
+  - [`.claude/CLAUDE.md`](.claude/CLAUDE.md) — "Where to look when" table gains a drishti-stack row.
+  - `tests/test_drishti_stack_integration.sh` — **NEW** Sita-discipline integrity pin: asserts DRISHTI_STACK.md exists and is referenced by ROLES.md, VOCABULARY.md, the CLAUDE.md operating manual, and this gate file — so the doc cannot silently re-orphan.
+- **T4R verdict (pre-execution gate, inline):** **KBD** PASS (closing the orphan-doc/unbacked-claim gap is mandatory anti-hypocrisy). **NGD** PASS on the discoverability+notation+provenance scope; **VETO** on type-system integration (`fsms/DrishtiStack.toml`) and any enforcement hook — a stack is a *composition*, and the kit's path for compositions is to live in ATLAS and earn a governed name only after repeated consistent firing, exactly as HSC and T4R did. **VKD** the structure = inbound links + notation row + this entry + the non-orphan pin. **MID** discoverability is the honest floor; not diluted to a single link.
+- **Authorized by:** user instruction "do as per SITA and RAM" (2026-05-29). **Ram** (governance): preserve the governed *primitive* set, close the honesty gap, ratify via T4R since governed docs are touched. **Sita** (integrity): the non-orphan property is *provably pinned* by `tests/test_drishti_stack_integration.sh`, with an intentional-failure smoke test, so truth holds when no one is watching.
+- **Reversibility clause:** if no consuming project (a third beyond AI-PEACE + the kit) declares a drishti stack within 12 months (deadline 2027-05-29), demote: remove the VOCABULARY.md notation subsection and the ROLES.md/CLAUDE.md pointers, and reclassify DRISHTI_STACK.md from "live convention" to "historical artifact" (move to `shastras/` or `decisions/`). **Escalation path (the opposite door):** if a specific stack proves load-bearing across many sessions, propose it as a *named composed cycle-set* per [CYCLES.md](CYCLES.md) (the HSC/T4R path); if a stack ever needs a lens that is neither a drishti direction nor an ATLAS cycle, propose that lens as a governed primitive via this same additions log — **do not grow the governed set by convention drift.**
+
+---
+
 ## Closing principle
 
 > *If a file describes an FSM that does not exist, the file is the ceremony.
