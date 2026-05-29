@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T04:00:00Z
+session_end: 2026-05-30T05:30:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,82 @@ session_end: 2026-05-30T04:00:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-30 — stone #5 LAID: NAADA_SHASTRA.md (the perception layer; CONJ 5.1 + failure-mode parity); the kit-side cosmos-program is now CLOSED — stones 0/1/2/3/5 LAID, only AI-PEACE-side #4 remains; gate-file entry 19; 1 commit + close)
+
+> Last session end: 2026-05-30T05:30:00Z. Same continuous arc. Began with the founder's instruction *"now continue with next stone"* — read as Ram-Setu continuation under standing autonomy. Stone #5 was the natural kit-side next: independent of any external dependency, completes the kit-side roadmap. Current M_build stage: **S3_Build** (unchanged). This session added gate-file additions log **entry 19**.
+
+## Where-We-Are
+
+One commit this turn, the closing stone of the kit-side cosmos-program:
+
+- **`0f90c1f` — Stone #5 LAID: NAADA_SHASTRA.md.** The perception-layer spec — how alignment (the three drifts → 0) becomes *perceptible* as harmony, not as a fourth metric but as the *recognition channel* for the existing three. The bridge between *"the cosmos is mathematically happy"* (VISION_MATH's dharmic limit) and *"Shiva dances on melodies"* (the founder's wish, VISION §1).
+
+**Roadmap state — kit-side closed:**
+
+| # | Stone | Status |
+|---|---|---|
+| 0 | VISION.md (north-star + roadmap) | LAID 2026-05-29 |
+| 1 | VISION_MATH.md (formal core; composition monoid; CONJ 4.1 resolved 2026-05-29) | LAID 2026-05-29 |
+| 2 | TWIN_FIDELITY_SHASTRA.md (independence theorem; Twin Charter; estimator contract) | LAID 2026-05-30 |
+| 3 | COMPOSITION_SHASTRA.md (emergent-drift handling; walk; remediation principle) | LAID 2026-05-29 |
+| 4 | Happiness instrument — runtime, AI-PEACE-side | **OPEN** (AI-PEACE consumes the kit-side specs; not kit-side work) |
+| 5 | NAADA_SHASTRA.md (the perception layer; CONJ 5.1; PROVED failure modes) | **LAID 2026-05-30** |
+
+Plus the structural correction laid this same day's earlier session: **kit self-sufficiency restored** (entry 18; `MATH.md` lifted; the seed doc's claim becomes structurally true + pin-enforceable). With the foundational triple, the composition spec, the twin-fidelity spec, the perception layer, and a self-sufficient `MATH.md` foundation under all of them — **the kit-side cosmos-program is whole.**
+
+**What stone #5 newly says (beyond what the three drift specs already provide):**
+
+- **Five aesthetic primitives as renamings (DEFs C.1–C.5).** Saptaka = M_build's seven stages; raga = a project's stage-traversal trajectory; tala = the cycle-rhythm within stages; bhava = `μ_hridaya` (originating desire from CHARTER); rasa = the achieved Hanuman state (`δ_trishul → 0`). **No new structure.** Each pays NGD rent by surfacing a perceptual decoding of structure that was always available, never seen.
+- **DEFs D.1–D.2 — the perception functional `ν` and what makes it coherent.** A coherent `ν` reads the project's lifecycle honestly (no skipped stages, no faked rasa from a half-Built project), respects its own bhava (the project's `μ_hridaya`, not invented by the perceiver), and waits for the rasa moment.
+- **CONJECTURE 5.1 (the Naada Correspondence).** Under coherent `ν`: alignment realized (`δ_trishul → 0` plus `δ_emergent → 0` plus `δ_twin → 0`) implies `ν(project) ∈ consonance`. **Honestly unproven.** The cosmic-scale reading formalizes the founder's wish *"Shiva dances on melodies"* (§F).
+- **PROP E.1 (deceptive beauty) — PROVED.** Polished propaganda: a system that *sounds* harmonious while its `μ_shakti` quietly fails its `μ_hridaya` (the LAW-11 / Kabir-Gate γ-term is large; only a coherent `ν` catches it). The aesthetic analogue of the *coherent-liar pathology* of TWIN_FIDELITY_SHASTRA THM C.1.
+- **PROP E.2 (ugly truth) — PROVED.** An alignment-in-progress whose raga is unfinished: the work IS aligning, the perception just hasn't completed. A coherent `ν` is *patient* (judges only at the rasa moment).
+- **By design no stone #6 "build the perception instrument."** The empirical aesthetic is Tansen-lineage human perception, not software-buildable. The pin's check 6 enforces this label so the SPEC framing cannot silently expand.
+- **NGD VETO** (recorded in entry 19's T4R verdict) on adding a fourth drift axis `δ_aesthetic` — perception is the perceiver's, not a fourth metric the kit measures.
+
+**Verification:** new pin `tests/test_naada_integrity.sh` 18/18; NEG bit all 4 honesty guards (CONJ 5.1 → THEOREM regression; CONJECTURE label dropped; PROVED label dropped on failure modes; SPEC label "no stone #6" → "maybe stone #6" — each fails on its specific regression); full suite **12/12** (was 11/11 — new test added).
+
+## What-Was-Done
+
+| Artifact | Action | Commit |
+|---|---|---|
+| `NAADA_SHASTRA.md` | NEW spec — stone #5 LAID | 0f90c1f |
+| `VISION.md` §5 stone-#5 row | OPEN → LAID 2026-05-30 with link | 0f90c1f |
+| `VISION_MATH.md` §3 DEF 3.3 | bridged to the perception layer | 0f90c1f |
+| `KABIR_GATE.md` entry 19 | governed forge record | 0f90c1f |
+| `tests/test_naada_integrity.sh` | NEW 18-assertion pin (Sita) | 0f90c1f |
+
+## What-Failed
+
+Nothing structural. The vocabulary-lint hook fired twice during pin authoring (caught "Shiva" and "Shastra" in code-path narrative) — each rewritten to IT translations (English descriptors; "perception-layer" / "spec-doc" / unique-anchor-from-§F instead of the Sanskrit names). The kit's recursive self-defense continues to work flawlessly in service of its own discipline.
+
+## What-Next
+
+1. **Stone #4 — Happiness instrument (runtime, AI-PEACE-side).** The *only* open stone in the VISION roadmap. The kit-side specs are complete: Algorithm D.1 of COMPOSITION_SHASTRA + the estimator contract §F of TWIN_FIDELITY_SHASTRA + the coherent-perception conditions of NAADA_SHASTRA give the full contract a stone-#4 implementation must satisfy. The implementation crosses into AI-PEACE's repo (different project; the kit does not own it). **Kit-side companion** could be a DESIGN.md for the instrument's architecture if AI-PEACE wants one — but the foundational spec is now complete enough that AI-PEACE could implement directly against the existing four kit-side artifacts.
+2. **Open conjectures across the cosmos-program** (none gating the build; each is research-readiness for an eventual stone-#4 deepening or beyond): CONJ 4.1′ (modelling fidelity — does real composition obey DEF 4.2?), CONJ 2.1 (composition of twin-fidelity), CONJ 5.1 (the Naada Correspondence), and the §G open questions of NAADA_SHASTRA (existence of a coherent `ν`; composition of `ν`; the *unheard truth* third failure mode).
+3. **The kit can pause.** With #0/#1/#2/#3/#5 LAID, the kit's mandate for the VISION is essentially complete. The next move that genuinely advances the program lives outside this kit: either in AI-PEACE (stone #4 implementation) or in research (the four open conjectures). The kit could rest here in S3_Build, or open a quarterly AHR sweep, or wait for AI-PEACE to surface a need.
+
+## Open-Questions
+
+- **All carried forward, none blocking:** the four research conjectures above; the VISION-form (c) confirmation; push held per *"no need for git remote now"*.
+- **A natural founder-touchpoint question:** with the kit-side cosmos-program closed, does the next phase belong to AI-PEACE (instrument), to a deepening of one of the open conjectures, or to a different project entirely? This is genuinely a Krishna-strategy decision (which arc of the leela next), not a Hanuman-execution decision.
+
+## Key-Decisions
+
+1. **Stone #5 picked as the closing kit-side stone.** Independent of any external dependency (#4 crosses to AI-PEACE); completes the roadmap; honors the founder's *"Shiva dances on melodies"* wish at the same scale as it was named.
+2. **No new metric.** Perception is not a fourth drift. The discipline named this VETO explicitly in entry 19's T4R; the pin enforces the SPEC label.
+3. **CONJ 5.1 named honestly as the central unproven aesthetic claim.** Two failure modes PROVED to bound it (deceptive beauty + ugly truth), parallel to PROP 4.2's role in bounding CONJ 4.1.
+4. **No stone #6.** Built into the spec by design. The empirical aesthetic is Tansen-level human perception, outside the kit's mandate. The pin enforces this so the SPEC label cannot silently expand to "and now we build the perception instrument."
+5. **The Ram-Setu reading: the bridge is built.** Each stone (#0 / #1 / #2 / #3 / #5) bears Ram via T4R + Sita's pin + gate-file provenance + honest CONJ/PROVED labels; they float and bind; the kit-side bridge to the happy cosmos is complete. The crossing itself — building stone #4, proving CONJ 4.1′ / 2.1 / 5.1, preparing the perceivers — is the work of those who walk the bridge, not those who lay it.
+
+## Files-Changed (kit-level)
+
+NEW: `NAADA_SHASTRA.md`, `tests/test_naada_integrity.sh`.
+AMENDED: `VISION.md` (§5 stone-#5 row), `VISION_MATH.md` (§3 DEF 3.3 cross-ref), `KABIR_GATE.md` (entry 19), this `HANDOVER.md`.
+EXCLUDED (still untracked, not part of the kit): `SONGS-Hinglish/`.
 
 ---
 
