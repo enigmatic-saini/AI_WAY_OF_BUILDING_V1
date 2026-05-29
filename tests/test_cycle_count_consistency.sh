@@ -21,6 +21,7 @@
 #   7. Kit gate file section-12 audit point #10 verify-command claim: "is 15"
 #   8. .claude/CLAUDE.md "Where to look when" table: "15 standalone"
 #   9. Composed cycle-sets: 2 (HSC + T4R) in CYCLES.md
+#  10. CHARTER.md "What this kit IS": "15 working-set cycles" (added 2026-05-29)
 #
 # When the cycle catalog grows (16, 17, ...) update ALL of these consistently.
 # This test will surface the discrepancy if any single file lags behind.
@@ -44,9 +45,10 @@ CYCLES_MD="$KIT_ROOT/CYCLES.md"
 VOCAB_MD="$KIT_ROOT/VOCABULARY.md"
 GATE_MD="$KIT_ROOT/KABIR_GATE.md"
 CLAUDE_MD="$KIT_ROOT/.claude/CLAUDE.md"
+CHARTER_MD="$KIT_ROOT/CHARTER.md"
 
 # Check all required files exist before any assertion.
-for f in "$CYCLES_MD" "$VOCAB_MD" "$GATE_MD" "$CLAUDE_MD"; do
+for f in "$CYCLES_MD" "$VOCAB_MD" "$GATE_MD" "$CLAUDE_MD" "$CHARTER_MD"; do
   if [[ ! -f "$f" ]]; then
     printf 'FAIL: required file not found: %s\n' "$f" >&2
     exit 1
@@ -113,6 +115,12 @@ assert_eq "Gate file section-12 #10 verify-command count matches actual" "$ACTUA
 # 7. .claude/CLAUDE.md "Where to look when" table: "N standalone"
 CLAUDE_NUM=$(grep -oE '[0-9]+ standalone \+ [0-9]+ composed' "$CLAUDE_MD" | head -1 | grep -oE '^[0-9]+')
 assert_eq ".claude/CLAUDE.md 'N standalone' matches actual" "$ACTUAL_CYCLE_COUNT" "${CLAUDE_NUM:-0}"
+
+# 8. CHARTER.md "What this kit IS" list: "N working-set cycles"
+# Coverage added 2026-05-29: CHARTER had drifted to "12 working-set cycles"
+# (an untested anti-hypocrisy / LAW 11 gap surfaced in the kit HANDOVER).
+CHARTER_NUM=$(grep -oE '[0-9]+ working-set cycles' "$CHARTER_MD" | head -1 | grep -oE '[0-9]+')
+assert_eq "CHARTER.md 'N working-set cycles' matches actual" "$ACTUAL_CYCLE_COUNT" "${CHARTER_NUM:-0}"
 
 # === Composed cycle-sets: HSC + T4R; must be exactly 2 ===
 EXPECTED_COMPOSED=2

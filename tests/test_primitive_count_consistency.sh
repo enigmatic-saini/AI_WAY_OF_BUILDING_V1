@@ -9,8 +9,13 @@
 # Each primitive class has:
 #   - A source-of-truth file/directory enumeration (counts what actually exists)
 #   - Multiple claim locations across kit files (CLAUDE.md, gate file,
-#     stage-tip.sh, M_BUILD.md for stages)
+#     stage-tip.sh, M_BUILD.md for stages, CHARTER.md "What this kit IS")
 # This test fails loudly if any claim disagrees with the source of truth.
+#
+# CHARTER.md coverage added 2026-05-29: the seed doc had drifted to
+# 5 hooks / 7 skills / 5 roles while the kit was at 6 / 9 / 6 (an
+# untested anti-hypocrisy / LAW 11 gap surfaced in the kit HANDOVER).
+# Now pinned.
 #
 # Sections:
 #   1. SKILLS         (source: dirs in .claude/skills/)
@@ -36,9 +41,10 @@ CLAUDE_MD="$KIT_ROOT/.claude/CLAUDE.md"
 GATE_MD="$KIT_ROOT/KABIR_GATE.md"
 STAGE_TIP_SH="$KIT_ROOT/.claude/hooks/stage-tip.sh"
 MBUILD_MD="$KIT_ROOT/M_BUILD.md"
+CHARTER_MD="$KIT_ROOT/CHARTER.md"
 
 # Pre-flight: all required files exist.
-for f in "$CLAUDE_MD" "$GATE_MD" "$STAGE_TIP_SH" "$MBUILD_MD"; do
+for f in "$CLAUDE_MD" "$GATE_MD" "$STAGE_TIP_SH" "$MBUILD_MD" "$CHARTER_MD"; do
   if [[ ! -f "$f" ]]; then
     printf 'FAIL: required file not found: %s\n' "$f" >&2
     exit 1
@@ -83,6 +89,10 @@ assert_eq "stage-tip.sh 'stages + N skills' comment" "$ACTUAL_SKILLS" "${TIP_SKI
 GATE_SKILLS=$(grep -oE '^### 7\. The [0-9]+ skills' "$GATE_MD" | head -1 | grep -oE '[0-9]+' | tail -1)
 assert_eq "Gate file section-12 #7 'The N skills' title" "$ACTUAL_SKILLS" "${GATE_SKILLS:-0}"
 
+# Claim 5: CHARTER.md "What this kit IS" list — "N skills, each a"
+CHARTER_SKILLS=$(grep -oE '[0-9]+ skills, each a' "$CHARTER_MD" | head -1 | grep -oE '[0-9]+')
+assert_eq "CHARTER.md 'N skills, each a' claim" "$ACTUAL_SKILLS" "${CHARTER_SKILLS:-0}"
+
 # ============================================================================
 # Section 2: ROLES
 # ============================================================================
@@ -103,6 +113,10 @@ assert_eq "CLAUDE.md 'N skills + M roles' table cell" "$ACTUAL_ROLES" "${CLAUDE_
 GATE_ROLES=$(grep -oE '^### 8\. The [0-9]+ roles' "$GATE_MD" | head -1 | grep -oE '[0-9]+' | tail -1)
 assert_eq "Gate file section-12 #8 'The N roles' title" "$ACTUAL_ROLES" "${GATE_ROLES:-0}"
 
+# Claim 4: CHARTER.md "What this kit IS" list — "N role descriptors"
+CHARTER_ROLES=$(grep -oE '[0-9]+ role descriptors' "$CHARTER_MD" | head -1 | grep -oE '[0-9]+')
+assert_eq "CHARTER.md 'N role descriptors' claim" "$ACTUAL_ROLES" "${CHARTER_ROLES:-0}"
+
 # ============================================================================
 # Section 3: HOOKS
 # ============================================================================
@@ -118,6 +132,14 @@ assert_eq "CLAUDE.md 'non-negotiables (N hooks ...)' heading" "$ACTUAL_HOOKS" "$
 # Claim 2: gate file section-12 audit point #6 title "### 6. The N hooks"
 GATE_HOOKS=$(grep -oE '^### 6\. The [0-9]+ hooks' "$GATE_MD" | head -1 | grep -oE '[0-9]+' | tail -1)
 assert_eq "Gate file section-12 #6 'The N hooks' title" "$ACTUAL_HOOKS" "${GATE_HOOKS:-0}"
+
+# Claim 3: CHARTER.md "What this kit IS" list — "N hooks that catch"
+CHARTER_HOOKS_LIST=$(grep -oE '[0-9]+ hooks that catch' "$CHARTER_MD" | head -1 | grep -oE '[0-9]+')
+assert_eq "CHARTER.md 'N hooks that catch' claim" "$ACTUAL_HOOKS" "${CHARTER_HOOKS_LIST:-0}"
+
+# Claim 4: CHARTER.md "How to use" paragraph — "The N hooks fire automatically"
+CHARTER_HOOKS_USE=$(grep -oE 'The [0-9]+ hooks fire' "$CHARTER_MD" | head -1 | grep -oE '[0-9]+')
+assert_eq "CHARTER.md 'The N hooks fire automatically' claim" "$ACTUAL_HOOKS" "${CHARTER_HOOKS_USE:-0}"
 
 # ============================================================================
 # Section 4: M_BUILD STAGES

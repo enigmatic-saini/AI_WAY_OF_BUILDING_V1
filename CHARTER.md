@@ -13,10 +13,10 @@ The morphing is structurally bounded by wrapping the LLM in **M_build** (the sev
 ## What this kit IS
 
 - A single FSM (`M_build`) with 7 states, 10 transitions, and 8 drishti directions per transition.
-- 5 hooks that catch prarabdha — the universal `T_prarabdha` edge from any state to terminal. Hooks are FSMs with no LLM in the loop.
-- 7 skills, each a `CycleFsm` profile that runs a named review cycle.
-- 5 role descriptors that **intensify drishti and raise Q-thresholds at specific transitions** — not separate personas.
-- 12 laws (compressed from 16) and 12 working-set cycles (compressed from ~60).
+- 6 hooks that catch prarabdha — the universal `T_prarabdha` edge from any state to terminal. Hooks are FSMs with no LLM in the loop.
+- 9 skills, each a `CycleFsm` profile that runs a named review cycle.
+- 6 role descriptors that **intensify drishti and raise Q-thresholds at specific transitions** — not separate personas.
+- 12 laws (compressed from 16) and 15 working-set cycles (compressed from ~60).
 
 ## What this kit IS NOT
 
@@ -27,7 +27,7 @@ The morphing is structurally bounded by wrapping the LLM in **M_build** (the sev
 
 ## How to use, in one paragraph
 
-Install the kit (`INSTALL.md`). Open the repo in Claude Code. The 5 hooks fire automatically. When you start work, run `/triage` to identify the M_build stage. The stage names the drishti directions to scan and the Q-minima to satisfy. Before any commit, run `/pre-commit-8l`. At session end, run `/handover`. The hooks will remind you when you forget.
+Install the kit (`INSTALL.md`). Open the repo in Claude Code. The 6 hooks fire automatically. When you start work, run `/triage` to identify the M_build stage. The stage names the drishti directions to scan and the Q-minima to satisfy. Before any commit, run `/pre-commit-8l`. At session end, run `/handover`. The hooks will remind you when you forget.
 
 ## Founding principles
 
