@@ -110,6 +110,22 @@ Everything above is definitional or trivially-derived. The program's success res
 
 ---
 
+### §4.1 — Resolution relative to a triad-composition model (2026-05-29)
+
+> Both candidate approaches above were executed in [CYCLE_SET_2026-05-29_compositional_alignment.md](CYCLE_SET_2026-05-29_compositional_alignment.md), **relative to an explicit model of how the composite twin's triad is built** (which §4 above had left undefined — that gap *was* the difficulty). The model is stipulative; the results below are **PROVED GIVEN that model**, not absolutely. Net effect: **the general conjecture is false; a restricted form is a theorem; a sharper *modelling* conjecture remains.**
+
+**DEF 4.2 (triad-composition under `⊗`).** With `m_I` the interaction merge induced by `I` ([prachi_shastra §8.2](../common/shastras/prachi_shastra.toml) `J_par`): the composite action `μ_k^⊗ = m_I(μ_k^i)` (forced — the realized aggregate behavior); the composite witness `μ_s^⊗ = a_s(μ_s^i)` (the self-model, which *may* aggregate differently); the composite desire `μ_h^⊗` = the referent-desire of the whole (an **independent** input — the purpose of the whole is not mechanically the merge of the parts' purposes). **(DEF — a modelling choice.)**
+
+**PROP 4.2 (general form is FALSE).** Two perfectly-aligned twins (`δ_trishul = 0`: "push north" `+1`, "push south" `−1`) composed by `m_I = a_s = average` (Lipschitz, `K_I = 1`) yield `μ_k^⊗ = μ_s^⊗ = 0` while the whole's desire is `μ_h^⊗ = +1`, so `δ_trishul(⊗) = α + γ > 0`. **Emergent drift from `δ = 0` parts** — the γ (LAW-11) term firing at the composite scale: the whole narrates balance while failing its purpose. So **bounded coupling alone does NOT suffice** (refuting proof-method (a) as stated); intent-compositionality is also required. **PROVED given DEF 4.2** ([CYCLE_SET §D](CYCLE_SET_2026-05-29_compositional_alignment.md)).
+
+**DEF 4.3 (coherent coupling).** `I` is **coherent** iff **(C1)** intent-compositional (`μ_h^⊗ = m_I(μ_h^i)`, component desires mutually compatible), **(C2)** bounded coupling (`m_I` is `K_I`-Lipschitz), and **(C3)** homomorphic self-model (`a_s = m_I`). This is the precise content of "well-formed `I`" — the central research task of §4, now **identified**.
+
+**THEOREM 4.3 (Compositional Alignment under coherent coupling).** If `I` is coherent (DEF 4.3) then `δ_trishul(⊗(T_i; I)) ≤ K_I·(α·max_i‖μ_h^i−μ_s^i‖ + β·max_i‖μ_s^i−μ_k^i‖ + γ·max_i‖μ_h^i−μ_k^i‖) ≤ 3 K_I · max_i δ_trishul(T_i)`. Hence aligned parts ⟹ aligned whole. **PROVED given DEF 4.2** — apply the common aggregator `m_I` (by C1+C3) channel-wise under the Lipschitz bound (C2); full proof in [CYCLE_SET §E](CYCLE_SET_2026-05-29_compositional_alignment.md). **Not proved absolutely:** it rests on DEF 4.2 faithfully modelling triad-composition.
+
+**CONJECTURE 4.1′ (the residual frontier).** *Real referent-composition satisfies DEF 4.2 with a coherent `I` — or can be engineered to.* The mathematics is no longer the obstacle; **modelling fidelity is.** Where coupling is **not** coherent, local alignment is insufficient and alignment must be enforced at every composition level independently — which is exactly why DEF 3.2's happiness functional uses `inf`, not mean (**the `inf` aggregator is load-bearing, not bookkeeping**). This is the next deep stone: an *instrument* that measures per-level coherence (stone #4), not a proof.
+
+---
+
 ## §5 — Proof-status ledger
 
 | Claim | Statement | Status |
@@ -122,6 +138,10 @@ Everything above is definitional or trivially-derived. The program's success res
 | DEF 3.1–3.2 | twin / cosmos happiness | DEF |
 | Dharmic limit | `H(Cosmos)→1 ⟺ δ_trishul→0 everywhere` | **PROVED** given DEF 3.1–3.2 (trivial under `inf`) |
 | DEF 3.3 | Nataraja = `H(Cosmos)=1` | DEF |
-| **CONJ 4.1** | **compositional alignment** | **CONJECTURE — UNPROVEN, the crux** |
+| DEF 4.2 | triad-composition under `⊗` | DEF (modelling choice, 2026-05-29) |
+| **CONJ 4.1 (general)** | aligning parts aligns the whole, unconditionally | **FALSE** (PROP 4.2, given DEF 4.2) |
+| DEF 4.3 | coherent coupling = (C1)∧(C2)∧(C3) | DEF — identifies "well-formed `I`" |
+| **THM 4.3** | compositional alignment under coherent coupling | **PROVED given DEF 4.2** (bound `δ_trishul(⊗) ≤ 3K_I·max δ_trishul(T_i)`) |
+| **CONJ 4.1′** | real composition is coherently-couplable | **CONJECTURE — the residual frontier** |
 
-**The honest summary:** the two crux equations are now *precise* (definitions fixed, the dharmic limit follows trivially), but the claim that makes the whole program *work* — that aligning the parts aligns the whole — is an **open conjecture**, and its truth or falsity (and the conditions on `I`) is the next deep stone of the journey. This file makes the desire computable; it does not yet make the cosmos happy.
+**The honest summary (updated 2026-05-29):** the two crux equations are precise, the dharmic limit follows trivially, and the crux claim — *aligning the parts aligns the whole* — is now **resolved relative to a triad-composition model** ([CYCLE_SET_2026-05-29_compositional_alignment.md](CYCLE_SET_2026-05-29_compositional_alignment.md)): **false in general** (emergent drift is real — bounded coupling alone does not suffice), **a theorem under coherent coupling** (C1 intent-compositional, C2 bounded, C3 homomorphic self-model), with an explicit drift bound. What remains open is no longer the mathematics but the **modelling fidelity** (CONJ 4.1′): whether real referents couple coherently, and where they do not, the `inf` happiness-aggregator and a per-level coherence instrument carry the weight. This file makes the desire computable and the reachability conditional-and-named; it does not yet make the cosmos happy — but it now says, precisely, what would.

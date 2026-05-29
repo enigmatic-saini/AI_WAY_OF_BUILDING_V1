@@ -17,7 +17,15 @@
 #   4. names crux equation 2 ("happiness").
 #   5. references its formal core file.
 #   6. VISION_MATH.md exists.
-#   7. the formal core still marks its load-bearing claim as a CONJECTURE.
+#   7. the formal core still carries a CONJECTURE (now the residual CONJ 4.1'
+#      — modelling fidelity; see KABIR_GATE.md entry 15 / the 2026-05-29
+#      compositional-alignment resolution).
+#   7b. the general (unconditional) compositional-alignment form is recorded as
+#       resolved-FALSE — cannot silently regress to "just an open conjecture."
+#   7c. the restricted result keeps its honesty qualifier "PROVED given DEF 4.2"
+#       — cannot silently become asserted-as-proven absolutely (LAW 11).
+#   7d. the restriction ("coherent coupling") is named — the theorem cannot
+#       silently shed its conditions.
 #   8. discoverable from the seed doc (referenced by CHARTER.md).
 #   9. provenance recorded (referenced by the gate file).
 #
@@ -68,8 +76,17 @@ assert_in "north-star names crux equation 1"      "$VISION"      "composition of
 assert_in "north-star names crux equation 2"      "$VISION"      "happiness"
 assert_in "north-star references its formal core" "$VISION"      "VISION_MATH.md"
 
-# 7. the load-bearing claim stays a conjecture (not asserted-as-proven)
-assert_in "formal core keeps its load-bearing CONJECTURE label" "$VISION_MATH" "CONJECTURE"
+# 7. a CONJECTURE is still carried (now the residual CONJ 4.1' — modelling fidelity)
+assert_in "formal core still carries a CONJECTURE label" "$VISION_MATH" "CONJECTURE"
+
+# 7b. the general/unconditional form is settled negative (cannot regress to "open")
+assert_in "general compositional-alignment form marked false" "$VISION_MATH" "false in general"
+
+# 7c. the restricted theorem keeps its 'given DEF' honesty qualifier (LAW 11)
+assert_in "restricted theorem keeps 'PROVED given DEF 4.2' qualifier" "$VISION_MATH" "PROVED given DEF 4.2"
+
+# 7d. the restriction itself is named — the theorem cannot shed its conditions
+assert_in "restriction named (coherent coupling)" "$VISION_MATH" "coherent coupling"
 
 # 8-9. non-orphan: discoverable from the seed + provenance recorded
 assert_in "discoverable from the seed doc"       "$CHARTER"     "VISION.md"

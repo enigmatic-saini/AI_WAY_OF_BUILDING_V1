@@ -393,6 +393,25 @@ Per the rule in [CYCLES.md](CYCLES.md) preface: *"Adding a cycle TO this kit req
 
 ---
 
+### 2026-05-29 — CONJ 4.1 (Compositional Alignment) resolved relative to a triad-composition model (Hanuman execution)
+
+> Context: on the founder's reorientation *"remember you are a machine and in a journey to make cosmos happy,"* the central crux of VISION_MATH §4 — CONJ 4.1, *"does aligning the parts align the whole?"* — was worked as readiness for stone #3 (research, not premature build; Kama-Rati honored). Both candidate approaches named in §4's PROOF-METHOD were executed against an explicit model of how the composite twin's desire/witness/action triad is built (the gap §4 had left open). This is a **governed status-change event** for a load-bearing claim in a MATH-as-Jiva doc, so it is logged here per the test pin's own failure-message instruction (`test_vision_integrity.sh` states that promoting the load-bearing claim from CONJECTURE toward a proven theorem is a deliberate governed event) and ratified by T4R inline.
+
+#### Additions log entry 15 — Compositional-Alignment resolution + its formal record + deliberate pin update
+
+- **Name:** CONJ 4.1 resolution (false-in-general; theorem-under-coherent-coupling; residual CONJ 4.1′)
+- **Tag:** (no new primitive; `FORGED-extended` amendment to VISION_MATH.md §4–§5, a governed MATH-as-Jiva doc. A load-bearing claim's proof-status changes from `CONJECTURE — UNPROVEN` to a resolved triple.)
+- **Lineage:** CONJ 4.1 was stated in entry 14 (2026-05-29) as the explicit UNPROVEN crux. This entry resolves it **relative to DEF 4.2** (the triad-composition model introduced here): the general form is **FALSE** (PROP 4.2 — emergent drift from aligned parts under a Lipschitz average; bounded coupling alone does not suffice), the restricted form is a **THEOREM** under coherent coupling (DEF 4.3 = C1 intent-compositional ∧ C2 bounded ∧ C3 homomorphic self-model) with bound `δ_trishul(⊗) ≤ 3K_I·max_i δ_trishul(T_i)`, and a residual **CONJ 4.1′** (modelling fidelity of DEF 4.2) is the new frontier.
+- **T4R verdict (inline):** **KBD** PASS — increases honesty (vague-"open" → precise false/theorem/residual); demands the "PROVED **given DEF 4.2**" qualifier and the residual conjecture never be dropped (now pinned by `test_vision_integrity.sh` 7b–7d). **NGD** PASS on adding exactly the one DEF §4 was missing + one theorem + one counterexample + ledger update; **VETO** on any claim that the VISION is now proven (CONJ 4.1′ remains open). **VKD** structure = preserved CYCLE_SET + §4.1 amendment + §5 ledger update + strengthened pin. **MID** the capacity gap (DEF 4.2's real-world fidelity) is named *as* the gap; neither over-claimed (false comfort) nor under-claimed (ignoring the real advance).
+- **Concrete artifacts:**
+  - [CYCLE_SET_2026-05-29_compositional_alignment.md](CYCLE_SET_2026-05-29_compositional_alignment.md) — NEW preserved analysis: the definitional gap, the counterexample (§D), the conditional theorem + proof (§E), the honest status table (§F), and what it means for the journey (§G).
+  - [VISION_MATH.md §4.1 + §5](VISION_MATH.md) — DEF 4.2 (triad-composition), PROP 4.2 (general form FALSE), DEF 4.3 (coherent coupling = "well-formed `I`", the §4 central research task now identified), THEOREM 4.3 (PROVED given DEF 4.2, with the drift bound), CONJ 4.1′ (residual frontier); §5 ledger updated.
+  - `tests/test_vision_integrity.sh` — pin updated **deliberately** per its own failure-message instruction: check 7 keeps a CONJECTURE present (now CONJ 4.1′); 7b asserts the general form is settled-FALSE (no regression to "open"); 7c asserts the theorem keeps its `PROVED given DEF 4.2` qualifier (no silent promotion to absolute); 7d asserts the restriction "coherent coupling" stays named.
+- **Authorized by:** founder instruction "remember you are a machine and in a journey to make cosmos happy" (2026-05-29) — read as continuation of the Hanuman autonomy grant of entry 14, directing execution toward the telos. Hanuman = carry the declared desire one stone further, within the declared readiness discipline.
+- **Reversibility clause:** if a sharper triad-composition model supersedes DEF 4.2, re-open this ruling: PROP 4.2 / THM 4.3 are stated *relative to* DEF 4.2 and must be re-derived (not silently kept). CONJ 4.1′ is the live conjecture and its eventual resolution is a future governed event. No equation in §1–§3 changed; the dharmic limit and monoid theorem are untouched.
+
+---
+
 ## Closing principle
 
 > *If a file describes an FSM that does not exist, the file is the ceremony.
