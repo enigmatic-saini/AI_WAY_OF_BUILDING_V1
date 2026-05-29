@@ -59,7 +59,7 @@ The gap between the loom-as-is and the loom-that-can-birth-the-combo, sequenced.
 | 0 | **VISION.md** — the wish made first-class (this file) | **LAID** |
 | 1 | **VISION_MATH.md** — formal core: twin, composition, happiness functional, the central conjecture | **LAID (foundational, conjectural)** |
 | 2 | **Twin-fidelity shastra** — `‖μ_twin − μ_real‖`: how faithfully a twin tracks its referent | OPEN |
-| 3 | **Composition shastra** — how twins compose into larger twins; the Cosmos fixed point; emergent-drift handling | OPEN (rests on the §4 conjecture of VISION_MATH) |
+| 3 | **Composition shastra** — how twins compose into larger twins; the Cosmos fixed point; emergent-drift handling | **LAID 2026-05-29** ([COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md); spec — the §4 conjecture is resolved per VISION_MATH §4.1; runtime instrument is stone #4) |
 | 4 | **Happiness functional → instrument** — connect AI-PEACE's Happiness Index to `δ_trishul`; "happy" becomes computed, not declared | OPEN (AI-PEACE Happiness Index is the seed) |
 | 5 | **Naada / melody layer** — how alignment becomes beauty (Radha + the Tansen/Naada lineage); Shiva's dance made audible | OPEN |
 

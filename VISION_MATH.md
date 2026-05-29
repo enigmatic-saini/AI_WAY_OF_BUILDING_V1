@@ -124,6 +124,8 @@ Everything above is definitional or trivially-derived. The program's success res
 
 **CONJECTURE 4.1′ (the residual frontier).** *Real referent-composition satisfies DEF 4.2 with a coherent `I` — or can be engineered to.* The mathematics is no longer the obstacle; **modelling fidelity is.** Where coupling is **not** coherent, local alignment is insufficient and alignment must be enforced at every composition level independently — which is exactly why DEF 3.2's happiness functional uses `inf`, not mean (**the `inf` aggregator is load-bearing, not bookkeeping**). This is the next deep stone: an *instrument* that measures per-level coherence (stone #4), not a proof.
 
+**Operational consequence — see [COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md).** §4.1's results are turned into a working theory there: an *emergent-drift* quantity (the surplus the composition adds beyond what its parts explain under coherent coupling), a *channel-decomposition* of that drift identifying which of C1/C2/C3 failed, a *post-order tree walk* that localizes the least-aligned coupling `n*` (the bottleneck of `H(Cosmos)`), and the *remediation principle* (an incoherent coupling cannot be fixed by aligning its parts — the `inf` aggregator earns its keep). The shastra is the spec; the runtime instrument is stone #4.
+
 ---
 
 ## §5 — Proof-status ledger

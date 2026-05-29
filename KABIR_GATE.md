@@ -412,6 +412,26 @@ Per the rule in [CYCLES.md](CYCLES.md) preface: *"Adding a cycle TO this kit req
 
 ---
 
+### 2026-05-29 — Stone #3 LAID: COMPOSITION_SHASTRA.md (emergent-drift handling theory)
+
+> Context: VISION.md §5 stone #3 ("Composition shastra — how twins compose into larger twins; the Cosmos fixed point; emergent-drift handling") was marked OPEN with an explicit dependency: *"rests on the §4 conjecture of VISION_MATH."* Entry 15 closed that gate (CONJ 4.1 resolved relative to DEF 4.2). This entry records the stone laid in response — the spec-side of stone #3, which converts §4.1's static result into an *operational* theory of emergent-drift handling. The runtime instrument is stone #4 and is **not** built here.
+
+#### Additions log entry 16 — Stone #3 LAID (COMPOSITION_SHASTRA.md): emergent-drift definition, channel decomposition, localization walk, remediation principle
+
+- **Name:** Composition spec (stone #3)
+- **Tag:** NEW kit-level spec doc. **No equation changed** in VISION_MATH; no new primitive type added; this is an *operational* extension of §4.1 (turn the static result into a usable theory). One-line cross-ref added to VISION_MATH §4.1; VISION.md §5 stone-#3 row flipped OPEN → LAID with date and link.
+- **Lineage:** entry 14 (VISION + VISION_MATH foundation) → entry 15 (CONJ 4.1 resolved relative to DEF 4.2, gate cleared) → entry 16 (stone built on the cleared gate). Stone #4 (runtime instrument; AI-PEACE Happiness Index is the seed) remains OPEN and is the natural next step; this entry deliberately does not fire it (Kama-Rati: spec before instrument).
+- **T4R verdict (inline):** **KBD** PASS — the OPEN stone's gate was cleared (entry 15); building the spec is mandatory journey work; honesty preserved by SPEC label (instrument not claimed-as-built) + "PROVED given DEF 4.2" qualifier carried throughout. **NGD** PASS — adds exactly the missing piece (emergent-drift handling) and references §4.1 / §3 rather than re-deriving; VETO on firing stone #4 in the same turn. **VKD** structure = emergent-drift DEF (C.1/C.2) → channel decomposition by failing condition (PROP C.2) → localization walk (THM D.1 + Algorithm D.1) → remediation principle (PRINCIPLE E.1 + COR E.1). Sound; mirrors VISION_MATH's status-tagged structure. **MID** the capacity gap (runtime instrument; sufficiency of channel-specific remediation; convergence of `H(Cosmos)` under tree refinements; CONJ 4.1′ modelling fidelity) is named *as* the gap in §G.
+- **Concrete artifacts:**
+  - [COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md) — NEW spec doc: §C emergent-drift DEFs + channel decomposition, §D least-aligned-coupling localization + Algorithm D.1 (the contract for stone #4), §E remediation principle ("the `inf` aggregator earns its rent"; channel-specific remediation table), §F what this hands stone #4, §G honest status + 4 named open questions.
+  - [VISION.md §5](VISION.md) — stone-#3 row flipped OPEN → **LAID 2026-05-29** with link.
+  - [VISION_MATH.md §4.1](VISION_MATH.md) — one-paragraph operational-consequence cross-ref added; no formal claim changed.
+  - `tests/test_composition_shastra_integrity.sh` — NEW pin (8 assertions): existence + central primitives ("emergent drift", "least-aligned coupling") + SPEC label + "PROVED given DEF 4.2" qualifier + non-orphan discoverability from VISION / VISION_MATH / this gate file.
+- **Authorized by:** founder instruction "BE HAPPY and CONTINUE JOURNEY no need for git remote now" (2026-05-29) — read as continuation of the Hanuman autonomy grant + the carry-vision-autonomously stance. The CONJ 4.1 result itself nominated stone #3 as the natural next: it was the stone explicitly gated by the conjecture, now equipped with exactly the raw material to be laid honestly.
+- **Reversibility clause:** if Algorithm D.1 is later shown unsound, or if the channel-specific remediation table proves insufficient (open #2 in §G), revise the spec — PROP C.2 / THM D.1 are stated *relative to* DEF 4.2 and inherit its reversibility. If a sharper composition model supersedes DEF 4.2 (CONJ 4.1′), the spec must be re-derived in that model, not silently kept.
+
+---
+
 ## Closing principle
 
 > *If a file describes an FSM that does not exist, the file is the ceremony.
