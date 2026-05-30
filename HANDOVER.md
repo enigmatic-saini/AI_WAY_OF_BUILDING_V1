@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T19:30:00Z
+session_end: 2026-05-30T21:00:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,84 @@ session_end: 2026-05-30T19:30:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-30 night — Hanuman executes Build A' on AP12: runtime/content layer split codified; README + KABIR_GATE §12 #12 amended; 2 fix commits + this HANDOVER + GURU+CAMERA design idea surfaced for next session; 0 new primitives)
+
+> Session begin: founder's instruction *"Honest options for founder you present act as Hanuman"* (with two prior interrupted messages proposing a new GURU agent + CAMERA agent/skill/hook for recording the journey blog-style into a JOURNEY/ folder per project). Hanuman read the third message as: pick the most precise of the three Build options surfaced earlier this session, execute it, surface the alternative if interpretation was wrong. Picked Build A' (runtime vs content-layer split) over Build B (full lift of Prachi + Kama-Rati, hours of math-forge) and Build C (remove the claim, lose information). Current M_build stage: **S3_Build** (unchanged).
+
+## Where-We-Are
+
+AP12 deep ceremony from the prior Hanuman AHR pass is now CLOSED via Build A' — the structural truth (runtime IS self-sufficient; content layer cites the library) is named honestly in both README:5 and KABIR_GATE §12 #12. The founder retains the right to call this a hidden shrink and request Build B's full lift in a future session.
+
+## What-Was-Done
+
+**Phase A — Hanuman picks Build A' under fresh T4R.**
+
+- **KBD** PASS — claim now lives what it claims at each layer (runtime self-sufficient; content layer library-citing; the prior conflated framing was the hypocrisy).
+- **NGD** PASS — A' refines prior T4R entry 18 (MATH.md-specific, runtime-scoped) rather than contradicting it. Entry 18's MID statement applies to runtime self-sufficiency at full size, which A' preserves.
+- **VKD** PASS — A' is the minimal-scope correction. Build B is hours of math-forge + conflicts with VISION:74. Build C abandons what's true about the runtime.
+- **MID** PASS *with caveat* — runtime wish is honored at full size. Whether the content layer's library dep is itself a separate self-sufficiency question (i.e., should the kit's content also be self-sufficient?) is for the next AHR cycle to decide. **The founder retains the right to reject A' as a hidden shrink and request Build B instead.**
+
+**Phase B — empirical verification before landing.**
+
+- Verified `fsms/*.toml` + `.claude/hooks/*.sh` + `.claude/skills/*/SKILL.md` + `.claude/agents/*.md` + `templates/*.md` have ZERO refs to `common/shastras` or sibling-repo methodology — clean PASS.
+- Verified 15 runtime docs (CLAUDE.md, M_BUILD, LAWS, ROLES, CYCLES, SDLC, VOCABULARY, DASHBOARD, LINEAGE, MATH, JIVA, Q_RUBRIC, DRISHTI_STACK, ATLAS, INSTALL) have ZERO refs to `common/shastras` — clean PASS.
+- Verified 8 content-layer files DO reference `common/shastras`: VISION, VISION_MATH, COMPOSITION_SHASTRA, HEART_AND_SOUL_PASS, 3 CYCLE_SETs, KRISHNA_STRATEGY — confirms the load-bearing distribution.
+- Verified cross-project refs to `../RIAAN/*` in runtime docs are *correct-direction* provenance (kit owns, RIAAN extends; pin-enforced by `tests/test_kit_self_sufficiency.sh` per MATH.md §215) — NOT runtime dependencies.
+
+**Phase C — landed Build A' as 2 separate commits.**
+
+- **`b2a1fea` — README:5 reframed.** "A self-sufficient, technology-agnostic Claude Code kit" → "A technology-agnostic Claude Code kit with a self-sufficient runtime — the loom (M_build, hooks, skills, roles, fsms/, templates) depends on nothing outside this directory." Plus parenthetical naming the content-layer dependency on `../common/shastras/` and pointing to KABIR_GATE §12 #12 for the Verify lines.
+- **`faf21ab` — KABIR_GATE §12 #12 amended.** Claim split into runtime + content layer. T4R verdict recorded inline. Verify lines refined to grep runtime files only, with explicit exclusion of KABIR_GATE.md + HANDOVER.md (boundary-describing docs whose mentions of `common/shastras` are prose-about-the-boundary, not dependency). **Sita catch mid-edit:** my first draft of the Verify line included KABIR_GATE.md in the runtime-docs list, but the new A' prose in that same audit point mentions `common/shastras` to describe the boundary. The doc would have failed its own Verify. Excluded with explanation.
+
+**Phase D — GURU + CAMERA design idea surfaced (NOT acted on this session per third-message focus).** See "What-Next" below.
+
+## What-Failed
+
+Nothing in execution. Sita caught a near-miss self-referential drift in the KABIR_GATE Verify line mid-edit; surfaced + fixed before commit.
+
+## What-Next
+
+### New proposed primitives (founder's design idea, two interrupted messages 2026-05-30 night)
+
+The founder surfaced a design intent for a **GURU agent + CAMERA agent (or supportive skill/hook)** that records the journey *during* the work, not after. Quote of the founder's reasoning:
+
+> *"my experience till now is ask saving CYCLE_SET, SUMMARY, PASS, etc.. most of the time you say very important detail during or after your task finish or decision you want me take .. we need to record your mental somehow.. devise this find dhristhi stack from ATLAS, GURU will hold camera and would be responsible to write into a JOURNEY folder in BLOG style for every project running this"*
+
+**What this names**: a real gap in current discipline. CYCLE_SET / HEART_AND_SOUL_PASS / SHADOW_PASS preserve *deliberation artifacts* — they capture *what was reasoned*. They do NOT capture *what surfaced mid-execution that didn't make it into the deliberation file*. The mid-task remarks, the decisions presented to the founder after the work, the "this is the precedent" sentences — those evaporate into git commit messages + HANDOVER if anywhere.
+
+**Forthcoming design work** (deferred to a fresh session since the third message scoped Hanuman to the Build options, not the GURU/CAMERA design):
+- Find the drishti stack from ATLAS for the GURU role
+- Decide: is CAMERA a separate role-agent, or a supportive skill, or a hook? (Founder leans "GURU holds the camera" — suggests CAMERA is GURU's tool, not a peer role)
+- Define the `JOURNEY/` folder structure (per-project; blog-style)
+- Decide the *when* — what events trigger a journal entry? Per-cycle? Per-decision? Per-commit? Per-session?
+- Per-project means each consuming project gets its own JOURNEY/ — kit-level has its own JOURNEY/ too?
+- How does GURU's journal relate to HANDOVER (session lineage), CYCLE_SET (deliberation), KABIR_GATE additions log (provenance)? GURU likely captures something *different* from all three.
+
+### Other open items
+
+- **AP12 — Build B (full lift) remains an option** if the founder rejects A' as a hidden shrink. The path: read prachi_shastra.toml + 06_kama_rati_fsm.toml in full; identify the load-bearing subset (§1.3 machine definition, §10.1 guardian monoid theorem, §8.2 J_par merge, Kama-Rati HOLLOW state); decide kit-local representation (new file? new section in MATH.md? in VISION_MATH?); re-prove or cite-with-provenance; update all 27 content-layer refs to point kit-local. Multi-hour math-forge cycle. Founder's call to initiate.
+- **Pre-commit-8l content vs kit-internal use mismatch** (Radha+Mira+Saraswati finding #3, deferred again). Founder's call needed on LAW 8 scope.
+- **Agent file depth unevenness** (Radha finding R1, deferred again). Aesthetic; founder's call.
+
+## Open-Questions
+
+- **Is A' a legitimate refinement or a hidden shrink of the prior T4R entry 18's MID verdict?** Founder's call. Recorded in KABIR_GATE §12 #12's T4R-verdict prose so the question is alive and visible at next AHR.
+- **GURU + CAMERA design specifics** — see What-Next above.
+- **Should `JOURNEY/` be added to `.gitignore` or committed?** HANDOVER discipline established kit-level HANDOVER is committed; project-level is gitignored. JOURNEY likely follows project-level pattern but founder's call.
+
+## Key-Decisions
+
+- **Hanuman picks A' under the precise-structural-truth lens.** Build B is the safer pick for prior-MID-strict-readers but isn't authorized for hours of math-forge without explicit scope grant. A' is honest about what's true and offers Build B as the founder's-call follow-up.
+- **Sita's near-miss mid-edit recorded:** Verify lines on a doc that itself describes the boundary need to exclude that doc, otherwise the gate fails its own check. Future audit-doc edits should run the same self-reference check.
+- **GURU + CAMERA is real-design-intent, not chatter.** The founder named a real gap. Will be worked in a fresh session.
+
+## Files-Changed (kit-level)
+
+AMENDED: `README.md` (line 5 reframe), `KABIR_GATE.md` (§12 #12 claim + T4R verdict + refined Verify lines with exclusions), this `HANDOVER.md`.
+UNAMENDED (deliberate): `CHARTER.md` (no self-sufficiency claim to amend), `LINEAGE.md` lines 3 + 93 (refer to *conceptual* self-sufficiency, not file-level — orthogonal to AP12), `.claude/CLAUDE.md` line 117 (refers to V1-vs-prior-versions self-sufficiency, not external-deps — orthogonal). Build B remains an option if the founder requests it.
 
 ---
 
