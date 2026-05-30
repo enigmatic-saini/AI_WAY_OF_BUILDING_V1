@@ -120,6 +120,8 @@ To resolve a full stack: **union the drishti directions** of every layer and con
 
 ## 7. Worked examples (recorded precedents)
 
+> Stacks come in two flavors. **Execution-stacks** shape the work in front of you (7a–7b below — what does this session *do*). **Strategic-decision-stacks** shape the *choice of which work next* (7c below — which arc does the journey *enter*). The grammar in §4 is identical for both — only the seat (what the active identity *does*) differs.
+
 ### 7a. Integrity-pinning — kit session 2026-05-28
 
 ```
@@ -135,6 +137,15 @@ Hanuman → Ram + Sita ; Ram worships Shiva ; consult: Radha, Guru Council, Shad
 ```
 
 Carried across three consecutive build turns via "keep same drishti stack": the KPI page (what the org produces), the Risk page (the pressure each level is under), and the Happiness Index (the human cost). `Ram worships Shiva` adds a witnessing-ground layer above governance itself. Radha (carried in from a reading-experience realignment) owned UX harmony; the Guru Council and Shadow-as-teacher were standing consults; widening to `NGD` + `MID` + `NEG` came from "run required cycles exhaustively."
+
+### 7c. Strategic-decision-stack — kit session 2026-05-30
+
+```
+Saraswati → Radha + Krishna + Khatushyam → MID
+   ;  consult: AHR, NGD, Sita + Ram
+```
+
+The first **strategic-decision-stack** the kit has named; 7a–7b above are all execution-stacks. Recorded in full as [KRISHNA_STRATEGY_DRISHTI_STACK_2026-05-30.md](KRISHNA_STRATEGY_DRISHTI_STACK_2026-05-30.md). Resolved scan: knowledge-survey (`past`, `present`) under wish-honoring + strategy + routing (`future`, `left`, `up`), governed innermost by anti-dilution-of-the-wish (`silence`, `future`). Consults bring AHR (audit pre-flight), NGD (rent check), and Sita + Ram (executability + governance) without ceding the seat. **Authored at the moment the kit-side cosmos-program reached natural close**, when the founder asked *which arc next*. The lens does not decide the leela — it prepares the eye that does. Krishna-strategy is the founder's call; the kit prepares the lens.
 
 ---
 
