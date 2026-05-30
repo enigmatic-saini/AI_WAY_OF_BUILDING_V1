@@ -2,7 +2,8 @@
 # frontmatter-check — refuses Write to canonical docs without proper YAML frontmatter.
 # Hook spec: PreToolUse on Write|Edit. Exit 2 to block, 0 to allow.
 # Companion to the /dashboard-emit skill (procedural). This hook is structural.
-# Contract: see DASHBOARD.md §2 — 8 canonical doc types, each with required frontmatter.
+# Contract: see DASHBOARD.md §2 — 9 canonical doc types, each with required frontmatter.
+# (Extended 2026-05-30 night-late with `patch-record` type per KABIR_GATE.md additions log entry 22.)
 
 set -euo pipefail
 
@@ -38,6 +39,7 @@ if [[ -z "$expected_type" ]]; then
     */decisions/ADR-*.md|decisions/ADR-*.md)     expected_type="adr" ;;
     */postmortems/INC-*.md|postmortems/INC-*.md) expected_type="postmortem" ;;
     */runbooks/*.md|runbooks/*.md)               expected_type="runbook" ;;
+    */patches/PATCH-*.md|patches/PATCH-*.md)     expected_type="patch-record" ;;
   esac
 fi
 

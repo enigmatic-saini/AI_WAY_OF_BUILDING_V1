@@ -8,7 +8,9 @@
 
 This rule is the same Kabir invariant that justifies the rest of the kit. The viewer exists to make existing truth visible to PM/EM/anyone; it does not exist to create new truth.
 
-## §2 — Eight canonical doc types
+## §2 — Nine canonical doc types
+
+**(Count corrected 2026-05-30 night-late per [KABIR_GATE.md additions log entry 22](KABIR_GATE.md): 8 → 9 with the addition of `patch-record`. Phase 1 of the external-AHR ITIL benchmark.)**
 
 Each canonical document type has a fixed frontmatter schema. The frontmatter is YAML between two `---` lines at the very top of the file.
 
@@ -129,12 +131,32 @@ last_verified: 2026-04-01
 ---
 ```
 
+### 2.9 `patch-record` — patches/PATCH-NNN-<slug>.md
+
+```yaml
+---
+type: patch-record
+id: PATCH-007
+classification: Critical | High | Medium | Low
+status: PROPOSED | TESTING | APPLIED | VERIFIED | ROLLED-BACK
+identified-at: 2026-05-30
+sla-window: 24h | 7d | 30d | 90d
+applied-at: 2026-05-30T15:20:00Z   # null until applied
+verified-at: 2026-05-30T16:45:00Z  # null until verified
+source: CVE-2026-12345             # or advisory URL / alert ref
+affected: []
+links: []
+---
+```
+
+The four classifications map to SLA windows: Critical < 24h, High < 7d, Medium < 30d, Low < 90d. The `status:` field is a state-machine: `PROPOSED → TESTING → APPLIED → VERIFIED` on the happy path; any state can transition to `ROLLED-BACK`. The `applied-at:` and `verified-at:` fields are required-when-the-status-permits (null until then). See the [/patch skill](.claude/skills/patch/SKILL.md) for the procedural lifecycle and the [PATCH-RECORD template](templates/PATCH-RECORD.md) for the body sections.
+
 ## §3 — Validation rules
 
 For every doc type:
 
 1. **Must start with `---`** (no blank lines, no BOM).
-2. **`type:` field is required** and must be one of the 8 enum values.
+2. **`type:` field is required** and must be one of the 9 enum values.
 3. **All required fields per type are present.**
 4. **`---` close present** before the body content.
 5. **Body content begins after the closing `---`.**
