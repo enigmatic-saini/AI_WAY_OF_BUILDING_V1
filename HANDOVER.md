@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-31T02:30:00Z
+session_end: 2026-05-31T04:00:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,69 @@ session_end: 2026-05-31T02:30:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-31 deep-night-3 — ITIL Phase 3 (Change Management) editorial: classification + reviewer-routing matrix + mandatory rollback + PIR convention; 3 commits + 1 JOURNEY + this HANDOVER; NO count changes — Phase 3 is editorial, no new primitives)
+
+> Session begin: founder said *"go"* — implicit Phase 3 transition after Phase 2's successful landing. Same ITIL-arc drishti stack as Phases 1 + 2 (`Saraswati → Vishwakarma → Ram + Sita ; consult: NGD, KBD, MID`). The central design question (Standard = 0 reviewers like ITIL, or 1 like the kit's existing floor?) was decided under the prior delegation *"You decide as you know ITIL."* Current M_build stage: **S3_Build** (unchanged).
+
+## Where-We-Are
+
+Phase 3 (Change Management) is fully landed. The kit now codifies ITIL change classification (Standard/Normal/Emergency) × sensitivity-trigger routing in a 6-cell reviewer matrix, with mandatory rollback section in every MR and PIR convention for Normal+Emergency. **Phase 3 is editorial — no new skills, hooks, roles, or canonical types.** Counts remain 8 hooks / 11 skills / 7 roles / 10 canonical types / 9 templates. Phase 4 (Incident Management) is the next session.
+
+## What-Was-Done
+
+**Phase 3 build under the same ITIL-arc drishti stack** (`Saraswati → Vishwakarma → Ram + Sita ; consult: NGD, KBD, MID`).
+
+- **`98e1566`** — JOURNEY entry capturing the central design decision: **Standard = 1 reviewer minimum** (not ITIL's 0-reviewer pre-approve pattern). Three reasons recorded for future-session reference:
+  1. The kit is tech-agnostic — cannot assume dep-bot/CI infrastructure ITIL's 0-reviewer pattern needs.
+  2. LAW 10 + Sita's "no-one-watching" lens — every merge to main must be witnessed.
+  3. The kit codifies floors, not policies — consuming projects can raise but never lower.
+  General pattern: **the kit raises floors, never lowers them.** ITIL is the floor; LAW 10 + LAW 11 + Sita's lens demand stricter floors at the merge boundary.
+
+- **`e66c54b`** — Phase 3 primitives (two files amended; no new primitives):
+  - `SDLC.md §4` — extensively extended: §4.1 ITIL classification taxonomy, §4.2 sensitivity triggers (repositioned), §4.3 reviewer-routing matrix (6 cells, max-of-two rule, "sensitivity NEVER expedited away by Emergency"), §4.4 extended MR template (Classification block + mandatory Rollback section with 4 required fields + Audit trail block), §4.5 PIR convention (Standard: no; Normal: conditional; Emergency: mandatory within 24h in HANDOVER subsection), §4.6 merge conditions (added: Rollback populated + Emergency rollback verified). §7 Repo Hygiene: added classification + rollback rules. Tag rule updated to reference Phase 2's `semver-check` + `release-notes` type.
+  - `.claude/skills/mr/SKILL.md` — procedure restructured around the new classification + matrix. Description rewritten (was stale: referenced "SDLC §5 template" — corrected to §4 + adds classification framing). 5 cycles preserved (Classify + Sensitivity scan combined into cycle 1; matrix in 2; template + PIR pre-stage in 3; push in 4; open MR + name merge conditions in 5). Anti-patterns added: classifying Emergency to skip review, defaulting Standard for "small" changes, leaving Rollback TBD, skipping Emergency PIR.
+
+- **`4e9172f`** — KABIR_GATE additions log entry 24 with full T4R verdict (KBD/NGD/VKD/MID PASS).
+
+- **This commit** — HANDOVER session block.
+
+## What-Failed
+
+Nothing in execution. One stale `/mr` skill description reference (to "SDLC §5 template" — should have been §4) was caught and corrected as part of the Phase 3 rewrite. Sita-finding worth naming: when extending a skill, audit the description first; descriptions drift faster than procedures.
+
+## What-Next
+
+- **Phase 4 (Incident Management extensions)** — the last phase per the audit's recommended order:
+  - Add P1–P4 severity taxonomy to `/incident` + POSTMORTEM template (currently `/incident` says "P1/P2 incidents" loosely; SDLC §6 has P1/P2/P3 but no P4)
+  - Add SLA convention reference (ack/resolve times per severity)
+  - Add lessons-feedback loop (postmortem → runbook discipline)
+  - KABIR_GATE additions log entry 25
+  - **No new primitives expected** — Phase 4 is editorial (like Phase 3): extend `/incident` + POSTMORTEM template + add convention text. P4 may or may not bump SDLC.md §6's existing P1/P2/P3 taxonomy.
+- **Empirical question for Phase 3**: does any consuming project adopt the classification + matrix discipline within Q3 2026? If yes — Phase 3 binds. If no — reversibility clause in entry 24 fires.
+- **Open future-AHR**: should the Phase 3 PIR-in-HANDOVER convention graduate to its own canonical type (e.g., `pir`) if PIRs prove load-bearing across many MRs? The audit's "PIR is borderline; HANDOVER suffices" verdict stands until empirical evidence pushes it.
+
+## Open-Questions
+
+- **The "large diff threshold" for Normal-class conditional PIR** (currently noted as >500 LOC or >10 files) — should the kit codify it more concretely, or leave it to consuming projects? The audit was silent on this. Default behavior: consuming projects define their own threshold; kit suggests defaults in the §4.5 comment.
+- **Standard-class lightweight review depth** — what does "lightweight" actually mean operationally? The kit names it but doesn't enforce a checklist. Worth considering a separate `/pre-commit-8l-light` profile for Standard-class? Probably over-engineering — leaving to consuming projects.
+- **Audit-trail in MR template references `release-notes/RELEASE-NOTES-v<...>.md` if applicable** — but how does the MR know which release will ship it? Cross-link is forward-looking (added after release tags). Convention: leave blank in MR description; backfill via release-notes after the tag. Audit trail closes after both directions of the link are populated.
+
+## Key-Decisions
+
+- **Standard = 1 reviewer minimum.** Recorded as the kit's general principle in JOURNEY `98e1566`: the kit raises floors, never lowers them. Future sessions facing similar tensions (ITIL flexibility vs kit's principled floors) should reference this precedent.
+- **Reviewer-routing matrix is two-dimensional**, not one-dimensional. Classification (Standard/Normal/Emergency) and sensitivity-trigger (auth/PII/payment/schema/public-API/IaC) are independent. **Max-of-two rule wins** at reviewer count. Sensitivity NEVER expedited away by Emergency classification.
+- **PIR lives in HANDOVER, not a new canonical type.** Resisted adding an 11th canonical doc type — HANDOVER's existing "PIR for MR #N" subsection convention is sufficient. The 11th canonical type is reserved for genuine new shapes.
+- **Phase 3 is editorial, not primitive-adding.** Two files amended, zero new primitives. The audit explicitly recommended this shape. NGD's rent-check on "should we add a /change skill?" failed — `/mr` is the right home.
+- **Phase 4 deferred to next session** per Hanuman discipline. Same pattern as Phase 1 → 2 → 3.
+
+## Files-Changed (kit-level)
+
+**NEW**: `JOURNEY/2026-05-31T03-00-standard-class-min-1-reviewer.md` (central decision precedent).
+**AMENDED**: `SDLC.md` (§4 extensively extended; §7 hygiene rules added), `.claude/skills/mr/SKILL.md` (description + procedure + output template + anti-patterns), `KABIR_GATE.md` (new additions log entry 24), this `HANDOVER.md`.
+**NO COUNT CALLBACKS** — Phase 3 adds zero new skills, hooks, roles, or canonical types. Counts remain 8 / 11 / 7 / 10 / 9.
 
 ---
 
