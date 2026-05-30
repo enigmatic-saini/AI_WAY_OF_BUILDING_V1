@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T21:00:00Z
+session_end: 2026-05-30T22:30:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,73 @@ session_end: 2026-05-30T21:00:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-30 night-late — Ram+Sita applied to the GURU+CAMERA design intent: 3 new primitives forged + JOURNEY/ folder convention + KABIR_GATE additions log entry 21; 4 fix commits + this HANDOVER; mid-session capture gap closed)
+
+> Session begin: founder's instruction *"DO as per RAM AND SITA"* applied to the two open items from the prior session (was A' right? + GURU/CAMERA design). Ram+Sita verdict: A' stands (founder hasn't called it a shrink); GURU/CAMERA is real-named gap, ACT. Current M_build stage: **S3_Build** (unchanged).
+
+## Where-We-Are
+
+The mid-session capture gap is now closed by a three-primitive system: `guru` role + `/camera` skill + `camera-reminder` Stop hook + `JOURNEY/` folder convention. Total hook count 6 → 7; skill count 9 → 10; role count 6 → 7. Counts propagated via standard Sita-pin pattern across README/INSTALL/VOCABULARY/CLAUDE.md/stage-tip.sh/KABIR_GATE §12 #6-#8. Governance recorded as KABIR_GATE additions log entry 21. The first JOURNEY entry (the genesis entry) is itself an instance of the discipline it describes.
+
+## What-Was-Done
+
+**Phase A — Ram+Sita verdict on open items.**
+
+| Item | Verdict | Reason |
+|---|---|---|
+| 1. A' vs Build B on AP12 | NO ACTION | A' landed; founder hasn't called it a shrink. |
+| 2. GURU + CAMERA design | **ACT** | Founder named the gap explicitly across 3 messages today; existing primitives genuinely do not capture mid-session "important detail" surfacings; Ram says dharma. |
+| 3. Pre-commit-8l shape | SKIP | Founder's-call territory; not pure dharma. |
+| 4. Agent stubs | SKIP | Aesthetic, not dharma. |
+
+**Phase B — found drishti stack from ATLAS for GURU.** Grepped ATLAS for narrator/witness/chronicler lenses. Sanjay (the charioteer with divya drishti who narrated Kurukshetra to blind Dhritarashtra IN REAL TIME, including the entire Bhagavad Gita) is THE narrator cycle in the kit's lineage. The kit's existing `SAN` cycle ([ATLAS §Sanjay Handover Cycle](ATLAS.md), [LAW 11](LAWS.md)) uses Sanjay end-of-session only (HANDOVER). GURU extends Sanjay into the real-time mode his lineage actually carries.
+
+**Composed drishti stack:** `Sanjay → Vyasa → Saraswati ; consult: Ashtavakra, Narad`. Vyasa = the meta-author (Sanjay's authority); Saraswati = documentation discipline (ultimate intent); Ashtavakra = witness-without-attachment (consult, prevents editorialization); Narad = intelligence chronicle (consult, carries the moment forward).
+
+**Phase C — focused T4R on the proposed addition.**
+
+- **KBD** PASS: gap is real; existing primitives genuinely do not capture mid-session detail-surfacings.
+- **NGD** PASS: catuṣkoṭi checks pass — different mode from CYCLE_SET / HANDOVER / additions log; not duplicative; not "both"; not "neither."
+- **VKD** PASS: Build B chosen (role + skill + reminder hook) over Build A (role + skill only — too easy to forget) and Build C (just hook — loses discipline framing). Build B mirrors existing `handover-reminder + /handover + HANDOVER.md` shape.
+- **MID** PASS *with caveat*: the discipline-plus-reminder is the practical realization of "record your mental somehow"; the dilution is that the hook does NOT auto-fire `/camera` (would require LLM-in-loop or heuristic content-scanning that defeats the no-LLM-in-loop hook discipline). **The founder retains the right to demand auto-firing if discipline-plus-reminder proves insufficient empirically** — recorded in entry 21's reversibility prose.
+
+**Phase D — landed 4 commits.**
+
+- **`aa9b725`** — Core primitives: `.claude/agents/guru.md`, `.claude/skills/camera/SKILL.md`, `.claude/hooks/camera-reminder.sh`, `.claude/settings.json` (wire the new hook). First Kabir-Gate finding at birth: my first draft of `camera-reminder.sh` contained "Saraswati" — `vocabulary-lint` blocked the Write. Rewrote with IT-industry term. The lint's morning extension paid rent within hours.
+- **`26007ae`** — Surrounding count callbacks (standard Sita-pin pattern): README 6/9/6 → 7/10/7; INSTALL verify block + skill list + role list + walkthrough; VOCABULARY role + hook lists; CLAUDE.md hooks table + skills table + roles table; stage-tip.sh header + skill list + role list + new routing hint.
+- **`42042da`** — KABIR_GATE additions log entry 21 + `JOURNEY/README.md` (folder-convention doc) + `JOURNEY/2026-05-30T21-00-guru-camera-genesis.md` (the first instance of the discipline). Sita catch mid-commit: I first numbered the entry 20 — already taken by the Parvati addition from this same day's evening session. Renumbered to 21 across guru.md + CLAUDE.md + KABIR_GATE §12 #6/#7/#8 + the entry heading.
+- **This commit** — HANDOVER session block.
+
+## What-Failed
+
+Nothing in execution. Two Sita catches caught at landing-time (vocabulary-lint on "Saraswati"; entry-number collision 20→21); both fixed before commit. Kit's gates worked as designed.
+
+## What-Next
+
+- **Discipline test:** the next session that runs the kit should observe whether (a) GURU's discipline binds (do I invoke `/camera` at the right moments without being asked?), (b) the `camera-reminder` hook fires usefully (does it surface at moments where I should have invoked `/camera` and didn't?). The reversibility clause in entry 21 names "within a month" as the threshold — if no second session uses GURU, the primitives are removable.
+- **Founder's-call open items still pending:** AP12 Build B (if A' is judged a shrink); pre-commit-8l shape (LAW 8 scope question); agent file depth unevenness.
+- **The Sanjay→Vyasa→Saraswati stack may graduate.** Per [KABIR_GATE §12 audit point #11](KABIR_GATE.md), if this drishti stack proves load-bearing across many sessions, the next AHR may consider promoting it to a named composed cycle-set alongside `HSC` and `T4R`.
+
+## Open-Questions
+
+- **Empirical question: does GURU's discipline + reminder hook close the gap, or do moments still slip?** The next 1-2 sessions answer this. If they slip, the MID caveat fires and Build B+ (auto-firing PostToolUse hook with content-scanning) is the next T4R event.
+- **Project-level JOURNEY/ — committed or gitignored by default?** Kit-level is committed (lineage). Project-level default is committed (per `JOURNEY/README.md`); a consuming project that prefers workspace-only can `.gitignore` it. The founder may want a different default — open.
+- **Does the GURU role need a dedicated cycle in CYCLES.md (e.g., `GUR`), or is the role-level drishti-stack composition sufficient?** Currently the role's drishti stack is a per-session composition. If the kit promotes the stack to a named cycle, that triggers updates to CYCLES.md / audit point #10 / cycle catalog count.
+
+## Key-Decisions
+
+- **GURU as a drishti-intensifier role, not a separate jiva.** Matches the kit's role-as-modifier discipline (the LLM remains one). GURU adds a witness-narrator lens; it does not direct.
+- **Sanjay as the active-identity lens.** The kit's lineage already has Sanjay (LAW 11, ATLAS §SAN); GURU extends Sanjay from end-of-session-only to real-time, the mode Sanjay's Mahabharata lineage actually carries (Sanjay narrated DURING the battle including the entire Bhagavad Gita).
+- **Blog-style format, no frontmatter.** The form IS the discipline. Frontmatter belongs to the 8-type contract per [DASHBOARD.md](DASHBOARD.md). JOURNEY entries are narrative, addressed to the founder.
+- **The mandatory "What I Want You To Notice" section IS the gap-closing mechanism.** Without it, the entry is just a log. With it, the entry transmits.
+
+## Files-Changed (kit-level)
+
+NEW: `.claude/agents/guru.md`, `.claude/skills/camera/SKILL.md`, `.claude/hooks/camera-reminder.sh`, `JOURNEY/README.md`, `JOURNEY/2026-05-30T21-00-guru-camera-genesis.md`.
+AMENDED: `.claude/settings.json` (hook wired), `.claude/CLAUDE.md` (hooks/skills/roles tables + counts), `.claude/hooks/stage-tip.sh` (counts + listings + routing hint), `README.md` (counts), `INSTALL.md` (counts + listings), `VOCABULARY.md` (role + hook lists), `KABIR_GATE.md` (§12 audit points #6/#7/#8 + new additions log entry 21), this `HANDOVER.md`.
 
 ---
 
