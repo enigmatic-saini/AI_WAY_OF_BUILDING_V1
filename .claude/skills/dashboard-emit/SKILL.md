@@ -30,6 +30,8 @@ Match the file path to a contract type:
 | `runbooks/*.md` | `runbook` |
 | anything else | not canonical — frontmatter not required |
 
+> **Boundary clarification (Mira pass, 2026-05-30).** This 8-type contract is the **project-side** canonical-doc contract. Kit-level governed documents — `MATH.md`, `VISION.md`, `VISION_MATH.md`, `JIVA.md`, `Q_RUBRIC.md`, `DRISHTI_STACK.md`, the kit's `*_SHASTRA.md` family — sit *outside* this contract but are still governed: their discipline runs via per-primitive lifecycle states ([DASHBOARD.md §10](../../../DASHBOARD.md)) + the [KABIR_GATE.md](../../../KABIR_GATE.md) additions log. "Not canonical" in this skill means "not under the 8-type frontmatter contract," not "ungoverned."
+
 ### 2. Look up the required fields
 See DASHBOARD.md §2 for the full schema per type. The 8 schemas share these structural rules:
 - Frontmatter is YAML between two `---` lines at the very top.
@@ -52,7 +54,7 @@ See DASHBOARD.md §2 for the full schema per type. The 8 schemas share these str
 ### 4. Cross-check (optional)
 - If `links:` is set on an ADR, verify the linked TODO/MR/ADR ids parse (they need not exist yet — links can be forward).
 - If `stage:` is set, verify it's one of the 7 M_build stages.
-- If `cycle:` is set, verify it's one of the 12 working cycles.
+- If `cycle:` is set, verify it's one of the 15 working cycles + 2 named composed cycle-sets (HSC, T4R) per CYCLES.md.
 
 ### 5. Output template
 
