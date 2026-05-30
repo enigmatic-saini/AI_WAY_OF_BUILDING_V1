@@ -30,19 +30,129 @@ Examples:
 
 ## §4 — Merge Requests (T_loop, T₃)
 
-Use `/mr`. The skill:
-1. Scans for sensitivity triggers (auth/PII/payment/schema/public-API/IaC).
-2. Routes reviewers:
-   - **Non-sensitive:** 1 reviewer (matched by domain).
-   - **Sensitive:** 2 reviewers + `security` role spawned.
-3. Fills the MR template (Summary, Why, M_build context, Test plan, Sensitivity, Rollback).
-4. Spawns the `reviewer` role for a second-opinion before the human queue.
+Use `/mr`. **(Extended 2026-05-31 deep-night per [KABIR_GATE.md additions log entry 24](KABIR_GATE.md) as Phase 3 of the external-AHR ITIL benchmark — ITIL classification (Standard/Normal/Emergency) + reviewer-routing matrix + mandatory rollback + PIR convention added.)**
+
+### §4.1 — ITIL classification (added Phase 3)
+
+Every MR carries one of three classifications. The `/mr` skill labels the MR description with the classification; reviewers route by it.
+
+| Classification | Definition | Examples |
+|---|---|---|
+| **Standard** | Low-risk, well-understood, follows a pre-approved pattern | dependency-bot bumps within policy; doc typo fix; pre-approved config tweak |
+| **Normal** | Default class — medium risk, requires substantive review | feature work; refactors; new endpoints; bug fixes |
+| **Emergency** | Urgent, often during/after incident; expedited review | security patch (Critical/High); incident hotfix; urgent data fix |
+
+Classification is **orthogonal to sensitivity-trigger routing** (§4.2). An Emergency security-patch is BOTH Emergency AND sensitivity-flagged — both apply.
+
+If unsure, **default Normal**. Standard is for pre-approved pattern-changes only; Emergency is for genuinely urgent fixes (not just "I want to ship this fast").
+
+### §4.2 — Sensitivity triggers
+
+The `/mr` skill scans the diff and flags any of these:
+- `auth/*`, `*auth*` files
+- PII paths (user data, profile, contact)
+- Payment paths
+- Schema files (`migrations/`, `schema.*`)
+- Public APIs (`api/`, `*Controller*`, route definitions)
+- IaC (`*.tf`, `*.yaml` in `infra/`, `k8s/`, `helm/`)
+
+If any flagged: **sensitive**. Otherwise: **non-sensitive**.
+
+### §4.3 — Reviewer-routing matrix (classification × sensitivity)
+
+The reviewer count is the **max** between classification's floor and sensitivity's floor. Sensitivity adds the `security` reviewer. **Sensitivity-triggers are NEVER expedited away by Emergency classification** — Emergency-sensitive still requires 2 reviewers + security; it just gets expedited queue priority.
+
+| Classification | Sensitivity | Reviewers required | Mandatory PIR |
+|---|---|---|---|
+| Standard | non-sensitive | 1 (lightweight review) | No |
+| Standard | sensitive | 2 + `security` | Yes (§4.5) |
+| Normal | non-sensitive | 1 (substantive review) | Conditional (large diffs) |
+| Normal | sensitive | 2 + `security` | Yes (§4.5) |
+| Emergency | non-sensitive | 1 (expedited queue) | Yes within 24h (§4.5) |
+| Emergency | sensitive | 2 + `security` (expedited queue) | Yes within 24h (§4.5) |
+
+**Standard is 1 reviewer minimum, NOT zero.** ITIL's "Standard = pre-approved at class level (0 per-change reviewers)" assumes infrastructure (dep-bot + passing CI + policy validation) that the kit cannot assume in every consuming project. The kit's floor is 1 — the consuming project may raise it but cannot drop it. See [JOURNEY/2026-05-31T03-00-standard-class-min-1-reviewer.md](JOURNEY/2026-05-31T03-00-standard-class-min-1-reviewer.md) for the precedent.
+
+Reviewer matching by file paths (unchanged from prior §4):
+- Backend / data-layer → backend reviewer
+- Frontend / UI → frontend reviewer
+- IaC / CI → devops reviewer
+- Schema / migration → data-engineer reviewer
+- Auth / PII / payment → **+ security reviewer (always)**
+
+Also: spawn the `reviewer` role (via `Agent`) for a second-opinion review before the human queue.
+
+### §4.4 — MR template (extended Phase 3)
+
+```
+## Classification
+- [ ] Standard | Normal | Emergency
+- Sensitivity triggers: <none | auth | PII | payment | schema | public-API | IaC>
+- Reviewers requested: <list>
+- PIR: <not required | conditional | required within 24h>
+
+## Summary
+<1-3 bullets>
+
+## Why
+<the user-facing reason or the engineering reason>
+
+## M_build context
+- Stage: <build | service>
+- Transition: <T_loop | T3>
+- Cycle profile used: <Q | S | D | 3x4>
+
+## Test plan
+- [ ] <bulleted markdown checklist>
+
+## Rollback (mandatory)
+- Rollback procedure: <exact git/deploy commands to undo this change>
+- Estimated time-to-rollback: <minutes>
+- Forward-only changes (un-rollbackable): <list or "none">
+- Rollback verification: <how we'll know rollback succeeded>
+
+## Audit trail
+- Related ADRs: <decisions/ADR-NNN.md links>
+- Related incidents: <postmortems/INC-NNNN.md links>
+- Related patches: <patches/PATCH-NNN.md links>
+- Related release: <release-notes/RELEASE-NOTES-v<...>.md if this MR ships in a tagged release>
+```
+
+The Rollback section is **mandatory** — same discipline as `/release` step 6 (per Phase 2). Even a perfect MR needs a documented rollback for audit + future incidents.
+
+### §4.5 — PIR (Post-Implementation Review) convention
+
+PIR captures *what actually happened after the change landed* — distinct from MR review (what's *proposed*) and HANDOVER (what's *in flight this session*).
+
+| Classification | PIR requirement |
+|---|---|
+| Standard | Not required (the class itself is the policy review) |
+| Normal | Conditional — required for large diffs (consuming project defines threshold; default: > 500 LOC or > 10 files) |
+| Emergency | **Mandatory within 24h** of merge, regardless of size |
+
+**Where PIR lives:** a labeled subsection in the next HANDOVER session block after the MR merges:
+
+```
+## PIR for MR #N (<classification>)
+
+- **Did the change land as planned?** <yes / no — what diverged>
+- **Did any incident result?** <none / link to postmortems/INC-NNNN.md>
+- **Did the rollback section turn out to be accurate?** <yes / no — what was missing>
+- **Lessons:** <what we now know that we didn't when we proposed the change>
+- **Follow-up tasks:** <link to TODO entries or future MRs>
+```
+
+**Resisted: a `pir` canonical doc type.** PIR is borderline per the audit — HANDOVER suffices. The 11th canonical type is reserved for genuinely new shapes, not for content that fits an existing channel.
+
+### §4.6 — Merge conditions
 
 **The MR cannot be merged until:**
 - `/pre-commit-8l` PASS on the final commit.
-- All requested reviewers approve.
+- All requested reviewers approve (per §4.3 matrix).
 - Required CI passes.
 - For sensitive changes: 2 human approvals + `security` sign-off.
+- Rollback section is populated (not "TBD") — per §4.4.
+- For Emergency MRs: the rollback section is *verified* (rollback command tested) before merge.
 
 ## §5 — Releases (T₃)
 
@@ -85,9 +195,11 @@ When unsure, **upgrade**.
 - **Never force-push to `main`.** The `block-dangerous-bash` hook enforces this.
 - **No secrets in commits.** The `secret-scan` hook enforces this.
 - **No `--no-verify`.** The `block-dangerous-bash` hook enforces this.
+- **Every MR carries an ITIL classification** (Standard / Normal / Emergency, per §4.1). The `/mr` skill enforces. Default Normal if unsure.
+- **Every MR has a populated Rollback section** (per §4.4). Even a perfect MR. Sita's "no-one-watching" lens applies.
 - Dead code: delete, do not comment out.
 - Large binaries: never commit. Use `.gitignore`.
-- Tag releases: `v<X.Y.Z>`. Every tag has a STATUS.md entry.
+- Tag releases: `v<X.Y.Z>`. Every tag has a STATUS.md entry. The `semver-check` hook enforces SemVer 2.0 format on tag creation. Every tagged release has a `release-notes/RELEASE-NOTES-v<X.Y.Z>.md` per [DASHBOARD.md §2.10](DASHBOARD.md).
 
 ## §8 — Single remote
 
