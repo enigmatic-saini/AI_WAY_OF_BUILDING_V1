@@ -28,8 +28,8 @@ If the second answer is "nowhere" → mark `CEREMONY`. Either remove the primiti
 
 ### 2. `CycleFsm` (FSM)
 - **Claims:** 12-step engine, four profiles (Q/S/D/3x4).
-- **Lives in:** `fsms/CycleFsm.toml` (formal) + every skill SKILL.md (each picks a profile).
-- **Verify:** each `.claude/skills/*/SKILL.md` declares `profile: Q | S | D` and a state list whose length matches the profile.
+- **Lives in:** `fsms/CycleFsm.toml` (formal) + every skill SKILL.md (each picks a profile, named in prose).
+- **Verify:** each `.claude/skills/*/SKILL.md` mentions its profile and step count somewhere in the Procedure / Method section (e.g., `"S profile, 5 cycles"`, `"cycles 1–8 ... 9–12"` for D-profile skills). The profile is currently named in prose rather than as a YAML field; promotion to a YAML `profile:` field across all 9 SKILL.md files is a candidate cleanup for next AHR. **(Verify-line corrected 2026-05-30 afternoon AHR — prior text checked for a `profile: Q | S | D` YAML field that no SKILL.md actually carries.)**
 
 ### 3. `HookFsm` (FSM)
 - **Claims:** No LLM in the loop. Deterministic. Reason printed on block. **Additionally (as of 2026-05-26 evening — see additions log entry 1):** the reference implementation of `HookFsm` for layer-1 LLM jivas (the `drift_hook` per [JIVA.md §5](JIVA.md)) supports **two operating modes** — binary (`δ = witness − action`, the J0/J0.5 default that the kit ships with) and trinary (`δ = α·|intent − witness| + β·|witness − action| + γ·|intent − action|`, available when a desire-extraction signal is sourced from CHARTER). Both modes preserve the no-LLM-in-the-loop, deterministic, reason-printed contract.
@@ -39,7 +39,7 @@ If the second answer is "nowhere" → mark `CEREMONY`. Either remove the primiti
 ### 4. `SkillFsm` (FSM)
 - **Claims:** Each skill picks a CycleFsm profile; every state has an output template.
 - **Lives in:** each `.claude/skills/*/SKILL.md` has an "Output template" section.
-- **Verify:** `grep -l "Output template" .claude/skills/*/SKILL.md` returns all 7 skill files.
+- **Verify:** `grep -l "Output template" .claude/skills/*/SKILL.md | wc -l` returns 9. **(Count corrected 2026-05-30 afternoon AHR: 7 → 9; matches the same correction made to audit point #7 on 2026-05-26 deep-night-3 but missed here.)**
 
 ### 5. `RoleDescriptor` (FSM)
 - **Claims:** A role is a drishti-intensifier, not a separate jiva. **(Count corrected 2026-05-26 deep-night-3: 5 → 6 role files.)** Six roles: analyst, architect, engineer, qa, security, reviewer.
