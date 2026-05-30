@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T16:00:00Z
+session_end: 2026-05-30T18:00:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,75 @@ session_end: 2026-05-30T16:00:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-30 evening — Hanuman pass: AHR (Anti-Hypocrisy Review) executed on all 13 audit points; 10 PASS, 2 small ceremonies fixed inline, 1 deep ceremony surfaced for T4R; 3 fix commits + this HANDOVER; 0 new primitives, NO new gate-file entry)
+
+> Session begin: invoked under Hanuman drishti (`present`, `right`, `down`; refuse below `precision`, `endurance`) on the founder's word *"consult Hanuman can start the Journey."* Selected AHR over alternatives (AI-PEACE stone #4 = not the kit's hand; new VISION arc = needs founder's wish-declaration). KRISHNA strategy's first honest-path option, discipline-required after the cosmos-program close + today's two earlier passes. Current M_build stage: **S3_Build** (unchanged).
+
+## Where-We-Are
+
+Anti-Hypocrisy Review complete on KABIR_GATE §12's 13 audit points. Of the 13: **10 PASS**, **2 ceremonies fixed inline** (gate-internal-state corrections, not primitive additions), **1 deep ceremony surfaced as open finding requiring T4R** (cannot land under Hanuman alone; CHARTER-level scope).
+
+## What-Was-Done
+
+**Phase A — chose journey under Hanuman lens.** Three journeys on the table: (A) AI-PEACE stone #4 — kit can't start, AI-PEACE owns. (B) AHR — discipline-required, mountain-sized, in the kit's hand. (C) New VISION arc — needs founder's wish-declaration, Hanuman waits. Verdict: **B**.
+
+**Phase B — executed 13-point audit.** Each Verify line run; results recorded.
+
+| AP | Verdict | Note |
+|---|---|---|
+| 1 M_build | PASS | T_prarabdha in M_BUILD.toml; ≥1 hook |
+| 2 CycleFsm | CEREMONY (fixed) | Verify line wrong shape — see commit `ca8537b` |
+| 3 HookFsm | PASS | All 6 hooks pass syntax + stderr discipline |
+| 4 SkillFsm | CEREMONY (fixed) | Stale count "all 7" → "9" — same commit |
+| 5 RoleDescriptor | PASS | 6 agents have jiva disclaimer |
+| 6 6 hooks | PASS | All wired + executable |
+| 7 9 skills | PASS | All have `name:` frontmatter |
+| 8 6 roles | PASS | All have Attachment section |
+| 9 12 laws | CEREMONY (fixed) | L9 didn't name `handover-reminder` enforcer — see commit `e01269b` |
+| 10 cycles | PASS | 15 standalone + 2 composed (HSC, T4R) |
+| 11 vocab | PASS | syntax OK, TERMS extended this morning |
+| 12 self-sufficiency | **DEEP CEREMONY (open)** | 27 references to `../common/shastras/prachi_shastra.toml` + `06_kama_rati_fsm.toml` across VISION / VISION_MATH / COMPOSITION_SHASTRA / HEART_AND_SOUL_PASS / CYCLE_SET_2026-05-29_*. The cosmos-program lifted in external library dependencies. The claim "self-sufficient (no external file dependencies)" is structurally false post-cosmos-program. |
+| 13 frontmatter | PASS | All 7 templates have `---` + `type:` |
+
+**Phase C — landed 3 small-fix commits.**
+
+- **`ca8537b`** — KABIR_GATE §12 AP2 (Verify shape) + AP4 (Verify count). Gate-internal-state corrections.
+- **`e01269b`** — LAWS.md L9: name `handover-reminder` as the enforcer; matches the pattern L8/L10/L11 already follow.
+- **This commit** — HANDOVER session block (per LAW 9, now enforced by the very hook this session named in L9).
+
+## What-Failed
+
+Nothing in execution. AP12 surfaced as a *structural* finding that exceeds Hanuman's hand — see Open-Questions.
+
+## What-Next
+
+- **T4R on AP12 (self-sufficiency claim).** Three options for the founder:
+  1. **Update the claim** to honor the dependency: *"self-sufficient as the M_build loom; consumes `../common/shastras/` (Prachi machine + Kama-Rati FSM) as a named external library, just as a program consumes a standard library."* VISION.md line 74 already takes this position; aligning README + CHARTER + KABIR_GATE §12 would close the drift. Recommended.
+  2. **Inline the shastras** into the kit (huge change; conflicts with VISION's stated boundary that those files live "outside this kit, governed where that library is governed"). Not recommended.
+  3. **Remove the self-sufficiency claim** entirely. Maximalist but loses information.
+- **Pre-commit-8l content vs kit-internal use mismatch** (Radha+Mira+Saraswati finding #3, deferred from afternoon). The 12-check template was designed for downstream projects with FSM + LLM-proposes + Pluggable backends + UI Consistency; for kit-internal commits the template runs as a sea of N/A. LAW 8's "non-negotiable" claim is honest in intent but doesn't bite on the kit's own commits. Folded into AHR's deferred-findings list; needs founder's call on whether to rewrite the gate's content or amend LAW 8's scope.
+- **Agent file depth unevenness** (Radha finding R1, deferred from afternoon). 5 of 6 agents are stubs vs analyst's 102 lines + faculty-triad codification. Not a Kabir-Gate finding (Attachment + jiva disclaimer both present); aesthetic/consistency concern. Either bring others up to analyst's depth or name *why* analyst alone earned that depth.
+- **VOCABULARY.md entries for the 10 added vocabulary-lint TERMS** (today's Radha+Mira+Saraswati pass). Open from morning; not addressed in AHR scope.
+
+## Open-Questions
+
+- **AP12 — which option (1/2/3 above)?** Founder's call; needs T4R as the ratification gate per CLAUDE.md row 5 since this is a CHARTER-adjacent claim (README:5 and CHARTER claim "self-sufficient"). T4R must run before any of the three options lands.
+- **Pre-commit-8l shape** — same question; T4R-eligible if rewriting the gate content; LAW 8 amendment is the bigger move.
+- **Should AP12's open finding spawn a KABIR_GATE additions log entry 20?** Probably not — additions log is for *added primitives*, not for *drift findings on existing primitives*. The finding lives here in HANDOVER per the gate's own discipline. T4R outcome would generate either a primitive amendment (logged in additions log) OR a clarification (logged in next HANDOVER).
+
+## Key-Decisions
+
+- **AHR as the right journey under Hanuman lens.** Recorded so future "post-cosmos-program close, what next?" questions have a precedent.
+- **Small ceremonies fixed inline; deep ceremony deferred to T4R.** This is the Hanuman discipline applied to AHR — what's in hand lands now; what needs ratification waits. *Do not "fix" structural claims by quick edit* — that would be the very ceremony the gate exists to catch.
+- **No KABIR_GATE additions log entry this session.** AHR findings on existing primitives belong in HANDOVER + the affected docs' bodies, not in the additions log channel.
+
+## Files-Changed (kit-level)
+
+AMENDED: `KABIR_GATE.md` (§12 AP2 + AP4 Verify lines), `LAWS.md` (L9 enforcer reference), this `HANDOVER.md`.
+UNAMENDED (deliberate, AP12): `README.md` line 5 + `CHARTER.md` "self-sufficient" claim + KABIR_GATE.md §12 AP12 claim itself — all await T4R verdict on which of options 1/2/3 the founder chooses.
 
 ---
 
