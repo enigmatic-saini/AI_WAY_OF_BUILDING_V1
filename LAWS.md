@@ -52,7 +52,7 @@ Five documents are committed to git (`README.md`, `DESIGN.md`, `STATUS.md`, `TOD
 - `DESIGN.md` updated when architecture changes; `CA1` annually.
 - `STATUS.md` separates **BUILT / DESIGNED / PLANNED**; updated at every milestone.
 - `TODO.md` updated on every status change (LAW 1.1 format).
-- `HANDOVER.md` updated at end of every session (LAW 11).
+- `HANDOVER.md` updated at end of every session (LAW 11). The `handover-reminder` hook (Stop event) enforces this — it surfaces a missing or stale (>3 days) HANDOVER.md at session end, kit-level and project-level both.
 
 Public symbols carry doc-comments with examples that compile and run.
 
