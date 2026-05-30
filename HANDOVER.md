@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T18:00:00Z
+session_end: 2026-05-30T19:30:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,82 @@ session_end: 2026-05-30T18:00:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-30 evening-late — Ram+Sita T4R deliberation on AP12 + VOCABULARY.md Sita pass; honest verdict: Build A REJECTED per prior MID precedent (entry 18); founder's call required to advance; 1 fix commit + this HANDOVER; 0 new primitives)
+
+> Session begin: invoked under Ram + Sita drishti (dharma + integrity-over-time) on the founder's instruction *"do as per RAM and SITA"* applied to the four open items left by the prior Hanuman AHR pass. Verdict split: act on Item 4 (VOCABULARY.md — small dharma fix), defer Item 1 (AP12 — requires T4R, surfaced a precedent conflict), skip Items 2 + 3 (founder's-call territory, not pure dharma). Current M_build stage: **S3_Build** (unchanged).
+
+## Where-We-Are
+
+VOCABULARY.md drift closed (3 stale surfaces brought into truth). AP12 self-sufficiency claim **NOT amended** — T4R deliberation surfaced a conflict with the prior MID verdict (entry 18, 2026-05-30 deep-night) that requires founder direction before any of README:5 / KABIR_GATE §12 / LINEAGE.md is touched.
+
+## What-Was-Done
+
+**Phase A — Ram+Sita classification of the 4 open items.**
+
+| Item | Verdict | Reason |
+|---|---|---|
+| 1. AP12 self-sufficiency claim | **DEFER** | Per CLAUDE.md row 5, requires T4R first. T4R surfaced a precedent conflict — see Phase C. |
+| 2. Pre-commit-8l shape | SKIP | LAW 8 scope question; founder's-call territory, not pure dharma. |
+| 3. Agent file depth unevenness | SKIP | Aesthetic; stubs aren't false; no Kabir-Gate failure. |
+| 4. VOCABULARY.md entries for the 10 lint terms | **ACT** | Closes the Sita-pin from the morning's Radha+Mira+Saraswati consult. |
+
+**Phase B — landed Item 4 commit.**
+
+- **`68d98bf`** — VOCABULARY: Sita pass. Three drifts brought into truth in one commit (same staleness pattern as the morning's README/INSTALL/KABIR_GATE fixes):
+  1. "5 roles" → "6 roles" + analyst added to the list.
+  2. Hook list 5 → 6 (added frontmatter-check).
+  3. "What vocabulary-lint blocks" rewritten — prior text claimed the lint blocks "the divine names in the LEFT column above," but the curated `TERMS` array also blocks bare deity names (Ram/Sita/Krishna/etc.) and kit-domain terms (MahaKaal/Drishti/etc.) that are NOT in any LEFT-column mapping. Honest framing + the 10 newly-added 2026-05-30 terms named with provenance.
+
+**Phase C — T4R deliberation on AP12 (KBD × NGD × VKD × MID).** Pre-execution discipline before any per-primitive amendment to README:5 / KABIR_GATE §12 #12 claim.
+
+- **KBD (anti-hypocrisy) PASS for Build A in isolation.** Current claim ("self-sufficient — no external file dependencies") is hypocritical given 27 load-bearing references to `../common/shastras/`. Build A ("self-sufficient as the M_build loom; consumes `../common/shastras/` as named external library") brings claim into alignment with VISION.md line 74's already-extant position.
+
+- **NGD (catuṣkoṭi) PASS for Build A in isolation.** Build A is *the same as* VISION line 74 and *different from* the original "no external file dependencies" claim — Build A reconciles the internal contradiction. No new doctrine.
+
+- **VKD (Build A/B/C) — Build A converges in isolation.** Build B (inline Prachi + Kama-Rati) is huge work and contradicts VISION line 74. Build C (remove the claim) loses information. Build A is the smallest scoped correction.
+
+- **MID (anti-dilution) — VETO.** This is where the deliberation breaks. The kit's *prior T4R verdict from 2026-05-30 deep-night* (KABIR_GATE additions log entry 18, line 464) explicitly stated: *"MID — the desire that 'the kit should be self-sufficient' is honored at full size — not diluted to 'mostly self-sufficient' or 'with one external reference.'"* Build A's framing — "consumes `../common/shastras/` as named external library" — IS precisely the *"with one external reference"* phrasing the prior MID rejected. Build A is the dilution.
+
+- **Counter-check on whether the references are citations or load-bearing dependencies.** VISION_MATH THEOREM 2.1's PROVED status *carries over from* `prachi_shastra §10.1` ("the proof there carries over because each twin is a function S → S"); COMPOSITION_SHASTRA §C explicitly *"rests on"* the Prachi guardian-composition; VISION_MATH DEF 1.2 defines "twin" *as* "a Prachi jiva." These are **structural dependencies, not citations**. If `prachi_shastra` were removed, VISION_MATH THEOREM 2.1 would degrade from PROVED to UNPROVEN. The framing "citations from a sister library" is *not honest* — they are load-bearing imports.
+
+- **Verified common/ is a real governed library**: separate `.git`, has `LAW/WORK_CULTURE.md` (12 laws + 50+ cycles), `maintenance/SHASTRA_GUIDE.md`, 188 shastras. So Build A's "named external library" framing is honoring a real fact, not a fiction — *but the dependency is load-bearing, which is what the prior MID rejected.*
+
+**T4R verdict on Build A: REJECTED.** Two options left, both requiring founder direction:
+
+- **Build B** — Lift the load-bearing parts of `prachi_shastra` (the guardian monoid, §10.1's THM 8.1, §1.3's machine definition) and `06_kama_rati_fsm` (the HOLLOW state for emergent-drift modeling) into the kit. Preserves the prior MID at full size. Cost: substantial; conflicts with VISION line 74's positioning of common/ as "outside this kit, governed where that library is governed."
+
+- **Build C** — Remove the "self-sufficient" claim from README:5 / KABIR_GATE §12 #12. Admits the dilution honestly. Loses information about what the kit IS (a self-sufficient loom).
+
+- **Build A'** (a possible reframing — needs T4R) — Distinguish *runtime self-sufficiency* (PASS; the kit's M_build + hooks + skills + roles have NO external dependency) from *cosmos-program mathematical exposition* (which lifts in `common/shastras/` theorems as load-bearing). This would require reconciling with the prior MID's strict reading; the founder may judge it as a legitimate refinement of scope rather than a dilution.
+
+## What-Failed
+
+Nothing in execution. Phase C surfaced a precedent conflict that exceeds Hanuman + Ram+Sita scope. Acting on Build A would have been the very dilution the prior T4R warned against.
+
+## What-Next
+
+- **Founder's call on AP12.** Build B, Build C, or Build A' (or another framing not yet named). T4R reruns once direction is declared.
+- **Item 2 (pre-commit-8l shape) + Item 3 (agent stubs) still deferred.** Not in dharma scope.
+- **Subtle: did the prior T4R (entry 18) implicitly accept VISION's framing of common/shastras/ as "outside this kit," or was it specifically about RIAAN/MATH.md and didn't consider horizontal deps?** This is the actual question Build A' must answer. Reading entry 18's full context (lines 457–476) would clarify.
+
+## Open-Questions
+
+- **AP12 — Build B / C / A' — founder's call.**
+- **Did the prior T4R (entry 18) implicitly govern horizontal library deps, or only vertical project deps?** This determines whether Build A' is a legitimate refinement or a re-dilution.
+- **If Build B is chosen, what is the minimal load-bearing subset of prachi_shastra + kama_rati_fsm that VISION_MATH actually needs?** A scoped lift, not a full inline.
+
+## Key-Decisions
+
+- **Ram + Sita applied to T4R: do not bypass the gate to land Build A.** The prior MID precedent has standing weight; quick-fixing the AP12 claim by "naming the dependency" would be the exact dilution mode the prior T4R caught. Recorded so future "let's just clarify the claim" attempts on related self-sufficiency questions reference this precedent.
+- **VOCABULARY.md drift closed** under Sita's truth-of-claim discipline; same staleness pattern Ram+Sita has been correcting all day.
+
+## Files-Changed (kit-level)
+
+AMENDED: `VOCABULARY.md` (role count + hook count + lint block-list section), this `HANDOVER.md`.
+UNAMENDED (deliberate, AP12 deferred): `README.md`, `CHARTER.md`, `KABIR_GATE.md §12 #12`, `LINEAGE.md`. All await founder's direction.
 
 ---
 
