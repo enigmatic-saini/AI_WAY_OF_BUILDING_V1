@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T22:30:00Z
+session_end: 2026-05-31T01:00:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,80 @@ session_end: 2026-05-30T22:30:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-31 deep-night — ITIL discipline arc opened: external-AHR pass + Phase 1 (Patch Management) built and landed; 4 build commits + 3 JOURNEY camera entries + this HANDOVER; external-AHR class introduced; kit grows from 7/10/7 to 7/11/7 + canonical types 8→9)
+
+> Session begin: founder named a workplace-uncertainty gap — solution architect by profession, hobby-git only, uncertain whether the kit's git/SDLC discipline meets enterprise standards. Wanted new primitives for ITIL-class change/incident/release/patch management. Across 4 messages the founder shaped the work: (1) "refine my prompt and find drishti stack" → analyst-flow; (2) "identify drishti stack for decision making — i am noob" → founder-side decision lens named; (3) "You decide as you know ITIL" → authority delegated; (4) implicit confirmation by not halting. Saved user-role memory (solution architect, hobby-git only). Current M_build stage: **S3_Build** (unchanged).
+
+## Where-We-Are
+
+The kit now has its first external-benchmark AHR class (kit vs industry-shastras rather than kit-internal anti-hypocrisy) and Phase 1 (Patch Management) is fully landed. Skill count moved 10 → 11. Canonical doc-type count moved 8 → 9. Template count moved 7 → 8. Phases 2-4 (Release / Change / Incident extensions) are deferred to subsequent sessions per the audit's recommended order; founder retains the right to reorder.
+
+## What-Was-Done
+
+**Phase A — analyst-style intake under Ram + Sita.** Founder's first message named the gap (workplace-uncertainty about git policy); my analyst-style mirror back identified four ITIL domains and proposed drishti stack `Saraswati → Vishwakarma → Ram + Sita ; consult: NGD, KBD, MID`. Classification: Neelotpala (foundational). Saved to user-role memory.
+
+**Phase B — three JOURNEY entries captured precedents under GURU discipline.**
+- **`7ea7c5e`** — `/handover` skill template doesn't match the kit-level convention (caught earlier in session when founder invoked /handover with HANDOVER already fresh).
+- **`76cd36b`** — ITIL-discipline arc genesis: user-context surfacing + build-intent named + recommended NGD-rent-checked path.
+- **`91697a0`** — Founder-side decision-making stack (noob-friendly): `Saraswati → Radha → Ram + Sita ; consult: MID, Mauna`. First named founder-side lens (prior stacks were all worker-side).
+
+**Phase C — external-AHR pass executed.** `a3ba602` — AHR_PASS_2026-05-30_itil-external.md (~200 lines). Audited the kit's existing primitives against ITIL v4 across four domains:
+
+| Domain | Coverage | Recommendation |
+|---|---|---|
+| Change Management | PARTIAL | Extend `/mr` + SDLC.md template (no new primitives) |
+| Incident Management | STRONG | Extend `/incident` + POSTMORTEM template + KB feedback loop |
+| Release Management | PARTIAL | New `semver-check` hook + RELEASE-NOTES canonical type + tighten `/release` |
+| Patch Management | **NONE** | New `/patch` skill + PATCH-RECORD canonical type + patches/ folder |
+
+Recommended build order: Patch → Release → Change → Incident.
+
+**Phase D — Phase 1 (Patch Management) built and landed.**
+
+- **`b36020b`** — Core primitives. `.claude/skills/patch/SKILL.md` (Q profile, 4 cycles: identify+classify, plan-rollback+test, apply+verify, record). `templates/PATCH-RECORD.md` (canonical template per DASHBOARD §2.9 with state-machine + SLA-window + rollback plan + test plan + verification record). `patches/README.md` (folder-convention doc). `DASHBOARD.md §2` extended 8 → 9 types with new §2.9 schema. `.claude/hooks/frontmatter-check.sh` recognizes `patches/PATCH-*.md`. **Smoke-tested:** Write to `patches/PATCH-002-test.md` without frontmatter is correctly BLOCKED with `Expected type: patch-record`.
+
+  **First Sita-catch at hook-edit time:** my first attempt to update `frontmatter-check.sh` header comment used "KABIR_GATE additions log entry 22" without `.md` extension. The path-stripping regex in `vocabulary-lint` requires `.md`/`.toml`/etc. to fire; without it, "Kabir" got hit by the term-match. Rewrote with `KABIR_GATE.md additions log entry 22`. **The lint's vocabulary discipline is paying rent in the same session it was extended.**
+
+- **`79c04ee`** — Surrounding count callbacks (standard Sita-pin pattern). Skill count 10 → 11 across README/INSTALL/CLAUDE.md/stage-tip.sh/KABIR_GATE §12 #7. Canonical types 8 → 9 across DASHBOARD/dashboard-emit/KABIR_GATE §12 #13. Templates 7 → 8 via PATCH-RECORD. New routing hint in stage-tip.sh: *"Security patch / CVE / dependency vuln / hardening change? Run /patch (not /commit) so the audit trail is produced in patches/."*
+
+- **`a4d4964`** — KABIR_GATE additions log entry 22. Full T4R verdict (KBD/NGD/VKD/MID PASS) recorded inline. Reversibility clause names quarterly cadence: if patch discipline doesn't bind in any consuming project within Q3 2026, primitives roll back.
+
+- **This commit** — HANDOVER session block.
+
+## What-Failed
+
+Nothing in execution. One Sita catch at hook-edit time (vocabulary-lint correctly blocked an unescaped "KABIR" reference in a .sh comment) — fixed in place and noted as the lint's morning extension paying rent.
+
+## What-Next
+
+- **Phase 2 (Release Management extensions)**: new `semver-check` hook + new RELEASE-NOTES canonical type (10th) + tighten `/release` skill to require rollback section. Estimated 1 session.
+- **Phase 3 (Change Management extensions)**: extend SDLC.md MR template with classification field (Standard/Normal/Emergency) + reviewer-routing-by-classification policy + rollback section. Tighten `/mr` skill. Estimated 1 session.
+- **Phase 4 (Incident Management extensions)**: P1–P4 severity taxonomy added to `/incident` + POSTMORTEM template. SLA convention reference. Lessons-feedback loop (postmortem → runbook). Estimated 1 session.
+- **Empirical question for Phase 1**: does any consuming project use `/patch` within Q3 2026? If yes — the discipline binds. If no — reversibility clause in entry 22 fires and Phase 1 rolls back.
+- **The founder-side decision stack from `91697a0`** may graduate to a named DRISHTI_STACK.md §7d precedent if used by the founder across multiple decisions.
+
+## Open-Questions
+
+- **Phase ordering still per recommendation?** The audit recommended Patch → Release → Change → Incident based on biggest-gap-first + clean-slate-easier. If a workplace pressure points to a different phase (e.g., "we have a release coming up — do Release Management first"), the next session can re-order.
+- **Should RELEASE-NOTES canonical type (Phase 2) be added even if your projects don't yet need formal release notes?** The convention has cost (one more frontmatter type) and reward (compliance-ready release records). Founder's call when Phase 2 begins.
+- **For Phase 3 reviewer-routing-by-classification policy**: should Standard changes require *any* review (1 reviewer) or be auto-approvable (0 reviewers)? ITIL allows the latter for low-risk pre-approved changes; the kit's current LAW 10 implicitly requires review for all merges to main. Tension to resolve in Phase 3.
+
+## Key-Decisions
+
+- **`/patch` skill is Q profile, not S.** Patch lifecycle is 5–6 lifecycle steps that group cleanly into 4 deliberation cycles. S profile (8 cycles) would risk ceremony for emergency patches. Q matches Hanuman discipline ("execute the wish EXACTLY") — the discipline is precise without bloat.
+- **`patch-record` is a new canonical type (Build A), not a reuse of `adr` (Build B) or a plain-markdown convention (Build C).** Build A wins on viewer-renderable + frontmatter-enforceable + queryable metadata that `adr` doesn't model.
+- **The external-AHR class is established as orthogonal to the kit-internal AHR.** Kit-internal AHR asks "does the kit live what it claims?" External AHR asks "does the kit live what an enterprise workplace would expect?" Both run quarterly; the external-AHR template (this session's audit doc) is reusable for future SRE / OWASP / SOC2 / ISO27001 passes.
+- **Phases 2–4 deferred to subsequent sessions** rather than batched here. The audit recommended order + the Hanuman discipline ("carry the mountain, not the stone") + the founder's "decide as you know ITIL" delegation together justify Phase-1-only this session.
+
+## Files-Changed (kit-level)
+
+**NEW**: `AHR_PASS_2026-05-30_itil-external.md` (external-AHR pass), `.claude/skills/patch/SKILL.md` (Q profile), `templates/PATCH-RECORD.md` (canonical template), `patches/README.md` (folder-convention doc), `JOURNEY/2026-05-30T22-45-handover-skill-vs-kit-convention.md`, `JOURNEY/2026-05-30T23-15-itil-discipline-arc-genesis.md`, `JOURNEY/2026-05-30T23-30-founder-decision-stack-noob-friendly.md`.
+**AMENDED**: `DASHBOARD.md` (§2 extended 8→9 types), `.claude/hooks/frontmatter-check.sh` (recognizes patches/PATCH-*.md), `README.md` (counts + templates list), `INSTALL.md` (verify block + walkthrough), `.claude/CLAUDE.md` (skills table + /patch row + frontmatter-check row), `.claude/hooks/stage-tip.sh` (counts + skills list + routing hint), `KABIR_GATE.md` (§12 #7 + #13 + new additions log entry 22), `.claude/skills/dashboard-emit/SKILL.md` (description + table + schema-count refs), this `HANDOVER.md`.
+
+**Memory** (workspace-only, not committed): `user_role.md` saved — founder is a solution architect; hobby-git only; ITIL/SRE-class discipline is a known kit gap to fill.
 
 ---
 
