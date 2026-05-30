@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# stage-tip — on every UserPromptSubmit, surface M_build stages + 9 skills + 6 roles.
+# stage-tip — on every UserPromptSubmit, surface M_build stages + 10 skills + 7 roles.
 # Hook spec: UserPromptSubmit. Exit 0; print to stderr for the model context.
 # LAW: L3 (Escalation — make /triage discoverable).
 # Refreshed 2026-05-26 deep-night-3 per KABIR_GATE.md additions log entry 9:
@@ -8,6 +8,10 @@
 #   - composed cycle-sets HSC + T4R surfaced as routing hints
 #   - vocabulary law: this script is code, so IT terms only (prior versions used Sanskrit
 #     terms in code paths; this version uses IT translations only - see VOCABULARY.md)
+# Refreshed 2026-05-30 night per KABIR_GATE.md additions log entry 20:
+#   - skill count 9 -> 10 (added /camera for mid-session moment capture)
+#   - role count 6 -> 7 (added guru -- the witness-narrator)
+#   - new routing hint for guru/camera/JOURNEY discipline
 
 set -euo pipefail
 
@@ -20,6 +24,8 @@ Skills (CycleFsm profiles):
   /triage          - pick the right stage / cycle (witness)
   /pre-commit-8l   - 12-point check before every commit (non-negotiable)
   /handover        - write HANDOVER.md at session end
+  /camera          - mid-session moment capture -> JOURNEY/<date>T<time>-<slug>.md
+                     (held by guru role; one blog-style entry per important detail)
   /commit          - 8L -> message -> commit
   /mr              - open MR with template + reviewer routing
   /release         - release captain procedure (guard on T3)
@@ -29,6 +35,7 @@ Skills (CycleFsm profiles):
 Roles (role-modifiers attached at specific transitions; the LLM remains one):
   analyst (pre-T0)  architect (T0,T1)  engineer (T2,T3,T_loop)
   qa (T2,T3)  security (T2,T3,T_prarabdha)  reviewer (T3)
+  guru (cross-cutting witness-narrator; holds /camera; writes to JOURNEY/)
 
 Composed cycle-sets (named compositions, see CYCLES.md):
   HSC  - Heart-and-Soul (MID x ASD, 24 cycles) - for questions touching both
@@ -41,6 +48,7 @@ Unsure which stage? Run /triage.
 Heart-or-soul architectural question? Consider HSC.
 About to amend a per-primitive contract in MATH.md/DESIGN.md/CHARTER.md? Run T4R first.
 Release touching auth/PII/payment/IaC/public-API? SHD (Shadow Deep) is mandatory inside /release for sensitive-trigger diffs.
+Important detail surfacing mid-task (precedent, decision, near-miss)? Invoke guru role + run /camera to capture before it evaporates between artifacts.
 EOF
 
 exit 0

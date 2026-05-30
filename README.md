@@ -35,7 +35,7 @@ This is the ArdhNarishwar axiom (see [LINEAGE.md](LINEAGE.md) §1) applied to a 
 | [DASHBOARD.md](DASHBOARD.md) | YAML frontmatter contract for canonical docs (so viewers can render) |
 | [KABIR_GATE.md](KABIR_GATE.md) | Every primitive must live what it claims (13 audit points) |
 | [INSTALL.md](INSTALL.md) | One-command install |
-| [.claude/](.claude/) | Hooks (6), skills (9), role descriptors (6) |
+| [.claude/](.claude/) | Hooks (7), skills (10), role descriptors (7) |
 | [fsms/](fsms/) | Five load-bearing FSMs in TOML (M_BUILD, CycleFsm, HookFsm, RoleDescriptor, SkillFsm) |
 | [fsms/atlas-fsms/](fsms/atlas-fsms/) | Lineage reference — 70 formal TOMLs for the divinity-named cycles ATLAS describes in prose. Reference material, not runtime-required. |
 | [templates/](templates/) | DESIGN, ADR, POSTMORTEM, RUNBOOK |

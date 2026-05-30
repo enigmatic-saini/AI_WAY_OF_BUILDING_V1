@@ -35,20 +35,21 @@ After install, run:
 # 1. Hooks are wired
 jq '.hooks' .claude/settings.json
 
-# 2. All 6 hook scripts exist and are executable
+# 2. All 7 hook scripts exist and are executable
 ls -la .claude/hooks/
 test -x .claude/hooks/block-dangerous-bash.sh && echo "block-dangerous-bash OK"
 test -x .claude/hooks/secret-scan.sh && echo "secret-scan OK"
 test -x .claude/hooks/vocabulary-lint.sh && echo "vocabulary-lint OK"
 test -x .claude/hooks/frontmatter-check.sh && echo "frontmatter-check OK"
 test -x .claude/hooks/handover-reminder.sh && echo "handover-reminder OK"
+test -x .claude/hooks/camera-reminder.sh && echo "camera-reminder OK"
 test -x .claude/hooks/stage-tip.sh && echo "stage-tip OK"
 
-# 3. All 9 skills present
-ls .claude/skills/   # expect: commit dashboard-emit handover incident intake mr pre-commit-8l release triage
+# 3. All 10 skills present
+ls .claude/skills/   # expect: camera commit dashboard-emit handover incident intake mr pre-commit-8l release triage
 
-# 4. All 6 roles present
-ls .claude/agents/   # expect: analyst.md architect.md engineer.md qa.md reviewer.md security.md
+# 4. All 7 roles present
+ls .claude/agents/   # expect: analyst.md architect.md engineer.md guru.md qa.md reviewer.md security.md
 
 # 5. All 5 FSMs present
 ls AI_WAY_OF_BUILDING_V1/fsms/   # expect: CycleFsm.toml HookFsm.toml M_BUILD.toml RoleDescriptor.toml SkillFsm.toml
@@ -59,7 +60,7 @@ If any check fails: re-clone, re-link, file an issue.
 ## First-session walkthrough
 
 1. Open the repo in Claude Code.
-2. The `stage-tip` hook fires on your first prompt — it lists M_build stages and the 9 skills.
+2. The `stage-tip` hook fires on your first prompt — it lists M_build stages and the 10 skills.
 3. Run `/triage` to identify which stage applies to your work.
 4. Read [M_BUILD.md](M_BUILD.md) (15 min). It is the ground truth.
 5. Read [.claude/CLAUDE.md](.claude/CLAUDE.md) (5 min). It is the cheat sheet.

@@ -95,11 +95,11 @@ The `SHD` cycle's actions in code / configs / log lines use these canonical term
 
 ## Role names
 
-The 6 roles use IT-industry titles directly: `analyst`, `architect`, `engineer`, `qa`, `security`, `reviewer`. No lineage translation needed.
+The 7 roles use IT-industry titles directly: `analyst`, `architect`, `engineer`, `guru`, `qa`, `security`, `reviewer`. No lineage translation needed. The `guru` role's drishti stack (composing existing ATLAS lenses) lives in [.claude/agents/guru.md](.claude/agents/guru.md); the stack itself uses lineage names as it is a docs-and-prompts artifact (vocabulary-lint exempts `*.md`).
 
 ## Hook names
 
-`block-dangerous-bash`, `secret-scan`, `vocabulary-lint`, `frontmatter-check`, `handover-reminder`, `stage-tip`. These are scripts. They have no lineage.
+`block-dangerous-bash`, `secret-scan`, `vocabulary-lint`, `frontmatter-check`, `handover-reminder`, `camera-reminder`, `stage-tip`. These are scripts. They have no lineage.
 
 ## What `vocabulary-lint` blocks
 

@@ -46,20 +46,20 @@ If the second answer is "nowhere" → mark `CEREMONY`. Either remove the primiti
 - **Lives in:** each `.claude/agents/*.md` starts with the disclaimer line "This is NOT a separate jiva. The LLM is one."
 - **Verify:** `grep -l "NOT a separate jiva" .claude/agents/*.md | wc -l` returns 6.
 
-### 6. The 6 hooks
-- **Claims:** wired via `settings.json`; fire on the named events. **(Count corrected 2026-05-26 deep-night-3: 5 → 6 hooks.)** Six hooks: block-dangerous-bash, secret-scan, vocabulary-lint, frontmatter-check, handover-reminder, stage-tip.
+### 6. The 7 hooks
+- **Claims:** wired via `settings.json`; fire on the named events. **(Count corrected 2026-05-26 deep-night-3: 5 → 6 hooks; extended 2026-05-30 night to 7 hooks per [additions log entry 20](#additions-log-entry-20--guru--camera--journey-system) with `camera-reminder`.)** Seven hooks: block-dangerous-bash, secret-scan, vocabulary-lint, frontmatter-check, handover-reminder, camera-reminder, stage-tip.
 - **Lives in:** `.claude/settings.json`.
-- **Verify:** `jq '[.hooks | .. | .command? | select(.)] | length' .claude/settings.json` returns 6. Each script under `.claude/hooks/` is executable (`-x`).
+- **Verify:** `jq '[.hooks | .. | .command? | select(.)] | length' .claude/settings.json` returns 7. Each script under `.claude/hooks/` is executable (`-x`).
 
-### 7. The 9 skills
-- **Claims:** discoverable via Claude Code, each runs a named cycle. **(Count corrected 2026-05-26 deep-night-3: 7 → 9 skills.)** Nine skills: intake, triage, pre-commit-8l, handover, commit, mr, release, incident, dashboard-emit.
+### 7. The 10 skills
+- **Claims:** discoverable via Claude Code, each runs a named cycle. **(Count corrected 2026-05-26 deep-night-3: 7 → 9 skills; extended 2026-05-30 night to 10 skills per [additions log entry 20](#additions-log-entry-20--guru--camera--journey-system) with `/camera`.)** Ten skills: intake, triage, pre-commit-8l, handover, camera, commit, mr, release, incident, dashboard-emit.
 - **Lives in:** `.claude/skills/<name>/SKILL.md`, each with YAML frontmatter (`name`, `description`).
-- **Verify:** `grep -l "^name:" .claude/skills/*/SKILL.md | wc -l` returns 9.
+- **Verify:** `grep -l "^name:" .claude/skills/*/SKILL.md | wc -l` returns 10.
 
-### 8. The 6 roles
-- **Claims:** discoverable via Claude Code's `Agent` tool, each attaches to ≥1 transition. **(Count corrected 2026-05-26 deep-night-3: 5 → 6 roles.)**
+### 8. The 7 roles
+- **Claims:** discoverable via Claude Code's `Agent` tool, each attaches to ≥1 transition (the `guru` role attaches cross-cutting; all others attach to ≥1 specific M_build transition). **(Count corrected 2026-05-26 deep-night-3: 5 → 6 roles; extended 2026-05-30 night to 7 roles per [additions log entry 20](#additions-log-entry-20--guru--camera--journey-system) with `guru`.)**
 - **Lives in:** `.claude/agents/<name>.md`, each with YAML frontmatter + an "Attachment" section naming transitions.
-- **Verify:** `grep -l "^## Attachment" .claude/agents/*.md | wc -l` returns 6.
+- **Verify:** `grep -l "^## Attachment" .claude/agents/*.md | wc -l` returns 7.
 
 ### 9. The 12 laws
 - **Claims:** each law is enforced by a hook, skill, or convention.

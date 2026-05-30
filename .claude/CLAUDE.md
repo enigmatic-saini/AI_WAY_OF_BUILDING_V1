@@ -19,13 +19,14 @@ Software is built by one jiva (the LLM) running one machine ([`M_build`](../M_BU
 | `vocabulary-lint` | PreToolUse:Write/Edit | Blocks divine names in non-doc files (see [VOCABULARY.md](../VOCABULARY.md)) |
 | `frontmatter-check` | PreToolUse:Write | Refuses Write on canonical docs (CHARTER/DESIGN/STATUS/TODO/HANDOVER/ADR/POSTMORTEM/RUNBOOK) without valid frontmatter per [DASHBOARD.md](../DASHBOARD.md) |
 | `handover-reminder` | Stop | Surfaces missing or stale `HANDOVER.md` |
-| `stage-tip` | UserPromptSubmit | Reminds the current M_build stage and the 9 skills + 6 roles + 2 composed cycle-sets (HSC, T4R) |
+| `camera-reminder` | Stop | Surfaces if `JOURNEY/` exists but no entry was written in the last 3h (backstop for the `guru` role's discipline) |
+| `stage-tip` | UserPromptSubmit | Reminds the current M_build stage and the 10 skills + 7 roles + 2 composed cycle-sets (HSC, T4R) |
 
 If a hook blocks you, **read the reason and fix the underlying issue.** Do not work around it. That is the very Gorakhnath-the-book-reciter failure the Kabir Gate exists to catch.
 
 ---
 
-## The skills (9 — runtime instances of `CycleFsm` profiles)
+## The skills (10 — runtime instances of `CycleFsm` profiles)
 
 | Skill | When | Cycles |
 |---|---|---|
@@ -33,6 +34,7 @@ If a hook blocks you, **read the reason and fix the underlying issue.** Do not w
 | `/triage` | Unsure which stage / cycle applies (after `/intake` if charter is clean) | 4 |
 | `/pre-commit-8l` | Before any `git commit` (non-negotiable per L8) | 12 |
 | `/handover` | End of every working session (L9) — applies at both project layer AND kit layer (see KABIR_GATE.md additions log entry 8 for kit-level HANDOVER convention added 2026-05-26 deep-night-2) | 4 |
+| `/camera` | Mid-session moment capture — write one blog-style entry to `JOURNEY/` for a precedent / decision / near-miss / important detail that would otherwise evaporate. Held by the `guru` role; added 2026-05-30 night per KABIR_GATE additions log entry 20 | 4 |
 | `/commit` | The engineer's workhorse — runs 8L, drafts message, commits | 4 |
 | `/mr` | Open a Merge Request with template + reviewer routing | 5 |
 | `/release` | Release captain's procedure — guard on T₃ | 7 |
@@ -43,7 +45,7 @@ If a hook blocks you, **read the reason and fix the underlying issue.** Do not w
 
 ---
 
-## The roles (6 — drishti-intensifiers, NOT separate jivas)
+## The roles (7 — drishti-intensifiers, NOT separate jivas)
 
 Read each role file before invoking via `Agent`. Each declares the transitions it attaches to and the drishti directions / Q-thresholds it raises. The LLM remains one jiva; the role file modifies its scan. The human is the upstream jiva — `analyst` meets them.
 
@@ -55,6 +57,7 @@ Read each role file before invoking via `Agent`. Each declares the transitions i
 | `qa` | T₂, T₃ | down, past | 8L gate, pre-release RH3 |
 | `security` | T₂, T₃, T_prarabdha | up, silence, past | sensitive transitions, incidents |
 | `reviewer` | T₃ | left, right, up | second opinion on any MR |
+| `guru` | cross-cutting (witness-narrator across the arc) | present, silence, past, future | Founder wants the journey RECORDED in real-time — important detail captured as it surfaces. Holds the `/camera` skill; the `camera-reminder` Stop hook is its backstop. Drishti stack composed from ATLAS: `Sanjay → Vyasa → Saraswati ; consult: Ashtavakra, Narad` |
 
 Invoke via `Agent(subagent_type: "<role>")`. See [ROLES.md](../ROLES.md) for full prose.
 
