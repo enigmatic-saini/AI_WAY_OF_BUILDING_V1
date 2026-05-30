@@ -25,6 +25,16 @@
 # string-adjacency concatenation. The runtime value is the joined string;
 # the source bytes carry a quote-pair in between. Defense in depth alongside
 # the self-exemption.
+#
+# Extended 2026-05-30 afternoon (Radha+Mira+Saraswati pass, Ram+Sita verdict):
+#   Added 10 lineage terms that landed in kit prose through the cosmos-program
+#   arc and KABIR_GATE entries 14-19 but were not in the lint's curated block-
+#   list: Radha, Mira, Khatushyam, Parvati, Arjuna, Nataraj, Nataraja, Nagarjuna,
+#   Vishwakarma, Tansen. The lint already covered Hanuman/Buddha/Patanjali/
+#   Kabir/Ganesh/Narad etc. as a curated practical block-list (not auto-derived
+#   from VOCABULARY.md's two-column tables); these additions match that pattern.
+#   Kama/Rati deferred -- used colloquially in KRISHNA_STRATEGY's "Kama-Rati
+#   anti-pattern" idiom; not clearly divine-name usage, needs founder's call.
 
 set -euo pipefail
 
@@ -78,6 +88,8 @@ declare -a TERMS=(
   "Hanu""man" "Gane""sh" "Nara""d" "Bud""dha" "Pata""njali" "Kabi""r" "Gorakh""nath"
   "Ruk""mini" "Jamba""vati" "Satya""bhama" "Kali""ndi" "Nagna""jiti" "Mitra""vinda" "Bha""dra"
   "Maha""Kaal" "Ardh""Narishwar" "Pra""chi" "Drish""ti" "Ji""va" "Jeevan""yatra" "Shas""tra"
+  "Ra""dha" "Mi""ra" "Khatu""shyam" "Par""vati" "Arj""una" "Nata""raj" "Nata""raja"
+  "Naga""rjuna" "Vish""wakarma" "Tan""sen"
 )
 
 for t in "${TERMS[@]}"; do
