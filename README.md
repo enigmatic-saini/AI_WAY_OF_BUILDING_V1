@@ -14,21 +14,30 @@ This is the ArdhNarishwar axiom (see [LINEAGE.md](LINEAGE.md) §1) applied to a 
 
 | File | Purpose |
 |---|---|
+| [VISION.md](VISION.md) | The wish — sits above CHARTER (stone #0, 2026-05-29) |
 | [CHARTER.md](CHARTER.md) | Why this kit exists, what it is not |
+| [VISION_MATH.md](VISION_MATH.md) | Formal core of VISION — composition monoid, CONJ 4.1 resolved (stone #1) |
 | [M_BUILD.md](M_BUILD.md) | The 7-state build machine — the heart |
+| [JIVA.md](JIVA.md) | Recursive jiva principle + faculty triad (manas/hridaya/atman) |
+| [MATH.md](MATH.md) | Kit's foundational drift math (binary δ_ws + trinary δ_trishul + catuṣkoṭi) |
 | [LINEAGE.md](LINEAGE.md) | The conceptual ancestry, internalized |
 | [LAWS.md](LAWS.md) | 12 working-set laws |
-| [CYCLES.md](CYCLES.md) | 13 working-set review cycles (`IN` is the pre-Seed front door) |
+| [CYCLES.md](CYCLES.md) | 15 working-set review cycles + 2 named composed cycle-sets (HSC, T4R); `IN` is the pre-Seed front door |
 | [ROLES.md](ROLES.md) | 6 drishti-intensifiers (analyst meets the human upstream of S0) |
+| [DRISHTI_STACK.md](DRISHTI_STACK.md) | Runtime composition of lenses for a single jiva (convention; execution-stacks + strategic-decision-stacks) |
+| [Q_RUBRIC.md](Q_RUBRIC.md) | 8-axis Ashtabharya capability measurement |
 | [ATLAS.md](ATLAS.md) | Lineage foundation — the full catalog of laws (16), cycles (50+), divine reviewers, and disciplines from which the working-set primitives are drawn |
+| [TWIN_FIDELITY_SHASTRA.md](TWIN_FIDELITY_SHASTRA.md) | Independence theorem + Twin Charter + estimator contract (stone #2) |
+| [COMPOSITION_SHASTRA.md](COMPOSITION_SHASTRA.md) | Emergent-drift handling theory (stone #3) |
+| [NAADA_SHASTRA.md](NAADA_SHASTRA.md) | Perception layer — CONJ 5.1 + failure-mode parity (stone #5) |
 | [SDLC.md](SDLC.md) | Commits, MRs, releases |
 | [VOCABULARY.md](VOCABULARY.md) | IT-industry terms; lineage preserved |
 | [DASHBOARD.md](DASHBOARD.md) | YAML frontmatter contract for canonical docs (so viewers can render) |
 | [KABIR_GATE.md](KABIR_GATE.md) | Every primitive must live what it claims (13 audit points) |
 | [INSTALL.md](INSTALL.md) | One-command install |
-| [.claude/](.claude/) | Hooks (5), skills (8), role descriptors (6) |
+| [.claude/](.claude/) | Hooks (6), skills (9), role descriptors (6) |
 | [fsms/](fsms/) | Five load-bearing FSMs in TOML (M_BUILD, CycleFsm, HookFsm, RoleDescriptor, SkillFsm) |
-| [fsms/atlas-fsms/](fsms/atlas-fsms/) | Lineage reference — 67 formal TOMLs for the divinity-named cycles ATLAS describes in prose. Reference material, not runtime-required. |
+| [fsms/atlas-fsms/](fsms/atlas-fsms/) | Lineage reference — 70 formal TOMLs for the divinity-named cycles ATLAS describes in prose. Reference material, not runtime-required. |
 | [templates/](templates/) | DESIGN, ADR, POSTMORTEM, RUNBOOK |
 
 ## What this kit is NOT
@@ -36,14 +45,15 @@ This is the ArdhNarishwar axiom (see [LINEAGE.md](LINEAGE.md) §1) applied to a 
 - **Not 12 separate agent personas.** One jiva. Roles are drishti modifiers, not actors.
 - **Not language- or framework-specific.** Works on any stack.
 - **Not aspirational.** Every primitive must pass the [Kabir Gate](KABIR_GATE.md). If a file describes an FSM that has no runtime instance, the file is removed.
-- **Not 60 review cycles.** 12 working-set cycles cover the load-bearing reviews. Project-specific extensions belong in the consuming project's own `shastras/` directory (if it chooses to have one), not in the kit.
+- **Not 60 review cycles.** 15 working-set cycles cover the load-bearing reviews (+ 2 named composed cycle-sets HSC, T4R). Project-specific extensions belong in the consuming project's own `shastras/` directory (if it chooses to have one), not in the kit.
 
 ## Read first, in order
 
-1. [CHARTER.md](CHARTER.md) — the seed (5 min)
-2. [M_BUILD.md](M_BUILD.md) — the machine (15 min)
-3. [.claude/CLAUDE.md](.claude/CLAUDE.md) — the operating cheat-sheet (5 min)
-4. [ATLAS.md](ATLAS.md) — the lineage foundation (skim, then reach in when you need a non-working-set cycle)
+1. [VISION.md](VISION.md) — the wish (3 min; sits above CHARTER per its own §0)
+2. [CHARTER.md](CHARTER.md) — the seed (5 min)
+3. [M_BUILD.md](M_BUILD.md) — the machine (15 min)
+4. [.claude/CLAUDE.md](.claude/CLAUDE.md) — the operating cheat-sheet (5 min)
+5. [ATLAS.md](ATLAS.md) — the lineage foundation (skim, then reach in when you need a non-working-set cycle)
 
 When a human arrives with a feeling and no charter: run `/intake` first.
 When unsure which stage you are in: run `/triage` (the witness function).
