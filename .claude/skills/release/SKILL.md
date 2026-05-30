@@ -1,6 +1,6 @@
 ---
 name: release
-description: Release captain's procedure per SDLC §8. Runs the RH3 (Pre-Release Battle-Readiness) pass, confirms STATUS.md honesty, drafts release notes, proposes the tag, sets up canary watch, and prepares the rollback gate. Use for any tagged release to production. This is the formal guard on T₃ (build → service).
+description: Release captain's procedure per SDLC §5. Runs the RH3 (Pre-Release Battle-Readiness) pass, confirms STATUS.md honesty, writes the canonical release-notes per DASHBOARD §2.10 with mandatory rollback section, proposes the SemVer tag (enforced by the semver-check hook), sets up canary watch, and prepares the rollback gate. Use for any tagged release to production. This is the formal guard on T₃ (build → service).
 ---
 
 # /release — the T₃ guard

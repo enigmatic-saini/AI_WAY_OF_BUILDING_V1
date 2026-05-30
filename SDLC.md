@@ -174,19 +174,46 @@ Use `/release`. The skill runs:
 
 ## §6 — Incidents (T_prarabdha)
 
-Use `/incident` IMMEDIATELY when a P1/P2 alert fires. The skill runs:
-1. Acknowledge (within 5 min)
+Use `/incident` IMMEDIATELY when a P1/P2 alert fires. **(Extended 2026-05-31 deep-night-4 per [KABIR_GATE.md additions log entry 25](KABIR_GATE.md) as Phase 4 of the external-AHR ITIL benchmark — P4 severity added; full SLA matrix codified; KB-feedback loop (postmortem → runbook) added.)** The skill runs:
+1. Acknowledge (within the SLA-ack window per §6.1)
 2. Channel (open `#inc-<id>` + incident doc)
 3. Triage (symptom / impact / start time / recent changes)
-4. Mitigate (restore service first; root cause later)
+4. Mitigate (restore service first; root cause later) within the SLA-mitigation budget per §6.1
 5. Restore (confirm with metrics, not eyeballs)
 6. Watch (stay on ≥1 hour after restore)
-7. Postmortem (blameless, within 5 business days)
+7. Postmortem (blameless, per §6.2) — **including the KB-feedback step (§6.3)**
 
-**Severity:**
-- **P1:** customer-impacting, all-hands. Mitigation budget: 15 min.
-- **P2:** degraded, on-call only. Mitigation budget: 1 hour.
-- **P3:** no customer impact, fix in-hours.
+### §6.1 — Severity classification + SLA matrix (extended Phase 4)
+
+The kit's severity taxonomy and SLA convention:
+
+| Severity | Definition | Ack window | Mitigation budget | Restore target | Postmortem |
+|---|---|---|---|---|---|
+| **P1** | Customer-impacting outage, all-hands, revenue/safety at risk | 5 min | 15 min | 1 hour | Required within 5 business days |
+| **P2** | Degraded service, on-call only, customer-visible but not full-outage | 15 min | 1 hour | 4 hours | Required within 5 business days |
+| **P3** | No customer impact, fix in-hours | 1 hour (business hours) | 1 business day | 5 business days | Recommended (mandatory if recurring) |
+| **P4** | Low impact, tracked but no SLA pressure (cosmetic, hygiene, known-issue) | 1 business day | 30 days | 90 days | Not required (an ADR or TODO entry is sufficient) |
+
+These are kit-level **defaults**. Consuming projects may tighten (e.g., a finance system may set P1 ack to 2 min) but cannot loosen beyond these without explicit project-level documentation (Sita's "no-one-watching" lens).
+
+When severity is unclear, **upgrade**. P3-vs-P4 borderline → call it P3. P1-vs-P2 borderline → call it P1. Downgrading later (with evidence) is auditable; under-classifying initially is the failure mode this discipline catches.
+
+### §6.2 — Postmortem (blameless) — required for P1/P2; recommended for P3 if recurring
+
+Every P1 and P2 incident produces a postmortem within 5 business days. The artifact lives at `postmortems/INC-NNNN.md` per [DASHBOARD.md §2.7](DASHBOARD.md) (canonical type `postmortem`). The [POSTMORTEM template](templates/POSTMORTEM.md) is the canonical body shape.
+
+Blameless framing is non-negotiable: *"What was the system that allowed this?"* — not *"Who broke it?"*
+
+### §6.3 — KB-feedback loop (postmortem → runbook) (added Phase 4)
+
+Every P1 and P2 postmortem must produce **one of two outcomes** in its `runbook-updates:` frontmatter field and its "Runbook updates" body section:
+
+1. **At least one runbook update** — either a NEW `runbooks/<service>.md` file (per [DASHBOARD.md §2.8](DASHBOARD.md)) or an AMENDMENT to an existing runbook. The amendment must teach the operator what to do if the same incident recurs.
+2. **An explicit "no runbook change needed" statement** with a one-sentence justification — for example: *"This was a one-off corrupted-data event upstream; no operational pattern survives the postmortem. No runbook change."*
+
+The discipline is: *the kit's anti-hypocrisy on incident learning is that lessons must flow to where the operator looks during the next incident.* Postmortems that gather dust in `postmortems/` without runbook propagation are ceremony. The `runbook-updates: []` empty default + the body-section "no runbook change needed" rule forces the propagation decision to be made and recorded.
+
+For P3 postmortems (if produced): the KB-feedback step is recommended, not required. For P4: the postmortem itself is not required, so the KB-feedback step does not apply.
 
 When unsure, **upgrade**.
 
