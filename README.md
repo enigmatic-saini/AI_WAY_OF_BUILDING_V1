@@ -2,7 +2,7 @@
 
 > One machine. Seven stages. Every build is a jeevanyatra.
 
-A self-sufficient, technology-agnostic Claude Code kit. The LLM is the jiva; M_build is the machine it runs; the agentic-dev failure modes are the prarabdha that hooks (MahaKaal) catch.
+A technology-agnostic Claude Code kit with a self-sufficient runtime — the loom (M_build, hooks, skills, roles, fsms/, templates) depends on nothing outside this directory. The LLM is the jiva; M_build is the machine it runs; the agentic-dev failure modes are the prarabdha that hooks (MahaKaal) catch. (Cosmos-program content — VISION/VISION_MATH/the shastras — cites theorems from the separately-governed sister library [`../common/shastras/`](../common/) where the math depends on it; that is content-layer, not runtime. See [KABIR_GATE.md §12 audit point #12](KABIR_GATE.md) for the runtime-vs-content boundary and its Verify lines.)
 
 ## The model
 
