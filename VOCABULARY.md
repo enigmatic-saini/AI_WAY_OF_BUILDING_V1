@@ -99,7 +99,7 @@ The 7 roles use IT-industry titles directly: `analyst`, `architect`, `engineer`,
 
 ## Hook names
 
-`block-dangerous-bash`, `secret-scan`, `vocabulary-lint`, `frontmatter-check`, `handover-reminder`, `camera-reminder`, `stage-tip`. These are scripts. They have no lineage.
+`block-dangerous-bash`, `secret-scan`, `vocabulary-lint`, `frontmatter-check`, `handover-reminder`, `camera-reminder`, `semver-check`, `stage-tip`. These are scripts. They have no lineage.
 
 ## What `vocabulary-lint` blocks
 

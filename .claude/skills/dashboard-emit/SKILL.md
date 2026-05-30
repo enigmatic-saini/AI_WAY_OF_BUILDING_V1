@@ -1,6 +1,6 @@
 ---
 name: dashboard-emit
-description: Draft or validate YAML frontmatter for canonical docs (CHARTER, DESIGN, STATUS, TODO, HANDOVER, ADR, POSTMORTEM, RUNBOOK, PATCH-RECORD) per the contract in DASHBOARD.md. Use BEFORE writing any new canonical doc, or to validate an existing one. The viewer (e.g., the neighbor YATRA webapp) cannot render a doc with malformed frontmatter — this skill is the discipline that keeps the contract intact.
+description: Draft or validate YAML frontmatter for canonical docs (CHARTER, DESIGN, STATUS, TODO, HANDOVER, ADR, POSTMORTEM, RUNBOOK, PATCH-RECORD, RELEASE-NOTES) per the contract in DASHBOARD.md. Use BEFORE writing any new canonical doc, or to validate an existing one. The viewer (e.g., the neighbor YATRA webapp) cannot render a doc with malformed frontmatter — this skill is the discipline that keeps the contract intact.
 ---
 
 # /dashboard-emit — frontmatter drafter & validator
@@ -9,7 +9,7 @@ Companion to [DASHBOARD.md](../../../DASHBOARD.md). Two modes: **emit** (draft a
 
 ## When to use
 
-- **Before** creating any new canonical doc (CHARTER, DESIGN, STATUS, TODO, HANDOVER, ADR, POSTMORTEM, RUNBOOK, PATCH-RECORD).
+- **Before** creating any new canonical doc (CHARTER, DESIGN, STATUS, TODO, HANDOVER, ADR, POSTMORTEM, RUNBOOK, PATCH-RECORD, RELEASE-NOTES).
 - **Before** committing changes to a canonical doc — validate the frontmatter still matches its schema.
 - During the quarterly Kabir Gate (audit point 13) to verify project-wide compliance.
 
@@ -29,14 +29,15 @@ Match the file path to a contract type:
 | `postmortems/INC-*.md` | `postmortem` |
 | `runbooks/*.md` | `runbook` |
 | `patches/PATCH-*.md` | `patch-record` (added 2026-05-30 night-late per KABIR_GATE.md additions log entry 22) |
+| `release-notes/RELEASE-NOTES-*.md` | `release-notes` (added 2026-05-31 deep-night per KABIR_GATE.md additions log entry 23) |
 | anything else | not canonical — frontmatter not required |
 
 > **Boundary clarification (Mira pass, 2026-05-30).** This 8-type contract is the **project-side** canonical-doc contract. Kit-level governed documents — `MATH.md`, `VISION.md`, `VISION_MATH.md`, `JIVA.md`, `Q_RUBRIC.md`, `DRISHTI_STACK.md`, the kit's `*_SHASTRA.md` family — sit *outside* this contract but are still governed: their discipline runs via per-primitive lifecycle states ([DASHBOARD.md §10](../../../DASHBOARD.md)) + the [KABIR_GATE.md](../../../KABIR_GATE.md) additions log. "Not canonical" in this skill means "not under the 8-type frontmatter contract," not "ungoverned."
 
 ### 2. Look up the required fields
-See DASHBOARD.md §2 for the full schema per type. The 9 schemas share these structural rules:
+See DASHBOARD.md §2 for the full schema per type. The 10 schemas share these structural rules:
 - Frontmatter is YAML between two `---` lines at the very top.
-- `type:` field is mandatory and must equal one of the 9 enum values.
+- `type:` field is mandatory and must equal one of the 10 enum values.
 - `---` close must precede the body.
 
 ### 3. Emit or validate
@@ -61,7 +62,7 @@ See DASHBOARD.md §2 for the full schema per type. The 9 schemas share these str
 
 **Emit mode:**
 ```
-TYPE:    <one of 9>
+TYPE:    <one of 10>
 PATH:    <file path>
 FILLED:  [<field>=<value>, ...]
 PLACEHOLDERS: [<field>, ...]   (the human must fill before commit)
@@ -77,7 +78,7 @@ FAILS:   [<file:line> — <reason>, ...]
 
 ## Anti-patterns
 
-- **Inventing a new doc type** mid-conversation. The 9 types are the contract; new types require an MR touching DASHBOARD.md + this skill + the YATRA viewer + a KABIR_GATE additions log entry (entry 22 is the precedent for `patch-record`).
+- **Inventing a new doc type** mid-conversation. The 10 types are the contract; new types require an MR touching DASHBOARD.md + this skill + the YATRA viewer + a KABIR_GATE additions log entry (entry 22 is the precedent for `patch-record`; entry 23 is the precedent for `release-notes`).
 - **Omitting `type:`** because "the file path makes it obvious." The viewer parses by frontmatter, not by path. Path is just a discovery hint.
 - **Stuffing extra fields the viewer ignores.** The viewer ignores unknown fields, but a polluted frontmatter rots. Keep it minimal.
 - **Lying in the frontmatter.** If `updated: 2026-05-19T12:00:00Z` but the body changed yesterday, the viewer trusts the frontmatter. Don't do this; the Kabir Gate will catch it.

@@ -15,9 +15,10 @@ Software is built by one jiva (the LLM) running one machine ([`M_build`](../M_BU
 | Hook | Fires on | What it does |
 |---|---|---|
 | `block-dangerous-bash` | PreToolUse:Bash | Refuses `--no-verify`, force-push to main, `rm -rf /`, global git config writes |
+| `semver-check` | PreToolUse:Bash | Refuses `git tag <NAME>` creation where NAME looks like a version but doesn't match SemVer 2.0 (e.g., `v1.2`, `v1.2.3.4`). Added 2026-05-31 deep-night per KABIR_GATE.md additions log entry 23 as Phase 2 of the external-AHR ITIL benchmark |
 | `secret-scan` | PreToolUse:Write/Edit | Blocks PEM/AWS/GH/Slack/Anthropic/Google/JWT in content |
 | `vocabulary-lint` | PreToolUse:Write/Edit | Blocks divine names in non-doc files (see [VOCABULARY.md](../VOCABULARY.md)) |
-| `frontmatter-check` | PreToolUse:Write | Refuses Write on canonical docs (CHARTER/DESIGN/STATUS/TODO/HANDOVER/ADR/POSTMORTEM/RUNBOOK/PATCH-RECORD) without valid frontmatter per [DASHBOARD.md](../DASHBOARD.md) |
+| `frontmatter-check` | PreToolUse:Write | Refuses Write on canonical docs (CHARTER/DESIGN/STATUS/TODO/HANDOVER/ADR/POSTMORTEM/RUNBOOK/PATCH-RECORD/RELEASE-NOTES) without valid frontmatter per [DASHBOARD.md](../DASHBOARD.md) |
 | `handover-reminder` | Stop | Surfaces missing or stale `HANDOVER.md` |
 | `camera-reminder` | Stop | Surfaces if `JOURNEY/` exists but no entry was written in the last 3h (backstop for the `guru` role's discipline) |
 | `stage-tip` | UserPromptSubmit | Reminds the current M_build stage and the 11 skills + 7 roles + 2 composed cycle-sets (HSC, T4R) |

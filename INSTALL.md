@@ -35,7 +35,7 @@ After install, run:
 # 1. Hooks are wired
 jq '.hooks' .claude/settings.json
 
-# 2. All 7 hook scripts exist and are executable
+# 2. All 8 hook scripts exist and are executable
 ls -la .claude/hooks/
 test -x .claude/hooks/block-dangerous-bash.sh && echo "block-dangerous-bash OK"
 test -x .claude/hooks/secret-scan.sh && echo "secret-scan OK"
@@ -43,6 +43,7 @@ test -x .claude/hooks/vocabulary-lint.sh && echo "vocabulary-lint OK"
 test -x .claude/hooks/frontmatter-check.sh && echo "frontmatter-check OK"
 test -x .claude/hooks/handover-reminder.sh && echo "handover-reminder OK"
 test -x .claude/hooks/camera-reminder.sh && echo "camera-reminder OK"
+test -x .claude/hooks/semver-check.sh && echo "semver-check OK"
 test -x .claude/hooks/stage-tip.sh && echo "stage-tip OK"
 
 # 3. All 11 skills present
