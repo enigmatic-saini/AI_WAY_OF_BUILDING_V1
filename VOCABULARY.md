@@ -95,12 +95,16 @@ The `SHD` cycle's actions in code / configs / log lines use these canonical term
 
 ## Role names
 
-The 5 roles use IT-industry titles directly: `architect`, `engineer`, `qa`, `security`, `reviewer`. No lineage translation needed.
+The 6 roles use IT-industry titles directly: `analyst`, `architect`, `engineer`, `qa`, `security`, `reviewer`. No lineage translation needed.
 
 ## Hook names
 
-`block-dangerous-bash`, `secret-scan`, `vocabulary-lint`, `handover-reminder`, `stage-tip`. These are scripts. They have no lineage.
+`block-dangerous-bash`, `secret-scan`, `vocabulary-lint`, `frontmatter-check`, `handover-reminder`, `stage-tip`. These are scripts. They have no lineage.
 
 ## What `vocabulary-lint` blocks
 
-The hook (`.claude/hooks/vocabulary-lint.sh`) scans staged Write/Edit content. It blocks the divine names in the LEFT column above when they appear in non-documentation files. Documentation files exempt: `*.md`, `*.toml`, `*.txt`, `*.json`, `*.yaml`, `*.lock`, `*.log`, `*.csv`, `*.tsv`. Folders exempt: any path containing `/shastras/` (project-local lineage notes), and any `templates/` directory.
+The hook (`.claude/hooks/vocabulary-lint.sh`) maintains a curated `TERMS` array in its source — that array is the authoritative block-list and it is **broader than the LEFT-column mappings in the tables above**. In addition to the state-name / Q-axis / adversary-archetype lineage terms that have a canonical right-column translation, the lint additionally blocks **bare deity names and lineage terms that have no IT-industry canonical translation** (Ram, Sita, Krishna, Saraswati, Brahma, Shiva, Vishnu, Lakshman, Hanuman, Ganesh, Narad, Buddha, Patanjali, Kabir, Gorakhnath, Radha, Mira, Khatushyam, Parvati, Arjuna, Nataraj, Nataraja, Nagarjuna, Vishwakarma, Tansen) and the **kit-domain terms** (MahaKaal, ArdhNarishwar, Prachi, Drishti, Jiva, Jeevanyatra, Shastra). They are blocked because they are *not concepts to translate* — they are lineage references that belong in prose docs and ADR comments only.
+
+Documentation files exempt: `*.md`, `*.toml`, `*.txt`, `*.json`, `*.yaml`, `*.lock`, `*.log`, `*.csv`, `*.tsv`. Folders exempt: any path containing `/shastras/` (project-local lineage notes), and any `templates/` directory.
+
+**Adding a new divine name to kit prose?** Add it to the `TERMS` array in `.claude/hooks/vocabulary-lint.sh` following the bash adjacency-concatenation pattern. The lint's source comment documents recent extensions and their justification (most recently 2026-05-30 afternoon: 10 terms added post-cosmos-program — Radha/Mira/Khatushyam/Parvati/Arjuna/Nataraj/Nataraja/Nagarjuna/Vishwakarma/Tansen).
