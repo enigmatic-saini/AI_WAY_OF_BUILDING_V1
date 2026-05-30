@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-31T01:00:00Z
+session_end: 2026-05-31T02:30:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,64 @@ session_end: 2026-05-31T01:00:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-31 deep-night-2 — ITIL Phase 2 (Release Management): semver-check hook + release-notes canonical type (9 → 10) + tightened /release skill; 3 build commits + this HANDOVER; kit grows from 7/11/7 to 8/11/7)
+
+> Session begin: founder confirmed Phase 1's audit-recommended order with *"stick with Patch → Release → Change → Incident"*. Implicit authority to proceed Phase 2 under the same ITIL-arc drishti stack as Phase 1 (`Saraswati → Vishwakarma → Ram + Sita ; consult: NGD, KBD, MID`). Current M_build stage: **S3_Build** (unchanged).
+
+## Where-We-Are
+
+Phase 2 (Release Management) is fully landed. The kit now enforces SemVer 2.0 on git tag creation via the new `semver-check` hook, codifies release records as the 10th canonical doc type, and mandates the rollback section in every release. Hook count moved 7 → 8. Canonical doc-type count moved 9 → 10. Template count moved 8 → 9. Phase 3 (Change Management extensions) is the next session.
+
+## What-Was-Done
+
+**Phase 2 build under `Saraswati → Vishwakarma → Ram + Sita ; consult NGD, KBD, MID`** (same stack as Phase 1).
+
+- **`83bafa3`** — Phase 2 core primitives. Six files NEW/AMENDED:
+  - `.claude/hooks/semver-check.sh` — NEW PreToolUse:Bash hook. Detects `git tag <NAME>` creation; checks NAME against SemVer 2.0; blocks malformed version-shaped tags. **Smoke-tested across 8 scenarios** (v1.2.3 PASS, v2.0.0-beta PASS, v1.2 BLOCK, v1.2.3.4 BLOCK, milestone-2026-Q3 PASS not-a-version, `git tag` list PASS, `git tag -d v1.0.0` delete PASS, non-git PASS).
+  - `.claude/settings.json` — `semver-check.sh` wired into PreToolUse:Bash alongside `block-dangerous-bash.sh`.
+  - `templates/RELEASE-NOTES.md` — NEW canonical-doc template. Frontmatter schema per DASHBOARD §2.10 + 9 required body sections including mandatory Rollback procedure.
+  - `release-notes/README.md` — NEW folder-convention doc. Naming `RELEASE-NOTES-v<X.Y.Z>.md` matched to git tag.
+  - `DASHBOARD.md §2` — extended 9 → 10 types with new §2.10 schema + lifecycle state-machine (`DRAFT → PUBLISHED → SUPERSEDED`, with `ROLLED-BACK` edge from any state).
+  - `.claude/hooks/frontmatter-check.sh` — recognizes `release-notes/RELEASE-NOTES-*.md` → `expected_type=release-notes`. **Smoke-tested**: Write to that path without frontmatter correctly BLOCKED.
+  - `.claude/skills/release/SKILL.md` — tightened. Step 3 writes the canonical RELEASE-NOTES. Step 4 names `semver-check` as the gate. **Step 6 made mandatory** (rollback-tag + un-rollbackable-changes-named + verify-procedure). Step 7 adds publish lifecycle (`DRAFT → PUBLISHED` on tag).
+
+- **`398cec5`** — Surrounding count callbacks (standard Sita-pin pattern). Hooks 7 → 8 across README/INSTALL/VOCABULARY/CLAUDE.md/stage-tip.sh/KABIR_GATE §12 #6. Canonical types 9 → 10 across DASHBOARD/dashboard-emit/KABIR_GATE §12 #13. Templates 8 → 9 via RELEASE-NOTES. New routing hint in stage-tip.sh: *"Tagged release to prod? Run /release — writes release-notes/RELEASE-NOTES-v<X.Y.Z>.md per DASHBOARD §2.10 and the semver-check hook enforces the tag format."*
+
+- **`7b1a3b2`** — KABIR_GATE additions log entry 23 with full T4R verdict (KBD/NGD/VKD/MID PASS, no MID caveat — this is hook-enforced not discipline-plus-reminder).
+
+- **This commit** — HANDOVER session block.
+
+## What-Failed
+
+Nothing in execution. One minor sed-script gotcha during the `/release` skill body rewrite (step 3 had inline format that needed full replacement, not surgical edit) — caught and fixed cleanly.
+
+## What-Next
+
+- **Phase 3 (Change Management extensions)** — per the audit's recommended order. Per the audit (`AHR_PASS_2026-05-30_itil-external.md`): extend SDLC.md MR template with classification field (Standard / Normal / Emergency) + reviewer-routing-by-classification policy + mandatory rollback section. Tighten `/mr` skill. KABIR_GATE additions log entry 24. **No new skills or hooks expected** — Phase 3 is editorial (template + skill text amendments).
+- **Phase 4 (Incident Management extensions)** — last phase. P1–P4 severity taxonomy added to `/incident` + POSTMORTEM template. SLA convention reference. Lessons-feedback loop (postmortem → runbook). KABIR_GATE additions log entry 25.
+- **Empirical question for Phase 2**: does any consuming project use `/release` with the new canonical RELEASE-NOTES type within Q3 2026? If yes — the discipline binds. If no — reversibility clause in entry 23 fires and Phase 2 rolls back.
+- **Open future-AHR question**: should the `/release` skill's *RH3* and *SHD* steps (steps 0 + 1) be similarly tightened? They are currently strong (Shadow Deep is mandatory for sensitive triggers), but the audit's external-benchmark lens hasn't yet been applied to them. Worth a future-AHR pass once Phases 3+4 land.
+
+## Open-Questions
+
+- **Phase 3 reviewer-routing-by-classification policy** — should `Standard` changes (low-risk, pre-approved class) require *any* reviewer (1 reviewer) or be auto-approvable (0 reviewers)? ITIL allows the latter for pre-approved standard changes; the kit's current LAW 10 implicitly requires review for all merges to main. This tension is the central Phase 3 design question. Mauna's lens applies: defer this decision to the founder when Phase 3 begins; don't pre-empt under autonomy.
+- **Should `semver-check` also validate version-progression** (e.g., refuse `v1.0.0 → v0.9.0` regression)? Currently the hook only validates the *format*. Adding progression-validation would catch typos but require git context (read existing tags). Worth considering for a future hardening pass. For now, the discipline relies on `/release` step 4 (Bump rules) + reviewer eyeballs.
+
+## Key-Decisions
+
+- **`semver-check` is a hook, not a skill.** ITIL says enforce the version format; the kit says enforce structurally without LLM in the loop. Hooks are the right shape.
+- **`release-notes` is a new canonical type (Build B/A win, not Build C).** Plain markdown release notes would lose the frontmatter-check enforcement + the YATRA viewer's queryability (`status:`, `breaking:`, `patches:`). Canonical type pays rent.
+- **Rollback section is now MANDATORY, not optional.** Step 6 of `/release` previously said *"Document: 'Roll back with `<command>` if `<metric>` breaches `<threshold>`.'"* — present-tense imperative but no enforcement. Phase 2 makes it a required body section per the §2.10 schema + the template + the skill rewrite. Even a perfect release needs documented rollback (Sita's "truth-when-no-one-is-watching" lens).
+- **`status: ROLLED-BACK` edge from any state** — not just `PUBLISHED → ROLLED-BACK`. A `DRAFT` release that's been canary-tested-and-failed can roll back too; a `SUPERSEDED` release can later be rolled back if the superseder also fails. The state-machine is asymmetric for audit-trail honesty.
+- **Phase 3 deferred to next session** (same pattern as Phase 1 → Phase 2 in the prior session). Hanuman discipline: carry the mountain, not the stone-chain.
+
+## Files-Changed (kit-level)
+
+**NEW**: `.claude/hooks/semver-check.sh` (PreToolUse:Bash, ~110 lines), `templates/RELEASE-NOTES.md` (canonical-doc template, ~95 lines), `release-notes/README.md` (folder-convention doc).
+**AMENDED**: `.claude/settings.json` (semver-check wired), `DASHBOARD.md` (§2 extended 9→10 types, §3 validation count), `.claude/hooks/frontmatter-check.sh` (recognizes release-notes path), `.claude/skills/release/SKILL.md` (steps 3/4/6/7 tightened + output template), `README.md` (counts + templates list), `INSTALL.md` (verify-block hook count + semver-check test line), `VOCABULARY.md` (hook list now 8 with semver-check), `.claude/CLAUDE.md` (hooks table + semver-check row + frontmatter-check row), `.claude/hooks/stage-tip.sh` (refresh comment + DASHBOARD types 9→10 + new routing hint), `KABIR_GATE.md` (§12 #6 hooks 7→8, §12 #13 templates 8→9 + DASHBOARD 9→10, new additions log entry 23), `.claude/skills/dashboard-emit/SKILL.md` (description + table + schema-count refs 9→10), this `HANDOVER.md`.
 
 ---
 
