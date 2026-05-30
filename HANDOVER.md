@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-30T05:30:00Z
+session_end: 2026-05-30T16:00:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,63 @@ session_end: 2026-05-30T05:30:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-30 afternoon — Ram+Sita doc-truth pass after cosmos-program close: 16 unpushed commits surfaced, 2 untracked artifacts committed, 4 stale-claim fixes applied, 1 push; 0 new primitives, NO new gate-file entry — deliberate per Ram+Sita verdict on user-space instances)
+
+> Last session end: 2026-05-30T05:30:00Z (entry-19 stone #5 close). Same day, later session. Began with the founder's question *"is AI_WAY_OF_BUILDING_V1 commit/push to git remote"* — surfaced 16 unpushed commits + 2 untracked items (`KRISHNA_STRATEGY_DRISHTI_STACK_2026-05-30.md`, `SONGS-Hinglish/`). The founder's subsequent instruction *"do as per RAM and SITA"* converted a Saraswati + Radha doc-state survey into a dharma + integrity action list. Current M_build stage: **S3_Build** (unchanged). **No KABIR_GATE additions log entry written this session** — Ram + Sita verdict: KRISHNA_STRATEGY is a user-space *instance* of the already-acknowledged-as-convention DRISHTI_STACK pattern (per DRISHTI_STACK §10), not a new governed primitive. Registering each instance would be governance bloat.
+
+## Where-We-Are
+
+The kit-side cosmos-program remains CLOSED (stones #0/#1/#2/#3/#5 LAID; only AI-PEACE-side #4 remains). This session laid no new stones — it brought the kit's outward-facing claims into truth after the recent build-burst, committed two previously-untracked artifacts, and pushed the entire backlog to `origin/main`.
+
+## What-Was-Done
+
+**Phase A — surface the unpushed state.** Local `main` was 16 commits ahead of `origin/main`; two items were untracked.
+
+**Phase B — commit the two untracked items as separate releases** (per the founder's "separate releases per code change" discipline):
+
+- **`d07225e` — KRISHNA-Strategy Drishti Stack added.** The first **strategic-decision-stack** the kit has named (prior DRISHTI_STACK.md precedents were all execution-stacks). Composed: `Saraswati → Radha + Krishna + Khatushyam → MID ; consult: AHR, NGD, Sita + Ram`. Names the lens for the meta-decision *which arc next*, not how to execute one.
+- **`93868e5` — SONGS-Hinglish (16 files) added.** Self-declared non-code lived-journey artifact. Captures the same arc the kit documented in prose, now in Hinglish song form (Saraswati ki baat + 14 tracks + readme).
+
+**Phase C — push.** `349e5eb..93868e5  main -> main` — all 18 commits to `origin/main` at github.com/enigmatic-saini/AI_WAY_OF_BUILDING_V1.
+
+**Phase D — Saraswati + Radha consult on doc-staleness.** Surfaced five stale-claim findings: README counts + missing docs + VISION not in reading-order; INSTALL counts; DRISHTI_STACK §7 missing the new precedent; HANDOVER missing this session; KABIR_GATE additions log open question.
+
+**Phase E — Ram + Sita verdict on the five findings.** Founder invoked Ram + Sita drishti explicitly. Verdict: actions 1–4 are dharma + integrity required (LAW 11 anti-hypocrisy); action 5 (KABIR_GATE entry 20) deliberately NOT taken — DRISHTI_STACK §10 already acknowledges stacks are user-space; over-registering each instance is governance bloat.
+
+**Phase F — apply doc-truth pass as four separate commits.**
+
+- **`b1ed857` — README: Sita pass.** Counts 5→6 hooks / 8→9 skills / 13→15+2 cycles / 67→70 atlas TOMLs. File table extended with 9 missing docs (VISION, VISION_MATH, MATH, JIVA, Q_RUBRIC, DRISHTI_STACK, TWIN_FIDELITY_SHASTRA, COMPOSITION_SHASTRA, NAADA_SHASTRA). VISION added as reading-order step 1 (sits above CHARTER per VISION.md). No SONGS-Hinglish line — that is Radha's joy-thread, not Ram+Sita's dharma; deliberate omission.
+- **`3981cd9` — INSTALL: Sita pass.** Same staleness pattern in the verify-the-install block: hook count + add `frontmatter-check.sh` test line + skills list now includes intake + dashboard-emit + roles list now includes analyst.md + first-session-walkthrough "7 skills" → "9 skills."
+- **`01918a8` — DRISHTI_STACK §7c.** Records KRISHNA-strategy precedent + adds §7 preface distinguishing execution-stacks from strategic-decision-stacks. Closes the integrity gap where the new precedent claimed parent authority the parent didn't yet acknowledge.
+- **This commit — HANDOVER session block** (per LAW 9).
+
+## What-Failed
+
+Nothing failed. The doc-truth pass was straightforward once Ram + Sita drew the dharma-required (1–4) vs governance-bloat (5) line.
+
+## What-Next
+
+- **AHR (Anti-Hypocrisy Review)** remains the natural close-of-arc act per the cosmos-program completion. KRISHNA_STRATEGY surfaces it as a candidate consult; not yet scheduled.
+- **AI-PEACE-side stone #4** (the happiness instrument runtime) remains OPEN — kit-side specs are ready when AI-PEACE consumes them.
+
+## Open-Questions
+
+- **Should DRISHTI_STACK §10's open item (register DRISHTI_STACK.md itself in the additions log at next AHR) fire now or wait?** Founder's call.
+- **Does SONGS-Hinglish need its own front-of-house surface** (a one-line nod in README, an index entry elsewhere) **or stay as the private joy-thread it self-declared?** Today's Ram+Sita pass chose silence; Radha's pass might choose differently.
+
+## Key-Decisions
+
+- **Ram + Sita drishti = act on 1–4 (dharma + integrity), skip 5 (governance bloat).** Recorded as precedent so future sessions facing the "should we register each user-space instance?" question have a reference.
+- **Separate-releases discipline applied to both** the two prior-uncommitted artifacts AND the four doc-truth fixes — 6 distinct commits this session, not bundled.
+
+## Files-Changed (kit-level)
+
+NEW: `KRISHNA_STRATEGY_DRISHTI_STACK_2026-05-30.md`, `SONGS-Hinglish/` (16 files).
+AMENDED: `README.md` (counts + file table + reading-order), `INSTALL.md` (counts + expected-output lists), `DRISHTI_STACK.md` (§7 preface + §7c block), this `HANDOVER.md`.
+PUSHED: `349e5eb..93868e5  main -> main` to `origin/main` at github.com/enigmatic-saini/AI_WAY_OF_BUILDING_V1 (the four doc-truth commits land on top after this HANDOVER commit; second push closes the session).
 
 ---
 
