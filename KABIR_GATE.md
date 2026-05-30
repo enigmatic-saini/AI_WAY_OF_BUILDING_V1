@@ -631,6 +631,44 @@ Per the rule in [CYCLES.md](CYCLES.md) preface: *"Adding a cycle TO this kit req
 
 ---
 
+### 2026-05-31 deep-night-4 — Phase 4 of external-AHR ITIL benchmark: P4 severity + full SLA matrix + KB-feedback loop — **arc-closing entry**
+
+> Context: founder said *"go endure the Journey"* — invoking Jambavati's `endurance` Q-axis (multi-week perseverance, here applied at session-scale carrying all four phases through). Phase 4 is the LAST phase of the external-AHR ITIL arc. The audit identified Incident Management as STRONG coverage (the `/incident` 8-phase lifecycle was already well-aligned with ITIL) with three named gaps: P4 missing, SLA matrix implicit, KB-feedback loop uncodified. Phase 4 closes those three gaps **as editorial amendments** (like Phase 3) — no new skills, hooks, roles, or canonical types. With this entry, the kit-vs-ITIL gap is closed at the kit-level; consuming-project adoption is the empirical witness window.
+
+#### Additions log entry 25 — Phase 4 of external-AHR ITIL benchmark: P4 severity + full SLA matrix + KB-feedback loop
+
+- **Name:** P4 severity addition (4-class taxonomy P1/P2/P3/P4) + full SLA matrix (4 classes × 4 windows: ack / mitigation / restore / postmortem = 16 cells) + KB-feedback loop (postmortem → runbook propagation discipline, mandatory for P1/P2). **Four files amended, no new primitives.**
+- **Tag:** No new primitives. Phase 4 is editorial (same shape as Phase 3): extends `SDLC.md §6` (Incidents) + `/incident` skill + `/release` skill description Sita-pin (sibling fix) + `templates/POSTMORTEM.md` frontmatter and body. No new skill, hook, role, canonical type, folder convention, or cycle. Counts remain 8 hooks / 11 skills / 7 roles / 10 canonical types / 9 templates after this entry — the standard Sita-pin pattern does NOT fire.
+- **Lineage:** ITIL v4 incident-management discipline — P1/P2/P3/P4 severity classification is the de-facto ITIL taxonomy (Phase 4 simply adds P4 to the kit's existing P1/P2/P3). The SLA matrix (ack + mitigation + restore + postmortem windows per class) codifies ITIL convention with kit-realistic defaults (P1 ack 5 min, P4 restore 90 days). KB-feedback is the kit-specific name for ITIL's "knowledge management feedback loop" — Wikipedia calls it "service knowledge management" within ITIL — adapted to the kit's existing `runbooks/<service>.md` + `postmortems/INC-NNNN.md` channels. No theological lineage; pure IT-industry discipline like Phases 1-3.
+- **Profile:** No cycle. `/incident` skill remains 7-cycle. The added KB-feedback step lands inside cycle 7 (Postmortem) — same cycle count.
+- **Concrete artifacts:**
+  - [`SDLC.md §6`](SDLC.md) — extensively extended:
+    - §6.1 Severity classification + full SLA matrix (4-class taxonomy with ack/mitigation/restore/postmortem windows per class; "consuming projects may tighten but cannot loosen beyond these without explicit documentation"; the "when unsure, upgrade" rule preserved)
+    - §6.2 Postmortem requirements (per severity class — P1/P2 required, P3 recommended if recurring, P4 not required)
+    - §6.3 KB-feedback loop convention (every P1/P2 postmortem produces 1+ runbook updates OR explicit "no runbook change needed" with one-sentence justification; the kit's anti-hypocrisy on incident learning)
+  - [`.claude/skills/incident/SKILL.md`](.claude/skills/incident/SKILL.md) — procedure restructured around per-severity SLA + KB-feedback:
+    - Description Sita-pin: stale "per SDLC §9" → "per SDLC §6" (§9 is maintenance calendar; incidents are §6 — same description-drift pattern Phase 3 caught in `/mr`)
+    - Cycle 1: SLA-ack window per severity (was: "within 5 min" only)
+    - Cycle 4: mitigation budget per severity (was: P1 15min only)
+    - Cycle 5: restore target per severity (was: undefined)
+    - Cycle 6: watch threshold per severity (P1/P2 ≥1h; P3/P4 monitoring sufficient)
+    - Cycle 7: postmortem class requirements + KB-feedback step mandatory for P1/P2
+    - Output template adds SLA-met fields + RUNBOOK-FEEDBACK row
+    - Anti-patterns added: downgrading to skip discipline, skipping postmortem, skipping KB-feedback, treating P4 as "not real"
+  - [`.claude/skills/release/SKILL.md`](.claude/skills/release/SKILL.md) — Sita-pin sibling fix: stale "per SDLC §8" → "per SDLC §5"; adds canonical release-notes per §2.10 + semver-check hook reference. The same description-drift pattern caught in `/mr` (Phase 3) and `/incident` (this Phase). **Pattern recorded for future sessions:** when extending or referencing a sibling skill, audit its description for stale §N refs.
+  - [`templates/POSTMORTEM.md`](templates/POSTMORTEM.md) — extended:
+    - Frontmatter: `runbook-updates:` (list of runbook paths OR explicit justification string), `sla-ack-met:`, `sla-mitigation-met:`, `sla-restore-met:` (audit-trail fields)
+    - Body: new "Runbook updates" section (mandatory for P1/P2; Option A list-of-updates / Option B explicit-no-change-with-justification; "do NOT leave this section empty" rule)
+    - Body: new "SLA review" section (target/actual/met per window)
+  - **NO count callbacks** — Phase 4 adds no skills, hooks, roles, or canonical types. The standard Sita-pin propagation does NOT fire.
+- **AHR pre-flight (T4R Q1/Q2):** Q1 — *"The kit codifies ITIL incident-management discipline as a 4-class severity taxonomy × 4-window SLA matrix + mandatory KB-feedback loop (postmortem → runbook) for P1/P2. The full ITIL incident lifecycle (8 phases: detect/log/categorize/prioritize/diagnose/resolve/close/review) maps cleanly to /incident's 7-cycle procedure with KB-feedback closing the review phase."* Q2 — Lives in the four amended files. Empirical witness: the audit pass's three named gaps (P4 missing, SLA implicit, KB-feedback uncodified) are closed; the matrix is queryable; KB-feedback enforcement lives in the POSTMORTEM template's mandatory section. **PASS.**
+- **T4R verdict (inline):** **KBD** PASS — closes the gap between SDLC §6's prior "P1/P2/P3 + 15-min P1 mitigation" claim (partial) and the now-codified 16-cell SLA matrix that `/incident` step-by-step enforces. **NGD** PASS — catuṣkoṭi: P4 distinct-from P3 (P3 is in-hours; P4 is no SLA pressure beyond tracking). SLA matrix distinct-from PIR (PIR is MR-level after-action; SLA is incident-level response-time). KB-feedback distinct-from PIR (PIR captures change-level lessons in HANDOVER; KB-feedback captures incident-level operational lessons in runbooks). Three orthogonal disciplines, no duplication. **VKD** PASS — Build A wins (extend SDLC + /incident + POSTMORTEM only; no new primitives) — audit was prescriptive about this shape. Build B (new `/runbook-update` skill) would duplicate `/incident` Cycle 7. Build C (new `lessons-archive` canonical type) would over-engineer; the existing `postmortem` + `runbook` types suffice. **MID** PASS — Severity taxonomy at full size (4 classes, not 3-and-a-half). SLA matrix at full size (16 cells codified, not "we'll figure it out per project"). KB-feedback non-negotiable for P1/P2 (not "best effort"). Strong dilution pressure resisted: P4 feels redundant with TODO; SLA tables feel like bureaucracy; KB-feedback feels like extra postmortem work. MID rejected all three. The kit's pattern from Phase 3 holds: **the kit raises floors, never lowers them.**
+- **Authorized by:** founder instruction *"go endure the Journey"* (2026-05-31 deep-night-4) — explicit Jambavati `endurance` invocation; carrying all four ITIL phases through to arc-close. Authority for the Sita-pin sibling fix on `/release` was implicit per the same "decide as you know ITIL" delegation that opened the arc.
+- **Reversibility clause:** Phase 4 is editorial — no new primitives to delete. Rollback = revert `SDLC.md §6`, `.claude/skills/incident/SKILL.md`, `.claude/skills/release/SKILL.md` (description only), `templates/POSTMORTEM.md` to their pre-Phase-4 form. Same quarter-scale evidence threshold as Phases 1-3.
+- **Arc-closing note:** With this entry, the external-AHR ITIL benchmark arc (Phases 1+2+3+4, KABIR_GATE additions log entries 22+23+24+25) is **structurally complete at the kit-level**. All four ITIL domains (Patch/Release/Change/Incident) are now codified. The audit pass ([AHR_PASS_2026-05-30_itil-external.md](AHR_PASS_2026-05-30_itil-external.md)) survives as the external-AHR class's first instance + template for future SRE / OWASP / SOC2 / ISO27001 passes. The empirical-binding window (Q3 2026) is the gate to graduation — if at least one consuming project adopts the discipline by then, the four phases stay; if not, the reversibility clauses across entries 22-25 fire individually.
+
+---
+
 ## Closing principle
 
 > *If a file describes an FSM that does not exist, the file is the ceremony.
