@@ -2,7 +2,7 @@
 type: handover
 project: ai_way_of_building_v1
 stage: build
-session_end: 2026-05-31T04:00:00Z
+session_end: 2026-05-31T05:00:00Z
 ---
 
 # AI_WAY_OF_BUILDING_V1 — HANDOVER (kit-level session lineage)
@@ -12,6 +12,73 @@ session_end: 2026-05-31T04:00:00Z
 > **First created 2026-05-26 deep-night-2** per `T4R` micro-ratification + [KABIR_GATE.md additions log entry 8](KABIR_GATE.md). Backfilled with three historical kit-level events: original forge (2026-05-19 to 2026-05-21), AJN cycle addition (2026-05-25), Build B-kit codification (2026-05-26 deep-night-2).
 >
 > **What kind of events go here:** kit-level additions log entries; §12 audit point amendments; updates to JIVA.md / M_BUILD.md / LAWS.md / DASHBOARD.md / CYCLES.md / KABIR_GATE.md / LINEAGE.md / ROLES.md / Q_RUBRIC.md / SDLC.md / VOCABULARY.md / CHARTER.md / README.md / INSTALL.md / INTAKE_PROMPTS.md / fsms/ / templates/ — anywhere inside `AI_WAY_OF_BUILDING_V1/`. Edits to consuming projects do NOT go here (they go in the consuming project's own HANDOVER.md).
+
+---
+
+# Kit-level HANDOVER (session 2026-05-31 deep-night-4 — ITIL Phase 4 (Incident Management) + ARC CLOSE: P4 severity + full SLA matrix + KB-feedback loop; 3 commits + 1 arc-closing JOURNEY + this HANDOVER; NO count changes; four-phase arc structurally complete at kit-level)
+
+> Session begin: founder said *"go endure the Journey"* — explicit Jambavati `endurance` Q-axis invocation. Same ITIL-arc drishti stack as Phases 1+2+3 (`Saraswati → Vishwakarma → Ram + Sita ; consult: NGD, KBD, MID`). This session closes the four-phase external-AHR ITIL benchmark arc that opened 2026-05-30 night. Current M_build stage: **S3_Build** (unchanged).
+
+## Where-We-Are
+
+Phase 4 (Incident Management) is fully landed. **The full external-AHR ITIL benchmark arc is structurally complete at the kit-level** — all four ITIL domains (Patch/Release/Change/Incident) codified across KABIR_GATE additions log entries 22-25. The empirical-binding window (Q3 2026) is the gate to graduation. Final kit counts: 8 hooks / 11 skills / 7 roles / 10 canonical types / 9 templates.
+
+## What-Was-Done
+
+**Phase 4 build under the same ITIL-arc drishti stack** (`Saraswati → Vishwakarma → Ram + Sita ; consult: NGD, KBD, MID`). Four commits this session:
+
+- **`0971e01`** — Phase 4 primitives (four files amended; no new primitives):
+  - `SDLC.md §6` — extensively extended: §6.1 severity classification + 16-cell SLA matrix (4 classes × 4 windows: ack / mitigation / restore / postmortem); §6.2 postmortem requirements per severity (P1/P2 required, P3 recommended if recurring, P4 not required); §6.3 KB-feedback loop (postmortem → runbook; 1+ update OR explicit "no runbook change needed").
+  - `.claude/skills/incident/SKILL.md` — procedure restructured around per-severity SLA + KB-feedback. Description Sita-pin: stale *"per SDLC §9"* → *"per SDLC §6"*. P4 added throughout. Anti-patterns added: downgrading to skip discipline, skipping postmortem, skipping KB-feedback, treating P4 as "not real."
+  - `.claude/skills/release/SKILL.md` — Sita-pin sibling fix: stale *"per SDLC §8"* → *"per SDLC §5"*; adds canonical release-notes + semver-check references. Same description-drift pattern Phase 3 caught in `/mr`. Pattern recorded: when extending one skill, audit siblings' descriptions for stale §N refs.
+  - `templates/POSTMORTEM.md` — extended: frontmatter (`runbook-updates`, `sla-ack-met`, `sla-mitigation-met`, `sla-restore-met`); body (new "Runbook updates" mandatory section + new "SLA review" section).
+
+- **`be174b9`** — KABIR_GATE additions log entry 25 with full T4R verdict (KBD/NGD/VKD/MID PASS) **+ arc-closing note** marking the four-phase arc as structurally complete.
+
+- **`b53158c`** — Arc-closing JOURNEY entry (`2026-05-31T04-30-itil-arc-closes-four-phases-complete.md`) capturing **six meta-precedents** the arc established for future sessions: (1) External-AHR class; (2) "kit raises floors, never lowers them"; (3) PIR/KB-feedback live in existing channels not new canonical types; (4) editorial phases don't trigger count-callback overhead; (5) skill-description-drift is its own Sita-finding class; (6) two-dimensional reviewer-routing matrix composition pattern.
+
+- **This commit** — HANDOVER session block (arc-closing).
+
+## What-Failed
+
+Nothing in execution. The Sita-pin sibling fix on `/release` was technically out-of-Phase-4-scope but I took it as part of the broader description-drift Sita-pin discipline; recorded in the commit + the arc-closing JOURNEY. Worth being explicit: future scope-tight sessions might leave the sibling alone; tonight's arc-close was the right time to clean.
+
+## What-Next
+
+- **Empirical binding window opens NOW.** The arc is structurally complete at the kit-level; what happens next is **outside** the kit. The Q3 2026 threshold per the four reversibility clauses (entries 22-25) names when binding is judged. If at least one consuming project (RIAAN, AI-PEACE, FACILITATOR, or a new one) adopts the discipline by then, the four phases stay. If not, each reverses individually.
+- **Next ITIL-related work** happens when a consuming project surfaces a real adoption gap (e.g., "the SLA matrix doesn't fit my regulated industry's required ack times"; "the `/patch` skill needs an additional field for our supply-chain compliance"). That session opens with the audit-pass template + the gap as new input to the external-AHR class.
+- **The external-AHR class itself may graduate** to a working-set cycle (`EAHR`) if it fires multiple times — already named in entry 25 as a future-AHR consideration. Threshold: 2+ external-AHR passes across distinct industry shastras (e.g., the ITIL pass + a future SRE / OWASP / SOC2 / ISO27001 pass).
+- **No deferred next-phase from this arc** — the arc is complete. Future kit growth is now in genuinely new directions, not Phases 5+ of ITIL.
+
+## Open-Questions
+
+- **The Q3 2026 binding window** — should the kit have an explicit notification mechanism (e.g., a calendar reminder or a kit-internal cron) for when to evaluate adoption-evidence? Currently the reversibility clauses are self-enforcing only at the next AHR. Worth considering: a `next-ahr-checklist.md` that surfaces "this entry has a Q3 2026 evaluation gate" so the next quarterly AHR doesn't miss it. Defer to next quarterly AHR planning.
+- **Should the kit have a `consuming-projects-adoption-tracker.md`** — a kit-level doc that tracks which consuming projects have adopted which kit primitives? This would close the empirical-binding loop concretely. Trade-off: it's a kit-internal observation surface that depends on consuming projects self-reporting. Defer to founder's call when at least one consuming project has actually adopted something from this arc.
+
+## Key-Decisions
+
+- **Phase 4 ships as editorial** (same as Phase 3) — no new primitives. The audit recommended this shape; kept the shape.
+- **The arc closes here**, not with "Phase 5+ might come later." The four ITIL domains are the audit's scope; the arc is bounded. Future ITIL extensions are NEW arcs with their own audit passes, not Phase 5 of this one.
+- **Six meta-precedents are now lineage**, captured in the arc-closing JOURNEY entry. Future sessions facing similar tensions (industry-shastra flexibility vs kit principles; new canonical type vs existing channel; editorial vs primitive-adding phase; description drift) reference those precedents.
+- **The arc-closing happened at the end of a 4-commit session within a single Claude Code conversation** — that's notable. The kit's discipline + the founder's clear direction + the audit's prescriptive recommendations made the four phases tractable. Worth recording as a pattern: **a well-scoped audit pass + a clear founder direction + the kit's standing disciplines can carry a multi-phase arc within a single session.** Future arcs of similar shape can reference this session-time precedent.
+
+## Files-Changed (kit-level)
+
+**NEW (this Phase 4 session)**: `JOURNEY/2026-05-31T04-30-itil-arc-closes-four-phases-complete.md` (arc-closing precedent record).
+**AMENDED (this Phase 4 session)**: `SDLC.md` (§6 extensively extended with §6.1/6.2/6.3), `.claude/skills/incident/SKILL.md` (procedure restructured + description Sita-pin), `.claude/skills/release/SKILL.md` (description Sita-pin sibling fix), `templates/POSTMORTEM.md` (frontmatter + body sections), `KABIR_GATE.md` (new additions log entry 25 + arc-closing note), this `HANDOVER.md`.
+**NO COUNT CALLBACKS** — Phase 4 is editorial (like Phase 3). Counts remain 8 / 11 / 7 / 10 / 9.
+
+## Arc-level summary (across all four sessions of this arc)
+
+| Phase | Session label | Domain | Commits | Counts impact |
+|---|---|---|---|---|
+| Audit | 2026-05-31 deep-night | (Open) | a3ba602 (AHR_PASS) | None |
+| 1 | 2026-05-31 deep-night | Patch Management | b36020b, 79c04ee, a4d4964, 2c3e789 | Skills 10→11, types 8→9, templates 7→8 |
+| 2 | 2026-05-31 deep-night-2 | Release Management | 83bafa3, 398cec5, 7b1a3b2, e52f324 | Hooks 7→8, types 9→10, templates 8→9 |
+| 3 | 2026-05-31 deep-night-3 | Change Management | 98e1566 (JOURNEY), e66c54b, 4e9172f, abe9a4b | None — editorial |
+| 4 | 2026-05-31 deep-night-4 | Incident Management + ARC CLOSE | 0971e01, be174b9, b53158c (arc-closing JOURNEY), this HANDOVER | None — editorial |
+
+**Arc shape final:** +1 skill (`/patch`), +1 hook (`semver-check`), +2 canonical types (`patch-record`, `release-notes`), +2 templates, +2 folder conventions (`patches/`, `release-notes/`). KABIR_GATE additions log entries 22+23+24+25.
 
 ---
 
