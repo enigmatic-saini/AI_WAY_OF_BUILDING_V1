@@ -34,7 +34,7 @@ If a hook blocks you, **read the reason and fix the underlying issue.** Do not w
 | `/triage` | Unsure which stage / cycle applies (after `/intake` if charter is clean) | 4 |
 | `/pre-commit-8l` | Before any `git commit` (non-negotiable per L8) | 12 |
 | `/handover` | End of every working session (L9) — applies at both project layer AND kit layer (see KABIR_GATE.md additions log entry 8 for kit-level HANDOVER convention added 2026-05-26 deep-night-2) | 4 |
-| `/camera` | Mid-session moment capture — write one blog-style entry to `JOURNEY/` for a precedent / decision / near-miss / important detail that would otherwise evaporate. Held by the `guru` role; added 2026-05-30 night per KABIR_GATE additions log entry 20 | 4 |
+| `/camera` | Mid-session moment capture — write one blog-style entry to `JOURNEY/` for a precedent / decision / near-miss / important detail that would otherwise evaporate. Held by the `guru` role; added 2026-05-30 night per KABIR_GATE additions log entry 21 | 4 |
 | `/commit` | The engineer's workhorse — runs 8L, drafts message, commits | 4 |
 | `/mr` | Open a Merge Request with template + reviewer routing | 5 |
 | `/release` | Release captain's procedure — guard on T₃ | 7 |

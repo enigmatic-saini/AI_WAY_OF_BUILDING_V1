@@ -101,4 +101,4 @@ GURU does not interrupt. Sanjay narrated while the battle continued. The journal
 
 ## Provenance
 
-Authored 2026-05-30 night under the founder's instruction *"DO as per RAM AND SITA"* applied to the prior session's surfacing of the lived gap (two interrupted messages naming GURU + CAMERA + JOURNEY, then explicit instruction to design under Ram + Sita). Added per [KABIR_GATE.md additions log entry 20](../../KABIR_GATE.md). The drishti stack uses only existing ATLAS lenses (Sanjay, Vyasa, Saraswati, Ashtavakra, Narad) — no new governed primitive in the cycle catalog; GURU is a role-level composition.
+Authored 2026-05-30 night under the founder's instruction *"DO as per RAM AND SITA"* applied to the prior session's surfacing of the lived gap (two interrupted messages naming GURU + CAMERA + JOURNEY, then explicit instruction to design under Ram + Sita). Added per [KABIR_GATE.md additions log entry 21](../../KABIR_GATE.md). The drishti stack uses only existing ATLAS lenses (Sanjay, Vyasa, Saraswati, Ashtavakra, Narad) — no new governed primitive in the cycle catalog; GURU is a role-level composition.
