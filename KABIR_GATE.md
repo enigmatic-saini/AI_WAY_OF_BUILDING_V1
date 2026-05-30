@@ -594,6 +594,43 @@ Per the rule in [CYCLES.md](CYCLES.md) preface: *"Adding a cycle TO this kit req
 
 ---
 
+### 2026-05-31 deep-night-3 — Phase 3 of external-AHR ITIL benchmark: ITIL classification + reviewer-routing matrix + mandatory rollback + PIR convention (editorial, no new primitives)
+
+> Context: the founder confirmed the Phase 2 transition with *"go"* — implicit authority to proceed Phase 3 under the same ITIL-arc drishti stack as Phase 1+2. The audit identified Change Management as PARTIAL coverage (had sensitivity-trigger routing + MR template, but no ITIL classification, no codified reviewer-routing matrix combining classification with sensitivity, no mandatory rollback section, no PIR convention). Phase 3 closes those four gaps **as editorial amendments** — no new skills, hooks, roles, or canonical types. The audit recommended this shape explicitly: *"extend the existing /mr skill + SDLC.md template; no new primitives."*
+
+#### Additions log entry 24 — Phase 3 of external-AHR ITIL benchmark: ITIL classification + reviewer-routing matrix + mandatory rollback + PIR convention
+
+- **Name:** ITIL change-classification taxonomy (Standard / Normal / Emergency) + reviewer-routing matrix (classification × sensitivity-trigger, 6 cells, max-of-two rule) + mandatory rollback section in MR template + PIR (Post-Implementation Review) convention for Normal+Emergency MRs. **Two files amended, no new primitives.**
+- **Tag:** No new primitives. Phase 3 is editorial: extends `SDLC.md §4` (MRs) and `/mr skill`. No new skill, hook, role, canonical type, folder convention, or cycle. Counts remain 8 hooks / 11 skills / 7 roles / 10 canonical types / 9 templates after this entry — the standard Sita-pin pattern does NOT fire.
+- **Lineage:** ITIL v4 change-management discipline — Standard / Normal / Emergency classification taxonomy is the de-facto ITIL framing. The reviewer-routing matrix (classification × sensitivity) is a kit-specific composition of ITIL's classification with the kit's existing sensitivity-trigger framing (SDLC §4 pre-Phase-3). PIR (Post-Implementation Review) is ITIL's name for the after-action review; the kit's HANDOVER convention already captures session-level review, so PIR lands as a labeled subsection in HANDOVER rather than as a new canonical type (the audit was clear: HANDOVER suffices). No theological lineage.
+- **Profile:** No cycle. `/mr` skill remains 5-cycle (Q profile) — Cycle 1 absorbed Classify into the existing Sensitivity scan; cycles 2/3 absorbed the matrix + PIR pre-stage. No CycleFsm change.
+- **Concrete artifacts:**
+  - [`SDLC.md §4`](SDLC.md) — extensively extended:
+    - §4.1 ITIL classification (3-class taxonomy with examples and "default Normal if unsure" rule)
+    - §4.2 Sensitivity triggers (unchanged from prior §4, repositioned)
+    - §4.3 Reviewer-routing matrix (6-cell table: classification × sensitivity → required reviewers + mandatory PIR; max-of-two rule; explicit "sensitivity NEVER expedited away by Emergency" rule)
+    - §4.4 Extended MR template (Classification block + mandatory Rollback section with 4 required fields + Audit trail block linking ADRs / postmortems / patches / release-notes)
+    - §4.5 PIR convention (Standard: no PIR; Normal: conditional for large diffs >500 LOC or >10 files; Emergency: mandatory within 24h, as a labeled subsection in HANDOVER session block)
+    - §4.6 Merge conditions (added: Rollback populated + Emergency rollback verified before merge)
+  - [`SDLC.md §7`](SDLC.md) Repo Hygiene — added: "Every MR carries an ITIL classification" + "Every MR has a populated Rollback section." Tag rule extended to reference `semver-check` hook + `release-notes` type (Phase 2 cross-link).
+  - [`.claude/skills/mr/SKILL.md`](.claude/skills/mr/SKILL.md) — procedure restructured around the new classification + matrix:
+    - Description rewritten (was stale: referenced "SDLC §5 template"; corrected to §4 + adds classification framing)
+    - Cycle 1 combined: Classify + Sensitivity scan
+    - Cycle 2: apply the matrix; reviewer routing per the 6 cells
+    - Cycle 3: fill the extended template + pre-stage PIR subsection for Emergency MRs
+    - Cycle 4: push (unchanged)
+    - Cycle 5: open MR + name the merge conditions per SDLC §4.6
+    - Output template extended: CLASSIFICATION + PIR lines
+    - Anti-patterns added: classifying Emergency to skip review, defaulting Standard for "small" changes, leaving Rollback TBD, skipping Emergency PIR
+  - **Central design decision** recorded in [JOURNEY/2026-05-31T03-00-standard-class-min-1-reviewer.md](JOURNEY/2026-05-31T03-00-standard-class-min-1-reviewer.md): **Standard = 1 reviewer minimum (NOT ITIL's 0-reviewer pre-approve pattern)**. Three reasons: (1) kit is tech-agnostic, cannot assume dep-bot/CI infrastructure ITIL's 0-reviewer pattern needs; (2) LAW 10 + Sita's "no-one-watching" lens; (3) the kit codifies floors, not policies — consuming projects can raise but never lower. General pattern: *the kit raises floors, never lowers them*. ITIL is the floor; LAW 10 + LAW 11 + Sita's lens demand stricter floors at the merge boundary.
+  - **NO count callbacks** — Phase 3 adds no skills, hooks, roles, or canonical types. The standard Sita-pin propagation does NOT fire. (Verified: hook count remains 8, skill count remains 11, role count remains 7, canonical-type count remains 10, template count remains 9.)
+- **AHR pre-flight (T4R Q1/Q2):** Q1 — *"The kit codifies ITIL change-management discipline as Standard/Normal/Emergency classification × sensitivity-trigger reviewer-routing matrix (6 cells, max-of-two rule, sensitivity never bypassed), mandatory rollback section in every MR, and PIR convention for Normal+Emergency MRs landing in HANDOVER subsections."* Q2 — Lives in the two amended files + the JOURNEY precedent. Empirical witness: the audit pass's gap-table is closed; reviewer matrix is queryable; PIR's HANDOVER-as-channel decision matches the audit's "extend existing primitives" recommendation. **PASS.**
+- **T4R verdict (inline):** **KBD** PASS — closes the gap between SDLC §4's prior "Rollback" claim (one-paragraph hand-wave) and the now-mandatory 4-field section that the `/mr` skill enforces. **NGD** PASS — catuṣkoṭi: same-as existing sensitivity-trigger routing? No — classification is *orthogonal*, both apply. Same-as `patch-record` classification (Critical/High/Medium/Low)? No — patch classification is about *vulnerability severity* (CVE-driven); change classification is about *change risk* (workflow-driven). Different domains, different lifecycles. Pays rent. **VKD** PASS — Build A wins (extend SDLC + /mr only) over Build B (new `/change` skill — would duplicate `/mr`) and Build C (new `change-record` canonical type — audit explicitly rejected; HANDOVER PIR convention suffices). The audit was prescriptive: *"extend the existing /mr skill + SDLC.md template; no new primitives."* Build A honored. **MID** PASS — ITIL change discipline preserved at full size: 3-class taxonomy, 6-cell reviewer-routing matrix, mandatory rollback (not "documented if X breaches Y"), PIR for Normal+Emergency (not "optional review if you remember"). The dilution pressure here was strong (Standard auto-approve looks attractive; PIR feels like ceremony); MID rejected both. The kit raises floors, never lowers them.
+- **Authorized by:** founder instruction *"go"* (2026-05-31 deep-night-3) confirming Phase 3 after Phase 2's successful landing. Authority delegated to Claude for the central design question (Standard reviewer floor) per the prior session's *"You decide as you know ITIL."* Decision recorded in JOURNEY (commit `98e1566`).
+- **Reversibility clause:** Phase 3 is editorial — there are no new primitives to delete. Rollback amounts to reverting `SDLC.md §4` and `.claude/skills/mr/SKILL.md` to their pre-Phase-3 form. The reversibility threshold is the same as Phase 1+2: at least one consuming project must adopt the classification + matrix discipline within Q3 2026. The JOURNEY entry survives as a kit-level lineage record regardless (the kit-raises-floors-never-lowers principle is reusable for future external-AHR passes). Phase 4 (Incident Management extensions — P1–P4 severity taxonomy + SLA convention + KB feedback loop) is gated on this Phase 3's success — defer to next session.
+
+---
+
 ## Closing principle
 
 > *If a file describes an FSM that does not exist, the file is the ceremony.
