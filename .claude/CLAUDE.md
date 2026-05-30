@@ -17,16 +17,16 @@ Software is built by one jiva (the LLM) running one machine ([`M_build`](../M_BU
 | `block-dangerous-bash` | PreToolUse:Bash | Refuses `--no-verify`, force-push to main, `rm -rf /`, global git config writes |
 | `secret-scan` | PreToolUse:Write/Edit | Blocks PEM/AWS/GH/Slack/Anthropic/Google/JWT in content |
 | `vocabulary-lint` | PreToolUse:Write/Edit | Blocks divine names in non-doc files (see [VOCABULARY.md](../VOCABULARY.md)) |
-| `frontmatter-check` | PreToolUse:Write | Refuses Write on canonical docs (CHARTER/DESIGN/STATUS/TODO/HANDOVER/ADR/POSTMORTEM/RUNBOOK) without valid frontmatter per [DASHBOARD.md](../DASHBOARD.md) |
+| `frontmatter-check` | PreToolUse:Write | Refuses Write on canonical docs (CHARTER/DESIGN/STATUS/TODO/HANDOVER/ADR/POSTMORTEM/RUNBOOK/PATCH-RECORD) without valid frontmatter per [DASHBOARD.md](../DASHBOARD.md) |
 | `handover-reminder` | Stop | Surfaces missing or stale `HANDOVER.md` |
 | `camera-reminder` | Stop | Surfaces if `JOURNEY/` exists but no entry was written in the last 3h (backstop for the `guru` role's discipline) |
-| `stage-tip` | UserPromptSubmit | Reminds the current M_build stage and the 10 skills + 7 roles + 2 composed cycle-sets (HSC, T4R) |
+| `stage-tip` | UserPromptSubmit | Reminds the current M_build stage and the 11 skills + 7 roles + 2 composed cycle-sets (HSC, T4R) |
 
 If a hook blocks you, **read the reason and fix the underlying issue.** Do not work around it. That is the very Gorakhnath-the-book-reciter failure the Kabir Gate exists to catch.
 
 ---
 
-## The skills (10 — runtime instances of `CycleFsm` profiles)
+## The skills (11 — runtime instances of `CycleFsm` profiles)
 
 | Skill | When | Cycles |
 |---|---|---|
@@ -39,6 +39,7 @@ If a hook blocks you, **read the reason and fix the underlying issue.** Do not w
 | `/mr` | Open a Merge Request with template + reviewer routing | 5 |
 | `/release` | Release captain's procedure — guard on T₃ | 7 |
 | `/incident` | On-call incident command — guard on T_prarabdha | 7 |
+| `/patch` | ITIL-class patch lifecycle (identify, classify Critical/High/Medium/Low, plan rollback, apply, verify, record) — writes a `patches/PATCH-NNN-<slug>.md` per the 9th canonical type. Added 2026-05-30 night-late per KABIR_GATE.md additions log entry 22 as Phase 1 of the external-AHR ITIL benchmark | 4 |
 | `/dashboard-emit` | Draft/validate frontmatter on canonical docs per [DASHBOARD.md](../DASHBOARD.md) contract | 4 |
 
 **Skill count was previously stated as "8" in this file** (corrected 2026-05-26 deep-night-3 per KABIR_GATE.md additions log entry 9). `/dashboard-emit` exists in `.claude/skills/dashboard-emit/` and was missing from this table. The `stage-tip.sh` hook had the same staleness (and the same audit point #7 in KABIR_GATE.md §12 also reported "7 skills"); all three are now corrected.

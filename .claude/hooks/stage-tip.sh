@@ -12,6 +12,10 @@
 #   - skill count 9 -> 10 (added /camera for mid-session moment capture)
 #   - role count 6 -> 7 (added guru -- the witness-narrator)
 #   - new routing hint for guru/camera/JOURNEY discipline
+# Refreshed 2026-05-30 night-late per KABIR_GATE.md additions log entry 22:
+#   - skill count 10 -> 11 (added /patch for ITIL-class patch management)
+#   - DASHBOARD canonical types 8 -> 9 (added patch-record)
+#   - new routing hint for patch-class changes
 
 set -euo pipefail
 
@@ -30,7 +34,9 @@ Skills (CycleFsm profiles):
   /mr              - open MR with template + reviewer routing
   /release         - release captain procedure (guard on T3)
   /incident        - on-call incident command (guard on T_prarabdha)
-  /dashboard-emit  - draft/validate frontmatter on canonical docs (DASHBOARD.md contract)
+  /patch           - ITIL patch lifecycle: identify+classify (Critical/High/Medium/Low)
+                     -> plan rollback -> apply -> verify -> record (patches/PATCH-NNN.md)
+  /dashboard-emit  - draft/validate frontmatter on canonical docs (DASHBOARD.md contract, 9 types)
 
 Roles (role-modifiers attached at specific transitions; the LLM remains one):
   analyst (pre-T0)  architect (T0,T1)  engineer (T2,T3,T_loop)
@@ -49,6 +55,7 @@ Heart-or-soul architectural question? Consider HSC.
 About to amend a per-primitive contract in MATH.md/DESIGN.md/CHARTER.md? Run T4R first.
 Release touching auth/PII/payment/IaC/public-API? SHD (Shadow Deep) is mandatory inside /release for sensitive-trigger diffs.
 Important detail surfacing mid-task (precedent, decision, near-miss)? Invoke guru role + run /camera to capture before it evaporates between artifacts.
+Security patch / CVE / dependency vuln / hardening change? Run /patch (not /commit) so the audit trail is produced in patches/.
 EOF
 
 exit 0

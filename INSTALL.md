@@ -45,8 +45,8 @@ test -x .claude/hooks/handover-reminder.sh && echo "handover-reminder OK"
 test -x .claude/hooks/camera-reminder.sh && echo "camera-reminder OK"
 test -x .claude/hooks/stage-tip.sh && echo "stage-tip OK"
 
-# 3. All 10 skills present
-ls .claude/skills/   # expect: camera commit dashboard-emit handover incident intake mr pre-commit-8l release triage
+# 3. All 11 skills present
+ls .claude/skills/   # expect: camera commit dashboard-emit handover incident intake mr patch pre-commit-8l release triage
 
 # 4. All 7 roles present
 ls .claude/agents/   # expect: analyst.md architect.md engineer.md guru.md qa.md reviewer.md security.md
@@ -60,7 +60,7 @@ If any check fails: re-clone, re-link, file an issue.
 ## First-session walkthrough
 
 1. Open the repo in Claude Code.
-2. The `stage-tip` hook fires on your first prompt — it lists M_build stages and the 10 skills.
+2. The `stage-tip` hook fires on your first prompt — it lists M_build stages and the 11 skills.
 3. Run `/triage` to identify which stage applies to your work.
 4. Read [M_BUILD.md](M_BUILD.md) (15 min). It is the ground truth.
 5. Read [.claude/CLAUDE.md](.claude/CLAUDE.md) (5 min). It is the cheat sheet.

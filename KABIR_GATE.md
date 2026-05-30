@@ -51,10 +51,10 @@ If the second answer is "nowhere" → mark `CEREMONY`. Either remove the primiti
 - **Lives in:** `.claude/settings.json`.
 - **Verify:** `jq '[.hooks | .. | .command? | select(.)] | length' .claude/settings.json` returns 7. Each script under `.claude/hooks/` is executable (`-x`).
 
-### 7. The 10 skills
-- **Claims:** discoverable via Claude Code, each runs a named cycle. **(Count corrected 2026-05-26 deep-night-3: 7 → 9 skills; extended 2026-05-30 night to 10 skills per additions log entry 21 with `/camera`.)** Ten skills: intake, triage, pre-commit-8l, handover, camera, commit, mr, release, incident, dashboard-emit.
+### 7. The 11 skills
+- **Claims:** discoverable via Claude Code, each runs a named cycle. **(Count corrected 2026-05-26 deep-night-3: 7 → 9 skills; extended 2026-05-30 night to 10 skills per additions log entry 21 with `/camera`; extended 2026-05-30 night-late to 11 skills per additions log entry 22 with `/patch`.)** Eleven skills: intake, triage, pre-commit-8l, handover, camera, commit, mr, release, incident, patch, dashboard-emit.
 - **Lives in:** `.claude/skills/<name>/SKILL.md`, each with YAML frontmatter (`name`, `description`).
-- **Verify:** `grep -l "^name:" .claude/skills/*/SKILL.md | wc -l` returns 10.
+- **Verify:** `grep -l "^name:" .claude/skills/*/SKILL.md | wc -l` returns 11.
 
 ### 8. The 7 roles
 - **Claims:** discoverable via Claude Code's `Agent` tool, each attaches to ≥1 transition (the `guru` role attaches cross-cutting; all others attach to ≥1 specific M_build transition). **(Count corrected 2026-05-26 deep-night-3: 5 → 6 roles; extended 2026-05-30 night to 7 roles per additions log entry 21 with `guru`.)**
@@ -85,9 +85,9 @@ If the second answer is "nowhere" → mark `CEREMONY`. Either remove the primiti
 - **Verify (tech-agnostic):** `grep -rE "(\.rs|\.ts|\.py|\.go|node_modules|cargo)" --include="*.md" --include="*.toml"` returns only conceptual mentions, not requirements.
 
 ### 13. The frontmatter contract
-- **Claims:** every canonical document in a project consuming this kit carries a YAML frontmatter block conforming to [DASHBOARD.md](DASHBOARD.md) §2.
-- **Lives in:** [DASHBOARD.md](DASHBOARD.md) (the contract) + [.claude/hooks/frontmatter-check.sh](.claude/hooks/frontmatter-check.sh) (structural enforcement, no LLM) + [.claude/skills/dashboard-emit/SKILL.md](.claude/skills/dashboard-emit/SKILL.md) (discipline/drafting) + the 7 templates in `templates/` (each ships with the appropriate frontmatter block prepended).
-- **Verify (templates):** `for t in DESIGN ADR POSTMORTEM RUNBOOK TODO STATUS HANDOVER; do head -1 templates/$t.md | grep -q '^---$' && head -10 templates/$t.md | grep -q '^type:' && echo "$t OK" || echo "$t FAIL"; done` returns 7 OK lines.
+- **Claims:** every canonical document in a project consuming this kit carries a YAML frontmatter block conforming to [DASHBOARD.md](DASHBOARD.md) §2 (9 types as of 2026-05-30 night-late per [additions log entry 22](#) — patch-record added).
+- **Lives in:** [DASHBOARD.md](DASHBOARD.md) (the contract) + [.claude/hooks/frontmatter-check.sh](.claude/hooks/frontmatter-check.sh) (structural enforcement, no LLM) + [.claude/skills/dashboard-emit/SKILL.md](.claude/skills/dashboard-emit/SKILL.md) (discipline/drafting) + the 8 templates in `templates/` (each ships with the appropriate frontmatter block prepended).
+- **Verify (templates):** `for t in DESIGN ADR POSTMORTEM RUNBOOK TODO STATUS HANDOVER PATCH-RECORD; do head -1 templates/$t.md | grep -q '^---$' && head -10 templates/$t.md | grep -q '^type:' && echo "$t OK" || echo "$t FAIL"; done` returns 8 OK lines.
 - **Verify (hook):** `bash -n .claude/hooks/frontmatter-check.sh` returns 0; `test -x .claude/hooks/frontmatter-check.sh`; the hook is wired in `.claude/settings.json` under PreToolUse:Write|Edit.
 - **Verify (project-side, when this kit is installed into a real project):** for each canonical path that exists in the project (CHARTER.md, DESIGN.md, STATUS.md, TODO.md, decisions/ADR-*.md, postmortems/INC-*.md, runbooks/*.md), confirm: (a) starts with `---`, (b) has a `type:` field, (c) closes with `---` before body. The audit one-liner is in [DASHBOARD.md](DASHBOARD.md) §8.
 - **What ceremony looks like here:** frontmatter fields invented for the dashboard's sake. If a field is not in DASHBOARD.md §2, remove it — the viewer ignores unknown fields and the field rots.
