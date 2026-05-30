@@ -8,9 +8,9 @@
 
 This rule is the same Kabir invariant that justifies the rest of the kit. The viewer exists to make existing truth visible to PM/EM/anyone; it does not exist to create new truth.
 
-## §2 — Nine canonical doc types
+## §2 — Ten canonical doc types
 
-**(Count corrected 2026-05-30 night-late per [KABIR_GATE.md additions log entry 22](KABIR_GATE.md): 8 → 9 with the addition of `patch-record`. Phase 1 of the external-AHR ITIL benchmark.)**
+**(Count corrected 2026-05-30 night-late per [KABIR_GATE.md additions log entry 22](KABIR_GATE.md): 8 → 9 with the addition of `patch-record`. Phase 1 of the external-AHR ITIL benchmark. Extended 2026-05-31 deep-night per [additions log entry 23](KABIR_GATE.md): 9 → 10 with the addition of `release-notes`. Phase 2 of the external-AHR ITIL benchmark.)**
 
 Each canonical document type has a fixed frontmatter schema. The frontmatter is YAML between two `---` lines at the very top of the file.
 
@@ -151,12 +151,31 @@ links: []
 
 The four classifications map to SLA windows: Critical < 24h, High < 7d, Medium < 30d, Low < 90d. The `status:` field is a state-machine: `PROPOSED → TESTING → APPLIED → VERIFIED` on the happy path; any state can transition to `ROLLED-BACK`. The `applied-at:` and `verified-at:` fields are required-when-the-status-permits (null until then). See the [/patch skill](.claude/skills/patch/SKILL.md) for the procedural lifecycle and the [PATCH-RECORD template](templates/PATCH-RECORD.md) for the body sections.
 
+### 2.10 `release-notes` — release-notes/RELEASE-NOTES-v<X.Y.Z>.md
+
+```yaml
+---
+type: release-notes
+version: v1.2.3                  # must be SemVer 2.0; matched by semver-check hook
+date: 2026-05-31
+status: DRAFT | PUBLISHED | SUPERSEDED | ROLLED-BACK
+commit-range: v1.2.2..v1.2.3     # previous tag .. this tag
+rollback-tag: v1.2.2             # the safe-redeploy target
+audit-trail: true
+patches: []                      # list of PATCH-NNN ids bundled in this release
+incidents: []                    # related INC-NNNN ids (if any)
+breaking: false                  # if true, Migration section is required in body
+---
+```
+
+The `version:` field must satisfy SemVer 2.0 — enforced by the [`semver-check` hook](.claude/hooks/semver-check.sh) on the git tag (`git tag v<X.Y.Z>`) that ships the release, and by file-naming convention (`RELEASE-NOTES-v<X.Y.Z>.md`). The `status:` is a state-machine: `DRAFT → PUBLISHED → SUPERSEDED` on the happy path; any state can transition to `ROLLED-BACK`. The `rollback-tag:` field is required-always — even a perfect release must document its rollback target. The `patches:` list cross-references `patches/PATCH-NNN.md` records bundled in this release (audit trail). See the [/release skill](.claude/skills/release/SKILL.md) for the procedural lifecycle and the [RELEASE-NOTES template](templates/RELEASE-NOTES.md) for the body sections.
+
 ## §3 — Validation rules
 
 For every doc type:
 
 1. **Must start with `---`** (no blank lines, no BOM).
-2. **`type:` field is required** and must be one of the 9 enum values.
+2. **`type:` field is required** and must be one of the 10 enum values.
 3. **All required fields per type are present.**
 4. **`---` close present** before the body content.
 5. **Body content begins after the closing `---`.**

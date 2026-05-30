@@ -38,49 +38,52 @@ If FAIL: stop. Do not tag. Fix and re-run.
 - No claims about working features that don't.
 
 ### 3. Draft release notes
-Format:
-```
-## v<major>.<minor>.<patch> — YYYY-MM-DD
+Write to `release-notes/RELEASE-NOTES-v<MAJOR>.<MINOR>.<PATCH>.md` per the [RELEASE-NOTES canonical type](../../../DASHBOARD.md) (DASHBOARD.md §2.10) using the [templates/RELEASE-NOTES.md](../../../templates/RELEASE-NOTES.md) template. The frontmatter is **enforced** by the `frontmatter-check` hook; the body shape includes:
 
-### Added
-- ...
+- **Summary** — one paragraph in human terms.
+- **Added / Changed / Fixed** — what moved.
+- **Security** — patches bundled (each links to its `patches/PATCH-NNN.md` per the `patches:` frontmatter list). *Explicit "No security patches" is the audit trail; do not omit the section.*
+- **Breaking changes** — explicit "No breaking changes." if `breaking: false`. If `breaking: true`, the Migration section is required.
+- **Migration** — required when `breaking: true`.
+- **Known issues** — explicit "No known issues." if none.
+- **Rollback procedure** — **MANDATORY** (per step 6 below). Even a perfect release needs documented rollback.
+- **Canary watch** — window, metrics, thresholds, outcome (per step 5 below).
+- **Audit trail** — reviewer(s), release captain, MR list, related incidents/ADRs/patches.
 
-### Changed
-- ...
-
-### Fixed
-- ...
-
-### Security
-- (if any) ...
-
-### Migration / breaking changes
-- (if any) ...
-
-### Known issues
-- (if any) ...
-```
+The "explicit-absence-is-the-audit-trail" rule applies throughout: empty sections are written as *"No <section>"*, not omitted. Omission is ambiguous; explicit absence is auditable.
 
 ### 4. Propose tag
-Format: `v{major}.{minor}.{patch}` (SemVer).
+Format: `v{major}.{minor}.{patch}` (SemVer 2.0).
+**The `semver-check` hook (PreToolUse:Bash) refuses malformed git tags** — `v1.2`, `v1.2.3.4`, `release-1` will be blocked at hook-time. Tags must match the SemVer pattern enforced at git-time.
+
 Bump rules:
 - Breaking change → major.
 - New feature, backward-compatible → minor.
 - Fix only → patch.
+
+Pre-release identifiers (e.g., `v2.0.0-rc.1`, `v2.0.0-beta`) and build metadata (e.g., `v1.0.0+build.5`) are accepted by `semver-check`.
 
 ### 5. Canary watch
 - Deploy to canary slice (e.g., 5% traffic).
 - Watch error rate, latency p95, business metrics for ≥1 hour.
 - If any regresses → roll back (step 6) and re-cycle.
 
-### 6. Rollback gate
+### 6. Rollback gate (MANDATORY)
 - Pre-stage the rollback command. Test it works.
-- Document: "Roll back with `<command>` if `<metric>` breaches `<threshold>`."
+- Record in the RELEASE-NOTES's "Rollback procedure" section (DASHBOARD §2.10 + the template's Rollback section):
+  - `rollback-tag:` frontmatter — the previous release tag (the safe-redeploy target).
+  - Rollback command — the exact git/deploy commands.
+  - Estimated time-to-rollback (minutes).
+  - **Forward-only changes (un-rollbackable)** — any data/migration changes that cannot be reversed by re-deploying the prior tag. If any, name the *manual remediation* required. *This is the kit's anti-hypocrisy on "we have rollback" — forward-only changes break that claim unless explicitly named.*
+  - Rollback verification — how we'll know the rollback succeeded.
+- This section is non-negotiable per the kit's `/release` discipline + ITIL release management. A release notes file without a populated Rollback section will FAIL the audit trail.
 
-### 7. Tag
-- `git tag -a v<...> -m "Release <...>"`
-- `git push origin v<...>`
-- Publish release notes.
+### 7. Tag + publish
+- `git tag -a v<MAJOR>.<MINOR>.<PATCH> -m "Release v<...>"` — the `semver-check` hook validates the tag format.
+- `git push origin v<...>` — push the tag.
+- Commit + push the `release-notes/RELEASE-NOTES-v<...>.md` file (the audit trail).
+- Update the RELEASE-NOTES frontmatter `status: DRAFT → PUBLISHED` after the tag is pushed.
+- If the release is later superseded by a newer version, the prior RELEASE-NOTES's `status:` moves `PUBLISHED → SUPERSEDED`. If rolled back per step 6, it moves to `ROLLED-BACK` and the next RELEASE-NOTES references it in the `incidents:` list.
 
 ## Output template
 
@@ -88,9 +91,9 @@ Bump rules:
 SHD:        PASS @ <SHADOW_PASS_*.md path> + <N> new NEG tests merged | SKIPPED (no sensitive trigger) | BLOCKED (P0 gap, no NEG test)
 RH3:        PASS | FAIL
 STATUS:     honest | drift detected (fix before tag)
-NOTES:      <link or block>
-TAG:        v<...>
+NOTES:      release-notes/RELEASE-NOTES-v<...>.md (status: DRAFT -> PUBLISHED on tag)
+TAG:        v<...>   (semver-check verified)
 CANARY:     PASS @ <duration> | regressed (rolled back)
-ROLLBACK:   <command staged>
+ROLLBACK:   tag=<prev>; command=<...>; un-rollbackable=<list or none>
 RESULT:     released v<...> | aborted (reason: ...)
 ```
