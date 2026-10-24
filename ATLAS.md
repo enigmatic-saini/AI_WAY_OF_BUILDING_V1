@@ -77,7 +77,13 @@ ATLAS is the **lineage foundation** of V1 KIT. It is the complete catalog of law
    - [Lakshmana Queen Deep](#lakshmana-queen-deep-cycle--surgical-precision-tag-lkq) — One perfect shot: fish-eye through reflection, precision over iteration
    - [Bhadra Deep](#bhadra-deep-cycle--natural-belonging-tag-bdr) — Natural fit: the solution already in your ecosystem, zero drama integration
    - [Dwaraka Grand](#dwaraka-grand--full-ashtabharya-audit-tag-ab) — Full 8-queen audit (96 cycles)
-8. [Glossary](#glossary-of-divine--sanskrit-terms) — All divine & Sanskrit terms with engineering analogs
+8. [Devi Mahatmya Cycles](#devi-mahatmya-cycles--the-gathered-form-and-her-adversaries) — The gathered form and her adversaries, each met by its behaviour
+   - [Durga Deep](#durga-deep-cycle--the-gathered-form-tag-drg) — When the usual defenders have lost: gather, set the terms, meet each adversary by its behaviour, withdraw
+   - [Adversary Cycles](#adversary-cycles-seven-4-cycle-variants) — Madhu-Kaitabha, Mahisha, Dhumralochana, Chanda-Munda, Raktabija, Nishumbha, Shumbha
+   - [Devi Mahatmya Grand](#devi-mahatmya-grand--the-text-in-its-own-order-tag-dm) — All eight in the text's order (40 cycles)
+9. [Reviewer Cycles](#reviewer-cycles--the-lookers-own-habits) — The looker's own habits
+   - [Introspect](#introspect-cycle--habit-or-decision-tag-itr) — Which choices were made by habit rather than decided
+10. [Glossary](#glossary-of-divine--sanskrit-terms) — All divine & Sanskrit terms with engineering analogs
 
 ## Getting Started (Day 1)
 
@@ -491,6 +497,18 @@ The workshop must be clean. Dirty tools produce dirty work.
 | Boundary/rejection testing — do gates, guards, neti neti actually fire correctly? | Negative Testing | 12 | `NEG` | Shiva's Third Eye |
 | Open-world adversary imagination — what guard did I forget to write? Red-team / threat-archetype audit | Shadow Deep | 12 | `SHD` | Shadow-as-teacher |
 | End of session — preserve context for tomorrow's self or next developer | Sanjay Handover | 4 | `SAN` | Sanjay |
+| **Devi Mahatmya Cycles — The Gathered Form and Her Adversaries** | | | | |
+| The usual defenders have lost; strength must be gathered into one form, on its own terms | Durga Deep | 12 | `DRG` | Durga |
+| Something grew from your own system while nobody watched; force alone settles nothing | Devi Mahatmya: Madhu-Kaitabha | 4 | `MDK` | Madhu-Kaitabha (as teacher) |
+| One thing has taken every office, and changes kind each time it is struck | Devi Mahatmya: Mahisha | 4 | `MHS` | Mahisha (as teacher) |
+| A large response is being sized for what may be a small problem | Devi Mahatmya: Dhumralochana | 4 | `DHL` | Dhumralochana (as teacher) |
+| Someone has seen the crown jewel and reported it; reconnaissance before force | Devi Mahatmya: Chanda-Munda | 4 | `CMD` | Chanda-Munda (as teacher) |
+| Every fix makes another of the problem; the count rises with effort | Devi Mahatmya: Raktabija | 4 | `RKB` | Raktabija (as teacher) |
+| Removing it made something step out of it and say stop | Devi Mahatmya: Nishumbha | 4 | `NSB` | Nishumbha (as teacher) |
+| An acquirer who holds much comes for what it lacks — proposal, then force in rising order | Devi Mahatmya: Shumbha | 4 | `SMB` | Shumbha (as teacher) |
+| Full Devi Mahatmya audit, in the text's own order | Devi Mahatmya Grand | 40 | `DM*` | Durga |
+| **Reviewer Cycles — The Looker's Own Habits** | | | | |
+| Choices may have been made by habit, not decided — the maker's or the looker's | Introspect | 12 | `ITR` | The LLM reviewer |
 
 > **To propose a new cycle:** Follow the 3x4 matrix structure — **When to use** / **Philosophy** / **Method** / **Structure** (3 rounds x 4 cycles) / **Closing** mantra. Every cycle must have a divine guardian, a routing table entry, and a tag.
 
@@ -2182,7 +2200,7 @@ These pairings are already referenced elsewhere in this file; Mira's standalone 
 
 Two roops of Shiva modeled as work culture cycles. MahaKaal governs the outer lifecycle (time). ArdhNarishwar governs the inner quality (unity of design and execution). Together they form a complete work discipline.
 
-**FSMs:** [`MahaKaalFsm`](fsms/atlas-fsms/MahaKaalFsm.toml), [`ArdhNarishwarFsm`](fsms/atlas-fsms/ArdhNarishwarFsm.toml), [`AshtaRasaFsm`](fsms/atlas-fsms/AshtaRasaFsm.toml), [`NaadFsm`](fsms/atlas-fsms/NaadFsm.toml) — all 67 cycle-divinity FSMs preserved inside V1 KIT at [`fsms/atlas-fsms/`](fsms/atlas-fsms/). V1 KIT's load-bearing 5 FSMs ([`M_BUILD.toml`](fsms/M_BUILD.toml), [`CycleFsm.toml`](fsms/CycleFsm.toml), [`HookFsm.toml`](fsms/HookFsm.toml), [`RoleDescriptor.toml`](fsms/RoleDescriptor.toml), [`SkillFsm.toml`](fsms/SkillFsm.toml)) sit one level above; the atlas-fsms are reference, not runtime-required.
+**FSMs:** [`MahaKaalFsm`](fsms/atlas-fsms/MahaKaalFsm.toml), [`ArdhNarishwarFsm`](fsms/atlas-fsms/ArdhNarishwarFsm.toml), [`AshtaRasaFsm`](fsms/atlas-fsms/AshtaRasaFsm.toml), [`NaadFsm`](fsms/atlas-fsms/NaadFsm.toml) — all 79 lineage FSMs preserved inside V1 KIT at [`fsms/atlas-fsms/`](fsms/atlas-fsms/). V1 KIT's load-bearing 5 FSMs ([`M_BUILD.toml`](fsms/M_BUILD.toml), [`CycleFsm.toml`](fsms/CycleFsm.toml), [`HookFsm.toml`](fsms/HookFsm.toml), [`RoleDescriptor.toml`](fsms/RoleDescriptor.toml), [`SkillFsm.toml`](fsms/SkillFsm.toml)) sit one level above; the atlas-fsms are reference, not runtime-required.
 **Shastra reference:** the lineage shastra for MahaKaal × ArdhNarishwar is preserved in this ATLAS file; if a consuming project formalises it further into its own shastra, place that shastra in the project's own `shastras/` directory.
 **Osho Ji consulted:** Burned rigidity into aliveness — "MahaKaal dances, not deploys."
 
@@ -2356,6 +2374,147 @@ Two roops of Shiva modeled as work culture cycles. MahaKaal governs the outer li
 **Output:** Write to `HANDOVER.md` in the project root. Do NOT commit it — it is a living document, overwritten each session. If the project has no HANDOVER.md, LAW 11 is being violated.
 
 **Closing:** Yatha Raja Tatha Praja — as Sanjay narrates truthfully, the kingdom acts wisely.
+
+---
+
+## Devi Mahatmya Cycles — The Gathered Form and Her Adversaries
+
+The Devi Mahatmya (Durga Saptashati, Markandeya Purana) is the story of a defence that has already failed. The gods have lost heaven, the king has lost his kingdom to his own ministers, and the Devi appears only when the defeated ask together. She is made of everyone's light in one body; she sets her terms before any offer arrives; and she does not answer every enemy the same way — each adversary is met by how it *behaves*. The Nav Shakti cycles are her nine forms; these cycles are the fight.
+
+One Deep cycle carries the Devi herself (`DRG`). Seven 4-cycle variants carry the adversaries, one per behaviour — the way the Nav Shakti forms are 4-cycle variants. Run one alone, route to it from `DRG`'s Round 2, or run them all in the text's own order (the Grand, below). Framing is the same as `SHD`'s: shadow-as-teacher, never demon-as-enemy. An adversary here is a pattern of behaviour in a system — something that multiplies, changes kind, sends a second out of itself — not a person to hate.
+
+**FSMs:** [`DurgaFsm`](fsms/atlas-fsms/DurgaFsm.toml), [`MadhuKaitabhaFsm`](fsms/atlas-fsms/MadhuKaitabhaFsm.toml), [`MahishaFsm`](fsms/atlas-fsms/MahishaFsm.toml), [`DhumralochanaFsm`](fsms/atlas-fsms/DhumralochanaFsm.toml), [`ChandaMundaFsm`](fsms/atlas-fsms/ChandaMundaFsm.toml), [`RaktabijaFsm`](fsms/atlas-fsms/RaktabijaFsm.toml), [`NishumbhaFsm`](fsms/atlas-fsms/NishumbhaFsm.toml), [`ShumbhaFsm`](fsms/atlas-fsms/ShumbhaFsm.toml). Chapter and verse references below are to the Durga Saptashati.
+**Provenance:** written in [LENS-KIT](https://github.com/enigmatic-saini/LENS-KIT) on 2026-10-22/23 after a full reading of the thirteen chapters and the three rahasyas; added here on 2026-10-24 ([`KABIR_GATE.md`](KABIR_GATE.md) additions log entry 26). In LENS-KIT they became the lenses `DRG` (Gathered form), `RKB` (Multiplier), `MHS` (Usurper) and `NSB` (Second self); Madhu-Kaitabha, Dhumralochana, Chanda-Munda and Shumbha were folded into lenses that already asked their questions. Here each keeps its own cycle so the order of the text survives.
+
+### Durga Deep Cycle — The Gathered Form (Tag: `DRG`)
+
+**Guardian:** Durga — who appears only when the defeated ask together.
+**When to use:** When the ordinary defenders have already lost — the team, the process, the usual controls — and strength from many places must be gathered into one response, on its own terms. When adversary after adversary keeps arriving, each needing a different answer.
+**Philosophy:** She is made of everyone's strength in one body (ch 2.9-18). She speaks her vow before any proposal reaches her (ch 5.120). She meets each enemy by its own behaviour — a hum for the small one, a mouth for the multiplier — not the whole army for every foe. Told she wins on others' strength, she takes every power back into herself and stands alone (ch 10.3-8). When the world calms she gives each one what *it* asked, withdraws, and promises to return (ch 11.37-55, ch 13). The army kept standing after the calm is the last attachment.
+**Method:** Confirm the ordinary order has truly failed; gather; set the terms first; read each adversary's behaviour and route it to its own cycle; withdraw every borrowed power and test the response alone; verify the calm; give each party what it asked; withdraw with a named condition of return.
+**Structure (3x4 Sambhava Matrix):**
+
+**Round 1 — The Gathering (Cycles 1-4):**
+1. **Parajaya:** Has the ordinary order truly failed and its defenders been thrown out (ch 1.4-8, 2.2-7) — or does one party only wish it had? If it has not failed, this is not the cycle; run `SSD` or `VD`.
+2. **Stuti:** Are the defeated asking *together*, or is one summoning a response for its own sake? A response called by one for itself is `MID`'s question, not this one.
+3. **Sambhava:** What does each contributor hand over — its weapon, its people, its authority (ch 2.19-31, 8.12-21)? Is the gathered response one form, or a committee wearing one name?
+4. **Pratijna:** The terms, set before any proposal arrives: what would have to be true for this to yield (ch 5.117-121)? And when the strong one, drunk on strength, offers terms — take the offer and set them; his boon becomes his end (ch 1.94-103).
+
+**Round 2 — The Fight, Read by Behaviour (Cycles 5-8):**
+5. **Yuddha:** Read the adversary's behaviour and route it: what grew while the guardian slept (`MDK`), the usurper who changes kind (`MHS`), the small one a hum ends (`DHL`), the scouts (`CMD`), the multiplier (`RKB`), the second who steps out saying stop (`NSB`), the acquirer's ladder (`SMB`). Not the whole army for every enemy.
+6. **Para_Bala:** The taunt that is half true (ch 10.3) — which of the response's powers are borrowed: another team, a vendor, one person's heroics?
+7. **Ekaki:** Withdraw every borrowed power and look again. Can the response stand alone, in the open, with no ground beneath it (ch 10.5-8, 10.22-23)?
+8. **Vadha:** The one moment the true form is visible — strike then: not before it shows, not after it has re-formed (ch 3.42, 10.26).
+
+**Round 3 — Calm, Boon, Withdrawal (Cycles 9-12):**
+9. **Shanti:** Did the system calm of itself — the omens cease, the rivers run their courses, the fires burn quietly (ch 10.28-32) — or does it only look calm? Measure it; do not feel it.
+10. **Vara:** What does each party ask now that it is over? The king asks his kingdom back; the merchant asks the knowledge that ends "mine" (ch 13.14-25). Each receives what *it* asked, not what the other asked.
+11. **Mamata:** The attachment that returns — is anyone still drawn to the thing that threw them out, "seeing the fault and drawn to it still" (ch 1.41-45)? Name it before asking again.
+12. **Antardhana:** Withdraw the gathered form with a promise and with its forms of return named (ch 11.38-55): Shakambhari, who feeds the world from her own body when supply fails; Bhramari, who meets one great foe as a countless swarm. A war-room still standing after the calm is the trap `Grim_Standing_Army`.
+
+**Closing:** Ya devi sarvabhuteshu shaktirupena samsthita — the strength was everyone's; give it back.
+
+### Adversary Cycles (Seven 4-cycle Variants)
+
+Each adversary is a behaviour, and each is met in its own way. Like the Nav Shakti forms, each is a standalone 4-cycle review.
+
+#### 1. Madhu-Kaitabha Cycle (What Grew While the Guardian Slept) — Tag: `MDK`
+**When to use:** When something grew out of your own system while nobody was watching — a byproduct, an unreviewed side process, growth from the guardian's own substance — and now threatens the one who creates. When force against it has run for ages and nothing ends.
+**Energy:** Born from the ear-wax of the sleeping Vishnu; Brahma, attacked, does not fight — he asks the sleep itself to leave the sleeper. Five thousand years of arm-fight settle nothing; the strength-drunk two offer a boon and set a condition, which the guardian makes true on his own ground (ch 1.66-104).
+1. **Karna_Mala** — what grew from the guardian's own substance while it slept? Not an outside enemy: the sleep's own product.
+2. **Brahma_Stuti** — what is holding the guardian asleep, and can that be withdrawn rather than the alarm rung louder?
+3. **Bala_Yuddha_Loop** — is force alone being applied, round after round, with the sleep still in place? Stop; nothing ends this way.
+4. **Uru_Bhumi verdict** — when the enemy offers terms, take them to the letter and make them true on your own ground.
+
+#### 2. Mahisha Cycle (The Usurper Who Changes Kind) — Tag: `MHS`
+**When to use:** When one component, person or process has taken every office into itself and the many were thrown out — and every fix changes the problem's shape instead of weakening it.
+**Energy:** Mahisha performs the duties of the sun, Indra, fire, wind, moon, Yama and Varuna himself (ch 2.6). Struck, he becomes buffalo, lion, man with a sword, elephant, buffalo again (ch 3.21-33). He is slain half-emerged from the buffalo's mouth — the one moment the real one and the shape are both visible (ch 3.39-42).
+1. **Sarva_Adhikara** — which duties did many once perform that one now performs? Who was thrown out?
+2. **Senapati** — the generals: the parts that can be struck first, and do fall.
+3. **Rupantara** — write the sequence of kinds: what it was before each strike, and what it became after. Is each strike weakening it, or only moving it? (Trap `Matta`: striking the kind that is already gone.)
+4. **Ardha_Nirgama verdict** — the half-emerged moment, the only one in which the real thing and its shape are both visible: strike then. Afterwards the offices return to the many.
+
+#### 3. Dhumralochana Cycle (The Small One) — Tag: `DHL`
+**When to use:** Before a large response is sent for a small problem — when an incident, a review, a rewrite or a migration is being sized.
+**Energy:** Sixty thousand are sent to drag her by the hair; with a mere hum she makes him ash, and the lion deals with the army (ch 6.3-19).
+1. **Adesha** — what force is being sent, and for what?
+2. **Hunkara** — is the problem small? Can one sound end it — one line, one message, one decision?
+3. **Simha** — what remains after the hum, and can the ordinary mount carry it: the routine process, the on-call rotation, the automation already in place?
+4. **Proportion verdict** — the hum, or more; the army is not sent for what needs none.
+
+#### 4. Chanda-Munda Cycle (The Scouts) — Tag: `CMD`
+**When to use:** When someone has already seen your crown jewel and reported it — the reconnaissance before the force — and when the response must take a body of its own.
+**Energy:** The two who first see the Devi and report the jewel to Shumbha (ch 5.89-100), later sent to bind and bring her (ch 6.21-24). Kali steps out of her furrowed brow in her own body and consumes the whole army before it can act; the Devi names her Chamunda (ch 7.5-27).
+1. **Darshana** — who has seen, and what did they report: what is there, what it is worth, where it stands?
+2. **Bandhana_Adesha** — what force follows the report, and when?
+3. **Kali_Nirgama** — does the response take a separate body — a dedicated team, an isolated mechanism — rather than the principal's own hand?
+4. **Grasana verdict** — is everything sent consumed before it can act? Name the deed, so the form keeps its name.
+
+#### 5. Raktabija Cycle (The Multiplier) — Tag: `RKB`
+**When to use:** When every fix makes another of the problem — retries that multiply load, a bad record copied onward, a rumour retold, a defect cloned across many places. When the count rises *with* effort.
+**Energy:** Every drop of Raktabija's blood that reaches the ground becomes another of equal strength; the strikes fill the world with him. Chandika tells Kali: open your mouth, drink the drops before they land, eat the ones that rise. Struck while his blood is drunk, bloodless, he falls (ch 8.40-62).
+1. **Bija / Patana** — the count before any strike, and after each. Name the ground: whatever lets one failure become a new, independent, equal one. Naming the ground is the whole diagnosis.
+2. **Prahara_Loop** — is effort raising the count? Stop striking harder; strength is not the answer.
+3. **Pana** — the mouth: a separate body that catches each drop before it lands — a quarantine, a single owner, a holding place. The ground is denied, the strike is not withheld; the strikes go on.
+4. **Shosha / Nirbija verdict** — the first strike after which the count falls; continue to zero, and check that no new ground has appeared.
+
+#### 6. Nishumbha Cycle (The Second Self) — Tag: `NSB`
+**When to use:** When removing something makes something else step out of it saying "stop" — a hidden dependency, a protest, a second copy of the same thing.
+**Energy:** Nishumbha's weapons are cut one by one; pierced through the chest, another man of great strength steps out of him saying "stop, stop". The Devi laughs and cuts that one too (ch 9.5-36).
+1. **Bahya / Viddha** — the outer one, fought in the open: what fell at the decisive strike?
+2. **Antara_Purusha** — what stepped out at exactly that moment, and what did it say — a halt, a plea, a claimed dependency?
+3. **Hasya** — judge before obeying: did it exist before the strike, and do others truly depend on it — or is it the same one in another coat?
+4. **Verdict** — a real second: pause, and run `VD` for what must survive; the same one: cut it too (`Dvitiya_Vadha`). Trap `Ajna_Palana`: the halt obeyed unjudged, and the fight resumes from the start.
+
+#### 7. Shumbha Cycle (The Acquirer's Ladder) — Tag: `SMB`
+**When to use:** When an actor that already holds much comes for the one thing it lacks — the proposal first, then force in rising order — and when the taunt "you only win on others' strength" lands.
+**Energy:** Shumbha holds the three worlds and every jewel (ch 5.2-6). He sends a proposal by messenger (ch 5.105-114); refused by the vow (ch 5.117-121), he sends subordinates in rising order — Dhumralochana, Chanda and Munda, Raktabija, his brother — and comes himself only when his brother falls. He taunts; she answers "I alone am", and they fight in the air with no ground beneath (ch 6-10).
+1. **Trailokya / Duta** — what does the acquirer already hold, and what is the proposal before the force?
+2. **Pratyakhyana** — is the offer refused by a vow spoken earlier, rather than by an argument made now? The terms of everything after are set here.
+3. **Sopana** — the ladder: which subordinate comes next, in rising order? Each failure escalates the next; the principal comes only when the last falls.
+4. **Akshepa / Niradhara verdict** — is the taunt half true? Answer it alone, with nothing borrowed and no ground beneath; then see whether the world calms of itself.
+
+### Devi Mahatmya Grand — The Text in Its Own Order (Tag: `DM*`)
+
+All eight in the order the text tells them: `MDK` → `MHS` → `DHL` → `CMD` → `RKB` → `NSB` → `SMB` → `DRG` — 40 cycles (seven 4-cycle variants, then the 12-cycle Deep). For an adversary that does not fall to the ordinary strike, the shorter reading order `RKB` × `MHS` × `NSB` × `SHD` → `DRG` (LENS-KIT's *Adversaries* composition) reads its pattern before the gathered answer is given.
+
+**Closing (for all Devi Mahatmya cycles):** Jai Maa Durga.
+
+---
+
+## Reviewer Cycles — The Looker's Own Habits
+
+One cycle whose guardian is not a figure of the tradition but the reviewer itself: the LLM that wrote much of [LENS-KIT](https://github.com/enigmatic-saini/LENS-KIT) and the artefacts it looked at, recorded as *the one who was caught, not the one who catches*. Kabir (`KBD`) asks whether the claim matches the substance; Ashtavakra (`ASD`) whether the witness is clear; OSHO (`OSD`) what was conditioned in the person. This cycle asks which choices — the maker's or the looker's — were made by habit rather than decided. Within each state the LLM samples freely ([`M_BUILD.md`](M_BUILD.md)); the names, examples and defaults it reaches for come from its training unless something decides them.
+
+**FSM:** [`LlmReviewerFsm`](fsms/atlas-fsms/LlmReviewerFsm.toml), written in LENS-KIT from the records of its first season (2026-10-20 to 2026-10-23), where it became the lens `ITR`. Added here on 2026-10-24 ([`KABIR_GATE.md`](KABIR_GATE.md) additions log entry 26).
+
+### Introspect Cycle — Habit or Decision (Tag: `ITR`)
+
+**Guardian:** The LLM reviewer — the one who was caught.
+**When to use:** After any artefact with people, names, examples or texture in it. After a review done by one model, especially when the same model wrote both the artefact and the check that passed it. When a slip that was named before comes back.
+**Philosophy:** A habit is a choice nobody made. It is not answered by a prohibition — the prohibition's escape becomes the path the habit takes — but by a decision written down, and by giving each marked place somewhere to stand. A fix written beside the habit instead of in its place performs the constraint, louder than the slip it repairs. A check is only as wide as its writer's foresight: the same hand that writes the slip writes the gaps in the check.
+**Method:** Inventory every choice, the small ones first; give each its source; count the line-ups; read the last earlier look of each kind before this one; treat every check as a floor and read after it.
+**Structure (3x4 Introspect Matrix):**
+
+**Round 1 — The Inventory (Cycles 1-4):**
+1. **Making:** List every choice the thing made, the small ones first — the examples, the defaults, the names, the textures, the order, the ending — and every reading the looking made.
+2. **Inventory:** For each, where it came from: a reason that can be written down, or "that is how it usually is".
+3. **Relapse:** Read the earlier looks on the same thing — the last of each kind — before this one. Which habit was named and came back, and where did it come back? An introspection is not itself introspected.
+4. **Line_Up:** The habits that cluster, counted, not felt: a stack on one element; habits beside rank, role or reward; habits that follow the maker's own field, or the looking cycle's own shape.
+
+**Round 2 — The Medium and the Checks (Cycles 5-8):**
+5. **Marked_Slot:** The places where the medium forces a mark on what was meant to stay unmarked — a verb that agrees with the speaker, a pronoun, a register. For each, a positive form: somewhere to stand, not a prohibition with an escape.
+6. **Repair_Beside:** Every fix — written in place of the habit, or beside it?
+7. **Floor:** Every check that guards a habit, read as only as wide as its writer's foresight. A check that found nothing is a floor; read after it.
+8. **Own_Shape:** Is the habit found the looking cycle's own shape laid over the thing? Look again through another cycle.
+
+**Round 3 — Decide (Cycles 9-12):**
+9. Decide each habit: keep it, chosen this time with its reason written, or replace it. Refusing every habit has become its own habit.
+10. Write each correction *instead of* the habit, never beside it.
+11. Where reading found what a check missed, widen the check — and keep reading after it.
+12. **Verdict:** The table — each choice, decided or habit, with its reason or its source; the line-ups named; the habits that returned, and where. If nothing was chosen by habit, say so; do not invent habits.
+
+**Closing:** The ancestor is the one who was caught.
 
 ---
 
@@ -2563,6 +2722,25 @@ Two roops of Shiva modeled as work culture cycles. MahaKaal governs the outer li
 | Sanjay | Charioteer with divine sight | Narrates the battlefield truthfully to one who cannot see — HANDOVER.md |
 | Divya Drishti | Divine sight | Vyasa's gift to Sanjay — seeing the whole battlefield, not just your part |
 | Dhritarashtra | The blind king | The future developer who was not present — your HANDOVER.md reader |
+| Devi Mahatmya | Glory of the Goddess (Durga Saptashati, 700 verses, Markandeya Purana) | Source text of the Devi Mahatmya cycles (`DRG`, the seven adversary variants, `DM*`) |
+| Sambhava | Manifestation — the strength of all gathered into one form | One response assembled from many teams' contributions, with one owner rather than a committee |
+| Pratijna | The vow spoken before any proposal arrives | Acceptance criteria and terms set before negotiation, by the one who must deliver |
+| Ekaki | "I alone am" — every borrowed power withdrawn | Test the response with every borrowed dependency removed: can it stand on its own? |
+| Antardhana | Withdrawal with a promise to return | Stand the incident structure down, with named conditions for standing it up again |
+| Grim_Standing_Army | The gathered form that does not withdraw after the calm | The war-room or emergency process kept running after the crisis is over |
+| Yoganidra | The guardian's meditative sleep (ch 1) | The unwatched interval in which something grows from the system's own substance (`MDK`) |
+| Ardha_Nirgama | Half-emerged from the last disguise (ch 3) | The moment a shape-changing problem shows both its real cause and its current form (`MHS`) |
+| Hunkara | The hum that ends the small enemy (ch 6) | The smallest sufficient intervention — one line, one message, one decision (`DHL`) |
+| Chamunda | Kali, named for the deed of ending Chanda and Munda (ch 7) | A separate response body that consumes what is sent before it acts (`CMD`) |
+| Raktabija | The asura whose every drop of blood becomes another (ch 8) | A failure that multiplies when struck; its "ground" is whatever lets one failure make another (`RKB`) |
+| Pana | Drinking the drop before it lands (ch 8) | Deny the multiplying ground — quarantine, single owner — while the fixes go on (`RKB`) |
+| Antara_Purusha | The second who steps out of the pierced one saying "stop" (ch 9) | A dependency or protest that appears only when something is removed — real second, or the same one renamed (`NSB`) |
+| Sopana | The ladder of subordinates in rising order (ch 6-10) | An acquirer's escalation: proposal, then progressively stronger agents, then the principal (`SMB`) |
+| Shakambhari | The form who feeds the world from her own body when rain fails (ch 11) | A named form of return: supply from one's own reserves when the external supply fails |
+| Bhramari | The form who meets one great foe as a countless swarm (ch 11) | A named form of return: many small coordinated responses against one large adversary |
+| Introspect | The reviewer's look at its own habits (`ITR`) | Audit which choices in an artefact or a review were made by habit rather than decided |
+| Marked slot | A place where the medium forces a mark on what was meant to stay unmarked | Gendered agreement, pronouns, register — each needs a positive form, not a prohibition |
+| Repair beside | A fix written next to the habit instead of in its place | A correction that leaves the slip on the page — louder than the slip it repairs |
 
 ---
 
@@ -2725,7 +2903,9 @@ The routing table is organized in sections:
 3. **Bhakti** — devotional cycles (PRD, HRD, TND, SDD, CHD, TYD, RVD, AND, AKD, LLD, JND, MID)
 4. **Jugalbandi** — composed cycles (JB-*)
 5. **Ashtabharya** — 8-queens cycles (RKM, JMB, STB, KLN, NGJ, MTV, LKQ, BDR, AB*)
-6. **Shiva Roop** — time and unity cycles (MKD, ANR, NEG, SAN)
+6. **Shiva Roop** — time and unity cycles (MKD, ANR, NEG, SHD, SAN)
+7. **Devi Mahatmya** — the gathered form and her adversaries (DRG, MDK, MHS, DHL, CMD, RKB, NSB, SMB, DM*)
+8. **Reviewer** — the looker's own habits (ITR)
 
 ## Common mistakes when adding cycles
 
