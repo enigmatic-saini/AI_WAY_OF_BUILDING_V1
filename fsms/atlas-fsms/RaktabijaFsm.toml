@@ -1,0 +1,150 @@
+[meta]
+name    = "RaktabijaFsm"
+domain  = "the-multiplier"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# RaktabijaFsm — The Multiplier
+#
+# Source: Durga Saptashati, chapter 8 (verses 40-62).
+#
+# Every drop of Raktabija's blood that reaches the ground becomes
+# another Raktabija of equal strength (ch 8.41-44). The shaktis'
+# strikes FILL THE WORLD with him (ch 8.45-52). Chandika tells
+# Kali: open your mouth; drink the drops before they land; eat
+# the ones that rise (ch 8.53-55). Struck while his blood is
+# drunk, 'bloodless, he fell' (ch 8.56-62).
+#
+# First question: does every strike make another — what is the
+# ground the drop touches, and who drinks the drop before it
+# lands?
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Bija"
+description = "One of it exists. Struck in the ordinary way, it bleeds (ch 8.40-41)."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Patana"
+description = "A drop is on its way to the ground. The GROUND is whatever lets one failure become a new, independent, equal one — name it; naming the ground is the whole diagnosis (ch 8.41)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Vriddhi"
+description = "The drop has landed: one more, equal in strength and fury. The count rises by the number of drops (ch 8.43-48)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Prahara_Loop"
+description = "Trap. Striking harder or faster. Every strike bleeds more drops; the world fills; the count rises WITH effort (ch 8.45-52)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Pana"
+description = "The drop caught before it lands — the ground denied, not the strike withheld. Kali drinks; Chandika keeps striking (ch 8.53-57)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Shosha"
+description = "With no drop landing, each strike now REDUCES; the count falls with effort for the first time (ch 8.58-61)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Nirbija"
+description = "None left, and no ground for a new one: 'bloodless, he fell' (ch 8.62)."
+is_initial  = false
+is_terminal = true
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Bija"
+to     = "Patana"
+event  = "struck"
+guard  = "strike_landed AND it_bleeds"
+action = "watch_the_drop"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Patana"
+to     = "Vriddhi"
+event  = "drop_lands"
+guard  = "ground_available"
+action = "count"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Vriddhi"
+to     = "Prahara_Loop"
+event  = "strike_harder"
+guard  = "more_force AND ground_still_available"
+action = "count_again"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Prahara_Loop"
+to     = "Vriddhi"
+event  = "more"
+guard  = "count_rose_with_effort"
+action = "stop_and_name_the_ground"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Patana"
+to     = "Pana"
+event  = "ground_denied"
+guard  = "drop_caught_before_landing AND strikes_continue"
+action = "drink"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Prahara_Loop"
+to     = "Pana"
+event  = "ground_named"
+guard  = "mechanism_changed_not_strike_rate"
+action = "drink"
+drishti = ["present", "up"]
+
+[[transitions]]
+from   = "Pana"
+to     = "Shosha"
+event  = "strike_while_drinking"
+guard  = "no_drop_lands"
+action = "count_falls"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Shosha"
+to     = "Shosha"
+event  = "another"
+guard  = "count_falling"
+action = "continue"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Shosha"
+to     = "Nirbija"
+event  = "count_zero"
+guard  = "none_left AND no_ground"
+action = "done"
+drishti = ["present", "future"]
+
+[[transitions]]
+from   = "Nirbija"
+to     = "Bija"
+event  = "new_ground"
+guard  = "a_new_ground_appears"
+action = "begin_again_by_naming_it"
+drishti = ["present", "future"]
+

@@ -1,0 +1,143 @@
+[meta]
+name    = "ShumbhaFsm"
+domain  = "the-acquirer-s-ladder-and-the-taunt"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# ShumbhaFsm — The Acquirer's Ladder, and the Taunt
+#
+# Source: Durga Saptashati, chapters 5-10.
+#
+# Shumbha holds the three worlds (ch 5.2-6). He first sends a
+# PROPOSAL by messenger — all jewels are mine, you are the jewel
+# of women, come (ch 5.105-114); refused by the vow (ch 5.117-121).
+# Then subordinates in rising order: Dhumralochana (ch 6), Chanda
+# and Munda (ch 7), Raktabija (ch 8), his brother Nishumbha (ch 9).
+# When the brother falls he comes himself (ch 9.17), and taunts:
+# 'you fight on others' strength' (ch 10.3). Answered by 'I alone
+# am' (ch 10.5-8); fights in the air with no support; falls
+# (ch 10.22-28).
+#
+# First question (for the one who faces him): where on the ladder
+# is this — the offer, the subordinates, the principal — and is
+# the taunt half true?
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Trailokya"
+description = "Holds everything; every office and every jewel; the gods thrown out (ch 5.2-6)."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Duta"
+description = "The proposal before the force: come over as a possession; everything else is already mine (ch 5.105-114)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Pratyakhyana"
+description = "Refused — by a vow spoken earlier, not by argument now (ch 5.117-121). The terms of everything after are set here."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Sopana"
+description = "Subordinates sent in rising order: the small one, the scouts, the multiplier, the brother (ch 6-9). Each failure escalates the next."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Bhratri_Patana"
+description = "The brother falls; the sender becomes the fighter (ch 9.17)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Akshepa"
+description = "The taunt: you win by others' strength (ch 10.3). It lands because it is half true."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Niradhara_Yuddha"
+description = "The fight with the one who stands alone, in the air, with no ground beneath either (ch 10.22-26)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Patana"
+description = "Falls; the world calms of itself (ch 10.26-32)."
+is_initial  = false
+is_terminal = true
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Trailokya"
+to     = "Duta"
+event  = "proposal_sent"
+guard  = "prize_reported AND acquisition_offered_before_force"
+action = "hear_the_offer"
+drishti = ["present", "future"]
+
+[[transitions]]
+from   = "Duta"
+to     = "Pratyakhyana"
+event  = "refused"
+guard  = "vow_exists_from_before"
+action = "terms_set_by_the_refuser"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Pratyakhyana"
+to     = "Sopana"
+event  = "force_escalates"
+guard  = "refusal_received"
+action = "send_the_next_in_order"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Sopana"
+to     = "Sopana"
+event  = "next_subordinate"
+guard  = "previous_failed AND next_available"
+action = "escalate"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Sopana"
+to     = "Bhratri_Patana"
+event  = "brother_falls"
+guard  = "last_subordinate_gone"
+action = "principal_appears"
+drishti = ["present", "up"]
+
+[[transitions]]
+from   = "Bhratri_Patana"
+to     = "Akshepa"
+event  = "taunt"
+guard  = "principal_faces_the_gathered_form"
+action = "test_whether_half_true"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Akshepa"
+to     = "Niradhara_Yuddha"
+event  = "alone_answered"
+guard  = "every_borrowed_power_withdrawn_by_the_other"
+action = "fight_in_the_open"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Niradhara_Yuddha"
+to     = "Patana"
+event  = "falls"
+guard  = "struck_in_the_open"
+action = "watch_the_world_calm"
+drishti = ["present", "future"]
+

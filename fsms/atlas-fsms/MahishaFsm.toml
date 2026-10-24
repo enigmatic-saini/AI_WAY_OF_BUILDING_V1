@@ -1,0 +1,145 @@
+[meta]
+name    = "MahishaFsm"
+domain  = "the-usurper-who-changes-kind"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# MahishaFsm — The Usurper Who Changes Kind
+#
+# Source: Durga Saptashati, chapters 2-3.
+#
+# Mahisha has taken EVERY office into himself — 'he himself
+# performs the duties of the Sun, Indra, Fire, Wind, Moon, Yama,
+# Varuna and the rest' (ch 2.6) — and thrown the gods out. His
+# generals fall one by one. Struck, he does not weaken: he changes
+# kind — buffalo, lion, man with sword, elephant, buffalo again
+# (ch 3.21-33). The Devi drinks and laughs and gives him a moment
+# to roar (ch 3.34-38). He is slain HALF-EMERGED from the
+# buffalo's mouth — the one moment the real one and the shape are
+# both visible (ch 3.39-42).
+#
+# First question: has one thing taken every office into itself —
+# and when it is struck, does it change kind rather than weaken;
+# where is the half-emerged moment?
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Sarva_Adhikara"
+description = "One thing holds every office: it performs all the duties that many once performed, and the many are thrown out (ch 2.6-7). Not a single point that might fail — an active taking."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Senapati"
+description = "Its generals and armies — the parts that can be struck first and do fall (ch 2.40-67, 3.2-20). Each is of one kind and dies as that kind."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Rupa"
+description = "The usurper in its current kind. Struck, it produces the NEXT kind, not a weaker version of this one: buffalo to lion to man to elephant to buffalo (ch 3.21-33). The sequence of kinds is the signature."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Rupantara"
+description = "The change itself: the moment the problem is 'fixed' in one kind and reappears as another. Record the kind it left and the kind it entered."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Matta"
+description = "Trap, the fighter's. Drinking, laughing, telling the enemy to roar 'for a moment' (ch 3.34-38) — the intoxication at the peak, striking the kind that is already gone."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Ardha_Nirgama"
+description = "Half-emerged: the real one is coming out of the last disguise and has not fully re-formed. The only moment both the shape and the real thing are visible (ch 3.40-41)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Vadha"
+description = "Struck at that moment with the great sword; no next kind appears (ch 3.42). The offices return to the many."
+is_initial  = false
+is_terminal = true
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Sarva_Adhikara"
+to     = "Senapati"
+event  = "fight_begins"
+guard  = "generals_identified"
+action = "strike_the_parts_first"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Senapati"
+to     = "Rupa"
+event  = "generals_fallen"
+guard  = "parts_struck AND principal_remains"
+action = "face_the_principal"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Rupa"
+to     = "Rupantara"
+event  = "struck"
+guard  = "strike_landed"
+action = "record_the_kind_it_was"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Rupantara"
+to     = "Rupa"
+event  = "next_kind"
+guard  = "new_kind_appeared AND not_weaker"
+action = "record_the_kind_it_became"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Rupa"
+to     = "Matta"
+event  = "fighter_intoxicated"
+guard  = "strike_aimed_at_previous_kind"
+action = "return_the_eye_to_what_is_there_now"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Matta"
+to     = "Rupa"
+event  = "eye_returns"
+guard  = "present_kind_seen"
+action = "continue"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Rupantara"
+to     = "Ardha_Nirgama"
+event  = "real_one_visible"
+guard  = "mid_change AND disguise_not_yet_complete"
+action = "do_not_wait_for_the_whole"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Ardha_Nirgama"
+to     = "Vadha"
+event  = "struck_now"
+guard  = "real_one_pinned"
+action = "strike_once"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Ardha_Nirgama"
+to     = "Rupa"
+event  = "missed"
+guard  = "fully_re_formed"
+action = "begin_again_with_the_sequence"
+drishti = ["present", "past"]
+

@@ -1,0 +1,91 @@
+[meta]
+name    = "ChandaMundaFsm"
+domain  = "the-scouts-and-the-fury-with-its-own-body"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# ChandaMundaFsm — The Scouts, and the Fury That Took a Body
+#
+# Source: Durga Saptashati, chapters 5 and 7.
+#
+# Chanda and Munda are the two who first SEE the Devi and report
+# the jewel to Shumbha (ch 5.89-100); later they are sent to bind
+# and bring her (ch 6.21-24). At their approach Kali steps out of
+# her furrowed brow in her own body (ch 7.5-8), devours the whole
+# army — elephants, chariots, riders, weapons — into her mouth
+# (ch 7.9-15), cuts both heads and brings them to Chandika, who
+# names her Chamunda (ch 7.20-27).
+#
+# First question: who saw and reported — and does the response
+# take a separate form and consume everything sent, before it can
+# act?
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Darshana"
+description = "The scouts see and report: what is there, what it is worth, where it stands (ch 5.89-100). Reconnaissance before any force."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Bandhana_Adesha"
+description = "Sent to bind and bring; the force that follows the report (ch 6.21-24)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Kali_Nirgama"
+description = "The fury takes a separate body of its own, out of the brow (ch 7.5-8). The response is not the seer's hand; it is a form she releases."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Grasana"
+description = "Total consumption of the sent force — swallowed whole before it can act (ch 7.9-15)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Chamunda"
+description = "The heads brought back; the deed named; the form keeps the name (ch 7.20-27)."
+is_initial  = false
+is_terminal = true
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Darshana"
+to     = "Bandhana_Adesha"
+event  = "reported"
+guard  = "prize_reported"
+action = "force_sent"
+drishti = ["present", "future"]
+
+[[transitions]]
+from   = "Bandhana_Adesha"
+to     = "Kali_Nirgama"
+event  = "approach"
+guard  = "force_at_the_door"
+action = "release_the_fury_in_its_own_body"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Kali_Nirgama"
+to     = "Grasana"
+event  = "devour"
+guard  = "everything_sent_swallowed_before_acting"
+action = "consume"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Grasana"
+to     = "Chamunda"
+event  = "heads_brought"
+guard  = "scouts_ended AND deed_named"
+action = "name_the_form"
+drishti = ["present", "up"]
+

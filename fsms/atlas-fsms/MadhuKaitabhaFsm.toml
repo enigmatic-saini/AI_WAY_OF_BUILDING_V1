@@ -1,0 +1,142 @@
+[meta]
+name    = "MadhuKaitabhaFsm"
+domain  = "what-grew-while-the-guardian-slept"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# MadhuKaitabhaFsm — What Grew While the Guardian Slept
+#
+# Source: Durga Saptashati, chapter 1 (verses 64-104).
+#
+# Two asuras are born from the ear-wax of Vishnu while he sleeps
+# in Yoganidra at the end of the age; they attack Brahma seated on
+# the lotus of Vishnu's navel. Brahma does not fight: he praises
+# Yoganidra to LEAVE Vishnu, who wakes; five thousand years of
+# arm-fight; deluded by Mahamaya and drunk with strength, the two
+# OFFER Vishnu a boon; he asks their death; they set a condition —
+# 'where the earth is not covered by water' — and he makes dry
+# ground of his own thigh and cuts their heads there.
+#
+# First question: what has grown from the guardian while it slept,
+# and when the strength-drunk enemy offers terms, how are they
+# turned into his end?
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Nidra"
+description = "The guardian sleeps; the age has dissolved into one ocean; the creator sits on the sleeper's own body. Nobody is watching, and nothing yet seems wrong (ch 1.66-67)."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Karna_Mala"
+description = "Grown from the guardian's own body while it slept — two of them, of the sleeper's own substance, strong enough to threaten the creator (ch 1.67-69). Not an outside enemy: the sleep's own product."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Brahma_Stuti"
+description = "The creator, attacked, does not fight. He praises the delusion itself and asks it to LEAVE the sleeper (ch 1.69-87). The guardian is woken by withdrawing what held him, not by alarm."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Jagarana"
+description = "The guardian wakes, sees the two, and fights them with bare arms for five thousand years; neither side wins by force (ch 1.89-94)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Vara_Dana"
+description = "Deluded by Mahamaya and drunk with their own strength, the two OFFER the guardian a boon: 'ask whatever you wish' (ch 1.94-96)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Pratigraha"
+description = "The guardian asks their death. They, seeing the world all water, set a condition: slay us where the earth is not wet (ch 1.97-101). The enemy's terms are now the ground."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Uru_Bhumi"
+description = "The guardian makes the condition true from his own body — dry ground of his thigh — and cuts their heads there (ch 1.102-103). The terms are kept to the letter and turned."
+is_initial  = false
+is_terminal = true
+
+[[states]]
+name        = "Bala_Yuddha_Loop"
+description = "Trap. Fighting the sleep's product by strength alone, age after age, with the delusion still in place; the fight does not end because nothing has been withdrawn."
+is_initial  = false
+is_terminal = false
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Nidra"
+to     = "Karna_Mala"
+event  = "grown_from_the_sleeper"
+guard  = "nobody_watching AND product_of_the_guardians_own_substance"
+action = "name_what_grew"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Karna_Mala"
+to     = "Brahma_Stuti"
+event  = "creator_threatened"
+guard  = "attack_on_what_sits_on_the_sleeper"
+action = "praise_the_delusion_to_leave"
+drishti = ["present", "up"]
+
+[[transitions]]
+from   = "Brahma_Stuti"
+to     = "Jagarana"
+event  = "delusion_withdraws"
+guard  = "held_assumption_named AND released"
+action = "guardian_wakes"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Jagarana"
+to     = "Bala_Yuddha_Loop"
+event  = "force_only"
+guard  = "strength_against_strength AND nothing_withdrawn"
+action = "count_the_ages"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Bala_Yuddha_Loop"
+to     = "Jagarana"
+event  = "still_fighting"
+guard  = "no_end_in_sight"
+action = "keep_looking_for_the_offer"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Jagarana"
+to     = "Vara_Dana"
+event  = "enemy_offers_boon"
+guard  = "enemy_drunk_with_strength AND deluded"
+action = "hear_the_offer; do_not_refuse_it"
+drishti = ["present", "future"]
+
+[[transitions]]
+from   = "Vara_Dana"
+to     = "Pratigraha"
+event  = "terms_exchanged"
+guard  = "death_asked AND condition_set_by_enemy"
+action = "take_the_condition_literally"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Pratigraha"
+to     = "Uru_Bhumi"
+event  = "condition_made_true"
+guard  = "ground_made_from_own_body"
+action = "end_on_own_ground"
+drishti = ["present"]
+

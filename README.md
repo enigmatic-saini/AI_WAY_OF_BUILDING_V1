@@ -37,7 +37,7 @@ This is the ArdhNarishwar axiom (see [LINEAGE.md](LINEAGE.md) §1) applied to a 
 | [INSTALL.md](INSTALL.md) | One-command install |
 | [.claude/](.claude/) | Hooks (8), skills (11), role descriptors (7) |
 | [fsms/](fsms/) | Five load-bearing FSMs in TOML (M_BUILD, CycleFsm, HookFsm, RoleDescriptor, SkillFsm) |
-| [fsms/atlas-fsms/](fsms/atlas-fsms/) | Lineage reference — 70 formal TOMLs for the divinity-named cycles ATLAS describes in prose. Reference material, not runtime-required. |
+| [fsms/atlas-fsms/](fsms/atlas-fsms/) | Lineage reference — 79 formal TOMLs: 70 for the divinity-named cycles ATLAS describes in prose, and 9 added from [LENS-KIT](https://github.com/enigmatic-saini/LENS-KIT) — the eight personae of the Devī Māhātmya (Durga, Madhu–Kaitabha, Mahisha, Dhumralochana, Chanda–Munda, Raktabija, Nishumbha, Shumbha) and the LLM reviewer. Reference material, not runtime-required. |
 | [templates/](templates/) | DESIGN, ADR, POSTMORTEM, RUNBOOK, PATCH-RECORD, RELEASE-NOTES (and 3 more per DASHBOARD §2 — STATUS, TODO, HANDOVER) |
 
 ## What this kit is NOT

@@ -1,0 +1,112 @@
+[meta]
+name    = "NishumbhaFsm"
+domain  = "the-second-who-steps-out-saying-stop"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# NishumbhaFsm — The Second Who Steps Out Saying Stop
+#
+# Source: Durga Saptashati, chapter 9.
+#
+# Nishumbha fights first, in fury at Raktabija's death (ch 9.5-7);
+# his weapons are cut one after another (ch 9.11-16); pierced by
+# the trident, 'another man of great strength came out of his
+# chest, saying STOP, STOP' — the Devi laughed and cut that one's
+# head (ch 9.34-36).
+#
+# First question: when the outer one is pierced, what steps out of
+# it demanding a halt — is that a real second, or the same one in
+# another coat? (On probation: re-test against MahishaFsm once the
+# recall report has run.)
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Bahya"
+description = "The outer one, fighting in the open; weapon after weapon cut away (ch 9.5-16)."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Viddha"
+description = "Pierced through the chest; the outer one falls (ch 9.34)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Antara_Purusha"
+description = "Another steps OUT of the pierced one, strong, saying 'stop, stop' (ch 9.35). The protest appears exactly at the moment of defeat."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Hasya"
+description = "Heard, and laughed at: the Devi does not obey the halt; she judges whether this is a real second or the same one in another coat (ch 9.36)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Dvitiya_Vadha"
+description = "The second cut as well; nothing further steps out (ch 9.36)."
+is_initial  = false
+is_terminal = true
+
+[[states]]
+name        = "Ajna_Palana"
+description = "Trap. The 'stop' obeyed as if it were a real dependency; the outer one's fall undone by its inner protest; the fight resumes from the start."
+is_initial  = false
+is_terminal = false
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Bahya"
+to     = "Viddha"
+event  = "pierced"
+guard  = "decisive_strike_landed"
+action = "watch_what_steps_out"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Viddha"
+to     = "Antara_Purusha"
+event  = "second_emerges"
+guard  = "protest_appears_at_defeat"
+action = "hear_it"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Antara_Purusha"
+to     = "Hasya"
+event  = "judged"
+guard  = "same_one_in_another_coat OR real_second_identified"
+action = "laugh_or_pause"
+drishti = ["present", "down", "left", "right"]
+
+[[transitions]]
+from   = "Hasya"
+to     = "Dvitiya_Vadha"
+event  = "same_one"
+guard  = "not_a_real_second"
+action = "cut_it_too"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Hasya"
+to     = "Ajna_Palana"
+event  = "obeyed"
+guard  = "halt_obeyed_without_judging"
+action = "note_the_resumption"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Ajna_Palana"
+to     = "Bahya"
+event  = "fight_resumes"
+guard  = "outer_one_restored_by_its_inner_protest"
+action = "begin_again"
+drishti = ["present"]
+

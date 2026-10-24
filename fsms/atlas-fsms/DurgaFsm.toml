@@ -1,0 +1,275 @@
+[meta]
+name    = "DurgaFsm"
+domain  = "gathered-form-on-its-own-terms"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# DurgaFsm — The Gathered Form
+#
+# Source: Sri Durga Saptashati (Markandeya Purana, Devi Mahatmya),
+# all thirteen chapters and the three rahasyas. Chapter numbers
+# in each state refer to that text.
+#
+# The Devi appears only when the ordinary defenders have lost and
+# ask TOGETHER; she is made of everyone's strength in ONE body;
+# she sets her own terms; she meets each adversary by its own
+# behaviour (see the adversary machines: MadhuKaitabhaFsm,
+# MahishaFsm, DhumralochanaFsm, ChandaMundaFsm, RaktabijaFsm,
+# NishumbhaFsm, ShumbhaFsm); when told she wins by others'
+# strength she takes every power back into herself and stands
+# alone; and when the world calms she gives what each one asks,
+# withdraws, and promises to return.
+#
+# Traps: Mamata (attachment — ch 1), Vara_Moha (the strength-drunk
+# enemy offering a boon — ch 1), Para_Bala (fighting on borrowed
+# strength — ch 10), Grim_Standing_Army (not withdrawing — ch 11).
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Yoganidra"
+description = "Latent. The power sleeps inside the guardian; the ordinary order holds, or seems to. Vishnu asleep on Shesha in the one ocean (ch 1). Nothing moves unless the order fails."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Parajaya"
+description = "The ordinary defenders have lost and been thrown out: the gods driven from heaven by Mahisha (ch 2), again by Shumbha (ch 5); the king's own ministers seize his army and treasury (ch 1). The order cannot restore itself."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Stuti"
+description = "The defeated go TOGETHER and praise. The power appears only when called by the collective, never summoned by one for himself: Brahma praises Yoganidra (ch 1); the gods' hymns (ch 2, 4, 5, 11)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Sambhava"
+description = "Manifestation: the strength of all gathers into one form, and each contributor hands over its weapon (ch 2.9-30); in the third fight each god's shakti steps out of his body in his own shape, mount and weapon (ch 8.12-21)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Pratijna"
+description = "The terms are set by the one who will fight, not by the suitor or the enemy: the vow — whoever conquers me in battle, whoever removes my pride, whoever equals my strength (ch 5.117-121); Vishnu's counter-terms to Madhu and Kaitabha (ch 1.100-101)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Yuddha"
+description = "The fight, routed by the adversary's behaviour: the small one ended with a hum (DhumralochanaFsm); the usurper who changes kind (MahishaFsm); the multiplier (RaktabijaFsm); the second who steps out saying stop (NishumbhaFsm); the ladder of the acquirer (ShumbhaFsm). Not the whole army for every enemy."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Ekaki"
+description = "The taunt — you fight on others' strength (ch 10.3) — answered: 'I alone am in this world; who else is there? see, these are my own powers entering me' (ch 10.5-8). Every borrowed power withdrawn; she stands alone; the fight moves into the air with no ground beneath (ch 10.22-23)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Vadha"
+description = "The decisive blow, in the open (ch 3.42, 10.26). Not before the true form is visible, not after it has re-formed."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Shanti"
+description = "The world calms of itself: omens cease, rivers run their course, fires burn quietly, the sky clears (ch 10.28-32). A test, not a mood: did it calm, or does it only look calm."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Vara"
+description = "Boons given according to what each asks: the king asks his kingdom, in this life and the next; the merchant asks the knowledge that ends 'mine' (ch 13.14-25). Each receives what he asked, not what the other asked."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Antardhana"
+description = "Withdrawal, with the promise to return whenever the trouble rises again — and the forms of return named: Shakambhari, who feeds the world from her own body when rain fails a hundred years; Bhramari, who meets one great foe as a countless swarm; Bhima; Raktadantika; Durga (ch 11.38-55). The power sleeps again."
+is_initial  = false
+is_terminal = true
+
+[[states]]
+name        = "Mamata"
+description = "Trap. Attachment: the one who has seen the fault is still drawn to it — the kingdom taken from him, the family that threw him out. 'We both see the fault, and are still drawn' (ch 1.41-45). The knot the whole text is told to untie; exit through the sage, who names it."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Vara_Moha"
+description = "Trap, the enemy's. Deluded by Mahamaya and drunk with strength, the enemy OFFERS a boon (ch 1.94-95). Seen from the fighter's side: when the strong one offers terms, set them — his boon becomes his end."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Para_Bala"
+description = "Trap. Fighting on borrowed strength and being named for it; the taunt lands because it is half true (ch 10.3). Exit only by withdrawing every borrowed power (Ekaki)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Grim_Standing_Army"
+description = "Trap. The world has calmed and the gathered form does not withdraw; the army stands; the boon is not given. Ch 11-13 show the opposite: give, withdraw, promise to return."
+is_initial  = false
+is_terminal = false
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Yoganidra"
+to     = "Parajaya"
+event  = "order_fails"
+guard  = "usual_defenders_lost AND thrown_out"
+action = "record_what_was_lost"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Parajaya"
+to     = "Stuti"
+event  = "defeated_ask_together"
+guard  = "collective_asks AND not_one_for_himself"
+action = "praise; name the need"
+drishti = ["present", "up"]
+
+[[transitions]]
+from   = "Parajaya"
+to     = "Mamata"
+event  = "return_to_what_threw_them_out"
+guard  = "fault_seen AND still_drawn"
+action = "name_the_attachment"
+drishti = ["present", "past"]
+
+[[transitions]]
+from   = "Mamata"
+to     = "Stuti"
+event  = "sage_names_the_knot"
+guard  = "attachment_named AND fault_seen"
+action = "go_together_to_ask"
+drishti = ["present", "up"]
+
+[[transitions]]
+from   = "Stuti"
+to     = "Sambhava"
+event  = "strength_gathers"
+guard  = "every_contributor_present AND weapons_handed_over"
+action = "one_form; one_mount"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Sambhava"
+to     = "Pratijna"
+event  = "terms_set"
+guard  = "terms_spoken_by_the_fighter AND before_any_proposal"
+action = "record_the_vow"
+drishti = ["present", "future"]
+
+[[transitions]]
+from   = "Pratijna"
+to     = "Yuddha"
+event  = "adversary_appears"
+guard  = "adversary_behaviour_identified"
+action = "route_to_adversary_machine"
+drishti = ["present", "down", "left", "right"]
+
+[[transitions]]
+from   = "Yuddha"
+to     = "Para_Bala"
+event  = "taunt_lands"
+guard  = "told_you_win_by_others_strength AND it_is_half_true"
+action = "stop; count_borrowed_powers"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Para_Bala"
+to     = "Ekaki"
+event  = "powers_withdrawn"
+guard  = "every_borrowed_power_taken_back AND standing_alone"
+action = "fight_in_the_open; no_ground_needed"
+drishti = ["present", "up"]
+
+[[transitions]]
+from   = "Yuddha"
+to     = "Vadha"
+event  = "true_form_visible"
+guard  = "half_emerged OR drops_stopped OR second_cut OR alone_in_the_open"
+action = "strike_once"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Ekaki"
+to     = "Vadha"
+event  = "alone_in_the_open"
+guard  = "no_support_beneath AND no_borrowed_power"
+action = "strike_once"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Vadha"
+to     = "Shanti"
+event  = "world_calms"
+guard  = "omens_cease AND rivers_run_their_course AND not_merely_looking_calm"
+action = "watch; do_not_declare"
+drishti = ["present", "future"]
+
+[[transitions]]
+from   = "Shanti"
+to     = "Vara"
+event  = "asked"
+guard  = "each_party_asks_for_itself"
+action = "give_what_each_asked"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Shanti"
+to     = "Grim_Standing_Army"
+event  = "army_kept_standing"
+guard  = "calm AND not_withdrawn"
+action = "name_the_attachment_to_the_fight"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Grim_Standing_Army"
+to     = "Vara"
+event  = "let_go"
+guard  = "willing_to_withdraw"
+action = "give; withdraw"
+drishti = ["present", "up"]
+
+[[transitions]]
+from   = "Vara"
+to     = "Antardhana"
+event  = "withdraw_with_promise"
+guard  = "boons_given AND forms_of_return_named"
+action = "withdraw; promise_to_return"
+drishti = ["present", "future"]
+
+[[transitions]]
+from   = "Antardhana"
+to     = "Yoganidra"
+event  = "sleep_again"
+guard  = "trouble_ended"
+action = "rest"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Yuddha"
+to     = "Vara_Moha"
+event  = "enemy_offers_boon"
+guard  = "enemy_drunk_with_strength AND offers_terms"
+action = "set_the_terms_yourself"
+drishti = ["present", "down"]
+
+[[transitions]]
+from   = "Vara_Moha"
+to     = "Pratijna"
+event  = "terms_taken"
+guard  = "condition_made_from_own_body"
+action = "record_the_terms"
+drishti = ["present", "up"]
+

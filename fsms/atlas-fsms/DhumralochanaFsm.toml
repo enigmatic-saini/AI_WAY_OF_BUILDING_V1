@@ -1,0 +1,60 @@
+[meta]
+name    = "DhumralochanaFsm"
+domain  = "the-small-one-ended-with-a-hum"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# DhumralochanaFsm — The Small One
+#
+# Source: Durga Saptashati, chapter 6.
+#
+# Shumbha orders Dhumralochana to drag the Devi by the hair with
+# sixty thousand asuras (ch 6.3-9). 'With a mere HUM she made him
+# ash' (ch 6.13); the lion ate his army (ch 6.14-19).
+#
+# First question: is the force sent proportionate — can this be
+# ended with a hum? (Folds, by admission, into the minimum-
+# intervention question; it exists here as ancestry so the ledger
+# must decide it.)
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Adesha"
+description = "The order: bring her by force; a large army for what needs none (ch 6.3-9)."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Hunkara"
+description = "Ended with a hum — a single sound, no weapon, no army (ch 6.13)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Simha"
+description = "The rest dealt with by the mount, not by the fighter (ch 6.14-19)."
+is_initial  = false
+is_terminal = true
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Adesha"
+to     = "Hunkara"
+event  = "approach"
+guard  = "small_enemy AND smallest_force_sufficient"
+action = "hum"
+drishti = ["present"]
+
+[[transitions]]
+from   = "Hunkara"
+to     = "Simha"
+event  = "remainder"
+guard  = "army_remains AND mount_sufficient"
+action = "let_the_mount_work"
+drishti = ["present", "down"]
+

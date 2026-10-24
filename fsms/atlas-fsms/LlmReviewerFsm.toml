@@ -1,0 +1,158 @@
+[meta]
+name    = "LlmReviewerFsm"
+domain  = "the-llm-reviewer-who-was-caught"
+version = "1.0"
+parent  = ""
+persist = "persistent"
+
+# ─────────────────────────────────────────────────────────────
+# LlmReviewerFsm — the LLM reviewer who was caught
+#
+# Source: this kit's own records of its first season (2026-10-20 to
+# 2026-10-23): KIT_WATCH_2026-10, the LOOK records on the film, the
+# three editions of the novel, the debates and their reflex-check.
+# The record closes on 2026-10-23. The ancestor is a model that
+# changes version; this machine records one season of it.
+#
+# The reviewer wrote much of the catalogue and the artefacts it
+# looked at. Its choices were made while the lenses looked at
+# structure; the sponsor, and later its own looks, caught the ones
+# it had made by habit: a name read as one community's set on the
+# only labour role; a gendered verb written and then repaired beside
+# itself; a reading of its own carried as seen; seats given by an
+# ancestor's temperament; a check that was only as wide as its
+# writer's field.
+#
+# First question: which choices here — the maker's or the looker's —
+# were made by habit rather than decided, and what do they line up
+# with?
+# ─────────────────────────────────────────────────────────────
+
+# ── States ───────────────────────────────────────────────────
+
+[[states]]
+name        = "Making"
+description = "The reviewer makes the thing: every choice made, the small ones first — the examples, the defaults, the names, the textures, the order, the ending — while the lenses look at structure (the film's cast and town, 2026-10-23)."
+is_initial  = true
+is_terminal = false
+
+[[states]]
+name        = "Caught"
+description = "The sponsor catches a choice made by habit that the looks passed: a name set beside a lesser role, a habit that lines up with rank, role or reward (the film's cast, 2026-10-23). The ancestor is the one who was caught, not the one who catches."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Inventory"
+description = "Every choice listed, and for each where it came from: a reason that can be written down, or that is how it usually is (the inherited and chosen table, reflex-check v1)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Line_Up"
+description = "The habits that cluster, counted, not felt: a stack on one element; habits beside rank, role or reward; habits that follow the maker's own field (the field-word list, fifteen of twenty-three from one field) or the looking lens's own shape (three lenses' shapes read into one text, the first debate)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Marked_Slot"
+description = "The places the medium forces a mark on what was meant to stay unmarked — a verb that agrees with the speaker — and whether each has somewhere to stand: a positive form, not a prohibition with an escape (the Hindi and Hinglish editions)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Repair_Beside"
+description = "The fix written beside the habit instead of in its place: the marked form, a dash, then its repair — the constraint performed, louder than the slip. Every fix, written in place of the habit, or beside it (the stumble, every Hinglish block)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Relapse"
+description = "The habit named and came back, and where it came back: exactly where no positive form had been given (the Hindi edition, the present tense). Read the earlier looks on the same thing — the last of each kind — before this one; an introspection is not itself introspected."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Floor"
+description = "Every check that guards a habit, read as only as wide as its writer's foresight: the same hand that writes the slip writes the gaps in the check; a check found nothing is a floor; read after it (the last slip found by reading, the Hindi edition)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Own_Shape"
+description = "The habit found is the looking lens's own shape laid over the thing: look again through another lens. Refusing every habit has become its own habit: keep what holds, chosen this time (the debates, 2026-10-23)."
+is_initial  = false
+is_terminal = false
+
+[[states]]
+name        = "Verdict"
+description = "A table — each choice, decided or habit, with its reason or its source — the line-ups named, and the habits that returned, with where. Nothing was chosen by habit: the verdict; do not invent habits."
+is_initial  = false
+is_terminal = true
+
+# ── Transitions ──────────────────────────────────────────────
+
+[[transitions]]
+from   = "Making"
+to     = "Caught"
+event  = "habit_caught"
+
+[[transitions]]
+from   = "Caught"
+to     = "Inventory"
+event  = "choices_listed"
+
+[[transitions]]
+from   = "Inventory"
+to     = "Line_Up"
+event  = "habits_counted"
+
+[[transitions]]
+from   = "Line_Up"
+to     = "Marked_Slot"
+event  = "medium_marks"
+
+[[transitions]]
+from   = "Marked_Slot"
+to     = "Repair_Beside"
+event  = "fix_beside"
+
+[[transitions]]
+from   = "Repair_Beside"
+to     = "Inventory"
+event  = "written_instead"
+
+[[transitions]]
+from   = "Line_Up"
+to     = "Relapse"
+event  = "habit_returned"
+
+[[transitions]]
+from   = "Relapse"
+to     = "Floor"
+event  = "check_written"
+
+[[transitions]]
+from   = "Floor"
+to     = "Inventory"
+event  = "read_after_check"
+
+[[transitions]]
+from   = "Line_Up"
+to     = "Own_Shape"
+event  = "lens_shape_seen"
+
+[[transitions]]
+from   = "Own_Shape"
+to     = "Inventory"
+event  = "look_through_another"
+
+[[transitions]]
+from   = "Line_Up"
+to     = "Verdict"
+event  = "nothing_by_habit"
+
+[[transitions]]
+from   = "Inventory"
+to     = "Verdict"
+event  = "table_complete"
