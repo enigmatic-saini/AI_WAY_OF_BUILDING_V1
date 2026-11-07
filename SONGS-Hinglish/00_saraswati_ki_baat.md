@@ -52,3 +52,4 @@
 | # | Track | Kaun si lens ne kya kaha |
 |---|---|---|
 | 15 | [SHUBH LABH — Diwali Drop](15_shubh_labh_diwali.md) | Lakshmi × Ganesh — KS → Ganesh Deep → Radha → KBD → SRD → Reviewer Lakshmi → Griha Lakshmi → Hanuman; ritual nahi, result |
+| 16 | [LIGHTS UP — Diwali on the Beat](16_dj_lights_up_diwali_english.md) | English, poore floor ke liye — Radha Deep ek lens: pehli baar sunne wale ko bhi haath uthaane aa jaaye |
