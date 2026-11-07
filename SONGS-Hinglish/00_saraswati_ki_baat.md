@@ -42,3 +42,13 @@
 | 12 | [Aadhi Raat Ka Sipahi](12_aadhi_raat_ka_sipahi_oncall.md) | on-call / SRE / DevOps — the night sentinel |
 | 13 | [Tu Logon Ko Sambhalta Hai](13_tu_logon_ko_sambhalta_hai_manager.md) | engineering manager / people-lead — maali, baghbaan |
 | 14 | [Hum Sab Ek](14_hum_sab_ek_anthem.md) | **everyone** — the team anthem, sab ek taal pe |
+
+---
+
+## 🪔 TYOHAAR — festival drops (ATLAS cycles ke saath bahas karke bane)
+
+> Context chali gayi thi — toh kit ke apne cycles ko gaane ki jury bana diya. Har lens apne tareeke se sarahe.
+
+| # | Track | Kaun si lens ne kya kaha |
+|---|---|---|
+| 15 | [SHUBH LABH — Diwali Drop](15_shubh_labh_diwali.md) | Lakshmi × Ganesh — KS → Ganesh Deep → Radha → KBD → SRD → Reviewer Lakshmi → Griha Lakshmi → Hanuman; ritual nahi, result |
