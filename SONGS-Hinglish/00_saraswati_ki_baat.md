@@ -54,3 +54,4 @@
 | 15 | [SHUBH LABH — Diwali Drop](15_shubh_labh_diwali.md) | Lakshmi × Ganesh — KS → Ganesh Deep → Radha → KBD → SRD → Reviewer Lakshmi → Griha Lakshmi → Hanuman; ritual nahi, result |
 | 16 | [LIGHTS UP — Diwali on the Beat](16_dj_lights_up_diwali_english.md) | English, poore floor ke liye — Radha Deep ek lens: pehli baar sunne wale ko bhi haath uthaane aa jaaye |
 | 17 | [DEEPAK RAAG — Diwali Celebration](17_deepak_raag_diwali_celebration.md) | Hinglish, parivaar ka gaana — cycles jury nahi, *composer*: Brahma → Krishna → Kaalratri → Mahagauri → Kushmanda → Tansen (Deepak × Megh Malhar) → Narad → Radha |
+| 18 | [ANDHERE NE RESIGN KAR DIYA](18_andhere_ne_resign_kar_diya_suno.md) | **Suno-ready** — style prompt + tagged lyrics; andhera resign, Diwali sign |
